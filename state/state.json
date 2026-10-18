@@ -36,6 +36,13 @@
       "msg_id": 15,
       "file_id": "AgACAgIAAxkDAAMMatTFGQ2IkRqvgDcuS4fzIM2wgMYAAvElaxsecqlKlYpF0mmpZgwBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-18T16:14+03:00"
+    },
+    "2026-10-18-90s-facts": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 23,
+      "file_id": "AgACAgIAAxkDAAMXatTw_VNE5MYuDHe1018ijBiK2SoAAuwmaxsecqlKkJxp6ottvLABAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-18T19:17+03:00"
     }
   }
 }
