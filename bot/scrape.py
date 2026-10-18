@@ -10,8 +10,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 import render  # noqa: E402
 import shops  # noqa: E402
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "data")
+import config  # noqa: E402
+
+OUT = os.path.join(config.DATA, "data")
 
 
 def sheet(items, path):

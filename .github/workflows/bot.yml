@@ -1,9 +1,7 @@
 name: Бот канала
 on:
   schedule:
-    - cron: "*/20 5-18 * * *"   # каждые 20 минут с 8:00 до 21:40 МСК
-  push:
-    paths: ["drafts/**"]       # новый черновик — сразу отправить Ирине
+    - cron: "*/30 * * * *"   # если бот не запущен — запустить; каждый запуск работает ~5,5 часа
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,8 +10,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   run:
+    if: ${{ !github.event.repository.private }}   # долгий запуск только в открытом репозитории
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,13 +20,11 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -q -r requirements.txt && .github/fonts.sh
-      - run: python bot/poll.py
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-      - name: Сохранить состояние
-        if: always()
-        run: |
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state data/requests.json data/requests drafts/img 2>/dev/null || true
-          git diff --cached --quiet || (git commit -m "Бот: состояние" && git pull --rebase -X theirs && git push)
+      - run: python bot/main.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          DATA_DIR: "."
+          LOOP_MINUTES: "330"

@@ -19,6 +19,8 @@ jobs:
           cache: pip
       - run: pip install -q -r requirements.txt && .github/fonts.sh
       - run: python bot/scrape.py
+        env:
+          DATA_DIR: "."
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -1,4 +1,4 @@
-"""Один проход бота (запускается GitHub Actions каждые 20 минут и после новых черновиков).
+"""Бот канала Stambo.i. Работает в GitHub Actions почти без перерыва (LOOP_MINUTES) и сразу отвечает на кнопки.
 
 1. Забирает сообщения и нажатия кнопок Ирины.
 2. Отправляет Ирине новые черновики из drafts/ с кнопками.
@@ -8,7 +8,9 @@
 import glob
 import json
 import os
+import subprocess
 import sys
+import time
 import traceback
 from datetime import datetime, timedelta
 
@@ -17,7 +19,7 @@ import config  # noqa: E402
 import render  # noqa: E402
 import tg  # noqa: E402
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = config.DATA  # закрытый репозиторий данных (черновики, состояние, просьбы)
 STATE = os.path.join(ROOT, "state", "state.json")
 REQUESTS = os.path.join(ROOT, "data", "requests.json")
 REQ_DIR = os.path.join(ROOT, "data", "requests")
@@ -77,8 +79,8 @@ def status_markup(text):
     return {"inline_keyboard": [[{"text": text, "callback_data": "noop"}]]}
 
 
-def handle_updates(state, requests):
-    updates = tg.call("getUpdates", offset=state.get("offset", 0), timeout=0,
+def handle_updates(state, requests, wait=0):
+    updates = tg.call("getUpdates", offset=state.get("offset", 0), timeout=wait,
                       allowed_updates=["message", "callback_query"])
     for u in updates:
         state["offset"] = u["update_id"] + 1
@@ -89,6 +91,7 @@ def handle_updates(state, requests):
                 on_message(state, requests, u["message"])
         except Exception:
             traceback.print_exc()
+    return len(updates)
 
 
 def on_button(state, q):
@@ -236,17 +239,59 @@ def publish_due(state):
             d["error"] = str(e)[:300]
 
 
+def git(*args):
+    return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True)
+
+
+def sync_push():
+    """Сохранить состояние в репозиторий данных."""
+    git("add", "state", "data/requests.json", "data/requests", "drafts/img")
+    if git("diff", "--cached", "--quiet").returncode == 0:
+        return
+    git("commit", "-m", "Бот: состояние")
+    git("pull", "--rebase", "-X", "theirs")
+    git("push")
+
+
+def one_pass(state, requests, wait=0):
+    n = handle_updates(state, requests, wait)
+    publish_due(state)
+    return n
+
+
 def main():
-    state = load(STATE, {"offset": 0, "awaiting_edit": None, "drafts": {}})
-    requests = load(REQUESTS, [])
-    try:
-        handle_updates(state, requests)
-        publish_due(state)
-        send_new_drafts(state, requests)
-        backfill_previews(state)
-    finally:
-        save(STATE, state)
-        save(REQUESTS, requests)
+    minutes = int(os.environ.get("LOOP_MINUTES") or 0)
+    stop = time.time() + minutes * 60
+    last_sync = 0
+    while True:
+        if time.time() - last_sync > 60:
+            git("pull", "--rebase", "-X", "theirs")      # новые черновики от Claude
+            last_sync = time.time()
+            state = load(STATE, {"offset": 0, "awaiting_edit": None, "drafts": {}})
+            requests = load(REQUESTS, [])
+            try:
+                send_new_drafts(state, requests)
+                backfill_previews(state)
+            except Exception:
+                traceback.print_exc()
+            save(STATE, state)
+            save(REQUESTS, requests)
+            sync_push()
+        try:
+            changed = one_pass(state, requests, wait=25 if minutes else 0)
+        except Exception:
+            traceback.print_exc()
+            changed = 0
+            time.sleep(5)
+        if changed:
+            save(STATE, state)
+            save(REQUESTS, requests)
+            sync_push()
+        if not minutes or time.time() > stop:
+            save(STATE, state)
+            save(REQUESTS, requests)
+            sync_push()
+            break
 
 
 if __name__ == "__main__":
