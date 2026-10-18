@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-18-90s-facts-2",
+  "type": "history",
+  "daily": false,
+  "slot": null,
+  "request_id": "r21",
+  "revision_of": "2026-10-18-90s-facts",
+  "hold": true,
+  "card": {
+    "kicker": "ИСТОРИЯ МОДЫ",
+    "year": "1990-е",
+    "note": "3 факта",
+    "title": "Супермодели и гранж",
+    "images": [
+      {
+        "commons": "LindaEvangelista (cropped).jpg",
+        "grayscale": true,
+        "fy": 0.2
+      },
+      {
+        "commons": "Dr Martens, black, old.jpg",
+        "grayscale": true,
+        "fy": 0.5
+      }
+    ],
+    "credits": ""
+  },
+  "text": "<b>3 факта о моде 90-х</b> 😎\n\n<b>1.</b> В январе 1990-го британский Vogue вышел с обложкой Питера Линдберга: Наоми, Линда, Синди, Кристи и Татьяна вместе. Джордж Майкл увидел её и позвал всех пятерых в клип Freedom! '90 — и песню там поют под фонограмму они, а не он.\n\n<b>2.</b> В том же году Линда Евангелиста пошутила в Vogue: «Мы не просыпаемся меньше чем за 10 000 долларов в день». Фразу помнят до сих пор.\n\n<b>3.</b> Марк Джейкобс показал для Perry Ellis гранж: клетчатые рубашки на поясе, шифон с «мартинсами». Через несколько недель его уволили, а Кортни Лав сказала, что присланные вещи они с Куртом Кобейном сожгли. Зато в 1997-м Джейкобса позвали в Louis Vuitton.\n\nА что из 90-х вы бы вернули в свой гардероб?",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Freedom!_%2790",
+    "https://barrypopik.com/blog/i_dont_get_out_of_bed_for_less_than_10000_a_day",
+    "https://anothermag.com/fashion-beauty/7476/marc-jacobs-s-s93-nirvana-tribute-at-perry-ellis"
+  ]
+}
