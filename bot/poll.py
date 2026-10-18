@@ -67,7 +67,7 @@ def fmt_when(at):
 
 
 def keyboard(did, slot):
-    label = f"✅ Опубликовать{(' в ' + slot) if slot else ''}"
+    label = "✅ Опубликовать"
     return {"inline_keyboard": [[{"text": label, "callback_data": f"ok:{did}"}],
                                 [{"text": "✏️ Поправить", "callback_data": f"edit:{did}"},
                                  {"text": "❌ Не надо", "callback_data": f"no:{did}"}]]}
@@ -105,11 +105,9 @@ def on_button(state, q):
     if action in ("ok", "no") and state.get("awaiting_edit") == did:
         state["awaiting_edit"] = None
     if action == "ok":
-        at = publish_time(d.get("slot"))
-        d.update(status="approved", publish_at=at.isoformat())
-        when = fmt_when(at)
-        tg.call("answerCallbackQuery", callback_query_id=q["id"], text=f"Выйдет {when}")
-        tg.call("editMessageReplyMarkup", chat_id=chat, message_id=mid, reply_markup=status_markup(f"✅ Выйдет {when}"))
+        # публикуем сразу после одобрения
+        d.update(status="approved", publish_at=now().isoformat())
+        tg.call("answerCallbackQuery", callback_query_id=q["id"], text="Публикую")
     elif action == "no":
         d["status"] = "rejected"
         tg.call("answerCallbackQuery", callback_query_id=q["id"], text="Не публикую")
@@ -243,8 +241,8 @@ def main():
     requests = load(REQUESTS, [])
     try:
         handle_updates(state, requests)
-        send_new_drafts(state, requests)
         publish_due(state)
+        send_new_drafts(state, requests)
         backfill_previews(state)
     finally:
         save(STATE, state)
