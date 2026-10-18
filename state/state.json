@@ -1,6 +1,6 @@
 {
-  "offset": 84639457,
-  "awaiting_edit": null,
+  "offset": 84639458,
+  "awaiting_edit": "2026-10-18-90s-icons",
   "drafts": {
     "2026-10-18-history": {
       "status": "replaced",
@@ -53,7 +53,7 @@
       "sent_at": "2026-10-18T20:27+03:00"
     },
     "2026-10-18-90s-icons": {
-      "status": "sent",
+      "status": "awaiting_edit",
       "slot": null,
       "msg_id": 30,
       "file_id": "AgACAgIAAxkDAAMeatUBjf2hqFLYFMeJmljq6zrJdPAAAqgnaxsecqlKNrdAzbvc_nEBAAMCAAN3AAM9BA",
