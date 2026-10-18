@@ -257,12 +257,15 @@ def git(*args):
 
 def sync_push():
     """Сохранить состояние в репозиторий данных."""
-    git("add", "state", "data/requests.json", "data/requests", "drafts/img")
+    paths = [p for p in ("state", "data/requests.json", "data/requests", "drafts/img")
+             if os.path.exists(os.path.join(ROOT, p))]
+    git("add", "-A", "--", *paths)
     if git("diff", "--cached", "--quiet").returncode == 0:
         return
     git("commit", "-m", "Бот: состояние")
-    git("pull", "--rebase", "-X", "theirs")
-    git("push")
+    git("pull", "--rebase", "--autostash", "-X", "theirs")
+    if git("push").returncode == 0:
+        log("pushed")
 
 
 def one_pass(state, requests, wait=0):
@@ -275,13 +278,15 @@ def main():
     minutes = int(os.environ.get("LOOP_MINUTES") or 0)
     stop = time.time() + minutes * 60
     last_sync = 0
+    # состояние пишет только бот, поэтому держим его в памяти и лишь сохраняем
+    state = load(STATE, {"offset": 0, "awaiting_edit": None, "drafts": {}})
+    requests = load(REQUESTS, [])
     while True:
         if time.time() - last_sync > 60:
             log("sync")
-            git("pull", "--rebase", "-X", "theirs")      # новые черновики от Claude
+            sync_push()
+            git("pull", "--rebase", "--autostash", "-X", "theirs")      # новые черновики от Claude
             last_sync = time.time()
-            state = load(STATE, {"offset": 0, "awaiting_edit": None, "drafts": {}})
-            requests = load(REQUESTS, [])
             try:
                 send_new_drafts(state, requests)
                 backfill_previews(state)
