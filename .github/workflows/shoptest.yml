@@ -12,4 +12,4 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/shop_test.out && git commit -m "shop test" && git push
+          git add tools/shop_test.out samples && git commit -m "shop test" && git push
