@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-18-history",
+  "type": "history",
+  "daily": true,
+  "slot": "21:00",
+  "card": {
+    "kicker": "ИСТОРИЯ МОДЫ",
+    "year": "1926",
+    "note": "ровно 100 лет назад",
+    "title": "Маленькое чёрное платье",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Gabrielle_Chanel_en_marini%C3%A8re.jpg",
+        "grayscale": true,
+        "fy": 0.15
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Den_lille_sorte_kjole_-_Coco_Chanel_design.jpg/1280px-Den_lille_sorte_kjole_-_Coco_Chanel_design.jpg",
+        "fy": 0.5
+      }
+    ],
+    "credits": "Габриэль Шанель, 1928 — общественное достояние · Платья Chanel, 1920-е — фото Leif Jørgensen, CC BY-SA 4.0"
+  },
+  "text": "<b>История моды · октябрь 1926</b> 🖤\n\nРовно 100 лет назад американский Vogue показал простое чёрное платье от Шанель и назвал его «Фордом» — как машину, которая доступна каждому.\n\nДо этого чёрный носили в основном в трауре. А после маленькое чёрное платье стало вещью, которая есть почти в каждом шкафу 😌\n\nА у вас есть своё «то самое» чёрное платье?",
+  "sources": [
+    "https://libraries.wsu.edu/?p=981"
+  ]
+}

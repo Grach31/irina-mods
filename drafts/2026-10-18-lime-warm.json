@@ -1,0 +1,37 @@
+{
+  "id": "2026-10-18-lime-warm",
+  "type": "picks",
+  "daily": true,
+  "slot": "19:00",
+  "items": [
+    {
+      "name": "Удлиненный бомбер с меховой отделкой",
+      "price": 11999,
+      "url": "https://limestore.com/ru_ru/product/37113-8015_543_312_xaki",
+      "img": "https://a.cdn.lime-shine.com/p/3042ef2996e65a21abda8675a83a19c8.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Стеганая куртка из вязаного трикотажа с шерстью",
+      "price": 11999,
+      "url": "https://limestore.com/ru_ru/product/37329-9908_335_211_koricnevyi_melanz",
+      "img": "https://a.cdn.lime-shine.com/p/11e8b63e3a7b53ed8c7bfb2cf9b47520.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Свободная куртка на искусственном пуху",
+      "price": 13999,
+      "url": "https://limestore.com/ru_ru/product/36392-3505_479_201_temno_koricnevyi",
+      "img": "https://a.cdn.lime-shine.com/p/a9f66df75eec580c904a97488903a8a4.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Утепленная куртка из хлопка",
+      "price": 10999,
+      "url": "https://limestore.com/ru_ru/product/36517-8028_358_610_krasnyi",
+      "img": "https://a.cdn.lime-shine.com/p/3c650c899dcf5842957369cafb4a8276.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    }
+  ],
+  "text": "Новинки Lime: тёплое на зиму, которое не выглядит как «просто пуховик» 🍂\n\nБомбер с мехом в хаки — фаворит подборки, с джинсами и грубыми ботинками будет огонь 🔥\n\n<a href=\"https://limestore.com/ru_ru/product/37113-8015_543_312_xaki\">Бомбер с меховой отделкой</a> — 11 999 ₽\n<a href=\"https://limestore.com/ru_ru/product/37329-9908_335_211_koricnevyi_melanz\">Стёганая куртка из трикотажа с шерстью</a> — 11 999 ₽\n<a href=\"https://limestore.com/ru_ru/product/36392-3505_479_201_temno_koricnevyi\">Куртка на искусственном пуху</a> — 13 999 ₽\n<a href=\"https://limestore.com/ru_ru/product/36517-8028_358_610_krasnyi\">Утеплённая куртка из хлопка</a> — 10 999 ₽"
+}
