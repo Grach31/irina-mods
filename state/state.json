@@ -53,19 +53,20 @@
       "sent_at": "2026-10-18T20:27+03:00"
     },
     "2026-10-18-90s-icons": {
-      "status": "edit_requested",
+      "status": "replaced",
       "slot": null,
       "msg_id": 30,
       "file_id": "AgACAgIAAxkDAAMeatUBjf2hqFLYFMeJmljq6zrJdPAAAqgnaxsecqlKNrdAzbvc_nEBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-18T20:27+03:00",
       "comment": "Добавь фотографии к фактам"
+    },
+    "2026-10-18-90s-icons-2": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 34,
+      "file_id": "AgACAgIAAxkDAAMiatUM3SRNJpBfHpjZLp9Q_bmNmt4AAyhrGx5yqUpIJiCG2ZwMaAEAAwIAA3cAAz0E",
+      "sent_at": "2026-10-18T21:15+03:00"
     }
   },
-  "held": {
-    "2026-10-18-90s-icons-2": {
-      "key": "50dad7b4b987",
-      "status": "preview_ready",
-      "at": "2026-10-18T21:14+03:00"
-    }
-  }
+  "held": {}
 }
