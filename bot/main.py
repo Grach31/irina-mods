@@ -6,6 +6,7 @@
 Состояние хранится в state/state.json, просьбы Ирины — в data/requests.json.
 """
 import glob
+import hashlib
 import json
 import os
 import subprocess
@@ -179,6 +180,10 @@ def send_new_drafts(state, requests):
         did = draft["id"]
         if did in state["drafts"]:
             continue
+        if draft.get("hold"):
+            preview_held(state, draft)
+            continue
+        state.get("held", {}).pop(did, None)
         try:
             if draft.get("type") == "history":
                 img = render.history_card(draft["card"])
@@ -200,6 +205,24 @@ def send_new_drafts(state, requests):
         for r in requests:
             if r["id"] == draft.get("request_id"):
                 r["status"] = "done"
+
+
+def preview_held(state, draft):
+    """Черновик с "hold": true — только нарисовать картинку в drafts/img/, Ирине не отправлять.
+    Claude смотрит картинку и снимает hold. Итог (ok или ошибка) — в state["held"]."""
+    did = draft["id"]
+    key = hashlib.sha1(json.dumps(draft, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:12]
+    held = state.setdefault("held", {})
+    if held.get(did, {}).get("key") == key:
+        return
+    try:
+        img = render.history_card(draft["card"]) if draft.get("type") == "history" else \
+            render.collage([it["img"] for it in draft["items"]])
+        save_preview(did, render.to_jpeg(img))
+        held[did] = {"key": key, "status": "preview_ready", "at": now().isoformat(timespec="minutes")}
+    except Exception as e:
+        traceback.print_exc()
+        held[did] = {"key": key, "status": "error", "error": str(e)[:300], "at": now().isoformat(timespec="minutes")}
 
 
 def save_preview(did, jpeg):
@@ -274,7 +297,16 @@ def one_pass(state, requests, wait=0):
     return n
 
 
+def code_hash():
+    h = hashlib.sha1()
+    for p in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "*.py"))):
+        with open(p, "rb") as f:
+            h.update(f.read())
+    return h.hexdigest()
+
+
 def main():
+    code = code_hash()
     minutes = int(os.environ.get("LOOP_MINUTES") or 0)
     stop = time.time() + minutes * 60
     last_sync = 0
@@ -287,6 +319,14 @@ def main():
             sync_push()
             git("pull", "--rebase", "--autostash", "-X", "theirs")      # новые черновики от Claude
             last_sync = time.time()
+            if code_hash() != code:                 # пришёл новый код бота — перезапуститься с ним
+                log("restart: bot code changed")
+                save(STATE, state)
+                save(REQUESTS, requests)
+                sync_push()
+                left = max(1, int((stop - time.time()) / 60)) if minutes else 0
+                os.environ["LOOP_MINUTES"] = str(left)
+                os.execv(sys.executable, [sys.executable, "-u", os.path.abspath(__file__)])
             try:
                 send_new_drafts(state, requests)
                 backfill_previews(state)

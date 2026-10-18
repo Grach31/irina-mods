@@ -1,6 +1,10 @@
 """Картинки для постов: коллаж из фото товаров и карточка «История моды»."""
+import html
 import io
+import json
 import os
+import re
+import urllib.parse
 import urllib.request
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
@@ -30,6 +34,36 @@ def load(url):
         im = Image.open(io.BytesIO(r.read()))
         im.load()
     return im.convert("RGB")
+
+
+FREE = re.compile(r"^(public domain|cc0( 1\.0)?|cc[ -]by(-sa)?([ -]\d\.\d)?)(\s|$)", re.I)
+
+
+def commons(name, width=1280):
+    """Фото с Wikimedia Commons по названию файла: ссылка, автор и лицензия прямо из API.
+    Возвращает {"url", "credit"} или бросает ValueError, если лицензия не свободная."""
+    name = name.strip()
+    if name.lower().startswith(("file:", "файл:")):
+        name = name.split(":", 1)[1]
+    q = urllib.parse.urlencode({"action": "query", "format": "json", "prop": "imageinfo",
+                                "titles": "File:" + name, "iiprop": "url|extmetadata",
+                                "iiurlwidth": width})
+    req = urllib.request.Request("https://commons.wikimedia.org/w/api.php?" + q,
+                                 headers={"User-Agent": "StamboBot/1.0 (github.com/Grach31/irina-mods)"})
+    with urllib.request.urlopen(req, timeout=40) as r:
+        page = next(iter(json.load(r)["query"]["pages"].values()))
+    if "imageinfo" not in page:
+        raise ValueError(f"нет такого файла на Commons: {name}")
+    ii = page["imageinfo"][0]
+    meta = {k: v.get("value", "") for k, v in ii.get("extmetadata", {}).items()}
+    lic = meta.get("LicenseShortName", "").strip()
+    if not FREE.match(lic):
+        raise ValueError(f"лицензия не подходит: {name} — {lic or 'не указана'}")
+    artist = html.unescape(re.sub(r"<[^>]+>", "", meta.get("Artist", ""))).strip()
+    artist = re.sub(r"\s+", " ", artist)[:60] or "автор неизвестен"
+    credit = lic if lic.lower().startswith("public domain") and artist == "автор неизвестен" \
+        else f"{artist}, {lic}"
+    return {"url": ii.get("thumburl") or ii["url"], "credit": credit}
 
 
 def cover(canvas, im, box, fy=0.5):
@@ -65,13 +99,19 @@ def collage(urls, bg=(255, 255, 255)):
 
 
 def history_card(card):
-    """card: kicker, year, note, title, images:[{url, grayscale, fy}], credits"""
+    """card: kicker, year, note, title, images:[{url | commons, grayscale, fy}], credits.
+    Для фото с commons подпись (автор, лицензия) собирается из API и добавляется к credits."""
     bg, cream, sand, mute = (20, 17, 15), (243, 236, 226), (201, 183, 156), (125, 115, 104)
     c = Image.new("RGB", (W, H), bg)
     ph, g = 880, 10
     imgs = card.get("images", [])[:2]
     boxes = [(0, 0, W, ph)] if len(imgs) == 1 else [(0, 0, W // 2 - g // 2, ph), (W // 2 + g // 2, 0, W, ph)]
+    credits = []
     for spec, box in zip(imgs, boxes):
+        if spec.get("commons"):
+            info = commons(spec["commons"])
+            spec = {**spec, "url": info["url"]}
+            credits.append(info["credit"])
         im = load(spec["url"])
         if spec.get("grayscale"):
             im = ImageOps.grayscale(im).convert("RGB")
@@ -92,9 +132,12 @@ def history_card(card):
         yw = d.textlength(year, font=yf)
         d.text((56 + yw + 34, ph + 150), card["note"], font=font("Playfair-Italic.ttf", 34, 400), fill=sand)
     d.text((64, ph + 252), card.get("title", ""), font=font("Playfair.ttf", 50, 600), fill=cream)
-    if card.get("credits"):
+    if credits:
+        credits = ["Фото: " + " · ".join(credits)]
+    credits = [t for t in [card.get("credits", "")] + credits if t]
+    if credits:
         cf = font("Manrope.ttf", 18, 400)
-        text = card["credits"]
+        text = " · ".join(credits)
         while d.textlength(text, font=cf) > W - 128 and len(text) > 10:
             text = text[:-2]
         d.text((64, H - 44), text, font=cf, fill=mute)
