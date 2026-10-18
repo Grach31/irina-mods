@@ -239,8 +239,20 @@ def publish_due(state):
             d["error"] = str(e)[:300]
 
 
+def log(*a):
+    print(f"{now():%H:%M:%S}", *a, flush=True)
+
+
 def git(*args):
-    return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True)
+    try:
+        r = subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=120,
+                           env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
+    except subprocess.TimeoutExpired:
+        log("git timeout", *args)
+        return subprocess.CompletedProcess(args, 1, "", "timeout")
+    if r.returncode:
+        log("git", *args, "->", r.returncode, (r.stderr or r.stdout)[-300:])
+    return r
 
 
 def sync_push():
@@ -265,6 +277,7 @@ def main():
     last_sync = 0
     while True:
         if time.time() - last_sync > 60:
+            log("sync")
             git("pull", "--rebase", "-X", "theirs")      # новые черновики от Claude
             last_sync = time.time()
             state = load(STATE, {"offset": 0, "awaiting_edit": None, "drafts": {}})
@@ -284,6 +297,7 @@ def main():
             changed = 0
             time.sleep(5)
         if changed:
+            log("updates:", changed)
             save(STATE, state)
             save(REQUESTS, requests)
             sync_push()

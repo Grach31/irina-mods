@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: "*/30 * * * *"   # если бот не запущен — запустить; каждый запуск работает ~5,5 часа
   workflow_dispatch:
+    inputs:
+      minutes:
+        description: "Сколько минут работать"
+        default: "330"
 permissions:
   contents: write
 concurrency:
@@ -23,8 +27,8 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - run: python bot/main.py
+      - run: python -u bot/main.py
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           DATA_DIR: "."
-          LOOP_MINUTES: "330"
+          LOOP_MINUTES: ${{ inputs.minutes || '330' }}
