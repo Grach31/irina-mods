@@ -1,0 +1,20 @@
+{
+  "offset": 84639445,
+  "awaiting_edit": null,
+  "drafts": {
+    "2026-10-18-history": {
+      "status": "sent",
+      "slot": "21:00",
+      "msg_id": 5,
+      "file_id": "AgACAgIAAxkDAAMFatS4ys_4k1gNOrnCg2Igha14UXIAAn8laxsecqlKfUUYheu0zswBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-18T15:17+03:00"
+    },
+    "2026-10-18-lime-warm": {
+      "status": "sent",
+      "slot": "19:00",
+      "msg_id": 6,
+      "file_id": "AgACAgIAAxkDAAMGatS4zm_7CWHz-WbQBVZtBc9M2XEAAoElaxsecqlK_25gFsIQBpoBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-18T15:17+03:00"
+    }
+  }
+}
