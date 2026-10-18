@@ -1,6 +1,6 @@
 {
-  "offset": 84639459,
-  "awaiting_edit": null,
+  "offset": 84639460,
+  "awaiting_edit": "2026-10-18-90s-icons-2",
   "drafts": {
     "2026-10-18-history": {
       "status": "replaced",
@@ -61,7 +61,7 @@
       "comment": "Добавь фотографии к фактам"
     },
     "2026-10-18-90s-icons-2": {
-      "status": "sent",
+      "status": "awaiting_edit",
       "slot": null,
       "msg_id": 34,
       "file_id": "AgACAgIAAxkDAAMiatUM3SRNJpBfHpjZLp9Q_bmNmt4AAyhrGx5yqUpIJiCG2ZwMaAEAAwIAA3cAAz0E",
