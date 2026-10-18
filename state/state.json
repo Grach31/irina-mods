@@ -1,6 +1,6 @@
 {
-  "offset": 84639458,
-  "awaiting_edit": "2026-10-18-90s-icons",
+  "offset": 84639459,
+  "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
       "status": "replaced",
@@ -53,11 +53,12 @@
       "sent_at": "2026-10-18T20:27+03:00"
     },
     "2026-10-18-90s-icons": {
-      "status": "awaiting_edit",
+      "status": "edit_requested",
       "slot": null,
       "msg_id": 30,
       "file_id": "AgACAgIAAxkDAAMeatUBjf2hqFLYFMeJmljq6zrJdPAAAqgnaxsecqlKNrdAzbvc_nEBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-18T20:27+03:00"
+      "sent_at": "2026-10-18T20:27+03:00",
+      "comment": "Добавь фотографии к фактам"
     }
   },
   "held": {}
