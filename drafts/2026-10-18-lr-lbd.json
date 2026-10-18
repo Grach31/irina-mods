@@ -1,0 +1,31 @@
+{
+  "id": "2026-10-18-lr-lbd",
+  "type": "picks",
+  "daily": false,
+  "slot": null,
+  "request_id": "r7",
+  "items": [
+    {
+      "name": "Бархатное платье мини с объемными рукавами",
+      "price": 9999,
+      "url": "https://loverepublic.ru/catalog/odezhda/platya/332011/",
+      "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451609515_27.jpg",
+      "shop": "Love Republic"
+    },
+    {
+      "name": "Бархатное платье мини с драпировкой",
+      "price": 8999,
+      "url": "https://loverepublic.ru/catalog/odezhda/platya/333795/",
+      "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451621526_50.jpg",
+      "shop": "Love Republic"
+    },
+    {
+      "name": "Бархатное платье миди с драпировками",
+      "price": 9999,
+      "url": "https://loverepublic.ru/catalog/odezhda/platya/333759/",
+      "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451616522_22.jpg",
+      "shop": "Love Republic"
+    }
+  ],
+  "text": "Маленькое чёрное платье — вещь, которая спасает любой вечер 🖤\n\nВ Love Republic сейчас бархатные: с объёмными рукавами и с драпировкой по фигуре. Прям любовь — с высокими сапогами и колготками выглядят очень дорого. А для тех, кто хочет длиннее, — миди из той же линейки\n\n<a href=\"https://loverepublic.ru/catalog/odezhda/platya/332011/\">Бархатное платье мини с объемными рукавами</a> — 9 999 ₽\n<a href=\"https://loverepublic.ru/catalog/odezhda/platya/333795/\">Бархатное платье мини с драпировкой</a> — 8 999 ₽\n<a href=\"https://loverepublic.ru/catalog/odezhda/platya/333759/\">Бархатное платье миди с драпировками</a> — 9 999 ₽\n\nКакое бы выбрали на праздник?"
+}
