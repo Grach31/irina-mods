@@ -183,7 +183,9 @@ def send_new_drafts(state, requests):
                 img = render.history_card(draft["card"])
             else:
                 img = render.collage([it["img"] for it in draft["items"]])
-            msg = tg.send_photo_bytes(config.IRINA, render.to_jpeg(img), caption=draft["text"],
+            jpeg = render.to_jpeg(img)
+            save_preview(did, jpeg)
+            msg = tg.send_photo_bytes(config.IRINA, jpeg, caption=draft["text"],
                                       reply_markup=keyboard(did, draft.get("slot")))
         except Exception as e:
             traceback.print_exc()
@@ -197,6 +199,27 @@ def send_new_drafts(state, requests):
         for r in requests:
             if r["id"] == draft.get("request_id"):
                 r["status"] = "done"
+
+
+def save_preview(did, jpeg):
+    """Копия картинки в репозитории, чтобы Claude видел, что ушло Ирине."""
+    os.makedirs(os.path.join(ROOT, "drafts", "img"), exist_ok=True)
+    with open(os.path.join(ROOT, "drafts", "img", f"{did}.jpg"), "wb") as f:
+        f.write(jpeg)
+
+
+def backfill_previews(state):
+    for did in state["drafts"]:
+        p = os.path.join(ROOT, "drafts", "img", f"{did}.jpg")
+        draft = load(os.path.join(ROOT, "drafts", f"{did}.json"), None)
+        if os.path.exists(p) or not draft:
+            continue
+        try:
+            img = render.history_card(draft["card"]) if draft.get("type") == "history" else \
+                render.collage([it["img"] for it in draft["items"]])
+            save_preview(did, render.to_jpeg(img))
+        except Exception:
+            traceback.print_exc()
 
 
 def publish_due(state):
@@ -222,6 +245,7 @@ def main():
         handle_updates(state, requests)
         send_new_drafts(state, requests)
         publish_due(state)
+        backfill_previews(state)
     finally:
         save(STATE, state)
         save(REQUESTS, requests)
