@@ -38,24 +38,27 @@
       "sent_at": "2026-10-18T16:14+03:00"
     },
     "2026-10-18-90s-facts": {
-      "status": "edit_requested",
+      "status": "replaced",
       "slot": null,
       "msg_id": 23,
       "file_id": "AgACAgIAAxkDAAMXatTw_VNE5MYuDHe1018ijBiK2SoAAuwmaxsecqlKkJxp6ottvLABAAMCAAN5AAM9BA",
       "sent_at": "2026-10-18T19:17+03:00",
       "comment": "Картинку добавь"
-    }
-  },
-  "held": {
+    },
     "2026-10-18-90s-facts-2": {
-      "key": "78ade814e672",
-      "status": "preview_ready",
-      "at": "2026-10-18T20:26+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 29,
+      "file_id": "AgACAgIAAxkDAAMdatUBjMqSRnxk8jeOpwajFQjhFZIAAqcnaxsecqlK7a6kutKOcdUBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-18T20:27+03:00"
     },
     "2026-10-18-90s-icons": {
-      "key": "ed752694675d",
-      "status": "preview_ready",
-      "at": "2026-10-18T20:25+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 30,
+      "file_id": "AgACAgIAAxkDAAMeatUBjf2hqFLYFMeJmljq6zrJdPAAAqgnaxsecqlKNrdAzbvc_nEBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-18T20:27+03:00"
     }
-  }
+  },
+  "held": {}
 }
