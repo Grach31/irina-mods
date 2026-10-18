@@ -101,13 +101,18 @@ def collage(urls, bg=(255, 255, 255)):
 
 
 def history_card(card):
-    """card: kicker, year, note, title, images:[{url | commons, grayscale, fy}], credits.
+    """card: kicker, year, note, title, images:[{url | commons, grayscale, fy}] (1–4 фото), credits.
     Для фото с commons подпись (автор, лицензия) собирается из API и добавляется к credits."""
     bg, cream, sand, mute = (20, 17, 15), (243, 236, 226), (201, 183, 156), (125, 115, 104)
     c = Image.new("RGB", (W, H), bg)
     ph, g = 880, 10
-    imgs = card.get("images", [])[:2]
-    boxes = [(0, 0, W, ph)] if len(imgs) == 1 else [(0, 0, W // 2 - g // 2, ph), (W // 2 + g // 2, 0, W, ph)]
+    imgs = card.get("images", [])[:4]
+    L, R, T, B = (0, W // 2 - g // 2), (W // 2 + g // 2, W), (0, ph // 2 - g // 2), (ph // 2 + g // 2, ph)
+    boxes = {1: [(0, 0, W, ph)],
+             2: [(L[0], 0, L[1], ph), (R[0], 0, R[1], ph)],
+             3: [(L[0], 0, L[1], ph), (R[0], T[0], R[1], T[1]), (R[0], B[0], R[1], B[1])],
+             4: [(L[0], T[0], L[1], T[1]), (R[0], T[0], R[1], T[1]),
+                 (L[0], B[0], L[1], B[1]), (R[0], B[0], R[1], B[1])]}.get(len(imgs), [])
     credits = []
     for spec, box in zip(imgs, boxes):
         if spec.get("commons"):
@@ -139,10 +144,23 @@ def history_card(card):
     credits = [t for t in [card.get("credits", "")] + credits if t]
     if credits:
         cf = font("Manrope.ttf", 18, 400)
-        text = " · ".join(credits)
-        while d.textlength(text, font=cf) > W - 128 and len(text) > 10:
-            text = text[:-2]
-        d.text((64, H - 44), text, font=cf, fill=mute)
+        # подпись в 1–2 строки (при 3–4 фото она длинная), лишнее обрезаем
+        lines, cur = [], ""
+        for part in " · ".join(credits).split(" "):
+            t = (cur + " " + part).strip()
+            if d.textlength(t, font=cf) <= W - 128 or not cur:
+                cur = t
+            else:
+                lines.append(cur)
+                cur = part
+        lines.append(cur)
+        if len(lines) > 2:
+            lines = lines[:2]
+            lines[1] += "…"
+        for i, text in enumerate(lines):
+            while d.textlength(text, font=cf) > W - 128 and len(text) > 10:
+                text = text[:-2] + "…"
+            d.text((64, H - 44 - 26 * (len(lines) - 1 - i)), text, font=cf, fill=mute)
     return c
 
 
