@@ -60,7 +60,9 @@ def commons(name, width=1280):
     if not FREE.match(lic):
         raise ValueError(f"лицензия не подходит: {name} — {lic or 'не указана'}")
     artist = html.unescape(re.sub(r"<[^>]+>", "", meta.get("Artist", ""))).strip()
-    artist = re.sub(r"\s+", " ", artist)[:60] or "автор неизвестен"
+    artist = re.sub(r"(?i)no machine-readable author provided\.?|assumed \(based on copyright claims\)\.?"
+                    r"|~\w*wiki", "", artist)
+    artist = re.sub(r"\s+", " ", artist).strip(" .,") [:60].strip() or "автор неизвестен"
     credit = lic if lic.lower().startswith("public domain") and artist == "автор неизвестен" \
         else f"{artist}, {lic}"
     return {"url": ii.get("thumburl") or ii["url"], "credit": credit}
