@@ -68,6 +68,55 @@ def commons(name, width=1280):
     return {"url": ii.get("thumburl") or ii["url"], "credit": credit}
 
 
+API_UA = {"User-Agent": "StamboBot/1.0 (github.com/Grach31/irina-mods)"}
+
+
+def get_json(url):
+    req = urllib.request.Request(url, headers=API_UA)
+    with urllib.request.urlopen(req, timeout=40) as r:
+        return json.load(r)
+
+
+def met(object_id):
+    """The Met Open Access: фото вещи по номеру объекта (metmuseum.org/art/collection/search/<id>). Только CC0."""
+    o = get_json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{int(object_id)}")
+    if not o.get("isPublicDomain"):
+        raise ValueError(f"The Met {object_id}: фото не в открытом доступе")
+    url = o.get("primaryImage") or o.get("primaryImageSmall")
+    if not url:
+        raise ValueError(f"The Met {object_id}: у объекта нет фото")
+    return {"url": url, "credit": "The Met, CC0"}
+
+
+def cleveland(object_id):
+    """Cleveland Museum of Art Open Access по id или accession number. Только CC0."""
+    d = get_json(f"https://openaccess-api.clevelandart.org/api/artworks/{urllib.parse.quote(str(object_id))}")["data"]
+    if (d.get("share_license_status") or "").upper() != "CC0":
+        raise ValueError(f"Cleveland {object_id}: лицензия {d.get('share_license_status')}")
+    url = ((d.get("images") or {}).get("web") or {}).get("url")
+    if not url:
+        raise ValueError(f"Cleveland {object_id}: у объекта нет фото")
+    return {"url": url, "credit": "Cleveland Museum of Art, CC0"}
+
+
+OPENVERSE_FREE = {"cc0": "CC0", "pdm": "Public domain", "by": "CC BY", "by-sa": "CC BY-SA"}
+
+
+def openverse(image_id):
+    """Openverse (свободные фото Smithsonian, Rijksmuseum, Europeana, Flickr и др.) по id картинки."""
+    o = get_json(f"https://api.openverse.org/v1/images/{urllib.parse.quote(str(image_id))}/")
+    lic = OPENVERSE_FREE.get((o.get("license") or "").lower())
+    if not lic:
+        raise ValueError(f"Openverse {image_id}: лицензия не подходит — {o.get('license')}")
+    if lic.startswith("CC BY") and o.get("license_version"):
+        lic += f" {o['license_version']}"
+    who = (o.get("creator") or "").strip()[:60] or (o.get("source") or "").strip()
+    return {"url": o["url"], "credit": f"{who}, {lic}" if who else lic}
+
+
+SOURCES = {"commons": commons, "met": met, "cleveland": cleveland, "openverse": openverse}
+
+
 def cover(canvas, im, box, fy=0.5):
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
@@ -101,8 +150,9 @@ def collage(urls, bg=(255, 255, 255)):
 
 
 def history_card(card):
-    """card: kicker, year, note, title, images:[{url | commons, grayscale, fy}] (1–4 фото), credits.
-    Для фото с commons подпись (автор, лицензия) собирается из API и добавляется к credits."""
+    """card: kicker, year, note, title, images:[{url | commons | met | cleveland | openverse, grayscale, fy}]
+    (1–4 фото), credits. Для фото из свободных источников подпись (автор, лицензия) собирается из API
+    и добавляется к credits; для "url" подпись пишется вручную в credits (например «Фото: Dior»)."""
     bg, cream, sand, mute = (20, 17, 15), (243, 236, 226), (201, 183, 156), (125, 115, 104)
     c = Image.new("RGB", (W, H), bg)
     ph, g = 880, 10
@@ -115,8 +165,9 @@ def history_card(card):
                  (L[0], B[0], L[1], B[1]), (R[0], B[0], R[1], B[1])]}.get(len(imgs), [])
     credits = []
     for spec, box in zip(imgs, boxes):
-        if spec.get("commons"):
-            info = commons(spec["commons"])
+        src = next((k for k in SOURCES if spec.get(k)), None)
+        if src:
+            info = SOURCES[src](spec[src])
             spec = {**spec, "url": info["url"]}
             credits.append(info["credit"])
         im = load(spec["url"])

@@ -185,11 +185,7 @@ def send_new_drafts(state, requests):
             continue
         state.get("held", {}).pop(did, None)
         try:
-            if draft.get("type") == "history":
-                img = render.history_card(draft["card"])
-            else:
-                img = render.collage([it["img"] for it in draft["items"]])
-            jpeg = render.to_jpeg(img)
+            jpeg = render.to_jpeg(draw(draft))
             save_preview(did, jpeg)
             msg = tg.send_photo_bytes(config.IRINA, jpeg, caption=draft["text"],
                                       reply_markup=keyboard(did, draft.get("slot")))
@@ -207,6 +203,13 @@ def send_new_drafts(state, requests):
                 r["status"] = "done"
 
 
+def draw(draft):
+    """Картинка к черновику: карточка (история моды, новости модных домов) или коллаж вещей."""
+    if draft.get("type") in ("history", "news"):
+        return render.history_card(draft["card"])
+    return render.collage([it["img"] for it in draft["items"]])
+
+
 def preview_held(state, draft):
     """Черновик с "hold": true — только нарисовать картинку в drafts/img/, Ирине не отправлять.
     Claude смотрит картинку и снимает hold. Итог (ok или ошибка) — в state["held"]."""
@@ -216,9 +219,7 @@ def preview_held(state, draft):
     if held.get(did, {}).get("key") == key:
         return
     try:
-        img = render.history_card(draft["card"]) if draft.get("type") == "history" else \
-            render.collage([it["img"] for it in draft["items"]])
-        save_preview(did, render.to_jpeg(img))
+        save_preview(did, render.to_jpeg(draw(draft)))
         held[did] = {"key": key, "status": "preview_ready", "at": now().isoformat(timespec="minutes")}
     except Exception as e:
         traceback.print_exc()
@@ -239,9 +240,7 @@ def backfill_previews(state):
         if os.path.exists(p) or not draft:
             continue
         try:
-            img = render.history_card(draft["card"]) if draft.get("type") == "history" else \
-                render.collage([it["img"] for it in draft["items"]])
-            save_preview(did, render.to_jpeg(img))
+            save_preview(did, render.to_jpeg(draw(draft)))
         except Exception:
             traceback.print_exc()
 
