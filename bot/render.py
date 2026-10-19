@@ -219,3 +219,139 @@ def to_jpeg(im):
     buf = io.BytesIO()
     im.save(buf, "JPEG", quality=88, optimize=True)
     return buf.getvalue()
+
+
+# ---------- Карусель образов (флэтлей из каталожных фото) ----------
+
+BEIGE, INK, SOFT = (239, 230, 218), (58, 40, 30), (140, 117, 98)
+
+
+def _img(src):
+    return src if isinstance(src, Image.Image) else load(src)
+
+
+def studio(im, tol=14):
+    """Каталожное фото на однотонном светлом фоне → фон доводится до белого и вещь обрезается по краям.
+    Потом такое фото кладётся на бежевый фон умножением: фон исчезает, мягкая студийная тень остаётся.
+    Если фон не однотонный (модель в интерьере) — None."""
+    w, h = im.size
+    px = im.load()
+    step = max(1, min(w, h) // 120)
+    border = [px[x, y] for x in range(0, w, step) for y in (2, h - 3)] + \
+             [px[x, y] for y in range(0, h, step) for x in (2, w - 3)]
+    bg = tuple(sorted(c[i] for c in border)[len(border) // 2] for i in range(3))
+    near = sum(1 for c in border if max(abs(c[i] - bg[i]) for i in range(3)) <= tol)
+    if near < 0.6 * len(border) or min(bg) < 205:
+        return None
+    norm = Image.merge("RGB", [band.point(lambda v, b=b: min(255, round(v * 255 / max(b, 1))))
+                               for band, b in zip(im.split(), bg)])
+    # обрезка по содержимому: всё заметно темнее белого
+    dark = ImageOps.invert(norm.convert("L")).point(lambda v: 255 if v > tol * 2 else 0)
+    box = dark.getbbox()
+    if not box:
+        return None
+    pad = int(0.03 * max(w, h))
+    box = (max(0, box[0] - pad), max(0, box[1] - pad), min(w, box[2] + pad), min(h, box[3] + pad))
+    return norm.crop(box)
+
+
+def _place(c, item, box):
+    """Вещь в рамку box: студийное фото — умножением на фон, иначе фото со скруглёнными углами и тенью."""
+    from PIL import ImageChops, ImageFilter
+    x0, y0, x1, y1 = box
+    bw, bh = x1 - x0, y1 - y0
+    st = item.get("_studio")
+    src = st if st is not None else item["_img"]
+    s = min(bw / src.width, bh / src.height)
+    im = src.resize((max(1, int(src.width * s)), max(1, int(src.height * s))), Image.LANCZOS)
+    x, y = x0 + (bw - im.width) // 2, y0 + (bh - im.height) // 2
+    if st is not None:
+        region = c.crop((x, y, x + im.width, y + im.height)).convert("RGB")
+        c.paste(ImageChops.multiply(region, im), (x, y))
+        return
+    m = Image.new("L", im.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, im.width - 1, im.height - 1), 18, fill=255)
+    sh = Image.new("RGBA", (im.width + 60, im.height + 60), (60, 40, 25, 0))
+    sm = Image.new("L", sh.size, 0)
+    sm.paste(m.point(lambda v: v * 0.3), (30, 30))
+    sh.putalpha(sm.filter(ImageFilter.GaussianBlur(14)))
+    c.alpha_composite(sh, (x - 22, y - 16))
+    im = im.convert("RGBA")
+    im.putalpha(m)
+    c.alpha_composite(im, (x, y))
+
+
+# раскладки без наложений (x0, доля высоты сверху, x1, доля снизу).
+# Порядок вещей в образе: верхняя одежда, верх, низ, обувь/сумка, аксессуар
+LAYOUTS = {
+    2: [(40, 0, 530, 1), (550, 0, 1040, 1)],
+    3: [(40, 0, 560, .62), (580, 0, 1040, 1), (40, .64, 560, 1)],
+    4: [(40, 0, 560, .62), (580, 0, 1040, .46), (580, .48, 1040, 1), (40, .64, 560, 1)],
+    5: [(40, 0, 560, .62), (580, 0, 1040, .46), (580, .48, 1040, 1), (40, .64, 295, 1), (305, .64, 560, 1)],
+}
+
+
+def _flatlay(c, items, top, bottom):
+    for it in items:
+        if "_img" not in it:
+            it["_img"] = _img(it["img"])
+            it["_studio"] = studio(it["_img"])
+    lay = LAYOUTS.get(len(items), LAYOUTS[4])
+    span = bottom - top
+    for it, (x0, f0, x1, f1) in zip(items, lay):
+        _place(c, it, (x0, int(top + f0 * span), x1, int(top + f1 * span)))
+
+
+def _price(p):
+    return f"{int(p):,}".replace(",", " ") + " ₽"
+
+
+def look_slide(look, n=None, total=None):
+    """Слайд одного образа: заголовок, флэтлей вещей, подписи «вещь · магазин · цена»."""
+    c = Image.new("RGBA", (W, H), BEIGE + (255,))
+    d = ImageDraw.Draw(c)
+    kick = f"ОБРАЗ {n}" + (f" / {total}" if total else "") if n else "ОБРАЗ"
+    d.text((64, 52), " ".join(kick), font=font("Manrope.ttf", 24, 600), fill=SOFT)
+    d.text((60, 82), look.get("title", ""), font=font("Playfair-Italic.ttf", 64, 500), fill=INK)
+    items = look["items"][:5]
+    _flatlay(c, items, 190, 1110)
+    d = ImageDraw.Draw(c)
+    lf = font("Manrope.ttf", 25, 500)
+    pf = font("Manrope.ttf", 25, 700)
+    rows = [(it.get("short") or it["name"], f"{it['shop']} · {_price(it['price'])}") for it in items]
+    y = 1140
+    colw = (W - 128) // 2
+    for i, (name, tail) in enumerate(rows):
+        x = 64 + (i % 2) * colw
+        yy = y + (i // 2) * 64
+        d.text((x, yy), name, font=pf, fill=INK)
+        d.text((x, yy + 30), tail, font=lf, fill=SOFT)
+    return c.convert("RGB")
+
+
+def looks_cover(cover, look):
+    """Обложка карусели: крупный заголовок и первый образ."""
+    c = Image.new("RGBA", (W, H), BEIGE + (255,))
+    d = ImageDraw.Draw(c)
+    title = cover.get("title", "ОБРАЗЫ")
+    tf = font("Playfair.ttf", 150, 600)
+    while d.textlength(title, font=tf) > W - 100 and tf.size > 60:
+        tf = font("Playfair.ttf", tf.size - 10, 600)
+    d.text(((W - d.textlength(title, font=tf)) / 2, 50), title, font=tf, fill=INK)
+    sub = " ".join(cover.get("subtitle", "").upper())
+    sf = font("Manrope.ttf", 26, 600)
+    while d.textlength(sub, font=sf) > W - 100 and sf.size > 14:
+        sf = font("Manrope.ttf", sf.size - 2, 600)
+    sw = d.textlength(sub, font=sf)
+    d.text(((W - sw) / 2, 250), sub, font=sf, fill=SOFT)
+    d.line(((W - 160) / 2, 312, (W + 160) / 2, 312), fill=SOFT, width=2)
+    _flatlay(c, look["items"][:5], 350, 1300)
+    return c.convert("RGB")
+
+
+def looks_carousel(draft):
+    """Все слайды карусели: обложка + по слайду на образ (до 9 образов — лимит альбома Telegram 10)."""
+    looks = draft["looks"][:9]
+    slides = [looks_cover(draft.get("cover", {}), looks[0])]
+    slides += [look_slide(lk, i + 1, len(looks)) for i, lk in enumerate(looks)]
+    return slides

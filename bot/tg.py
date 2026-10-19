@@ -49,3 +49,28 @@ def download_file(file_id):
     url = f"https://api.telegram.org/file/bot{_token()}/{info['file_path']}"
     with urllib.request.urlopen(url, timeout=60) as r:
         return r.read()
+
+
+def send_media_group_bytes(chat_id, jpegs, caption=None):
+    """Альбом (карусель) из 2–10 фото; подпись — у первого фото. Возвращает список сообщений."""
+    boundary = uuid.uuid4().hex
+    media = []
+    for i in range(len(jpegs)):
+        m = {"type": "photo", "media": f"attach://p{i}"}
+        if i == 0 and caption:
+            m.update(caption=caption, parse_mode="HTML")
+        media.append(m)
+    body = b""
+    for k, v in {"chat_id": str(chat_id), "media": json.dumps(media, ensure_ascii=False)}.items():
+        body += f"--{boundary}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n".encode()
+    for i, jpeg in enumerate(jpegs):
+        body += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"p{i}\"; filename=\"p{i}.jpg\"\r\n"
+                 f"Content-Type: image/jpeg\r\n\r\n").encode() + jpeg + b"\r\n"
+    body += f"--{boundary}--\r\n".encode()
+    req = urllib.request.Request(API.format(_token(), "sendMediaGroup"), data=body,
+                                 headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        res = json.load(r)
+    if not res.get("ok"):
+        raise RuntimeError(f"sendMediaGroup: {res}")
+    return res["result"]

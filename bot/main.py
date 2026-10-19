@@ -185,16 +185,26 @@ def send_new_drafts(state, requests):
             continue
         state.get("held", {}).pop(did, None)
         try:
-            jpeg = render.to_jpeg(draw(draft))
-            save_preview(did, jpeg)
-            msg = tg.send_photo_bytes(config.IRINA, jpeg, caption=draft["text"],
-                                      reply_markup=keyboard(did, draft.get("slot")))
+            jpegs = [render.to_jpeg(im) for im in draw_all(draft)]
+            save_previews(did, jpegs)
+            if len(jpegs) > 1:
+                # карусель: альбом с подписью, кнопки — отдельным сообщением (к альбому их не прикрепить)
+                album = tg.send_media_group_bytes(config.IRINA, jpegs, caption=draft["text"])
+                msg = tg.call("sendMessage", chat_id=config.IRINA, reply_to_message_id=album[0]["message_id"],
+                              text=f"Карусель из {len(jpegs)} фото ☝️ Публикуем?",
+                              reply_markup=keyboard(did, draft.get("slot")))
+                extra = {"file_ids": [m["photo"][-1]["file_id"] for m in album]}
+                extra["file_id"] = extra["file_ids"][0]
+            else:
+                msg = tg.send_photo_bytes(config.IRINA, jpegs[0], caption=draft["text"],
+                                          reply_markup=keyboard(did, draft.get("slot")))
+                extra = {"file_id": msg["photo"][-1]["file_id"]}
         except Exception as e:
             traceback.print_exc()
             state["drafts"][did] = {"status": "error", "error": str(e)[:300]}
             continue
         state["drafts"][did] = {"status": "sent", "slot": draft.get("slot"), "msg_id": msg["message_id"],
-                                "file_id": msg["photo"][-1]["file_id"], "sent_at": now().isoformat(timespec="minutes")}
+                                **extra, "sent_at": now().isoformat(timespec="minutes")}
         old = draft.get("revision_of")
         if old in state["drafts"] and state["drafts"][old]["status"] in ("edit_requested", "awaiting_edit", "sent"):
             state["drafts"][old]["status"] = "replaced"
@@ -210,6 +220,13 @@ def draw(draft):
     return render.collage([it["img"] for it in draft["items"]])
 
 
+def draw_all(draft):
+    """Все картинки черновика: карусель образов (type "looks") — несколько слайдов, остальное — одна."""
+    if draft.get("type") == "looks":
+        return render.looks_carousel(draft)
+    return [draw(draft)]
+
+
 def preview_held(state, draft):
     """Черновик с "hold": true — только нарисовать картинку в drafts/img/, Ирине не отправлять.
     Claude смотрит картинку и снимает hold. Итог (ok или ошибка) — в state["held"]."""
@@ -219,7 +236,7 @@ def preview_held(state, draft):
     if held.get(did, {}).get("key") == key:
         return
     try:
-        save_preview(did, render.to_jpeg(draw(draft)))
+        save_previews(did, [render.to_jpeg(im) for im in draw_all(draft)])
         held[did] = {"key": key, "status": "preview_ready", "at": now().isoformat(timespec="minutes")}
     except Exception as e:
         traceback.print_exc()
@@ -233,6 +250,13 @@ def save_preview(did, jpeg):
         f.write(jpeg)
 
 
+def save_previews(did, jpegs):
+    """Первое фото — drafts/img/<id>.jpg, остальные слайды карусели — <id>-2.jpg, <id>-3.jpg…"""
+    save_preview(did, jpegs[0])
+    for i, jpeg in enumerate(jpegs[1:], 2):
+        save_preview(f"{did}-{i}", jpeg)
+
+
 def backfill_previews(state):
     for did in state["drafts"]:
         p = os.path.join(ROOT, "drafts", "img", f"{did}.jpg")
@@ -240,7 +264,7 @@ def backfill_previews(state):
         if os.path.exists(p) or not draft:
             continue
         try:
-            save_preview(did, render.to_jpeg(draw(draft)))
+            save_previews(did, [render.to_jpeg(im) for im in draw_all(draft)])
         except Exception:
             traceback.print_exc()
 
@@ -252,7 +276,13 @@ def publish_due(state):
             continue
         draft = load(os.path.join(ROOT, "drafts", f"{did}.json"), None)
         try:
-            tg.call("sendPhoto", chat_id=config.CHANNEL, photo=d["file_id"], caption=draft["text"], parse_mode="HTML")
+            if d.get("file_ids"):
+                media = [{"type": "photo", "media": fid} for fid in d["file_ids"]]
+                media[0].update(caption=draft["text"], parse_mode="HTML")
+                tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
+            else:
+                tg.call("sendPhoto", chat_id=config.CHANNEL, photo=d["file_id"], caption=draft["text"],
+                        parse_mode="HTML")
             d.update(status="published", published_at=t.isoformat(timespec="minutes"))
             tg.call("editMessageReplyMarkup", chat_id=config.IRINA, message_id=d["msg_id"],
                     reply_markup=status_markup(f"✅ Опубликовано {t:%d.%m в %H:%M}"))
