@@ -1,5 +1,5 @@
 {
-  "offset": 84639461,
+  "offset": 84639462,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -83,11 +83,13 @@
       "sent_at": "2026-10-19T08:18+03:00"
     },
     "2026-10-19-mix-knit": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 40,
       "file_id": "AgACAgIAAxkDAAMoatWoGaZqXlK5eCDR23jbbZ0ylNQAAvobaxsecrFKMI-j1ZDlfScBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-19T08:18+03:00"
+      "sent_at": "2026-10-19T08:18+03:00",
+      "publish_at": "2026-10-19T08:56:34.446700+03:00",
+      "published_at": "2026-10-19T08:56+03:00"
     }
   },
   "held": {}
