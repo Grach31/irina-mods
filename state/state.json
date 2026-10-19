@@ -1,5 +1,5 @@
 {
-  "offset": 84639463,
+  "offset": 84639467,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -78,11 +78,13 @@
       "published_at": "2026-10-19T15:08+03:00"
     },
     "2026-10-19-90s-icons-3": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 39,
       "file_id": "AgACAgIAAxkDAAMnatWoFIuu7vpXZNbqOUCznJPmV2YAAvkbaxsecrFKSQABL7ClOxdgAQADAgADdwADPQQ",
-      "sent_at": "2026-10-19T08:18+03:00"
+      "sent_at": "2026-10-19T08:18+03:00",
+      "publish_at": "2026-10-19T18:50:18.933417+03:00",
+      "published_at": "2026-10-19T18:50+03:00"
     },
     "2026-10-19-mix-knit": {
       "status": "published",
@@ -94,14 +96,16 @@
       "published_at": "2026-10-19T08:56+03:00"
     },
     "2026-10-19-news-dior": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 41,
       "file_id": "AgACAgIAAxkDAAMpatXBw3a6PQbLeFNy8qY5cRyjOoIAAq8caxsecrFKNNOU0jcGryABAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-19T10:07+03:00"
+      "sent_at": "2026-10-19T10:07+03:00",
+      "publish_at": "2026-10-19T18:50:19.312357+03:00",
+      "published_at": "2026-10-19T18:50+03:00"
     },
     "2026-10-19-looks": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 48,
       "file_ids": [
@@ -112,7 +116,9 @@
         "AgACAgIAAxUHatYD7jSeNkgFwzVYlLSq65aZq88AArMfaxu6_7BKo0JqaT-B_AUBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHatYD7iEdoFZhOF6fQ04Fra09knQAArEfaxu6_7BKher8KlAsKP0BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-19T14:50+03:00"
+      "sent_at": "2026-10-19T14:50+03:00",
+      "publish_at": "2026-10-19T18:50:19.636553+03:00",
+      "published_at": "2026-10-19T18:50+03:00"
     }
   },
   "held": {}
