@@ -35,14 +35,6 @@
   {
    "name": "Куртка на синтепоне с контрастной подкладкой",
    "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/36285-9075_479_215_kastanovyi",
-   "img": "https://a.cdn.lime-shine.com/p/7f1276064b255d1cb0c6d3340eafb8d5.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка на синтепоне с контрастной подкладкой",
-   "price": 11999,
    "url": "https://limestore.com/ru_ru/product/36285-9075_479_412_cernilnyi_sinii",
    "img": "https://a.cdn.lime-shine.com/p/719ed334785b526bbfd531e7fe0bec08.jpeg?w=1280&q=85",
    "shop": "Lime",
@@ -204,7 +196,7 @@
    "name": "Объемные брюки из футера",
    "price": 3599,
    "url": "https://limestore.com/ru_ru/product/28659_9744_900-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/326cf1d7904b54fa8b3601656f042136.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/0694832a96cd56859b61b95d8ab55da5.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -483,6 +475,14 @@
    "kind": "daily"
   },
   {
+   "name": "Лонгслив с кружевом",
+   "price": 4599,
+   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/336573/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451112323_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
    "name": "Мини-комбинезон",
    "price": 10999,
    "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/337063/",
@@ -696,7 +696,7 @@
    "name": "Куртка утепленная с клетчатой подкладкой",
    "price": 26980,
    "url": "https://www.2moodstore.com/collection/katalog/kurtka_uteplennaya_s_kletchatoy_podkladkoy_korichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/3d8/4z609d8xwe93o0vq8vnmueulwa6dqejr-jpg.webp",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a58/htdrsy3p834axi0rodj22oq8c70adbtt-jpg.webp",
    "shop": "2MOOD",
    "kind": "daily"
   },
@@ -754,7 +754,7 @@
    "name": "Сумка ПОУЧ мини",
    "price": 31000,
    "url": "https://askent.ru/cat/sumki/sumka_1167/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/1b6/900_1095_1/ozstaubhzfb7vha77pjuf3e54emxvor6.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2c1/900_1095_1/g97dybzpz3kgnv43wnkm4skk760vxwkh.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -762,7 +762,7 @@
    "name": "Сумка ПОУЧ мини",
    "price": 31000,
    "url": "https://askent.ru/cat/sumki/sumka_1165/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/4bd/900_1095_1/j06ip7v67enjhr4gch27pyoncd8biszh.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/fc3/900_1095_1/vibkufhqd67uxti52otp301d1b0k3rlu.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -770,7 +770,7 @@
    "name": "Сумка ПОУЧ мини",
    "price": 29000,
    "url": "https://askent.ru/cat/sumki/cumka_38/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/3f2/900_1095_1/g49lu7k2vlu7mqm2fk06br0y3z2gvuph.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/110/900_1095_1/97qc27law6tlaahbqfkfdojnrjpbk4of.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -778,7 +778,7 @@
    "name": "Сумка ПОУЧ мини",
    "price": 31000,
    "url": "https://askent.ru/cat/sumki/cumka_64/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/6e3/900_1095_1/qoions5hfrrggoo5j6a1s2prq59c2xkt.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/083/900_1095_1/t2kv2le92y7s7iza41j31hv6qxhly422.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -818,7 +818,7 @@
    "name": "Сумка БИССА",
    "price": 25500,
    "url": "https://askent.ru/cat/sumki/sumka_1164/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/47a/900_1095_1/sqc02xrqpwn53nljz5jgo3s7d0uerm8p.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/1e9/900_1095_1/yq48safilpl5dhk6m6c8u1l9u0hby69p.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -826,7 +826,7 @@
    "name": "Сумка БИССА",
    "price": 25500,
    "url": "https://askent.ru/cat/sumki/sumka_1170/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/39b/900_1095_1/66vj0voqkj59ywoa638bnt9j71jriwzt.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/c66/900_1095_1/2pxz3hsihntrljq9s31ay6hiceaoef76.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -834,7 +834,7 @@
    "name": "Сумка БИССА",
    "price": 25500,
    "url": "https://askent.ru/cat/sumki/sumka_1171/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/f45/900_1095_1/br50srxze25zcszqn87ww7kdwqn90rgv.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/022/900_1095_1/peisnniiwn5w1it0pt2er6g1xkeud242.webp",
    "shop": "Askent",
    "kind": "dream"
   },
@@ -842,7 +842,7 @@
    "name": "Сумка КАНОЕ МИНИ",
    "price": 28000,
    "url": "https://askent.ru/cat/sumki/sumka_1168/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/543/900_1095_1/n6vr1kcyodtpm2exptd09y7xo60menll.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/b07/900_1095_1/hufud2qhrepo1vje19l1tt80yy00k0dz.webp",
    "shop": "Askent",
    "kind": "dream"
   }
