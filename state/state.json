@@ -92,5 +92,11 @@
       "published_at": "2026-10-19T08:56+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-19-news-dior": {
+      "key": "b4c853d19c4a",
+      "status": "preview_ready",
+      "at": "2026-10-19T10:06+03:00"
+    }
+  }
 }
