@@ -90,13 +90,14 @@
       "sent_at": "2026-10-19T08:18+03:00",
       "publish_at": "2026-10-19T08:56:34.446700+03:00",
       "published_at": "2026-10-19T08:56+03:00"
+    },
+    "2026-10-19-news-dior": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 41,
+      "file_id": "AgACAgIAAxkDAAMpatXBw3a6PQbLeFNy8qY5cRyjOoIAAq8caxsecrFKNNOU0jcGryABAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-19T10:07+03:00"
     }
   },
-  "held": {
-    "2026-10-19-news-dior": {
-      "key": "b4c853d19c4a",
-      "status": "preview_ready",
-      "at": "2026-10-19T10:06+03:00"
-    }
-  }
+  "held": {}
 }
