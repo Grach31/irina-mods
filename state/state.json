@@ -61,19 +61,34 @@
       "comment": "Добавь фотографии к фактам"
     },
     "2026-10-18-90s-icons-2": {
-      "status": "edit_requested",
+      "status": "replaced",
       "slot": null,
       "msg_id": 34,
       "file_id": "AgACAgIAAxkDAAMiatUM3SRNJpBfHpjZLp9Q_bmNmt4AAyhrGx5yqUpIJiCG2ZwMaAEAAwIAA3cAAz0E",
       "sent_at": "2026-10-18T21:15+03:00",
       "comment": "Добавь фотографии с фактов , к примеру ты описываешь фотосессию Кейт Мосс , приложили фото"
+    },
+    "2026-10-19-2mood-warm": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 38,
+      "file_id": "AgACAgIAAxkDAAMmatWoElg1WnTztwABcXS8d5flHnbeAAL4G2sbHnKxSmJ0mBWR4gFEAQADAgADdwADPQQ",
+      "sent_at": "2026-10-19T08:18+03:00"
+    },
+    "2026-10-19-90s-icons-3": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 39,
+      "file_id": "AgACAgIAAxkDAAMnatWoFIuu7vpXZNbqOUCznJPmV2YAAvkbaxsecrFKSQABL7ClOxdgAQADAgADdwADPQQ",
+      "sent_at": "2026-10-19T08:18+03:00"
+    },
+    "2026-10-19-mix-knit": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 40,
+      "file_id": "AgACAgIAAxkDAAMoatWoGaZqXlK5eCDR23jbbZ0ylNQAAvobaxsecrFKMI-j1ZDlfScBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-19T08:18+03:00"
     }
   },
-  "held": {
-    "2026-10-19-90s-icons-3": {
-      "key": "85fdc33cfaaa",
-      "status": "preview_ready",
-      "at": "2026-10-19T08:16+03:00"
-    }
-  }
+  "held": {}
 }
