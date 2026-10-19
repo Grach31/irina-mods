@@ -1,5 +1,5 @@
 {
-  "offset": 84639462,
+  "offset": 84639463,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -69,11 +69,13 @@
       "comment": "Добавь фотографии с фактов , к примеру ты описываешь фотосессию Кейт Мосс , приложили фото"
     },
     "2026-10-19-2mood-warm": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 38,
       "file_id": "AgACAgIAAxkDAAMmatWoElg1WnTztwABcXS8d5flHnbeAAL4G2sbHnKxSmJ0mBWR4gFEAQADAgADdwADPQQ",
-      "sent_at": "2026-10-19T08:18+03:00"
+      "sent_at": "2026-10-19T08:18+03:00",
+      "publish_at": "2026-10-19T15:08:55.287978+03:00",
+      "published_at": "2026-10-19T15:08+03:00"
     },
     "2026-10-19-90s-icons-3": {
       "status": "sent",
