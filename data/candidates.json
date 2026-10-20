@@ -81,18 +81,18 @@
    "kind": "daily"
   },
   {
-   "name": "Длинная шуба из объемного меха",
-   "price": 17999,
-   "url": "https://limestore.com/ru_ru/product/35411-9836_195_721_oxra",
-   "img": "https://a.cdn.lime-shine.com/p/015e25d7572b5dd7bca88586e9d168a5.jpeg?w=1280&q=85",
+   "name": "Стеганый пуховик из шерсти с водоотталкивающим эффектом",
+   "price": 25999,
+   "url": "https://limestore.com/ru_ru/product/38583-6342_696_023_temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/3d6b2509c92d5ba8886058af79ef8ca4.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Стеганая куртка свободного кроя",
-   "price": 10999,
-   "url": "https://limestore.com/ru_ru/product/35598-8029_521_222_karamelnyi",
-   "img": "https://a.cdn.lime-shine.com/p/d77e36a256a950308bccbc484320c81e.jpeg?w=1280&q=85",
+   "name": "Длинная шуба из объемного меха",
+   "price": 17999,
+   "url": "https://limestore.com/ru_ru/product/35411-9836_195_721_oxra",
+   "img": "https://a.cdn.lime-shine.com/p/015e25d7572b5dd7bca88586e9d168a5.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -153,6 +153,14 @@
    "kind": "daily"
   },
   {
+   "name": "Макси-платье с кроличьим пухом",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/36719-1080_440_023_temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/90eb8f67d24655bbaf72564f8543c6c0.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Миди-платье из ткани с отделкой под замшу",
    "price": 5999,
    "url": "https://limestore.com/ru_ru/product/38604-3190_832_607_temno_terrakotovyi",
@@ -161,18 +169,10 @@
    "kind": "daily"
   },
   {
-   "name": "Миди-платье из ткани с отделкой под замшу",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38604-3190_832_210_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/4eba0fed31e75b789cf9f8ac8f29b723.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Приталенное платье из лиоцелла и шерсти",
-   "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/37450-2850_161_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/b8d21f5b46da5aebbb05ab387b4bdb04.jpeg?w=1280&q=85",
+   "name": "Мини-платье с подплечниками и драпировкой",
+   "price": 9999,
+   "url": "https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi",
+   "img": "https://a.cdn.lime-shine.com/p/87797b0536b25f178e404713cbb0a588.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -273,18 +273,18 @@
    "kind": "daily"
   },
   {
-   "name": "Легинсы из вискозы",
+   "name": "Брюки клеш с разрезами",
    "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/27047_4421_605-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/2b4431564b0a5ea788cc2c70fa9b9493.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/27053_9522_605-cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/3525ab7162ed50df83491926552cb75c.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Брюки клеш со стрелками",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38330-4339_325_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/a3ad896619f35a79bff9b2d3a41b1bc1.jpeg?w=1280&q=85",
+   "name": "Легинсы клеш из ткани интерлок с разрезами",
+   "price": 3599,
+   "url": "https://limestore.com/ru_ru/product/30266_2524_605-2524_605_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/6b1f1c6311c55b39841237b3729b07c8.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   }
@@ -311,6 +311,14 @@
    "price": 4999,
    "url": "https://loverepublic.ru/catalog/odezhda/body/336018/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451102310_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки женские",
+   "price": 4599,
+   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/332686/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/LR27112/thumb/600_9999/LR2711201732_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
@@ -475,14 +483,6 @@
    "kind": "daily"
   },
   {
-   "name": "Лонгслив с кружевом",
-   "price": 4599,
-   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/336573/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451112323_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
    "name": "Мини-комбинезон",
    "price": 10999,
    "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/337063/",
@@ -557,142 +557,6 @@
  ],
  "2MOOD": [
   {
-   "name": "Шуба короткая из искусственного меха",
-   "price": 28980,
-   "url": "https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_yantarnogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/f73/sa5gq2mf0khrv5e7tauyvi9j0w01u3j4-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки прямые со стрелками",
-   "price": 19980,
-   "url": "https://www.2moodstore.com/collection/katalog/bryuki_pryamye_so_strelkami_bezhevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/475/xgsrxc72rtrobl8snc1nry4vwiay24vo-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Жакет приталенный с меховым воротником",
-   "price": 29980,
-   "url": "https://www.2moodstore.com/collection/katalog/zhaket_pritalennyy_s_mekhovym_vorotnikom_bezhevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/3dc/u3kosz0p2wosg780sknelo3tl3t3b3lz-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Пальто длинное с воротником из натурального меха",
-   "price": 39980,
-   "url": "https://www.2moodstore.com/collection/katalog/palto_dlinnoe_s_vorotnikom_iz_naturalnogo_mekha_chernogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/d61/9wp84865p0f1zxtzgourbsqqvfyr6qes-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Жакет с воротником стойкой",
-   "price": 27980,
-   "url": "https://www.2moodstore.com/collection/katalog/zhaket_s_vorotnikom_stoykoy_serogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/ea2/1ixzrt2jepn7vvyv2u6ozw7l2j38ate2-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Воротник из искусственного меха",
-   "price": 5980,
-   "url": "https://www.2moodstore.com/collection/katalog/vorotnik_iz_iskusstvennogo_mekha_karichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/784/13ylkpe65fcl91n3bv6x0gb7sgncgtse-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки алладины из костюмной ткани",
-   "price": 17980,
-   "url": "https://www.2moodstore.com/collection/katalog/bryuki_alladiny_iz_kostyumnoy_tkani_serogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/1e6/hk9aad6d6ndd2h1jfppr39901tx2riqy-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Пиджак из натуральной кожи",
-   "price": 54980,
-   "url": "https://www.2moodstore.com/collection/katalog/pidzhak_iz_naturalnoy_kozhi_bordovogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/fe5/bzyg9ihvt2ctgnkbtireazddqjx1d73x-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки из натуральной кожи",
-   "price": 49980,
-   "url": "https://www.2moodstore.com/collection/katalog/bryuki_iz_naturalnoy_kozhi_bordovogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a5f/59mk6s68afiajd2xv9wethba9aglz1qw-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Юбка миди из натуральной кожи",
-   "price": 39980,
-   "url": "https://www.2moodstore.com/collection/katalog/yubka_midi_iz_naturalnoy_kozhi_bordovogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/d02/qvyy30fhb1rquvt4m60c5vec5ui5zy95-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Шуба длинная из искусственного меха",
-   "price": 36980,
-   "url": "https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Манишка из искусственного меха",
-   "price": 14980,
-   "url": "https://www.2moodstore.com/collection/katalog/manishka_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/10a/inl7vt7bd08tv1kuawecpcbj4136am4t-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Шуба короткая из искусственного меха",
-   "price": 32980,
-   "url": "https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_korichnevogo_tsveta_1/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9e6/q2tvuh1ghdfow67ny792ahncaha3c3nd-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Повязка из искусственного меха",
-   "price": 4980,
-   "url": "https://www.2moodstore.com/collection/katalog/povyazka_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/d0e/4bza3n8jde38s3qqr0amrfpk42x6llbh-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Жакет приталенный с меховым воротником",
-   "price": 29980,
-   "url": "https://www.2moodstore.com/collection/katalog/zhaket_pritalennyy_s_mekhovym_vorotnikom_serogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9c8/vyjb00b0jmud0hxq7phr7bp0eavkruxy-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки прямые со стрелками",
-   "price": 19980,
-   "url": "https://www.2moodstore.com/collection/katalog/bryuki_pryamye_so_strelkami_serogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/839/ow892be0o3u8wfvzm71gtxzdaeeull83-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Кардиган с косами",
-   "price": 15980,
-   "url": "https://www.2moodstore.com/collection/katalog/kardigan_s_kosami_sero_bezhevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/808/iyyg5c2u9noug8zox2ezaom4ft1w5pil-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
    "name": "Куртка утепленная с клетчатой подкладкой",
    "price": 26980,
    "url": "https://www.2moodstore.com/collection/katalog/kurtka_uteplennaya_s_kletchatoy_podkladkoy_korichnevogo_tsveta/",
@@ -723,25 +587,161 @@
    "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/35e/agef21hb89b10glem4gkvw7kralayqg3-jpg.webp",
    "shop": "2MOOD",
    "kind": "daily"
+  },
+  {
+   "name": "Куртка парка с меховой отделкой",
+   "price": 32980,
+   "url": "https://www.2moodstore.com/collection/katalog/kurtka_parka_s_mekhovoy_otdelkoy_pesochnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9ad/ywbr24m0gp3zfcvkssff2s05aeob4dkn-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Капор с добавлением кашемира",
+   "price": 7980,
+   "url": "https://www.2moodstore.com/collection/katalog/kapor_s_dobavleniem_kashemira_temno_bezhevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/7cc/bqv8uduk53qapjq4j8m5d3i05jxkd1w3-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-аладдины из шерсти с кашемиром",
+   "price": 19980,
+   "url": "https://www.2moodstore.com/collection/katalog/bryuki_alladiny_s_kashemirom_serogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/fa3/kgrtlm7t31acfmbfgfncd5lm5u0bn04c-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган с косами",
+   "price": 15980,
+   "url": "https://www.2moodstore.com/collection/katalog/kardigan_s_kosami_sinego_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/23b/jnvtotxq3sqve22ygcprpu3zsow38rgw-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Дубленка из искусственной кожи",
+   "price": 26980,
+   "url": "https://www.2moodstore.com/collection/katalog/dublenka_iz_iskusstvennoy_kozhi_pesochnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/480/b2erp0cyiinvl5lmcbh8kadlj43i5n6f-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-баллоны из шерстяной пряжи",
+   "price": 18980,
+   "url": "https://www.2moodstore.com/collection/katalog/bryuki_ballony_bezhevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/eb7/avgt2fnuh1ojbrxb3ihh6wwblyubnwla-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Перчатки из замши с фактурными швами",
+   "price": 7980,
+   "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_zamshi_s_fakturnymi_shvami_korichnevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/b78/cyuonefg18ja8avvzt8eslfl45m5dtcz-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Свитер с широким воротником-стойкой",
+   "price": 17980,
+   "url": "https://www.2moodstore.com/collection/katalog/sviter_s_shirokim_vorotnikom_stoykoy_molochnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/35c/u5bt8thgdfk3ydh9cy4bdl718wwayau5-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Куртка парка с меховой отделкой",
+   "price": 32980,
+   "url": "https://www.2moodstore.com/collection/katalog/kurtka_parka_s_mekhovoy_otdelkoy_molochnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/b1f/rn9t0cmy3d1uxemqsj5kodmgqhxonc0h-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки объемные",
+   "price": 19980,
+   "url": "https://www.2moodstore.com/collection/katalog/bryuki_obemnye_kofeynogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/027/s5jwumvc4sfo1ebzb7xrm593bvsq73jp-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Перчатки из шерсти мериноса",
+   "price": 4980,
+   "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_shersti_merinosa_bezhevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/520/dct5xt5cg214top5u3dkd58fw2zg9i56-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган на молнии с капюшоном",
+   "price": 23980,
+   "url": "https://www.2moodstore.com/collection/katalog/kardigan_na_molnii_s_kapyushonom_kofeynogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/e61/nigcrnf4vl8wvix1hqezq6p74lxwudro-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Шуба короткая из искусственного меха",
+   "price": 28980,
+   "url": "https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_korichnevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9f6/jjjmk6ccr7ir8ejk39lejayrho45i8lv-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Джемпер с жаккардом",
+   "price": 13980,
+   "url": "https://www.2moodstore.com/collection/katalog/dzhemper_s_zhakkardom_korichnevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/066/7rxdhc058jp15bd9uqtrd1b775sngsz6-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган с косами",
+   "price": 15980,
+   "url": "https://www.2moodstore.com/collection/katalog/kardigan_s_kosami_krasnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/8dd/lxpxrb3gv79qb5eghiqg9uc1m2ndlsf0-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки расслабленного кроя",
+   "price": 19980,
+   "url": "https://www.2moodstore.com/collection/katalog/bryuki_temno_korichnevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9bb/ovzcazsmrm69vo1qimthb3nkde33lfph-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Шуба короткая из искусственного меха",
+   "price": 28980,
+   "url": "https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_yantarnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/f73/sa5gq2mf0khrv5e7tauyvi9j0w01u3j4-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки прямые со стрелками",
+   "price": 19980,
+   "url": "https://www.2moodstore.com/collection/katalog/bryuki_pryamye_so_strelkami_bezhevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/475/xgsrxc72rtrobl8snc1nry4vwiay24vo-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Жакет приталенный с меховым воротником",
+   "price": 29980,
+   "url": "https://www.2moodstore.com/collection/katalog/zhaket_pritalennyy_s_mekhovym_vorotnikom_bezhevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/3dc/u3kosz0p2wosg780sknelo3tl3t3b3lz-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
   }
  ],
  "Askent": [
-  {
-   "name": "Ботинки с манжетой из меха",
-   "price": 37000,
-   "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_01_5/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2ab/900_1095_1/2gp9qfzvuaytlutxvmw5fjyoevhrgmmu.webp",
-   "shop": "Askent",
-   "kind": "dream"
-  },
-  {
-   "name": "Ботинки с манжетой из меха",
-   "price": 37000,
-   "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_02_5/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/77c/900_1095_1/ai7a3w98omt195scxpfm88ttxrwkynlw.webp",
-   "shop": "Askent",
-   "kind": "dream"
-  },
   {
    "name": "Сумка КОРСЕТ",
    "price": 65000,
@@ -843,6 +843,22 @@
    "price": 28000,
    "url": "https://askent.ru/cat/sumki/sumka_1168/",
    "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/b07/900_1095_1/hufud2qhrepo1vje19l1tt80yy00k0dz.webp",
+   "shop": "Askent",
+   "kind": "dream"
+  },
+  {
+   "name": "Ботинки с манжетой из меха",
+   "price": 37000,
+   "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_01_5/",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2ab/900_1095_1/2gp9qfzvuaytlutxvmw5fjyoevhrgmmu.webp",
+   "shop": "Askent",
+   "kind": "dream"
+  },
+  {
+   "name": "Ботинки с манжетой из меха",
+   "price": 37000,
+   "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_02_5/",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/77c/900_1095_1/ai7a3w98omt195scxpfm88ttxrwkynlw.webp",
    "shop": "Askent",
    "kind": "dream"
   }
@@ -1073,18 +1089,18 @@
    "kind": "dream"
   },
   {
-   "name": "Пиджак Subtle",
-   "price": 45900,
-   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
-   "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Строгое пальто",
    "price": 57900,
    "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/",
    "img": "https://www.ushatava.ru/upload/iblock/eb8/4eyt9fun8c1yzxapnnadout49xsphi9q/ushatava_ctlg_fw3_1676.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Пиджак Subtle",
+   "price": 45900,
+   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
+   "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
