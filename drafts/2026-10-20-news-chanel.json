@@ -1,0 +1,38 @@
+{
+  "id": "2026-10-20-news-chanel",
+  "type": "news",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "НОВОСТИ МОДЫ",
+    "year": "Chanel",
+    "note": "весна–лето 2027",
+    "title": "Свобода в твиде",
+    "images": [
+      {
+        "url": "https://www.chanel.com/images/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_960/FSH-1791287567590-001.jpg",
+        "fy": 0.15
+      },
+      {
+        "url": "https://www.chanel.com/images/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_960/FSH-1791287570627-002.jpg",
+        "fy": 0.15
+      },
+      {
+        "url": "https://www.chanel.com/images/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_960/FSH-1791287572260-003.jpg",
+        "fy": 0.15
+      },
+      {
+        "url": "https://www.chanel.com/images/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_960/FSH-1791287573890-004.jpg",
+        "fy": 0.15
+      }
+    ],
+    "credits": "Фото: Chanel"
+  },
+  "text": "черновик",
+  "sources": [
+    "https://www.chanel.com/us/fashion/collection/spring-summer-2027/",
+    "https://abcnews.com/amp/Business/wireStory/nicole-kidman-dua-lipa-watch-chanels-creative-revival-137025739",
+    "https://www.thezoereport.com/fashion/chanel-spring-summer-2027-show-review"
+  ]
+}
