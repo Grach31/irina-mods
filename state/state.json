@@ -119,7 +119,32 @@
       "sent_at": "2026-10-19T14:50+03:00",
       "publish_at": "2026-10-19T18:50:19.636553+03:00",
       "published_at": "2026-10-19T18:50+03:00"
+    },
+    "2026-10-20-mix-velvet-leather": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 49,
+      "file_id": "AgACAgIAAxkDAAMxatb426-7XpKviNVnZbPRibFjDGoAAj8Zaxu6_7hKRolkfMdtTQQBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-20T08:15+03:00"
+    },
+    "2026-10-20-ushatava-dream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 50,
+      "file_id": "AgACAgIAAxkDAAMyatb44gVKpZsEKepp8GfBHDc4tjUAAkAZaxu6_7hKVYJihjKduKEBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-20T08:15+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-20-looks": {
+      "key": "945927a46282",
+      "status": "preview_ready",
+      "at": "2026-10-20T08:15+03:00"
+    },
+    "2026-10-20-news-chanel": {
+      "key": "e2cbc03ced76",
+      "status": "preview_ready",
+      "at": "2026-10-20T08:15+03:00"
+    }
+  }
 }
