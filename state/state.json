@@ -1,5 +1,5 @@
 {
-  "offset": 84639467,
+  "offset": 84639469,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -149,11 +149,13 @@
       "sent_at": "2026-10-20T08:17+03:00"
     },
     "2026-10-20-news-chanel": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 57,
       "file_id": "AgACAgIAAxkDAAM5atb5ZSyKjEt6kRd1gwbYT7yIoUkAAkcZaxu6_7hKjAMJSgbI3GEBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-20T08:17+03:00"
+      "sent_at": "2026-10-20T08:17+03:00",
+      "publish_at": "2026-10-20T12:15:52.400602+03:00",
+      "published_at": "2026-10-20T12:15+03:00"
     }
   },
   "held": {}
