@@ -133,18 +133,28 @@
       "msg_id": 50,
       "file_id": "AgACAgIAAxkDAAMyatb44gVKpZsEKepp8GfBHDc4tjUAAkAZaxu6_7hKVYJihjKduKEBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-20T08:15+03:00"
-    }
-  },
-  "held": {
+    },
     "2026-10-20-looks": {
-      "key": "945927a46282",
-      "status": "preview_ready",
-      "at": "2026-10-20T08:15+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 56,
+      "file_ids": [
+        "AgACAgIAAxUHatb5Y8gFXnY_g47ipyEotQi_6VEAAkMZaxu6_7hKrfls1QaEKW8BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatb5Y5ysipe4WGGABm3PRsHGMlcAAkUZaxu6_7hKCPCwn81UMSwBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatb5Y7_xVm1JazhJ1c1VX_KJ3eQAAkQZaxu6_7hKDH5vHtaxQugBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatb5Y6ZN3-Rew5Nddyl_eDWl_uYAAkIZaxu6_7hKNgv9WqYZ-PQBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatb5Y5KIZYf9smh6wZfXtyqZxfcAAkYZaxu6_7hKQicnUkj2okwBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHatb5Y8gFXnY_g47ipyEotQi_6VEAAkMZaxu6_7hKrfls1QaEKW8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-20T08:17+03:00"
     },
     "2026-10-20-news-chanel": {
-      "key": "e2cbc03ced76",
-      "status": "preview_ready",
-      "at": "2026-10-20T08:15+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 57,
+      "file_id": "AgACAgIAAxkDAAM5atb5ZSyKjEt6kRd1gwbYT7yIoUkAAkcZaxu6_7hKjAMJSgbI3GEBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-20T08:17+03:00"
     }
-  }
+  },
+  "held": {}
 }
