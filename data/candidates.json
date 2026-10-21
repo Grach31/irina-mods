@@ -1,66 +1,50 @@
 {
  "Lime": [
   {
-   "name": "Двусторонний легкий пуховик с капюшоном",
-   "price": 19999,
-   "url": "https://limestore.com/ru_ru/product/29401_6348_335-6348_335_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/d76e29c903d75f27a6b35635e98b8d6f.jpeg?w=1280&q=85",
+   "name": "Шерстяное пальто ручной работы",
+   "price": 17999,
+   "url": "https://limestore.com/ru_ru/product/35231-5767_014_023_temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/02a7b430ae4854f786ee11502a6a00d2.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Двусторонний легкий пуховик с капюшоном",
-   "price": 19999,
-   "url": "https://limestore.com/ru_ru/product/29401_6348_335-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/9930ff8526235cb99996d882e1e45006.jpeg?w=1280&q=85",
+   "name": "Двубортное пальто оверсайз из шерсти",
+   "price": 25999,
+   "url": "https://limestore.com/ru_ru/product/37083-7842_854_002_cernyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/87063ed2cf515923ae3513b441f103f6.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Удлиненный бомбер с меховой отделкой",
-   "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/37113-8015_543_312_xaki",
-   "img": "https://a.cdn.lime-shine.com/p/3042ef2996e65a21abda8675a83a19c8.jpeg?w=1280&q=85",
+   "name": "Шерстяное пальто ручной работы",
+   "price": 17999,
+   "url": "https://limestore.com/ru_ru/product/30923_5767_561-sero_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/15b1ab25d9065da781d70fd037806239.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Удлиненный бомбер с меховой отделкой",
-   "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/37113-8015_543_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/4e0fdc71a8ee57b1b93deb5bb352f3b7.jpeg?w=1280&q=85",
+   "name": "Шерстяное пальто ручной работы",
+   "price": 17999,
+   "url": "https://limestore.com/ru_ru/product/30923_5767_561-temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/c6333b3ffd5652ce98fad5bafe61ebd2.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Куртка на синтепоне с контрастной подкладкой",
-   "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/36285-9075_479_412_cernilnyi_sinii",
-   "img": "https://a.cdn.lime-shine.com/p/719ed334785b526bbfd531e7fe0bec08.jpeg?w=1280&q=85",
+   "name": "Шерстяное полупальто ручной работы",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/37653-7680_563_120_molocnyi",
+   "img": "https://a.cdn.lime-shine.com/p/439ce06b324f57518cfaa6cc6d953dc3.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Стеганая куртка из вязаного трикотажа с шерстью",
-   "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/37329-9908_335_211_koricnevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/11e8b63e3a7b53ed8c7bfb2cf9b47520.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свободная куртка на искусственном пуху с капюшоном",
-   "price": 13999,
-   "url": "https://limestore.com/ru_ru/product/36392-3505_479_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/a9f66df75eec580c904a97488903a8a4.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Утепленная куртка из хлопка",
+   "name": "Укороченная куртка под замшу",
    "price": 10999,
-   "url": "https://limestore.com/ru_ru/product/36517-8028_358_610_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/3c650c899dcf5842957369cafb4a8276.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/36260-7594_505_312_xaki",
+   "img": "https://a.cdn.lime-shine.com/p/16e5c4a559c250f996353fa98488e37f.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -73,14 +57,6 @@
    "kind": "daily"
   },
   {
-   "name": "Утепленное пальто на кулиске",
-   "price": 15999,
-   "url": "https://limestore.com/ru_ru/product/37229-8099_491_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/d99e377ccea45542b72511ef260e63d4.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
    "name": "Стеганый пуховик из шерсти с водоотталкивающим эффектом",
    "price": 25999,
    "url": "https://limestore.com/ru_ru/product/38583-6342_696_023_temno_seryi_melanz",
@@ -89,10 +65,10 @@
    "kind": "daily"
   },
   {
-   "name": "Длинная шуба из объемного меха",
-   "price": 17999,
-   "url": "https://limestore.com/ru_ru/product/35411-9836_195_721_oxra",
-   "img": "https://a.cdn.lime-shine.com/p/015e25d7572b5dd7bca88586e9d168a5.jpeg?w=1280&q=85",
+   "name": "Хлопковая парка на кулиске с меховой отделкой",
+   "price": 21999,
+   "url": "https://limestore.com/ru_ru/product/37905-4648_020_201_temno_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/6bd7c1597ac15bdbb60646cecfe12cb5.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -291,6 +267,54 @@
  ],
  "Love Republic": [
   {
+   "name": "Шорты-баллон с кружевом",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/shorty/335787/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451221754_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Шуба из искусственного меха под ламу",
+   "price": 29999,
+   "url": "https://loverepublic.ru/catalog/odezhda/verhnyaya-odezhda/336741/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64515/thumb/600_9999/6451506106_61.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Приталенный твидовый жакет с тесьмой",
+   "price": 15999,
+   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/337144/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451219605_9.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье кроше с шерстью альпака",
+   "price": 9999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/335948/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451317516_61.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Комбинезон из ажурного кружева",
+   "price": 17999,
+   "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/337604/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451624752_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье мини с воланами",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/336049/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451607513_60.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
    "name": "Комбинезон женский",
    "price": 12999,
    "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/336079/",
@@ -311,14 +335,6 @@
    "price": 4999,
    "url": "https://loverepublic.ru/catalog/odezhda/body/336018/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451102310_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки женские",
-   "price": 4599,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/332686/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/LR27112/thumb/600_9999/LR2711201732_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
@@ -379,10 +395,10 @@
    "kind": "daily"
   },
   {
-   "name": "Брюки-алладины",
-   "price": 7999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/328079/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64502/thumb/600_9999/6450204717_62.jpg",
+   "name": "Брюки женские",
+   "price": 4599,
+   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/332686/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/LR27112/thumb/600_9999/LR2711201732_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
@@ -511,46 +527,6 @@
    "price": 9999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/333765/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451616522_415.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки-клеш из бархата",
-   "price": 7999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/337743/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451238765_192.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Бархатное платье мини с объемными рукавами",
-   "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/332017/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451609515_47.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Полупрозрачная водолазка из кружева",
-   "price": 4999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bluzy/336693/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451106314_57.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Бархатное платье мини с драпировкой",
-   "price": 8999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/333783/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451621526_37.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Юбка миди из искусственной кожи",
-   "price": 7999,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/333850/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451231218_27.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   }
@@ -786,7 +762,7 @@
    "name": "Сумка луно",
    "price": 52000,
    "url": "https://askent.ru/cat/sumki/sumka_1175/",
-   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/614/900_1095_1/02vlc95uqf96wkqw4d1ob0h4kadn5j28.webp",
+   "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/b23/900_1095_1/8b42lwhkgz0ldbw9o7ntnj38voc9lyea.webp",
    "shop": "Askent",
    "kind": "dream"
   },
