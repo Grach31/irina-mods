@@ -156,7 +156,32 @@
       "sent_at": "2026-10-20T08:17+03:00",
       "publish_at": "2026-10-20T12:15:52.400602+03:00",
       "published_at": "2026-10-20T12:15+03:00"
+    },
+    "2026-10-21-lr-jumpsuits": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 59,
+      "file_id": "AgACAgIAAxkDAAM7athLHJ9okEERiFPpSYwnoyl4bw0AAg4faxvU2shKtdiN8dNY4lIBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T08:18+03:00"
+    },
+    "2026-10-21-mix-wool-trousers": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 60,
+      "file_id": "AgACAgIAAxkDAAM8athLIHUvhfir0WXy8-4pxF1ziucAAg8faxvU2shKu7pRka9NgIABAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T08:18+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-21-looks": {
+      "key": "e6e299a134e5",
+      "status": "preview_ready",
+      "at": "2026-10-21T08:18+03:00"
+    },
+    "2026-10-21-news-saint-laurent": {
+      "key": "7e05c681b4cd",
+      "status": "preview_ready",
+      "at": "2026-10-21T08:18+03:00"
+    }
+  }
 }
