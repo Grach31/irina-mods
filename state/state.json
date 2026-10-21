@@ -184,13 +184,14 @@
       ],
       "file_id": "AgACAgIAAxUHathLoKCin525WdavLjIZ7yoT8q0AAhIfaxvU2shKg1rA9e5pd04BAAMCAAN3AAM9BA",
       "sent_at": "2026-10-21T08:20+03:00"
+    },
+    "2026-10-21-news-saint-laurent": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 67,
+      "file_id": "AgACAgIAAxkDAANDathL2LIf0rHkG6JtYH9dpUOsHGoAAhUfaxvU2shKZp0jWU3_WGsBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T08:21+03:00"
     }
   },
-  "held": {
-    "2026-10-21-news-saint-laurent": {
-      "key": "bdfce7c8f048",
-      "status": "preview_ready",
-      "at": "2026-10-21T08:20+03:00"
-    }
-  }
+  "held": {}
 }
