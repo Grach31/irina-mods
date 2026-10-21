@@ -1,0 +1,170 @@
+{
+  "id": "2026-10-21-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на холодный ноябрь"
+  },
+  "looks": [
+    {
+      "title": "Чёрный и сливки",
+      "items": [
+        {
+          "short": "Пиджак-рубашка",
+          "name": "Пиджак-рубашка Dachi",
+          "price": 29900,
+          "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-195b-83769/",
+          "img": "https://www.ushatava.ru/upload/iblock/37b/b79l69l0s21kom2vruzv228jm59p63s7/99.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Шарф",
+          "name": "Шерстяной шарф",
+          "price": 13900,
+          "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83932/",
+          "img": "https://www.ushatava.ru/upload/iblock/9fb/6n9rcnpgv3pteh9qokug8ovbqtpg267b/12.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Широкие брюки",
+          "name": "Широкие брюки свободного кроя",
+          "price": 5599,
+          "url": "https://limestore.com/ru_ru/product/36631-3647_907_915_seryi_belyi",
+          "img": "https://a.cdn.lime-shine.com/p/1a950a2d3ce159ed94599f98fc15f24d.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка БИССА",
+          "price": 25500,
+          "url": "https://askent.ru/cat/sumki/sumka_1170/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/c66/900_1095_1/2pxz3hsihntrljq9s31ay6hiceaoef76.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Беж и шоколад",
+      "items": [
+        {
+          "short": "Дублёнка",
+          "name": "Дубленка из искусственной кожи",
+          "price": 26980,
+          "url": "https://www.2moodstore.com/collection/katalog/dublenka_iz_iskusstvennoy_kozhi_pesochnogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/480/b2erp0cyiinvl5lmcbh8kadlj43i5n6f-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Капор",
+          "name": "Капор с добавлением кашемира",
+          "price": 7980,
+          "url": "https://www.2moodstore.com/collection/katalog/kapor_s_dobavleniem_kashemira_temno_bezhevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/7cc/bqv8uduk53qapjq4j8m5d3i05jxkd1w3-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Брюки из футера",
+          "name": "Объемные брюки из футера",
+          "price": 3599,
+          "url": "https://limestore.com/ru_ru/product/28659_9744_900-sero_koricnevyi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/0514750a7001517b9e673d9b156f70ab.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка ПОУЧ мини",
+          "price": 29000,
+          "url": "https://askent.ru/cat/sumki/cumka_38/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/110/900_1095_1/97qc27law6tlaahbqfkfdojnrjpbk4of.webp",
+          "shop": "Askent"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Перчатки из замши с фактурными швами",
+          "price": 7980,
+          "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_zamshi_s_fakturnymi_shvami_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/b78/cyuonefg18ja8avvzt8eslfl45m5dtcz-jpg.webp",
+          "shop": "2MOOD"
+        }
+      ]
+    },
+    {
+      "title": "Бордо",
+      "items": [
+        {
+          "short": "Шуба",
+          "name": "Шуба короткая из искусственного меха",
+          "price": 28980,
+          "url": "https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9f6/jjjmk6ccr7ir8ejk39lejayrho45i8lv-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Вязаные перчатки",
+          "price": 9900,
+          "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/",
+          "img": "https://www.ushatava.ru/upload/iblock/9e7/qywb1rv2yu8j4mkeglh1d8dhiswv91t0/174.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Мини-платье",
+          "name": "Мини-платье с подплечниками и драпировкой",
+          "price": 9999,
+          "url": "https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi",
+          "img": "https://a.cdn.lime-shine.com/p/87797b0536b25f178e404713cbb0a588.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка КОРСЕТ МИДИ",
+          "price": 58000,
+          "url": "https://askent.ru/cat/sumki/sumka_1172/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/750/900_1095_1/fcjl7pjwyna579f0zbzdrzatmlmhv41z.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Серый и синий",
+      "items": [
+        {
+          "short": "Пуховик",
+          "name": "Стеганый пуховик из шерсти с водоотталкивающим эффектом",
+          "price": 25999,
+          "url": "https://limestore.com/ru_ru/product/38583-6342_696_023_temno_seryi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/3d6b2509c92d5ba8886058af79ef8ca4.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Вязаные перчатки",
+          "price": 9900,
+          "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83938/",
+          "img": "https://www.ushatava.ru/upload/iblock/691/p8lvp50xgoyfd5yl30x6rmer1khw4qci/187.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки из футера",
+          "name": "Объемные брюки из футера",
+          "price": 3599,
+          "url": "https://limestore.com/ru_ru/product/28659_9744_900-seryi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/54f71bef2a90501397e744191f405f77.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка ПОУЧ мини",
+          "price": 31000,
+          "url": "https://askent.ru/cat/sumki/sumka_1165/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/fc3/900_1095_1/vibkufhqd67uxti52otp301d1b0k3rlu.webp",
+          "shop": "Askent"
+        }
+      ]
+    }
+  ],
+  "text": "Четыре образа на ноябрь, который уже почти здесь 🤎\nСохраняйте, чтобы утром не думать\n\n<b>1. Чёрный и сливки</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-195b-83769/\">Пиджак-рубашка</a> — 29 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/sharf-mini-83932/\">Шарф</a> — 13 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/36631-3647_907_915_seryi_belyi\">Широкие брюки</a> — 5 599 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1170/\">Сумка</a> — 25 500 ₽ · Askent\n\n<b>2. Беж и шоколад</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/dublenka_iz_iskusstvennoy_kozhi_pesochnogo_tsveta/\">Дублёнка</a> — 26 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/kapor_s_dobavleniem_kashemira_temno_bezhevogo_tsveta/\">Капор</a> — 7 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/28659_9744_900-sero_koricnevyi_melanz\">Брюки из футера</a> — 3 599 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/cumka_38/\">Сумка</a> — 29 000 ₽ · Askent\n<a href=\"https://www.2moodstore.com/collection/katalog/perchatki_iz_zamshi_s_fakturnymi_shvami_korichnevogo_tsveta/\">Перчатки</a> — 7 980 ₽ · 2MOOD\n\n<b>3. Бордо</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/shuba_korotkaya_iz_iskusstvennogo_mekha_korichnevogo_tsveta/\">Шуба</a> — 28 980 ₽ · 2MOOD\n<a href=\"https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/\">Перчатки</a> — 9 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi\">Мини-платье</a> — 9 999 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1172/\">Сумка</a> — 58 000 ₽ · Askent\n\n<b>4. Серый и синий</b>\n<a href=\"https://limestore.com/ru_ru/product/38583-6342_696_023_temno_seryi_melanz\">Пуховик</a> — 25 999 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83938/\">Перчатки</a> — 9 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/28659_9744_900-seryi_melanz\">Брюки из футера</a> — 3 599 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1165/\">Сумка</a> — 31 000 ₽ · Askent\n\nКакой образ ваш — 1, 2, 3 или 4?"
+}

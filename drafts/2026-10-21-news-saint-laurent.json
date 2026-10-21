@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-21-news-saint-laurent",
+  "type": "news",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "НОВОСТИ МОДЫ",
+    "year": "2016–2026",
+    "note": "Энтони Ваккарелло",
+    "title": "Прощание с Saint Laurent",
+    "images": [
+      {
+        "commons": "Anthony Vaccarello en 2017.jpg",
+        "fy": 0.25
+      }
+    ],
+    "credits": ""
+  },
+  "text": "Новость, которую обсуждает вся индустрия: Энтони Ваккарелло уходит из Saint Laurent 🖤\n\nKering подтвердил это 9 октября. Ваккарелло возглавлял дом десять лет — пришёл в 2016-м на смену Эди Слиману, а Эйфелева башня стала почти постоянной декорацией его показов.\n\nПоследний показ, весна–лето 2027, прошёл 29 сентября у Трокадеро: 49 образов в оттенках золота под огромными люстрами и финал из 10 чёрных. Красивое прощание — роскошно и строго одновременно.\n\nИмя преемника дом обещает назвать скоро. Чаще всего говорят о Чемене Камали из Chloé — когда-то она уже работала в Saint Laurent.\n\nКого бы вы хотели видеть следующим?",
+  "sources": [
+    "https://www.investing.com/news/stock-market-news/saint-laurent-ends-decadelong-tenure-of-designer-vaccarello-as-part-of-wider-group-revamp-4940294",
+    "https://hauteliving.com/2026/10/anthony-vaccarello-leaving-saint-laurent/798889/",
+    "https://tradingview.com/news/tradingview:e7f709727cca6:0-weekly-recap-kering-sa-amf-filing-and-vaccarello-exit-chemena-kamali"
+  ]
+}
