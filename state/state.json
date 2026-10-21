@@ -193,6 +193,13 @@
       "msg_id": 76,
       "file_id": "AgACAgIAAxkDAANDathL2LIf0rHkG6JtYH9dpUOsHGoAAhUfaxvU2shKZp0jWU3_WGsBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-21T09:24+03:00"
+    },
+    "2026-10-21-mix-south-autumn": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 79,
+      "file_id": "AgACAgIAAxkDAANPatidmj79gKQL2K_9hiuUO7N7j8QAAhQhaxvU2shKJ6ysyFC6zcIBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T14:10+03:00"
     }
   },
   "held": {}
