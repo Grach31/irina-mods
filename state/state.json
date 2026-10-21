@@ -170,18 +170,27 @@
       "msg_id": 60,
       "file_id": "AgACAgIAAxkDAAM8athLIHUvhfir0WXy8-4pxF1ziucAAg8faxvU2shKu7pRka9NgIABAAMCAAN3AAM9BA",
       "sent_at": "2026-10-21T08:18+03:00"
+    },
+    "2026-10-21-looks": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 66,
+      "file_ids": [
+        "AgACAgIAAxUHathLoKCin525WdavLjIZ7yoT8q0AAhIfaxvU2shKg1rA9e5pd04BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHathLoPKP_i7-k1IYUb1X84TMpcsAAhMfaxvU2shKkrjK7ycrtmkBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHathLoJqMohWwwd0VoISES7bW-tIAAhEfaxvU2shK25lnuVvm8l0BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHathLoGgkjYPzOajMT-oaHtoecAIAAhQfaxvU2shKQX6H5TiXh6QBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHathLoAytsRzwwAFWzpEgbB8d3uIAAhAfaxvU2shKsyj1ILFV0h0BAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHathLoKCin525WdavLjIZ7yoT8q0AAhIfaxvU2shKg1rA9e5pd04BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T08:20+03:00"
     }
   },
   "held": {
-    "2026-10-21-looks": {
-      "key": "e6e299a134e5",
-      "status": "preview_ready",
-      "at": "2026-10-21T08:18+03:00"
-    },
     "2026-10-21-news-saint-laurent": {
-      "key": "7e05c681b4cd",
+      "key": "bdfce7c8f048",
       "status": "preview_ready",
-      "at": "2026-10-21T08:18+03:00"
+      "at": "2026-10-21T08:20+03:00"
     }
   }
 }
