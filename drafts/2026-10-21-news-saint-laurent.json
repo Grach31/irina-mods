@@ -3,7 +3,6 @@
   "type": "news",
   "daily": true,
   "slot": null,
-  "hold": true,
   "card": {
     "kicker": "НОВОСТИ МОДЫ",
     "year": "2016–2026",
