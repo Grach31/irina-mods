@@ -1,5 +1,5 @@
 {
-  "offset": 84639469,
+  "offset": 84639471,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -179,11 +179,13 @@
       "sent_at": "2026-10-21T09:24+03:00"
     },
     "2026-10-21-mix-wool-trousers": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 75,
       "file_id": "AgACAgIAAxkDAAM8athLIHUvhfir0WXy8-4pxF1ziucAAg8faxvU2shKu7pRka9NgIABAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T09:24+03:00"
+      "sent_at": "2026-10-21T09:24+03:00",
+      "publish_at": "2026-10-21T13:54:56.475373+03:00",
+      "published_at": "2026-10-21T13:54+03:00"
     },
     "2026-10-21-news-saint-laurent": {
       "status": "sent",
