@@ -157,24 +157,10 @@
       "publish_at": "2026-10-20T12:15:52.400602+03:00",
       "published_at": "2026-10-20T12:15+03:00"
     },
-    "2026-10-21-lr-jumpsuits": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 59,
-      "file_id": "AgACAgIAAxkDAAM7athLHJ9okEERiFPpSYwnoyl4bw0AAg4faxvU2shKtdiN8dNY4lIBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T08:18+03:00"
-    },
-    "2026-10-21-mix-wool-trousers": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 60,
-      "file_id": "AgACAgIAAxkDAAM8athLIHUvhfir0WXy8-4pxF1ziucAAg8faxvU2shKu7pRka9NgIABAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T08:18+03:00"
-    },
     "2026-10-21-looks": {
       "status": "sent",
       "slot": null,
-      "msg_id": 66,
+      "msg_id": 73,
       "file_ids": [
         "AgACAgIAAxUHathLoKCin525WdavLjIZ7yoT8q0AAhIfaxvU2shKg1rA9e5pd04BAAMCAAN3AAM9BA",
         "AgACAgIAAxUHathLoPKP_i7-k1IYUb1X84TMpcsAAhMfaxvU2shKkrjK7ycrtmkBAAMCAAN3AAM9BA",
@@ -183,14 +169,28 @@
         "AgACAgIAAxUHathLoAytsRzwwAFWzpEgbB8d3uIAAhAfaxvU2shKsyj1ILFV0h0BAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHathLoKCin525WdavLjIZ7yoT8q0AAhIfaxvU2shKg1rA9e5pd04BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T08:20+03:00"
+      "sent_at": "2026-10-21T09:24+03:00"
+    },
+    "2026-10-21-lr-jumpsuits": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 74,
+      "file_id": "AgACAgIAAxkDAAM7athLHJ9okEERiFPpSYwnoyl4bw0AAg4faxvU2shKtdiN8dNY4lIBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T09:24+03:00"
+    },
+    "2026-10-21-mix-wool-trousers": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 75,
+      "file_id": "AgACAgIAAxkDAAM8athLIHUvhfir0WXy8-4pxF1ziucAAg8faxvU2shKu7pRka9NgIABAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-21T09:24+03:00"
     },
     "2026-10-21-news-saint-laurent": {
       "status": "sent",
       "slot": null,
-      "msg_id": 67,
+      "msg_id": 76,
       "file_id": "AgACAgIAAxkDAANDathL2LIf0rHkG6JtYH9dpUOsHGoAAhUfaxvU2shKZp0jWU3_WGsBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T08:21+03:00"
+      "sent_at": "2026-10-21T09:24+03:00"
     }
   },
   "held": {}
