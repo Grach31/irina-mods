@@ -1,5 +1,5 @@
 {
-  "offset": 84639473,
+  "offset": 84639469,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -200,13 +200,11 @@
       "sent_at": "2026-10-21T14:54+03:00"
     },
     "2026-10-22-2mood-cardigans": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 82,
       "file_id": "AgACAgIAAxkDAANSatmb6FYwDSb5PT2fC5SMh6fHO3oAApsZaxvU2tBKzMoHbLpmBDwBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-22T08:15+03:00",
-      "publish_at": "2026-10-22T16:30:38.670387+03:00",
-      "published_at": "2026-10-22T16:30+03:00"
+      "sent_at": "2026-10-22T08:15+03:00"
     },
     "2026-10-22-mix-warm-dresses": {
       "status": "sent",
