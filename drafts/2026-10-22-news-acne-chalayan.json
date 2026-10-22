@@ -1,0 +1,30 @@
+{
+  "id": "2026-10-22-news-acne-chalayan",
+  "type": "news",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "НОВОСТИ МОДЫ",
+    "year": "2026",
+    "note": "капсула · 12 вещей",
+    "title": "Acne Studios × Хусейн Чалаян",
+    "images": [
+      {
+        "url": "https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwc2cb4c0a/capsule/chalayan/chalayan-plp-shirt.jpg",
+        "fy": 0.2
+      },
+      {
+        "url": "https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwe9a2b602/capsule/chalayan/chalayan-plp-key.jpg",
+        "fy": 0.2
+      }
+    ],
+    "credits": "Фото: Acne Studios"
+  },
+  "text": "Acne Studios отмечает 30 лет своего денима — и позвал для этого Хусейна Чалаяна, одного из самых концептуальных дизайнеров нашего времени 💙\n\nКапсула из 12 вещей вышла в середине октября. Джинсы классических кроёв 1996 и 2009 разобраны и собраны заново в пэчворк, а у рубашки, асимметричного жилета и платья многослойная конструкция — отсылка к коллекции Чалаяна Manifest Destiny весны–лета 2003.\n\nМой фаворит — сумка Camero в пэчворке из кожи, которая выглядит как деним: обман зрения в чистом виде. Ещё есть джинсы с принтом «под питона» — тоже trompe-l'œil.\n\nК такому дениму — простой белый лонгслив и грубые ботинки, чтобы главной оставалась конструкция.\n\nКак вам идея — деним как арт-объект?",
+  "sources": [
+    "https://www.acnestudios.com/us/en/hussein-chalayan/",
+    "https://hypebeast.com/2026/10/acne-studios-and-hussein-chalayan-reimagine-archival-designs-in-new-collaboration",
+    "https://www.fashionsnap.com/article/2026-10-14/acne-studios-hussein-chalayan/"
+  ]
+}

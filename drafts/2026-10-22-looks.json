@@ -1,0 +1,170 @@
+{
+  "id": "2026-10-22-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "с пальто на холодную осень"
+  },
+  "looks": [
+    {
+      "title": "Шоколад",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Шерстяное пальто ручной работы",
+          "price": 17999,
+          "url": "https://limestore.com/ru_ru/product/30923_5767_561-sero_koricnevyi",
+          "img": "https://a.cdn.lime-shine.com/p/15b1ab25d9065da781d70fd037806239.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Джемпер с жаккардом",
+          "name": "Джемпер с жаккардом",
+          "price": 13980,
+          "url": "https://www.2moodstore.com/collection/katalog/dzhemper_s_zhakkardom_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/066/7rxdhc058jp15bd9uqtrd1b775sngsz6-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Брюки",
+          "name": "Брюки расслабленного кроя",
+          "price": 19980,
+          "url": "https://www.2moodstore.com/collection/katalog/bryuki_temno_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9bb/ovzcazsmrm69vo1qimthb3nkde33lfph-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка луно",
+          "price": 52000,
+          "url": "https://askent.ru/cat/sumki/sumka_1175/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/b23/900_1095_1/8b42lwhkgz0ldbw9o7ntnj38voc9lyea.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Серый и тёмно-синий",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Шерстяное пальто ручной работы",
+          "price": 17999,
+          "url": "https://limestore.com/ru_ru/product/35231-5767_014_023_temno_seryi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/02a7b430ae4854f786ee11502a6a00d2.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Джемпер",
+          "name": "Джемпер женский",
+          "price": 4599,
+          "url": "https://loverepublic.ru/catalog/odezhda/futbolki/333126/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451111322_20.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Брюки из шерсти",
+          "name": "Классические брюки из тонкой шерсти",
+          "price": 26900,
+          "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
+          "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка КОРСЕТ МИДИ",
+          "price": 58000,
+          "url": "https://askent.ru/cat/sumki/sumka_1166/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/817/900_1095_1/voir7m9pyw6yypjq0hzthvq95durw3ct.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Молоко и карамель",
+      "items": [
+        {
+          "short": "Полупальто",
+          "name": "Шерстяное полупальто ручной работы",
+          "price": 15999,
+          "url": "https://limestore.com/ru_ru/product/37653-7680_563_120_molocnyi",
+          "img": "https://a.cdn.lime-shine.com/p/439ce06b324f57518cfaa6cc6d953dc3.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Свитер",
+          "name": "Свитер с широким воротником-стойкой",
+          "price": 17980,
+          "url": "https://www.2moodstore.com/collection/katalog/sviter_s_shirokim_vorotnikom_stoykoy_molochnogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/35c/u5bt8thgdfk3ydh9cy4bdl718wwayau5-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Джоггеры",
+          "name": "Брюки-джоггеры из трикотажа с шерстью",
+          "price": 5999,
+          "url": "https://limestore.com/ru_ru/product/37497-9677_563_263_sero_bezevyi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/5380a883e3c250dbb1602f2adb7a70e5.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка БИССА",
+          "price": 25500,
+          "url": "https://askent.ru/cat/sumki/sumka_1171/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/022/900_1095_1/peisnniiwn5w1it0pt2er6g1xkeud242.webp",
+          "shop": "Askent"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Перчатки из шерсти мериноса",
+          "price": 4980,
+          "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_shersti_merinosa_bezhevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/520/dct5xt5cg214top5u3dkd58fw2zg9i56-jpg.webp",
+          "shop": "2MOOD"
+        }
+      ]
+    },
+    {
+      "title": "Чёрный и питон",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Двубортное пальто оверсайз из шерсти",
+          "price": 25999,
+          "url": "https://limestore.com/ru_ru/product/37083-7842_854_002_cernyi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/87063ed2cf515923ae3513b441f103f6.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Блузка",
+          "name": "Блузка из шифона",
+          "price": 19900,
+          "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
+          "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки-алладины",
+          "name": "Брюки-алладины",
+          "price": 7999,
+          "url": "https://loverepublic.ru/catalog/odezhda/bryuki/328085/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64502/thumb/600_9999/6450204717_50.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка ПОУЧ мини",
+          "price": 31000,
+          "url": "https://askent.ru/cat/sumki/sumka_1167/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2c1/900_1095_1/g97dybzpz3kgnv43wnkm4skk760vxwkh.webp",
+          "shop": "Askent"
+        }
+      ]
+    }
+  ],
+  "text": "Четыре образа с пальто — на холодную осень и первые морозы 🧥\nСохраняйте, чтобы утром не думать\n\n<b>1. Шоколад</b>\n<a href=\"https://limestore.com/ru_ru/product/30923_5767_561-sero_koricnevyi\">Пальто</a> — 17 999 ₽ · Lime\n<a href=\"https://www.2moodstore.com/collection/katalog/dzhemper_s_zhakkardom_korichnevogo_tsveta/\">Джемпер с жаккардом</a> — 13 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/bryuki_temno_korichnevogo_tsveta/\">Брюки</a> — 19 980 ₽ · 2MOOD\n<a href=\"https://askent.ru/cat/sumki/sumka_1175/\">Сумка</a> — 52 000 ₽ · Askent\n\n<b>2. Серый и тёмно-синий</b>\n<a href=\"https://limestore.com/ru_ru/product/35231-5767_014_023_temno_seryi_melanz\">Пальто</a> — 17 999 ₽ · Lime\n<a href=\"https://loverepublic.ru/catalog/odezhda/futbolki/333126/\">Джемпер</a> — 4 599 ₽ · Love Republic\n<a href=\"https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/\">Брюки из шерсти</a> — 26 900 ₽ · Ushatava\n<a href=\"https://askent.ru/cat/sumki/sumka_1166/\">Сумка</a> — 58 000 ₽ · Askent\n\n<b>3. Молоко и карамель</b>\n<a href=\"https://limestore.com/ru_ru/product/37653-7680_563_120_molocnyi\">Полупальто</a> — 15 999 ₽ · Lime\n<a href=\"https://www.2moodstore.com/collection/katalog/sviter_s_shirokim_vorotnikom_stoykoy_molochnogo_tsveta/\">Свитер</a> — 17 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/37497-9677_563_263_sero_bezevyi_melanz\">Джоггеры</a> — 5 999 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1171/\">Сумка</a> — 25 500 ₽ · Askent\n<a href=\"https://www.2moodstore.com/collection/katalog/perchatki_iz_shersti_merinosa_bezhevogo_tsveta/\">Перчатки</a> — 4 980 ₽ · 2MOOD\n\n<b>4. Чёрный и питон</b>\n<a href=\"https://limestore.com/ru_ru/product/37083-7842_854_002_cernyi_melanz\">Пальто</a> — 25 999 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/\">Блузка</a> — 19 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/328085/\">Брюки-алладины</a> — 7 999 ₽ · Love Republic\n<a href=\"https://askent.ru/cat/sumki/sumka_1167/\">Сумка</a> — 31 000 ₽ · Askent\n\nКакой образ ваш — 1, 2, 3 или 4?"
+}
