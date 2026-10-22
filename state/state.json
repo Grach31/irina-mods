@@ -198,7 +198,32 @@
       "msg_id": 81,
       "file_id": "AgACAgIAAxkDAANPatidmj79gKQL2K_9hiuUO7N7j8QAAhQhaxvU2shKJ6ysyFC6zcIBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-21T14:54+03:00"
+    },
+    "2026-10-22-2mood-cardigans": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 82,
+      "file_id": "AgACAgIAAxkDAANSatmb6FYwDSb5PT2fC5SMh6fHO3oAApsZaxvU2tBKzMoHbLpmBDwBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-22T08:15+03:00"
+    },
+    "2026-10-22-mix-warm-dresses": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 83,
+      "file_id": "AgACAgIAAxkDAANTatmb_rFscwZ9_mN36fN79YUvOhkAApwZaxvU2tBKgSbnZRqVhqABAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-22T08:15+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-22-looks": {
+      "key": "bc565a77d3e1",
+      "status": "preview_ready",
+      "at": "2026-10-22T08:15+03:00"
+    },
+    "2026-10-22-news-acne-chalayan": {
+      "key": "0740f70bad0f",
+      "status": "preview_ready",
+      "at": "2026-10-22T08:15+03:00"
+    }
+  }
 }
