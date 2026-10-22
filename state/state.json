@@ -212,18 +212,28 @@
       "msg_id": 83,
       "file_id": "AgACAgIAAxkDAANTatmb_rFscwZ9_mN36fN79YUvOhkAApwZaxvU2tBKgSbnZRqVhqABAAMCAAN3AAM9BA",
       "sent_at": "2026-10-22T08:15+03:00"
-    }
-  },
-  "held": {
+    },
     "2026-10-22-looks": {
-      "key": "bc565a77d3e1",
-      "status": "preview_ready",
-      "at": "2026-10-22T08:15+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 89,
+      "file_ids": [
+        "AgACAgIAAxUHatmcRp-jCS4QcNnbVsU8h-7PMywAAqIZaxvU2tBKdeqBJECJJHcBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatmcRlun9AM47DAFnWjjJuDPW9AAAqAZaxvU2tBKRwb1lwoi1_ABAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatmcRiqa-5OPUlzP6tfT3ofsyswAAp8ZaxvU2tBKgftwQmS_EMcBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatmcRmetXpOC1kt57Wg8C6TvXRwAAqEZaxvU2tBKSKL_WVuWWNwBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatmcRgFVPsZ-zGheOZ6Dfhx7bD8AAp4ZaxvU2tBK8chkNCrbVcQBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHatmcRp-jCS4QcNnbVsU8h-7PMywAAqIZaxvU2tBKdeqBJECJJHcBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-22T08:16+03:00"
     },
     "2026-10-22-news-acne-chalayan": {
-      "key": "0740f70bad0f",
-      "status": "preview_ready",
-      "at": "2026-10-22T08:15+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 90,
+      "file_id": "AgACAgIAAxkDAANaatmcSCzsFmGucq1fHDo47oLNQbUAAqMZaxvU2tBKrSonZAyqPNwBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-22T08:16+03:00"
     }
-  }
+  },
+  "held": {}
 }
