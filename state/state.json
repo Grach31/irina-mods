@@ -1,5 +1,5 @@
 {
-  "offset": 84639474,
+  "offset": 84639469,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -228,13 +228,11 @@
       "sent_at": "2026-10-22T08:16+03:00"
     },
     "2026-10-22-news-acne-chalayan": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 90,
       "file_id": "AgACAgIAAxkDAANaatmcSCzsFmGucq1fHDo47oLNQbUAAqMZaxvU2tBKrSonZAyqPNwBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-22T08:16+03:00",
-      "publish_at": "2026-10-22T21:32:52.208316+03:00",
-      "published_at": "2026-10-22T21:32+03:00"
+      "sent_at": "2026-10-22T08:16+03:00"
     }
   },
   "held": {}
