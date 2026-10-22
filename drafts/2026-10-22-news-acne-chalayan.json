@@ -3,7 +3,6 @@
   "type": "news",
   "daily": true,
   "slot": null,
-  "hold": true,
   "card": {
     "kicker": "НОВОСТИ МОДЫ",
     "year": "2026",
@@ -12,11 +11,7 @@
     "images": [
       {
         "url": "https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwc2cb4c0a/capsule/chalayan/chalayan-plp-shirt.jpg",
-        "fy": 0.2
-      },
-      {
-        "url": "https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwe9a2b602/capsule/chalayan/chalayan-plp-key.jpg",
-        "fy": 0.2
+        "fy": 0.3
       }
     ],
     "credits": "Фото: Acne Studios"
