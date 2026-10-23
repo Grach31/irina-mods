@@ -251,15 +251,15 @@
   },
   "held": {
     "2026-10-23-looks": {
-      "key": "c62f70233587",
+      "key": "c7191126d5bf",
       "status": "preview_ready",
-      "at": "2026-10-23T08:19+03:00"
+      "at": "2026-10-23T08:22+03:00"
     },
     "2026-10-23-news-fendi": {
-      "key": "4508374b465e",
+      "key": "5e20b74ebe4c",
       "status": "error",
       "error": "The read operation timed out",
-      "at": "2026-10-23T08:20+03:00"
+      "at": "2026-10-23T08:23+03:00"
     }
   }
 }
