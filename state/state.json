@@ -247,19 +247,27 @@
       "msg_id": 93,
       "file_id": "AgACAgIAAxkDAANdatrueScxYfjM8azuzhtXeFU-95YAAtkbaxuc7tlKXJW_TYn8eCcBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-23T08:19+03:00"
+    },
+    "2026-10-23-looks": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 98,
+      "file_ids": [
+        "AgACAgIAAxUHatrv0EhSRfiSjZ347kv0t1wCOtUAAuUbaxuc7tlKPgrDGnJifDoBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatrv0b_yTiRdHcnslliYuHSxjtAAAucbaxuc7tlKLEPr12oG0sQBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatrv0bFvHoLKLtEsFdPJbS6I9-YAAugbaxuc7tlK23hH7Pu8pf4BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHatrv0A48WHI8vsfbicOu8JrIfsUAAuYbaxuc7tlK5-17Pl4oVPYBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHatrv0EhSRfiSjZ347kv0t1wCOtUAAuUbaxuc7tlKPgrDGnJifDoBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-23T08:25+03:00"
     }
   },
   "held": {
-    "2026-10-23-looks": {
-      "key": "c7191126d5bf",
-      "status": "preview_ready",
-      "at": "2026-10-23T08:22+03:00"
-    },
     "2026-10-23-news-fendi": {
-      "key": "5e20b74ebe4c",
+      "key": "c8a5117e67a1",
       "status": "error",
       "error": "The read operation timed out",
-      "at": "2026-10-23T08:23+03:00"
+      "at": "2026-10-23T08:26+03:00"
     }
   }
 }
