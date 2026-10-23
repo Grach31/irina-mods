@@ -1,5 +1,5 @@
 {
-  "offset": 84639469,
+  "offset": 84639476,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -249,7 +249,7 @@
       "sent_at": "2026-10-23T08:19+03:00"
     },
     "2026-10-23-looks": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 98,
       "file_ids": [
@@ -259,7 +259,9 @@
         "AgACAgIAAxUHatrv0A48WHI8vsfbicOu8JrIfsUAAuYbaxuc7tlK5-17Pl4oVPYBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHatrv0EhSRfiSjZ347kv0t1wCOtUAAuUbaxuc7tlKPgrDGnJifDoBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-23T08:25+03:00"
+      "sent_at": "2026-10-23T08:25+03:00",
+      "publish_at": "2026-10-23T18:29:57.663965+03:00",
+      "published_at": "2026-10-23T18:29+03:00"
     },
     "2026-10-23-news-fendi": {
       "status": "sent",
