@@ -260,14 +260,14 @@
       ],
       "file_id": "AgACAgIAAxUHatrv0EhSRfiSjZ347kv0t1wCOtUAAuUbaxuc7tlKPgrDGnJifDoBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-23T08:25+03:00"
+    },
+    "2026-10-23-news-fendi": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 99,
+      "file_id": "AgACAgIAAxkDAANjatrwYmhH81aM6a6pB9Ibxi56J8oAAu0baxuc7tlKM6kTKDrRYDABAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-23T08:28+03:00"
     }
   },
-  "held": {
-    "2026-10-23-news-fendi": {
-      "key": "c8a5117e67a1",
-      "status": "error",
-      "error": "The read operation timed out",
-      "at": "2026-10-23T08:26+03:00"
-    }
-  }
+  "held": {}
 }
