@@ -1,5 +1,5 @@
 {
-  "offset": 84639469,
+  "offset": 84639475,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -235,11 +235,13 @@
       "sent_at": "2026-10-22T08:16+03:00"
     },
     "2026-10-23-askent-dream": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 92,
       "file_id": "AgACAgIAAxkDAANcatruXdDxkCm7_-gekwY3OyGxeS0AAtgbaxuc7tlKijzmP-Y64JkBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-23T08:19+03:00"
+      "sent_at": "2026-10-23T08:19+03:00",
+      "publish_at": "2026-10-23T14:28:02.499682+03:00",
+      "published_at": "2026-10-23T14:28+03:00"
     },
     "2026-10-23-mix-fur": {
       "status": "sent",
