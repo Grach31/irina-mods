@@ -25,6 +25,14 @@
    "kind": "daily"
   },
   {
+   "name": "Куртка на синтепоне с контрастной подкладкой",
+   "price": 11999,
+   "url": "https://limestore.com/ru_ru/product/36285-9075_479_412_cernilnyi_sinii",
+   "img": "https://a.cdn.lime-shine.com/p/719ed334785b526bbfd531e7fe0bec08.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Шерстяное полупальто ручной работы",
    "price": 15999,
    "url": "https://limestore.com/ru_ru/product/37653-7680_563_120_molocnyi",
@@ -33,18 +41,18 @@
    "kind": "daily"
   },
   {
-   "name": "Стеганый пуховик из шерсти с водоотталкивающим эффектом",
-   "price": 25999,
-   "url": "https://limestore.com/ru_ru/product/38583-6342_696_023_temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/3f59e3fe35955893aab428955abc6139.jpeg?w=1280&q=85",
+   "name": "Пуховик свободного кроя с поясом",
+   "price": 21999,
+   "url": "https://limestore.com/ru_ru/product/36521-8236_337_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/42f3c924ee0d524f8e3c77da2abf364d.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Хлопковая парка на кулиске с меховой отделкой",
-   "price": 21999,
-   "url": "https://limestore.com/ru_ru/product/37905-4648_020_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/6bd7c1597ac15bdbb60646cecfe12cb5.jpeg?w=1280&q=85",
+   "name": "Хлопковая парка на натуральном пуху",
+   "price": 25999,
+   "url": "https://limestore.com/ru_ru/product/37867-5828_337_201_temno_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/ad9e49de62e8500bbaef417fb77d6d4d.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -76,7 +84,7 @@
    "name": "Свитер из смесовой шерсти",
    "price": 5999,
    "url": "https://limestore.com/ru_ru/product/38575-3867_171_023_temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/37a13715fb415bab83a113b9e415dcfa.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/7305254427005014be4cd028f4c0666c.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -97,6 +105,14 @@
    "kind": "daily"
   },
   {
+   "name": "Мини-платье с подплечниками и драпировкой",
+   "price": 9999,
+   "url": "https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi",
+   "img": "https://a.cdn.lime-shine.com/p/3d5a4a35eb955cd19fb23592c1a32f7f.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Сетчатое мини-платье с оборками",
    "price": 5999,
    "url": "https://limestore.com/ru_ru/product/35526-0886_095_001_cernyi",
@@ -113,18 +129,10 @@
    "kind": "daily"
   },
   {
-   "name": "Миди-платье из ткани с отделкой под замшу",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38604-3190_832_607_temno_terrakotovyi",
-   "img": "https://a.cdn.lime-shine.com/p/5b84214b63f65021853836f58cf70c2b.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Мини-платье с подплечниками и драпировкой",
-   "price": 9999,
-   "url": "https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/3d5a4a35eb955cd19fb23592c1a32f7f.jpeg?w=1280&q=85",
+   "name": "Платье-свитер из 100% шерсти",
+   "price": 10999,
+   "url": "https://limestore.com/ru_ru/product/38759-5247_600_023_temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/fbaf3d723880578a9ed478a1663f8126.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -132,7 +140,7 @@
    "name": "Объемные брюки из футера",
    "price": 3599,
    "url": "https://limestore.com/ru_ru/product/28659_9744_900-seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/54f71bef2a90501397e744191f405f77.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/82af4415e9cd551f961c063fb793e371.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -225,18 +233,18 @@
    "kind": "daily"
   },
   {
-   "name": "Брюки клеш с разрезами",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/27053_9522_605-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/3525ab7162ed50df83491926552cb75c.jpeg?w=1280&q=85",
+   "name": "Брюки клеш со стрелками",
+   "price": 5599,
+   "url": "https://limestore.com/ru_ru/product/36853-1253_325_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/8182f1e0aa5f50afbb654a55bc7f9104.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Легинсы клеш из ткани интерлок с разрезами",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/30266_2524_605-2524_605_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/6b1f1c6311c55b39841237b3729b07c8.jpeg?w=1280&q=85",
+   "name": "Укороченные брюки из сатина",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38858-5089_014_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/6ca233657cf05d72b0f18e2e5c1b9009.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   }
@@ -499,10 +507,10 @@
    "kind": "daily"
   },
   {
-   "name": "Лонгслив с кружевом",
-   "price": 4599,
-   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/336576/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451112323_60.jpg",
+   "name": "Бархатное платье миди с драпировками",
+   "price": 9999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/333765/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451616522_415.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   }
@@ -809,14 +817,6 @@
    "kind": "dream"
   },
   {
-   "name": "Кожаные джинсы Relaxed Fit",
-   "price": 89900,
-   "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/",
-   "img": "https://www.ushatava.ru/upload/iblock/f5f/2z23391jqla3xb6324reee3z20azf3nj/ushatava_ctlg_fw3_2947.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Двухсторонняя куртка-дубленка",
    "price": 49900,
    "url": "https://www.ushatava.ru/store/w/novinki/dvukhstoronyaya-kurtka-dublenka-163a-83969/",
@@ -825,26 +825,18 @@
    "kind": "dream"
   },
   {
+   "name": "Блузка из шифона",
+   "price": 19900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
+   "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
    "name": "Двухсторонняя шуба на кулиске",
    "price": 65900,
    "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
    "img": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Платье-неглиже",
-   "price": 16900,
-   "url": "https://www.ushatava.ru/store/w/novinki/plate-neglizhe-chernyy-68780/",
-   "img": "https://www.ushatava.ru/upload/iblock/1ea/g82aa79j289dpq9c4v3oghvgpsgmj5fo/1-ushatava_fw4_6312.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Джинсы Bootcut",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dzhinsy-bootcut-82986/",
-   "img": "https://www.ushatava.ru/upload/iblock/57c/pyypl9obbdzsx5z1nmy24qmydw2cvk64/1-254.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -865,50 +857,10 @@
    "kind": "dream"
   },
   {
-   "name": "Классические брюки из тонкой шерсти",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
-   "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Платье-подъюбник из тонкой шерсти",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/plate-podyubnik-iz-tonkoy-shersti-83733/",
-   "img": "https://www.ushatava.ru/upload/iblock/cb9/8z7m7zjq96fugofj4smhooqaau5t5b4g/ushatava_ctlg_fw3_1079.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто",
-   "price": 57900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/",
-   "img": "https://www.ushatava.ru/upload/iblock/73a/naa7drfwkrmoevr6m7ltb7soq1ids549/ushatava_ctlg_fw3_1556.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Укороченные перчатки в клетку",
-   "price": 18900,
-   "url": "https://www.ushatava.ru/store/w/novinki/ukorochennye-perchatki-zheltaya-kletka-82602/",
-   "img": "https://www.ushatava.ru/upload/iblock/bb3/62vdo2b598rwafmouzd5h9mrqn8td8m5/106.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Пиджак-рубашка Dachi",
-   "price": 29900,
-   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-195b-83769/",
-   "img": "https://www.ushatava.ru/upload/iblock/f16/2ch27rq97vbgq0z8xfujbmi27xcixxod/ushatava-ctlg-fw3_2406.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Лонгслив Henley",
-   "price": 10900,
-   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
-   "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
+   "name": "Худи Inside Out",
+   "price": 24900,
+   "url": "https://www.ushatava.ru/store/w/novinki/khudi-inside-out-seryy-melanzh-70502/",
+   "img": "https://www.ushatava.ru/upload/iblock/e65/p0fc9s2s60emcp61avtkn5nq5oepenoa/ushatava_ctlg_fw3_1355.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -929,66 +881,50 @@
    "kind": "dream"
   },
   {
-   "name": "Худи Inside Out",
-   "price": 24900,
-   "url": "https://www.ushatava.ru/store/w/novinki/khudi-inside-out-seryy-melanzh-70502/",
-   "img": "https://www.ushatava.ru/upload/iblock/e65/p0fc9s2s60emcp61avtkn5nq5oepenoa/ushatava_ctlg_fw3_1355.jpg",
+   "name": "Строгое пальто",
+   "price": 57900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/",
+   "img": "https://www.ushatava.ru/upload/iblock/73a/naa7drfwkrmoevr6m7ltb7soq1ids549/ushatava_ctlg_fw3_1556.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Бомбер-худи",
-   "price": 45900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bomber-khudi-83871/",
-   "img": "https://www.ushatava.ru/upload/iblock/e63/3ca41kr4s3fgdadn3aab0lbvl8ofhq2l/ushatava_ctlg_fw3_1293.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Тонкий свитер Knot",
-   "price": 24900,
-   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83426/",
-   "img": "https://www.ushatava.ru/upload/iblock/8ed/fjcx3t19y0puxg1xxxle8a9qhwrgrc2d/ushatava_ctlg_fw3_1594_1_.jpg",
+   "name": "Укороченные перчатки в клетку",
+   "price": 18900,
+   "url": "https://www.ushatava.ru/store/w/novinki/ukorochennye-perchatki-zheltaya-kletka-82602/",
+   "img": "https://www.ushatava.ru/upload/iblock/bb3/62vdo2b598rwafmouzd5h9mrqn8td8m5/106.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
    "name": "Лонгслив Henley",
    "price": 10900,
-   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83575/",
-   "img": "https://www.ushatava.ru/upload/iblock/eea/ud32zdkh347v8bxqyuwn53i5ua8kfczl/ushatava_ctlg_fw3_1240.jpg",
+   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
+   "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Двухстороннее стеганое пальто",
-   "price": 69900,
-   "url": "https://www.ushatava.ru/store/w/novinki/vatnik-midi-006-83270/",
-   "img": "https://www.ushatava.ru/upload/iblock/2ee/gmd1j9nzbyhqu8uw7iovm36ngrg5afzm/132.jpg",
+   "name": "Кожаные джинсы Relaxed Fit",
+   "price": 89900,
+   "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/",
+   "img": "https://www.ushatava.ru/upload/iblock/f5f/2z23391jqla3xb6324reee3z20azf3nj/ushatava_ctlg_fw3_2947.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Блузка из шифона",
-   "price": 19900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
-   "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+   "name": "Платье-подъюбник из тонкой шерсти",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/plate-podyubnik-iz-tonkoy-shersti-83733/",
+   "img": "https://www.ushatava.ru/upload/iblock/cb9/8z7m7zjq96fugofj4smhooqaau5t5b4g/ushatava_ctlg_fw3_1079.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Тонкий свитер Knot",
-   "price": 24900,
-   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/",
-   "img": "https://www.ushatava.ru/upload/iblock/289/exi411ymycfm42e2hjfe7nt0fgbsz9c9/ushatava_ctlg_fw3_1623-_2_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Вязаные перчатки",
-   "price": 9900,
-   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83947/",
-   "img": "https://www.ushatava.ru/upload/iblock/538/q6a94v4991uxe62977nbpamj80n4hz9o/175.jpg",
+   "name": "Классические брюки из тонкой шерсти",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
+   "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1009,58 +945,34 @@
    "kind": "dream"
   },
   {
+   "name": "Бомбер-худи",
+   "price": 45900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bomber-khudi-83871/",
+   "img": "https://www.ushatava.ru/upload/iblock/e63/3ca41kr4s3fgdadn3aab0lbvl8ofhq2l/ushatava_ctlg_fw3_1293.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шарф с капюшоном",
+   "price": 29900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-ushatava-s-kapyushonom-83930/",
+   "img": "https://www.ushatava.ru/upload/iblock/ca0/awie3cz2ippyy4n89ohxg5h960n5nxug/ushatava_fw4_5296_1_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Тонкий свитер Knot",
+   "price": 24900,
+   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83426/",
+   "img": "https://www.ushatava.ru/upload/iblock/8ed/fjcx3t19y0puxg1xxxle8a9qhwrgrc2d/ushatava_ctlg_fw3_1594_1_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
    "name": "Вязаные перчатки",
    "price": 9900,
-   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/",
-   "img": "https://www.ushatava.ru/upload/iblock/9e7/qywb1rv2yu8j4mkeglh1d8dhiswv91t0/174.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто",
-   "price": 57900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/",
-   "img": "https://www.ushatava.ru/upload/iblock/eb8/4eyt9fun8c1yzxapnnadout49xsphi9q/ushatava_ctlg_fw3_1676.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Пиджак Subtle",
-   "price": 45900,
-   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
-   "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Сапоги-трубы",
-   "price": 59900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sapogi-truby-4601-chernyy-78826/",
-   "img": "https://www.ushatava.ru/upload/iblock/fe3/6dow6pu3hhn0msltbzbsymcrm205we9i/1_0124_ushatava_obtravka_2_2056.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Брюки со складками",
-   "price": 24900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bryuki-so-skladkami-012a-82388/",
-   "img": "https://www.ushatava.ru/upload/iblock/524/5yx7f2ggneokw33t4nbjkpg0a5b50qjj/ushatava_ctlg_fw3_2290.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Шерстяной шарф",
-   "price": 13900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83932/",
-   "img": "https://www.ushatava.ru/upload/iblock/9fb/6n9rcnpgv3pteh9qokug8ovbqtpg267b/12.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто мини",
-   "price": 49900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
-   "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
+   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83947/",
+   "img": "https://www.ushatava.ru/upload/iblock/538/q6a94v4991uxe62977nbpamj80n4hz9o/175.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1073,34 +985,18 @@
    "kind": "dream"
   },
   {
-   "name": "Пальто Slim Fit",
-   "price": 69900,
-   "url": "https://www.ushatava.ru/store/w/novinki/palto-slim-fit-83998/",
-   "img": "https://www.ushatava.ru/upload/iblock/836/0v7xabn251n9sx6og0wg7oojh2upikth/0-_109_.jpg",
+   "name": "Пиджак-рубашка Dachi",
+   "price": 29900,
+   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-195b-83769/",
+   "img": "https://www.ushatava.ru/upload/iblock/f16/2ch27rq97vbgq0z8xfujbmi27xcixxod/ushatava-ctlg-fw3_2406.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Сумка 90\\'s",
-   "price": 59900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sumka-90-s-83153/",
-   "img": "https://www.ushatava.ru/upload/iblock/574/vrfjgsrotow112zlhfaghxrhp8p2yi4m/63.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Ботильоны-трубы",
-   "price": 55900,
-   "url": "https://www.ushatava.ru/store/w/novinki/botilony-truby-050c-83012/",
-   "img": "https://www.ushatava.ru/upload/iblock/a18/desamvzly4ybmyy571m031h0bony1hk0/74.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Сорочка Sleek Fit",
-   "price": 17900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sorochka-sleek-s-dlinnym-rukavom--82530/",
-   "img": "https://www.ushatava.ru/upload/iblock/d35/3chen79r3dgqfqflweqfus13chbgzt07/45.jpg",
+   "name": "Тонкий свитер Knot",
+   "price": 24900,
+   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/",
+   "img": "https://www.ushatava.ru/upload/iblock/289/exi411ymycfm42e2hjfe7nt0fgbsz9c9/ushatava_ctlg_fw3_1623-_2_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1109,6 +1005,118 @@
    "price": 49900,
    "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/",
    "img": "https://www.ushatava.ru/upload/iblock/eb4/c4vsethxsvqsn47srcyzvk7w2ph13208/ushatava_fw4_5501.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Пиджак Subtle",
+   "price": 45900,
+   "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
+   "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки Baggy из футера",
+   "price": 16900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/",
+   "img": "https://www.ushatava.ru/upload/iblock/17c/r4b5llu84wqcnvaax7a521px6nbrba0k/ushatava_ctlg_fw3_2196.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Вязаные перчатки",
+   "price": 9900,
+   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/",
+   "img": "https://www.ushatava.ru/upload/iblock/9e7/qywb1rv2yu8j4mkeglh1d8dhiswv91t0/174.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шерстяной шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
+   "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто мини",
+   "price": 49900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
+   "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Кожаные сапоги-чулки",
+   "price": 59900,
+   "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-sapogi-chulki-83439/",
+   "img": "https://www.ushatava.ru/upload/iblock/c8c/ee02mjgiqkad6s5cfxrebu2l1aiqdybc/Kopiya-ushatava_obtravka_fw_8458-_1_-_2_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Вязаные перчатки",
+   "price": 9900,
+   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83944/",
+   "img": "https://www.ushatava.ru/upload/iblock/7ce/eiqp1pod3l245yod1ahja18gubm4wn46/184.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто",
+   "price": 57900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/",
+   "img": "https://www.ushatava.ru/upload/iblock/eb8/4eyt9fun8c1yzxapnnadout49xsphi9q/ushatava_ctlg_fw3_1676.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Двухстороннее стеганое пальто",
+   "price": 69900,
+   "url": "https://www.ushatava.ru/store/w/novinki/vatnik-midi-006-83270/",
+   "img": "https://www.ushatava.ru/upload/iblock/2ee/gmd1j9nzbyhqu8uw7iovm36ngrg5afzm/132.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Лонгслив Henley",
+   "price": 10900,
+   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83575/",
+   "img": "https://www.ushatava.ru/upload/iblock/eea/ud32zdkh347v8bxqyuwn53i5ua8kfczl/ushatava_ctlg_fw3_1240.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Сапоги-трубы",
+   "price": 59900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sapogi-truby-4601-chernyy-78826/",
+   "img": "https://www.ushatava.ru/upload/iblock/fe3/6dow6pu3hhn0msltbzbsymcrm205we9i/1_0124_ushatava_obtravka_2_2056.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шерстяной шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83932/",
+   "img": "https://www.ushatava.ru/upload/iblock/9fb/6n9rcnpgv3pteh9qokug8ovbqtpg267b/12.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Пальто Slim Fit",
+   "price": 69900,
+   "url": "https://www.ushatava.ru/store/w/novinki/palto-slim-fit-83998/",
+   "img": "https://www.ushatava.ru/upload/iblock/836/0v7xabn251n9sx6og0wg7oojh2upikth/0-_109_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Топ-неглиже с кружевом",
+   "price": 12900,
+   "url": "https://www.ushatava.ru/store/w/novinki/top-iz-neylona-s-kruzhevom-83366/",
+   "img": "https://www.ushatava.ru/upload/iblock/5cc/todx10ix617rx0wg1u5elij10nly3lzx/108.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
