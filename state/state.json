@@ -307,6 +307,13 @@
       "msg_id": 116,
       "file_id": "AgACAgIAAxkDAANnatxAeKaliqzf30JmcDdWET1dR4IAAhkeaxs0gelKHLVVzDRxeu4BAAMCAAN5AAM9BA",
       "sent_at": "2026-10-24T09:00+03:00"
+    },
+    "2026-10-24-lr-dresses": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 120,
+      "file_id": "AgACAgIAAxkDAAN4atySNh2L6XExy17Dx3XsP_4HSfoAAlQfaxs0gelKG6YgvDlzjjsBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-24T14:10+03:00"
     }
   },
   "held": {}
