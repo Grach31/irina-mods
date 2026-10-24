@@ -297,6 +297,22 @@
       "status": "error",
       "error": "HTTP Error 403: Forbidden",
       "at": "2026-10-24T08:12+03:00"
+    },
+    "2026-10-24-test1": {
+      "key": "57d6c36e2f48",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:19+03:00"
+    },
+    "2026-10-24-test2": {
+      "key": "8bb5334c8dee",
+      "status": "error",
+      "error": "HTTP Error 404: Not Found",
+      "at": "2026-10-24T08:19+03:00"
+    },
+    "2026-10-24-test3": {
+      "key": "7cf062fd2394",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:19+03:00"
     }
   }
 }
