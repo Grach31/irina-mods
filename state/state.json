@@ -283,20 +283,20 @@
       "msg_id": 102,
       "file_id": "AgACAgIAAxkDAANmatw-KmX2RMGHUkOXQ_A6D7IkDR8AAhIeaxs0gelK0okGVb8qhj4BAAMCAAN3AAM9BA",
       "sent_at": "2026-10-24T08:12+03:00"
+    },
+    "2026-10-24-news-lv-ski": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 103,
+      "file_id": "AgACAgIAAxkDAANnatxAeKaliqzf30JmcDdWET1dR4IAAhkeaxs0gelKHLVVzDRxeu4BAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-24T08:22+03:00"
     }
   },
   "held": {
     "2026-10-24-looks": {
-      "key": "05d8e35b799c",
-      "status": "error",
-      "error": "HTTP Error 404: Not Found",
-      "at": "2026-10-24T08:12+03:00"
-    },
-    "2026-10-24-news-lv-ski": {
-      "key": "9457587f8ff6",
-      "status": "error",
-      "error": "HTTP Error 403: Forbidden",
-      "at": "2026-10-24T08:12+03:00"
+      "key": "3097d82c627e",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:21+03:00"
     },
     "2026-10-24-test1": {
       "key": "57d6c36e2f48",
