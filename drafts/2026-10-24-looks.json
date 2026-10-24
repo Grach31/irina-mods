@@ -1,0 +1,125 @@
+{
+  "id": "2026-10-24-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на холодные выходные"
+  },
+  "looks": [
+    {
+      "title": "Бордо",
+      "items": [
+        {
+          "short": "Кожаный пиджак",
+          "name": "Пиджак из натуральной кожи",
+          "price": 54980,
+          "url": "https://www.2moodstore.com/collection/katalog/pidzhak_iz_naturalnoy_kozhi_bordovogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/fe5/bzyg9ihvt2ctgnkbtireazddqjx1d73x-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Ажурный свитер",
+          "name": "Ажурный свитер с шерстью и мохером",
+          "price": 4999,
+          "url": "https://limestore.com/ru_ru/product/38562-4502_475_601_temno_krasnyi",
+          "img": "https://a.cdn.lime-shine.com/p/08b56c4c71c9598cbbfaacee01421854.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Юбка миди",
+          "name": "Миди-юбка с шерстью и мохером",
+          "price": 4999,
+          "url": "https://limestore.com/ru_ru/product/38570-4503_475_601_temno_krasnyi",
+          "img": "https://a.cdn.lime-shine.com/p/32e31c0548e7533a8e529971a74f6c0c.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сапоги-чулки",
+          "name": "Кожаные сапоги-чулки",
+          "price": 59900,
+          "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-sapogi-chulki-83439/",
+          "img": "https://www.ushatava.ru/upload/iblock/c8c/ee02mjgiqkad6s5cfxrebu2l1aiqdybc/Kopiya-ushatava_obtravka_fw_8458-_1_-_2_.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    },
+    {
+      "title": "Серый меланж",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Строгое пальто",
+          "price": 57900,
+          "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/",
+          "img": "https://www.ushatava.ru/upload/iblock/eb8/4eyt9fun8c1yzxapnnadout49xsphi9q/ushatava_ctlg_fw3_1676.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Свитер Knot",
+          "name": "Тонкий свитер Knot",
+          "price": 24900,
+          "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/",
+          "img": "https://www.ushatava.ru/upload/iblock/289/exi411ymycfm42e2hjfe7nt0fgbsz9c9/ushatava_ctlg_fw3_1623-_2_.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Юбка из шерсти",
+          "name": "Юбка миди из шерсти",
+          "price": 15980,
+          "url": "https://www.2moodstore.com/collection/katalog/yubka_midi_iz_shersti_chernogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/838/d35qm8d18ystpt1hb5ru6ogy2axk1xyx-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Шарф",
+          "name": "Шерстяной шарф",
+          "price": 13900,
+          "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
+          "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    },
+    {
+      "title": "Чёрный и вишня",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Строгое пальто",
+          "price": 57900,
+          "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/",
+          "img": "https://www.ushatava.ru/upload/iblock/73a/naa7drfwkrmoevr6m7ltb7soq1ids549/ushatava_ctlg_fw3_1556.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Топ с кружевом",
+          "name": "Топ-неглиже с кружевом",
+          "price": 12900,
+          "url": "https://www.ushatava.ru/store/w/novinki/top-iz-neylona-s-kruzhevom-83366/",
+          "img": "https://www.ushatava.ru/upload/iblock/5cc/todx10ix617rx0wg1u5elij10nly3lzx/108.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки клеш",
+          "name": "Брюки клеш со стрелками",
+          "price": 5599,
+          "url": "https://limestore.com/ru_ru/product/36853-1253_325_001_cernyi",
+          "img": "https://a.cdn.lime-shine.com/p/8182f1e0aa5f50afbb654a55bc7f9104.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Вязаные перчатки",
+          "price": 9900,
+          "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83944/",
+          "img": "https://www.ushatava.ru/upload/iblock/7ce/eiqp1pod3l245yod1ahja18gubm4wn46/184.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа на холодные выходные — от тёплого бордо до строгого чёрного 🍷\n\n<b>1. Бордо</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/pidzhak_iz_naturalnoy_kozhi_bordovogo_tsveta/\">Кожаный пиджак</a> — 54 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/38562-4502_475_601_temno_krasnyi\">Ажурный свитер</a> — 4 999 ₽ · Lime\n<a href=\"https://limestore.com/ru_ru/product/38570-4503_475_601_temno_krasnyi\">Юбка миди</a> — 4 999 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/kozhanye-sapogi-chulki-83439/\">Сапоги-чулки</a> — 59 900 ₽ · Ushatava\n\n<b>2. Серый меланж</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/\">Пальто</a> — 57 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/\">Свитер Knot</a> — 24 900 ₽ · Ushatava\n<a href=\"https://www.2moodstore.com/collection/katalog/yubka_midi_iz_shersti_chernogo_tsveta/\">Юбка из шерсти</a> — 15 980 ₽ · 2MOOD\n<a href=\"https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/\">Шарф</a> — 13 900 ₽ · Ushatava\n\n<b>3. Чёрный и вишня</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/\">Пальто</a> — 57 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/top-iz-neylona-s-kruzhevom-83366/\">Топ с кружевом</a> — 12 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/36853-1253_325_001_cernyi\">Брюки клеш</a> — 5 599 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83944/\">Перчатки</a> — 9 900 ₽ · Ushatava\n\nКакой образ ваш — 1, 2 или 3?"
+}
