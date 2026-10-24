@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-24-testb4",
+  "type": "looks",
+  "daily": false,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на холодные выходные"
+  },
+  "looks": [
+    {
+      "title": "t",
+      "items": [
+        {
+          "short": "Шарф",
+          "name": "Шерстяной шарф",
+          "price": 13900,
+          "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
+          "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    }
+  ],
+  "text": "test"
+}

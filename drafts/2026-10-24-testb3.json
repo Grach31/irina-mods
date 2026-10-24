@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-24-testb3",
+  "type": "looks",
+  "daily": false,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на холодные выходные"
+  },
+  "looks": [
+    {
+      "title": "t",
+      "items": [
+        {
+          "short": "Юбка из шерсти",
+          "name": "Юбка миди из шерсти",
+          "price": 15980,
+          "url": "https://www.2moodstore.com/collection/katalog/yubka_midi_iz_shersti_chernogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/838/d35qm8d18ystpt1hb5ru6ogy2axk1xyx-jpg.webp",
+          "shop": "2MOOD"
+        }
+      ]
+    }
+  ],
+  "text": "test"
+}
