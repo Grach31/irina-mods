@@ -3,33 +3,15 @@
   "type": "news",
   "daily": true,
   "slot": null,
-  "hold": true,
   "card": {
     "kicker": "НОВОСТИ МОДЫ",
     "year": "LV Ski",
     "note": "зима 2026",
     "title": "Louis Vuitton едет в горы",
-    "images": [
-      {
-        "url": "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-sequin-alpine-knit-pullover--FWKL36F7E003_PM2_Front%20view.jpg",
-        "fy": 0.3
-      },
-      {
-        "url": "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-alpine-knit-cardigan--FWKC20CA3610_PM2_Front%20view.jpg",
-        "fy": 0.3
-      },
-      {
-        "url": "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-bijoux-print-ski-jacket--FWOW05F4B604_PM2_Front%20view.jpg",
-        "fy": 0.3
-      },
-      {
-        "url": "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-cortina-closed-mule--AVH05TSCDR_PM2_Front%20view.jpg",
-        "fy": 0.3
-      }
-    ],
-    "credits": "Фото: Louis Vuitton"
+    "images": [],
+    "credits": ""
   },
-  "text": "Louis Vuitton выпустил новую горнолыжную коллекцию LV Ski — и это тот случай, когда хочется в горы ради одних нарядов 🏔\n\nПалитра зимняя и очень нежная: снежно-белый, серебро, ледяные оттенки, кэмел, беж и шоколад, местами пыльная роза. Кашемир, шёлк, мех, денимы и мягкий трикотаж — свитеры с «альпийскими» узорами, даже с пайетками.\n\nИз обуви — сабо и сапоги Cortina, а среди сумок есть серебряная зеркальная Miroir: она отсылает к металлическим сундукам Louis Vuitton 1891 года.\n\nЯ бы взяла такой свитер с узором и носила в городе с прямыми джинсами и дублёнкой — апре- ски-вайб, но без лыж. А вы любите «горный» трикотаж?",
+  "text": "Louis Vuitton выпустил новую горнолыжную коллекцию LV Ski — и это тот случай, когда хочется в горы ради одних нарядов 🏔\n\nПалитра зимняя и очень нежная: снежно-белый, серебро, ледяные оттенки, кэмел, беж и шоколад, местами пыльная роза. Кашемир, шёлк, мех, денимы и мягкий трикотаж — свитеры с «альпийскими» узорами, даже с пайетками.\n\nИз обуви — сабо и сапоги Cortina, а среди сумок есть серебряная зеркальная Miroir: она отсылает к металлическим сундукам Louis Vuitton 1891 года.\n\nЯ бы взяла такой свитер с узором и носила в городе с прямыми джинсами и дублёнкой — вайб апре-ски, но без лыж. А вы любите «горный» трикотаж?",
   "sources": [
     "https://www.milanofinanza.it/fashion/louis-vuitton-svela-il-nuovo-drop-ski-202610161234431280",
     "https://10magazine.com/10-craves-loewe-miu-miu-stella-mccartney-louis-vuitton/",
