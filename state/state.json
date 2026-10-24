@@ -269,7 +269,34 @@
       "msg_id": 99,
       "file_id": "AgACAgIAAxkDAANjatrwYmhH81aM6a6pB9Ibxi56J8oAAu0baxuc7tlKM6kTKDrRYDABAAMCAAN5AAM9BA",
       "sent_at": "2026-10-23T08:28+03:00"
+    },
+    "2026-10-24-lime-cold": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 101,
+      "file_id": "AgACAgIAAxkDAANlatw-Gs3ICBBV8vaDco6dvf2qFp8AAhEeaxs0gelKgo1cYwkx1PYBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-24T08:11+03:00"
+    },
+    "2026-10-24-mix-evening": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 102,
+      "file_id": "AgACAgIAAxkDAANmatw-KmX2RMGHUkOXQ_A6D7IkDR8AAhIeaxs0gelK0okGVb8qhj4BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-24T08:12+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-24-looks": {
+      "key": "05d8e35b799c",
+      "status": "error",
+      "error": "HTTP Error 404: Not Found",
+      "at": "2026-10-24T08:12+03:00"
+    },
+    "2026-10-24-news-lv-ski": {
+      "key": "9457587f8ff6",
+      "status": "error",
+      "error": "HTTP Error 403: Forbidden",
+      "at": "2026-10-24T08:12+03:00"
+    }
+  }
 }
