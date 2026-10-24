@@ -1,5 +1,5 @@
 {
-  "offset": 84639480,
+  "offset": 84639477,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -193,13 +193,11 @@
       "sent_at": "2026-10-21T09:24+03:00"
     },
     "2026-10-21-mix-south-autumn": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 81,
       "file_id": "AgACAgIAAxkDAANPatidmj79gKQL2K_9hiuUO7N7j8QAAhQhaxvU2shKJ6ysyFC6zcIBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-21T14:54+03:00",
-      "publish_at": "2026-10-24T13:49:51.678609+03:00",
-      "published_at": "2026-10-24T13:49+03:00"
+      "sent_at": "2026-10-21T14:54+03:00"
     },
     "2026-10-22-2mood-cardigans": {
       "status": "sent",
@@ -311,9 +309,9 @@
     "2026-10-24-lr-dresses": {
       "status": "sent",
       "slot": null,
-      "msg_id": 120,
+      "msg_id": 123,
       "file_id": "AgACAgIAAxkDAAN4atySNh2L6XExy17Dx3XsP_4HSfoAAlQfaxs0gelKG6YgvDlzjjsBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-24T14:10+03:00"
+      "sent_at": "2026-10-24T14:29+03:00"
     }
   },
   "held": {}
