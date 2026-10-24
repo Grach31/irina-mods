@@ -17,14 +17,6 @@
    "kind": "daily"
   },
   {
-   "name": "Шерстяное пальто ручной работы",
-   "price": 17999,
-   "url": "https://limestore.com/ru_ru/product/30923_5767_561-temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/c6333b3ffd5652ce98fad5bafe61ebd2.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
    "name": "Куртка на синтепоне с контрастной подкладкой",
    "price": 11999,
    "url": "https://limestore.com/ru_ru/product/36285-9075_479_412_cernilnyi_sinii",
@@ -41,66 +33,74 @@
    "kind": "daily"
   },
   {
-   "name": "Пуховик свободного кроя с поясом",
+   "name": "Хлопковая парка на кулиске с меховой отделкой",
    "price": 21999,
-   "url": "https://limestore.com/ru_ru/product/36521-8236_337_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/42f3c924ee0d524f8e3c77da2abf364d.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/37905-4648_020_201_temno_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/6bd7c1597ac15bdbb60646cecfe12cb5.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Хлопковая парка на натуральном пуху",
-   "price": 25999,
-   "url": "https://limestore.com/ru_ru/product/37867-5828_337_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/ad9e49de62e8500bbaef417fb77d6d4d.jpeg?w=1280&q=85",
+   "name": "Двубортное пальто оверсайз из шерсти",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/30575_1278_485-1278_485_505_temnyi_purpurnyi",
+   "img": "https://a.cdn.lime-shine.com/p/13c7c18fd23b5af9a621fdf5fd340a7f.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Кардиган в азиатском стиле с подплечниками",
+   "name": "Двубортное пальто оверсайз из шерсти",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/37070-1278_539_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/7999b69d2f20549b979b5058d3b9300d.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган прямого кроя из 100% шерсти",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/35956-9191_454_032_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/21fbd9749a87515fb0d445bb951478de.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Жилет из 100% шерсти",
+   "price": 4999,
+   "url": "https://limestore.com/ru_ru/product/35940-9189_454_032_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/4294ded8653a5d358a378bf204656b45.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган из шерсти и мохера с подплечниками",
+   "price": 10999,
+   "url": "https://limestore.com/ru_ru/product/36504-7892_528_999_mnogocvetnyi",
+   "img": "https://a.cdn.lime-shine.com/p/3ff537dde2bc519bad6cfc69592542f2.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган из шерсти и кашемира",
    "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/38412-4504_322_120_molocnyi",
-   "img": "https://a.cdn.lime-shine.com/p/dd78ac56df2b58a480a5876697e40241.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/38503-1659_145_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/c99ab2f7fa8e50e0b1f3bdeb97a91747.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Ажурный свитер с шерстью и мохером",
-   "price": 4999,
-   "url": "https://limestore.com/ru_ru/product/38562-4502_475_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/08b56c4c71c9598cbbfaacee01421854.jpeg?w=1280&q=85",
+   "name": "Брюки из шерсти и кашемира",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38692-5033_145_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/ac8cdbbd3cab5b1f8e6a567d4dd596a6.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Миди-юбка с шерстью и мохером",
-   "price": 4999,
-   "url": "https://limestore.com/ru_ru/product/38570-4503_475_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/32e31c0548e7533a8e529971a74f6c0c.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свитер из смесовой шерсти",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38575-3867_171_023_temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/7305254427005014be4cd028f4c0666c.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свитер из смесовой шерсти",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38575-3867_171_273_svetlo_bezevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/c7f41a1263055ddaa901bb16a5d52bbe.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свитер из смесовой шерсти",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38575-3867_171_321_olivkovyi",
-   "img": "https://a.cdn.lime-shine.com/p/13ad2e942a5d5f5eb34966bea4161de1.jpeg?w=1280&q=85",
+   "name": "Свитер из полушерсти с воротником",
+   "price": 6999,
+   "url": "https://limestore.com/ru_ru/product/38274-3862_491_405_sinii_kobalt",
+   "img": "https://a.cdn.lime-shine.com/p/8d19540deebf51c8b13bb2abc8fd461f.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -517,14 +517,6 @@
  ],
  "2MOOD": [
   {
-   "name": "Шуба свободной посадки",
-   "price": 99980,
-   "url": "https://www.2moodstore.com/collection/katalog/shuba_svobodnoy_posadki_chernogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/51e/h04nwnnl77lgnnw72lhdr5aet3povsh4-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
    "name": "Брюки-аладдины из костюмной ткани",
    "price": 17980,
    "url": "https://www.2moodstore.com/collection/katalog/bryuki_alladiny_iz_kostyumnoy_tkani_serogo_tsveta/",
@@ -673,6 +665,14 @@
    "price": 19980,
    "url": "https://www.2moodstore.com/collection/katalog/bryuki_temno_korichnevogo_tsveta/",
    "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9bb/ovzcazsmrm69vo1qimthb3nkde33lfph-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
+   "name": "Куртка утепленная с клетчатой подкладкой",
+   "price": 26980,
+   "url": "https://www.2moodstore.com/collection/katalog/kurtka_uteplennaya_s_kletchatoy_podkladkoy_korichnevogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a58/htdrsy3p834axi0rodj22oq8c70adbtt-jpg.webp",
    "shop": "2MOOD",
    "kind": "daily"
   }
@@ -825,10 +825,10 @@
    "kind": "dream"
   },
   {
-   "name": "Блузка из шифона",
-   "price": 19900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
-   "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+   "name": "Кожаные угги",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
+   "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -849,10 +849,42 @@
    "kind": "dream"
   },
   {
+   "name": "Угги мини",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/uggi--83474/",
+   "img": "https://www.ushatava.ru/upload/iblock/4f0/kfq5f11c3e2ckf7nd7af5oherm67s8li/58.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
    "name": "Пиджак-рубашка Dachi",
    "price": 29900,
    "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-83765/",
    "img": "https://www.ushatava.ru/upload/iblock/f63/m34mxtch0qwedx2b659m9k361j6tsgay/97.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Платье-подъюбник из тонкой шерсти",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/plate-podyubnik-iz-tonkoy-shersti-83733/",
+   "img": "https://www.ushatava.ru/upload/iblock/cb9/8z7m7zjq96fugofj4smhooqaau5t5b4g/ushatava_ctlg_fw3_1079.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Классические брюки из тонкой шерсти",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
+   "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Блузка из шифона",
+   "price": 19900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
+   "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -909,22 +941,6 @@
    "price": 89900,
    "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/",
    "img": "https://www.ushatava.ru/upload/iblock/f5f/2z23391jqla3xb6324reee3z20azf3nj/ushatava_ctlg_fw3_2947.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Платье-подъюбник из тонкой шерсти",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/plate-podyubnik-iz-tonkoy-shersti-83733/",
-   "img": "https://www.ushatava.ru/upload/iblock/cb9/8z7m7zjq96fugofj4smhooqaau5t5b4g/ushatava_ctlg_fw3_1079.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Классические брюки из тонкой шерсти",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
-   "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -996,7 +1012,7 @@
    "name": "Тонкий свитер Knot",
    "price": 24900,
    "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/",
-   "img": "https://www.ushatava.ru/upload/iblock/289/exi411ymycfm42e2hjfe7nt0fgbsz9c9/ushatava_ctlg_fw3_1623-_2_.jpg",
+   "img": "https://www.ushatava.ru/upload/iblock/6d3/8dajas37ncz15ehqjw0jhmhsad98lq89/lamoda3_0000_1.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1101,22 +1117,6 @@
    "price": 13900,
    "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83932/",
    "img": "https://www.ushatava.ru/upload/iblock/9fb/6n9rcnpgv3pteh9qokug8ovbqtpg267b/12.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Пальто Slim Fit",
-   "price": 69900,
-   "url": "https://www.ushatava.ru/store/w/novinki/palto-slim-fit-83998/",
-   "img": "https://www.ushatava.ru/upload/iblock/836/0v7xabn251n9sx6og0wg7oojh2upikth/0-_109_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Топ-неглиже с кружевом",
-   "price": 12900,
-   "url": "https://www.ushatava.ru/store/w/novinki/top-iz-neylona-s-kruzhevom-83366/",
-   "img": "https://www.ushatava.ru/upload/iblock/5cc/todx10ix617rx0wg1u5elij10nly3lzx/108.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
