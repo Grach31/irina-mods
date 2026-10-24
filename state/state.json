@@ -273,28 +273,14 @@
     "2026-10-24-lime-cold": {
       "status": "sent",
       "slot": null,
-      "msg_id": 101,
+      "msg_id": 109,
       "file_id": "AgACAgIAAxkDAANlatw-Gs3ICBBV8vaDco6dvf2qFp8AAhEeaxs0gelKgo1cYwkx1PYBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-24T08:11+03:00"
-    },
-    "2026-10-24-mix-evening": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 102,
-      "file_id": "AgACAgIAAxkDAANmatw-KmX2RMGHUkOXQ_A6D7IkDR8AAhIeaxs0gelK0okGVb8qhj4BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-24T08:12+03:00"
-    },
-    "2026-10-24-news-lv-ski": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 103,
-      "file_id": "AgACAgIAAxkDAANnatxAeKaliqzf30JmcDdWET1dR4IAAhkeaxs0gelKHLVVzDRxeu4BAAMCAAN5AAM9BA",
-      "sent_at": "2026-10-24T08:22+03:00"
+      "sent_at": "2026-10-24T08:59+03:00"
     },
     "2026-10-24-looks": {
       "status": "sent",
       "slot": null,
-      "msg_id": 108,
+      "msg_id": 114,
       "file_ids": [
         "AgACAgIAAxUHatxAxq8B7zacs_dNYEfE_o-TeaYAAh8eaxs0gelKTlJV3qUhVRABAAMCAAN3AAM9BA",
         "AgACAgIAAxUHatxAw3ZjQAdPk0WkwOnH0K7OsAsAAhweaxs0gelKRUWW9D-BIjsBAAMCAAN3AAM9BA",
@@ -302,46 +288,22 @@
         "AgACAgIAAxUHatxAw_CRCHlMeDO347sMM9_i8esAAh0eaxs0gelKIrJHbg5AkUcBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHatxAxq8B7zacs_dNYEfE_o-TeaYAAh8eaxs0gelKTlJV3qUhVRABAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-24T08:23+03:00"
+      "sent_at": "2026-10-24T08:59+03:00"
+    },
+    "2026-10-24-mix-evening": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 115,
+      "file_id": "AgACAgIAAxkDAANmatw-KmX2RMGHUkOXQ_A6D7IkDR8AAhIeaxs0gelK0okGVb8qhj4BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-24T09:00+03:00"
+    },
+    "2026-10-24-news-lv-ski": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 116,
+      "file_id": "AgACAgIAAxkDAANnatxAeKaliqzf30JmcDdWET1dR4IAAhkeaxs0gelKHLVVzDRxeu4BAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-24T09:00+03:00"
     }
   },
-  "held": {
-    "2026-10-24-test1": {
-      "key": "57d6c36e2f48",
-      "status": "preview_ready",
-      "at": "2026-10-24T08:19+03:00"
-    },
-    "2026-10-24-test2": {
-      "key": "8bb5334c8dee",
-      "status": "error",
-      "error": "HTTP Error 404: Not Found",
-      "at": "2026-10-24T08:19+03:00"
-    },
-    "2026-10-24-test3": {
-      "key": "7cf062fd2394",
-      "status": "preview_ready",
-      "at": "2026-10-24T08:19+03:00"
-    },
-    "2026-10-24-testb1": {
-      "key": "1d5edcd41300",
-      "status": "preview_ready",
-      "at": "2026-10-24T08:20+03:00"
-    },
-    "2026-10-24-testb2": {
-      "key": "5e291416cc76",
-      "status": "error",
-      "error": "HTTP Error 404: Not Found",
-      "at": "2026-10-24T08:20+03:00"
-    },
-    "2026-10-24-testb3": {
-      "key": "cf5a90acccae",
-      "status": "preview_ready",
-      "at": "2026-10-24T08:20+03:00"
-    },
-    "2026-10-24-testb4": {
-      "key": "a0f001cae897",
-      "status": "preview_ready",
-      "at": "2026-10-24T08:20+03:00"
-    }
-  }
+  "held": {}
 }
