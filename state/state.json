@@ -313,6 +313,27 @@
       "key": "7cf062fd2394",
       "status": "preview_ready",
       "at": "2026-10-24T08:19+03:00"
+    },
+    "2026-10-24-testb1": {
+      "key": "1d5edcd41300",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:20+03:00"
+    },
+    "2026-10-24-testb2": {
+      "key": "5e291416cc76",
+      "status": "error",
+      "error": "HTTP Error 404: Not Found",
+      "at": "2026-10-24T08:20+03:00"
+    },
+    "2026-10-24-testb3": {
+      "key": "cf5a90acccae",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:20+03:00"
+    },
+    "2026-10-24-testb4": {
+      "key": "a0f001cae897",
+      "status": "preview_ready",
+      "at": "2026-10-24T08:20+03:00"
     }
   }
 }
