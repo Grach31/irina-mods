@@ -3,7 +3,6 @@
   "type": "history",
   "daily": true,
   "slot": null,
-  "hold": true,
   "card": {
     "kicker": "ИСТОРИЯ МОДЫ",
     "year": "1996",
