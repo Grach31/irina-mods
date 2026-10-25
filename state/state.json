@@ -333,18 +333,27 @@
       "msg_id": 126,
       "file_id": "AgACAgIAAxkDAAN-at2S4OmB4_WFTBsuvFOylJhj1CEAAvMhaxs0gfFKnRBtXg6S_NYBAAMCAAN5AAM9BA",
       "sent_at": "2026-10-25T08:25+03:00"
-    }
-  },
-  "held": {
+    },
     "2026-10-25-history": {
-      "key": "c43a74433864",
-      "status": "preview_ready",
-      "at": "2026-10-25T08:25+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 127,
+      "file_id": "AgACAgIAAxkDAAN_at2S_TMRrs-U885blDd5jYCEXlkAAvQhaxs0gfFKrYujF4WgBDcBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-25T08:26+03:00"
     },
     "2026-10-25-looks": {
-      "key": "2994d654bf15",
-      "status": "preview_ready",
-      "at": "2026-10-25T08:25+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 132,
+      "file_ids": [
+        "AgACAgIAAxUHat2TGYxtJOghzmxEUpSTjwMQ_LwAAvYhaxs0gfFKCdwB4H3Fb2cBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHat2TGcGuAU2Cc90emIuK0yTvZ4AAAvchaxs0gfFKdvAWdAFKj6cBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHat2TGY409Ad1tLRr3iXYjPfShZAAAvghaxs0gfFK5lpJLkaRtEYBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHat2TGZ8LZjQcnwaPLbWuhLVKbnUAAvUhaxs0gfFKqNTrdlZGDZQBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHat2TGYxtJOghzmxEUpSTjwMQ_LwAAvYhaxs0gfFKCdwB4H3Fb2cBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-25T08:26+03:00"
     }
-  }
+  },
+  "held": {}
 }
