@@ -1,5 +1,5 @@
 {
-  "offset": 84639477,
+  "offset": 84639481,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -314,11 +314,13 @@
       "sent_at": "2026-10-24T14:29+03:00"
     },
     "2026-10-25-lime-knit": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 124,
       "file_id": "AgACAgIAAxkDAAN8at2SvNooCIKXdHQbHoCum3qw4HcAAvEhaxs0gfFKPnkFSaouWJcBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-25T08:25+03:00"
+      "sent_at": "2026-10-25T08:25+03:00",
+      "publish_at": "2026-10-25T11:24:49.886397+03:00",
+      "published_at": "2026-10-25T11:24+03:00"
     },
     "2026-10-25-mix-outerwear": {
       "status": "sent",
