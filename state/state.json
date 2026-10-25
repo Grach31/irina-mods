@@ -312,7 +312,39 @@
       "msg_id": 123,
       "file_id": "AgACAgIAAxkDAAN4atySNh2L6XExy17Dx3XsP_4HSfoAAlQfaxs0gelKG6YgvDlzjjsBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-24T14:29+03:00"
+    },
+    "2026-10-25-lime-knit": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 124,
+      "file_id": "AgACAgIAAxkDAAN8at2SvNooCIKXdHQbHoCum3qw4HcAAvEhaxs0gfFKPnkFSaouWJcBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-25T08:25+03:00"
+    },
+    "2026-10-25-mix-outerwear": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 125,
+      "file_id": "AgACAgIAAxkDAAN9at2S38GITldopNuYgV2VzR6kFtAAAvIhaxs0gfFKAAH_QIxi-8BTAQADAgADdwADPQQ",
+      "sent_at": "2026-10-25T08:25+03:00"
+    },
+    "2026-10-25-news-loewe-on": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 126,
+      "file_id": "AgACAgIAAxkDAAN-at2S4OmB4_WFTBsuvFOylJhj1CEAAvMhaxs0gfFKnRBtXg6S_NYBAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-25T08:25+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-25-history": {
+      "key": "c43a74433864",
+      "status": "preview_ready",
+      "at": "2026-10-25T08:25+03:00"
+    },
+    "2026-10-25-looks": {
+      "key": "2994d654bf15",
+      "status": "preview_ready",
+      "at": "2026-10-25T08:25+03:00"
+    }
+  }
 }
