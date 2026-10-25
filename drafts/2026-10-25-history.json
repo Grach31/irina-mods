@@ -1,0 +1,31 @@
+{
+  "id": "2026-10-25-history",
+  "type": "history",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "ИСТОРИЯ МОДЫ",
+    "year": "1996",
+    "note": "30 лет назад",
+    "title": "Гальяно — в Dior, Маккуин — в Givenchy",
+    "images": [
+      {
+        "commons": "1998 pink ensemble by John Galliano for Dior.jpg",
+        "fy": 0.25
+      },
+      {
+        "commons": "Couture Givenchy by Alexander McQueen F-W 1998.jpg",
+        "fy": 0.25
+      }
+    ],
+    "credits": ""
+  },
+  "text": "<b>История моды · октябрь 1996</b>\n\nРовно 30 лет назад LVMH устроил главную «рокировку» 90-х: Джона Гальяно перевели из Givenchy в Dior — на место Джанфранко Ферре. В Dior он проработал до 2011 года, на фото — его розовый ансамбль для дома, 1998.\n\nА 14 октября 1996-го его место в Givenchy занял Александр Маккуин — британец, который начинал в 16 лет в ателье на Сэвил-роу. Первую кутюрную коллекцию для Givenchy он показал уже в январе 1997-го. На фото — Givenchy Couture Маккуина, осень–зима 1998.\n\nДва британца во главе двух легендарных парижских домов — так мода 90-х стала по-настоящему смелой 🖤\n\nКто вам ближе — романтик Гальяно или бунтарь Маккуин?",
+  "sources": [
+    "https://en.wikipedia.org/wiki/John_Galliano",
+    "https://www.fashion.at/who/mcqueen.htm",
+    "https://commons.wikimedia.org/wiki/File:1998_pink_ensemble_by_John_Galliano_for_Dior.jpg",
+    "https://commons.wikimedia.org/wiki/File:Couture_Givenchy_by_Alexander_McQueen_F-W_1998.jpg"
+  ]
+}

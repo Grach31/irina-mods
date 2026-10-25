@@ -1,0 +1,125 @@
+{
+  "id": "2026-10-25-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на холодный конец октября"
+  },
+  "looks": [
+    {
+      "title": "Total black",
+      "items": [
+        {
+          "short": "Пальто мини",
+          "name": "Строгое пальто мини",
+          "price": 49900,
+          "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/",
+          "img": "https://www.ushatava.ru/upload/iblock/eb4/c4vsethxsvqsn47srcyzvk7w2ph13208/ushatava_fw4_5501.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Боди",
+          "name": "Боди женское",
+          "price": 4999,
+          "url": "https://loverepublic.ru/catalog/odezhda/body/336018/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451102310_50.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Брюки",
+          "name": "Брюки из шерсти и кашемира",
+          "price": 7999,
+          "url": "https://limestore.com/ru_ru/product/38692-5033_145_001_cernyi",
+          "img": "https://a.cdn.lime-shine.com/p/ac8cdbbd3cab5b1f8e6a567d4dd596a6.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Угги",
+          "name": "Кожаные угги",
+          "price": 26900,
+          "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
+          "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    },
+    {
+      "title": "Хаки и шоколад",
+      "items": [
+        {
+          "short": "Парка с мехом",
+          "name": "Хлопковая парка на кулиске с меховой отделкой",
+          "price": 21999,
+          "url": "https://limestore.com/ru_ru/product/37905-4648_020_201_temno_koricnevyi",
+          "img": "https://a.cdn.lime-shine.com/p/6bd7c1597ac15bdbb60646cecfe12cb5.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Манишка",
+          "name": "Манишка из искусственного меха",
+          "price": 14980,
+          "url": "https://www.2moodstore.com/collection/katalog/manishka_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/10a/inl7vt7bd08tv1kuawecpcbj4136am4t-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Брюки-аладдины",
+          "name": "Брюки-аладдины из костюмной ткани",
+          "price": 17980,
+          "url": "https://www.2moodstore.com/collection/katalog/bryuki_alladiny_iz_kostyumnoy_tkani_serogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/1e6/hk9aad6d6ndd2h1jfppr39901tx2riqy-jpg.webp",
+          "shop": "2MOOD"
+        },
+        {
+          "short": "Угги мини",
+          "name": "Угги мини",
+          "price": 26900,
+          "url": "https://www.ushatava.ru/store/w/novinki/uggi--83474/",
+          "img": "https://www.ushatava.ru/upload/iblock/4f0/kfq5f11c3e2ckf7nd7af5oherm67s8li/58.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    },
+    {
+      "title": "Графит и шоколад",
+      "items": [
+        {
+          "short": "Пиджак",
+          "name": "Пиджак Subtle",
+          "price": 45900,
+          "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
+          "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Топ",
+          "name": "Блузка женская",
+          "price": 3599,
+          "url": "https://loverepublic.ru/catalog/odezhda/topy/336350/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451108319_20.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Брюки-клёш",
+          "name": "Брюки-клеш с разрезами",
+          "price": 7599,
+          "url": "https://loverepublic.ru/catalog/odezhda/bryuki/335427/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451223757_39.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Шарф-капюшон",
+          "name": "Шарф с капюшоном",
+          "price": 29900,
+          "url": "https://www.ushatava.ru/store/w/novinki/sharf-ushatava-s-kapyushonom-83930/",
+          "img": "https://www.ushatava.ru/upload/iblock/ca0/awie3cz2ippyy4n89ohxg5h960n5nxug/ushatava_fw4_5296_1_.jpg",
+          "shop": "Ushatava"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа на холодный конец октября — тепло, удобно и без скуки ✨\n\n<b>1. Total black</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/\">Пальто мини</a> — 49 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/body/336018/\">Боди</a> — 4 999 ₽ · Love Republic\n<a href=\"https://limestore.com/ru_ru/product/38692-5033_145_001_cernyi\">Брюки</a> — 7 999 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/\">Угги</a> — 26 900 ₽ · Ushatava\n\n<b>2. Хаки и шоколад</b>\n<a href=\"https://limestore.com/ru_ru/product/37905-4648_020_201_temno_koricnevyi\">Парка с мехом</a> — 21 999 ₽ · Lime\n<a href=\"https://www.2moodstore.com/collection/katalog/manishka_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/\">Манишка</a> — 14 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/bryuki_alladiny_iz_kostyumnoy_tkani_serogo_tsveta/\">Брюки-аладдины</a> — 17 980 ₽ · 2MOOD\n<a href=\"https://www.ushatava.ru/store/w/novinki/uggi--83474/\">Угги мини</a> — 26 900 ₽ · Ushatava\n\n<b>3. Графит и шоколад</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/\">Пиджак</a> — 45 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/topy/336350/\">Топ</a> — 3 599 ₽ · Love Republic\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/335427/\">Брюки-клёш</a> — 7 599 ₽ · Love Republic\n<a href=\"https://www.ushatava.ru/store/w/novinki/sharf-ushatava-s-kapyushonom-83930/\">Шарф-капюшон</a> — 29 900 ₽ · Ushatava\n\nКакой образ ваш — 1, 2 или 3?"
+}
