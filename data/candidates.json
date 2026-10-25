@@ -483,6 +483,14 @@
    "kind": "daily"
   },
   {
+   "name": "Лонгслив с кружевом",
+   "price": 4599,
+   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/336573/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451112323_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
    "name": "Мини-комбинезон",
    "price": 10999,
    "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/337063/",
@@ -503,14 +511,6 @@
    "price": 5999,
    "url": "https://loverepublic.ru/catalog/odezhda/yubki/338191/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451335202_27.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Бархатное платье миди с драпировками",
-   "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/333765/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451616522_415.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   }
