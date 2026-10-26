@@ -355,7 +355,34 @@
       ],
       "file_id": "AgACAgIAAxUHat2TGYxtJOghzmxEUpSTjwMQ_LwAAvYhaxs0gfFKCdwB4H3Fb2cBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-25T08:26+03:00"
+    },
+    "2026-10-26-lr-lace": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 134,
+      "file_id": "AgACAgIAAxkDAAOGat7hiF39x8PQ7LHRWLbycjX3yjAAAiEZaxsOdPhKj63X314l78MBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-26T08:13+03:00"
+    },
+    "2026-10-26-mix-grey-layers": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 135,
+      "file_id": "AgACAgIAAxkDAAOHat7hjk7rQg6L3I_DKO6-EUkheyQAAiMZaxsOdPhKCioky-fTPtIBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-26T08:13+03:00"
+    },
+    "2026-10-26-news-gucci-core": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 136,
+      "file_id": "AgACAgIAAxkDAAOIat7hj9LJyuTooNyR9GZRx42RJcYAAiQZaxsOdPhKG5Tx3J019D8BAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-26T08:13+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-26-looks": {
+      "key": "c3f6265f6d2d",
+      "status": "preview_ready",
+      "at": "2026-10-26T08:13+03:00"
+    }
+  }
 }
