@@ -1,0 +1,101 @@
+{
+  "id": "2026-10-26-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "на новую неделю"
+  },
+  "looks": [
+    {
+      "title": "Чёрный и красный",
+      "items": [
+        {
+          "short": "Бомбер-худи",
+          "name": "Бомбер-худи",
+          "price": 45900,
+          "url": "https://www.ushatava.ru/store/w/novinki/bomber-khudi-83871/",
+          "img": "https://www.ushatava.ru/upload/iblock/e63/3ca41kr4s3fgdadn3aab0lbvl8ofhq2l/ushatava_ctlg_fw3_1293.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Лонгслив Henley",
+          "name": "Лонгслив Henley",
+          "price": 10900,
+          "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83571/",
+          "img": "https://www.ushatava.ru/upload/iblock/bd9/x7o7feb4tv2qlx5ek1p6v9bvmcm7tzgk/ushatava_ctlg_fw3_1198.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки",
+          "name": "Брюки женские",
+          "price": 4599,
+          "url": "https://loverepublic.ru/catalog/odezhda/bryuki/332686/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/LR27112/thumb/600_9999/LR2711201732_50.jpg",
+          "shop": "Love Republic"
+        }
+      ]
+    },
+    {
+      "title": "Слива и крем",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Двубортное пальто оверсайз из шерсти",
+          "price": 15999,
+          "url": "https://limestore.com/ru_ru/product/30575_1278_485-1278_485_505_temnyi_purpurnyi",
+          "img": "https://a.cdn.lime-shine.com/p/13c7c18fd23b5af9a621fdf5fd340a7f.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Топ",
+          "name": "Блузка женская",
+          "price": 3599,
+          "url": "https://loverepublic.ru/catalog/odezhda/topy/336343/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451108319_60.jpg",
+          "shop": "Love Republic"
+        },
+        {
+          "short": "Брюки из сатина",
+          "name": "Укороченные брюки из сатина",
+          "price": 7999,
+          "url": "https://limestore.com/ru_ru/product/38858-5089_014_001_cernyi",
+          "img": "https://a.cdn.lime-shine.com/p/6ca233657cf05d72b0f18e2e5c1b9009.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        }
+      ]
+    },
+    {
+      "title": "Серый и пудра",
+      "items": [
+        {
+          "short": "Пальто мини",
+          "name": "Строгое пальто мини",
+          "price": 49900,
+          "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
+          "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Худи",
+          "name": "Худи Inside Out",
+          "price": 24900,
+          "url": "https://www.ushatava.ru/store/w/novinki/khudi-inside-out-seryy-melanzh-70502/",
+          "img": "https://www.ushatava.ru/upload/iblock/e65/p0fc9s2s60emcp61avtkn5nq5oepenoa/ushatava_ctlg_fw3_1355.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Юбка миди",
+          "name": "Трикотажная юбка миди с шерстью",
+          "price": 5999,
+          "url": "https://loverepublic.ru/catalog/odezhda/yubki/338173/",
+          "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451335202_94.jpg",
+          "shop": "Love Republic"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа на новую неделю — от строгого до совсем уютного ✨\n\n<b>1. Чёрный и красный</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/bomber-khudi-83871/\">Бомбер-худи</a> — 45 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/longsliv-henley-83571/\">Лонгслив Henley</a> — 10 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/332686/\">Брюки</a> — 4 599 ₽ · Love Republic\n\n<b>2. Слива и крем</b>\n<a href=\"https://limestore.com/ru_ru/product/30575_1278_485-1278_485_505_temnyi_purpurnyi\">Пальто</a> — 15 999 ₽ · Lime\n<a href=\"https://loverepublic.ru/catalog/odezhda/topy/336343/\">Топ</a> — 3 599 ₽ · Love Republic\n<a href=\"https://limestore.com/ru_ru/product/38858-5089_014_001_cernyi\">Брюки из сатина</a> — 7 999 ₽ · Lime\n\n<b>3. Серый и пудра</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/\">Пальто мини</a> — 49 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/khudi-inside-out-seryy-melanzh-70502/\">Худи</a> — 24 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/yubki/338173/\">Юбка миди</a> — 5 999 ₽ · Love Republic\n\nКакой образ ваш — 1, 2 или 3?"
+}
