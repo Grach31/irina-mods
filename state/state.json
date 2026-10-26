@@ -391,13 +391,14 @@
       "sent_at": "2026-10-26T08:14+03:00",
       "publish_at": "2026-10-26T12:52:30.017367+03:00",
       "published_at": "2026-10-26T12:52+03:00"
+    },
+    "2026-10-26-sela-wool": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 145,
+      "file_id": "AgACAgIAAxkDAAORat-MZhS2XLQpv9dy-WKG_wAB-W3hAAKZHWsbDnT4SqSL0G-gvUm_AQADAgADdwADPQQ",
+      "sent_at": "2026-10-26T20:22+03:00"
     }
   },
-  "held": {
-    "2026-10-26-sela-wool": {
-      "key": "b49255f1bd32",
-      "status": "preview_ready",
-      "at": "2026-10-26T20:21+03:00"
-    }
-  }
+  "held": {}
 }
