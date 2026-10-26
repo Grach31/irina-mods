@@ -1,5 +1,5 @@
 {
-  "offset": 84639483,
+  "offset": 84639484,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -393,11 +393,13 @@
       "published_at": "2026-10-26T12:52+03:00"
     },
     "2026-10-26-sela-wool": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 145,
       "file_id": "AgACAgIAAxkDAAORat-MZhS2XLQpv9dy-WKG_wAB-W3hAAKZHWsbDnT4SqSL0G-gvUm_AQADAgADdwADPQQ",
-      "sent_at": "2026-10-26T20:22+03:00"
+      "sent_at": "2026-10-26T20:22+03:00",
+      "publish_at": "2026-10-26T20:23:02.017549+03:00",
+      "published_at": "2026-10-26T20:23+03:00"
     }
   },
   "held": {}
