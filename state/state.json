@@ -1,5 +1,5 @@
 {
-  "offset": 84639481,
+  "offset": 84639482,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -378,7 +378,7 @@
       "sent_at": "2026-10-26T08:13+03:00"
     },
     "2026-10-26-looks": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 141,
       "file_ids": [
@@ -388,7 +388,9 @@
         "AgACAgIAAxUHat7hxZCpxiAdHfAMWyH0iAjMg_IAAigZaxsOdPhK9OeJApuCyxgBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHat7hxc4kQahfYMwIls4blI3QAhIAAikZaxsOdPhKffRBu8DFPm0BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-26T08:14+03:00"
+      "sent_at": "2026-10-26T08:14+03:00",
+      "publish_at": "2026-10-26T12:52:30.017367+03:00",
+      "published_at": "2026-10-26T12:52+03:00"
     }
   },
   "held": {}
