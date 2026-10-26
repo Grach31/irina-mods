@@ -17,6 +17,14 @@
    "kind": "daily"
   },
   {
+   "name": "Утепленное пальто на кулиске",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/37229-8099_491_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/d99e377ccea45542b72511ef260e63d4.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Куртка на синтепоне с контрастной подкладкой",
    "price": 11999,
    "url": "https://limestore.com/ru_ru/product/36285-9075_479_412_cernilnyi_sinii",
@@ -140,7 +148,7 @@
    "name": "Объемные брюки из футера",
    "price": 3599,
    "url": "https://limestore.com/ru_ru/product/28659_9744_900-seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/82af4415e9cd551f961c063fb793e371.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/0104f7e16ea95a98b644eca51febf7ef.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -295,6 +303,22 @@
    "price": 8999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/336049/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451607513_60.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Халат женский",
+   "price": 5599,
+   "url": "https://loverepublic.ru/catalog/odezhda/belye/360717/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64517/thumb/600_9999/6451705110_22.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Халат женский",
+   "price": 5599,
+   "url": "https://loverepublic.ru/catalog/odezhda/belye/360714/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64517/thumb/600_9999/6451705110_60.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
@@ -505,17 +529,17 @@
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451621526_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
-  },
-  {
-   "name": "Трикотажная юбка миди с шерстью",
-   "price": 5999,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/338191/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451335202_27.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
   }
  ],
  "2MOOD": [
+  {
+   "name": "Пальто длинное с воротником из натурального меха",
+   "price": 39980,
+   "url": "https://www.2moodstore.com/collection/katalog/palto_dlinnoe_s_vorotnikom_iz_naturalnogo_mekha_chernogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/d61/9wp84865p0f1zxtzgourbsqqvfyr6qes-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
   {
    "name": "Брюки-аладдины из костюмной ткани",
    "price": 17980,
@@ -665,14 +689,6 @@
    "price": 19980,
    "url": "https://www.2moodstore.com/collection/katalog/bryuki_temno_korichnevogo_tsveta/",
    "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/9bb/ovzcazsmrm69vo1qimthb3nkde33lfph-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка утепленная с клетчатой подкладкой",
-   "price": 26980,
-   "url": "https://www.2moodstore.com/collection/katalog/kurtka_uteplennaya_s_kletchatoy_podkladkoy_korichnevogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a58/htdrsy3p834axi0rodj22oq8c70adbtt-jpg.webp",
    "shop": "2MOOD",
    "kind": "daily"
   }
