@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-27-news-moncler",
+  "type": "news",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "НОВОСТИ МОДЫ",
+    "year": "Moncler",
+    "note": "Re/Icons 2026",
+    "title": "Шер, Дженни и Грейс Джонс",
+    "images": [
+      {
+        "url": "https://www.sttinfo.fi/data/images/public/58763726/72415536/dfdec06f-a3ab-48ba-b241-21e37c897fcf-w_780.jpg",
+        "fy": 0.2
+      }
+    ],
+    "credits": "Фото: Moncler"
+  },
+  "text": "Moncler достал из архива свои самые легендарные пуховики — и позвал в кампанию Шер, Дженни и Грейс Джонс 🏔\n\nКоллекция Re/Icons переосмысляет вещи, с которых всё начиналось. Karakorum — пуховик, сшитый в 1954 году для итальянской экспедиции, первой поднявшейся на K2. Теперь он глянцевый, лёгкий, со съёмным капюшоном: у Дженни — чёрный, у Грейс Джонс — глубокий фиолетовый.\n\nШер — в белом коротком Himalaya и чёрной куртке Verone, культовой вещи миланских паниннари 80-х. А жилет Tibb теперь двусторонний, и карамельный — прям любовь.\n\nСнимал кампанию Гэбриел Мозес, вдохновляясь архивными фото альпиниста Лионеля Террая.\n\nКороткий пуховик с капюшоном — берём в зиму?",
+  "sources": [
+    "https://www.sttinfo.fi/tiedote/72415536/moncler-reicons-cher-jennie-and-grace-jones-redefine-what-it-means-to-be-a-pioneer?publisherId=58763726",
+    "https://hypebeast.com/2026/10/moncler-re-icons-2026-collection-info",
+    "https://hypebeast.com/2026/10/cher-grace-jones-jennie-moncler-reicons-campaign-info",
+    "https://www.nssmag.com/en/fashion/47278/moncler-re-icons-brings-together-three-pop-legends-to-reinterpret-the-mountain-archives"
+  ]
+}
