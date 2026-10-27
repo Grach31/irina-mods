@@ -414,13 +414,14 @@
       "msg_id": 147,
       "file_id": "AgACAgIAAxkDAAOTauA1-Y8goB2kI1cx-8T7BmX0S28AAjMcaxtnWQhLdVpVlcoSFmMBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-27T08:26+03:00"
+    },
+    "2026-10-27-news-moncler": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 148,
+      "file_id": "AgACAgIAAxkDAAOUauA3nPtLXEmPqIj_XyG7pt_DvZQAAjUcaxtnWQhLwgWSICDriLoBAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-27T08:33+03:00"
     }
   },
-  "held": {
-    "2026-10-27-news-moncler": {
-      "key": "3364dfed495e",
-      "status": "preview_ready",
-      "at": "2026-10-27T08:31+03:00"
-    }
-  }
+  "held": {}
 }
