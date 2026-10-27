@@ -459,10 +459,10 @@
   },
   "held": {
     "2026-10-27-mix-divno-mono": {
-      "key": "8e6d87eaa239",
+      "key": "115a4520a0ee",
       "status": "error",
-      "error": "'ascii' codec can't encode characters in position 45-48: ordinal not in range(128)",
-      "at": "2026-10-27T15:18+03:00"
+      "error": "HTTP Error 403: Forbidden",
+      "at": "2026-10-27T15:20+03:00"
     }
   }
 }
