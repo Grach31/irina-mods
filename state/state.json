@@ -415,17 +415,10 @@
       "file_id": "AgACAgIAAxkDAAOTauA1-Y8goB2kI1cx-8T7BmX0S28AAjMcaxtnWQhLdVpVlcoSFmMBAAMCAAN3AAM9BA",
       "sent_at": "2026-10-27T08:26+03:00"
     },
-    "2026-10-27-news-moncler": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 148,
-      "file_id": "AgACAgIAAxkDAAOUauA3nPtLXEmPqIj_XyG7pt_DvZQAAjUcaxtnWQhLwgWSICDriLoBAAMCAAN5AAM9BA",
-      "sent_at": "2026-10-27T08:33+03:00"
-    },
     "2026-10-27-looks": {
       "status": "sent",
       "slot": null,
-      "msg_id": 153,
+      "msg_id": 158,
       "file_ids": [
         "AgACAgIAAxUHauBPhrTksw6CUQSK4gkgWCnCZ7EAApgcaxtnWQhLbxOfbk915yoBAAMCAAN3AAM9BA",
         "AgACAgIAAxUHauBPhlObK5cFeLtvGef86iNtiRwAApccaxtnWQhLIBHJz_7K574BAAMCAAN3AAM9BA",
@@ -433,7 +426,14 @@
         "AgACAgIAAxUHauBPhl_LwCknlCmYD9ewj21kaaAAApYcaxtnWQhL_91RbnEeLl4BAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHauBPhrTksw6CUQSK4gkgWCnCZ7EAApgcaxtnWQhLbxOfbk915yoBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-27T10:15+03:00"
+      "sent_at": "2026-10-27T10:43+03:00"
+    },
+    "2026-10-27-news-moncler": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 159,
+      "file_id": "AgACAgIAAxkDAAOUauA3nPtLXEmPqIj_XyG7pt_DvZQAAjUcaxtnWQhLwgWSICDriLoBAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-27T10:43+03:00"
     }
   },
   "held": {}
