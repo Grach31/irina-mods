@@ -1,5 +1,5 @@
 {
-  "offset": 84639486,
+  "offset": 84639487,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -438,7 +438,7 @@
       "sent_at": "2026-10-27T10:43+03:00"
     },
     "2026-10-27-gloria-jeans": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 170,
       "file_ids": [
@@ -452,7 +452,9 @@
         "AgACAgIAAxUHauCLUsC-u7VnXNdOsX-wAmaWgAoAAuUdaxtnWQhLgEeXXwUGK7IBAAMCAAN5AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHauCLUi6Rw0Ri63rT0x-91Ya_DskAAucdaxtnWQhLGvphOHiQiJABAAMCAAN5AAM9BA",
-      "sent_at": "2026-10-27T14:30+03:00"
+      "sent_at": "2026-10-27T14:30+03:00",
+      "publish_at": "2026-10-27T14:32:57.524994+03:00",
+      "published_at": "2026-10-27T14:32+03:00"
     }
   },
   "held": {}
