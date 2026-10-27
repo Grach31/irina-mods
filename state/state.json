@@ -400,7 +400,27 @@
       "sent_at": "2026-10-26T20:22+03:00",
       "publish_at": "2026-10-26T20:23:02.017549+03:00",
       "published_at": "2026-10-26T20:23+03:00"
+    },
+    "2026-10-27-mix-dark-base": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 146,
+      "file_id": "AgACAgIAAxkDAAOSauA18AQdc_98DpHCgAVxEptI_zUAAjIcaxtnWQhLplBDYTtEbf8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-27T08:26+03:00"
+    },
+    "2026-10-27-ushatava-dream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 147,
+      "file_id": "AgACAgIAAxkDAAOTauA1-Y8goB2kI1cx-8T7BmX0S28AAjMcaxtnWQhLdVpVlcoSFmMBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-27T08:26+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-27-news-moncler": {
+      "key": "edc58d3fd1ad",
+      "status": "preview_ready",
+      "at": "2026-10-27T08:26+03:00"
+    }
+  }
 }
