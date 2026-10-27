@@ -1,5 +1,5 @@
 {
-  "offset": 84639484,
+  "offset": 84639485,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -402,11 +402,13 @@
       "published_at": "2026-10-26T20:23+03:00"
     },
     "2026-10-27-mix-dark-base": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 146,
       "file_id": "AgACAgIAAxkDAAOSauA18AQdc_98DpHCgAVxEptI_zUAAjIcaxtnWQhLplBDYTtEbf8BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-27T08:26+03:00"
+      "sent_at": "2026-10-27T08:26+03:00",
+      "publish_at": "2026-10-27T12:06:47.621625+03:00",
+      "published_at": "2026-10-27T12:06+03:00"
     },
     "2026-10-27-ushatava-dream": {
       "status": "sent",
