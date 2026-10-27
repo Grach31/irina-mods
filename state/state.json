@@ -436,6 +436,23 @@
       "msg_id": 159,
       "file_id": "AgACAgIAAxkDAAOUauA3nPtLXEmPqIj_XyG7pt_DvZQAAjUcaxtnWQhLwgWSICDriLoBAAMCAAN5AAM9BA",
       "sent_at": "2026-10-27T10:43+03:00"
+    },
+    "2026-10-27-gloria-jeans": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 170,
+      "file_ids": [
+        "AgACAgIAAxUHauCLUi6Rw0Ri63rT0x-91Ya_DskAAucdaxtnWQhLGvphOHiQiJABAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUkkGu0JUoyKEepcvbLFZAiIAAuAdaxtnWQhL_75I-68w7EABAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUmR72LpwFfnAlDkFjwOOEFsAAuEdaxtnWQhLC1dk-qGFwvoBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUqs6O2oB9CURdFxwQjW06YUAAuIdaxtnWQhLY9cVGWgpfpYBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUomn_qnSrK-F1fFgTTxJdMEAAuYdaxtnWQhLkIzm1a6I9UIBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUgYriPyG5QZp0Pd5NB7mArkAAuMdaxtnWQhLLqHV0lAXuMQBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUqsz986wUh-BNiqx90lrbVEAAuQdaxtnWQhLf12lnux_HDgBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHauCLUsC-u7VnXNdOsX-wAmaWgAoAAuUdaxtnWQhLgEeXXwUGK7IBAAMCAAN5AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHauCLUi6Rw0Ri63rT0x-91Ya_DskAAucdaxtnWQhLGvphOHiQiJABAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-27T14:30+03:00"
     }
   },
   "held": {}
