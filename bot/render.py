@@ -36,6 +36,18 @@ def load(url):
     return im.convert("RGB")
 
 
+def photo(src, root, max_side=2048):
+    """Готовое фото для альбома: ссылка или путь в репозитории данных; большие уменьшаем под Telegram."""
+    if src.startswith(("http://", "https://")):
+        im = load(src)
+    else:
+        with Image.open(os.path.join(root, src)) as f:
+            im = ImageOps.exif_transpose(f).convert("RGB")
+    if max(im.size) > max_side:
+        im.thumbnail((max_side, max_side), Image.LANCZOS)
+    return im
+
+
 FREE = re.compile(r"^(public domain|cc0( 1\.0)?|cc[ -]by(-sa)?([ -]\d\.\d)?)(\s|$)", re.I)
 
 

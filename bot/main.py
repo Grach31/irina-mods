@@ -221,9 +221,13 @@ def draw(draft):
 
 
 def draw_all(draft):
-    """Все картинки черновика: карусель образов (type "looks") — несколько слайдов, остальное — одна."""
+    """Все картинки черновика: карусель образов (type "looks") — несколько слайдов, альбом (type "album") —
+    готовые фото, остальное — одна."""
     if draft.get("type") == "looks":
         return render.looks_carousel(draft)
+    if draft.get("type") == "album":
+        # готовые фото как есть (до 10 — лимит альбома Telegram): пути в репозитории или ссылки
+        return [render.photo(src, ROOT) for src in draft["photos"][:10]]
     return [draw(draft)]
 
 
