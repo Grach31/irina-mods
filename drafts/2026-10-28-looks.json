@@ -1,0 +1,124 @@
+{
+  "id": "2026-10-28-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "с мехом на первые морозы"
+  },
+  "looks": [
+    {
+      "title": "Шоколад",
+      "items": [
+        {
+          "short": "Шуба",
+          "name": "Шуба с английским воротником",
+          "price": 59900,
+          "url": "https://www.ushatava.ru/store/w/novinki/shuba-mini-s-angliyskim-vorotnikom-84284/",
+          "img": "https://www.ushatava.ru/upload/iblock/463/gj4i62gpat9fr1um0b1n2cyefhj2eksx/6.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Лонгслив",
+          "name": "Лонгслив Henley",
+          "price": 10900,
+          "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
+          "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки",
+          "name": "Брюки из твила с шерстью",
+          "price": 8999,
+          "url": "https://limestore.com/ru_ru/product/38238-4283_416_001_cernyi",
+          "img": "https://a.cdn.lime-shine.com/p/841aa8b450d35db0a7ac031c64194804.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка ПОУЧ мини",
+          "price": 29000,
+          "url": "https://askent.ru/cat/sumki/cumka_38/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/110/900_1095_1/97qc27law6tlaahbqfkfdojnrjpbk4of.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Мех и серый меланж",
+      "items": [
+        {
+          "short": "Шуба-подложка",
+          "name": "Шуба-подложка",
+          "price": 65900,
+          "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
+          "img": "https://www.ushatava.ru/upload/iblock/bf1/0tnmli9bq7g5ko5bybzs6qr6jdfbu5c0/48.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Митенки",
+          "name": "Короткие митенки",
+          "price": 7900,
+          "url": "https://www.ushatava.ru/store/w/novinki/korotkie-mitenki-83920/",
+          "img": "https://www.ushatava.ru/upload/iblock/90b/dht3fuhn58vqem28oztsarpssbf65icj/172.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки с ангорой",
+          "name": "Трикотажные брюки с ангорой и шерстью",
+          "price": 5999,
+          "url": "https://limestore.com/ru_ru/product/37597-2887_465_033_dymcato_seryi_melanz",
+          "img": "https://a.cdn.lime-shine.com/p/83f61679964955ae9dd2b4098c52870d.jpeg?w=1280&q=85",
+          "shop": "Lime"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка БИССА",
+          "price": 25500,
+          "url": "https://askent.ru/cat/sumki/sumka_1170/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/c66/900_1095_1/2pxz3hsihntrljq9s31ay6hiceaoef76.webp",
+          "shop": "Askent"
+        }
+      ]
+    },
+    {
+      "title": "Бордо и мех",
+      "items": [
+        {
+          "short": "Меховой жилет",
+          "name": "Меховой жилет-подложка",
+          "price": 29900,
+          "url": "https://www.ushatava.ru/store/w/novinki/zhilet-podlozhka-iz-mekha-84312/",
+          "img": "https://www.ushatava.ru/upload/iblock/756/0lvghm94hokn0c2sek93qvbazrlhih6g/0-_107_.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Перчатки",
+          "name": "Вязаные перчатки",
+          "price": 9900,
+          "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/",
+          "img": "https://www.ushatava.ru/upload/iblock/9e7/qywb1rv2yu8j4mkeglh1d8dhiswv91t0/174.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Брюки baggy",
+          "name": "Брюки Baggy из футера",
+          "price": 16900,
+          "url": "https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/",
+          "img": "https://www.ushatava.ru/upload/iblock/17c/r4b5llu84wqcnvaax7a521px6nbrba0k/ushatava_ctlg_fw3_2196.jpg",
+          "shop": "Ushatava"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка КОРСЕТ МИДИ",
+          "price": 58000,
+          "url": "https://askent.ru/cat/sumki/sumka_1172/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/750/900_1095_1/fcjl7pjwyna579f0zbzdrzatmlmhv41z.webp",
+          "shop": "Askent"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа с мехом — на первые морозы 🤎\n\n<b>1. Шоколад</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/shuba-mini-s-angliyskim-vorotnikom-84284/\">Шуба</a> — 59 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/\">Лонгслив</a> — 10 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/38238-4283_416_001_cernyi\">Брюки</a> — 8 999 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/cumka_38/\">Сумка</a> — 29 000 ₽ · Askent\n\n<b>2. Мех и серый меланж</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/\">Шуба-подложка</a> — 65 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/korotkie-mitenki-83920/\">Митенки</a> — 7 900 ₽ · Ushatava\n<a href=\"https://limestore.com/ru_ru/product/37597-2887_465_033_dymcato_seryi_melanz\">Брюки с ангорой</a> — 5 999 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1170/\">Сумка</a> — 25 500 ₽ · Askent\n\n<b>3. Бордо и мех</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/zhilet-podlozhka-iz-mekha-84312/\">Меховой жилет</a> — 29 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/\">Перчатки</a> — 9 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/\">Брюки baggy</a> — 16 900 ₽ · Ushatava\n<a href=\"https://askent.ru/cat/sumki/sumka_1172/\">Сумка</a> — 58 000 ₽ · Askent\n\nКакой образ ваш — 1, 2 или 3?"
+}
