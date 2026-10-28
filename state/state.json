@@ -1,5 +1,5 @@
 {
-  "offset": 84639489,
+  "offset": 84639490,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -484,11 +484,13 @@
       "sent_at": "2026-10-28T08:43+03:00"
     },
     "2026-10-28-mix-evening-bw": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 199,
       "file_id": "AgACAgIAAxkDAAO_auGD_GZ_v37OEdoEqNLMgEefTBAAAmIaaxtnWRBLDANwbYe_DGMBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-28T08:43+03:00"
+      "sent_at": "2026-10-28T08:43+03:00",
+      "publish_at": "2026-10-28T22:03:05.809473+03:00",
+      "published_at": "2026-10-28T22:03+03:00"
     },
     "2026-10-28-news-bottega-stamp": {
       "status": "sent",
