@@ -1,14 +1,6 @@
 {
  "Lime": [
   {
-   "name": "Хлопковая парка на натуральном пуху",
-   "price": 25999,
-   "url": "https://limestore.com/ru_ru/product/37867-5828_337_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/ad9e49de62e8500bbaef417fb77d6d4d.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
    "name": "Шуба на кулиске из меха под норку",
    "price": 13999,
    "url": "https://limestore.com/ru_ru/product/35203-7583_084_201_temno_koricnevyi",
@@ -29,6 +21,14 @@
    "price": 17999,
    "url": "https://limestore.com/ru_ru/product/34694-0437_122_211_koricnevyi_melanz",
    "img": "https://a.cdn.lime-shine.com/p/d83945c20819528fa3f2ec8a4f7eabc1.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Шуба из ткани под мех норки с поясом",
+   "price": 11999,
+   "url": "https://limestore.com/ru_ru/product/36528-8132_172_120_molocnyi",
+   "img": "https://a.cdn.lime-shine.com/p/4439f13d0a645824bf35f038eca31620.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -235,7 +235,7 @@
  ],
  "Love Republic": [
   {
-   "name": "Платье женское",
+   "name": "Платье-футляр",
    "price": 9999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/333807/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451619525_50.jpg",
@@ -243,7 +243,7 @@
    "kind": "daily"
   },
   {
-   "name": "Корсетный топ",
+   "name": "Корсетный топ из хлопка",
    "price": 4599,
    "url": "https://loverepublic.ru/catalog/odezhda/topy/333591/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/LR27110/thumb/600_9999/LR2711004304_50.jpg",
@@ -251,7 +251,7 @@
    "kind": "daily"
   },
   {
-   "name": "Платье с ремнем женское",
+   "name": "Платье миди А-силуэта",
    "price": 10999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/337075/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451617523_186.jpg",
@@ -259,7 +259,7 @@
    "kind": "daily"
   },
   {
-   "name": "Платье с ремнем женское",
+   "name": "Платье миди А-силуэта",
    "price": 10999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/337069/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451617523_50.jpg",
@@ -267,8 +267,8 @@
    "kind": "daily"
   },
   {
-   "name": "Блузка женская",
-   "price": 3999,
+   "name": "Рубашка свободного кроя",
+   "price": 6485052,
    "url": "https://loverepublic.ru/catalog/odezhda/bluzy/331794/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/LR27110/thumb/600_9999/LR2711003303_60.jpg",
    "shop": "Love Republic",
@@ -315,7 +315,7 @@
    "kind": "daily"
   },
   {
-   "name": "Платье женское",
+   "name": "Платье из джерси с шерстью",
    "price": 9999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/335904/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451309508_33.jpg",
@@ -331,7 +331,7 @@
    "kind": "daily"
   },
   {
-   "name": "Платье",
+   "name": "Платье мини в горошек",
    "price": 8599,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/333707/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451606512_54.jpg",
@@ -339,7 +339,7 @@
    "kind": "daily"
   },
   {
-   "name": "Платье женское",
+   "name": "Платье из джерси с шерстью",
    "price": 9999,
    "url": "https://loverepublic.ru/catalog/odezhda/platya/335910/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451309508_39.jpg",
@@ -363,7 +363,7 @@
    "kind": "daily"
   },
   {
-   "name": "Корсетный топ",
+   "name": "Корсетный топ из хлопка",
    "price": 4599,
    "url": "https://loverepublic.ru/catalog/odezhda/topy/333585/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/LR27110/thumb/600_9999/LR2711004304_1.jpg",
@@ -371,7 +371,7 @@
    "kind": "daily"
   },
   {
-   "name": "Юбка-шорты женская",
+   "name": "Юбка-шорты",
    "price": 4599,
    "url": "https://loverepublic.ru/catalog/odezhda/yubki/332590/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/LR27112/thumb/600_9999/LR2711202722_50.jpg",
@@ -809,6 +809,54 @@
  ],
  "Ushatava": [
   {
+   "name": "Шуба Slim Fit",
+   "price": 69900,
+   "url": "https://www.ushatava.ru/store/w/novinki/shuba-slim-fit-klassicheskaya-84307/",
+   "img": "https://www.ushatava.ru/upload/iblock/26b/obdhyfz4cakvb7ub4tqkh60pod2du4ro/27.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Двухсторонняя дубленка Cropped",
+   "price": 199900,
+   "url": "https://www.ushatava.ru/store/w/novinki/ukorochennaya-dvukhstoronnyaya-dublyenka-84302/",
+   "img": "https://www.ushatava.ru/upload/iblock/84f/wuu1qe82vpyj5h87himuzlc0azublxhc/40.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Дубленка 90\\'s из натурального меха",
+   "price": 229900,
+   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
+   "img": "https://www.ushatava.ru/upload/iblock/eaf/4yww53fez5g2mh9we1cjys29ggo1e2j8/24.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Меховая шапка",
+   "price": 15900,
+   "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-shapka-84292/",
+   "img": "https://www.ushatava.ru/upload/iblock/0ff/nolah7g7zkxf79mzenz2jf9nhdh6doun/78.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Тонкий меховой шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
+   "img": "https://www.ushatava.ru/upload/iblock/a1a/uxupky0pmmfsyaoaha6hvl9k1zohvf45/56.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Меховая горжетка",
+   "price": 19900,
+   "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-gorzhetka-84290/",
+   "img": "https://www.ushatava.ru/upload/iblock/c80/gms6fzwgelq5901admx46v78d9rzrfaq/0-_55_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
    "name": "Шуба-подложка",
    "price": 65900,
    "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
@@ -1077,54 +1125,6 @@
    "price": 13900,
    "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
    "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто мини",
-   "price": 49900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
-   "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Кожаные сапоги-чулки",
-   "price": 59900,
-   "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-sapogi-chulki-83439/",
-   "img": "https://www.ushatava.ru/upload/iblock/c8c/ee02mjgiqkad6s5cfxrebu2l1aiqdybc/Kopiya-ushatava_obtravka_fw_8458-_1_-_2_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Вязаные перчатки",
-   "price": 9900,
-   "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83944/",
-   "img": "https://www.ushatava.ru/upload/iblock/7ce/eiqp1pod3l245yod1ahja18gubm4wn46/184.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто",
-   "price": 57900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto--83993/",
-   "img": "https://www.ushatava.ru/upload/iblock/eb8/4eyt9fun8c1yzxapnnadout49xsphi9q/ushatava_ctlg_fw3_1676.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Двухстороннее стеганое пальто",
-   "price": 69900,
-   "url": "https://www.ushatava.ru/store/w/novinki/vatnik-midi-006-83270/",
-   "img": "https://www.ushatava.ru/upload/iblock/2ee/gmd1j9nzbyhqu8uw7iovm36ngrg5afzm/132.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Лонгслив Henley",
-   "price": 10900,
-   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83575/",
-   "img": "https://www.ushatava.ru/upload/iblock/eea/ud32zdkh347v8bxqyuwn53i5ua8kfczl/ushatava_ctlg_fw3_1240.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
