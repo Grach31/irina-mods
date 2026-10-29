@@ -498,7 +498,34 @@
       "msg_id": 200,
       "file_id": "AgACAgIAAxkDAAPAauGD_CHQ-ZD6KCEybvtyNEKjs3UAAmMaaxtnWRBLVzIKh7Aoza8BAAMCAAN5AAM9BA",
       "sent_at": "2026-10-28T08:43+03:00"
+    },
+    "2026-10-29-lr-mini": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 204,
+      "file_id": "AgACAgIAAxkDAAPMauLVsThzuqYegjrPdAKoGeFyl_kAAtApaxvO8xBLyj33vaMO784BAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-29T08:12+03:00"
+    },
+    "2026-10-29-mix-warm-coats": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 205,
+      "file_id": "AgACAgIAAxkDAAPNauLVtlfT5JS9potvhTe1cT7_OeoAAtEpaxvO8xBL0q6E6acmgOgBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-29T08:12+03:00"
+    },
+    "2026-10-29-news-prada": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 206,
+      "file_id": "AgACAgIAAxkDAAPOauLVt5Jl0D0pfaTO6b-60Dyn3uIAAtIpaxvO8xBLXyQKNKW6_20BAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-29T08:12+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-29-looks": {
+      "key": "acf9e80a8d7c",
+      "status": "preview_ready",
+      "at": "2026-10-29T08:12+03:00"
+    }
+  }
 }
