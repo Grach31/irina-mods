@@ -1,5 +1,5 @@
 {
-  "offset": 84639490,
+  "offset": 84639492,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -500,11 +500,13 @@
       "sent_at": "2026-10-28T08:43+03:00"
     },
     "2026-10-29-lr-mini": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 204,
       "file_id": "AgACAgIAAxkDAAPMauLVsThzuqYegjrPdAKoGeFyl_kAAtApaxvO8xBLyj33vaMO784BAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-29T08:12+03:00"
+      "sent_at": "2026-10-29T08:12+03:00",
+      "publish_at": "2026-10-29T14:15:03.026671+03:00",
+      "published_at": "2026-10-29T14:15+03:00"
     },
     "2026-10-29-mix-warm-coats": {
       "status": "sent",
