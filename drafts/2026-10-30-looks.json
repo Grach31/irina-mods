@@ -1,0 +1,101 @@
+{
+ "id": "2026-10-30-looks",
+ "type": "looks",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "cover": {
+  "title": "ОБРАЗЫ",
+  "subtitle": "на выходные"
+ },
+ "looks": [
+  {
+   "title": "Чёрный и шоколад",
+   "items": [
+    {
+     "name": "Дубленка 90's из натурального меха",
+     "price": 229900,
+     "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
+     "img": "https://www.ushatava.ru/upload/iblock/eaf/4yww53fez5g2mh9we1cjys29ggo1e2j8/24.jpg",
+     "shop": "Ushatava",
+     "short": "Дубленка 90's"
+    },
+    {
+     "name": "Платье из джерси с шерстью",
+     "price": 9999,
+     "url": "https://loverepublic.ru/catalog/odezhda/platya/335910/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451309508_39.jpg",
+     "shop": "Love Republic",
+     "short": "Платье с шерстью"
+    },
+    {
+     "name": "Тонкий меховой шарф",
+     "price": 13900,
+     "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
+     "img": "https://www.ushatava.ru/upload/iblock/a1a/uxupky0pmmfsyaoaha6hvl9k1zohvf45/56.jpg",
+     "shop": "Ushatava",
+     "short": "Меховой шарф"
+    }
+   ]
+  },
+  {
+   "title": "Молоко",
+   "items": [
+    {
+     "name": "Шуба из ткани под мех норки с поясом",
+     "price": 11999,
+     "url": "https://limestore.com/ru_ru/product/36528-8132_172_120_molocnyi",
+     "img": "https://a.cdn.lime-shine.com/p/4439f13d0a645824bf35f038eca31620.jpeg?w=1280&q=85",
+     "shop": "Lime",
+     "short": "Шуба с поясом"
+    },
+    {
+     "name": "Корсетный топ из хлопка",
+     "price": 4599,
+     "url": "https://loverepublic.ru/catalog/odezhda/topy/333585/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/LR27110/thumb/600_9999/LR2711004304_1.jpg",
+     "shop": "Love Republic",
+     "short": "Корсетный топ"
+    },
+    {
+     "name": "Брюки из шерсти и кашемира",
+     "price": 7999,
+     "url": "https://limestore.com/ru_ru/product/38692-5033_145_273_svetlo_bezevyi_melanz",
+     "img": "https://a.cdn.lime-shine.com/p/9a36d06683225f8c8e4f2868921204a2.jpeg?w=1280&q=85",
+     "shop": "Lime",
+     "short": "Брюки с кашемиром"
+    }
+   ]
+  },
+  {
+   "title": "Чёрное кружево",
+   "items": [
+    {
+     "name": "Двухсторонняя дубленка Cropped",
+     "price": 199900,
+     "url": "https://www.ushatava.ru/store/w/novinki/ukorochennaya-dvukhstoronnyaya-dublyenka-84302/",
+     "img": "https://www.ushatava.ru/upload/iblock/84f/wuu1qe82vpyj5h87himuzlc0azublxhc/40.jpg",
+     "shop": "Ushatava",
+     "short": "Дубленка Cropped"
+    },
+    {
+     "name": "Корсетный топ из хлопка",
+     "price": 4599,
+     "url": "https://loverepublic.ru/catalog/odezhda/topy/333591/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/LR27110/thumb/600_9999/LR2711004304_50.jpg",
+     "shop": "Love Republic",
+     "short": "Корсетный топ"
+    },
+    {
+     "name": "Брюки с кружевным фартуком",
+     "price": 13999,
+     "url": "https://loverepublic.ru/catalog/odezhda/bryuki/337908/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451220753_50.jpg",
+     "shop": "Love Republic",
+     "short": "Брюки с кружевом"
+    }
+   ]
+  }
+ ],
+ "text": "Три образа на выходные: от вечера в чёрном до нежного молочного 🤍\n\n<b>1. Чёрный и шоколад</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/\">Дубленка 90's</a> — 229 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/platya/335910/\">Платье с шерстью</a> — 9 999 ₽ · Love Republic\n<a href=\"https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/\">Меховой шарф</a> — 13 900 ₽ · Ushatava\n\n<b>2. Молоко</b>\n<a href=\"https://limestore.com/ru_ru/product/36528-8132_172_120_molocnyi\">Шуба с поясом</a> — 11 999 ₽ · Lime\n<a href=\"https://loverepublic.ru/catalog/odezhda/topy/333585/\">Корсетный топ</a> — 4 599 ₽ · Love Republic\n<a href=\"https://limestore.com/ru_ru/product/38692-5033_145_273_svetlo_bezevyi_melanz\">Брюки с кашемиром</a> — 7 999 ₽ · Lime\n\n<b>3. Чёрное кружево</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/ukorochennaya-dvukhstoronnyaya-dublyenka-84302/\">Дубленка Cropped</a> — 199 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/topy/333591/\">Корсетный топ</a> — 4 599 ₽ · Love Republic\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/337908/\">Брюки с кружевом</a> — 13 999 ₽ · Love Republic\n\nКакой образ ваш — 1, 2 или 3?"
+}
