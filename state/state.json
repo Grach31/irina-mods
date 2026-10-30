@@ -1,5 +1,5 @@
 {
-  "offset": 84639493,
+  "offset": 84639492,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -536,13 +536,11 @@
       "sent_at": "2026-10-29T08:13+03:00"
     },
     "2026-10-30-mix-loose-trousers": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 213,
       "file_id": "AgACAgIAAxkDAAPVauQnJqReqcedDTH_KnCeoyVUu4EAAuwYaxtvvSFLLYtxRWd7QoQBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-30T08:12+03:00",
-      "publish_at": "2026-10-30T11:36:32.481050+03:00",
-      "published_at": "2026-10-30T11:36+03:00"
+      "sent_at": "2026-10-30T08:12+03:00"
     },
     "2026-10-30-news-miu-miu": {
       "status": "sent",
