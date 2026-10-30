@@ -25,10 +25,18 @@
    "kind": "daily"
   },
   {
-   "name": "Шуба из ткани под мех норки с поясом",
-   "price": 11999,
-   "url": "https://limestore.com/ru_ru/product/36528-8132_172_120_molocnyi",
-   "img": "https://a.cdn.lime-shine.com/p/4439f13d0a645824bf35f038eca31620.jpeg?w=1280&q=85",
+   "name": "Двубортное пальто оверсайз из шерсти",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/30575_1278_485-1278_485_505_temnyi_purpurnyi",
+   "img": "https://a.cdn.lime-shine.com/p/13c7c18fd23b5af9a621fdf5fd340a7f.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Двубортное пальто оверсайз из шерсти",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/37070-1278_539_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/7999b69d2f20549b979b5058d3b9300d.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -81,6 +89,14 @@
    "kind": "daily"
   },
   {
+   "name": "Приталенное мини-платье с застежкой-аламар",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/39021-5410_325_601_temno_krasnyi",
+   "img": "https://a.cdn.lime-shine.com/p/a35c7831dbd75e1ab66c2dd2dedac0bf.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Мини-платье из сатина с драпировкой",
    "price": 8999,
    "url": "https://limestore.com/ru_ru/product/38557-2615_014_110_belyi",
@@ -93,14 +109,6 @@
    "price": 8999,
    "url": "https://limestore.com/ru_ru/product/38557-2615_014_001_cernyi",
    "img": "https://a.cdn.lime-shine.com/p/7ecb84b078365bfd95e7833aa20a3cdf.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Мини-платье с подплечниками и драпировкой",
-   "price": 9999,
-   "url": "https://limestore.com/ru_ru/product/38750-4560_779_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/3d5a4a35eb955cd19fb23592c1a32f7f.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -841,18 +849,18 @@
    "kind": "dream"
   },
   {
-   "name": "Тонкий меховой шарф",
-   "price": 13900,
-   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
-   "img": "https://www.ushatava.ru/upload/iblock/a1a/uxupky0pmmfsyaoaha6hvl9k1zohvf45/56.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Меховая горжетка",
    "price": 19900,
    "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-gorzhetka-84290/",
    "img": "https://www.ushatava.ru/upload/iblock/c80/gms6fzwgelq5901admx46v78d9rzrfaq/0-_55_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Тонкий меховой шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
+   "img": "https://www.ushatava.ru/upload/iblock/a1a/uxupky0pmmfsyaoaha6hvl9k1zohvf45/56.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -909,14 +917,6 @@
    "price": 26900,
    "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
    "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Двухсторонняя шуба на кулиске",
-   "price": 65900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
-   "img": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1125,6 +1125,14 @@
    "price": 13900,
    "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
    "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто мини",
+   "price": 49900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
+   "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
