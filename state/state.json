@@ -534,7 +534,34 @@
       ],
       "file_id": "AgACAgIAAxUHauLV-X-1Dgo9brpFj1MG-_p9XEEAAtUpaxvO8xBLT7nPKAk6IWABAAMCAAN3AAM9BA",
       "sent_at": "2026-10-29T08:13+03:00"
+    },
+    "2026-10-30-mix-loose-trousers": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 213,
+      "file_id": "AgACAgIAAxkDAAPVauQnJqReqcedDTH_KnCeoyVUu4EAAuwYaxtvvSFLLYtxRWd7QoQBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-30T08:12+03:00"
+    },
+    "2026-10-30-news-miu-miu": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 214,
+      "file_id": "AgACAgIAAxkDAAPWauQnJ2pa1a2Q7chtKpDqLvBioOsAAu0YaxtvvSFLR6VrttZuq_gBAAMCAAN5AAM9BA",
+      "sent_at": "2026-10-30T08:12+03:00"
+    },
+    "2026-10-30-ushatava-dream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 215,
+      "file_id": "AgACAgIAAxkDAAPXauQnLZDmOVSlm9akpaqFUs-Q0oYAAu4YaxtvvSFLp9Vn8FNysoYBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-30T08:12+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-10-30-looks": {
+      "key": "a0bdad4e21a6",
+      "status": "preview_ready",
+      "at": "2026-10-30T08:12+03:00"
+    }
+  }
 }
