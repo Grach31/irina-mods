@@ -1,5 +1,5 @@
 {
-  "offset": 84639492,
+  "offset": 84639494,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -550,11 +550,13 @@
       "sent_at": "2026-10-30T08:12+03:00"
     },
     "2026-10-30-ushatava-dream": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 215,
       "file_id": "AgACAgIAAxkDAAPXauQnLZDmOVSlm9akpaqFUs-Q0oYAAu4YaxtvvSFLp9Vn8FNysoYBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-30T08:12+03:00"
+      "sent_at": "2026-10-30T08:12+03:00",
+      "publish_at": "2026-10-30T16:28:05.326856+03:00",
+      "published_at": "2026-10-30T16:28+03:00"
     },
     "2026-10-30-looks": {
       "status": "sent",
