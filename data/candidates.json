@@ -57,34 +57,34 @@
    "kind": "daily"
   },
   {
-   "name": "Кардиган из шерсти и мохера с подплечниками",
-   "price": 10999,
-   "url": "https://limestore.com/ru_ru/product/36504-7892_528_999_mnogocvetnyi",
-   "img": "https://a.cdn.lime-shine.com/p/3ff537dde2bc519bad6cfc69592542f2.jpeg?w=1280&q=85",
+   "name": "Трикотажный топ с высоким воротником",
+   "price": 2599,
+   "url": "https://limestore.com/ru_ru/product/11726_8151_322-cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/0bc8740b4323557fbd4d392d19be9d7e.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Кардиган с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38554-3878_218_680_svetlo_rozovyi",
-   "img": "https://a.cdn.lime-shine.com/p/f78b3c7af66c53788e1faae8602e6813.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Миди-юбка с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38555-4608_218_680_svetlo_rozovyi",
-   "img": "https://a.cdn.lime-shine.com/p/d106f220861a5203a5d80ff1f4ba9e09.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свитер из полушерсти с воротником",
+   "name": "Кардиган из шерсти и кашемира",
    "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/38274-3862_491_405_sinii_kobalt",
-   "img": "https://a.cdn.lime-shine.com/p/8d19540deebf51c8b13bb2abc8fd461f.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/38503-1659_145_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/c99ab2f7fa8e50e0b1f3bdeb97a91747.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки из шерсти и кашемира",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38692-5033_145_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/ac8cdbbd3cab5b1f8e6a567d4dd596a6.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Свитер с шерстью и ангорой",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/29466_1776_210-seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/d18cc52fb97c5c9796a53a8cfa8552c2.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -93,6 +93,22 @@
    "price": 7999,
    "url": "https://limestore.com/ru_ru/product/39021-5410_325_601_temno_krasnyi",
    "img": "https://a.cdn.lime-shine.com/p/a35c7831dbd75e1ab66c2dd2dedac0bf.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Миди-платье из атласа с кружевом",
+   "price": 6999,
+   "url": "https://limestore.com/ru_ru/product/36655-1500_593_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/b2b95403a62e5cc687133c03e6f84546.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Атласное платье с шарфом-лавальер",
+   "price": 6999,
+   "url": "https://limestore.com/ru_ru/product/36137-1596_691_999_mnogocvetnyi",
+   "img": "https://a.cdn.lime-shine.com/p/f4163d7b85cc50d9903f0d6141a23ce4.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -113,82 +129,58 @@
    "kind": "daily"
   },
   {
-   "name": "Сетчатое мини-платье с оборками",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/35526-0886_095_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/62d3bcff7fda524690029077f3a13b52.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Платье-свитер из 100% шерсти",
-   "price": 10999,
-   "url": "https://limestore.com/ru_ru/product/38759-5247_600_023_temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/fbaf3d723880578a9ed478a1663f8126.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки из футера",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/28659_9744_900-seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/0104f7e16ea95a98b644eca51febf7ef.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки из футера",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/28659_9744_900-sero_koricnevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/0514750a7001517b9e673d9b156f70ab.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки из футера",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/28659_9744_900-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/0694832a96cd56859b61b95d8ab55da5.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки-джоггеры из трикотажа с шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37497-9677_563_263_sero_bezevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/5380a883e3c250dbb1602f2adb7a70e5.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки-джоггеры из трикотажа с шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37497-9677_563_032_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/b2c21231d6d05bada308d96f4b37481d.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Трикотажные брюки с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37597-2887_465_263_sero_bezevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/aba25636195e5878ac21b7e6d2439dd6.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Трикотажные брюки с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37597-2887_465_033_dymcato_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/83f61679964955ae9dd2b4098c52870d.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Широкие брюки свободного кроя",
+   "name": "Брюки клеш со стрелками",
    "price": 5599,
-   "url": "https://limestore.com/ru_ru/product/36631-3647_907_925_bezevyi_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/5ea358dce6395a92a2d10afaca932c97.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/36853-1253_325_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/05c38490e3575ee583dd9704436cc5d7.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Прямые брюки из технологичной ткани",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/38214-4119_315_312_xaki",
+   "img": "https://a.cdn.lime-shine.com/p/9eb1ea997b1b5bd0819ae52bbac383cf.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Прямые брюки из ткани под кожу",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/38735-4628_404_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/e104ba43ee3b59a1b77761b1ea0630c9.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Укороченные брюки из сатина",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38858-5089_014_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/9092f982aa30528ab8cab3cb7dd66931.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки багги из смесового хлопка",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/35509-2272_337_312_xaki",
+   "img": "https://a.cdn.lime-shine.com/p/2b05467aa0ec56f3bb39941a7e97530e.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки карго из твила",
+   "price": 6999,
+   "url": "https://limestore.com/ru_ru/product/37755-3386_254_505_temnyi_purpurnyi",
+   "img": "https://a.cdn.lime-shine.com/p/5187288458fc5098be90accfc2c542b5.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Прямые брюки со стрелками",
+   "price": 3999,
+   "url": "https://limestore.com/ru_ru/product/28182_6332_166-6332_166_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/afd2a500920e563b92b8cbffb7a6a23c.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -201,26 +193,34 @@
    "kind": "daily"
   },
   {
-   "name": "Прямые брюки из полушерсти со стрелками",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37012-3057_124_999_mnogocvetnyi",
-   "img": "https://a.cdn.lime-shine.com/p/ce73eb77397a5d639846592a40e9e140.jpeg?w=1280&q=85",
+   "name": "Укороченные брюки со стрелками",
+   "price": 4599,
+   "url": "https://limestore.com/ru_ru/product/8289_0984_856-cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/16a4fcc311b65219b2756be139884638.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Прямые брюки из полушерсти со стрелками",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/37013-3057_208_900_cernyi_belyi",
-   "img": "https://a.cdn.lime-shine.com/p/1cf1caf85faf5bee9b34d0d7ba230ddd.jpeg?w=1280&q=85",
+   "name": "Широкие брюки свободного кроя",
+   "price": 5599,
+   "url": "https://limestore.com/ru_ru/product/36631-3647_907_925_bezevyi_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/5ea358dce6395a92a2d10afaca932c97.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Брюки из твила с шерстью",
-   "price": 8999,
-   "url": "https://limestore.com/ru_ru/product/38238-4283_416_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/841aa8b450d35db0a7ac031c64194804.jpeg?w=1280&q=85",
+   "name": "Укороченные брюки из сатина",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38858-5089_014_110_belyi",
+   "img": "https://a.cdn.lime-shine.com/p/1db6b3fe72295212a4f1fd435643d3e7.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Широкие брюки из сатина",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38550-4616_482_710_zolotoi",
+   "img": "https://a.cdn.lime-shine.com/p/fdc29c121b8c5bbb9914f133e1837ad9.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -233,10 +233,10 @@
    "kind": "daily"
   },
   {
-   "name": "Брюки из шерсти и кашемира",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/38692-5033_145_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/ac8cdbbd3cab5b1f8e6a567d4dd596a6.jpeg?w=1280&q=85",
+   "name": "Объемные брюки из футера",
+   "price": 3599,
+   "url": "https://limestore.com/ru_ru/product/28659_9744_900-cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/e736168c8b9c503a9de90ac04ead67d9.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   }
@@ -359,14 +359,6 @@
    "price": 13999,
    "url": "https://loverepublic.ru/catalog/odezhda/bryuki/337908/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451220753_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Широкие джинсы со стразами",
-   "price": 11999,
-   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/332674/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452405724_100.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
@@ -495,6 +487,14 @@
    "price": 4599,
    "url": "https://loverepublic.ru/catalog/odezhda/futbolki/333126/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451111322_20.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка миди А-силуэта",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/yubki/337507/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451225214_36.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   }
