@@ -1,0 +1,149 @@
+{
+ "id": "2026-10-31-looks",
+ "type": "looks",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "cover": {
+  "title": "ОБРАЗЫ",
+  "subtitle": "на первые холода"
+ },
+ "looks": [
+  {
+   "title": "Твид и чёрное",
+   "items": [
+    {
+     "short": "Твидовый жакет",
+     "name": "Твидовый жакет с тесьмой",
+     "price": 15999,
+     "url": "https://loverepublic.ru/catalog/odezhda/zhakety/337144/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451219605_9.jpg",
+     "shop": "Love Republic"
+    },
+    {
+     "short": "Блузка в клетку",
+     "name": "Блузка из шифона",
+     "price": 19900,
+     "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
+     "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+     "shop": "Ushatava"
+    },
+    {
+     "short": "Шорты-баллон",
+     "name": "Шорты из искусственной кожи",
+     "price": 5599,
+     "url": "https://loverepublic.ru/catalog/odezhda/shorty/335363/",
+     "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451212743_50.jpg",
+     "shop": "Love Republic"
+    },
+    {
+     "short": "Кожаные угги",
+     "name": "Кожаные угги",
+     "price": 26900,
+     "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
+     "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
+     "shop": "Ushatava"
+    },
+    {
+     "short": "Сумка Поуч",
+     "name": "Сумка ПОУЧ мини",
+     "price": 31000,
+     "url": "https://askent.ru/cat/sumki/cumka_64/",
+     "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/083/900_1095_1/t2kv2le92y7s7iza41j31hv6qxhly422.webp",
+     "shop": "Askent"
+    }
+   ]
+  },
+  {
+   "title": "Персик и карамель",
+   "items": [
+    {
+     "short": "Кардиган с мохером",
+     "name": "Кардиган из шерсти и мохера с подплечниками",
+     "price": 10999,
+     "url": "https://limestore.com/ru_ru/product/36504-7892_528_999_mnogocvetnyi",
+     "img": "https://a.cdn.lime-shine.com/p/3ff537dde2bc519bad6cfc69592542f2.jpeg?w=1280&q=85",
+     "shop": "Lime"
+    },
+    {
+     "short": "Замшевые перчатки",
+     "name": "Перчатки из замши с фактурными швами",
+     "price": 7980,
+     "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_zamshi_s_fakturnymi_shvami_korichnevogo_tsveta/",
+     "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/b78/cyuonefg18ja8avvzt8eslfl45m5dtcz-jpg.webp",
+     "shop": "2MOOD"
+    },
+    {
+     "short": "Брюки с ангорой",
+     "name": "Трикотажные брюки с ангорой и шерстью",
+     "price": 5999,
+     "url": "https://limestore.com/ru_ru/product/37597-2887_465_263_sero_bezevyi_melanz",
+     "img": "https://a.cdn.lime-shine.com/p/aba25636195e5878ac21b7e6d2439dd6.jpeg?w=1280&q=85",
+     "shop": "Lime"
+    },
+    {
+     "short": "Лоферы",
+     "name": "Лоферы из замши",
+     "price": 19980,
+     "url": "https://www.2moodstore.com/collection/katalog/mekhovye_myagkie_lofery_korichnevogo_tsveta/",
+     "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/e39/qzehw7qjuhv1f38vb5fr3mv8t4u16lo9-jpg.webp",
+     "shop": "2MOOD"
+    },
+    {
+     "short": "Сумка Поуч",
+     "name": "Сумка ПОУЧ мини",
+     "price": 31000,
+     "url": "https://askent.ru/cat/sumki/sumka_1167/",
+     "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2c1/900_1095_1/g97dybzpz3kgnv43wnkm4skk760vxwkh.webp",
+     "shop": "Askent"
+    }
+   ]
+  },
+  {
+   "title": "Песочный",
+   "items": [
+    {
+     "short": "Дубленка",
+     "name": "Дубленка из искусственной кожи",
+     "price": 26980,
+     "url": "https://www.2moodstore.com/collection/katalog/dublenka_iz_iskusstvennoy_kozhi_pesochnogo_tsveta/",
+     "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/480/b2erp0cyiinvl5lmcbh8kadlj43i5n6f-jpg.webp",
+     "shop": "2MOOD"
+    },
+    {
+     "short": "Капор",
+     "name": "Капор с добавлением кашемира",
+     "price": 7980,
+     "url": "https://www.2moodstore.com/collection/katalog/kapor_s_dobavleniem_kashemira_temno_bezhevogo_tsveta/",
+     "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/7cc/bqv8uduk53qapjq4j8m5d3i05jxkd1w3-jpg.webp",
+     "shop": "2MOOD"
+    },
+    {
+     "short": "Джоггеры",
+     "name": "Брюки-джоггеры из трикотажа с шерстью",
+     "price": 5999,
+     "url": "https://limestore.com/ru_ru/product/37497-9677_563_263_sero_bezevyi_melanz",
+     "img": "https://a.cdn.lime-shine.com/p/5380a883e3c250dbb1602f2adb7a70e5.jpeg?w=1280&q=85",
+     "shop": "Lime"
+    },
+    {
+     "short": "Сумка Бисса",
+     "name": "Сумка БИССА",
+     "price": 25500,
+     "url": "https://askent.ru/cat/sumki/sumka_1171/",
+     "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/022/900_1095_1/peisnniiwn5w1it0pt2er6g1xkeud242.webp",
+     "shop": "Askent"
+    },
+    {
+     "short": "Перчатки",
+     "name": "Перчатки из шерсти мериноса",
+     "price": 4980,
+     "url": "https://www.2moodstore.com/collection/katalog/perchatki_iz_shersti_merinosa_bezhevogo_tsveta/",
+     "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/520/dct5xt5cg214top5u3dkd58fw2zg9i56-jpg.webp",
+     "shop": "2MOOD"
+    }
+   ]
+  }
+ ],
+ "text": "Три образа на первые холода: от дерзкого твида до мягкого песочного 🤎\n\n<b>1. Твид и чёрное</b>\n<a href=\"https://loverepublic.ru/catalog/odezhda/zhakety/337144/\">Твидовый жакет</a> — 15 999 ₽ · Love Republic\n<a href=\"https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/\">Блузка в клетку</a> — 19 900 ₽ · Ushatava\n<a href=\"https://loverepublic.ru/catalog/odezhda/shorty/335363/\">Шорты-баллон</a> — 5 599 ₽ · Love Republic\n<a href=\"https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/\">Кожаные угги</a> — 26 900 ₽ · Ushatava\n<a href=\"https://askent.ru/cat/sumki/cumka_64/\">Сумка Поуч</a> — 31 000 ₽ · Askent\n\n<b>2. Персик и карамель</b>\n<a href=\"https://limestore.com/ru_ru/product/36504-7892_528_999_mnogocvetnyi\">Кардиган с мохером</a> — 10 999 ₽ · Lime\n<a href=\"https://www.2moodstore.com/collection/katalog/perchatki_iz_zamshi_s_fakturnymi_shvami_korichnevogo_tsveta/\">Замшевые перчатки</a> — 7 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/37597-2887_465_263_sero_bezevyi_melanz\">Брюки с ангорой</a> — 5 999 ₽ · Lime\n<a href=\"https://www.2moodstore.com/collection/katalog/mekhovye_myagkie_lofery_korichnevogo_tsveta/\">Лоферы</a> — 19 980 ₽ · 2MOOD\n<a href=\"https://askent.ru/cat/sumki/sumka_1167/\">Сумка Поуч</a> — 31 000 ₽ · Askent\n\n<b>3. Песочный</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/dublenka_iz_iskusstvennoy_kozhi_pesochnogo_tsveta/\">Дубленка</a> — 26 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/kapor_s_dobavleniem_kashemira_temno_bezhevogo_tsveta/\">Капор</a> — 7 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/37497-9677_563_263_sero_bezevyi_melanz\">Джоггеры</a> — 5 999 ₽ · Lime\n<a href=\"https://askent.ru/cat/sumki/sumka_1171/\">Сумка Бисса</a> — 25 500 ₽ · Askent\n<a href=\"https://www.2moodstore.com/collection/katalog/perchatki_iz_shersti_merinosa_bezhevogo_tsveta/\">Перчатки</a> — 4 980 ₽ · 2MOOD\n\nКакой образ ваш — 1, 2 или 3?"
+}
