@@ -1,5 +1,5 @@
 {
-  "offset": 84639494,
+  "offset": 84639495,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -579,11 +579,13 @@
       "sent_at": "2026-10-31T08:11+03:00"
     },
     "2026-10-31-mix-fur-collar": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 223,
       "file_id": "AgACAgIAAxkDAAPfauV4mv2cmDnFVQkIqpQOcfN-eP8AAssfaxtvvSlLovfk6t0jRZUBAAMCAAN3AAM9BA",
-      "sent_at": "2026-10-31T08:11+03:00"
+      "sent_at": "2026-10-31T08:11+03:00",
+      "publish_at": "2026-10-31T10:27:39.724591+03:00",
+      "published_at": "2026-10-31T10:27+03:00"
     },
     "2026-10-31-news-balenciaga-ski": {
       "status": "sent",
