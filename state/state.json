@@ -570,6 +570,27 @@
       ],
       "file_id": "AgACAgIAAxUHauQncdmRXLgj4iqHH_ta9nGo47IAAvIYaxtvvSFLCNIJkBhPhR4BAAMCAAN3AAM9BA",
       "sent_at": "2026-10-30T08:13+03:00"
+    },
+    "2026-10-31-lr-dresses": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 222,
+      "file_id": "AgACAgIAAxkDAAPeauV4lgf47dOUP_bzJ4dEddRM7o4AAsofaxtvvSlL1z_PfZhD6rwBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-31T08:11+03:00"
+    },
+    "2026-10-31-mix-fur-collar": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 223,
+      "file_id": "AgACAgIAAxkDAAPfauV4mv2cmDnFVQkIqpQOcfN-eP8AAssfaxtvvSlLovfk6t0jRZUBAAMCAAN3AAM9BA",
+      "sent_at": "2026-10-31T08:11+03:00"
+    },
+    "2026-10-31-news-balenciaga-ski": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 224,
+      "file_id": "AgACAgIAAxkDAAPgauV4m_rprJqld-STiQ8KvPw3jwADzB9rG2-9KUslB4UPvxL22QEAAwIAA3kAAz0E",
+      "sent_at": "2026-10-31T08:11+03:00"
     }
   },
   "held": {}
