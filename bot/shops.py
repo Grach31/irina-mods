@@ -29,6 +29,8 @@ SHOPS = {
     "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
     "Befree": (["https://befree.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
     "12 Storeez": (["https://12storeez.com/catalog/new"], r"/catalog/[a-z0-9_-]+/[a-z0-9_-]+", "dream"),
+    # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
+    "IDOL": (["https://idol.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "dream"),
 }
 
 PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
