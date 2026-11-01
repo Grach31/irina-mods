@@ -656,6 +656,13 @@
       "msg_id": 246,
       "file_id": "AgACAgIAAxkDAAP2aue2xbxGQM74iF7E7HTZONlMMrwAAiciaxuxGEBLDL1EJkzvkF8BAAMCAAN3AAM9BA",
       "sent_at": "2026-11-02T01:01+03:00"
+    },
+    "2026-11-02-zarina-camel": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 248,
+      "file_id": "AgACAgIAAxkDAAP3aue9ZIOXYs9qx1H5555-i_zCVkYAAjkiaxuxGEBL7bmU_z6LmOwBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T02:58+03:00"
     }
   },
   "held": {}
