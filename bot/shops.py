@@ -28,7 +28,7 @@ SHOPS = {
     "Sela": (["https://www.sela.ru/eshop/women/new/"], r"/eshop/[^\"]+/[^/]+/?$", "daily"),
     # Zarina и Befree — той же группы Melon Fashion, что Love Republic: каталог устроен похоже
     "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/product/[A-Za-z0-9_-]+/", "daily"),
-    "Befree": (["https://befree.ru/zhenskaya/zen-novinki"], r"befree\.ru/[a-z0-9_-]+/[a-z0-9_-]+$|^/[a-z0-9_-]+/[a-z0-9_-]+$", "daily"),
+    "Befree": (["https://befree.ru/zhenskaya/zen-novinki"], r"/zhenskaya/product/BF\d+/\d+", "daily"),
     "12 Storeez": (["https://12storeez.com/catalog/new"], r"/catalog/[a-z0-9_-]+/[a-z0-9_-]+", "dream"),
     # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
     "IDOL": (["https://idol.ru/catalog/new/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
