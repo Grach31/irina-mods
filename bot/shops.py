@@ -27,11 +27,11 @@ SHOPS = {
     # Фильтр parse(): ссылка подходит, только если в её карточке есть и цена, и фото.
     "Sela": (["https://www.sela.ru/eshop/new/"], r"/eshop/[a-z0-9_-]+/.+", "daily"),
     # Zarina и Befree — той же группы Melon Fashion, что Love Republic: каталог устроен похоже
-    "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
+    "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/product/[A-Za-z0-9_-]+/", "daily"),
     "Befree": (["https://befree.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
     "12 Storeez": (["https://12storeez.com/catalog/new"], r"/catalog/[a-z0-9_-]+/[a-z0-9_-]+", "dream"),
     # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
-    "IDOL": (["https://idol.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "dream"),
+    "IDOL": (["https://idol.ru/catalog/new/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
 }
 
 PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)

@@ -32,6 +32,10 @@ def sheet(items, path):
     im.save(path, "JPEG", quality=80)
 
 
+PROBES = {"Sela": ["https://www.sela.ru/", "https://sela.ru/eshop/", "https://www.sela.ru/eshop/zhenskaya/"],
+          "Befree": ["https://befree.ru/", "https://befree.ru/catalog/", "https://befree.ru/zhenskaya/"]}
+
+
 def diagnose(data):
     """Для магазинов, где ничего не нашлось: что отдал сайт (статус, заголовок, ссылки, цены) — по этому правят шаблоны."""
     import re
@@ -64,7 +68,34 @@ def diagnose(data):
                 rec["has_next_data"] = "__NEXT_DATA__" in html or "__NUXT__" in html or "window.__INITIAL_STATE__" in html
                 m = re.search(r'"price"\s*:\s*"?(\d{3,6})', html)
                 rec["json_price_sample"] = m.group(0) if m else None
+                rx = re.compile(pattern)
+                for a in soup.find_all("a", href=True):
+                    if rx.search(a["href"].split("?")[0]):
+                        box, samples = a, []
+                        for lvl in range(1, 7):
+                            box = box.parent
+                            if box is None:
+                                break
+                            if lvl in (2, 4, 6):
+                                samples.append(str(box)[:1500])
+                        rec["card_samples"] = samples
+                        rec["card_href"] = a["href"]
+                        break
                 rec["head"] = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:300]
+            except Exception as e:
+                rec["error"] = str(e)[:300]
+            info.append(rec)
+        for u in PROBES.get(shop, []):          # главная страница: ищем, где у магазина новинки
+            rec = {"probe": u}
+            try:
+                req = urllib.request.Request(u, headers=shops.UA)
+                with urllib.request.urlopen(req, timeout=40) as r:
+                    html = r.read().decode("utf-8", errors="ignore")
+                    rec.update(status=r.status, final_url=r.geturl(), length=len(html))
+                soup = BeautifulSoup(html, "lxml")
+                hrefs = list(dict.fromkeys(a["href"] for a in soup.find_all("a", href=True)))
+                rec["new_links"] = [h for h in hrefs if re.search(r"new|novin|nov|collection|catalog", h, re.I)][:40]
+                rec["title"] = (soup.title.get_text(" ", strip=True) if soup.title else "")[:150]
             except Exception as e:
                 rec["error"] = str(e)[:300]
             info.append(rec)
