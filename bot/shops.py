@@ -21,6 +21,14 @@ SHOPS = {
     "2MOOD": (["https://www.2moodstore.com/collection/new/"], r"/collection/katalog/[^/]+/", "daily"),
     "Askent": (["https://askent.ru/new/askent/"], r"/cat/(obuv|sumki|aksessuary)[^\"]*/[^/]+/$", "dream"),
     "Ushatava": (["https://www.ushatava.ru/store/w/novinki/"], r"/store/w/[a-z-]+/[a-z0-9-]+-\d+/$", "dream"),
+    # Добавлено 02.11.2026. Разметку этих сайтов из облака Claude проверить нельзя — смотри, сколько товаров нашлось
+    # в data/candidates.json после ближайшего запуска (07:00 МСК); если 0 — поправь адрес раздела или шаблон ссылки.
+    # Фильтр parse(): ссылка подходит, только если в её карточке есть и цена, и фото.
+    "Sela": (["https://www.sela.ru/eshop/new/"], r"/eshop/[a-z0-9_-]+/.+", "daily"),
+    # Zarina и Befree — той же группы Melon Fashion, что Love Republic: каталог устроен похоже
+    "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
+    "Befree": (["https://befree.ru/catalog/new/"], r"/catalog/[a-z0-9-]+/[a-z0-9-]+/\d+/", "daily"),
+    "12 Storeez": (["https://12storeez.com/catalog/new"], r"/catalog/[a-z0-9_-]+/[a-z0-9_-]+", "dream"),
 }
 
 PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
