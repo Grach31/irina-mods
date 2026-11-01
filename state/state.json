@@ -625,7 +625,20 @@
       "msg_id": 238,
       "file_id": "AgACAgIAAxkDAAPuaubO__Bx8Xk_UjVXVgvzKz4HyBAAAqwaaxuxGDhLFsxuv_3Lbk8BAAMCAAN3AAM9BA",
       "sent_at": "2026-11-01T08:32+03:00"
+    },
+    "2026-11-01-mix-grey-base": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 239,
+      "file_id": "AgACAgIAAxkDAAPvaubZcQ_icmFFjQMrlC71GXmDll0AAtQaaxuxGDhLbcYxbZKj0G8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-01T09:17+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-01-looks": {
+      "key": "889bef9d603f",
+      "status": "preview_ready",
+      "at": "2026-11-01T09:17+03:00"
+    }
+  }
 }
