@@ -32,8 +32,7 @@ def sheet(items, path):
     im.save(path, "JPEG", quality=80)
 
 
-PROBES = {"Sela": ["https://www.sela.ru/", "https://sela.ru/eshop/", "https://www.sela.ru/eshop/zhenskaya/"],
-          "Befree": ["https://befree.ru/", "https://befree.ru/catalog/", "https://befree.ru/zhenskaya/"]}
+PROBES = {}
 
 
 def diagnose(data):
