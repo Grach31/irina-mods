@@ -32,8 +32,54 @@ def sheet(items, path):
     im.save(path, "JPEG", quality=80)
 
 
+def diagnose(data):
+    """Для магазинов, где ничего не нашлось: что отдал сайт (статус, заголовок, ссылки, цены) — по этому правят шаблоны."""
+    import re
+    import urllib.request
+    from bs4 import BeautifulSoup
+    out = {}
+    for shop, items in data.items():
+        if items:
+            continue
+        urls, pattern, _ = shops.SHOPS[shop]
+        info = []
+        for u in urls:
+            rec = {"url": u}
+            try:
+                req = urllib.request.Request(u, headers=shops.UA)
+                with urllib.request.urlopen(req, timeout=40) as r:
+                    html = r.read().decode("utf-8", errors="ignore")
+                    rec.update(status=r.status, final_url=r.geturl(), length=len(html))
+                soup = BeautifulSoup(html, "lxml")
+                rec["title"] = (soup.title.get_text(" ", strip=True) if soup.title else "")[:150]
+                hrefs = [a["href"] for a in soup.find_all("a", href=True)]
+                rec["links_total"] = len(hrefs)
+                rec["links_match"] = len([h for h in hrefs if re.search(pattern, h.split("?")[0])])
+                with_digits = [h for h in dict.fromkeys(hrefs) if re.search(r"\d{3,}", h) and not h.startswith(("tel:", "mailto:"))]
+                rec["sample_links_digits"] = with_digits[:25]
+                rec["sample_links"] = list(dict.fromkeys(hrefs))[:25]
+                rec["price_mentions"] = len(shops.PRICE.findall(html))
+                rec["imgs"] = len(soup.find_all("img"))
+                rec["has_jsonld"] = "application/ld+json" in html
+                rec["has_next_data"] = "__NEXT_DATA__" in html or "__NUXT__" in html or "window.__INITIAL_STATE__" in html
+                m = re.search(r'"price"\s*:\s*"?(\d{3,6})', html)
+                rec["json_price_sample"] = m.group(0) if m else None
+                rec["head"] = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:300]
+            except Exception as e:
+                rec["error"] = str(e)[:300]
+            info.append(rec)
+        out[shop] = info
+    return out
+
+
 def main():
     data = shops.collect()
+    try:
+        debug = diagnose(data)
+        with open(os.path.join(OUT, "scrape_debug.json"), "w", encoding="utf-8") as f:
+            json.dump(debug, f, ensure_ascii=False, indent=1)
+    except Exception:
+        traceback.print_exc()
     os.makedirs(os.path.join(OUT, "sheets"), exist_ok=True)
     for shop, items in data.items():
         if not items:

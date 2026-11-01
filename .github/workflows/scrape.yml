@@ -28,5 +28,5 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/candidates.json data/sheets
+          git add data/candidates.json data/sheets data/scrape_debug.json
           git diff --cached --quiet || (git commit -m "Новинки магазинов" && git pull --rebase -X theirs && git push)
