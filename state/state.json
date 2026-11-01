@@ -649,13 +649,14 @@
       "sent_at": "2026-11-01T09:18+03:00",
       "publish_at": "2026-11-01T19:12:01.690064+03:00",
       "published_at": "2026-11-01T19:12+03:00"
+    },
+    "2026-11-02-mix-new-knit": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 246,
+      "file_id": "AgACAgIAAxkDAAP2aue2xbxGQM74iF7E7HTZONlMMrwAAiciaxuxGEBLDL1EJkzvkF8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T01:01+03:00"
     }
   },
-  "held": {
-    "2026-11-02-mix-new-knit": {
-      "key": "577ac005b6f6",
-      "status": "preview_ready",
-      "at": "2026-11-02T01:00+03:00"
-    }
-  }
+  "held": {}
 }
