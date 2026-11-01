@@ -184,10 +184,21 @@ def send_new_drafts(state, requests):
             preview_held(state, draft)
             continue
         state.get("held", {}).pop(did, None)
+        is_video = draft.get("type") == "item" and bool(draft.get("video"))
         try:
-            jpegs = [render.to_jpeg(im) for im in draw_all(draft)]
-            save_previews(did, jpegs)
-            if len(jpegs) > 1:
+            if is_video:
+                # визуализация вещи: видео по ссылке (Higgsfield) — скачиваем, шлём Ирине; в канал уйдёт по file_id
+                if draft.get("image"):
+                    save_previews(did, [render.to_jpeg(im) for im in draw_all(draft)])
+                msg = tg.send_video_bytes(config.IRINA, tg.fetch(draft["video"]), caption=draft["text"],
+                                          reply_markup=keyboard(did, draft.get("slot")))
+                extra = {"video_file_id": msg["video"]["file_id"]}
+            else:
+                jpegs = [render.to_jpeg(im) for im in draw_all(draft)]
+                save_previews(did, jpegs)
+            if is_video:
+                pass                                    # видео уже отправлено выше
+            elif len(jpegs) > 1:
                 # карусель: альбом с подписью, кнопки — отдельным сообщением (к альбому их не прикрепить)
                 album = tg.send_media_group_bytes(config.IRINA, jpegs, caption=draft["text"])
                 msg = tg.call("sendMessage", chat_id=config.IRINA, reply_to_message_id=album[0]["message_id"],
@@ -225,6 +236,10 @@ def draw_all(draft):
     готовые фото, остальное — одна."""
     if draft.get("type") == "looks":
         return render.looks_carousel(draft)
+    if draft.get("type") == "item":
+        # визуализация одной вещи: готовая студийная картинка (путь в репозитории или ссылка);
+        # если есть "video", Ирине и в канал уходит видео, а картинка — превью в drafts/img/
+        return [render.photo(draft["image"], ROOT)]
     if draft.get("type") == "album":
         # готовые фото как есть (до 10 — лимит альбома Telegram): пути в репозитории или ссылки
         return [render.photo(src, ROOT) for src in draft["photos"][:10]]
@@ -280,7 +295,10 @@ def publish_due(state):
             continue
         draft = load(os.path.join(ROOT, "drafts", f"{did}.json"), None)
         try:
-            if d.get("file_ids"):
+            if d.get("video_file_id"):
+                tg.call("sendVideo", chat_id=config.CHANNEL, video=d["video_file_id"], caption=draft["text"],
+                        parse_mode="HTML", supports_streaming="true")
+            elif d.get("file_ids"):
                 media = [{"type": "photo", "media": fid} for fid in d["file_ids"]]
                 media[0].update(caption=draft["text"], parse_mode="HTML")
                 tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)

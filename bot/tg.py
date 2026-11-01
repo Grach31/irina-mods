@@ -44,6 +44,38 @@ def send_photo_bytes(chat_id, jpeg, caption=None, reply_markup=None):
     return res["result"]
 
 
+def fetch(url, limit=48 * 1024 * 1024):
+    """Скачать файл по ссылке (видео для поста); не больше лимита Telegram для ботов (50 МБ)."""
+    req = urllib.request.Request(url, headers={"User-Agent": "StamboBot/1.0 (github.com/Grach31/irina-mods)"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = r.read(limit + 1)
+    if len(data) > limit:
+        raise RuntimeError("файл больше 48 МБ")
+    return data
+
+
+def send_video_bytes(chat_id, video, caption=None, reply_markup=None):
+    """Видео (mp4) с подписью и кнопками. Возвращает сообщение; file_id — в result["video"]["file_id"]."""
+    boundary = uuid.uuid4().hex
+    fields = {"chat_id": str(chat_id), "parse_mode": "HTML", "supports_streaming": "true"}
+    if caption:
+        fields["caption"] = caption
+    if reply_markup:
+        fields["reply_markup"] = json.dumps(reply_markup, ensure_ascii=False)
+    body = b""
+    for k, v in fields.items():
+        body += f"--{boundary}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n".encode()
+    body += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"video\"; filename=\"post.mp4\"\r\n"
+             f"Content-Type: video/mp4\r\n\r\n").encode() + video + f"\r\n--{boundary}--\r\n".encode()
+    req = urllib.request.Request(API.format(_token(), "sendVideo"), data=body,
+                                 headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+    with urllib.request.urlopen(req, timeout=300) as r:
+        res = json.load(r)
+    if not res.get("ok"):
+        raise RuntimeError(f"sendVideo: {res}")
+    return res["result"]
+
+
 def download_file(file_id):
     info = call("getFile", file_id=file_id)
     url = f"https://api.telegram.org/file/bot{_token()}/{info['file_path']}"
