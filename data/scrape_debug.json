@@ -1,4 +1,10 @@
 {
+ "Befree": [
+  {
+   "url": "https://befree.ru/zhenskaya/zen-novinki",
+   "error": "<urlopen error timed out>"
+  }
+ ],
  "12 Storeez": [
   {
    "url": "https://12storeez.com/catalog/new",
@@ -23,7 +29,7 @@
    "url": "https://idol.ru/catalog/new/",
    "status": 200,
    "final_url": "https://idol.ru/catalog/new/",
-   "length": 1014425,
+   "length": 1014426,
    "title": "Новинки - интернет-магазин IDOL",
    "links_total": 119,
    "links_match": 50,
