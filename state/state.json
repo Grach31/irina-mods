@@ -658,5 +658,11 @@
       "sent_at": "2026-11-02T01:01+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-02-zarina-camel": {
+      "key": "57ef62e3b0aa",
+      "status": "preview_ready",
+      "at": "2026-11-02T01:23+03:00"
+    }
+  }
 }
