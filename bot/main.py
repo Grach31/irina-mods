@@ -152,9 +152,21 @@ def on_message(state, requests, m):
         return
     if not text and not photos:
         return
+    gid = m.get("media_group_id")
+    if gid:
+        # альбом из нескольких фото приходит отдельными сообщениями — собираем в одну просьбу
+        for r in requests:
+            if r.get("group") == gid and r["status"] == "new":
+                r["photos"] += save_photos(f"{r['id']}-g{len(r['photos'])}", photos)
+                if text and not r["text"]:
+                    r["text"] = text
+                return
     rid = f"r{m['message_id']}"
-    requests.append({"id": rid, "text": text, "photos": save_photos(rid, photos),
-                     "date": now().isoformat(timespec="minutes"), "status": "new"})
+    req = {"id": rid, "text": text, "photos": save_photos(rid, photos),
+           "date": now().isoformat(timespec="minutes"), "status": "new"}
+    if gid:
+        req["group"] = gid
+    requests.append(req)
     tg.call("sendMessage", chat_id=chat, text="Поняла идею 🙌 Черновик пришлю в течение часа.")
 
 
