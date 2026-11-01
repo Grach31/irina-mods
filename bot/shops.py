@@ -29,7 +29,7 @@ SHOPS = {
     # Zarina и Befree — той же группы Melon Fashion, что Love Republic: каталог устроен похоже
     "Zarina": (["https://zarina.ru/catalog/new/"], r"/catalog/product/[A-Za-z0-9_-]+/", "daily"),
     "Befree": (["https://befree.ru/zhenskaya/zen-novinki"], r"/zhenskaya/product/BF\d+/\d+", "daily"),
-    "12 Storeez": (["https://12storeez.com/catalog/new"], r"/catalog/[a-z0-9_-]+/[a-z0-9_-]+", "dream"),
+    # 12 Storeez: сайт закрыт JS-проверкой от ботов (servicepipe), обычным сбором не берётся — убран 02.11.2026
     # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
     "IDOL": (["https://idol.ru/catalog/new/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
 }
@@ -40,7 +40,11 @@ PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
 def fetch(url):
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=40) as r:
-        return r.read().decode("utf-8", errors="ignore")
+        data = r.read()
+    if data[:2] == b"\x1f\x8b":
+        import gzip
+        data = gzip.decompress(data)
+    return data.decode("utf-8", errors="ignore")
 
 
 def first_img(box, base):
@@ -61,12 +65,14 @@ def first_img(box, base):
     return None
 
 
-BAD_NAME = {"image", "img", "photo", "picture", "фото", "изображение"}
+BAD_NAME = {"image", "img", "photo", "picture", "фото", "изображение", "cart", "корзина", "в корзину", "favorite", "избранное"}
 
 
 def pick_name(a, box, text, m):
     """Название вещи: текст ссылки, title, alt (кроме пустых «image»), элемент с name/title, текст перед ценой."""
     cands = [a.get_text(" ", strip=True), a.get("title", ""), a.get("aria-label", "")]
+    for el in box.find_all(True, class_=re.compile(r"(product|item|card)[-_]?(name|title)|^(name|title)$", re.I)):
+        cands.append(el.get_text(" ", strip=True))
     for img in box.find_all("img", alt=True):
         cands.append(img["alt"])
     for el in box.find_all(True, class_=re.compile(r"name|title|caption", re.I)):

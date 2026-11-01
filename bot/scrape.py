@@ -147,8 +147,34 @@ def diagnose2(data):
         out["idol_occurrences"] = ks[:10]
         j = html.find("6381407259")
         out["idol_payload_sample"] = html[max(0, j - 600): j + 1800] if j >= 0 else ""
-        m = re.search(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.{0,2500})', html, re.S)
-        out["idol_nuxt_data_head"] = m.group(1) if m else ""
+        m = re.search(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
+        arr = json.loads(m.group(1)) if m else []
+        out["idol_nuxt_len"] = len(arr)
+
+        def show(v, depth=0):
+            # формат devalue: числа внутри объектов/списков — ссылки на элементы общего массива
+            if isinstance(v, int) and not isinstance(v, bool) and 0 <= v < len(arr) and depth < 3:
+                t = arr[v]
+                if isinstance(t, (dict, list)):
+                    return show(t, depth + 1)
+                return t
+            if isinstance(v, dict) and depth < 4:
+                return {k: show(x, depth + 1) for k, x in list(v.items())[:40]}
+            if isinstance(v, list) and depth < 4:
+                return [show(x, depth + 1) for x in v[:12]]
+            return v
+
+        hits = [i for i, v in enumerate(arr) if isinstance(v, str) and "6381407259" in v]
+        out["idol_hits"] = hits[:8]
+        objs = []
+        for i, v in enumerate(arr):
+            if isinstance(v, dict) and any(x in hits for x in v.values() if isinstance(x, int)):
+                objs.append(show(v))
+                if len(objs) >= 2:
+                    break
+        out["idol_product_objects"] = json.dumps(objs, ensure_ascii=False)[:6000]
+        cd = [v for v in arr if isinstance(v, dict) and "catalogData" in v]
+        out["idol_catalogdata_keys"] = json.dumps(show(cd[0]["catalogData"]) if cd else None, ensure_ascii=False)[:2500]
     except Exception as e:
         out["idol_error"] = str(e)[:300]
     # 12 Storeez: исходник пустой страницы

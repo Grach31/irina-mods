@@ -38,8 +38,12 @@ def load(url):
             headers["Referer"] = ref
     req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=40) as r:
-        im = Image.open(io.BytesIO(r.read()))
-        im.load()
+        data = r.read()
+    if data[:2] == b"\x1f\x8b":      # некоторые CDN (Zarina) отдают картинку в gzip без Content-Encoding
+        import gzip
+        data = gzip.decompress(data)
+    im = Image.open(io.BytesIO(data))
+    im.load()
     return im.convert("RGB")
 
 
