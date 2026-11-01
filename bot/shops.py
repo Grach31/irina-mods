@@ -1,5 +1,6 @@
 """Сбор новинок из магазинов: название, цена, ссылка, фото."""
 import re
+import time
 import urllib.parse
 import urllib.request
 
@@ -39,8 +40,15 @@ PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
 
 def fetch(url):
     req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=40) as r:
-        data = r.read()
+    for attempt in range(3):          # сеть иногда подвисает (Befree: timed out) — пробуем до 3 раз
+        try:
+            with urllib.request.urlopen(req, timeout=40) as r:
+                data = r.read()
+            break
+        except Exception:
+            if attempt == 2:
+                raise
+            time.sleep(3)
     if data[:2] == b"\x1f\x8b":
         import gzip
         data = gzip.decompress(data)
@@ -170,6 +178,8 @@ def parse_idol(html, base):
         if isinstance(imgs, dict):
             for size in ("large", "desktop", "medium", "small"):
                 d = ref(imgs.get(size))
+                if isinstance(d, list) and d:       # список фото вещи — берём первое
+                    d = ref(d[0])
                 if isinstance(d, dict):
                     img = ref(d.get("srcX2")) or ref(d.get("src")) or ref(d.get("srcX4"))
                     if img:
