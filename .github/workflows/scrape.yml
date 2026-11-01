@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: "0 4 * * *"   # 07:00 МСК
   workflow_dispatch:
+  push:
+    paths:                       # изменили список магазинов или сборщик — сразу пересобрать новинки
+      - bot/shops.py
+      - bot/scrape.py
 permissions:
   contents: write
 concurrency:
