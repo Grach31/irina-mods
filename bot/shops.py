@@ -31,7 +31,7 @@ SHOPS = {
     "Befree": (["https://befree.ru/zhenskaya/zen-novinki"], r"/zhenskaya/product/BF\d+/\d+", "daily"),
     # 12 Storeez: сайт закрыт JS-проверкой от ботов (servicepipe), обычным сбором не берётся — убран 02.11.2026
     # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
-    "IDOL": (["https://idol.ru/catalog/new/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
+    "IDOL": (["https://idol.ru/catalog/new/woman/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
 }
 
 PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
@@ -146,6 +146,45 @@ def parse_2mood(html, base):
     return out
 
 
+def parse_idol(html, base):
+    """IDOL (Nuxt): товары лежат в JSON страницы (__NUXT_DATA__, формат devalue: числа внутри объектов — ссылки на
+    элементы общего массива), в HTML фото подгружаются скриптом."""
+    import json
+    m = re.search(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
+    if not m:
+        return []
+    arr = json.loads(m.group(1))
+
+    def ref(v):
+        if isinstance(v, int) and not isinstance(v, bool) and 0 <= v < len(arr):
+            return arr[v]
+        return v
+
+    out, seen = [], set()
+    for v in arr:
+        if not (isinstance(v, dict) and {"article", "price", "url", "images", "name"} <= set(v)):
+            continue
+        name, price, url = ref(v["name"]), ref(v["price"]), ref(v["url"])
+        imgs = ref(v["images"])
+        img = None
+        if isinstance(imgs, dict):
+            for size in ("large", "desktop", "medium", "small"):
+                d = ref(imgs.get(size))
+                if isinstance(d, dict):
+                    img = ref(d.get("srcX2")) or ref(d.get("src")) or ref(d.get("srcX4"))
+                    if img:
+                        break
+        if not (isinstance(name, str) and isinstance(price, int) and isinstance(url, str) and img) or price < 2500:
+            continue
+        url = urllib.parse.urljoin(base, url)
+        if url in seen:
+            continue
+        seen.add(url)
+        name = re.sub(r"\s+", " ", name).strip()
+        out.append({"name": name[:1].upper() + name[1:], "price": price, "url": url, "img": img})
+    return out
+
+
 def collect(log=print):
     result = {}
     for shop, (urls, pattern, kind) in SHOPS.items():
@@ -153,7 +192,8 @@ def collect(log=print):
         for u in urls:
             try:
                 html = fetch(u)
-                found = parse_2mood(html, u) if shop == "2MOOD" else parse(html, u, pattern)
+                found = (parse_2mood(html, u) if shop == "2MOOD" else parse_idol(html, u) if shop == "IDOL"
+                         else parse(html, u, pattern))
                 for it in found:
                     if it["url"] not in seen:
                         seen.add(it["url"])
