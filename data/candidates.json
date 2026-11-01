@@ -1525,6 +1525,416 @@
    "kind": "daily"
   }
  ],
- "Befree": [],
- "IDOL": []
+ "Befree": [
+  {
+   "name": "хит новинка Жакет приталенный с воланами и косой застежкой",
+   "price": 7599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305017/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки-клеш на низкой посадке",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308014/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308014/BF2641308014_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы облегающие со средней посадкой и цепочкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209059/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209059/BF2641209059_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джинсы багги со средней посадкой и цветочным узором",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209041/108",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209041/BF2641209041_108_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный с косой застежкой",
+   "price": 2999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527078/39",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527078/BF2641527078_39_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Утепленные Джинсы клеш бархатные утепленные со средней посадкой",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209058/55",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209058/BF2641209058_55_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сапоги высокие с двойным голенищем",
+   "price": 6999,
+   "url": "https://befree.ru/zhenskaya/product/BF2646685007/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646685007/BF2646685007_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джинсы багги со средней посадкой и цветочным узором",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209041/103",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209041/BF2641209041_103_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сумка-тоут на плечо с наружными карманами и шнуровкой",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2645457008/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645457008/BF2645457008_50_13.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный с кружевом",
+   "price": 3799,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527035/38",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527035/BF2641527035_38_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Юбка-годэ из искусственной кожи с контрастной подкладкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641312023/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312023/BF2641312023_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный твидовый с бахромой",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527037/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527037/BF2641527037_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный на косой молнии с капюшоном",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527008/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527008/BF2641527008_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-комбинация мини из искусственной кожи с кружевом",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414007/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414007/BF2641414007_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шарф тонкий шифоновый с бахромой из бисера",
+   "price": 2599,
+   "url": "https://befree.ru/zhenskaya/product/BF2645341012/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645341012/BF2645341012_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шуба короткая с воротником утепленная",
+   "price": 7999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641602035/37",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641602035/BF2641602035_37_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный на косой молнии с капюшоном",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527008/60",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527008/BF2641527008_60_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Худи на молнии оверсайз с капюшоном и принтом",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641123031/41",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641123031/BF2641123031_41_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Жакет приталенный в полоску с косой застежкой",
+   "price": 5999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305027/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305027/BF2641305027_99_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы прямые с низкой посадкой",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209091/110",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209091/BF2641209091_110_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки-джоггеры трикотажные с лампасами и ремнем",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641108019/26",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641108019/BF2641108019_26_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джемпер вязаный с ромбами",
+   "price": 2999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641526080/45",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641526080/BF2641526080_45_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Брюки прямые из искусственной кожи",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308041/20",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308041/BF2641308041_20_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  }
+ ],
+ "IDOL": [
+  {
+   "name": "Куртка рабочего с воротом из меха норки",
+   "price": 69990,
+   "url": "https://idol.ru/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/20/id/430_932_1791552733/id6381407259_20_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Джемпер удлинённого силуэта из шерсти",
+   "price": 25990,
+   "url": "https://idol.ru/product/dzhemper-zhenskiy-id6401046126-53/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/53/id/430_932_1790931580/id6401046126_53_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из шерсти и кашемира",
+   "price": 21990,
+   "url": "https://idol.ru/product/bryuki-iz-shersti-i-kashemira-id6401025415-63/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1790839902/id6401025415_63_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Джемпер из шерсти и кашемира",
+   "price": 19990,
+   "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-36/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/36/id/430_932_1790256496/id6391954114_36_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Джемпер из шерсти и кашемира",
+   "price": 19990,
+   "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-63/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1790256536/id6391954114_63_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Джемпер из шерсти и кашемира",
+   "price": 16990,
+   "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6401025101-64/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/64/id/430_932_1792046414/id6401025101_64_01.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Джемпер из шерсти и кашемира",
+   "price": 16990,
+   "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6401025101-38/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/38/id/430_932_1790839898/id6401025101_38_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Жакет из фактурной шерсти",
+   "price": 29990,
+   "url": "https://idol.ru/product/zhaket-iz-fakturnoj-shersti-id6401019917-60/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1790839889/id6401019917_60_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Туника асимметричная из вискозы",
+   "price": 14990,
+   "url": "https://idol.ru/product/tunika-asimmetrichnaya-iz-viskozy-id6401036116-22/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/22/id/430_932_1792046449/id6401036116_22_01.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Кардиган из шерсти со съемными подплечниками",
+   "price": 19990,
+   "url": "https://idol.ru/product/kardigan-iz-shersti-so-semnymi-podplechnikami-id6391944104-169/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/169/id/430_932_1790256471/id6391944104_169_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки с защипами из костюмной шерсти",
+   "price": 19990,
+   "url": "https://idol.ru/product/bryuki-s-zashchipami-iz-kostyumnoj-shersti-id6391775440-22/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/22/id/430_932_1790839878/id6391775440_22_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Кардиган из хлопка и кашемира с капюшоном",
+   "price": 19990,
+   "url": "https://idol.ru/product/kardigan-iz-hlopka-i-kashemira-s-kapyushonom-id6381917104-38/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/38/id/430_932_1792046287/id6381917104_38_01.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Куртка из фактурной шерсти с отделкой из меха енота",
+   "price": 65990,
+   "url": "https://idol.ru/product/kurtka-iz-fakturnoj-shersti-s-otdelkoj-iz-mekha-enota-id6391579215-39/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1792046310/id6391579215_39_01.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Куртка с подстежкой из меха кролика",
+   "price": 69990,
+   "url": "https://idol.ru/product/kurtka-s-podstezhkoj-iz-mekha-krolika-id6401576217-17/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/17/id/430_932_1791812575/id6401576217_17_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Куртка-кокон с утеплителем",
+   "price": 59990,
+   "url": "https://idol.ru/product/kurtka-kokon-s-uteplitelem-id6401406258-63/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1791563250/id6401406258_63_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки баллоны из шерсти и кашемира",
+   "price": 21990,
+   "url": "https://idol.ru/product/bryuki-ballony-iz-shersti-i-kashemira-id6401025416-39/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1790839904/id6401025416_39_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из костюмной шерсти",
+   "price": 21990,
+   "url": "https://idol.ru/product/bryuki-iz-kostyumnoj-shersti-id6401014410-231/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/231/id/430_932_1793282380/id6401014410_231_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Юбка миди из шерсти и кашемира",
+   "price": 19990,
+   "url": "https://idol.ru/product/yubka-midi-iz-shersti-i-kashemira-id6401034304-39/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1790328503/id6401034304_39_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Шарф из натурального меха",
+   "price": 25990,
+   "url": "https://idol.ru/product/sharf-iz-naturalnogo-mekha-id6401163008-60/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1792159105/id6401163008_60_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Сумка из 100% натуральной кожи",
+   "price": 35990,
+   "url": "https://idol.ru/product/sumka-iz-100-naturalnoj-kozhi-id6381068007-27/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/27/id/430_932_1792482358/id6381068007_27_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Кардиган из мохера и шерсти",
+   "price": 29990,
+   "url": "https://idol.ru/product/kardigan-iz-mohera-i-shersti-id6401030109-2/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/2/id/430_932_1790839907/id6401030109_2_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из 100% натуральной кожи",
+   "price": 55990,
+   "url": "https://idol.ru/product/bryuki-iz-100-naturalnoj-kozhi-id6391374487-27/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/27/id/430_932_1790346751/id6391374487_27_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из шерсти на кулиске",
+   "price": 16990,
+   "url": "https://idol.ru/product/bryuki-iz-shersti-na-kuliske-id6391954404-36/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/36/id/430_932_1790256558/id6391954404_36_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из шерсти на кулиске",
+   "price": 16990,
+   "url": "https://idol.ru/product/bryuki-iz-shersti-na-kuliske-id6391954404-63/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1791794763/id6391954404_63_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Кардиган из шерсти и кашемира",
+   "price": 19990,
+   "url": "https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-63/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1790839895/id6401025100_63_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Кардиган из шерсти и кашемира",
+   "price": 19990,
+   "url": "https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-39/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1790839891/id6401025100_39_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Куртка из хлопка с отделкой из натурального меха",
+   "price": 49990,
+   "url": "https://idol.ru/product/kurtka-iz-hlopka-s-otdelkoj-iz-naturalnogo-mekha-id6381574273-13/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/13/id/430_932_1792046265/id6381574273_13_01.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Юбка макси из смесовой шерсти",
+   "price": 19990,
+   "url": "https://idol.ru/product/yubka-maksi-iz-smesovoj-shersti-id6391962310-60/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1792146415/id6391962310_60_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  }
+ ]
 }
