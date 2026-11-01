@@ -9,6 +9,7 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
                     "(KHTML, like Gecko) Chrome/130 Safari/537.36",
       "Accept-Language": "ru-RU,ru;q=0.9"}
 
+# (сбор запускается автоматически при изменении этого файла)
 # магазин: (ссылки на разделы, шаблон ссылки на товар, тип: daily — каждый день, dream — «вещь мечты»)
 SHOPS = {
     "Lime": (["https://limestore.com/ru_ru/catalog/women_new?menu=13264",
