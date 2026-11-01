@@ -1,10 +1,16 @@
 {
+ "Befree": [
+  {
+   "url": "https://befree.ru/zhenskaya/zen-novinki",
+   "error": "<urlopen error timed out>"
+  }
+ ],
  "IDOL": [
   {
    "url": "https://idol.ru/catalog/new/woman/",
    "status": 200,
    "final_url": "https://idol.ru/catalog/new/woman/",
-   "length": 1035199,
+   "length": 1035201,
    "title": "Новинки IDOL — каталог женской премиальной одежды, обуви и аксессуаров",
    "links_total": 130,
    "links_match": 50,
