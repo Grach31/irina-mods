@@ -833,7 +833,7 @@
    "kind": "dream"
   },
   {
-   "name": "Дубленка 90\\'s из натурального меха",
+   "name": "Дубленка 90's из натурального меха",
    "price": 229900,
    "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
    "img": "https://www.ushatava.ru/upload/iblock/eaf/4yww53fez5g2mh9we1cjys29ggo1e2j8/24.jpg",
@@ -1365,187 +1365,351 @@
  ],
  "Zarina": [
   {
-   "name": "Cart",
+   "name": "Приталенный кардиган со спущенной линией плеч",
    "price": 5599,
    "url": "https://zarina.ru/catalog/product/ZR2611083315-2/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083315_2_1.webp?t=1791533368",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Брюки прямого кроя с шерстью в составе",
    "price": 5999,
    "url": "https://zarina.ru/catalog/product/ZR2611082113-66/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082113_66_1.webp?t=1791533332",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Длинная шуба из искусственного меха с поясом",
    "price": 13999,
    "url": "https://zarina.ru/catalog/product/ZR2611102247-26/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611102247_26_1.webp?t=1791533415",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Вязаное платье длины миди",
    "price": 7999,
    "url": "https://zarina.ru/catalog/product/ZR2611082907-63/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082907_63_1.webp?t=1791533356",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Меховой шарф с кисточками",
    "price": 2999,
    "url": "https://zarina.ru/catalog/product/ZR2611061806-20/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061806_20_1.webp?t=1791533302",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Юбка длины миди с кружевом",
    "price": 5599,
    "url": "https://zarina.ru/catalog/product/ZR2611083508-63/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083508_63_1.webp?t=1791533397",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Сумка плетеная из натуральной кожи",
    "price": 8999,
    "url": "https://zarina.ru/catalog/product/ZR2611061705-20/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061705_20_1.webp?t=1791533297",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Приталенный корсет с шерстью в составе",
    "price": 4999,
    "url": "https://zarina.ru/catalog/product/ZR2611082008-63/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082008_63_1.webp?t=1791533305",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Брюки кюлоты с шерстью в составе",
    "price": 5599,
    "url": "https://zarina.ru/catalog/product/ZR2611082112-62/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082112_62_1.webp?t=1791533325",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Облегающее боди с модалом в составе",
    "price": 3999,
    "url": "https://zarina.ru/catalog/product/ZR2611083404-2/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083404_2_1.webp?t=1791533387",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Двуслойный лонгслив из тенселя",
    "price": 4599,
    "url": "https://zarina.ru/catalog/product/ZR2611083403-2/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083403_2_1.webp?t=1791533378",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Юбка длины мини с шерстью в составе",
    "price": 4999,
    "url": "https://zarina.ru/catalog/product/ZR2611083509-63/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083509_63_1.webp?t=1791533407",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Приталенный жакет с шерстью в составе",
    "price": 9999,
    "url": "https://zarina.ru/catalog/product/ZR2611082507-63/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082507_63_1.webp?t=1791533344",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Приталенная рубашка с кружевом",
    "price": 5599,
    "url": "https://zarina.ru/catalog/product/ZR2611082010-62/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082010_62_1.webp?t=1791533313",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Шуба из искусственного меха на кулиске",
    "price": 10999,
    "url": "https://zarina.ru/catalog/product/ZR2611102227-2/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611102227_2_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Свободный джемпер с шерстью в составе",
    "price": 4999,
    "url": "https://zarina.ru/catalog/product/ZR2611083319-91/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083319_91_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Твидовое платье длины мини",
    "price": 7999,
    "url": "https://zarina.ru/catalog/product/ZR2611082908-2/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082908_2_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Сумка кросс-боди из искусственного меха",
    "price": 2999,
    "url": "https://zarina.ru/catalog/product/ZR2611061701-1/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061701_1_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Твидовая юбка длины мини",
    "price": 4999,
    "url": "https://zarina.ru/catalog/product/ZR2611083510-90/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083510_90_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   },
   {
-   "name": "Cart",
+   "name": "Твидовый жакет с меховыми манжетами",
    "price": 8999,
    "url": "https://zarina.ru/catalog/product/ZR2611082508-90/",
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082508_90_1.webp?t=1792055749",
    "shop": "Zarina",
-   "kind": "daily",
-   "img_error": true
+   "kind": "daily"
   }
  ],
- "Befree": [],
- "12 Storeez": [],
+ "Befree": [
+  {
+   "name": "хит новинка Жакет приталенный с воланами и косой застежкой",
+   "price": 7599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305017/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки-клеш на низкой посадке",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308014/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308014/BF2641308014_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы облегающие со средней посадкой и цепочкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209059/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209059/BF2641209059_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джинсы багги со средней посадкой и цветочным узором",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209041/108",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209041/BF2641209041_108_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный с косой застежкой",
+   "price": 2999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527078/39",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527078/BF2641527078_39_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Утепленные Джинсы клеш бархатные утепленные со средней посадкой",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209058/55",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209058/BF2641209058_55_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сапоги высокие с двойным голенищем",
+   "price": 6999,
+   "url": "https://befree.ru/zhenskaya/product/BF2646685007/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646685007/BF2646685007_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джинсы багги со средней посадкой и цветочным узором",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209041/103",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209041/BF2641209041_103_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сумка-тоут на плечо с наружными карманами и шнуровкой",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2645457008/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645457008/BF2645457008_50_13.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный с кружевом",
+   "price": 3799,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527035/38",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527035/BF2641527035_38_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Юбка-годэ из искусственной кожи с контрастной подкладкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641312023/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312023/BF2641312023_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный твидовый с бахромой",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527037/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527037/BF2641527037_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный на косой молнии с капюшоном",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527008/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527008/BF2641527008_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-комбинация мини из искусственной кожи с кружевом",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414007/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414007/BF2641414007_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шарф тонкий шифоновый с бахромой из бисера",
+   "price": 2599,
+   "url": "https://befree.ru/zhenskaya/product/BF2645341012/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645341012/BF2645341012_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шуба короткая с воротником утепленная",
+   "price": 7999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641602035/37",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641602035/BF2641602035_37_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кардиган вязаный на косой молнии с капюшоном",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641527008/60",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641527008/BF2641527008_60_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Худи на молнии оверсайз с капюшоном и принтом",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641123031/41",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641123031/BF2641123031_41_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Жакет приталенный в полоску с косой застежкой",
+   "price": 5999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305027/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305027/BF2641305027_99_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы прямые с низкой посадкой",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209091/110",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209091/BF2641209091_110_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки-джоггеры трикотажные с лампасами и ремнем",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641108019/26",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641108019/BF2641108019_26_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джемпер вязаный с ромбами",
+   "price": 2999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641526080/45",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641526080/BF2641526080_45_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Брюки прямые из искусственной кожи",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308041/20",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308041/BF2641308041_20_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  }
+ ],
  "IDOL": []
 }

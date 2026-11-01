@@ -1,35 +1,10 @@
 {
- "Befree": [
-  {
-   "url": "https://befree.ru/zhenskaya/zen-novinki",
-   "error": "<urlopen error timed out>"
-  }
- ],
- "12 Storeez": [
-  {
-   "url": "https://12storeez.com/catalog/new",
-   "status": 200,
-   "final_url": "https://12storeez.com/catalog/new",
-   "length": 1783,
-   "title": "",
-   "links_total": 0,
-   "links_match": 0,
-   "sample_links_digits": [],
-   "sample_links": [],
-   "price_mentions": 0,
-   "imgs": 0,
-   "has_jsonld": false,
-   "has_next_data": false,
-   "json_price_sample": null,
-   "head": ""
-  }
- ],
  "IDOL": [
   {
    "url": "https://idol.ru/catalog/new/",
    "status": 200,
    "final_url": "https://idol.ru/catalog/new/",
-   "length": 1014426,
+   "length": 1014425,
    "title": "Новинки - интернет-магазин IDOL",
    "links_total": 119,
    "links_match": 50,
