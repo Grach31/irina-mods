@@ -1138,7 +1138,188 @@
   }
  ],
  "Sela": [],
- "Zarina": [],
+ "Zarina": [
+  {
+   "name": "image",
+   "price": 5599,
+   "url": "https://zarina.ru/catalog/product/ZR2611083315-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083315_2_1.webp?t=1791533368",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 5999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082113-66/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082113_66_1.webp?t=1791533332",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 13999,
+   "url": "https://zarina.ru/catalog/product/ZR2611102247-26/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611102247_26_1.webp?t=1791533415",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 7999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082907-63/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082907_63_1.webp?t=1791533356",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 2999,
+   "url": "https://zarina.ru/catalog/product/ZR2611061806-20/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061806_20_1.webp?t=1791533302",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 5599,
+   "url": "https://zarina.ru/catalog/product/ZR2611083508-63/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083508_63_1.webp?t=1791533397",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 8999,
+   "url": "https://zarina.ru/catalog/product/ZR2611061705-20/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061705_20_1.webp?t=1791533297",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 4999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082008-63/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082008_63_1.webp?t=1791533305",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 5599,
+   "url": "https://zarina.ru/catalog/product/ZR2611082112-62/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082112_62_1.webp?t=1791533325",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2611083404-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083404_2_1.webp?t=1791533387",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 4599,
+   "url": "https://zarina.ru/catalog/product/ZR2611083403-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083403_2_1.webp?t=1791533378",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 4999,
+   "url": "https://zarina.ru/catalog/product/ZR2611083509-63/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083509_63_1.webp?t=1791533407",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 9999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082507-63/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082507_63_1.webp?t=1791533344",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 5599,
+   "url": "https://zarina.ru/catalog/product/ZR2611082010-62/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082010_62_1.webp?t=1791533313",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 10999,
+   "url": "https://zarina.ru/catalog/product/ZR2611102227-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611102227_2_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 4999,
+   "url": "https://zarina.ru/catalog/product/ZR2611083319-91/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083319_91_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 7999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082908-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082908_2_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 2999,
+   "url": "https://zarina.ru/catalog/product/ZR2611061701-1/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611061701_1_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 4999,
+   "url": "https://zarina.ru/catalog/product/ZR2611083510-90/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611083510_90_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  },
+  {
+   "name": "image",
+   "price": 8999,
+   "url": "https://zarina.ru/catalog/product/ZR2611082508-90/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082508_90_1.webp?t=1792055749",
+   "shop": "Zarina",
+   "kind": "daily",
+   "img_error": true
+  }
+ ],
  "Befree": [],
  "12 Storeez": [],
  "IDOL": []

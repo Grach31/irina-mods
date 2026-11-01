@@ -3,83 +3,90 @@
   {
    "url": "https://www.sela.ru/eshop/new/",
    "error": "HTTP Error 404: Not Found"
-  }
- ],
- "Zarina": [
+  },
   {
-   "url": "https://zarina.ru/catalog/new/",
+   "probe": "https://www.sela.ru/",
    "status": 200,
-   "final_url": "https://zarina.ru/catalog/new/",
-   "length": 274987,
-   "title": "Новая коллекция - новинки - купить в интернет-магазине «ZARINA»",
-   "links_total": 120,
-   "links_match": 0,
-   "sample_links_digits": [
-    "https://appgallery.huawei.com/app/C115515961?sharePrepath=ag&locale=ru_RU",
-    "https://apps.apple.com/ru/app/zarina-%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0-%D0%B8-%D0%B0%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B/id1640213769",
-    "https://spb.hh.ru/employer/55440?tab=DESCRIPTION",
-    "/catalog/product/ZR2611083315-2/",
-    "/catalog/product/ZR2611082113-66/",
-    "/catalog/product/ZR2611102247-26/",
-    "/catalog/product/ZR2611060316-6/",
-    "/catalog/product/ZR2611082907-63/",
-    "/catalog/product/ZR2611061806-20/",
-    "/catalog/product/ZR2611083508-63/",
-    "/catalog/product/ZR2611061705-20/",
-    "/catalog/product/ZR2611082008-63/",
-    "/catalog/product/ZR2611060318-6/",
-    "/catalog/product/ZR2611082112-62/",
-    "/catalog/product/ZR2611060317-6/",
-    "/catalog/product/ZR2611083404-2/",
-    "/catalog/product/ZR2611083403-2/",
-    "/catalog/product/ZR2611083509-63/",
-    "/catalog/product/ZR2611082507-63/",
-    "/catalog/product/ZR2611082010-62/",
-    "/catalog/product/ZR2611060319-6/",
-    "/catalog/product/ZR2611102227-2/",
-    "/catalog/product/ZR2611083319-91/",
-    "/catalog/product/ZR2611082908-2/",
-    "/catalog/product/ZR2611061701-1/"
+   "final_url": "https://www.sela.ru/",
+   "length": 401733,
+   "new_links": [
+    "/eshop/women/new/",
+    "/eshop/young/new/",
+    "/eshop/men/new/",
+    "/eshop/kids/girl/new/",
+    "/eshop/kids/boy/new/",
+    "/eshop/kids/baby/new/",
+    "/eshop/home/new/",
+    "/eshop/Novogodniaia-kollektsiya-2026–2027/home/"
    ],
-   "sample_links": [
-    "https://zarina.ru/catalog/new/",
-    "/",
-    "/man/",
-    "https://appgallery.huawei.com/app/C115515961?sharePrepath=ag&locale=ru_RU",
-    "https://apps.apple.com/ru/app/zarina-%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0-%D0%B8-%D0%B0%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B/id1640213769",
-    "https://play.google.com/store/apps/details?id=ru.livetyping.zarina",
-    "https://www.rustore.ru/catalog/app/ru.livetyping.zarina",
-    "/catalog/clothes/",
-    "/man/clothes/",
-    "/help/delivery-and-payment/",
-    "/help/refund/",
-    "/help/",
-    "/posts/",
-    "/bonus/",
-    "/gift-card/",
-    "/help/docs/",
-    "/about/",
-    "https://spb.hh.ru/employer/55440?tab=DESCRIPTION",
-    "/about/contacts/",
-    "tel:88007070666",
-    "/favorites/",
-    "/catalog/new/",
-    "/catalog/new/outwear/",
-    "/catalog/new/trikotazh/",
-    "/catalog/new/new-jeans/"
+   "title": "SELA – интернет-магазин одежды для женщин, мужчин, новорожденных и детей от российского производителя"
+  },
+  {
+   "probe": "https://sela.ru/eshop/",
+   "status": 200,
+   "final_url": "https://www.sela.ru/",
+   "length": 401733,
+   "new_links": [
+    "/eshop/women/new/",
+    "/eshop/young/new/",
+    "/eshop/men/new/",
+    "/eshop/kids/girl/new/",
+    "/eshop/kids/boy/new/",
+    "/eshop/kids/baby/new/",
+    "/eshop/home/new/",
+    "/eshop/Novogodniaia-kollektsiya-2026–2027/home/"
    ],
-   "price_mentions": 9,
-   "imgs": 95,
-   "has_jsonld": false,
-   "has_next_data": false,
-   "json_price_sample": null,
-   "head": "Скидка -15% от 8 000 руб. по промокоду ПРОМО15 ЖЕНЩИНАМ МУЖЧИНАМ © 2026 Zarina Все права защищены Женская одежда Мужская одежда Доставка и оплата Обмен и возврат Вопросы и ответы Новости и акции Программа лояльности Подарочные сертификаты Документы сайта О бренде Карьера в Zarina Контакты 8 800 70 7"
+   "title": "SELA – интернет-магазин одежды для женщин, мужчин, новорожденных и детей от российского производителя"
+  },
+  {
+   "probe": "https://www.sela.ru/eshop/zhenskaya/",
+   "error": "HTTP Error 404: Not Found"
   }
  ],
  "Befree": [
   {
    "url": "https://befree.ru/catalog/new/",
    "error": "HTTP Error 404: Not Found"
+  },
+  {
+   "probe": "https://befree.ru/",
+   "status": 200,
+   "final_url": "https://befree.ru/",
+   "length": 306501,
+   "new_links": [
+    "https://www.youtube.com/user/befreenewsite",
+    "https://www.rustore.ru/catalog/app/com.ddgcorp.befree",
+    "https://befree.ru/muzhskaya/muz-novinki",
+    "https://befree.ru/zhenskaya/zen-novinki"
+   ],
+   "title": "Befree – официальный сайт интернет-магазина одежды, обуви и аксессуаров"
+  },
+  {
+   "probe": "https://befree.ru/catalog/",
+   "status": 200,
+   "final_url": "https://befree.ru/",
+   "length": 306501,
+   "new_links": [
+    "https://www.youtube.com/user/befreenewsite",
+    "https://www.rustore.ru/catalog/app/com.ddgcorp.befree",
+    "https://befree.ru/muzhskaya/muz-novinki",
+    "https://befree.ru/zhenskaya/zen-novinki"
+   ],
+   "title": "Befree – официальный сайт интернет-магазина одежды, обуви и аксессуаров"
+  },
+  {
+   "probe": "https://befree.ru/zhenskaya/",
+   "status": 200,
+   "final_url": "https://befree.ru/zhenskaya",
+   "length": 482191,
+   "new_links": [
+    "/zhenskaya/zen-novinki",
+    "https://www.youtube.com/user/befreenewsite",
+    "https://www.rustore.ru/catalog/app/com.ddgcorp.befree",
+    "https://befree.ru/muzhskaya/muz-novinki",
+    "https://befree.ru/zhenskaya/zen-novinki"
+   ],
+   "title": "Каталог модной женской одежды, обуви и аксессуаров - интернет-магазин «Befree»"
   }
  ],
  "12 Storeez": [
@@ -109,7 +116,7 @@
    "length": 1014426,
    "title": "Новинки - интернет-магазин IDOL",
    "links_total": 119,
-   "links_match": 0,
+   "links_match": 50,
    "sample_links_digits": [
     "/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/",
     "/product/pidzhak-iz-100-shersti-id6392435915-50/",
@@ -169,6 +176,12 @@
    "has_jsonld": false,
    "has_next_data": true,
    "json_price_sample": "\"price\":948",
+   "card_samples": [
+    "<div class=\"flex flex-col gap-2 pb-4 lg:mx-auto lg:h-[984px] lg:aspect-[5/7] flex !aspect-auto flex-col lg:h-full\" data-v-129a2d3d=\"\" id=\"44811\"><div class=\"h-full group relative border-none\" data-v-129a2d3d=\"\"><a class=\"block border-none h-full\" data-v-129a2d3d=\"\" href=\"/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/\"><div class=\"loading relative overflow-hidden bg-gray-2 h-full\" data-v-129a2d3d=\"\" style=\"padding-top:133.33333333333331%;\"><span data-v-129a2d3d=\"\"></span></div></a><div class=\"absolute left-3 top-3 z-10 flex flex-col\" data-v-129a2d3d=\"\"><!--[--><a aria-current=\"page\" class=\"router-link-active router-link-exact-active text-[8px] font-medium uppercase leading-[10px]\" data-v-129a2d3d=\"\" href=\"/catalog/new/\">НОВИНКА</a><!--]--></div><!-- --><!-- --></div><div class=\"flex w-full items-start gap-0.5\" data-v-129a2d3d=\"\"><div class=\"flex min-w-0 flex-1 flex-col gap-0.5 lg:gap-1\" data-v-129a2d3d=\"\"><a class=\"line-clamp-2 text-name-xs font-normal uppercase lg:text-name-s\" data-v-129a2d3d=\"\" href=\"/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/\">куртка рабочего с воротом из меха норки</a><div class=\"flex h-2.5 items-start gap-1 whitespace-nowrap\" data-v-129a2d3d=\"\"><!--[--><div class=\"text-name-xs uppercase lg:text-price-m\" data-v-129a2d3d=\"\">69 990 ₽</div><!-- --><!--]--></div><div class=\"h-3\" data-v-129a2d3d=\"\"><!-- --></div></div><button aria-label=\"Добавить в корзину\" class=\"flex max-h-5 shrink-0 items-center px-0.5\" data-v-129",
+    "<div class=\"container grid grid-cols-2 gap-x-5 gap-y-4 lg:grid-cols-4\" data-v-7809f9d0=\"\"><!--[--><div class=\"col-span-2 row-span-2\"><div class=\"flex flex-col gap-2 pb-4 lg:mx-auto lg:h-[984px] lg:aspect-[5/7] flex !aspect-auto flex-col lg:h-full\" data-v-129a2d3d=\"\" id=\"44811\"><div class=\"h-full group relative border-none\" data-v-129a2d3d=\"\"><a class=\"block border-none h-full\" data-v-129a2d3d=\"\" href=\"/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/\"><div class=\"loading relative overflow-hidden bg-gray-2 h-full\" data-v-129a2d3d=\"\" style=\"padding-top:133.33333333333331%;\"><span data-v-129a2d3d=\"\"></span></div></a><div class=\"absolute left-3 top-3 z-10 flex flex-col\" data-v-129a2d3d=\"\"><!--[--><a aria-current=\"page\" class=\"router-link-active router-link-exact-active text-[8px] font-medium uppercase leading-[10px]\" data-v-129a2d3d=\"\" href=\"/catalog/new/\">НОВИНКА</a><!--]--></div><!-- --><!-- --></div><div class=\"flex w-full items-start gap-0.5\" data-v-129a2d3d=\"\"><div class=\"flex min-w-0 flex-1 flex-col gap-0.5 lg:gap-1\" data-v-129a2d3d=\"\"><a class=\"line-clamp-2 text-name-xs font-normal uppercase lg:text-name-s\" data-v-129a2d3d=\"\" href=\"/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/\">куртка рабочего с воротом из меха норки</a><div class=\"flex h-2.5 items-start gap-1 whitespace-nowrap\" data-v-129a2d3d=\"\"><!--[--><div class=\"text-name-xs uppercase lg:text-price-m\" data-v-129a2d3d=\"\">69 990 ₽</div><!-- --><!--]--></div><div class=\"h-3\" data-v",
+    "<div class=\"flex flex-col gap-4 pb-20 lg:gap-0\" data-v-7809f9d0=\"\"><div class=\"flex select-none items-center justify-between gap-4 hidden fixed top-16 z-[15] w-full border-b border-gray bg-white px-2 py-4 transition-all duration-300 lg:!px-10\" data-v-7809f9d0=\"\"><div class=\"relative min-w-0 flex-1 overflow-hidden\"><div class=\"no-scrollbar flex cursor-grab gap-5 overflow-x-auto overscroll-x-contain whitespace-nowrap pr-12 uppercase lg:pr-0\"><!--[--><a class=\"shrink-0 cursor-pointer text-s transition-colors duration-300 hover:text-[#464646] font-normal\" href=\"/catalog/new/woman/\">Женщинам</a><a class=\"shrink-0 cursor-pointer text-s transition-colors duration-300 hover:text-[#464646] font-normal\" href=\"/catalog/new/man/\">Мужчинам</a><!--]--><!--[--><!--]--></div><div aria-hidden=\"true\" class=\"opacity-0 pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-r from-white/0 to-white transition-opacity duration-300\"></div></div><div class=\"relative flex shrink-0 items-center gap-6 bg-white\"><button class=\"relative inline-flex items-center justify-center gap-2 font-medium uppercase transition-colors duration-300 px-4 py-2 text-xs leading-3 bg-black text-white hover:bg-[#2f2f2f] disabled:bg-gray-30 disabled:text-gray !size-[24px] bg-white !p-0 !text-black lg:hover:bg-white lg:hover:text-[#464646]\"><span class=\"\"><svg fill=\"none\" height=\"24\" style=\"min-width:24px;\" viewbox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11 7v4H5V7zm-5 3h4V8H6zM19 7v"
+   ],
+   "card_href": "/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/",
    "head": "Новинки - интернет-магазин IDOL Женщинам Мужчинам Новинки Женщинам Мужчинам 1 Женщинам Мужчинам 1 НОВИНКА куртка рабочего с воротом из меха норки 69 990 ₽ НОВИНКА пиджак из 100% шерсти 39 990 ₽ НОВИНКА рубашка из шерсти без ворота 29 990 ₽ НОВИНКА джемпер удлинённого силуэта из шерсти 25 990 ₽ НОВИН"
   }
  ]
