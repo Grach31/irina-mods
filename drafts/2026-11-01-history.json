@@ -1,0 +1,36 @@
+{
+ "id": "2026-11-01-history",
+ "type": "history",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "card": {
+  "kicker": "ИСТОРИЯ МОДЫ",
+  "year": "1966",
+  "note": "60 лет назад",
+  "title": "Мэри Куант получает орден в мини",
+  "images": [
+   {
+    "commons": "Mary Quant in a minidress (1966).jpg",
+    "fy": 0.2
+   },
+   {
+    "commons": "1960s Mary Quant minidress, green, purple and white jersey.jpg",
+    "fy": 0.2
+   },
+   {
+    "commons": "Mary Quant 'Rex Harrison' cardigan dress chosen as Dress of the Year, 1963.jpg",
+    "fy": 0.2
+   }
+  ],
+  "credits": ""
+ },
+ "text": "<b>История моды · ноябрь 1966</b>\n\nРовно 60 лет назад Мэри Куант поехала в Букингемский дворец получать орден Британской империи за вклад в моду — и надела мини 🖤 Короткое кремовое платье из шерстяного джерси, берет как у школьницы и перчатки с вырезами на тыльной стороне — образ она продумала специально для фотографов. На фото — сама Куант в мини, 1966.\n\nСлово «мини», по словам самой Куант, она взяла у любимой машины — Mini. На фото — её трикотажное мини-платье конца 60-х.\n\nА в 1963-м её серый фланелевый сарафан «Рекс Харрисон» выбрали самым первым «Платьем года» — это он на третьем фото.\n\nМини зимой — с плотными колготками и сапогами носите?",
+ "sources": [
+  "https://collections.vam.ac.uk/item/O138961",
+  "https://www.vam.ac.uk/articles/the-miniskirt-myth",
+  "https://www.wikiwand.com/en/Mary_Quant",
+  "https://commons.wikimedia.org/wiki/File:Mary_Quant_%27Rex_Harrison%27_cardigan_dress_chosen_as_Dress_of_the_Year,_1963.jpg",
+  "https://commons.wikimedia.org/wiki/Category:Clothing_designed_by_Mary_Quant"
+ ]
+}
