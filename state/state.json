@@ -651,5 +651,11 @@
       "published_at": "2026-11-01T19:12+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-02-mix-new-knit": {
+      "key": "577ac005b6f6",
+      "status": "preview_ready",
+      "at": "2026-11-02T01:00+03:00"
+    }
+  }
 }
