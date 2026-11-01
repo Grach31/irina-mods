@@ -102,8 +102,71 @@ def diagnose(data):
     return out
 
 
+def diagnose2(data):
+    """Доп. диагностика трёх проблемных магазинов: фото Zarina, карточка Zarina, данные IDOL, исходник 12 Storeez."""
+    import re
+    import urllib.request
+    out = {}
+
+    def get(url, headers=None):
+        req = urllib.request.Request(url, headers=headers or shops.UA)
+        with urllib.request.urlopen(req, timeout=40) as r:
+            return r.status, r.read()
+
+    # Zarina: фото разными способами
+    try:
+        it = data["Zarina"][0]
+        img = it["img"]
+        tests = {}
+        for label, url, hd in [
+            ("plain", img, shops.UA),
+            ("referer", img, {**shops.UA, "Referer": "https://zarina.ru/"}),
+            ("no_query", img.split("?")[0], {**shops.UA, "Referer": "https://zarina.ru/"}),
+            ("jpg_variant", img.split("?")[0].replace(".webp", ".jpg"), {**shops.UA, "Referer": "https://zarina.ru/"}),
+            ("accept_image", img, {**shops.UA, "Referer": "https://zarina.ru/", "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}),
+        ]:
+            try:
+                st, body = get(url, hd)
+                tests[label] = {"status": st, "bytes": len(body), "head": body[:12].hex()}
+            except Exception as e:
+                tests[label] = {"error": str(e)[:200], "url": url}
+        out["zarina_img"] = {"url": img, "tests": tests}
+        st, body = get(shops.SHOPS["Zarina"][0][0])
+        html = body.decode("utf-8", errors="ignore")
+        i = html.find("/catalog/product/")
+        out["zarina_card"] = html[max(0, i - 900): i + 2600]
+    except Exception as e:
+        out["zarina_error"] = str(e)[:300]
+    # IDOL: Nuxt-данные
+    try:
+        st, body = get("https://idol.ru/catalog/new/")
+        html = body.decode("utf-8", errors="ignore")
+        out["idol_scripts"] = re.findall(r"<script[^>]*>", html)[:20]
+        k = html.find("kurtka-rabochego-s-vorotom-iz-mekha-norki")
+        ks = [m.start() for m in re.finditer("kurtka-rabochego-s-vorotom-iz-mekha-norki", html)]
+        out["idol_occurrences"] = ks[:10]
+        j = html.find("6381407259")
+        out["idol_payload_sample"] = html[max(0, j - 600): j + 1800] if j >= 0 else ""
+        m = re.search(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.{0,2500})', html, re.S)
+        out["idol_nuxt_data_head"] = m.group(1) if m else ""
+    except Exception as e:
+        out["idol_error"] = str(e)[:300]
+    # 12 Storeez: исходник пустой страницы
+    try:
+        st, body = get("https://12storeez.com/catalog/new")
+        out["storeez_html"] = body.decode("utf-8", errors="ignore")[:2500]
+    except Exception as e:
+        out["storeez_error"] = str(e)[:300]
+    return out
+
+
 def main():
     data = shops.collect()
+    try:
+        with open(os.path.join(OUT, "scrape_debug2.json"), "w", encoding="utf-8") as f:
+            json.dump(diagnose2(data), f, ensure_ascii=False, indent=1)
+    except Exception:
+        traceback.print_exc()
     try:
         debug = diagnose(data)
         with open(os.path.join(OUT, "scrape_debug.json"), "w", encoding="utf-8") as f:
