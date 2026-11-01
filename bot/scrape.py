@@ -177,6 +177,36 @@ def diagnose2(data):
         out["idol_catalogdata_keys"] = json.dumps(show(cd[0]["catalogData"]) if cd else None, ensure_ascii=False)[:2500]
     except Exception as e:
         out["idol_error"] = str(e)[:300]
+    # IDOL: прямой вызов разбора на странице женских новинок
+    try:
+        import traceback as tb
+        st, body = get("https://idol.ru/catalog/new/woman/")
+        html = body.decode("utf-8", errors="ignore")
+        res = {"len": len(html), "gzip_head": body[:2].hex()}
+        try:
+            found = shops.parse_idol(html, "https://idol.ru/catalog/new/woman/")
+            res["found"] = len(found)
+            res["first"] = found[:2]
+        except Exception:
+            res["parse_error"] = tb.format_exc()[-800:]
+        m = re.search(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
+        res["has_nuxt"] = bool(m)
+        if m:
+            arr = json.loads(m.group(1))
+            res["arr_len"] = len(arr)
+            prods = [v for v in arr if isinstance(v, dict) and "article" in v]
+            res["dicts_with_article"] = len(prods)
+            if prods:
+                res["sample_keys"] = list(prods[0].keys())
+                res["sample_raw"] = json.dumps(prods[0], ensure_ascii=False)[:800]
+                im = arr[prods[0]["images"]] if isinstance(prods[0].get("images"), int) else prods[0].get("images")
+                res["images_raw"] = json.dumps(im, ensure_ascii=False)[:500]
+                if isinstance(im, dict):
+                    k = im.get("large") or im.get("medium")
+                    res["image_large_raw"] = json.dumps(arr[k] if isinstance(k, int) else k, ensure_ascii=False)[:500]
+        out["idol_woman"] = res
+    except Exception as e:
+        out["idol_woman_error"] = str(e)[:300]
     # 12 Storeez: исходник пустой страницы
     try:
         st, body = get("https://12storeez.com/catalog/new")
