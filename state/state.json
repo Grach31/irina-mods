@@ -618,13 +618,14 @@
       "msg_id": 237,
       "file_id": "AgACAgIAAxkDAAPtaubOr9CdCxaL6KaUEeInEkTWCcYAAqsaaxuxGDhLV_MV26O5opsBAAMCAAN5AAM9BA",
       "sent_at": "2026-11-01T08:31+03:00"
+    },
+    "2026-11-01-history": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 238,
+      "file_id": "AgACAgIAAxkDAAPuaubO__Bx8Xk_UjVXVgvzKz4HyBAAAqwaaxuxGDhLFsxuv_3Lbk8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-01T08:32+03:00"
     }
   },
-  "held": {
-    "2026-11-01-history": {
-      "key": "76299f130f55",
-      "status": "preview_ready",
-      "at": "2026-11-01T08:31+03:00"
-    }
-  }
+  "held": {}
 }
