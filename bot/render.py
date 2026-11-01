@@ -28,8 +28,15 @@ def font(name, size, weight=None):
     return f
 
 
+REFERERS = {"imgcdn.zarina.ru": "https://zarina.ru/"}      # CDN отдаёт фото только со страницы магазина
+
+
 def load(url):
-    req = urllib.request.Request(url, headers=UA)
+    headers = dict(UA)
+    for host, ref in REFERERS.items():
+        if host in url:
+            headers["Referer"] = ref
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=40) as r:
         im = Image.open(io.BytesIO(r.read()))
         im.load()

@@ -61,6 +61,24 @@ def first_img(box, base):
     return None
 
 
+BAD_NAME = {"image", "img", "photo", "picture", "фото", "изображение"}
+
+
+def pick_name(a, box, text, m):
+    """Название вещи: текст ссылки, title, alt (кроме пустых «image»), элемент с name/title, текст перед ценой."""
+    cands = [a.get_text(" ", strip=True), a.get("title", ""), a.get("aria-label", "")]
+    for img in box.find_all("img", alt=True):
+        cands.append(img["alt"])
+    for el in box.find_all(True, class_=re.compile(r"name|title|caption", re.I)):
+        cands.append(el.get_text(" ", strip=True))
+    cands.append(text[:m.start()])
+    for n in cands:
+        n = re.sub(r"\s+", " ", n or "").strip()
+        if n and n.lower() not in BAD_NAME and not PRICE.search(n) and 3 <= len(n) <= 120:
+            return n
+    return ""
+
+
 def parse(html, base, pattern):
     soup = BeautifulSoup(html, "lxml")
     rx = re.compile(pattern)
@@ -88,10 +106,7 @@ def parse(html, base, pattern):
         if not m or not img or len(text) > 600:
             continue
         price = int(re.sub(r"\D", "", m.group(1)))
-        name = (a.get_text(" ", strip=True) or "").strip()
-        if not name or PRICE.search(name):
-            alt = box.find("img", alt=True)
-            name = alt["alt"].strip() if alt and alt["alt"].strip() else text[:m.start()].strip()
+        name = pick_name(a, box, text, m)
         name = re.sub(r"\s+", " ", name)
         name = re.sub(r"\.\s*Вид \d+$", "", name)[:90]
         img = img.replace("/thumb/375_9999/", "/thumb/600_9999/")
