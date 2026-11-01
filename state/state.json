@@ -632,13 +632,20 @@
       "msg_id": 239,
       "file_id": "AgACAgIAAxkDAAPvaubZcQ_icmFFjQMrlC71GXmDll0AAtQaaxuxGDhLbcYxbZKj0G8BAAMCAAN3AAM9BA",
       "sent_at": "2026-11-01T09:17+03:00"
+    },
+    "2026-11-01-looks": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 244,
+      "file_ids": [
+        "AgACAgIAAxUHaubZtbPTUP6o9b4BYLkCyVH-2p0AAtYaaxuxGDhLKqL8PHv18jsBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaubZtR-QbYzYWktKTnfQE59FfCoAAtgaaxuxGDhLzR4Bt_edYOYBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaubZtU2XzDiQSzQr18hzKu5OSEIAAtcaaxuxGDhLOPdMIdBE23IBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaubZtf0bI9hD-ewW7e30d4WU3ZoAAtUaaxuxGDhLPAjL0HvISm4BAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHaubZtbPTUP6o9b4BYLkCyVH-2p0AAtYaaxuxGDhLKqL8PHv18jsBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-01T09:18+03:00"
     }
   },
-  "held": {
-    "2026-11-01-looks": {
-      "key": "889bef9d603f",
-      "status": "preview_ready",
-      "at": "2026-11-01T09:17+03:00"
-    }
-  }
+  "held": {}
 }
