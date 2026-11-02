@@ -92,6 +92,12 @@ def handle_updates(state, requests, wait=0):
                 on_message(state, requests, u["message"])
         except Exception:
             traceback.print_exc()
+            if "callback_query" in u:      # иначе на кнопке у Ирины так и крутится индикатор
+                try:
+                    tg.call("answerCallbackQuery", callback_query_id=u["callback_query"]["id"],
+                            text="Не получилось, нажми ещё раз")
+                except Exception:
+                    pass
     return len(updates)
 
 
@@ -341,6 +347,14 @@ def git(*args):
     return r
 
 
+def pull_rebase():
+    """git pull --rebase; если rebase застрял на конфликте, отменить его, чтобы репозиторий не остался посередине."""
+    r = git("pull", "--rebase", "--autostash", "-X", "theirs")
+    if r.returncode:
+        git("rebase", "--abort")
+    return r
+
+
 def sync_push():
     """Сохранить состояние в репозиторий данных."""
     paths = [p for p in ("state", "data/requests.json", "data/requests", "drafts/img")
@@ -349,7 +363,7 @@ def sync_push():
     if git("diff", "--cached", "--quiet").returncode == 0:
         return
     git("commit", "-m", "Бот: состояние")
-    git("pull", "--rebase", "--autostash", "-X", "theirs")
+    pull_rebase()
     if git("push").returncode == 0:
         log("pushed")
 
@@ -380,7 +394,7 @@ def main():
         if time.time() - last_sync > 60:
             log("sync")
             sync_push()
-            git("pull", "--rebase", "--autostash", "-X", "theirs")      # новые черновики от Claude
+            pull_rebase()      # новые черновики от Claude
             last_sync = time.time()
             if code_hash() != code:                 # пришёл новый код бота — перезапуститься с ним
                 log("restart: bot code changed")
