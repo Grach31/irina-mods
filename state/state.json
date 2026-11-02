@@ -663,7 +663,32 @@
       "msg_id": 248,
       "file_id": "AgACAgIAAxkDAAP3aue9ZIOXYs9qx1H5555-i_zCVkYAAjkiaxuxGEBL7bmU_z6LmOwBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-02T02:58+03:00"
+    },
+    "2026-11-02-mix-jackets": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 249,
+      "file_id": "AgACAgIAAxkDAAP5augbkoDO7WDa14IlKjaIoO8sG_cAAngaaxto0EBLoCOs3lvb29kBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T08:11+03:00"
+    },
+    "2026-11-02-sela-knit-sets": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 250,
+      "file_id": "AgACAgIAAxkDAAP6augblvOnXuMdxZHVTYif1Ttb3W0AAnkaaxto0EBLkvUXOx8z4-8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T08:11+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-02-looks": {
+      "key": "ac532a97cb18",
+      "status": "preview_ready",
+      "at": "2026-11-02T08:11+03:00"
+    },
+    "2026-11-02-news-dior-harrods": {
+      "key": "0c0b0e602f5a",
+      "status": "preview_ready",
+      "at": "2026-11-02T08:11+03:00"
+    }
+  }
 }
