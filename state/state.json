@@ -664,24 +664,10 @@
       "file_id": "AgACAgIAAxkDAAP3aue9ZIOXYs9qx1H5555-i_zCVkYAAjkiaxuxGEBL7bmU_z6LmOwBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-02T02:58+03:00"
     },
-    "2026-11-02-mix-jackets": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 249,
-      "file_id": "AgACAgIAAxkDAAP5augbkoDO7WDa14IlKjaIoO8sG_cAAngaaxto0EBLoCOs3lvb29kBAAMCAAN3AAM9BA",
-      "sent_at": "2026-11-02T08:11+03:00"
-    },
-    "2026-11-02-sela-knit-sets": {
-      "status": "sent",
-      "slot": null,
-      "msg_id": 250,
-      "file_id": "AgACAgIAAxkDAAP6augblvOnXuMdxZHVTYif1Ttb3W0AAnkaaxto0EBLkvUXOx8z4-8BAAMCAAN3AAM9BA",
-      "sent_at": "2026-11-02T08:11+03:00"
-    },
     "2026-11-02-looks": {
       "status": "sent",
       "slot": null,
-      "msg_id": 256,
+      "msg_id": 263,
       "file_ids": [
         "AgACAgIAAxUHaugb2OfD9ITL8cyg9OLEJl5jbqgAAnsaaxto0EBLgIajugq2xBYBAAMCAAN3AAM9BA",
         "AgACAgIAAxUHaugb2KsxWoj9LKhmkey4z9E5_Y8AAn4aaxto0EBLGyjOOY2pIDoBAAMCAAN3AAM9BA",
@@ -690,14 +676,28 @@
         "AgACAgIAAxUHaugb2CtfijZlYuX5X9GOhl_dRyIAAn0aaxto0EBLSATlXFtBxiwBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHaugb2OfD9ITL8cyg9OLEJl5jbqgAAnsaaxto0EBLgIajugq2xBYBAAMCAAN3AAM9BA",
-      "sent_at": "2026-11-02T08:12+03:00"
+      "sent_at": "2026-11-02T08:28+03:00"
+    },
+    "2026-11-02-mix-jackets": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 264,
+      "file_id": "AgACAgIAAxkDAAP5augbkoDO7WDa14IlKjaIoO8sG_cAAngaaxto0EBLoCOs3lvb29kBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T08:28+03:00"
     },
     "2026-11-02-news-dior-harrods": {
       "status": "sent",
       "slot": null,
-      "msg_id": 257,
+      "msg_id": 265,
       "file_id": "AgACAgIAAxkDAAIBAWroG9piyNuA-fTu9Xmn084SKbbUAAJ_GmsbaNBAS97EVHS14GXGAQADAgADdwADPQQ",
-      "sent_at": "2026-11-02T08:12+03:00"
+      "sent_at": "2026-11-02T08:28+03:00"
+    },
+    "2026-11-02-sela-knit-sets": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 266,
+      "file_id": "AgACAgIAAxkDAAP6augblvOnXuMdxZHVTYif1Ttb3W0AAnkaaxto0EBLkvUXOx8z4-8BAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T08:28+03:00"
     }
   },
   "held": {}
