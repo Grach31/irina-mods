@@ -1,5 +1,5 @@
 {
-  "offset": 84639497,
+  "offset": 84639498,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -679,11 +679,13 @@
       "sent_at": "2026-11-02T08:28+03:00"
     },
     "2026-11-02-mix-jackets": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 264,
       "file_id": "AgACAgIAAxkDAAP5augbkoDO7WDa14IlKjaIoO8sG_cAAngaaxto0EBLoCOs3lvb29kBAAMCAAN3AAM9BA",
-      "sent_at": "2026-11-02T08:28+03:00"
+      "sent_at": "2026-11-02T08:28+03:00",
+      "publish_at": "2026-11-02T18:42:17.179785+03:00",
+      "published_at": "2026-11-02T18:42+03:00"
     },
     "2026-11-02-news-dior-harrods": {
       "status": "sent",
