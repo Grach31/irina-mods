@@ -677,18 +677,28 @@
       "msg_id": 250,
       "file_id": "AgACAgIAAxkDAAP6augblvOnXuMdxZHVTYif1Ttb3W0AAnkaaxto0EBLkvUXOx8z4-8BAAMCAAN3AAM9BA",
       "sent_at": "2026-11-02T08:11+03:00"
-    }
-  },
-  "held": {
+    },
     "2026-11-02-looks": {
-      "key": "ac532a97cb18",
-      "status": "preview_ready",
-      "at": "2026-11-02T08:11+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 256,
+      "file_ids": [
+        "AgACAgIAAxUHaugb2OfD9ITL8cyg9OLEJl5jbqgAAnsaaxto0EBLgIajugq2xBYBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaugb2KsxWoj9LKhmkey4z9E5_Y8AAn4aaxto0EBLGyjOOY2pIDoBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaugb2IxqQs7caXgENgaLCUWVbLEAAnwaaxto0EBLlJnYPzkTPD4BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaugb2KUoLrDzex_4dfZ3oFppfCQAAnoaaxto0EBLxGM9DG5HJHcBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaugb2CtfijZlYuX5X9GOhl_dRyIAAn0aaxto0EBLSATlXFtBxiwBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHaugb2OfD9ITL8cyg9OLEJl5jbqgAAnsaaxto0EBLgIajugq2xBYBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-02T08:12+03:00"
     },
     "2026-11-02-news-dior-harrods": {
-      "key": "0c0b0e602f5a",
-      "status": "preview_ready",
-      "at": "2026-11-02T08:11+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 257,
+      "file_id": "AgACAgIAAxkDAAIBAWroG9piyNuA-fTu9Xmn084SKbbUAAJ_GmsbaNBAS97EVHS14GXGAQADAgADdwADPQQ",
+      "sent_at": "2026-11-02T08:12+03:00"
     }
-  }
+  },
+  "held": {}
 }
