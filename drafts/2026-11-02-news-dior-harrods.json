@@ -1,0 +1,26 @@
+{
+ "id": "2026-11-02-news-dior-harrods",
+ "type": "news",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "card": {
+  "kicker": "НОВОСТИ МОДЫ",
+  "year": "Dior",
+  "note": "поп-ап в Harrods",
+  "title": "Первый круиз Андерсона в Лондоне",
+  "images": [
+   {
+    "url": "https://media.christiandior.com/cdn-cgi/image/width=3000,format=auto,quality=80/pm_11872_1595_1595208-hpnbkr1jmd-whr.jpg",
+    "fy": 0.3
+   }
+  ],
+  "credits": "Фото: Dior"
+ },
+ "text": "Dior на Рождество едет в Лондон: с 6 ноября по 27 декабря в Harrods работает поп-ап с первой круизной коллекцией Джонатана Андерсона ✨\n\nТу самую коллекцию Андерсон показал в мае в Лос-Анджелесе, в новых галереях LACMA: туман, ретро-автомобили и много голливудского кино в каждом образе.\n\nЧто там будет: вечерние платья, дублёнки, мужские костюмы с переливом, обувь и сумки. А в коллекции — легендарный Bar jacket, только свободнее и небрежнее, с бисером и нарочно необработанным краем, струящиеся платья с огромными цветочными аппликациями и сумки Bow с газетным принтом из архива Гальяно.\n\nРасслабленный Bar jacket с джинсами и балетками — как вам такая идея?",
+ "sources": [
+  "https://www.dior.com/en_si/fashion/news-savoir-faire/folder-news-and-events/harrods-pop-up-store",
+  "https://whoopsee.it/en/dior-is-celebrating-christmas-at-harrods-with-a-pop-up-dedicated-to-andersons-first-cruise-collection/",
+  "https://fashionunited.com/news/fashion/jonathan-andersons-first-dior-cruise-collection-explores-hollywood-legacy/2026051472362"
+ ]
+}

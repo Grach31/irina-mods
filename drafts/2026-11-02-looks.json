@@ -1,0 +1,146 @@
+{
+ "id": "2026-11-02-looks",
+ "type": "looks",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "cover": {
+  "title": "ОБРАЗЫ",
+  "subtitle": "шерсть и кашемир на ноябрь"
+ },
+ "looks": [
+  {
+   "title": "Камель",
+   "items": [
+    {
+     "name": "Куртка рабочего с воротом из меха норки",
+     "price": 69990,
+     "url": "https://idol.ru/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/20/id/430_932_1791552733/id6381407259_20_00.jpg",
+     "shop": "IDOL",
+     "short": "Куртка с норкой"
+    },
+    {
+     "name": "Джемпер из шерсти и кашемира",
+     "price": 19990,
+     "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-63/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1790256536/id6391954114_63_00.jpg",
+     "shop": "IDOL",
+     "short": "Джемпер"
+    },
+    {
+     "name": "Брюки из шерсти на кулиске",
+     "price": 16990,
+     "url": "https://idol.ru/product/bryuki-iz-shersti-na-kuliske-id6391954404-63/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1791794763/id6391954404_63_00.jpg",
+     "shop": "IDOL",
+     "short": "Брюки на кулиске"
+    },
+    {
+     "name": "Сумка из 100% натуральной кожи",
+     "price": 35990,
+     "url": "https://idol.ru/product/sumka-iz-100-naturalnoj-kozhi-id6381068007-27/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/27/id/430_932_1792482358/id6381068007_27_00.jpg",
+     "shop": "IDOL",
+     "short": "Сумка"
+    }
+   ]
+  },
+  {
+   "title": "Шоколад и молоко",
+   "items": [
+    {
+     "name": "Кардиган из шерсти и кашемира",
+     "price": 19990,
+     "url": "https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-63/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/63/id/430_932_1790839895/id6401025100_63_00.jpg",
+     "shop": "IDOL",
+     "short": "Кардиган"
+    },
+    {
+     "name": "Джемпер из шерсти и кашемира",
+     "price": 19990,
+     "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-36/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/36/id/430_932_1790256496/id6391954114_36_00.jpg",
+     "shop": "IDOL",
+     "short": "Джемпер"
+    },
+    {
+     "name": "Брюки с защипами из костюмной шерсти",
+     "price": 19990,
+     "url": "https://idol.ru/product/bryuki-s-zashchipami-iz-kostyumnoj-shersti-id6391775440-22/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/22/id/430_932_1790839878/id6391775440_22_00.jpg",
+     "shop": "IDOL",
+     "short": "Брюки с защипами"
+    },
+    {
+     "name": "Шарф из натурального меха",
+     "price": 25990,
+     "url": "https://idol.ru/product/sharf-iz-naturalnogo-mekha-id6401163008-60/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1792159105/id6401163008_60_00.jpg",
+     "shop": "IDOL",
+     "short": "Меховой шарф"
+    }
+   ]
+  },
+  {
+   "title": "Графит",
+   "items": [
+    {
+     "name": "Кардиган из шерсти и кашемира",
+     "price": 19990,
+     "url": "https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-39/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1790839891/id6401025100_39_00.jpg",
+     "shop": "IDOL",
+     "short": "Кардиган"
+    },
+    {
+     "name": "Джемпер из шерсти и кашемира",
+     "price": 16990,
+     "url": "https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6401025101-38/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/38/id/430_932_1790839898/id6401025101_38_00.jpg",
+     "shop": "IDOL",
+     "short": "Джемпер"
+    },
+    {
+     "name": "Брюки из костюмной шерсти",
+     "price": 21990,
+     "url": "https://idol.ru/product/bryuki-iz-kostyumnoj-shersti-id6401014410-231/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/231/id/430_932_1793282380/id6401014410_231_00.jpg",
+     "shop": "IDOL",
+     "short": "Брюки"
+    }
+   ]
+  },
+  {
+   "title": "Олива",
+   "items": [
+    {
+     "name": "Куртка с подстежкой из меха кролика",
+     "price": 69990,
+     "url": "https://idol.ru/product/kurtka-s-podstezhkoj-iz-mekha-krolika-id6401576217-17/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/17/id/430_932_1791812575/id6401576217_17_00.jpg",
+     "shop": "IDOL",
+     "short": "Куртка"
+    },
+    {
+     "name": "Кардиган из шерсти со съемными подплечниками",
+     "price": 19990,
+     "url": "https://idol.ru/product/kardigan-iz-shersti-so-semnymi-podplechnikami-id6391944104-169/",
+     "img": "https://cdn.idol.ru/upload/resize_cache/items/169/id/430_932_1790256471/id6391944104_169_00.jpg",
+     "shop": "IDOL",
+     "short": "Кардиган"
+    },
+    {
+     "name": "Брюки-баллоны хаки",
+     "price": 5999,
+     "url": "https://limestore.com/ru_ru/product/35509-2272_337_312_xaki",
+     "img": "https://a.cdn.lime-shine.com/p/2b05467aa0ec56f3bb39941a7e97530e.jpeg?w=1280&q=85",
+     "shop": "Lime",
+     "short": "Брюки-баллоны"
+    }
+   ]
+  }
+ ],
+ "text": "Четыре спокойных образа на ноябрь: шерсть, кашемир и мягкие оттенки 🤎\n\n<b>1. Камель</b>\n<a href=\"https://idol.ru/product/kurtka-rabochego-s-vorotom-iz-mekha-norki-id6381407259-20/\">Куртка с норкой</a> — 69 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-63/\">Джемпер</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/bryuki-iz-shersti-na-kuliske-id6391954404-63/\">Брюки на кулиске</a> — 16 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/sumka-iz-100-naturalnoj-kozhi-id6381068007-27/\">Сумка</a> — 35 990 ₽ · IDOL\n\n<b>2. Шоколад и молоко</b>\n<a href=\"https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-63/\">Кардиган</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6391954114-36/\">Джемпер</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/bryuki-s-zashchipami-iz-kostyumnoj-shersti-id6391775440-22/\">Брюки с защипами</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/sharf-iz-naturalnogo-mekha-id6401163008-60/\">Меховой шарф</a> — 25 990 ₽ · IDOL\n\n<b>3. Графит</b>\n<a href=\"https://idol.ru/product/kardigan-iz-shersti-i-kashemira-id6401025100-39/\">Кардиган</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/dzhemper-iz-shersti-i-kashemira-id6401025101-38/\">Джемпер</a> — 16 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/bryuki-iz-kostyumnoj-shersti-id6401014410-231/\">Брюки</a> — 21 990 ₽ · IDOL\n\n<b>4. Олива</b>\n<a href=\"https://idol.ru/product/kurtka-s-podstezhkoj-iz-mekha-krolika-id6401576217-17/\">Куртка</a> — 69 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/kardigan-iz-shersti-so-semnymi-podplechnikami-id6391944104-169/\">Кардиган</a> — 19 990 ₽ · IDOL\n<a href=\"https://limestore.com/ru_ru/product/35509-2272_337_312_xaki\">Брюки-баллоны</a> — 5 999 ₽ · Lime\n\nКакой образ ваш — 1, 2, 3 или 4?"
+}
