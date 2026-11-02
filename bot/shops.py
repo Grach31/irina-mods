@@ -76,6 +76,12 @@ def first_img(box, base):
 BAD_NAME = {"image", "img", "photo", "picture", "фото", "изображение", "cart", "корзина", "в корзину", "favorite", "избранное"}
 
 
+def bad_name(n):
+    """Служебная надпись вместо названия вещи (у Lime ссылка подписана «Просмотр страницы товара»)."""
+    low = (n or "").strip().lower()
+    return low in BAD_NAME or low.startswith("просмотр страницы") or low.startswith("перейти")
+
+
 def pick_name(a, box, text, m):
     """Название вещи: текст ссылки, title, alt (кроме пустых «image»), элемент с name/title, текст перед ценой."""
     cands = [a.get_text(" ", strip=True), a.get("title", ""), a.get("aria-label", "")]
@@ -88,8 +94,31 @@ def pick_name(a, box, text, m):
     cands.append(text[:m.start()])
     for n in cands:
         n = re.sub(r"\s+", " ", n or "").strip()
-        if n and n.lower() not in BAD_NAME and not PRICE.search(n) and 3 <= len(n) <= 120:
+        if n and not bad_name(n) and not PRICE.search(n) and 3 <= len(n) <= 120:
             return n
+    return ""
+
+
+def name_from_page(url):
+    """Запасной путь, если в каталоге названия нет: берём его со страницы товара (og:title, h1 или <title>)."""
+    try:
+        soup = BeautifulSoup(fetch(url), "lxml")
+    except Exception:
+        return ""
+    cands = []
+    og = soup.find("meta", attrs={"property": "og:title"})
+    if og and og.get("content"):
+        cands.append(og["content"])
+    h1 = soup.find("h1")
+    if h1:
+        cands.append(h1.get_text(" ", strip=True))
+    if soup.title:
+        cands.append(soup.title.get_text(" ", strip=True))
+    for n in cands:
+        n = re.split(r"\s+[|—–]\s+", n or "")[0]            # убрать хвост «| Lime» и т.п.
+        n = re.sub(r"\s+", " ", n).strip()
+        if n and not bad_name(n) and not PRICE.search(n) and 3 <= len(n) <= 120:
+            return n[:90]
     return ""
 
 
@@ -124,7 +153,7 @@ def parse(html, base, pattern):
         name = re.sub(r"\s+", " ", name)
         name = re.sub(r"\.\s*Вид \d+$", "", name)[:90]
         img = img.replace("/thumb/375_9999/", "/thumb/600_9999/")
-        if not name or price < 2500:  # отсекаем косметику и мелочи
+        if price < 2500:  # отсекаем косметику и мелочи
             continue
         seen.add(url)
         out.append({"name": name[:1].upper() + name[1:].lower() if name.isupper() else name,
@@ -206,6 +235,11 @@ def collect(log=print):
                          else parse(html, u, pattern))
                 for it in found:
                     if it["url"] not in seen:
+                        if not it["name"]:
+                            it["name"] = name_from_page(it["url"])
+                            time.sleep(0.3)
+                        if not it["name"]:
+                            continue
                         seen.add(it["url"])
                         it["shop"] = shop
                         it["kind"] = kind
