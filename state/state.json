@@ -714,18 +714,27 @@
       "msg_id": 269,
       "file_id": "AgACAgIAAxkDAAIBDWrpciYTFhpHZX6U-tLiEsdha_5yAAKVIWsbaNBISyGTfY8UhJ3rAQADAgADdwADPQQ",
       "sent_at": "2026-11-03T08:33+03:00"
-    }
-  },
-  "held": {
+    },
     "2026-11-03-looks": {
-      "key": "63757742b92a",
-      "status": "preview_ready",
-      "at": "2026-11-03T08:33+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 274,
+      "file_ids": [
+        "AgACAgIAAxUHaulyYwUzOFZhwHaHPVZd7OkdqakAApchaxto0EhLNPi22GEaBjkBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaulyY08TapZJKKDEPn2l8hG_EgkAApghaxto0EhLQyekldixrPQBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaulyYw-06AIYnqYa3iNue-q4A6kAApkhaxto0EhLbik6zRps7oIBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHaulyY5LpepWvGYbyTdNOX1P7588AApYhaxto0EhLDztXXtygcNwBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHaulyYwUzOFZhwHaHPVZd7OkdqakAApchaxto0EhLNPi22GEaBjkBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-03T08:34+03:00"
     },
     "2026-11-03-news-chloe": {
-      "key": "cf9906d111e7",
-      "status": "preview_ready",
-      "at": "2026-11-03T08:33+03:00"
+      "status": "sent",
+      "slot": null,
+      "msg_id": 275,
+      "file_id": "AgACAgIAAxkDAAIBE2rpcmVgyyF7hwoQu7-VmQpJxdmXAAKaIWsbaNBIS9H5VUODxZ-LAQADAgADdwADPQQ",
+      "sent_at": "2026-11-03T08:34+03:00"
     }
-  }
+  },
+  "held": {}
 }
