@@ -97,7 +97,7 @@ def handle_updates(state, requests, wait=0):
                     tg.call("answerCallbackQuery", callback_query_id=u["callback_query"]["id"],
                             text="Не получилось, нажми ещё раз")
                 except Exception:
-                    pass
+                    traceback.print_exc()
     return len(updates)
 
 
