@@ -700,7 +700,32 @@
       "msg_id": 266,
       "file_id": "AgACAgIAAxkDAAP6augblvOnXuMdxZHVTYif1Ttb3W0AAnkaaxto0EBLkvUXOx8z4-8BAAMCAAN3AAM9BA",
       "sent_at": "2026-11-02T08:28+03:00"
+    },
+    "2026-11-03-idol-dream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 268,
+      "file_id": "AgACAgIAAxkDAAIBDGrpchtldLQYJsS3Z0_MlElMUZAzAAKUIWsbaNBISzg8GZ1AAAHy3wEAAwIAA3cAAz0E",
+      "sent_at": "2026-11-03T08:33+03:00"
+    },
+    "2026-11-03-mix-milk-caramel": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 269,
+      "file_id": "AgACAgIAAxkDAAIBDWrpciYTFhpHZX6U-tLiEsdha_5yAAKVIWsbaNBISyGTfY8UhJ3rAQADAgADdwADPQQ",
+      "sent_at": "2026-11-03T08:33+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-03-looks": {
+      "key": "63757742b92a",
+      "status": "preview_ready",
+      "at": "2026-11-03T08:33+03:00"
+    },
+    "2026-11-03-news-chloe": {
+      "key": "cf9906d111e7",
+      "status": "preview_ready",
+      "at": "2026-11-03T08:33+03:00"
+    }
+  }
 }
