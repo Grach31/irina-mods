@@ -1,5 +1,5 @@
 {
-  "offset": 84639498,
+  "offset": 84639501,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -709,11 +709,13 @@
       "sent_at": "2026-11-03T08:33+03:00"
     },
     "2026-11-03-mix-milk-caramel": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 269,
       "file_id": "AgACAgIAAxkDAAIBDWrpciYTFhpHZX6U-tLiEsdha_5yAAKVIWsbaNBISyGTfY8UhJ3rAQADAgADdwADPQQ",
-      "sent_at": "2026-11-03T08:33+03:00"
+      "sent_at": "2026-11-03T08:33+03:00",
+      "publish_at": "2026-11-03T13:31:10.476353+03:00",
+      "published_at": "2026-11-03T13:31+03:00"
     },
     "2026-11-03-looks": {
       "status": "sent",
