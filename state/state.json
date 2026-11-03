@@ -738,5 +738,11 @@
       "sent_at": "2026-11-03T08:34+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-03-rendezvous-shoes": {
+      "key": "0b81745f107c",
+      "status": "preview_ready",
+      "at": "2026-11-03T14:13+03:00"
+    }
+  }
 }
