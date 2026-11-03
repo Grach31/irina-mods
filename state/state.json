@@ -1,5 +1,5 @@
 {
-  "offset": 84639502,
+  "offset": 84639503,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -738,11 +738,13 @@
       "sent_at": "2026-11-03T08:34+03:00"
     },
     "2026-11-03-rendezvous-shoes": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 278,
       "file_id": "AgACAgIAAxkDAAIBFmrpwiCgprMOh-U2c8a0n9yJOkg7AALzH2sbaNBQSwIUfzmk5fogAQADAgADdwADPQQ",
-      "sent_at": "2026-11-03T14:14+03:00"
+      "sent_at": "2026-11-03T14:14+03:00",
+      "publish_at": "2026-11-03T15:28:20.396345+03:00",
+      "published_at": "2026-11-03T15:28+03:00"
     }
   },
   "held": {}
