@@ -1,0 +1,26 @@
+{
+ "id": "2026-11-04-news-cfda-vaccarello",
+ "type": "news",
+ "daily": true,
+ "slot": null,
+ "hold": true,
+ "card": {
+  "kicker": "НОВОСТИ МОДЫ",
+  "year": "CFDA",
+  "note": "2 ноября 2026",
+  "title": "Ваккарелло — международный дизайнер года",
+  "images": [
+   {
+    "commons": "Anthony Vaccarello en 2017.jpg",
+    "fy": 0.25
+   }
+  ],
+  "credits": ""
+ },
+ "text": "Красивая точка в истории Ваккарелло и Saint Laurent 🖤\n\n2 ноября в Нью-Йорке, в Американском музее естественной истории, вручили CFDA Fashion Awards — главную модную премию Америки. Энтони Ваккарелло получил награду «Международный дизайнер года» за десять лет во главе Saint Laurent.\n\nВ CFDA отметили его творческую последовательность и влияние на моду. И получилось прощальное признание: в октябре Kering подтвердил, что после показа весна–лето 2027 Ваккарелло уходит из дома.\n\nЕго Saint Laurent — это строгий чёрный, мощные плечи и сексуальность без вульгарности. Среди других победителей вечера — Рэйчел Скотт (Diotima) и Ralph Lauren.\n\nА вам какой его сезон запомнился больше всего?",
+ "sources": [
+  "https://cfda.com/news/the-nominees-honorees-of-the-2026-cfda-fashion-awards-presented-by-amazon-fashion/",
+  "https://wwd.com/fashion-news/designer-luxury/rachel-scott-ralph-lauren-anthony-vaccarello-winners-cfda-fashion-awards-1239398126/",
+  "https://wwd.com/fashion-news/designer-luxury/anthony-vaccarello-leaves-saint-laurent-exit-1239319050/"
+ ]
+}
