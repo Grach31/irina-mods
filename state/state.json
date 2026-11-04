@@ -1,5 +1,5 @@
 {
-  "offset": 84639511,
+  "offset": 84639512,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -754,11 +754,13 @@
       "sent_at": "2026-11-04T08:11+03:00"
     },
     "2026-11-04-sela-plum": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 281,
       "file_id": "AgACAgIAAxkDAAIBGWrqvo7dsbo1OuhPjcBFjS5wj65_AALkHmsbIghYS7QnI4LEX24WAQADAgADdwADPQQ",
-      "sent_at": "2026-11-04T08:11+03:00"
+      "sent_at": "2026-11-04T08:11+03:00",
+      "publish_at": "2026-11-04T14:57:15.967434+03:00",
+      "published_at": "2026-11-04T14:57+03:00"
     },
     "2026-11-04-looks": {
       "status": "sent",
