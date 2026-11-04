@@ -1,5 +1,5 @@
 {
-  "offset": 84639503,
+  "offset": 84639511,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -774,11 +774,13 @@
       "sent_at": "2026-11-04T08:12+03:00"
     },
     "2026-11-04-news-cfda-vaccarello": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 287,
       "file_id": "AgACAgIAAxkDAAIBH2rqvwwsbcYTtVsU5tF6JEu1dYMQAALpHmsbIghYS99IWkjLdmO9AQADAgADdwADPQQ",
-      "sent_at": "2026-11-04T08:13+03:00"
+      "sent_at": "2026-11-04T08:13+03:00",
+      "publish_at": "2026-11-04T14:56:54.495709+03:00",
+      "published_at": "2026-11-04T14:56+03:00"
     }
   },
   "held": {}
