@@ -745,7 +745,32 @@
       "sent_at": "2026-11-03T14:14+03:00",
       "publish_at": "2026-11-03T15:28:20.396345+03:00",
       "published_at": "2026-11-03T15:28+03:00"
+    },
+    "2026-11-04-mix-jackets-bow": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 280,
+      "file_id": "AgACAgIAAxkDAAIBGGrqvoYHVvPYoLMIpPrAhCyUE3ncAALjHmsbIghYSxydTRJSRLAwAQADAgADdwADPQQ",
+      "sent_at": "2026-11-04T08:11+03:00"
+    },
+    "2026-11-04-sela-plum": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 281,
+      "file_id": "AgACAgIAAxkDAAIBGWrqvo7dsbo1OuhPjcBFjS5wj65_AALkHmsbIghYS7QnI4LEX24WAQADAgADdwADPQQ",
+      "sent_at": "2026-11-04T08:11+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-04-looks": {
+      "key": "263672bbbb80",
+      "status": "preview_ready",
+      "at": "2026-11-04T08:11+03:00"
+    },
+    "2026-11-04-news-cfda-vaccarello": {
+      "key": "154501122615",
+      "status": "preview_ready",
+      "at": "2026-11-04T08:11+03:00"
+    }
+  }
 }
