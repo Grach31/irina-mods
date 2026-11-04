@@ -33,6 +33,30 @@
    "kind": "daily"
   },
   {
+   "name": "Асимметричное платье из вискозы",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/39398-5099_052_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/90f56143c6385ff49fb3d3116928e99c.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ из джерси с оборками",
+   "price": 2599,
+   "url": "https://limestore.com/ru_ru/product/39214-4858_442_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/0fb1c85b8cba52e8a49dd4d2bfcfc75b.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ из вискозы с мерцанием",
+   "price": 3599,
+   "url": "https://limestore.com/ru_ru/product/39342-5814_605_710_zolotoi",
+   "img": "https://a.cdn.lime-shine.com/p/f4cfcaec1c375a8aa799abad486b517d.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Брюки на кулиске из 100% шерсти",
    "price": 7999,
    "url": "https://limestore.com/ru_ru/product/36732-7792_454_032_seryi_melanz",
@@ -45,38 +69,6 @@
    "price": 8999,
    "url": "https://limestore.com/ru_ru/product/36722-9552_454_032_seryi_melanz",
    "img": "https://a.cdn.lime-shine.com/p/13f09ff17fe55e5a89d04e7b585b1560.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Трикотажный топ с высоким воротником",
-   "price": 2599,
-   "url": "https://limestore.com/ru_ru/product/11726_8151_322-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/0bc8740b4323557fbd4d392d19be9d7e.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Кардиган с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38554-3878_218_120_molocnyi",
-   "img": "https://a.cdn.lime-shine.com/p/0d3614a212885e4dacdb769ce044f285.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Миди-юбка с ангорой и шерстью",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38555-4608_218_120_molocnyi",
-   "img": "https://a.cdn.lime-shine.com/p/b99e418158d75cd295de61198a2f2ceb.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Свитер с шерстью и мохером",
-   "price": 3999,
-   "url": "https://limestore.com/ru_ru/product/39116-3869_476_273_svetlo_bezevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/70c753b699d359499728efd38a5e782b.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -101,22 +93,6 @@
    "price": 7999,
    "url": "https://limestore.com/ru_ru/product/36719-1080_440_023_temno_seryi_melanz",
    "img": "https://a.cdn.lime-shine.com/p/90eb8f67d24655bbaf72564f8543c6c0.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Мини-платье из сатина с драпировкой",
-   "price": 8999,
-   "url": "https://limestore.com/ru_ru/product/38557-2615_014_110_belyi",
-   "img": "https://a.cdn.lime-shine.com/p/272685c270125a6e9ae230939f1311a0.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Мини-платье из сатина с драпировкой",
-   "price": 8999,
-   "url": "https://limestore.com/ru_ru/product/38557-2615_014_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/7ecb84b078365bfd95e7833aa20a3cdf.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -493,6 +469,14 @@
    "kind": "daily"
   },
   {
+   "name": "Шуба свободной посадки",
+   "price": 99980,
+   "url": "https://www.2moodstore.com/collection/katalog/shuba_svobodnoy_posadki_molochnogo_tsveta/",
+   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/c5d/d1n7oidaz9o0ofdiethalbvfsna54of3-jpg.webp",
+   "shop": "2MOOD",
+   "kind": "daily"
+  },
+  {
    "name": "Куртка парка с меховой отделкой",
    "price": 32980,
    "url": "https://www.2moodstore.com/collection/katalog/kurtka_parka_s_mekhovoy_otdelkoy_pesochnogo_tsveta/",
@@ -641,14 +625,6 @@
    "price": 9980,
    "url": "https://www.2moodstore.com/collection/katalog/obemnyy_longsliv_s_vyshivkoy_iz_khlopka_molochnogo_tsveta/",
    "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/272/k9e82ua39fxo46m8k307e3f2haza16s7-jpg.webp",
-   "shop": "2MOOD",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки-аладдины из шерсти и хлопка",
-   "price": 13980,
-   "url": "https://www.2moodstore.com/collection/katalog/obemnye_bryuki_so_sborkoy_po_nizu_temno_serogo_tsveta/",
-   "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/c48/ezsf9t7kh0g82ehpde2gbdqlhx60ggws-jpg.webp",
    "shop": "2MOOD",
    "kind": "daily"
   }
@@ -1483,6 +1459,14 @@
    "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032010_2_1.webp?t=1791376584",
    "shop": "Zarina",
    "kind": "daily"
+  },
+  {
+   "name": "Широкие джинсы на высокой посадке с пайетками",
+   "price": 6599,
+   "url": "https://zarina.ru/catalog/product/ZR2612092305-101/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612092305_101_2.webp?t=1793627102",
+   "shop": "Zarina",
+   "kind": "daily"
   }
  ],
  "Befree": [
@@ -1677,6 +1661,14 @@
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641526051/BF2641526051_85_100.webp",
    "shop": "Befree",
    "kind": "daily"
+  },
+  {
+   "name": "новинка Бомбер пушистый с воротником-стойкой",
+   "price": 5599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305016/11",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305016/BF2641305016_11_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
   }
  ],
  "IDOL": [
@@ -1737,18 +1729,18 @@
    "kind": "dream"
   },
   {
-   "name": "Жакет из фактурной шерсти",
-   "price": 29990,
-   "url": "https://idol.ru/product/zhaket-iz-fakturnoj-shersti-id6401019917-60/",
-   "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1790839889/id6401019917_60_00.jpg",
-   "shop": "IDOL",
-   "kind": "dream"
-  },
-  {
    "name": "Джемпер из альпака",
    "price": 35990,
    "url": "https://idol.ru/product/dzhemper-iz-alpaka-id6401041121-99/",
    "img": "https://cdn.idol.ru/upload/resize_cache/items/99/id/430_932_1793695409/id6401041121_99_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Жакет из фактурной шерсти",
+   "price": 29990,
+   "url": "https://idol.ru/product/zhaket-iz-fakturnoj-shersti-id6401019917-60/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/60/id/430_932_1790839889/id6401019917_60_00.jpg",
    "shop": "IDOL",
    "kind": "dream"
   },
@@ -1809,18 +1801,18 @@
    "kind": "dream"
   },
   {
-   "name": "Брюки из костюмной шерсти",
-   "price": 21990,
-   "url": "https://idol.ru/product/bryuki-iz-kostyumnoj-shersti-id6401014410-231/",
-   "img": "https://cdn.idol.ru/upload/resize_cache/items/231/id/430_932_1793282380/id6401014410_231_00.jpg",
-   "shop": "IDOL",
-   "kind": "dream"
-  },
-  {
    "name": "Брюки баллоны из шерсти и кашемира",
    "price": 21990,
    "url": "https://idol.ru/product/bryuki-ballony-iz-shersti-i-kashemira-id6401025416-39/",
    "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1790839904/id6401025416_39_00.jpg",
+   "shop": "IDOL",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки из костюмной шерсти",
+   "price": 21990,
+   "url": "https://idol.ru/product/bryuki-iz-kostyumnoj-shersti-id6401014410-231/",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/231/id/430_932_1793282380/id6401014410_231_00.jpg",
    "shop": "IDOL",
    "kind": "dream"
   },
@@ -1900,7 +1892,7 @@
    "name": "Куртка из хлопка с отделкой из натурального меха",
    "price": 49990,
    "url": "https://idol.ru/product/kurtka-iz-hlopka-s-otdelkoj-iz-naturalnogo-mekha-id6381574273-13/",
-   "img": "https://cdn.idol.ru/upload/resize_cache/items/13/id/430_932_1792046265/id6381574273_13_01.jpg",
+   "img": "https://cdn.idol.ru/upload/resize_cache/items/13/id/430_932_1793722408/id6381574273_13_01.jpg",
    "shop": "IDOL",
    "kind": "dream"
   }
