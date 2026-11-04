@@ -759,18 +759,26 @@
       "msg_id": 281,
       "file_id": "AgACAgIAAxkDAAIBGWrqvo7dsbo1OuhPjcBFjS5wj65_AALkHmsbIghYS7QnI4LEX24WAQADAgADdwADPQQ",
       "sent_at": "2026-11-04T08:11+03:00"
+    },
+    "2026-11-04-looks": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 286,
+      "file_ids": [
+        "AgACAgIAAxUHauq-1cTWJYldLjnglpk7ncPHKp0AAuUeaxsiCFhLJ6EbiA3CJ3oBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHauq-1cvAAoeK6wpOUfx2wzwyZnYAAugeaxsiCFhLW5xHD2ydNUQBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHauq-1fWnHIX2HVt3DxqPHfSv5K0AAuceaxsiCFhLpkc9cMnPjrQBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHauq-1d8c-37ds8sgtFSDlC15I-IAAuYeaxsiCFhLIXTv_91JjrgBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHauq-1cTWJYldLjnglpk7ncPHKp0AAuUeaxsiCFhLJ6EbiA3CJ3oBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-04T08:12+03:00"
     }
   },
   "held": {
-    "2026-11-04-looks": {
-      "key": "263672bbbb80",
-      "status": "preview_ready",
-      "at": "2026-11-04T08:11+03:00"
-    },
     "2026-11-04-news-cfda-vaccarello": {
-      "key": "154501122615",
+      "key": "392f239307d4",
       "status": "preview_ready",
-      "at": "2026-11-04T08:11+03:00"
+      "at": "2026-11-04T08:12+03:00"
     }
   }
 }
