@@ -58,14 +58,6 @@
           "short": "Шуба"
         },
         {
-          "name": "Топ из вискозы с мерцанием",
-          "price": 3599,
-          "url": "https://limestore.com/ru_ru/product/39342-5814_605_710_zolotoi",
-          "img": "https://a.cdn.lime-shine.com/p/f4cfcaec1c375a8aa799abad486b517d.jpeg?w=1280&q=85",
-          "shop": "Lime",
-          "short": "Топ с мерцанием"
-        },
-        {
           "name": "Брюки женские",
           "price": 7599,
           "url": "https://loverepublic.ru/catalog/odezhda/bryuki/338876/",
@@ -109,17 +101,9 @@
           "img": "https://a.cdn.lime-shine.com/p/1a950a2d3ce159ed94599f98fc15f24d.jpeg?w=1280&q=85",
           "shop": "Lime",
           "short": "Широкие брюки"
-        },
-        {
-          "name": "новинка КОЖА Угги из натуральной замши с тесьмой",
-          "price": 4999,
-          "url": "https://befree.ru/zhenskaya/product/BF2646686001/41",
-          "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646686001/BF2646686001_41_11.webp",
-          "shop": "Befree",
-          "short": "Угги"
         }
       ]
     }
   ],
-  "text": "Три образа на ноябрьские выходные — от строгого графита до нежной пастели 🤍\n\n<b>1. Графит и шоколад</b>\n<a href=\"https://www.sela.ru/eshop/women/verkhnyaya-odezhda/palto/SL6811011202_427/\">Длинный пуховик</a> — 21 999 ₽ · Sela\n<a href=\"https://www.sela.ru/eshop/women/futbolki/longsleeve/SL6811010221_38/\">Лонгслив из шерсти</a> — 4 999 ₽ · Sela\n<a href=\"https://www.sela.ru/eshop/women/pants/SL6811011515_33/\">Брюки из шерсти</a> — 6 999 ₽ · Sela\n<a href=\"https://befree.ru/zhenskaya/product/BF2646686001/20\">Угги</a> — 4 999 ₽ · Befree\n\n<b>2. Сливки и карамель</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/shuba_svobodnoy_posadki_molochnogo_tsveta/\">Шуба</a> — 99 980 ₽ · 2MOOD\n<a href=\"https://limestore.com/ru_ru/product/39342-5814_605_710_zolotoi\">Топ с мерцанием</a> — 3 599 ₽ · Lime\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/338876/\">Брюки</a> — 7 599 ₽ · Love Republic\n<a href=\"https://befree.ru/zhenskaya/product/BF2646687041/62\">Дутые угги</a> — 6 999 ₽ · Befree\n\n<b>3. Мятная пастель</b>\n<a href=\"https://befree.ru/zhenskaya/product/BF2641305016/11\">Пушистый бомбер</a> — 5 599 ₽ · Befree\n<a href=\"https://befree.ru/zhenskaya/product/BF2641526051/35\">Джемпер в полоску</a> — 3 299 ₽ · Befree\n<a href=\"https://limestore.com/ru_ru/product/36631-3647_907_915_seryi_belyi\">Широкие брюки</a> — 5 599 ₽ · Lime\n<a href=\"https://befree.ru/zhenskaya/product/BF2646686001/41\">Угги</a> — 4 999 ₽ · Befree\n\nКакой образ ваш — 1, 2 или 3?"
+  "text": "Три образа на ноябрьские выходные — от строгого графита до нежной пастели 🤍\n\n<b>1. Графит и шоколад</b>\n<a href=\"https://www.sela.ru/eshop/women/verkhnyaya-odezhda/palto/SL6811011202_427/\">Длинный пуховик</a> — 21 999 ₽ · Sela\n<a href=\"https://www.sela.ru/eshop/women/futbolki/longsleeve/SL6811010221_38/\">Лонгслив из шерсти</a> — 4 999 ₽ · Sela\n<a href=\"https://www.sela.ru/eshop/women/pants/SL6811011515_33/\">Брюки из шерсти</a> — 6 999 ₽ · Sela\n<a href=\"https://befree.ru/zhenskaya/product/BF2646686001/20\">Угги</a> — 4 999 ₽ · Befree\n\n<b>2. Сливки и карамель</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/shuba_svobodnoy_posadki_molochnogo_tsveta/\">Шуба</a> — 99 980 ₽ · 2MOOD\n<a href=\"https://loverepublic.ru/catalog/odezhda/bryuki/338876/\">Брюки</a> — 7 599 ₽ · Love Republic\n<a href=\"https://befree.ru/zhenskaya/product/BF2646687041/62\">Дутые угги</a> — 6 999 ₽ · Befree\n\n<b>3. Мятная пастель</b>\n<a href=\"https://befree.ru/zhenskaya/product/BF2641305016/11\">Пушистый бомбер</a> — 5 599 ₽ · Befree\n<a href=\"https://befree.ru/zhenskaya/product/BF2641526051/35\">Джемпер в полоску</a> — 3 299 ₽ · Befree\n<a href=\"https://limestore.com/ru_ru/product/36631-3647_907_915_seryi_belyi\">Широкие брюки</a> — 5 599 ₽ · Lime\n\nКакой образ ваш — 1, 2 или 3?"
 }
