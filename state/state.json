@@ -783,7 +783,34 @@
       "sent_at": "2026-11-04T08:13+03:00",
       "publish_at": "2026-11-04T14:56:54.495709+03:00",
       "published_at": "2026-11-04T14:56+03:00"
+    },
+    "2026-11-05-mix-dresses": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 289,
+      "file_id": "AgACAgIAAxkDAAIBIWrsEaYq9ZVkqBxjIk7Agw7fpxb8AAJ4HGsbnnthS2U96HB2k6hhAQADAgADdwADPQQ",
+      "sent_at": "2026-11-05T08:18+03:00"
+    },
+    "2026-11-05-news-stella-nara": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 290,
+      "file_id": "AgACAgIAAxkDAAIBImrsEaeFTzrjojIjIX1U2DC0BcnwAAJ5HGsbnnthSxeJS8MWEamgAQADAgADeQADPQQ",
+      "sent_at": "2026-11-05T08:18+03:00"
+    },
+    "2026-11-05-zarina-black-white": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 291,
+      "file_id": "AgACAgIAAxkDAAIBI2rsEavL1AWuAAHC1UJybv2cuyHPLQACehxrG557YUvaQ0X3apEnAwEAAwIAA3cAAz0E",
+      "sent_at": "2026-11-05T08:18+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-05-looks": {
+      "key": "c0b1fb7e2a80",
+      "status": "preview_ready",
+      "at": "2026-11-05T08:18+03:00"
+    }
+  }
 }
