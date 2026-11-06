@@ -1,5 +1,5 @@
 {
-  "offset": 84639512,
+  "offset": 84639513,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -833,11 +833,13 @@
       "sent_at": "2026-11-06T08:28+03:00"
     },
     "2026-11-06-news-loewe-burton": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 300,
       "file_id": "AgACAgIAAxkDAAIBLGrtZWHLmv2A1gJmgAKCb9Xa3hjhAALPHmsbnntxSy8J6vQw9kM-AQADAgADeQADPQQ",
-      "sent_at": "2026-11-06T08:28+03:00"
+      "sent_at": "2026-11-06T08:28+03:00",
+      "publish_at": "2026-11-06T10:16:47.466375+03:00",
+      "published_at": "2026-11-06T10:16+03:00"
     },
     "2026-11-06-looks": {
       "status": "sent",
