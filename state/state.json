@@ -817,7 +817,34 @@
       ],
       "file_id": "AgACAgIAAxUHauwSPoCWWXb90LsEH_LS30QyOLQAAnwcaxuee2FLcP32FTPZD6oBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-05T08:21+03:00"
+    },
+    "2026-11-06-askent-dream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 298,
+      "file_id": "AgACAgIAAxkDAAIBKmrtZU2Wm7DBUQy8v1oXmbT1k_wlAALNHmsbnntxS2DH9AxnKlX8AQADAgADdwADPQQ",
+      "sent_at": "2026-11-06T08:27+03:00"
+    },
+    "2026-11-06-mix-milk-winter": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 299,
+      "file_id": "AgACAgIAAxkDAAIBK2rtZWC1QnXnqzS1IqA3HJIcK3xiAALOHmsbnntxS0EWNfzYOCfNAQADAgADdwADPQQ",
+      "sent_at": "2026-11-06T08:28+03:00"
+    },
+    "2026-11-06-news-loewe-burton": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 300,
+      "file_id": "AgACAgIAAxkDAAIBLGrtZWHLmv2A1gJmgAKCb9Xa3hjhAALPHmsbnntxSy8J6vQw9kM-AQADAgADeQADPQQ",
+      "sent_at": "2026-11-06T08:28+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-06-looks": {
+      "key": "d089c2149f84",
+      "status": "preview_ready",
+      "at": "2026-11-06T08:27+03:00"
+    }
+  }
 }
