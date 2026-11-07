@@ -1,5 +1,5 @@
 {
-  "offset": 84639513,
+  "offset": 84639514,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -868,11 +868,13 @@
       "sent_at": "2026-11-07T08:11+03:00"
     },
     "2026-11-07-mix-evening-black": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 312,
       "file_id": "AgACAgIAAxkDAAIBOGrusuorY9Ba6zDAapB9RhqJPis4AAJjIGsbakN5Sw0IT6G2LiTnAQADAgADdwADPQQ",
-      "sent_at": "2026-11-07T08:11+03:00"
+      "sent_at": "2026-11-07T08:11+03:00",
+      "publish_at": "2026-11-07T10:34:26.947460+03:00",
+      "published_at": "2026-11-07T10:34+03:00"
     },
     "2026-11-07-news-lv-holiday": {
       "status": "sent",
