@@ -853,6 +853,40 @@
       ],
       "file_id": "AgACAgIAAxUHau1lpU3v0xOWtEjdbrqMWvr1yj0AAtEeaxuee3FLt2ZI-allDNQBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-06T08:29+03:00"
+    },
+    "2026-11-07-looks": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 311,
+      "file_ids": [
+        "AgACAgIAAxUHau6y5UIE6kxvJ9W7bR5vf7bv6dUAAmIgaxtqQ3lLGgNPxeZeF9oBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHau6y5TD8edfsfxcLYq-bBjtrh8cAAmAgaxtqQ3lLtGQ5bzR_3OUBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHau6y5RWYsttxFWmflpYcMFi2egcAAmEgaxtqQ3lLQgknPnYTe9IBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHau6y5cWVH7OTVqU8oDIj5N84iAsAAl8gaxtqQ3lLZuuz6gABOdCAAQADAgADdwADPQQ"
+      ],
+      "file_id": "AgACAgIAAxUHau6y5UIE6kxvJ9W7bR5vf7bv6dUAAmIgaxtqQ3lLGgNPxeZeF9oBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-07T08:11+03:00"
+    },
+    "2026-11-07-mix-evening-black": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 312,
+      "file_id": "AgACAgIAAxkDAAIBOGrusuorY9Ba6zDAapB9RhqJPis4AAJjIGsbakN5Sw0IT6G2LiTnAQADAgADdwADPQQ",
+      "sent_at": "2026-11-07T08:11+03:00"
+    },
+    "2026-11-07-news-lv-holiday": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 313,
+      "file_id": "AgACAgIAAxkDAAIBOWrusuuoFv4Tq1vrVcrXyshL3eD_AAJkIGsbakN5S4T8DIG4saihAQADAgADeQADPQQ",
+      "sent_at": "2026-11-07T08:11+03:00"
+    },
+    "2026-11-07-sela-ski": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 314,
+      "file_id": "AgACAgIAAxkDAAIBOmrusu6HejwdIZcC5-WTCYOovHJaAAJlIGsbakN5S_dEKj9sC23DAQADAgADdwADPQQ",
+      "sent_at": "2026-11-07T08:11+03:00"
     }
   },
   "held": {}
