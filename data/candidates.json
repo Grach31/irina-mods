@@ -833,14 +833,6 @@
    "kind": "dream"
   },
   {
-   "name": "Меховая горжетка",
-   "price": 19900,
-   "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-gorzhetka-84290/",
-   "img": "https://www.ushatava.ru/upload/iblock/c80/gms6fzwgelq5901admx46v78d9rzrfaq/0-_55_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Тонкий меховой шарф",
    "price": 13900,
    "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
@@ -1117,6 +1109,14 @@
    "price": 9900,
    "url": "https://www.ushatava.ru/store/w/novinki/vyazanye-perchatki-83941/",
    "img": "https://www.ushatava.ru/upload/iblock/9e7/qywb1rv2yu8j4mkeglh1d8dhiswv91t0/174.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто мини",
+   "price": 49900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050s-84003/",
+   "img": "https://www.ushatava.ru/upload/iblock/251/z20kb5jl3uehcf69auzt1zpq5o2ex7x8/0_99_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
@@ -1535,10 +1535,26 @@
    "kind": "daily"
   },
   {
+   "name": "новинка CO:CREATE Джинсы багги с подворотами и брошами",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209079/106",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209079/BF2641209079_106_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
    "name": "новинка CO:CREATE Джемпер вязаный с рисунком",
    "price": 4599,
    "url": "https://befree.ru/zhenskaya/product/BF2641526062/85",
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641526062/BF2641526062_85_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка CO:CREATE Кисет бархатный с вышивкой и кисточками",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2645457050/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645457050/BF2645457050_50_1.webp",
    "shop": "Befree",
    "kind": "daily"
   },
@@ -1643,22 +1659,6 @@
    "price": 3299,
    "url": "https://befree.ru/zhenskaya/product/BF2641526051/85",
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641526051/BF2641526051_85_100.webp",
-   "shop": "Befree",
-   "kind": "daily"
-  },
-  {
-   "name": "новинка Бомбер пушистый с воротником-стойкой",
-   "price": 4999,
-   "url": "https://befree.ru/zhenskaya/product/BF2641305016/11",
-   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305016/BF2641305016_11_1.webp",
-   "shop": "Befree",
-   "kind": "daily"
-  },
-  {
-   "name": "новинка Брюки широкие с длинным ворсом",
-   "price": 3599,
-   "url": "https://befree.ru/zhenskaya/product/BF2641308024/11",
-   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308024/BF2641308024_11_1.webp",
    "shop": "Befree",
    "kind": "daily"
   }
