@@ -923,13 +923,14 @@
       ],
       "file_id": "AgACAgIAAxUHavAFxTb65799hZ5UuZTny1MPDPkAAi4caxsE_oFLFZliHhs7NOgBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-08T08:16+03:00"
+    },
+    "2026-11-08-history": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 324,
+      "file_id": "AgACAgIAAxkDAAIBRGrwBfv1xa-XO_3-KO9VDu5Kt1c5AAIwHGsbBP6BSwuXSVNyWOmyAQADAgADdwADPQQ",
+      "sent_at": "2026-11-08T08:17+03:00"
     }
   },
-  "held": {
-    "2026-11-08-history": {
-      "key": "e6d510ba7f20",
-      "status": "preview_ready",
-      "at": "2026-11-08T08:16+03:00"
-    }
-  }
+  "held": {}
 }
