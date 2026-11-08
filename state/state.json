@@ -1,5 +1,5 @@
 {
-  "offset": 84639514,
+  "offset": 84639516,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -925,11 +925,13 @@
       "sent_at": "2026-11-08T08:16+03:00"
     },
     "2026-11-08-history": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 324,
       "file_id": "AgACAgIAAxkDAAIBRGrwBfv1xa-XO_3-KO9VDu5Kt1c5AAIwHGsbBP6BSwuXSVNyWOmyAQADAgADdwADPQQ",
-      "sent_at": "2026-11-08T08:17+03:00"
+      "sent_at": "2026-11-08T08:17+03:00",
+      "publish_at": "2026-11-08T16:30:00.508333+03:00",
+      "published_at": "2026-11-08T16:30+03:00"
     }
   },
   "held": {}
