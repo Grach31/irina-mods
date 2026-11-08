@@ -1,5 +1,5 @@
 {
-  "offset": 84639517,
+  "offset": 84639514,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -799,13 +799,11 @@
       "sent_at": "2026-11-05T08:18+03:00"
     },
     "2026-11-05-zarina-black-white": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 291,
       "file_id": "AgACAgIAAxkDAAIBI2rsEavL1AWuAAHC1UJybv2cuyHPLQACehxrG557YUvaQ0X3apEnAwEAAwIAA3cAAz0E",
-      "sent_at": "2026-11-05T08:18+03:00",
-      "publish_at": "2026-11-08T16:30:57.503168+03:00",
-      "published_at": "2026-11-08T16:30+03:00"
+      "sent_at": "2026-11-05T08:18+03:00"
     },
     "2026-11-05-looks": {
       "status": "sent",
@@ -927,13 +925,11 @@
       "sent_at": "2026-11-08T08:16+03:00"
     },
     "2026-11-08-history": {
-      "status": "published",
+      "status": "sent",
       "slot": null,
       "msg_id": 324,
       "file_id": "AgACAgIAAxkDAAIBRGrwBfv1xa-XO_3-KO9VDu5Kt1c5AAIwHGsbBP6BSwuXSVNyWOmyAQADAgADdwADPQQ",
-      "sent_at": "2026-11-08T08:17+03:00",
-      "publish_at": "2026-11-08T16:30:00.508333+03:00",
-      "published_at": "2026-11-08T16:30+03:00"
+      "sent_at": "2026-11-08T08:17+03:00"
     }
   },
   "held": {}
