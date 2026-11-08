@@ -889,7 +889,40 @@
       "msg_id": 314,
       "file_id": "AgACAgIAAxkDAAIBOmrusu6HejwdIZcC5-WTCYOovHJaAAJlIGsbakN5S_dEKj9sC23DAQADAgADdwADPQQ",
       "sent_at": "2026-11-07T08:11+03:00"
+    },
+    "2026-11-08-mix-knit-patterns": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 316,
+      "file_id": "AgACAgIAAxkDAAIBPGrwBX2Hz0j4Qp_CQL3AvXCI8KzlAAIoHGsbBP6BS4Ghcjia5DDfAQADAgADdwADPQQ",
+      "sent_at": "2026-11-08T08:15+03:00"
+    },
+    "2026-11-08-news-chanel-sydney": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 317,
+      "file_id": "AgACAgIAAxkDAAIBPWrwBX3DsVrXZaNyojyvAAFRSh14_AACKRxrGwT-gUv6dB2EAvSfkQEAAwIAA3kAAz0E",
+      "sent_at": "2026-11-08T08:15+03:00"
+    },
+    "2026-11-08-zarina-lace": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 318,
+      "file_id": "AgACAgIAAxkDAAIBPmrwBYKMTJbeaG2qIvbsAAHE_JExrAACKhxrGwT-gUvlnCca_jP0qAEAAwIAA3cAAz0E",
+      "sent_at": "2026-11-08T08:15+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-08-history": {
+      "key": "12e99d65aa20",
+      "status": "error",
+      "error": "нет такого файла на Commons: Grace Kelly - High Society.jpg",
+      "at": "2026-11-08T08:15+03:00"
+    },
+    "2026-11-08-looks": {
+      "key": "33f5e81bb5f5",
+      "status": "preview_ready",
+      "at": "2026-11-08T08:15+03:00"
+    }
+  }
 }
