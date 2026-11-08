@@ -1,5 +1,5 @@
 {
-  "offset": 84639514,
+  "offset": 84639515,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -884,11 +884,13 @@
       "sent_at": "2026-11-07T08:11+03:00"
     },
     "2026-11-07-sela-ski": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 314,
       "file_id": "AgACAgIAAxkDAAIBOmrusu6HejwdIZcC5-WTCYOovHJaAAJlIGsbakN5S_dEKj9sC23DAQADAgADdwADPQQ",
-      "sent_at": "2026-11-07T08:11+03:00"
+      "sent_at": "2026-11-07T08:11+03:00",
+      "publish_at": "2026-11-08T10:33:16.466253+03:00",
+      "published_at": "2026-11-08T10:33+03:00"
     },
     "2026-11-08-mix-knit-patterns": {
       "status": "sent",
