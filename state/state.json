@@ -930,7 +930,27 @@
       "msg_id": 324,
       "file_id": "AgACAgIAAxkDAAIBRGrwBfv1xa-XO_3-KO9VDu5Kt1c5AAIwHGsbBP6BSwuXSVNyWOmyAQADAgADdwADPQQ",
       "sent_at": "2026-11-08T08:17+03:00"
+    },
+    "2026-11-09-lime-evening-tops": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 326,
+      "file_id": "AgACAgIAAxkDAAIBRmrxdZluBvK81lqPoDW4O9dpqORiAAI_IGsbBP6JS9vZdVErrtgfAQADAgADdwADPQQ",
+      "sent_at": "2026-11-09T10:26+03:00"
+    },
+    "2026-11-09-mix-winter-cream": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 327,
+      "file_id": "AgACAgIAAxkDAAIBR2rxda7uVF49smjY2t4RqA2rp3gnAAJAIGsbBP6JS8HxwMJ4D1_fAQADAgADdwADPQQ",
+      "sent_at": "2026-11-09T10:26+03:00"
     }
   },
-  "held": {}
+  "held": {
+    "2026-11-09-looks": {
+      "key": "45f3328137a8",
+      "status": "preview_ready",
+      "at": "2026-11-09T10:26+03:00"
+    }
+  }
 }
