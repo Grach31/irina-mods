@@ -1,0 +1,25 @@
+{
+  "id": "2026-11-09-news-balenciaga-rose",
+  "type": "news",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "card": {
+    "kicker": "НОВОСТИ МОДЫ",
+    "year": "2026",
+    "note": "назначение · 6 ноября",
+    "title": "Martine Rose — новый креативный директор Balenciaga",
+    "images": [
+      {
+        "url": "https://assets-keringcom.keringapps.com/Martine_Rose_600x600_041f4ab2fc.jpg",
+        "fy": 0.2
+      }
+    ],
+    "credits": "Фото: Liz Johnson Artur / Kering"
+  },
+  "text": "<b>У Balenciaga новый креативный директор — Мартин Роуз.</b> 🖤\n\n6 ноября Kering объявила о назначении, а к работе дизайнер приступит 16 ноября. Роуз сменит Пьерпаоло Пиччоли.\n\nМне особенно интересно, что будет с силуэтами: Роуз известна любовью к объёму, неожиданным пропорциям и эстетике лондонских субкультур. Для Balenciaga это может стать совсем новой главой.\n\nЕё первую коллекцию ещё предстоит увидеть, поэтому пока без прогнозов о конкретных вещах. А вы ждёте этот дебют?",
+  "sources": [
+    "https://www.kering.com/en/news/martine-rose-appointed-creative-director-of-balenciaga/",
+    "https://www.vogue.com/article/martine-rose-is-the-new-creative-director-of-balenciaga"
+  ]
+}
