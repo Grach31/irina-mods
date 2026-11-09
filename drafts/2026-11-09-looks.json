@@ -1,0 +1,125 @@
+{
+  "id": "2026-11-09-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "три настроения ноября"
+  },
+  "looks": [
+    {
+      "title": "Графит",
+      "items": [
+        {
+          "name": "Строгое пальто мини",
+          "price": 49900,
+          "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/",
+          "img": "https://www.ushatava.ru/upload/iblock/eb4/c4vsethxsvqsn47srcyzvk7w2ph13208/ushatava_fw4_5501.jpg",
+          "shop": "Ushatava",
+          "short": "Пальто"
+        },
+        {
+          "name": "Водолазка из смесового лиоцелла с содержанием шерсти",
+          "price": 2999,
+          "url": "https://www.sela.ru/eshop/women/futbolki/bazovye/SL6811010215_50/",
+          "img": "https://cdn01.sela.ru/wa-data/public/shop/products/83/23/222383/images/995826/995826.671x936.jpg",
+          "shop": "Sela",
+          "short": "Водолазка"
+        },
+        {
+          "name": "Объемные брюки из атласного жаккарда",
+          "price": 5999,
+          "url": "https://limestore.com/ru_ru/product/38218-9367_773_001_cernyi",
+          "img": "https://a.cdn.lime-shine.com/p/b3c95ad47f1755faaeb07218926a0166.jpeg?w=1280&q=85",
+          "shop": "Lime",
+          "short": "Брюки"
+        },
+        {
+          "name": "Угги мини",
+          "price": 26900,
+          "url": "https://www.ushatava.ru/store/w/novinki/uggi--83474/",
+          "img": "https://www.ushatava.ru/upload/iblock/4f0/kfq5f11c3e2ckf7nd7af5oherm67s8li/58.jpg",
+          "shop": "Ushatava",
+          "short": "Угги"
+        }
+      ]
+    },
+    {
+      "title": "Тёмный шоколад",
+      "items": [
+        {
+          "name": "Двухсторонняя шуба на кулиске",
+          "price": 65900,
+          "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+          "img": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
+          "shop": "Ushatava",
+          "short": "Шуба"
+        },
+        {
+          "name": "Блуза из вискозы, льна и тенсела",
+          "price": 19990,
+          "url": "https://idol.ru/product/bluza-iz-viskozy-lna-i-tensela-id6411085534-79/",
+          "img": "https://cdn.idol.ru/upload/resize_cache/items/79/id/430_932_1793868226/id6411085534_79_01.jpg",
+          "shop": "IDOL",
+          "short": "Блуза"
+        },
+        {
+          "name": "Юбка миди из жгутовой пряжи",
+          "price": 16990,
+          "url": "https://idol.ru/product/yubka-midi-iz-zhgutovoy-pryazhi-id6411109304-50/",
+          "img": "https://cdn.idol.ru/upload/resize_cache/items/50/id/430_932_1793976187/id6411109304_50_00.jpg",
+          "shop": "IDOL",
+          "short": "Юбка"
+        },
+        {
+          "name": "хит КОЖА Угги из натуральной замши с тесьмой",
+          "price": 4999,
+          "url": "https://befree.ru/zhenskaya/product/BF2646686001/63",
+          "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646686001/BF2646686001_63_1.webp",
+          "shop": "Befree",
+          "short": "Угги"
+        }
+      ]
+    },
+    {
+      "title": "Молочный",
+      "items": [
+        {
+          "name": "Дубленка из натуральной кожи",
+          "price": 169980,
+          "url": "https://www.2moodstore.com/collection/katalog/dublenka_iz_naturalnoy_kozhi_molochnogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/47e/r5gn2xolt4jwpmjbnl2mmbx5wn21ievy-jpg.webp",
+          "shop": "2MOOD",
+          "short": "Дублёнка"
+        },
+        {
+          "name": "Платье макси из фактурной шерсти",
+          "price": 25990,
+          "url": "https://idol.ru/product/plate-maksi-iz-fakturnoy-shersti-id6411087701-2/",
+          "img": "https://cdn.idol.ru/upload/resize_cache/items/2/id/430_932_1793976086/id6411087701_2_00.jpg",
+          "shop": "IDOL",
+          "short": "Платье"
+        },
+        {
+          "name": "хит КОЖА Угги из натуральной замши с тесьмой",
+          "price": 4999,
+          "url": "https://befree.ru/zhenskaya/product/BF2646686001/41",
+          "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646686001/BF2646686001_41_11.webp",
+          "shop": "Befree",
+          "short": "Угги"
+        },
+        {
+          "name": "Повязка флисовая серого цвета",
+          "price": 2990,
+          "url": "https://www.2moodstore.com/collection/katalog/povyazka_flisovaya_serogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/62f/3dprpt7u6fyaeelcx9h8zaqsf690huw1-jpg.webp",
+          "shop": "2MOOD",
+          "short": "Повязка"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа на ноябрь: графит, шоколад и молочный 🤎\n\n<b>1. Графит</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/\">Пальто</a> — 49 900 ₽ · Ushatava\n<a href=\"https://www.sela.ru/eshop/women/futbolki/bazovye/SL6811010215_50/\">Водолазка</a> — 2 999 ₽ · Sela\n<a href=\"https://limestore.com/ru_ru/product/38218-9367_773_001_cernyi\">Брюки</a> — 5 999 ₽ · Lime\n<a href=\"https://www.ushatava.ru/store/w/novinki/uggi--83474/\">Угги</a> — 26 900 ₽ · Ushatava\n\n<b>2. Тёмный шоколад</b>\n<a href=\"https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/\">Шуба</a> — 65 900 ₽ · Ushatava\n<a href=\"https://idol.ru/product/bluza-iz-viskozy-lna-i-tensela-id6411085534-79/\">Блуза</a> — 19 990 ₽ · IDOL\n<a href=\"https://idol.ru/product/yubka-midi-iz-zhgutovoy-pryazhi-id6411109304-50/\">Юбка</a> — 16 990 ₽ · IDOL\n<a href=\"https://befree.ru/zhenskaya/product/BF2646686001/63\">Угги</a> — 4 999 ₽ · Befree\n\n<b>3. Молочный</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/dublenka_iz_naturalnoy_kozhi_molochnogo_tsveta/\">Дублёнка</a> — 169 980 ₽ · 2MOOD\n<a href=\"https://idol.ru/product/plate-maksi-iz-fakturnoy-shersti-id6411087701-2/\">Платье</a> — 25 990 ₽ · IDOL\n<a href=\"https://befree.ru/zhenskaya/product/BF2646686001/41\">Угги</a> — 4 999 ₽ · Befree\n<a href=\"https://www.2moodstore.com/collection/katalog/povyazka_flisovaya_serogo_tsveta/\">Повязка</a> — 2 990 ₽ · 2MOOD\n\nКакой образ выбрали бы?"
+}
