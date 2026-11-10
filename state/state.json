@@ -1,5 +1,5 @@
 {
-  "offset": 84639518,
+  "offset": 84639519,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -941,11 +941,13 @@
       "published_at": "2026-11-09T10:35+03:00"
     },
     "2026-11-09-mix-winter-cream": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 327,
       "file_id": "AgACAgIAAxkDAAIBR2rxda7uVF49smjY2t4RqA2rp3gnAAJAIGsbBP6JS8HxwMJ4D1_fAQADAgADdwADPQQ",
-      "sent_at": "2026-11-09T10:26+03:00"
+      "sent_at": "2026-11-09T10:26+03:00",
+      "publish_at": "2026-11-10T14:54:26.554226+03:00",
+      "published_at": "2026-11-10T14:54+03:00"
     }
   },
   "held": {
