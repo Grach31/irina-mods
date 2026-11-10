@@ -948,6 +948,13 @@
       "sent_at": "2026-11-09T10:26+03:00",
       "publish_at": "2026-11-10T14:54:26.554226+03:00",
       "published_at": "2026-11-10T14:54+03:00"
+    },
+    "2026-11-09-news-balenciaga-rose": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 330,
+      "file_id": "AgACAgIAAxkDAAIBSmrzftS8vtti5cn-dMX42kcXv9PHAAJGKGsbNH2ZS_ZArA1PzoqYAQADAgADdwADPQQ",
+      "sent_at": "2026-11-10T23:30+03:00"
     }
   },
   "held": {
@@ -955,11 +962,6 @@
       "key": "45f3328137a8",
       "status": "preview_ready",
       "at": "2026-11-09T10:26+03:00"
-    },
-    "2026-11-09-news-balenciaga-rose": {
-      "key": "8f50cecf81d1",
-      "status": "preview_ready",
-      "at": "2026-11-09T11:24+03:00"
     }
   }
 }
