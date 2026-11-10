@@ -17,26 +17,18 @@
    "kind": "daily"
   },
   {
-   "name": "Свободная куртка на искусственном пуху с капюшоном",
-   "price": 13999,
-   "url": "https://limestore.com/ru_ru/product/36392-3505_479_201_temno_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/89857d34217356b481eb754261f4f102.jpeg?w=1280&q=85",
+   "name": "Укороченная шуба с поясом-жгутом",
+   "price": 15999,
+   "url": "https://limestore.com/ru_ru/product/35523-8133_345_999_mnogocvetnyi",
+   "img": "https://a.cdn.lime-shine.com/p/24359a7ca4835ed99e2dc23fa37dded1.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Куртка на кулиске с меховым капюшоном",
+   "name": "Укороченная шуба из объемного меха",
    "price": 15999,
-   "url": "https://limestore.com/ru_ru/product/37346-8047_512_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/73d00d88da2556559021fcdbd3063cbd.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка на кулиске с меховым капюшоном",
-   "price": 15999,
-   "url": "https://limestore.com/ru_ru/product/37346-8047_512_210_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/e4fda27211f2587ba68097f1a1a16472.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/36312-8252_024_210_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/de422b08bef750e58a82dbc0bc777d00.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -49,26 +41,26 @@
    "kind": "daily"
   },
   {
-   "name": "Кардиган из вискозы с мерцанием",
-   "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/39233-5384_714_070_sero_goluboi",
-   "img": "https://a.cdn.lime-shine.com/p/e2e413ad27f15b50a89fe592a2efa594.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Топ из джерси с оборками",
-   "price": 2599,
-   "url": "https://limestore.com/ru_ru/product/39214-4858_442_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/0fb1c85b8cba52e8a49dd4d2bfcfc75b.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Топ из вискозы с открытой спиной",
+   "name": "Топ из вискозы с мерцанием",
    "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/39220-5296_165_445_svetlo_biriuzovyi",
-   "img": "https://a.cdn.lime-shine.com/p/c8b03ac2ba3459d7896368f6e10835ce.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/39342-5814_605_710_zolotoi",
+   "img": "https://a.cdn.lime-shine.com/p/77f00c7c424c5249868eb1d6b59acd14.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган из вискозы с мерцанием",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/39235-4960_605_710_zolotoi",
+   "img": "https://a.cdn.lime-shine.com/p/56e5c80167f8504e94c603503dcff52b.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Мини-платье из лиоцелла",
+   "price": 5999,
+   "url": "https://limestore.com/ru_ru/product/39208-5266_982_610_krasnyi",
+   "img": "https://a.cdn.lime-shine.com/p/4c3fdf8e3e5a533593745a297271ba19.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -81,122 +73,50 @@
    "kind": "daily"
   },
   {
-   "name": "Приталенное мини-платье с застежкой-аламар",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/39021-5410_325_601_temno_krasnyi",
-   "img": "https://a.cdn.lime-shine.com/p/a35c7831dbd75e1ab66c2dd2dedac0bf.jpeg?w=1280&q=85",
+   "name": "Мини-платье из сатина с драпировкой",
+   "price": 8999,
+   "url": "https://limestore.com/ru_ru/product/38557-2615_014_110_belyi",
+   "img": "https://a.cdn.lime-shine.com/p/272685c270125a6e9ae230939f1311a0.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Приталенное платье из сатина с кринолином",
-   "price": 13999,
-   "url": "https://limestore.com/ru_ru/product/39026-4894_890_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/192e2575b1f05df0836b2ac88f582106.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки клеш со стрелками",
+   "name": "Зауженные брюки из вельвета",
    "price": 5599,
-   "url": "https://limestore.com/ru_ru/product/36853-1253_325_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/05c38490e3575ee583dd9704436cc5d7.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/27914_8686_041-8686_041_335_seryi_xaki",
+   "img": "https://a.cdn.lime-shine.com/p/3343c0c5375b53d9a99e43c0c2717066.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Прямые брюки со стрелками",
-   "price": 3999,
-   "url": "https://limestore.com/ru_ru/product/28182_6332_166-6332_166_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/afd2a500920e563b92b8cbffb7a6a23c.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки багги из смесового хлопка",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/35509-2272_337_312_xaki",
-   "img": "https://a.cdn.lime-shine.com/p/2b05467aa0ec56f3bb39941a7e97530e.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Прямые брюки из технологичной ткани",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38214-4119_315_312_xaki",
-   "img": "https://a.cdn.lime-shine.com/p/9eb1ea997b1b5bd0819ae52bbac383cf.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Укороченные брюки из сатина",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/38858-5089_014_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/9092f982aa30528ab8cab3cb7dd66931.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Широкие брюки свободного кроя",
+   "name": "Зауженные брюки из вельвета",
    "price": 5599,
-   "url": "https://limestore.com/ru_ru/product/36631-3647_907_915_seryi_belyi",
-   "img": "https://a.cdn.lime-shine.com/p/1a950a2d3ce159ed94599f98fc15f24d.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/27914_8686_041-8686_041_210_koricnevyi",
+   "img": "https://a.cdn.lime-shine.com/p/cc062744ee595bbb80d0bbdf8660d6c8.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Укороченные брюки со стрелками",
-   "price": 4599,
-   "url": "https://limestore.com/ru_ru/product/8289_0984_856-cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/16a4fcc311b65219b2756be139884638.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Широкие брюки свободного кроя",
-   "price": 5599,
-   "url": "https://limestore.com/ru_ru/product/36631-3647_907_925_bezevyi_koricnevyi",
-   "img": "https://a.cdn.lime-shine.com/p/5ea358dce6395a92a2d10afaca932c97.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Укороченные брюки из сатина",
+   "name": "Брюки на кулиске из 100% шерсти",
    "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/38858-5089_014_110_belyi",
-   "img": "https://a.cdn.lime-shine.com/p/1db6b3fe72295212a4f1fd435643d3e7.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/36732-7792_454_032_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/be4a44ba2c2c596da0e73bb688b5a8bc.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Широкие брюки из сатина",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/38550-4616_482_710_zolotoi",
-   "img": "https://a.cdn.lime-shine.com/p/fdc29c121b8c5bbb9914f133e1837ad9.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки карго из твила",
-   "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/37755-3386_254_505_temnyi_purpurnyi",
-   "img": "https://a.cdn.lime-shine.com/p/5187288458fc5098be90accfc2c542b5.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки из атласного жаккарда",
+   "name": "Брюки-джоггеры из шерстяного джерси",
    "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38218-9367_773_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/b3c95ad47f1755faaeb07218926a0166.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/31423_3666_077-3666_077_211_koricnevyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/a75c474e38465736b993ce3cb0a2bc7c.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Объемные брюки из атласного жаккарда",
+   "name": "Брюки-джоггеры из шерстяного джерси",
    "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/38218-9367_773_710_zolotoi",
-   "img": "https://a.cdn.lime-shine.com/p/0b8ccf3c2b785fc79fac525c94ab37cc.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/31423_3666_077-temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/1eb5b8d53f995724a94a713b9aec9ad1.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   }
@@ -809,34 +729,10 @@
    "kind": "dream"
   },
   {
-   "name": "Свитер идеальный 2.0",
-   "price": 19900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sviter-idealnyy-s-logo-83463/",
-   "img": "https://www.ushatava.ru/upload/iblock/e6c/szckamevzjjzei6met90u66ok2a3czar/37.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Свитер идеальный 2.0",
-   "price": 19900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sviter-idealnyy-s-logo-83454/",
-   "img": "https://www.ushatava.ru/upload/iblock/630/073c69d99r7ukr93xd6zgltjw5uqllan/31.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Меховая горжетка",
    "price": 19900,
    "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-gorzhetka-84290/",
    "img": "https://www.ushatava.ru/upload/iblock/c80/gms6fzwgelq5901admx46v78d9rzrfaq/0-_55_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Шуба-подложка",
-   "price": 65900,
-   "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
-   "img": "https://www.ushatava.ru/upload/iblock/bf1/0tnmli9bq7g5ko5bybzs6qr6jdfbu5c0/48.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -853,6 +749,14 @@
    "price": 15900,
    "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-shapka-84292/",
    "img": "https://www.ushatava.ru/upload/iblock/0ff/nolah7g7zkxf79mzenz2jf9nhdh6doun/78.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шуба-подложка",
+   "price": 65900,
+   "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
+   "img": "https://www.ushatava.ru/upload/iblock/bf1/0tnmli9bq7g5ko5bybzs6qr6jdfbu5c0/48.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1095,328 +999,256 @@
    "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
    "shop": "Ushatava",
    "kind": "dream"
+  },
+  {
+   "name": "Брюки Baggy из футера",
+   "price": 16900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/",
+   "img": "https://www.ushatava.ru/upload/iblock/17c/r4b5llu84wqcnvaax7a521px6nbrba0k/ushatava_ctlg_fw3_2196.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шерстяной шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
+   "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
   }
  ],
  "Sela": [
   {
-   "name": "Горнолыжная куртка из технологичной мембраны с лямками",
-   "price": 15999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011112_70/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/28/28/222828/images/995984/995984.671x936.jpg",
+   "name": "Бархатный жакет с широким поясом с бахромой",
+   "price": 11999,
+   "url": "https://www.sela.ru/eshop/women/zhakety/SL6812010801_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/34/30/223034/images/996621/996621.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Горнолыжная куртка из технологичной мембраны с лямками",
-   "price": 15999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011112_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/25/28/222825/images/995996/995996.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Горнолыжная куртка из технологичной мембраны с лямками",
-   "price": 17999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011113_41/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/31/28/222831/images/996006/996006.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Горнолыжные брюки из технологичной мембраны",
-   "price": 9999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/kombinezony/SL6811011602_41/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/39/28/222839/images/996014/996014.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Горнолыжный пуховик из технологичной мембраны",
-   "price": 19999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011114_70/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/23/31/223123/images/996277/996277.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Утепленные горнолыжные брюки",
-   "price": 7999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/kombinezony/SL6811011601_70/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/36/28/222836/images/995396/995396.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Горнолыжный пуховик из технологичной мембраны",
-   "price": 19999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011114_41/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/27/31/223127/images/996267/996267.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Термолонгслив из горнолыжной коллекции",
-   "price": 3599,
-   "url": "https://www.sela.ru/eshop/women/futbolki/longsleeve/SL6811010205_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/79/21/222179/images/996431/996431.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Термолонгслив из горнолыжной коллекции",
-   "price": 3599,
-   "url": "https://www.sela.ru/eshop/women/futbolki/longsleeve/SL6811010205_41/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/86/21/222186/images/996443/996443.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Термолонгслив из горнолыжной коллекции",
-   "price": 3599,
-   "url": "https://www.sela.ru/eshop/women/futbolki/longsleeve/SL6811010205_70/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/72/21/222172/images/996438/996438.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Утепленные горнолыжные брюки",
-   "price": 7999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/kombinezony/SL6811011601_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/33/28/222833/images/995404/995404.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Короткая куртка с меховым воротником из технологичной ткани",
-   "price": 10999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011115_66/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/51/28/222851/images/995934/995934.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Короткая куртка с меховым воротником из технологичной ткани",
-   "price": 10999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011115_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/48/28/222848/images/995928/995928.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка из технологичной ткани с кулиской",
-   "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011107_41/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/51/23/222351/images/995523/995523.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка из технологичной ткани с кулиской",
-   "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011107_36/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/55/23/222355/images/995531/995531.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка из технологичной ткани с кулиской",
-   "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011107_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/46/23/222346/images/995515/995515.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка из технологичной мембранной ткани seladrytex®",
-   "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011109_66/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/11/22/222211/images/996456/996456.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Куртка из технологичной мембранной ткани seladrytex®",
-   "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6811011109_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/05/22/222205/images/996450/996450.671x936.jpg",
-   "shop": "Sela",
-   "kind": "daily"
-  },
-  {
-   "name": "Горнолыжные брюки из технологичной мембранной ткани seladrytex®",
+   "name": "Сатиновая юбка с бахромой премиум качества",
    "price": 6999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/kombinezony/SL6811011603_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/66/28/222866/images/996694/996694.671x936.jpg",
+   "url": "https://www.sela.ru/eshop/women/yubki/SL6812011905_186/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/50/31/223150/images/996629/996629.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Укороченная куртка из технологичной мембранной ткани seladrytex®",
+   "name": "Брюки-алладины из бархата SELA premium",
+   "price": 6999,
+   "url": "https://www.sela.ru/eshop/women/pants/SL6812011501_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/36/30/223036/images/996626/996626.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье с кейпом из линейки SELA premium",
+   "price": 9999,
+   "url": "https://www.sela.ru/eshop/women/platya-i-sarafany/maksi/SL6812010702_186/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/77/34/223477/images/997042/997042.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Жаккардовый топ с шарфом премиум качества",
+   "price": 5999,
+   "url": "https://www.sela.ru/eshop/women/tops/SL6812010225_186/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/98/31/223198/images/996112/996112.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-алладины из сатина премиум качества",
+   "price": 5599,
+   "url": "https://www.sela.ru/eshop/women/pants/SL6812011503_22/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/52/30/223052/images/996628/996628.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ-халтер приталенный со сборкой",
+   "price": 3299,
+   "url": "https://www.sela.ru/eshop/women/tops/SL6812010218_22/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/75/34/223475/images/996926/996926.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-алладины из сатина премиум качества",
+   "price": 5599,
+   "url": "https://www.sela.ru/eshop/women/pants/SL6812011503_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/50/30/223050/images/996627/996627.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ-халтер приталенный со сборкой",
+   "price": 3299,
+   "url": "https://www.sela.ru/eshop/women/tops/SL6812010218_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/76/34/223476/images/996936/996936.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Туфли-слингбэки из сатина",
+   "price": 3999,
+   "url": "https://www.sela.ru/eshop/women/obuv/tufli/SL6812205603_27/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/54/34/223454/images/997228/997228.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Укороченная шуба из экомеха премиум качества",
+   "price": 19999,
+   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/dublenki/SL6812011201_418/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/89/34/223489/images/997084/997084.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье макси из линейки SELA premium",
+   "price": 9999,
+   "url": "https://www.sela.ru/eshop/women/platya-i-sarafany/SL6812010701_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/00/32/223200/images/996317/996317.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Жилет-накидка оверсайз премиум качества",
    "price": 8999,
-   "url": "https://www.sela.ru/eshop/women/verkhnyaya-odezhda/jackets/SL6810011119_3/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/09/10/221009/images/995956/995956.671x936.jpg",
+   "url": "https://www.sela.ru/eshop/women/bluzy-i-rubashki/SL6812010809_22/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/80/31/223180/images/997080/997080.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Флисовая толстовка с кулиской",
+   "name": "Жаккардовый топ с шарфом премиум качества",
+   "price": 5999,
+   "url": "https://www.sela.ru/eshop/women/tops/SL6812010225_22/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/97/31/223197/images/996105/996105.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Джинсы баллоны с люрексом",
+   "price": 5999,
+   "url": "https://www.sela.ru/eshop/women/dzhinsy/SL6812011411_131/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/59/33/223359/images/995891/995891.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка макси премиум качества",
+   "price": 6999,
+   "url": "https://www.sela.ru/eshop/women/yubki/SL6812011915_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/05/31/223105/images/996820/996820.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Вязаный джемпер из шерсти премиум качества",
+   "price": 6599,
+   "url": "https://www.sela.ru/eshop/women/dzhempery-i-kardigany/dzhempery-i-svitery/SL6812010619_131/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/62/34/223462/images/997008/997008.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Сатиновая юбка с бахромой премиум качества",
+   "price": 6999,
+   "url": "https://www.sela.ru/eshop/women/yubki/SL6812011905_22/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/45/31/223145/images/996870/996870.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-палаццо из смесового лиоцелла премиум качества",
+   "price": 7599,
+   "url": "https://www.sela.ru/eshop/women/pants/SL6812011502_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/38/30/223038/images/996811/996811.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Джемпер из смесовой шерсти SELA premium",
+   "price": 6999,
+   "url": "https://www.sela.ru/eshop/women/dzhempery-i-kardigany/SL6812010622_186/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/14/31/223114/images/996868/996868.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Джемпер из смесовой шерсти SELA premium",
+   "price": 6999,
+   "url": "https://www.sela.ru/eshop/women/dzhempery-i-kardigany/SL6812010622_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/19/31/223119/images/996152/996152.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Джинсы баллоны с люрексом",
+   "price": 5999,
+   "url": "https://www.sela.ru/eshop/women/dzhinsy/SL6812011411_179/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/60/33/223360/images/995885/995885.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган с содержанием шерсти и меховой отделкой",
+   "price": 5299,
+   "url": "https://www.sela.ru/eshop/women/dzhempery-i-kardigany/kardigany/SL6812010627_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/10/31/223110/images/994923/994923.671x936.jpg",
+   "shop": "Sela",
+   "kind": "daily"
+  },
+  {
+   "name": "Вязаный джемпер с содержанием шерсти",
    "price": 3999,
-   "url": "https://www.sela.ru/eshop/women/hoodie-i-svitshoty/SL6811010407_2/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/56/24/222456/images/996252/996252.671x936.jpg",
+   "url": "https://www.sela.ru/eshop/women/dzhempery-i-kardigany/SL6812010620_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/44/31/223144/images/994910/994910.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Водолазка из смесового лиоцелла с содержанием шерсти",
-   "price": 2999,
-   "url": "https://www.sela.ru/eshop/women/futbolki/bazovye/SL6811010215_38/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/87/23/222387/images/995823/995823.671x936.jpg",
+   "name": "Бархатное платье-футляр",
+   "price": 4599,
+   "url": "https://www.sela.ru/eshop/women/platya-i-sarafany/SL6812010710_414/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/42/31/223142/images/994020/994020.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Флисовая толстовка с кулиской",
-   "price": 3999,
-   "url": "https://www.sela.ru/eshop/women/hoodie-i-svitshoty/SL6811010407_70/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/60/24/222460/images/996262/996262.671x936.jpg",
+   "name": "Бархатное платье с кружевом",
+   "price": 5299,
+   "url": "https://www.sela.ru/eshop/women/platya-i-sarafany/SL6812010704_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/79/34/223479/images/997058/997058.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Водолазка из смесового лиоцелла с содержанием шерсти",
-   "price": 2999,
-   "url": "https://www.sela.ru/eshop/women/futbolki/bazovye/SL6811010215_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/83/23/222383/images/995826/995826.671x936.jpg",
+   "name": "Прямая юбка из бархата",
+   "price": 4599,
+   "url": "https://www.sela.ru/eshop/women/yubki/SL6812011913_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/48/31/223148/images/996323/996323.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
   {
-   "name": "Термолеггинсы из горнолыжной коллекции",
-   "price": 2999,
-   "url": "https://www.sela.ru/eshop/women/pants/SL6811011512_50/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/20/25/222520/images/989438/989438.671x936.jpg",
+   "name": "Бархатный топ с баской",
+   "price": 3799,
+   "url": "https://www.sela.ru/eshop/women/tops/SL6812010227_50/",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/95/31/223195/images/994345/994345.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   }
  ],
  "Zarina": [
   {
-   "name": "Платье длины мини с брошью цветком",
-   "price": 5599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032916-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/7e73f/thumb/900_9999/7e73f34ea3d0f92d83826346816185a3.webp?t=1793878671",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Приталенный комбинезон с акцентным бантом",
-   "price": 4999,
-   "url": "https://zarina.ru/catalog/product/ZR2612022903-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022903_50_1.webp?t=1791376547",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Облегающее платье длины мини",
-   "price": 3999,
-   "url": "https://zarina.ru/catalog/product/ZR2612032913-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032913_50_1.webp?t=1791376626",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Двухслойная юбка с кружевом",
-   "price": 4599,
-   "url": "https://zarina.ru/catalog/product/ZR2612033519-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612033519_50_1.webp?t=1791376638",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Корсетный топ с баской",
-   "price": 4599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032015-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032015_50_1.webp?t=1791376593",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Сатинированный комбинезон с брошью цветком",
-   "price": 7599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032912-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032912_50_1.webp?t=1791376621",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемная блуза-жакет с воланами",
-   "price": 6999,
-   "url": "https://zarina.ru/catalog/product/ZR2612032501-2/",
-   "img": "https://imgcdn.zarina.ru/upload/images/67c93/thumb/900_9999/67c93f868ff12d5327e55e53897cafb8.webp?t=1793878823",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Приталенный жакет со съемным поясом",
-   "price": 7999,
-   "url": "https://zarina.ru/catalog/product/ZR2612032514-2/",
-   "img": "https://imgcdn.zarina.ru/upload/images/badbf/thumb/900_9999/badbf8872057acacb7a5e691beef5d90.webp?t=1793878919",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки-алладины с пайетками",
-   "price": 4599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032118-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032118_50_1.webp?t=1791376598",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Сумка-клатч с бахромой",
-   "price": 3999,
-   "url": "https://zarina.ru/catalog/product/ZR2612061714-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612061714_50_1.webp?t=1791376716",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "широкие джинсы со съемной юбкой с вышивкой",
-   "price": 4999,
-   "url": "https://zarina.ru/catalog/product/ZR2612092301-101/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612092301_101_1.webp?t=1791376706",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Блуза-топ в бельевом стиле с кружевом",
-   "price": 2999,
-   "url": "https://zarina.ru/catalog/product/ZR2612032010-2/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032010_2_1.webp?t=1791376584",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Объемные брюки с камербандом",
-   "price": 4999,
-   "url": "https://zarina.ru/catalog/product/ZR2612032119-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/f0249/thumb/900_9999/f024944a46f5bec195f30dfd7c74a6fa.webp?t=1793878875",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Рубашка-боди с воротником стойкой",
-   "price": 4599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032001-2/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032001_2_1.webp?t=1791376570",
-   "shop": "Zarina",
-   "kind": "daily"
-  },
-  {
-   "name": "Широкие джинсы на высокой посадке с пайетками",
-   "price": 6599,
-   "url": "https://zarina.ru/catalog/product/ZR2612092305-101/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612092305_101_2.webp?t=1793627102",
+   "name": "Платье длины миди с контрастными деталями",
+   "price": 5999,
+   "url": "https://zarina.ru/catalog/product/ZR2612032919-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032919_50_1.webp?t=1794236375",
    "shop": "Zarina",
    "kind": "daily"
   },
@@ -1424,44 +1256,421 @@
    "name": "Сумка-кисет с кисточками",
    "price": 3999,
    "url": "https://zarina.ru/catalog/product/ZR2612061704-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612061704_50_1.webp?t=1791376697",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612061704_50_1.webp?t=1794236375",
    "shop": "Zarina",
    "kind": "daily"
   },
   {
-   "name": "Приталенный жакет с кружевом",
+   "name": "Комбинезон из бархата с поясом",
+   "price": 7999,
+   "url": "https://zarina.ru/catalog/product/ZR2612032921-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032921_50_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье длины мини из бархата",
    "price": 6999,
-   "url": "https://zarina.ru/catalog/product/ZR2612022504-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022504_50_1.webp?t=1791376537",
+   "url": "https://zarina.ru/catalog/product/ZR2612032920-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032920_71_1.webp?t=1794236375",
    "shop": "Zarina",
    "kind": "daily"
   },
   {
-   "name": "Приталенное платье миди с кружевными вставками",
-   "price": 5599,
-   "url": "https://zarina.ru/catalog/product/ZR2612022902-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022902_50_3.webp?t=1792572268",
+   "name": "Брюки алладины из лиоцелла",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022101-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022101_50_1.webp?t=1794236375",
    "shop": "Zarina",
    "kind": "daily"
   },
   {
-   "name": "Пелерина из кружева",
+   "name": "Блуза-топ с рюшами",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612032019-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032019_71_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка длины миди с заниженной талией",
+   "price": 4599,
+   "url": "https://zarina.ru/catalog/product/ZR2612033523-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612033523_50_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Приталенный жакет из бархата",
+   "price": 7999,
+   "url": "https://zarina.ru/catalog/product/ZR2612032516-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032516_71_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки алладины из лиоцелла",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022101-6/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022101_6_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Корсетный топ с рукавами буфами",
+   "price": 4599,
+   "url": "https://zarina.ru/catalog/product/ZR2612032021-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032021_2_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Укороченные брюки с воланом по низу",
+   "price": 4599,
+   "url": "https://zarina.ru/catalog/product/ZR2612032121-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032121_50_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Укороченный жакет-доломан",
+   "price": 6999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022503-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022503_2_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Приталенный жакет",
+   "price": 6999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022502-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022502_50_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка баллон в длине миди",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612023502-6/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612023502_6_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Сумка-клатч с пайетками",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612061715-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612061715_71_1.webp?t=1794236375",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Блуза-топ с рюшами",
+   "price": 3999,
+   "url": "https://zarina.ru/catalog/product/ZR2612032019-2/",
+   "img": "https://imgcdn.zarina.ru/upload/images/b88c8/thumb/900_9999/b88c8528ba0df7357627bf77e0ea31a0.webp?t=1793880523",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Сумка-кисет с ручкой-браслетом",
    "price": 2599,
-   "url": "https://zarina.ru/catalog/product/ZR2612032013-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032013_50_1.webp?t=1791376589",
+   "url": "https://zarina.ru/catalog/product/ZR2612061701-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612061701_71_1.webp?t=1790350229",
    "shop": "Zarina",
    "kind": "daily"
   },
   {
-   "name": "Юбка длины макси с корсетом",
-   "price": 4999,
-   "url": "https://zarina.ru/catalog/product/ZR2612033521-50/",
-   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612033521_50_1.webp?t=1791376643",
+   "name": "Бархатный жилет в гусарском стиле",
+   "price": 4599,
+   "url": "https://zarina.ru/catalog/product/ZR2612032020-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612032020_71_1.webp?t=1790350118",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Укороченный жакет-доломан",
+   "price": 6999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022503-50/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022503_50_1.webp?t=1790350067",
+   "shop": "Zarina",
+   "kind": "daily"
+  },
+  {
+   "name": "Приталенный жакет",
+   "price": 6999,
+   "url": "https://zarina.ru/catalog/product/ZR2612022502-71/",
+   "img": "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022502_71_1.webp?t=1790350055",
    "shop": "Zarina",
    "kind": "daily"
   }
  ],
- "Befree": [],
+ "Befree": [
+  {
+   "name": "новинка Платье-футляр макси с пайетками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414023/37",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414023/BF2641414023_37_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сумка-тоут на плечо с заклепками и замком",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2645457022/50",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2645/4570/BF2645457022_50_1/1280/BF2645457022_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шуба приталенная утепленная с тигровым принтом",
+   "price": 8999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641602038/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641602038/BF2641602038_99_12.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки-карго клеш с низкой посадкой и ремешками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308020/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308020/BF2641308020_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Брюки карго с низкой посадкой",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641308040/13",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641308040/BF2641308040_13_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Корсет из пайеток с бахромой",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641418045/7",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418045/BF2641418045_7_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "хит новинка Джинсы багги со средней посадкой и принтом хаки",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209027/13",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/2090/BF2641209027_13_1/1280/BF2641209027_13_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Кейп с пайетками и бахромой",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641418044/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418044/BF2641418044_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-футляр макси с бахромой и пайетками",
+   "price": 7599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414018/50",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/4140/BF2641414018_50_1/1280/BF2641414018_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка CO:CREATE Кимоно бархатное с вышивкой и поясом",
+   "price": 7999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305022/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305022/BF2641305022_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-комбинация мини с пайетками и кружевом",
+   "price": 6999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414017/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414017/BF2641414017_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье мини с пайетками и бахромой",
+   "price": 5999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414016/67",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414016/BF2641414016_67_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка CO:CREATE Бомбер оверсайз с воротником-стойкой и вышивкой",
+   "price": 6999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641305021/20",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/3050/BF2641305021_20_1/1280/BF2641305021_20_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Пиджак приталенный из искусственной кожи",
+   "price": 5599,
+   "url": "https://befree.ru/zhenskaya/product/BF2711305003/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2711305003/BF2711305003_50_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Юбка-трапеция мини с пайетками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641312027/6",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312027/BF2641312027_6_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сумка-багет на плечо с принтом хаки",
+   "price": 2599,
+   "url": "https://befree.ru/zhenskaya/product/BF2645457038/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645457038/BF2645457038_99_13.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Сапоги высокие с двойным голенищем",
+   "price": 6999,
+   "url": "https://befree.ru/zhenskaya/product/BF2646685007/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646685007/BF2646685007_50_13.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шарф объемный пушистый",
+   "price": 2599,
+   "url": "https://befree.ru/zhenskaya/product/BF2645341011/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645341011/BF2645341011_50_13.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Топ из пайеток с принтом",
+   "price": 3599,
+   "url": "https://befree.ru/zhenskaya/product/BF2642418010/7",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2642418010/BF2642418010_7_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Босоножки на каблуке",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2636688017/7",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2636688017/BF2636688017_7_15.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка CO:CREATE Куртка утепленная с меховым воротником и вышивкой",
+   "price": 9999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641601108/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641601108/BF2641601108_99_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка CO:CREATE Худи на молнии атласная с вышивкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641123026/99",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641123026/BF2641123026_99_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы облегающие со средней посадкой",
+   "price": 3999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209069/103",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209069/BF2641209069_103_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Топ сетчатый с бисером и пайетками",
+   "price": 2999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641418076/62",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418076/BF2641418076_62_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-халтер мини сетчатое с пайетками",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414045/57",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414045/BF2641414045_57_11.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Шуба короткая утепленная",
+   "price": 8999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641602024/99",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/6020/BF2641602024_99_1/1280/BF2641602024_99_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Юбка-трапеция мини с пайетками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641312027/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312027/BF2641312027_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Босоножки на каблуке",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2636688017/6",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2636688017/BF2636688017_6_14.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Топ-халтер сетчатый с пайетками",
+   "price": 2799,
+   "url": "https://befree.ru/zhenskaya/product/BF2641418074/50",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418074/BF2641418074_50_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы багги со средней посадкой и заклепками",
+   "price": 4999,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209087/109",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209087/BF2641209087_109_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Платье-футляр макси с пайетками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641414023/7",
+   "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/4140/BF2641414023_7_1/1280/BF2641414023_7_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Юбка прямая миди с пайетками",
+   "price": 4599,
+   "url": "https://befree.ru/zhenskaya/product/BF2641312040/6",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312040/BF2641312040_6_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы клеш со средней посадкой и плетеным поясом",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209083/102",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209083/BF2641209083_102_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  }
+ ],
  "IDOL": [
   {
    "name": "Пальто двубортное из смесовой шерсти",
@@ -1548,22 +1757,6 @@
    "price": 21990,
    "url": "https://idol.ru/product/bluza-iz-viskozy-lna-i-tensela-id6411090513-2/",
    "img": "https://cdn.idol.ru/upload/resize_cache/items/2/id/430_932_1793976121/id6411090513_2_00.jpg",
-   "shop": "IDOL",
-   "kind": "dream"
-  },
-  {
-   "name": "Брюки-легинсы со штрипками",
-   "price": 19990,
-   "url": "https://idol.ru/product/bryuki-leginsy-so-shtripkami-id6381758424-50/",
-   "img": "https://cdn.idol.ru/upload/resize_cache/items/50/id/430_932_1790346706/id6381758424_50_00.jpg",
-   "shop": "IDOL",
-   "kind": "dream"
-  },
-  {
-   "name": "Брюки-легинсы со штрипками",
-   "price": 19990,
-   "url": "https://idol.ru/product/bryuki-leginsy-so-shtripkami-id6381758424-39/",
-   "img": "https://cdn.idol.ru/upload/resize_cache/items/39/id/430_932_1789638449/id6381758424_39_00.jpg",
    "shop": "IDOL",
    "kind": "dream"
   },
