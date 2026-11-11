@@ -279,6 +279,16 @@ def draw_all(draft):
     готовые фото, остальное — одна."""
     if draft.get("type") == "looks":
         return render.looks_carousel(draft)
+    if draft.get("type") in ("history", "news"):
+        # Оригинальные тематические фото, без объединения в коллаж.
+        images = []
+        for spec in draft.get("card", {}).get("images", [])[:10]:
+            src = next((key for key in render.SOURCES if spec.get(key)), None)
+            url = render.SOURCES[src](spec[src])["url"] if src else spec["url"]
+            images.append(render.photo(url, ROOT))
+        if images:
+            return images
+        return [draw(draft)]
     if draft.get("type") == "item":
         # визуализация одной вещи: готовая студийная картинка (путь в репозитории или ссылка);
         # если есть "video", Ирине и в канал уходит видео, а картинка — превью в drafts/img/
