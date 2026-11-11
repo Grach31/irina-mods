@@ -993,6 +993,19 @@
       "sent_at": "2026-11-11T13:39+03:00",
       "publish_at": "2026-11-11T13:42:37.040478+03:00",
       "published_at": "2026-11-11T13:42+03:00"
+    },
+    "2026-11-11-lime-album-test": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 345,
+      "file_ids": [
+        "AgACAgIAAxUHavRJv7IwyrbzDnSkbReeIwbvPZUAAgsaaxuOTqFLhvhHCUYsj8MBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHavRJv9xnQBzJ7VTHhzdBoZpHvcsAAgwaaxuOTqFLvh7_0zFRHMgBAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHavRJv9yvX8yUNP4ThniAZviy4m0AAg4aaxuOTqFLgg9VZNZDar0BAAMCAAN3AAM9BA",
+        "AgACAgIAAxUHavRJv2lc6dr-VDB9ns_YLTNsC6kAAg0aaxuOTqFLXpjS6uenu9YBAAMCAAN3AAM9BA"
+      ],
+      "file_id": "AgACAgIAAxUHavRJv7IwyrbzDnSkbReeIwbvPZUAAgsaaxuOTqFLhvhHCUYsj8MBAAMCAAN3AAM9BA",
+      "sent_at": "2026-11-11T13:56+03:00"
     }
   },
   "held": {
