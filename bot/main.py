@@ -7,6 +7,7 @@
 """
 import glob
 import hashlib
+import html
 import json
 import os
 import subprocess
@@ -212,10 +213,34 @@ def send_new_drafts(state, requests):
                                           reply_markup=keyboard(did, draft.get("slot")))
                 extra = {"video_file_id": msg["video"]["file_id"]}
             else:
-                jpegs = [render.to_jpeg(im) for im in draw_all(draft)]
+                if draft.get("type") == "looks":
+                    groups = []
+                    for i, look in enumerate(draft["looks"]):
+                        images = [render.look_slide(look, i + 1, len(draft["looks"]))]
+                        images += [render.photo(it["img"], ROOT) for it in look["items"]]
+                        parts = [f"<b>Образ {i + 1}. {html.escape(look.get('title', ''))}</b>"]
+                        for it in look["items"]:
+                            parts.append(f'<a href="{html.escape(it["url"], quote=True)}">{html.escape(it.get("short") or it["name"])}</a> — {it["price"]:,} ₽ · {html.escape(it["shop"])}')
+                        groups.append((images[:10], "\\n".join(parts)))
+                    jpegs = [render.to_jpeg(im) for ims, _ in groups for im in ims]
+                else:
+                    jpegs = [render.to_jpeg(im) for im in draw_all(draft)]
                 save_previews(did, jpegs)
             if is_video:
                 pass                                    # видео уже отправлено выше
+            elif draft.get("type") == "looks":
+                # Один альбом на каждый образ: общий флэтлей, затем фото всех вещей.
+                all_ids = []
+                first_mid = None
+                for images, caption in groups:
+                    album = tg.send_media_group_bytes(config.IRINA, [render.to_jpeg(im) for im in images], caption=caption)
+                    if first_mid is None:
+                        first_mid = album[0]["message_id"]
+                    all_ids.append([m["photo"][-1]["file_id"] for m in album])
+                msg = tg.call("sendMessage", chat_id=config.IRINA, reply_to_message_id=first_mid,
+                              text=f"Подборка: {len(all_ids)} образа(ов). Опубликовать все альбомы?",
+                              reply_markup=keyboard(did, draft.get("slot")))
+                extra = {"album_file_ids": all_ids, "file_id": all_ids[0][0]}
             elif len(jpegs) > 1:
                 # карусель: альбом с подписью, кнопки — отдельным сообщением (к альбому их не прикрепить)
                 album = tg.send_media_group_bytes(config.IRINA, jpegs, caption=draft["text"])
@@ -319,6 +344,16 @@ def publish_due(state):
             if d.get("video_file_id"):
                 tg.call("sendVideo", chat_id=config.CHANNEL, video=d["video_file_id"], caption=draft["text"],
                         parse_mode="HTML", supports_streaming="true")
+            elif d.get("album_file_ids"):
+                # Публикуем каждый образ отдельным альбомом в исходном порядке.
+                for i, ids in enumerate(d["album_file_ids"]):
+                    look = draft["looks"][i]
+                    parts = [f"<b>Образ {i + 1}. {html.escape(look.get('title', ''))}</b>"]
+                    for it in look["items"]:
+                        parts.append(f'<a href="{html.escape(it["url"], quote=True)}">{html.escape(it.get("short") or it["name"])}</a> — {it["price"]:,} ₽ · {html.escape(it["shop"])}')
+                    media = [{"type": "photo", "media": fid} for fid in ids]
+                    media[0].update(caption="\\n".join(parts), parse_mode="HTML")
+                    tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
             elif d.get("file_ids"):
                 media = [{"type": "photo", "media": fid} for fid in d["file_ids"]]
                 media[0].update(caption=draft["text"], parse_mode="HTML")
