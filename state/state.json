@@ -955,6 +955,20 @@
       "msg_id": 330,
       "file_id": "AgACAgIAAxkDAAIBSmrzftS8vtti5cn-dMX42kcXv9PHAAJGKGsbNH2ZS_ZArA1PzoqYAQADAgADdwADPQQ",
       "sent_at": "2026-11-10T23:30+03:00"
+    },
+    "2026-11-11-mix-soft-neutrals": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 331,
+      "file_id": "AgACAgIAAxkDAAIBS2r0G9xseh8O79UBww87oxJvvZJKAAL8GGsbjk6hS3KcHMpR0dgBAQADAgADdwADPQQ",
+      "sent_at": "2026-11-11T10:40+03:00"
+    },
+    "2026-11-11-sela-velvet": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 332,
+      "file_id": "AgACAgIAAxkDAAIBTGr0G98vIR5EKSR2JPMKAvZVd41-AAL9GGsbjk6hS10AAXPqBUb6JAEAAwIAA3cAAz0E",
+      "sent_at": "2026-11-11T10:40+03:00"
     }
   },
   "held": {
@@ -962,6 +976,11 @@
       "key": "45f3328137a8",
       "status": "preview_ready",
       "at": "2026-11-09T10:26+03:00"
+    },
+    "2026-11-11-looks": {
+      "key": "7d86e2ab8218",
+      "status": "preview_ready",
+      "at": "2026-11-11T10:40+03:00"
     }
   }
 }
