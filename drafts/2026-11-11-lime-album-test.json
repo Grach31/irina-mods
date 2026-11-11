@@ -1,0 +1,43 @@
+{
+  "id": "2026-11-11-lime-album-test",
+  "type": "album",
+  "daily": false,
+  "slot": null,
+  "photos": [
+    "https://a.cdn.lime-shine.com/p/a141e9100acf5999a189fd50597fa33c.jpeg?w=1280&q=85",
+    "https://a.cdn.lime-shine.com/p/3bbfc6e573e35eee9495bc0821f7901f.jpeg?w=1280&q=85",
+    "https://a.cdn.lime-shine.com/p/24359a7ca4835ed99e2dc23fa37dded1.jpeg?w=1280&q=85",
+    "https://a.cdn.lime-shine.com/p/de422b08bef750e58a82dbc0bc777d00.jpeg?w=1280&q=85"
+  ],
+  "items": [
+    {
+      "name": "Шуба с поясом из ткани с эффектом кожи",
+      "price": 17999,
+      "url": "https://limestore.com/ru_ru/product/37279-8139_172_120_molocnyi",
+      "img": "https://a.cdn.lime-shine.com/p/a141e9100acf5999a189fd50597fa33c.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Длинная шуба свободного силуэта",
+      "price": 19999,
+      "url": "https://limestore.com/ru_ru/product/37134-8135_986_210_koricnevyi",
+      "img": "https://a.cdn.lime-shine.com/p/3bbfc6e573e35eee9495bc0821f7901f.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Укороченная шуба с поясом-жгутом",
+      "price": 15999,
+      "url": "https://limestore.com/ru_ru/product/35523-8133_345_999_mnogocvetnyi",
+      "img": "https://a.cdn.lime-shine.com/p/24359a7ca4835ed99e2dc23fa37dded1.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    },
+    {
+      "name": "Укороченная шуба из объемного меха",
+      "price": 15999,
+      "url": "https://limestore.com/ru_ru/product/36312-8252_024_210_koricnevyi",
+      "img": "https://a.cdn.lime-shine.com/p/de422b08bef750e58a82dbc0bc777d00.jpeg?w=1280&q=85",
+      "shop": "Lime"
+    }
+  ],
+  "text": "<b>Четыре варианта верхней одежды от Lime 🤍</b>\n\nРазные силуэты и фактуры — от укороченной модели до длинной шубы. Листайте альбом: каждую вещь можно рассмотреть отдельно.\n\n1. <a href=\"https://limestore.com/ru_ru/product/37279-8139_172_120_molocnyi\">Шуба с поясом из ткани с эффектом кожи</a> — 17 999 ₽\n2. <a href=\"https://limestore.com/ru_ru/product/37134-8135_986_210_koricnevyi\">Длинная шуба свободного силуэта</a> — 19 999 ₽\n3. <a href=\"https://limestore.com/ru_ru/product/35523-8133_345_999_mnogocvetnyi\">Укороченная шуба с поясом-жгутом</a> — 15 999 ₽\n4. <a href=\"https://limestore.com/ru_ru/product/36312-8252_024_210_koricnevyi\">Укороченная шуба из объемного меха</a> — 15 999 ₽\n\nКакой силуэт вам ближе?"
+}
