@@ -261,6 +261,9 @@ def draw_all(draft):
     if draft.get("type") == "album":
         # готовые фото как есть (до 10 — лимит альбома Telegram): пути в репозитории или ссылки
         return [render.photo(src, ROOT) for src in draft["photos"][:10]]
+    if draft.get("type") not in ("history", "news") and 2 <= len(draft.get("items", [])) <= 4:
+        # Товарные подборки: отдельное фото каждого товара вместо коллажа 2x2.
+        return [render.photo(it["img"], ROOT) for it in draft["items"]]
     return [draw(draft)]
 
 
