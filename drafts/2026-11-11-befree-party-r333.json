@@ -1,0 +1,38 @@
+{
+  "id": "2026-11-11-befree-party-r333",
+  "type": "picks",
+  "daily": false,
+  "slot": null,
+  "request_id": "r333",
+  "items": [
+    {
+      "name": "Платье мини с пайетками и бахромой",
+      "price": 5999,
+      "url": "https://befree.ru/zhenskaya/product/BF2641414016/67",
+      "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641414016/BF2641414016_67_11.webp",
+      "shop": "Befree"
+    },
+    {
+      "name": "Корсет из пайеток с бахромой",
+      "price": 4999,
+      "url": "https://befree.ru/zhenskaya/product/BF2641418045/7",
+      "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418045/BF2641418045_7_11.webp",
+      "shop": "Befree"
+    },
+    {
+      "name": "Юбка мини с пайетками",
+      "price": 4599,
+      "url": "https://befree.ru/zhenskaya/product/BF2641312027/6",
+      "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641312027/BF2641312027_6_11.webp",
+      "shop": "Befree"
+    },
+    {
+      "name": "Кейп с пайетками и бахромой",
+      "price": 4599,
+      "url": "https://befree.ru/zhenskaya/product/BF2641418044/50",
+      "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641418044/BF2641418044_50_11.webp",
+      "shop": "Befree"
+    }
+  ],
+  "text": "Party Break настроение от Befree ✨\n\nПайетки, бахрома и немного дерзости — четыре вещи для вечернего выхода. Что выбрали бы вы?\n\n<a href=\"https://befree.ru/zhenskaya/product/BF2641414016/67\">Платье мини с пайетками и бахромой</a> — 5 999 ₽\n<a href=\"https://befree.ru/zhenskaya/product/BF2641418045/7\">Корсет из пайеток с бахромой</a> — 4 999 ₽\n<a href=\"https://befree.ru/zhenskaya/product/BF2641312027/6\">Юбка мини с пайетками</a> — 4 599 ₽\n<a href=\"https://befree.ru/zhenskaya/product/BF2641418044/50\">Кейп с пайетками и бахромой</a> — 4 599 ₽"
+}
