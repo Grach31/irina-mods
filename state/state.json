@@ -1,5 +1,5 @@
 {
-  "offset": 84639520,
+  "offset": 84639521,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -950,11 +950,13 @@
       "published_at": "2026-11-10T14:54+03:00"
     },
     "2026-11-09-news-balenciaga-rose": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 330,
       "file_id": "AgACAgIAAxkDAAIBSmrzftS8vtti5cn-dMX42kcXv9PHAAJGKGsbNH2ZS_ZArA1PzoqYAQADAgADdwADPQQ",
-      "sent_at": "2026-11-10T23:30+03:00"
+      "sent_at": "2026-11-10T23:30+03:00",
+      "publish_at": "2026-11-11T10:54:24.050473+03:00",
+      "published_at": "2026-11-11T10:54+03:00"
     },
     "2026-11-11-mix-soft-neutrals": {
       "status": "sent",
