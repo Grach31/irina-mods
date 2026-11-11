@@ -33,26 +33,82 @@
    "kind": "daily"
   },
   {
+   "name": "Брюки на кулиске из 100% шерсти",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/36732-7792_454_032_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/d2e24b46d67a54848b07eebc0eb851d3.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Кардиган на молнии из 100% шерсти",
+   "price": 8999,
+   "url": "https://limestore.com/ru_ru/product/36722-9552_454_032_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/13f09ff17fe55e5a89d04e7b585b1560.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Классический свитер с ангорской шерстью",
+   "price": 4999,
+   "url": "https://limestore.com/ru_ru/product/27961_9089_465-9089_465_309_zelenyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/1255f932269d5f059c204fb0b2151cca.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Классический свитер с ангорской шерстью",
+   "price": 4999,
+   "url": "https://limestore.com/ru_ru/product/27961_9089_465-9089_465_330_svetlo_zelenyi",
+   "img": "https://a.cdn.lime-shine.com/p/47d1548aa62e5146bae9f793e18cb3d5.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Классический свитер с ангорской шерстью",
+   "price": 4999,
+   "url": "https://limestore.com/ru_ru/product/27961_9089_465-9089_465_232_sero_koricnevyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/999273d849985a37a37407f9fbc65261.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Классический свитер с ангорской шерстью",
+   "price": 4999,
+   "url": "https://limestore.com/ru_ru/product/27961_9089_465-9089_465_611_terrakotovyi",
+   "img": "https://a.cdn.lime-shine.com/p/5550e044a9f65fba888b1c1ebd7c44af.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Лонгслив из шерстяного джерси",
+   "price": 4599,
+   "url": "https://limestore.com/ru_ru/product/31425_3659_077-3659_077_211_koricnevyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/0f7f2e8adfcf5b8b90b2ceea02cb5729.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
+   "name": "Лонгслив из шерстяного джерси",
+   "price": 4599,
+   "url": "https://limestore.com/ru_ru/product/31425_3659_077-temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/9bef3c8f7ee95225b6d4518e982f4e8d.jpeg?w=1280&q=85",
+   "shop": "Lime",
+   "kind": "daily"
+  },
+  {
    "name": "Асимметричное платье из вискозы",
    "price": 7999,
    "url": "https://limestore.com/ru_ru/product/39398-5099_052_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/90f56143c6385ff49fb3d3116928e99c.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/d40629152ed75328bc0978996f0ddd5f.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
-   "name": "Топ из вискозы с мерцанием",
-   "price": 3599,
-   "url": "https://limestore.com/ru_ru/product/39342-5814_605_710_zolotoi",
-   "img": "https://a.cdn.lime-shine.com/p/77f00c7c424c5249868eb1d6b59acd14.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Кардиган из вискозы с мерцанием",
-   "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/39235-4960_605_710_zolotoi",
-   "img": "https://a.cdn.lime-shine.com/p/56e5c80167f8504e94c603503dcff52b.jpeg?w=1280&q=85",
+   "name": "Приталенное миди-платье из тафты",
+   "price": 7999,
+   "url": "https://limestore.com/ru_ru/product/38875-4108_368_001_cernyi",
+   "img": "https://a.cdn.lime-shine.com/p/75d636203dea55eeb6d4fb29c1f368fe.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -65,18 +121,10 @@
    "kind": "daily"
   },
   {
-   "name": "Приталенное миди-платье из сатина",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/38875-4108_368_001_cernyi",
-   "img": "https://a.cdn.lime-shine.com/p/75d636203dea55eeb6d4fb29c1f368fe.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Мини-платье из сатина с драпировкой",
-   "price": 8999,
-   "url": "https://limestore.com/ru_ru/product/38557-2615_014_110_belyi",
-   "img": "https://a.cdn.lime-shine.com/p/272685c270125a6e9ae230939f1311a0.jpeg?w=1280&q=85",
+   "name": "Атласное платье с шарфом-лавальер",
+   "price": 6999,
+   "url": "https://limestore.com/ru_ru/product/36137-1596_691_999_mnogocvetnyi",
+   "img": "https://a.cdn.lime-shine.com/p/f4163d7b85cc50d9903f0d6141a23ce4.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -93,14 +141,6 @@
    "price": 5599,
    "url": "https://limestore.com/ru_ru/product/27914_8686_041-8686_041_210_koricnevyi",
    "img": "https://a.cdn.lime-shine.com/p/cc062744ee595bbb80d0bbdf8660d6c8.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки на кулиске из 100% шерсти",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/36732-7792_454_032_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/be4a44ba2c2c596da0e73bb688b5a8bc.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -123,266 +163,250 @@
  ],
  "Love Republic": [
   {
-   "name": "Джинсы-багги с флоковым покрытием",
+   "name": "Жакет женский",
+   "price": 14999,
+   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/337460/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452205605_3.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки-аладдины",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/336043/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452201714_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ из бархата",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/338128/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452002302_50.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка-шорты из кружева с бисером",
+   "price": 9999,
+   "url": "https://loverepublic.ru/catalog/odezhda/yubki/338253/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452220731_99.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ-бандо с перьями",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337890/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64521/thumb/600_9999/6452103326_22.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Мини-платье с объемными лепестками",
+   "price": 15999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/338423/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64526/thumb/600_9999/6452610510_90.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Блузка из сатина с шарфом",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/bluzy/337281/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452006306_131.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Шорты с объемными цветами",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/shorty/338248/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452221718_95.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Жакет из атласного жаккарда",
+   "price": 14999,
+   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/336447/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452202602_99.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Джинсы-клеш с пудровым напылением",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/332680/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452411709_102.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Топ из кружева и вышивкой бисером",
    "price": 6999,
-   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/329562/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64514/thumb/600_9999/6451421716_104.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337648/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64521/thumb/600_9999/6452104327_20.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Бархатное платье с кейпом",
-   "price": 10999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/338685/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451608514_50.jpg",
+   "name": "Топ-бандо с пайетками",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337204/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452001301_97.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Трикотажная юбка с шерстью",
-   "price": 5999,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/338191/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451335202_27.jpg",
+   "name": "Корсетный топ с объемными лепестками",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337100/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452008308_97.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье-футляр",
-   "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/333807/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451619525_50.jpg",
+   "name": "Джинсы",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/335763/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452413721_102.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье миди А-силуэта",
-   "price": 10999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/337075/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451617523_186.jpg",
+   "name": "Топ из бархата",
+   "price": 7999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/338123/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452002302_71.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье миди А-силуэта",
-   "price": 10999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/337069/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451617523_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки из искусственной кожи",
-   "price": 5999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/332457/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64502/thumb/600_9999/6450214729_22.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Юбка-шорты из искусственной кожи",
-   "price": 6599,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/335439/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451212744_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки с шерстью",
+   "name": "Жакет из бархата с воротником-стойкой",
    "price": 11999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/327507/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64502/thumb/600_9999/6450225739_27.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/336836/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452204604_70.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Юбка из искусственной замши",
-   "price": 7599,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/335421/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451209207_32.jpg",
+   "name": "Брюки",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/337544/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452224730_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Шорты из искусственной кожи",
-   "price": 5599,
-   "url": "https://loverepublic.ru/catalog/odezhda/shorty/335363/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451212743_50.jpg",
+   "name": "Топ-бандо с объемной драпировкой",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/339457/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452011311_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье из джерси с шерстью",
+   "name": "Брюки-аладдины с вышивкой бисером",
    "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/335904/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451309508_33.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/336867/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452208711_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Шорты из искусственной кожи",
-   "price": 5599,
-   "url": "https://loverepublic.ru/catalog/odezhda/shorty/335359/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451212743_27.jpg",
+   "name": "Блузка с воротником-стойкой",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/bluzy/337094/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452007307_60.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье мини в горошек",
-   "price": 8599,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/333707/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451606512_54.jpg",
+   "name": "Платье-жакет с жаккардом",
+   "price": 11999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/338939/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64526/thumb/600_9999/6452609509_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Платье из джерси с шерстью",
+   "name": "Жилет из атласного жаккарда с баской",
+   "price": 8999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337665/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452015315_3.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье-бандо из цветочного жаккарда",
+   "price": 11999,
+   "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/339567/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64526/thumb/600_9999/6452621723_60.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Бомбер с вышивкой бисером",
    "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/335910/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451309508_39.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/336559/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452021321_61.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Брюки с кружевным фартуком",
-   "price": 13999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/337908/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451220753_50.jpg",
+   "name": "Топ-бандо с пайетками",
+   "price": 6999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337210/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64520/thumb/600_9999/6452001301_188.jpg",
+   "shop": "Love Republic",
+   "kind": "daily"
+  },
+  {
+   "name": "Платье-футляр из сатина",
+   "price": 11999,
+   "url": "https://loverepublic.ru/catalog/odezhda/platya/337484/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64526/thumb/600_9999/6452603503_92.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
    "name": "Широкие джинсы со стразами",
    "price": 11999,
-   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/332674/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452405724_100.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/332668/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452406724_121.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Шорты-баллон с кружевом",
-   "price": 6999,
-   "url": "https://loverepublic.ru/catalog/odezhda/shorty/335787/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451221754_50.jpg",
+   "name": "Топ-халтер с бантами",
+   "price": 5999,
+   "url": "https://loverepublic.ru/catalog/odezhda/topy/337798/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64521/thumb/600_9999/6452105329_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Шуба из искусственного меха под ламу",
-   "price": 29999,
-   "url": "https://loverepublic.ru/catalog/odezhda/verhnyaya-odezhda/336741/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64515/thumb/600_9999/6451506106_61.jpg",
+   "name": "Свободные джинсы с перьями",
+   "price": 11999,
+   "url": "https://loverepublic.ru/catalog/odezhda/dzhinsy/335757/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64524/thumb/600_9999/6452412710_102.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Твидовый жакет с тесьмой",
-   "price": 15999,
-   "url": "https://loverepublic.ru/catalog/odezhda/zhakety/337144/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451219605_9.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Платье кроше с шерстью альпака",
+   "name": "Шорты-баллон с объемным бантом",
    "price": 9999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/335948/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64513/thumb/600_9999/6451317516_61.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/shorty/337466/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452222719_60.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   },
   {
-   "name": "Комбинезон из ажурного кружева",
-   "price": 17999,
-   "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/337604/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451624752_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Платье мини с воланами",
-   "price": 8999,
-   "url": "https://loverepublic.ru/catalog/odezhda/platya/336049/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451607513_60.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Комбинезон на запах",
-   "price": 12999,
-   "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/336079/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451601762_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Комбинезон на запах",
-   "price": 12999,
-   "url": "https://loverepublic.ru/catalog/odezhda/kombinezony/336073/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64516/thumb/600_9999/6451601762_60.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Боди с фигурным вырезом",
-   "price": 4999,
-   "url": "https://loverepublic.ru/catalog/odezhda/body/336018/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451102310_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Брюки-алладины",
+   "name": "Юбка-баллон из сатина",
    "price": 7999,
-   "url": "https://loverepublic.ru/catalog/odezhda/bryuki/328085/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64502/thumb/600_9999/6450204717_50.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Утепленное пальто с меховой отделкой",
-   "price": 19999,
-   "url": "https://loverepublic.ru/catalog/odezhda/verhnyaya-odezhda/332525/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64515/thumb/600_9999/6451505105_61.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Трикотажный топ с кружевом",
-   "price": 3599,
-   "url": "https://loverepublic.ru/catalog/odezhda/topy/336350/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451108319_20.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Лонгслив из тенселя и шерсти",
-   "price": 4599,
-   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/333119/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451111322_32.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Лонгслив из тенселя и шерсти",
-   "price": 4599,
-   "url": "https://loverepublic.ru/catalog/odezhda/futbolki/333126/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451111322_20.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Юбка миди А-силуэта",
-   "price": 6999,
-   "url": "https://loverepublic.ru/catalog/odezhda/yubki/337507/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64512/thumb/600_9999/6451225214_36.jpg",
-   "shop": "Love Republic",
-   "kind": "daily"
-  },
-  {
-   "name": "Трикотажный топ с кружевом",
-   "price": 3599,
-   "url": "https://loverepublic.ru/catalog/odezhda/topy/336343/",
-   "img": "https://imgcdn.loverepublic.ru/upload/images/64511/thumb/600_9999/6451108319_60.jpg",
+   "url": "https://loverepublic.ru/catalog/odezhda/yubki/337618/",
+   "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452216202_50.jpg",
    "shop": "Love Republic",
    "kind": "daily"
   }
@@ -713,34 +737,10 @@
    "kind": "dream"
   },
   {
-   "name": "Дубленка 90's из натурального меха",
-   "price": 229900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
-   "img": "https://www.ushatava.ru/upload/iblock/1ab/2pgd6a6m8bnuf3cmow89dfzkturtdtf1/ushatava_fw4_6136.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Пуховик-пальто",
-   "price": 59900,
-   "url": "https://www.ushatava.ru/store/w/novinki/pukhovik-palto-84530/",
-   "img": "https://www.ushatava.ru/upload/iblock/b0a/puyoerldbxsqhxs9qt21z69hnu7vuo61/0-_13_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Меховая горжетка",
    "price": 19900,
    "url": "https://www.ushatava.ru/store/w/novinki/mekhovaya-gorzhetka-84290/",
    "img": "https://www.ushatava.ru/upload/iblock/c80/gms6fzwgelq5901admx46v78d9rzrfaq/0-_55_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Меховой жилет-подложка",
-   "price": 29900,
-   "url": "https://www.ushatava.ru/store/w/novinki/zhilet-podlozhka-iz-mekha-84312/",
-   "img": "https://www.ushatava.ru/upload/iblock/3cc/1q720uoaaupo3u3ole9aa5uv30mr6iyu/0-_106_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -753,18 +753,18 @@
    "kind": "dream"
   },
   {
-   "name": "Шуба-подложка",
-   "price": 65900,
-   "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
-   "img": "https://www.ushatava.ru/upload/iblock/bf1/0tnmli9bq7g5ko5bybzs6qr6jdfbu5c0/48.jpg",
+   "name": "Меховой жилет-подложка",
+   "price": 29900,
+   "url": "https://www.ushatava.ru/store/w/novinki/zhilet-podlozhka-iz-mekha-84312/",
+   "img": "https://www.ushatava.ru/upload/iblock/3cc/1q720uoaaupo3u3ole9aa5uv30mr6iyu/0-_106_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
   {
-   "name": "Шуба с английским воротником",
-   "price": 59900,
-   "url": "https://www.ushatava.ru/store/w/novinki/shuba-mini-s-angliyskim-vorotnikom-84284/",
-   "img": "https://www.ushatava.ru/upload/iblock/463/gj4i62gpat9fr1um0b1n2cyefhj2eksx/6.jpg",
+   "name": "Шуба-подложка",
+   "price": 65900,
+   "url": "https://www.ushatava.ru/store/w/novinki/shuba-podlozhka-83274/",
+   "img": "https://www.ushatava.ru/upload/iblock/bf1/0tnmli9bq7g5ko5bybzs6qr6jdfbu5c0/48.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -777,10 +777,10 @@
    "kind": "dream"
   },
   {
-   "name": "Двухсторонняя шуба на кулиске",
-   "price": 65900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
-   "img": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
+   "name": "Шуба с английским воротником",
+   "price": 59900,
+   "url": "https://www.ushatava.ru/store/w/novinki/shuba-mini-s-angliyskim-vorotnikom-84284/",
+   "img": "https://www.ushatava.ru/upload/iblock/463/gj4i62gpat9fr1um0b1n2cyefhj2eksx/6.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -801,6 +801,22 @@
    "kind": "dream"
   },
   {
+   "name": "Двухсторонняя шуба на кулиске",
+   "price": 65900,
+   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+   "img": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Сумка-клатч Tiniko",
+   "price": 65900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sumka-klatch-79472/",
+   "img": "https://www.ushatava.ru/upload/iblock/7ed/mz5z06hys7q804kkpwbusv9u45gqdfof/8-_-kopiya.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
    "name": "Двухсторонняя куртка-дубленка",
    "price": 49900,
    "url": "https://www.ushatava.ru/store/w/novinki/dvukhstoronyaya-kurtka-dublenka-163a-83969/",
@@ -813,6 +829,30 @@
    "price": 26900,
    "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
    "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Пуховик-пальто",
+   "price": 59900,
+   "url": "https://www.ushatava.ru/store/w/novinki/pukhovik-palto-84530/",
+   "img": "https://www.ushatava.ru/upload/iblock/b0a/puyoerldbxsqhxs9qt21z69hnu7vuo61/0-_13_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Дубленка 90's из натурального меха",
+   "price": 229900,
+   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
+   "img": "https://www.ushatava.ru/upload/iblock/1ab/2pgd6a6m8bnuf3cmow89dfzkturtdtf1/ushatava_fw4_6136.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Укороченные перчатки в горошек",
+   "price": 18900,
+   "url": "https://www.ushatava.ru/store/w/novinki/ukorochennye-perchatki-bordovyy-goroshek-82597/",
+   "img": "https://www.ushatava.ru/upload/iblock/f4d/ygtqfp0cigtbg0l5ipustki43fx5toct/102.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -999,22 +1039,6 @@
    "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
    "shop": "Ushatava",
    "kind": "dream"
-  },
-  {
-   "name": "Брюки Baggy из футера",
-   "price": 16900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/",
-   "img": "https://www.ushatava.ru/upload/iblock/17c/r4b5llu84wqcnvaax7a521px6nbrba0k/ushatava_ctlg_fw3_2196.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Шерстяной шарф",
-   "price": 13900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
-   "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
   }
  ],
  "Sela": [
@@ -1094,7 +1118,7 @@
    "name": "Туфли-слингбэки из сатина",
    "price": 3999,
    "url": "https://www.sela.ru/eshop/women/obuv/tufli/SL6812205603_27/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/54/34/223454/images/997228/997228.671x936.jpg",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/54/34/223454/images/997229/997229.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
@@ -1142,7 +1166,7 @@
    "name": "Юбка макси премиум качества",
    "price": 6999,
    "url": "https://www.sela.ru/eshop/women/yubki/SL6812011915_179/",
-   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/05/31/223105/images/996820/996820.671x936.jpg",
+   "img": "https://cdn01.sela.ru/wa-data/public/shop/products/05/31/223105/images/997447/997447.671x936.jpg",
    "shop": "Sela",
    "kind": "daily"
   },
