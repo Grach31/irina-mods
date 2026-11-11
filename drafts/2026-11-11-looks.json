@@ -1,0 +1,137 @@
+{
+  "id": "2026-11-11-looks",
+  "type": "looks",
+  "daily": true,
+  "slot": null,
+  "hold": true,
+  "cover": {
+    "title": "ОБРАЗЫ",
+    "subtitle": "спокойная зима"
+  },
+  "looks": [
+    {
+      "title": "Графит",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Пальто длинное с воротником из натурального меха",
+          "price": 39980,
+          "url": "https://www.2moodstore.com/collection/katalog/palto_dlinnoe_s_vorotnikom_iz_naturalnogo_mekha_chernogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/d61/9wp84865p0f1zxtzgourbsqqvfyr6qes-jpg.webp",
+          "shop": "2MOOD",
+          "kind": "daily"
+        },
+        {
+          "short": "Рубашка",
+          "name": "Пиджак-рубашка Dachi",
+          "price": 29900,
+          "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-83765/",
+          "img": "https://www.ushatava.ru/upload/iblock/f63/m34mxtch0qwedx2b659m9k361j6tsgay/97.jpg",
+          "shop": "Ushatava",
+          "kind": "dream"
+        },
+        {
+          "short": "Брюки",
+          "name": "Классические брюки из тонкой шерсти",
+          "price": 26900,
+          "url": "https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/",
+          "img": "https://www.ushatava.ru/upload/iblock/28d/rwv8jzqswirj8gz9izenb4u1dge30gaq/ushatava_ctlg_fw3_2322.jpg",
+          "shop": "Ushatava",
+          "kind": "dream"
+        },
+        {
+          "short": "Сумка",
+          "name": "Сумка БИССА",
+          "price": 25500,
+          "url": "https://askent.ru/cat/sumki/sumka_1164/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/1e9/900_1095_1/yq48safilpl5dhk6m6c8u1l9u0hby69p.webp",
+          "shop": "Askent",
+          "kind": "dream"
+        }
+      ]
+    },
+    {
+      "title": "Чёрный кофе",
+      "items": [
+        {
+          "short": "Пальто",
+          "name": "Пальто с кашемиром",
+          "price": 49980,
+          "url": "https://www.2moodstore.com/collection/katalog/palto_s_kashemirom_chernogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/620/fbqj8vnrct7pmi2mxgqqlts51398gcj2-jpg.webp",
+          "shop": "2MOOD",
+          "kind": "daily"
+        },
+        {
+          "short": "Лонгслив",
+          "name": "Лонгслив Henley",
+          "price": 10900,
+          "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
+          "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
+          "shop": "Ushatava",
+          "kind": "dream"
+        },
+        {
+          "short": "Джинсы",
+          "name": "Кожаные джинсы Relaxed Fit",
+          "price": 89900,
+          "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/",
+          "img": "https://www.ushatava.ru/upload/iblock/f5f/2z23391jqla3xb6324reee3z20azf3nj/ushatava_ctlg_fw3_2947.jpg",
+          "shop": "Ushatava",
+          "kind": "dream"
+        },
+        {
+          "short": "Ботинки",
+          "name": "Ботинки с манжетой из меха",
+          "price": 37000,
+          "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_01_5/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/2ab/900_1095_1/2gp9qfzvuaytlutxvmw5fjyoevhrgmmu.webp",
+          "shop": "Askent",
+          "kind": "dream"
+        }
+      ]
+    },
+    {
+      "title": "Тёплый шоколад",
+      "items": [
+        {
+          "short": "Шуба",
+          "name": "Шуба длинная из искусственного меха",
+          "price": 36980,
+          "url": "https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d-jpg.webp",
+          "shop": "2MOOD",
+          "kind": "daily"
+        },
+        {
+          "short": "Джемпер",
+          "name": "Джемпер с жаккардом",
+          "price": 13980,
+          "url": "https://www.2moodstore.com/collection/katalog/dzhemper_s_zhakkardom_korichnevogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/066/7rxdhc058jp15bd9uqtrd1b775sngsz6-jpg.webp",
+          "shop": "2MOOD",
+          "kind": "daily"
+        },
+        {
+          "short": "Джинсы",
+          "name": "Джинсы широкие WL100",
+          "price": 14980,
+          "url": "https://www.2moodstore.com/collection/katalog/dzhinsy_shirokie_wide_leg_wl100_shokoladnogo_tsveta/",
+          "img": "https://cdn.2moodstore.com/images/w729/upload/iblock/320/1isyat915mly3g9b8kv9bmw4c2pfyh6t-jpg.webp",
+          "shop": "2MOOD",
+          "kind": "daily"
+        },
+        {
+          "short": "Ботинки",
+          "name": "Ботинки с манжетой из меха",
+          "price": 37000,
+          "url": "https://askent.ru/cat/obuv/polusapogi_25200d_01_02_5/",
+          "img": "https://askent.ru/upload/dev2fun.imagecompress/webp/resize_cache/iblock/77c/900_1095_1/ai7a3w98omt195scxpfm88ttxrwkynlw.webp",
+          "shop": "Askent",
+          "kind": "dream"
+        }
+      ]
+    }
+  ],
+  "text": "Три образа в спокойной зимней гамме: графит, чёрный и шоколад 🤎\n\n<b>1. Графит</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/palto_dlinnoe_s_vorotnikom_iz_naturalnogo_mekha_chernogo_tsveta/\">Пальто</a> — 39 980 ₽ · 2MOOD\n<a href=\"https://www.ushatava.ru/store/w/novinki/pidzhak-rubashka-dachi-83765/\">Рубашка</a> — 29 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/klassicheskie-bryuki-iz-tonkoy-shersti-83723/\">Брюки</a> — 26 900 ₽ · Ushatava\n<a href=\"https://askent.ru/cat/sumki/sumka_1164/\">Сумка</a> — 25 500 ₽ · Askent\n\n<b>2. Чёрный кофе</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/palto_s_kashemirom_chernogo_tsveta/\">Пальто</a> — 49 980 ₽ · 2MOOD\n<a href=\"https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/\">Лонгслив</a> — 10 900 ₽ · Ushatava\n<a href=\"https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/\">Джинсы</a> — 89 900 ₽ · Ushatava\n<a href=\"https://askent.ru/cat/obuv/polusapogi_25200d_01_01_5/\">Ботинки</a> — 37 000 ₽ · Askent\n\n<b>3. Тёплый шоколад</b>\n<a href=\"https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/\">Шуба</a> — 36 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/dzhemper_s_zhakkardom_korichnevogo_tsveta/\">Джемпер</a> — 13 980 ₽ · 2MOOD\n<a href=\"https://www.2moodstore.com/collection/katalog/dzhinsy_shirokie_wide_leg_wl100_shokoladnogo_tsveta/\">Джинсы</a> — 14 980 ₽ · 2MOOD\n<a href=\"https://askent.ru/cat/obuv/polusapogi_25200d_01_02_5/\">Ботинки</a> — 37 000 ₽ · Askent\n\nКакой образ ближе — 1, 2 или 3?"
+}
