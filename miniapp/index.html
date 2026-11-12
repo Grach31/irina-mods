@@ -32,22 +32,42 @@ const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
 const imageFor=d=>{return 'media/'+encodeURIComponent(d.id)+'.jpg'};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
-async function load(){
- $('list').innerHTML='<div class="loader">Загружаю материалы…</div>';
- try{
-  const catalog=await Promise.race([
-    readJson('catalog.json?v='+Date.now()),
-    new Promise((_,reject)=>setTimeout(()=>reject(Error('Превышено время загрузки')),12000))
-  ]);
-  $('pending').textContent=catalog.pending??0;
-  $('published').textContent=catalog.published??0;
-  $('rejected').textContent=catalog.rejected??0;
-  items=Array.isArray(catalog.items)?catalog.items:[];
-  if(!items.length){$('list').innerHTML='<div class="message">Каталог пока пуст. Проверь формирование данных в GitHub Actions.</div>';return}
-  render();
- }catch(e){
-  $('list').innerHTML='<div class="message">Не удалось получить материалы. Нажми «Обновить».<br><small>'+escapeHtml(e.message)+'</small></div>';
+let loading=null,lastLoaded=0;
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+async function fetchCatalog(){
+ let error;
+ for(let attempt=0;attempt<3;attempt++){
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),9000);
+  try{
+   const response=await fetch('catalog.json?v='+Date.now(),{cache:'no-store',signal:controller.signal});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const catalog=await response.json();
+   if(!catalog||!Array.isArray(catalog.items))throw Error('Неверный формат каталога');
+   return catalog;
+  }catch(e){error=e;if(attempt<2)await pause(900*(attempt+1))}
+  finally{clearTimeout(timeout)}
  }
+ throw error||Error('Не удалось загрузить каталог');
+}
+function load(){
+ if(loading)return loading;
+ $('list').innerHTML='<div class="loader">Загружаю публикации…</div>';
+ loading=(async()=>{
+  try{
+   const catalog=await fetchCatalog();
+   $('pending').textContent=catalog.pending??0;
+   $('published').textContent=catalog.published??0;
+   $('rejected').textContent=catalog.rejected??0;
+   items=catalog.items;
+   lastLoaded=Date.now();
+   render();
+  }catch(e){
+   if(items.length){render();return}
+   $('list').innerHTML='<div class="message">Не удалось загрузить материалы автоматически. Нажми «Обновить».<br><small>'+escapeHtml(e.message)+'</small></div>';
+  }finally{loading=null}
+ })();
+ return loading;
 }
 function current(){return items.filter(d=>(mode==='pending'?['sent','awaiting_edit'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter))}
 function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
@@ -69,6 +89,10 @@ function act(action,d){if(!tg?.sendData){alert('Открой приложени�
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
 $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
-if(!tg?.initDataUnsafe?.user){$('list').innerHTML='<div class="message">Открой Stambo.i из кнопки в Telegram-боте Moda. В обычном браузере доступ отключён.</div>'}else load();
+// Telegram may populate initDataUnsafe after its webview has already rendered.
+// Start loading content unconditionally; backend still enforces editing permissions.
+load();
+window.addEventListener('pageshow',()=>{if(!lastLoaded||Date.now()-lastLoaded>30000)load()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(!lastLoaded||Date.now()-lastLoaded>30000))load()});
 })();
 </script></body></html>
