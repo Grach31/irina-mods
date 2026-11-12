@@ -266,8 +266,93 @@ html.oura-active{color-scheme:dark}
 .fashion-tags button:nth-child(2){border-color:#a66d56;color:#a05238}
 .fashion-tags button:nth-child(2).active{background:#9f563e;color:#fff;border-color:#9f563e}
 .fashion-story[data-region="ru"] .fashion-story-meta::before{content:"РОССИЯ · ";font-weight:700;color:#af6049}
+
+/* My Space unified mobile polish, November 2026 */
+:root{--ms-page:#f6f4ef;--ms-card:#fffdfa;--ms-text:#1d1b1a;--ms-sub:#827c77;--ms-line:#ded5ca;--ms-accent:#8d5d45}
+html[data-ms-theme="dark"]{--bg:#12151d;--ink:#f3efea;--muted:#aea8a4;--border:#3b3d47;--card:#20222b;--ms-page:#12151d;--ms-card:#20222b;--ms-text:#f3efea;--ms-sub:#aaa7b2;--ms-line:#42434d;--ms-accent:#d3a88b;color-scheme:dark}
+html[data-ms-theme="light"]{color-scheme:light}
+html,body{background:var(--ms-page);color:var(--ms-text)}
+.hub{background:var(--ms-page);padding:calc(env(safe-area-inset-top,0px) + 66px) 18px calc(70px + env(safe-area-inset-bottom,0px))}
+.hub-header{text-align:center;max-width:680px;position:relative;margin:0 auto 33px;padding:0 48px}
+.hub-logo{font-size:clamp(36px,9vw,52px);letter-spacing:-2px;white-space:nowrap}
+.hub-sub{margin-top:13px;font-size:10px;letter-spacing:3.4px;white-space:nowrap}
+.hub-settings-trigger{position:absolute;right:0;top:0;width:46px;height:46px;display:grid;place-items:center;background:var(--ms-card);color:var(--ms-text);border:1px solid var(--ms-line);border-radius:16px;font-size:25px;line-height:1}
+.hub-cards{gap:12px}
+.hub-card{background:var(--ms-card);color:var(--ms-text);border-color:var(--ms-line);border-radius:17px;min-height:0}
+.hub-card:focus-visible,.hub-settings-trigger:focus-visible,.myspace-return:focus-visible{outline:2px solid var(--ms-accent);outline-offset:3px}
+.hub-visual{height:clamp(180px,47vw,290px);width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hub-visual img{width:100%;height:100%;object-fit:cover}
+.hub-card-body{padding:15px 14px 19px}
+.hub-card-body strong{font-size:clamp(23px,5vw,30px)}
+.hub-card-body small{color:var(--ms-sub);font-size:11px;margin:7px 0 0}
+.hub-card-body .go{display:none!important}
+.hub-card-news{grid-column:1/-1;display:flex!important;flex-direction:column!important}
+.hub-card-news .hub-visual{width:100%!important;min-width:0!important;height:clamp(215px,52vw,350px);min-height:0}
+.hub-card-news .hub-card-body{width:100%;padding:18px 17px 22px}
+.hub-card-news .hub-card-body strong{font-size:32px}
+.hub-card-extra .hub-visual{height:170px}
+.hub-reels{background:linear-gradient(145deg,#d9bba4,#5d454d);color:#fff4e6}
+.hub-trends{background:linear-gradient(135deg,#253c4c,#908372);color:#f9eddd}
+.hub-history{background:linear-gradient(145deg,#372f36,#ad8a70);color:#fff4e6}
+.hub-card-extra .hub-visual span{font:normal 48px Georgia,serif;letter-spacing:-1px}
+.hub-history span{font-size:38px!important}
+.space-back,.fashion-back,.myspace-return,.detail-top .back,.top-hub-return{min-height:46px!important;min-width:0!important;display:inline-flex;align-items:center;justify-content:center;border:1px solid currentColor!important;border-radius:999px!important;padding:11px 19px!important;background:transparent!important;color:inherit;font-size:13px!important;letter-spacing:0!important;font-weight:650;white-space:nowrap;line-height:1.1}
+.fashion-top{padding:calc(env(safe-area-inset-top,0px) + 13px) 14px 13px;gap:10px;flex-wrap:wrap;align-items:center}
+.fashion-top-meta{font-size:9px;letter-spacing:.8px;min-width:0;white-space:normal;max-width:42%;text-align:right}
+.oura-space .space-head{padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 12px!important}
+.oura-space .space-back{color:#edeaf3!important;border-color:#6b6b81!important}
+.shell .top{padding-top:5px}
+.top-hub-return{background:var(--ms-card)!important;color:var(--ms-text)!important;border-color:var(--ms-line)!important;margin:0 0 14px}
+.detail:before{height:calc(env(safe-area-inset-top,0px) + 18px)}
+.detail-top{top:0}
+.oura-hero{background:#101a2c!important}
+.oura-hero img{filter:none!important;object-fit:cover;object-position:center}
+.myspace-extra{position:fixed;inset:0;z-index:43;background:var(--ms-page);color:var(--ms-text);overflow-y:auto;overscroll-behavior-y:contain;padding-bottom:calc(45px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch}
+.myspace-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 13px) 18px 13px;position:sticky;top:0;z-index:5;background:var(--ms-page);border-bottom:1px solid var(--ms-line)}
+.myspace-top span{font-size:10px;letter-spacing:1.2px;color:var(--ms-sub);text-align:right}
+.myspace-extra-inner{max-width:680px;margin:0 auto;padding:29px 20px 50px}
+.myspace-kicker{font-size:10px;letter-spacing:3px;color:var(--ms-accent);font-weight:650;margin-bottom:11px}
+.myspace-extra h1{font:normal clamp(35px,10vw,52px)/1.07 Georgia,serif;margin:0 0 14px;letter-spacing:-1.5px}
+.myspace-intro{font-size:13px;line-height:1.6;color:var(--ms-sub);margin:0 0 25px}
+.myspace-setting-group,.myspace-idea{background:var(--ms-card);border:1px solid var(--ms-line);border-radius:17px;padding:18px;margin-bottom:15px}
+.myspace-setting-group h2{font:normal 25px Georgia,serif;margin:0 0 10px}
+.myspace-setting-group p{font-size:12px;color:var(--ms-sub);margin:0 0 17px}
+.myspace-setting-row{display:flex;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid var(--ms-line)}
+.myspace-setting-row:last-child{border:0}
+.myspace-setting-row>span{font-size:22px;min-width:26px;text-align:center}
+.myspace-setting-row strong{font-size:14px}
+.myspace-setting-row small{display:block;font-size:11px;color:var(--ms-sub);line-height:1.5;margin-top:4px}
+.myspace-themes{display:grid;gap:8px}
+.myspace-theme{border:1px solid var(--ms-line);border-radius:12px;padding:12px 14px;background:transparent;color:var(--ms-text);font-size:14px;text-align:left}
+.myspace-theme small{display:block;font-size:11px;color:var(--ms-sub);margin-top:3px}
+.myspace-theme.selected{border-color:var(--ms-accent);box-shadow:0 0 0 1px var(--ms-accent)}
+.myspace-theme.selected:before{content:'✓';float:right;font-weight:700;color:var(--ms-accent)}
+.myspace-logout{display:block;width:100%;padding:15px;background:transparent;border:1px solid #bf6f6f;border-radius:15px;color:#b65253;font-size:14px;font-weight:650}
+.myspace-extra-list{display:grid;gap:14px}
+.myspace-idea h2{font:normal 27px Georgia,serif;margin:7px 0 10px}
+.myspace-idea p{font-size:13px;line-height:1.65;color:var(--ms-sub)}
+.myspace-idea-meta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-accent)}
+.myspace-idea button{border:1px solid var(--ms-line);border-radius:999px;padding:11px 16px;background:transparent;color:var(--ms-text);font-size:12px}
+.myspace-idea-detail{padding:14px 3px 0;border-top:1px solid var(--ms-line);margin-top:12px}
+.myspace-idea-detail strong{display:block;font-size:12px;margin:12px 0 5px}
+.myspace-idea-detail ul{padding-left:20px;font-size:12px;line-height:1.75;color:var(--ms-sub)}
+html[data-ms-theme=dark] .hub,html[data-ms-theme=dark] .fashion-space,html[data-ms-theme=dark] .shell,html[data-ms-theme=dark] .detail{background:var(--ms-page);color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-story,html[data-ms-theme=dark] .fashion-article,html[data-ms-theme=dark] .fashion-empty{background:var(--ms-card);color:var(--ms-text);border-color:var(--ms-line)}
+html[data-ms-theme=dark] .fashion-inner,html[data-ms-theme=dark] .fashion-story-body,html[data-ms-theme=dark] .fashion-article-body{color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-story p,html[data-ms-theme=dark] .fashion-article p,html[data-ms-theme=dark] .fashion-lede{color:var(--ms-sub)}
+html[data-ms-theme=dark] .fashion-top{background:#20222bf4;color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-tags button{color:var(--ms-text);border-color:var(--ms-line)}
+html[data-ms-theme=dark] .fashion-tags button.active{background:#ded0bd;color:#171717}
+html[data-ms-theme=dark] .stats .stat,html[data-ms-theme=dark] .draft{background:var(--ms-card);color:var(--ms-text)}
+html[data-ms-theme=dark] .nav,html[data-ms-theme=dark] .detail-top,html[data-ms-theme=dark] .detail-actions{background:#20222bf2;color:var(--ms-text)}
+#pullIndicator{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 9px);left:50%;transform:translate(-50%,-110px);height:46px;min-width:46px;display:flex;align-items:center;gap:9px;border:1px solid var(--ms-line);background:var(--ms-card);color:var(--ms-text);box-shadow:0 9px 30px #0003;border-radius:999px;padding:0 13px;transition:transform .25s}
+#pullIndicator.shown{transform:translate(-50%,0)}
+#pullIndicator .pull-ring{width:19px;height:19px;border:2px solid #a0a0af;border-top-color:var(--ms-accent);border-radius:50%;animation:ms-spin .75s linear infinite}
+#pullIndicator span{font-size:11px}
+@keyframes ms-spin{to{transform:rotate(360deg)}}
+@media(max-width:390px){.hub-header{padding:0 37px}.hub-sub{letter-spacing:2.1px;font-size:9px}.hub-settings-trigger{width:40px;height:40px;font-size:21px}.hub-card-body strong{font-size:23px}.hub-card-news .hub-card-body strong{font-size:29px}}
 </style></head><body>
-<section class="pwa-gate hidden" id="pwaGate">
+<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
@@ -426,7 +511,7 @@ html.oura-active{color-scheme:dark}
 <div class="oura-chartbox"><div class="oura-chart-title"><span>Активность по дням</span><div class="oura-switch" id="activityRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-switch" id="activityMeasure" style="margin:10px 3px"><button data-measure="steps" class="selected">Шаги</button><button data-measure="calories">Калории</button><button data-measure="minutes">Активное время</button></div><div class="oura-chart-summary" id="activityStats"></div><div id="activityChart"></div><p class="oura-chart-hint">Столбики — выбранная метрика; линия — оценка активности от 0 до 100. Нажми на день.</p><div class="oura-day-detail hidden" id="activityDayDetail"></div></div>
 </div>
 <div class="oura-status" id="ouraStatus">Получаю защищённые данные с кольца…</div>
-</div></section><div class="shell" id="modaShell" style="display:none"><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
+</div></section><div class="shell" id="modaShell" style="display:none"><button type="button" class="top-hub-return" id="modaBack">← Все разделы</button><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
 <section class="hero"><span class="eyebrow">Редакторская панель / 2026</span><h1>Мода начинается<br>с деталей.</h1><p>Черновики, подборки и новости — все материалы перед публикацией.</p></section>
 <section class="stats"><div class="stat"><strong id="pending">—</strong><span>На проверке</span></div><div class="stat"><strong id="published">—</strong><span>Опубликовано</span></div><div class="stat"><strong id="rejected">—</strong><span>Отклонено</span></div></section>
 <section class="section"><h2 id="sectionTitle">Черновики</h2><small id="count"></small></section>
@@ -457,7 +542,7 @@ async function restorePwaSession(){
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
   pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
-  $('pwaLogout').style.display='inline-block';showPwaGate(false);
+  $('settingsLogout').style.display='inline-block';showPwaGate(false);
  }catch{
   pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
  }
@@ -484,11 +569,11 @@ $('pwaClaim').onclick=async()=>{
   const login=await pwaApi({action:'pair_claim',code});
   pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
   pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
-  $('pwaCode').value='';showPwaGate(false);$('pwaLogout').style.display='inline-block';render();
+  $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
  }catch(e){$('pwaLoginStatus').textContent='Код неверный, уже использован или истёк. Получи новый в Telegram.'}
  finally{$('pwaClaim').disabled=false}
 };
-$('pwaLogout').onclick=async()=>{
+$('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
 };
