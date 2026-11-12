@@ -160,6 +160,57 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .pwa-pair-trigger{margin-top:15px;border:1px solid #bbb5c7;border-radius:10px;background:#fffaf7;padding:12px 14px;color:#413a55;font-size:12px}
 .pwa-hub-logout{border:none;background:none;color:#5d5f75;text-decoration:underline;font-size:12px;cursor:pointer;display:none}
 @media(display-mode:standalone){.pwa-gate{padding-top:calc(env(safe-area-inset-top) + 45px)}}
+
+/* iOS Telegram and standalone PWA edge-to-edge polish */
+html.oura-active,html.oura-active body{background:#0c0d19!important}
+html.oura-active{color-scheme:dark}
+.oura-space{inset:0!important;background:#0c0d19!important;
+ background-image:radial-gradient(ellipse 90% 420px at 75% 0%,#242344 0%,#111321 75%,#0c0d19 100%)!important;
+ padding:0 16px max(42px,env(safe-area-inset-bottom,0px))!important;
+ overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.oura-space .space-head{margin:0 -16px!important;min-height:54px!important;
+ padding:max(10px,env(safe-area-inset-top,0px)) 16px 8px!important;
+ background:#10101d!important;border:0!important;box-shadow:0 1px 0 #ffffff18;top:0!important}
+.oura-space .space-back{min-height:40px!important;padding:0 9px!important;font-size:13px!important}
+.oura-inner{padding-top:17px!important}
+.oura-hero{height:clamp(205px,55vw,310px)!important;isolation:isolate;
+ background:linear-gradient(130deg,#101426,#242e54)!important}
+.oura-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;
+ transform:translateZ(0);filter:contrast(1.11) saturate(1.12) brightness(1.04)}
+.oura-hero .hero-shade{background:linear-gradient(180deg,transparent 84%,#0e101d9c 100%)}
+.oura-section.pink{background:linear-gradient(140deg,#2a1b36,#181b31 68%,#211729);
+ border-color:#745377}
+.cycle-feature{display:flex;align-items:center;gap:13px;padding:13px 14px;
+ border:1px solid #ba86af57;border-radius:15px;margin:13px 0 16px;
+ background:linear-gradient(100deg,#5c355974,#38305769)}
+.cycle-feature-icon{width:41px;height:41px;border-radius:50%;display:grid;place-items:center;
+ color:#f7cae7;font-size:23px;background:#9d6d9935;flex-shrink:0}
+.cycle-feature strong{font:normal 23px Georgia,serif;color:#f7d2ec}
+.cycle-feature small{color:#e4c8df;font-size:11px;display:block;margin-top:3px}
+.cycle-timeline{margin:17px 0 12px;padding:15px 12px 12px;border:1px solid #aa75a641;
+ border-radius:15px;background:#140f235c}
+.cycle-timeline-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;
+ margin-bottom:13px;color:#e6c9e1;font-size:12px}
+.cycle-day-scroll{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:5px 2px 14px;
+ scroll-snap-type:x proximity}
+.cycle-day-scroll::-webkit-scrollbar{display:none}
+.cycle-day-dot{flex:0 0 34px;width:34px;height:41px;border:0;background:none;color:#bcaacb;
+ font-size:10px;display:flex;align-items:center;flex-direction:column;gap:5px;scroll-snap-align:center}
+.cycle-day-dot .dot{width:15px;height:15px;border-radius:50%;background:#5a4b73;border:1px solid #a17caa55}
+.cycle-day-dot.period .dot{background:#d37bba;border-color:#f3b7db}
+.cycle-day-dot.current{color:#fff;font-weight:700}
+.cycle-day-dot.current .dot{width:19px;height:19px;margin:-2px 0;outline:2px solid #f9d7ef;outline-offset:3px;
+ background:#e7a1d8;box-shadow:0 0 13px #e7a1d885}
+.cycle-legend{display:flex;flex-wrap:wrap;gap:13px;font-size:10px;color:#bdb2cb}
+.cycle-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#b7a2ca}
+.cycle-legend i.period{background:#d37bba}.cycle-legend i.current{background:#f5c0e5;outline:1px solid #fff}
+.cycle-description{color:#b6a6c2;font-size:11px;line-height:1.65;margin:12px 0 3px}
+@media (max-width:380px){.oura-space{padding-left:12px!important;padding-right:12px!important}
+.oura-space .space-head{margin-left:-12px!important;margin-right:-12px!important}}
+
+.oura-hero-caption{position:absolute;bottom:12px;left:15px;font-size:9px;color:#c8d2e7;
+ letter-spacing:2px;text-shadow:0 1px 7px #000}
+.oura-hero img{object-fit:cover;object-position:50% 47%;filter:contrast(1.08) saturate(1.1)}
 </style></head><body>
 <section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -191,7 +242,7 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <div class="oura-inner">
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
-<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="data:image/webp;base64,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"><span class="hero-shade"></span></div>
+<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="https://next-media.elkjop.com/image/dv_web_D1800013492898/991278/oura-ring-4-ceramic-alysormus-koko-10-midnight.jpg?q=85&w=1200"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
 <div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
@@ -235,15 +286,26 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <div class="oura-chartbox"><div class="oura-chart-title"><span>Температура от базовой</span><div class="oura-switch" id="tempRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-summary" id="tempStats"></div><div id="tempChart"></div><p class="oura-chart-hint">0 °C — личная базовая температура; выше и ниже — отклонение. Нажми на точку.</p><div class="oura-day-detail hidden" id="tempDayDetail"></div></div>
 <p class="oura-footnote">Температура — отклонение от личной базовой линии, не абсолютная температура тела. Единица: °C.</p>
 </div>
-<div class="oura-section pink">
-<div class="oura-headline"><h2>Женское здоровье и цикл</h2></div>
-<p class="oura-caption">Показатели рассчитываются только по отметкам периода, доступным через Oura API.</p>
+<div class="oura-section pink" id="ouraCycleSection">
+<div class="oura-headline"><h2>Женское здоровье</h2></div>
+<p class="oura-caption">Цикл, даты и изменения — по отметкам, полученным из Oura.</p>
+<div class="cycle-feature">
+<div class="cycle-feature-icon" aria-hidden="true">✦</div>
+<div><strong id="cycleFeatureDay">Данные цикла</strong><small id="cycleFeatureSubtitle">Сверяю последние записи Oura</small></div>
+</div>
 <div class="oura-cycle-grid">
 <div class="oura-metric"><small>День цикла</small><strong id="cycleDay">—</strong></div>
-<div class="oura-metric"><small>Начало периода</small><strong id="cycleStart">—</strong></div>
+<div class="oura-metric"><small>Начало последнего периода</small><strong id="cycleStart">—</strong></div>
 <div class="oura-metric"><small>Средняя длина цикла</small><strong id="cycleAverage">—</strong></div>
-<div class="oura-metric"><small>Следующий период (прогноз)</small><strong id="cycleNext">—</strong></div>
-</div><p class="oura-footnote" id="cycleNote">Если история отметок неполная, прогноз не отображается. Это ориентировочная оценка, а не медицинское заключение.</p>
+<div class="oura-metric"><small>Следующий период · ориентировочно</small><strong id="cycleNext">—</strong></div>
+</div>
+<div class="cycle-timeline">
+<div class="cycle-timeline-heading"><strong>Лента текущего цикла</strong><span id="cycleTimelineLabel">—</span></div>
+<div class="cycle-day-scroll" id="cycleTimeline" aria-label="Дни текущего цикла"></div>
+<div class="cycle-legend"><span><i class="period"></i>Начало периода</span><span><i class="current"></i>Сегодня</span></div>
+<p class="cycle-description" id="cycleTimelineNote">Лента появится, когда Oura передаст начало периода и историю цикла.</p>
+</div>
+<p class="oura-footnote" id="cycleNote">Ориентировочные даты не являются медицинским заключением.</p>
 </div>
 <div class="oura-section blue">
 <div class="oura-headline"><h2>Активность</h2><b id="ouraActivityScore">—</b></div>
@@ -328,6 +390,16 @@ let currentSpace='hub';
 const showSpace=space=>{
  if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
+ const dark=space==='oura';
+ document.documentElement.classList.toggle('oura-active',dark);
+ const bg=dark?'#0c0d19':'#f6f4ef';
+ const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg;
+ if(isTelegramClient&&tg){
+  try{tg.setHeaderColor?.(bg)}catch(e){}
+  try{tg.setBackgroundColor?.(bg)}catch(e){}
+  try{tg.setBottomBarColor?.(bg)}catch(e){}
+ }
+
  $('hub').classList.toggle('hidden',space!=='hub');
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
@@ -552,6 +624,43 @@ function stages(s){
  el.innerHTML='<svg viewBox="0 0 330 112" role="img" aria-label="Стадии сна в пятиминутных интервалах">'+
  [...phase].map((v,i)=>'<rect x="'+(8+i*unit).toFixed(2)+'" y="'+height[v]+'" width="'+Math.max(1.4,unit+.15).toFixed(2)+'" height="'+(98-height[v])+'" rx=".6" fill="'+palette[v]+'"/>').join('')+'</svg>';
 }
+function renderCycleDetails(cycle){
+ const c=cycle||{}, day=valid(c.day)?Math.round(c.day):null;
+ const avg=valid(c.avg_length)?Math.round(c.avg_length):null;
+ const knownStart=/^\d{4}-\d{2}-\d{2}$/.test(c.period_start||'');
+ setValue('cycleFeatureDay',day?'День '+day+' цикла':'История цикла');
+ setValue('cycleFeatureSubtitle',day?'Начало последнего периода: '+dayName(c.period_start):'Ожидаю отметку начала периода из Oura');
+ const place=$('cycleTimeline'),note=$('cycleTimelineNote');
+ place.replaceChildren();
+ if(!knownStart||day===null||day<1||day>180){
+  note.textContent='Пока нет подтверждённого начала периода. Лента не строится без реальных записей.';
+  setValue('cycleTimelineLabel','Нет данных');
+  return;
+ }
+ // Use only an actually recorded average. Never invent a typical 28-day cycle or ovulation date.
+ if(avg===null||avg<20||avg>40){
+  setValue('cycleTimelineLabel','Сегодня — день '+day);
+  const chip=document.createElement('span');chip.className='cycle-day-dot current';
+  chip.innerHTML='<span class="dot"></span><span>'+day+'</span>';chip.setAttribute('aria-label','Текущий день '+day);
+  place.append(chip);
+  note.textContent='Для полной ленты и прогноза нужно не менее двух подтверждённых начал периодов.';
+  return;
+ }
+ const length=Math.min(60,Math.max(avg,day));
+ setValue('cycleTimelineLabel','Средний цикл — '+avg+' дней');
+ for(let n=1;n<=length;n++){
+  const box=document.createElement('span');box.className='cycle-day-dot';
+  if(n===1)box.classList.add('period');
+  if(n===day){box.classList.add('current');box.setAttribute('aria-current','date')}
+  const dot=document.createElement('span');dot.className='dot';
+  const count=document.createElement('span');count.textContent=String(n);
+  box.append(dot,count);
+  box.title=(n===1?'Начало последнего отмеченного периода · ':'')+'День '+n+(n===day?' · сегодня':'');
+  place.append(box);
+ }
+ note.textContent=day>avg?'Сейчас день '+day+'; средняя длина по отметкам Oura — '+avg+' дней. Реальный цикл может отличаться.':'Точки — дни цикла. Розовая первая точка обозначает зафиксированное начало периода, обводка — сегодняшний день.';
+ const active=place.querySelector('.current');if(active)requestAnimationFrame(()=>{place.scrollLeft=Math.max(0,active.offsetLeft-place.offsetLeft-place.clientWidth/2+active.offsetWidth/2)});
+}
 function renderOura(d){
  ouraLive=d;
  const sl=d.sleep||{}, sd=sl.detail||{}, r=d.readiness||{}, ac=d.activity||{}, cy=d.cycle||{};
@@ -568,6 +677,7 @@ function renderOura(d){
  setValue('cycleStart',dayName(cy.period_start));
  setValue('cycleAverage',valid(cy.avg_length)?cy.avg_length+' дней':'—');
  setValue('cycleNext',dayName(cy.predicted_next));
+ renderCycleDetails(cy);
  setValue('cycleNote',cy.has_history&&cy.predicted_next?'Прогноз ориентировочный и основан на записанных циклах. Он не заменяет медицинскую консультацию.':'Для прогноза нужно не менее двух отмеченных начал менструации. При отсутствии данных ничего не рассчитывается.');
  setValue('activitySummary',ac.day?'Сведения за '+dayName(ac.day):'За последний синхронизированный день.');
  setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
