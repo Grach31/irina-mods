@@ -269,9 +269,64 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
+const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
+const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
+const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
+let pwaSession=isTelegramClient?'':(localStorage.getItem('myspace.session.v1')||'');
+let pwaModerator=false;
+let readonly=isTelegramClient?viewerId===731539637:true;
+async function pwaApi(payload){
+ const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
+ const data=await res.json().catch(()=>({}));
+ if(!res.ok)throw Error(data.error||'HTTP '+res.status);
+ return data;
+}
+function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
+async function restorePwaSession(){
+ if(isTelegramClient){if(tg?.initData)$('pwaPairBtn').classList.remove('hidden');return}
+ if(!pwaSession){showPwaGate(true);return}
+ try{
+  const identity=await pwaApi({action:'whoami',session:pwaSession});
+  pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
+  $('pwaLogout').style.display='inline-block';showPwaGate(false);
+ }catch{
+  pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
+ }
+}
+$('pwaPairBtn').onclick=async()=>{
+ $('pwaPairBtn').disabled=true;
+ try{
+  const r=await pwaApi({action:'pair_start',initData:tg?.initData||''});
+  $('pwaPairCode').value=r.code.toUpperCase();
+  $('pwaPairPanel').classList.remove('hidden');
+  $('pwaPairNote').textContent='Код действителен 10 минут. Вставь его в Safari по адресу grach31.github.io/irina-mods/';
+ }catch(e){$('pwaPairPanel').classList.remove('hidden');$('pwaPairNote').textContent='Не удалось создать код. Открой My Space через /app в Telegram и попробуй снова.'}
+ finally{$('pwaPairBtn').disabled=false}
+};
+$('pwaCopyCode').onclick=async()=>{
+ const input=$('pwaPairCode');input.select();
+ try{await navigator.clipboard.writeText(input.value);$('pwaPairNote').textContent='Код скопирован. Открой Safari и вставь его в поле входа.'}
+ catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
+};
+$('pwaClaim').onclick=async()=>{
+ const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи код из Telegram.';return}
+ $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
+ try{
+  const login=await pwaApi({action:'pair_claim',code});
+  pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
+  pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
+  $('pwaCode').value='';showPwaGate(false);$('pwaLogout').style.display='inline-block';render();
+ }catch(e){$('pwaLoginStatus').textContent='Код неверный, уже использован или истёк. Получи новый в Telegram.'}
+ finally{$('pwaClaim').disabled=false}
+};
+$('pwaLogout').onclick=async()=>{
+ const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
+ try{await pwaApi({action:'signout',session:token})}catch{}
+};
 let currentSpace='hub';
 const showSpace=space=>{
+ if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
  $('hub').classList.toggle('hidden',space!=='hub');
  $('modaShell').style.display=space==='moda'?'':'none';
@@ -282,8 +337,7 @@ const showSpace=space=>{
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('ouraBack').onclick=()=>showSpace('hub');
-const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);const readonly=viewerId===731539637;
-if(tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
+if(isTelegramClient&&tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
@@ -509,12 +563,18 @@ async function loadOura(){
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
-  if(!initData){setValue('ouraStatus','Открой My Space через новую кнопку /app в Telegram, чтобы подтвердить аккаунт.');return}
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
-  let response;
-  try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
-  if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
-  const data=await response.json();
+  let data;
+  if(!initData&&pwaSession){
+    try{data=await pwaApi({action:'oura_read',session:pwaSession})}
+    catch(e){setValue('ouraStatus','Сеанс Safari истёк. Войди повторно через Telegram.');showPwaGate(true);return}
+  }else{
+    if(!initData){setValue('ouraStatus','Открой My Space через /app в Telegram или авторизуйся в Safari.');return}
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+    let response;
+    try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
+    if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
+    data=await response.json();
+  }
   renderOura(data);
   setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');
  }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.')}
@@ -525,8 +585,12 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Deep-link Oura from the bot's authenticated inline web_app button.
 const requestedSpace=new URLSearchParams(location.search).get('space');
 if(requestedSpace==='oura'||requestedSpace==='moda')showSpace(requestedSpace);
+restorePwaSession();
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+ navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/'}).catch(()=>{});
+}
 window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load()});
 })();
