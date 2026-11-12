@@ -149,13 +149,27 @@ def on_message(state, requests, m):
                 "Попроси владельца проекта добавить твой Telegram ID в настройки бота."
             ))
         return
-    if text.split()[0:1] in (["/app"], ["/miniapp"]):
+    if text.split()[0:1] in (["/app"], ["/miniapp"], ["/myspace"]):
+        # Inline Web App launch supplies authenticated Telegram initData for private Oura scores.
+        # KeyboardButton Mini Apps do not provide signed initData, so cannot serve Oura.
         tg.call("sendMessage", chat_id=chat, text=(
-            "My Space — два раздела: Moda и Oura Ring. Открывай черновики и показатели "
-            "на весь экран. Публикация только после подтверждения."
-        ), reply_markup={"keyboard": [[{"text": "✦ Открыть My Space",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-myspace1"}}]],
-            "resize_keyboard": True, "is_persistent": True})
+            "My Space — Moda и Oura Ring. Запускай обе панели одной кнопкой ниже. "
+            "Для подтверждения публикаций используй команду /moda."
+        ), reply_markup={"inline_keyboard": [[{
+            "text": "✦ Открыть My Space",
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-myspace-auth2"}
+        }]]})
+        return
+    if text.split()[0:1] in (["/moda"], ["/editor"]):
+        # Legacy keyboard launch is retained for signed-by-Telegram web_app_data
+        # moderation actions. Telegram inline Web Apps cannot use sendData().
+        tg.call("sendMessage", chat_id=chat, text=(
+            "Moda — редакторский режим для публикаций. "
+            "Для просмотра Oura возвращайся в /app."
+        ), reply_markup={"keyboard": [[{
+            "text": "✦ Moda — редактор",
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-moda-editor2&space=moda"}
+        }]], "resize_keyboard": True, "is_persistent": True})
         return
     if text.split()[0:1] in (["/oura"], ["/ring"]):
         # Inline Web App buttons include signed Telegram initData; reply keyboard buttons do not.
