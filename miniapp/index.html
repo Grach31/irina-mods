@@ -139,11 +139,14 @@ const hubBtn=document.createElement('button');
 hubBtn.textContent='Разделы';hubBtn.className='space-back';
 hubBtn.onclick=()=>showSpace('hub');
 document.querySelector('.top').prepend(hubBtn);
-document.querySelectorAll('.orb').forEach(b=>b.onclick=()=>{
+let ouraLive=null;
+function showOuraMetric(metric){
  const labels={sleep:'Сон',readiness:'Готовность',activity:'Активность'};
- $('ouraMetricTitle').textContent=labels[b.dataset.metric];
- $('ouraMetricDetails').textContent='Данные появятся после защищённого подключения Oura к Mini App.';
-});
+ $('ouraMetricTitle').textContent=labels[metric]||'Показатели кольца';
+ const score=ouraLive?.[metric]?.score;
+ $('ouraMetricDetails').textContent=Number.isFinite(score)?('Оценка Oura: '+score+' из 100'+(metric==='activity'&&ouraLive?.activity?.day?' · за '+ouraLive.activity.day:'')):'Показатель пока не синхронизирован.';
+}
+document.querySelectorAll('.orb').forEach(b=>b.onclick=()=>showOuraMetric(b.dataset.metric));
 async function loadOura(){
  $('ouraStatus').textContent='Проверяю защищённое подключение к Oura…';
  try{
@@ -164,6 +167,8 @@ async function loadOura(){
    const score=d?.[key]?.score;
    $(element).textContent=Number.isFinite(score)?String(score):'—';
   }
+  ouraLive=d;
+  showOuraMetric('sleep');
   $('ouraStatus').textContent=d?.updated_at?'Обновлено: '+d.updated_at:'Показатели получены';
  }catch(e){$('ouraStatus').textContent='Показатели пока недоступны. Данные Oura остаются в защищённом источнике.'}
 }
