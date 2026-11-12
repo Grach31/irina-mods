@@ -966,12 +966,16 @@
       "sent_at": "2026-11-11T10:40+03:00"
     },
     "2026-11-11-sela-velvet": {
-      "status": "approved",
+      "status": "published",
       "slot": null,
       "msg_id": 332,
       "file_id": "AgACAgIAAxkDAAIBTGr0G98vIR5EKSR2JPMKAvZVd41-AAL9GGsbjk6hS10AAXPqBUb6JAEAAwIAA3cAAz0E",
       "sent_at": "2026-11-11T10:40+03:00",
-      "publish_at": "2026-11-12T23:59:22.375549+03:00"
+      "publish_at": "2026-11-12T23:59:22.375549+03:00",
+      "published_message_ids": [
+        528
+      ],
+      "published_at": "2026-11-12T23:59+03:00"
     },
     "2026-11-11-looks": {
       "status": "rejected",
