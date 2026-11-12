@@ -157,7 +157,7 @@ def on_message(state, requests, m):
             "Для подтверждения публикаций используй команду /moda."
         ), reply_markup={"inline_keyboard": [[{
             "text": "✦ Открыть My Space",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-dashboard-full1"}
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-charts-v2"}
         }]]})
         return
     if text.split()[0:1] in (["/moda"], ["/editor"]):
@@ -178,7 +178,7 @@ def on_message(state, requests, m):
             "Доступ к показателям проверяется по аккаунту Telegram."
         ), reply_markup={"inline_keyboard": [[{
             "text": "◉ Открыть Oura Ring",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-detail-v1&space=oura"}
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-charts-v2&space=oura"}
         }]]})
         return
     if m.get("web_app_data"):
