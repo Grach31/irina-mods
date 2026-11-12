@@ -327,7 +327,7 @@ html,body{background:var(--ms-page);color:var(--ms-text)}
 .myspace-theme small{display:block;font-size:11px;color:var(--ms-sub);margin-top:3px}
 .myspace-theme.selected{border-color:var(--ms-accent);box-shadow:0 0 0 1px var(--ms-accent)}
 .myspace-theme.selected:before{content:'✓';float:right;font-weight:700;color:var(--ms-accent)}
-.myspace-logout{display:block;width:100%;padding:15px;background:transparent;border:1px solid #bf6f6f;border-radius:15px;color:#b65253;font-size:14px;font-weight:650}
+[hidden]{display:none!important}.myspace-logout{display:block;width:100%;padding:15px;background:transparent;border:1px solid #bf6f6f;border-radius:15px;color:#b65253;font-size:14px;font-weight:650}
 .myspace-extra-list{display:grid;gap:14px}
 .myspace-idea h2{font:normal 27px Georgia,serif;margin:7px 0 10px}
 .myspace-idea p{font-size:13px;line-height:1.65;color:var(--ms-sub)}
@@ -373,9 +373,9 @@ html[data-ms-theme=dark] .nav,html[data-ms-theme=dark] .detail-top,html[data-ms-
 <small id="pwaPairNote"></small>
 </div>
 </div><div class="hub-cards">
-<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.webp" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
-<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.webp" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
-<button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.webp" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
+<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
+<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
+<button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.svg" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
 <button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><span aria-hidden="true">◌</span></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
 <button id="openTrends" class="hub-card hub-card-extra"><div class="hub-visual hub-trends"><span aria-hidden="true">✳</span></div><div class="hub-card-body"><strong>Trend Radar</strong><small>Мировые и российские тенденции</small></div></button>
 <button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><span aria-hidden="true">1947 — 2026</span></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
@@ -433,7 +433,7 @@ html[data-ms-theme=dark] .nav,html[data-ms-theme=dark] .detail-top,html[data-ms-
 <div class="oura-inner">
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
-<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.webp"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
+<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.svg"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
 <div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
