@@ -379,6 +379,33 @@ html[data-ms-theme="light"] #modaShell .tabs .tab.active{
   color:#fff!important;background:#342a27!important;border-color:#342a27!important;
 }
 html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
+
+/* Multi-image draft carousel — subtle arrows and dots only when needed. */
+.gallery-wrap{position:relative;background:var(--ms-card,#f5f1ed)}
+.gallery{gap:0;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.gallery .slide{scroll-snap-align:center}
+.gallery-arrow{position:absolute;z-index:4;top:48%;transform:translateY(-50%);
+ display:grid;place-items:center;width:36px;height:44px;padding:0;cursor:pointer;
+ border:1px solid #ffffff87;border-radius:999px;
+ background:#faf9f2d9;color:#282931;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+ box-shadow:0 2px 12px #0002;transition:background .18s,opacity .18s}
+.gallery-arrow:active{background:#fff}
+.gallery-prev{left:12px}.gallery-next{right:12px}
+.gallery-arrow[hidden],.gallery-dots[hidden]{display:none!important}
+.gallery-dots{position:absolute;z-index:4;bottom:18px;left:50%;transform:translateX(-50%);
+ display:flex;justify-content:center;align-items:center;gap:8px;max-width:78%;border-radius:999px;padding:9px 13px;
+ background:#20222a93;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.gallery-dot{width:7px;height:7px;min-width:7px;min-height:7px;border:0;border-radius:50%;padding:0;background:#fff7;cursor:pointer}
+.gallery-dot.selected{background:#fff;transform:scale(1.14)}
+/* Approved historical editorial photo previews and documented archive credits. */
+.myspace-history-photo{margin:0 0 17px;overflow:hidden;border:1px solid var(--ms-line);border-radius:13px;background:#151519}
+.myspace-history-photo img{display:block;width:100%;aspect-ratio:1.5;object-fit:cover;object-position:center 24%;background:#24242a}
+.myspace-history-photo figcaption{padding:10px 12px 3px;font-size:11px;line-height:1.5;color:var(--ms-sub)}
+.myspace-history-photo>a{display:block;padding:0 12px 12px;color:var(--ms-accent);font-size:11px;text-underline-offset:3px;overflow-wrap:anywhere}
+.myspace-history-photo.large{margin:8px 0 14px}
+.myspace-history-photo.large img{aspect-ratio:auto;max-height:570px;object-fit:contain;background:#111118}
+.myspace-history-photo.history-photo-unavailable:before{content:'Архивное фото временно недоступно';display:block;padding:20px;color:#eae3dc;font-size:12px}
+.myspace-history-more{margin-top:4px}
 </style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -404,9 +431,9 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
 <button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.svg" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
-<button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><span aria-hidden="true">◌</span></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
-<button id="openTrends" class="hub-card hub-card-extra"><div class="hub-visual hub-trends"><span aria-hidden="true">✳</span></div><div class="hub-card-body"><strong>Trend Radar</strong><small>Мировые и российские тенденции</small></div></button>
-<button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><span aria-hidden="true">1947 — 2026</span></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
+<button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><img src="assets/reels-approved.svg" alt="Съёмка модного Reels на смартфон" loading="lazy" decoding="async"></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
+<button id="openTrends" class="hub-card hub-card-extra"><div class="hub-visual hub-trends"><img src="assets/trends-approved.svg" alt="Бордовые фактуры и цветовая палитра" loading="lazy" decoding="async"></div><div class="hub-card-body"><strong>Trend Radar</strong><small>Мировые и российские тенденции</small></div></button>
+<button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><img src="assets/history-approved.svg" alt="Историческая и современная мода" loading="lazy" decoding="async"></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
 </div></section>
 
 <section class="myspace-extra hidden" id="settingsSpace">
@@ -546,7 +573,12 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <div class="tabs" id="filters"><button class="tab active" data-filter="all">Все</button><button class="tab" data-filter="picks">Подборки</button><button class="tab" data-filter="looks">Образы</button><button class="tab" data-filter="news">Новости</button><button class="tab" data-filter="history">История</button></div>
 <main class="list" id="list"><div class="loader">Загружаю черновики…</div></main></div>
 <nav class="nav"><button class="active" id="navPending"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Черновики</button><button id="navPublished"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>История</button><button id="navRefresh"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2-5M20 4v5h-5"/></svg>Обновить</button></nav>
-<div class="detail" id="detail"><div class="detail-top"><button class="back" id="back">← Все материалы</button><span class="eyebrow">Stambo.i / Просмотр</span></div><div class="detail-scroller"><div class="gallery" id="gallery"></div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
+<div class="detail" id="detail"><div class="detail-top"><button class="back" id="back">← Все материалы</button><span class="eyebrow">Stambo.i / Просмотр</span></div><div class="detail-scroller"><div class="gallery-wrap" id="galleryWrap">
+<div class="gallery" id="gallery"></div>
+<button class="gallery-arrow gallery-prev" id="galleryPrev" type="button" aria-label="Предыдущее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="M14 4 5 13l9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
+</div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -677,6 +709,22 @@ function msBulletList(title,values){
  for(const value of values||[]){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}
  wrap.append(ul);return wrap;
 }
+function msHistoryFigure(photo,large){
+ const figure=document.createElement('figure');figure.className=large?'myspace-history-photo large':'myspace-history-photo';
+ const img=document.createElement('img');img.src=photo.url;img.alt=photo.caption||'Архивное фото моды';
+ img.loading=large?'lazy':'lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+ img.onerror=()=>{figure.classList.add('history-photo-unavailable');img.remove()};
+ figure.append(img);
+ if(photo.caption){
+  const figcaption=document.createElement('figcaption');figcaption.textContent=photo.caption;
+  figure.append(figcaption);
+ }
+ if(photo.source_url&&/^https:\/\//.test(photo.source_url)){
+  const a=document.createElement('a');a.href=photo.source_url;a.target='_blank';a.rel='noopener noreferrer';
+  a.textContent='Источник: '+(photo.credit||'Архив');figure.append(a);
+ }
+ return figure;
+}
 function msRenderEditorial(type,data){
  const root=$(msEditorialMap[type].container);root.replaceChildren();
  const list=Array.isArray(data.items)?data.items:[];
@@ -686,6 +734,8 @@ function msRenderEditorial(type,data){
   const meta=document.createElement('div');meta.className='myspace-idea-meta';
   meta.textContent=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
   const title=document.createElement('h2');title.textContent=item.title||'Без названия';
+  const historyPhotos=type==='history'&&Array.isArray(item.photos)?item.photos.filter(photo=>typeof photo?.url==='string'&&/^https:\/\//.test(photo.url)):[];
+  const heroPhoto=historyPhotos.length?msHistoryFigure(historyPhotos[0],false):null;
   const lead=document.createElement('p');lead.textContent=item.summary||item.description||item.hook||'';
   const toggle=document.createElement('button');toggle.type='button';toggle.textContent='Подробнее ↓';toggle.setAttribute('aria-expanded','false');
   const detail=document.createElement('div');detail.className='myspace-idea-detail hidden';
@@ -694,8 +744,16 @@ function msRenderEditorial(type,data){
    detail.append(msBulletList('Сценарий',item.script),msBulletList('Кадры',item.shots),msText('Призыв к действию',item.cta));
   }else if(type==='trends'){
    detail.append(msText('Статус',item.status),msText('Для стилиста',item.stylist),msText('Подтверждение',item.evidence));
-  }else detail.append(msText('Тогда',item.then),msText('Сейчас',item.now));
+  }else{
+   if(historyPhotos.length){
+    const gallery=document.createElement('div');gallery.className='myspace-history-more';
+    historyPhotos.forEach(photo=>gallery.append(msHistoryFigure(photo,true)));
+    detail.append(gallery);
+   }
+   detail.append(msText('Тогда',item.then),msText('Сейчас',item.now));
+  }
   toggle.onclick=()=>{const expanded=!detail.classList.toggle('hidden');toggle.setAttribute('aria-expanded',String(expanded));toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓'};
+  if(heroPhoto)card.append(heroPhoto);
   card.append(meta,title,lead,toggle,detail);root.append(card);
  });
 }
@@ -885,8 +943,45 @@ $('navPending').classList.toggle('active',mode==='pending');$('navPublished').cl
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
 list.forEach(d=>{const card=document.createElement('button');card.className='draft';const title=strip(d.text).slice(0,100)||d.id;card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+imageFor(d)+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(title.slice(0,77))+'</h3><p class="preview">'+escapeHtml(title.slice(77)||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{e.target.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Stambo.i'}))};card.onclick=()=>open(d);$('list').append(card)})}
 function gallerySources(d){let a=[];const root=BASE+'drafts/img/';if(d.type==='looks'){const count=Math.min(10,1+(d.looks?.length||0));for(let i=1;i<=count;i++)a.push(root+encodeURIComponent(d.id)+(i===1?'':'-'+i)+'.jpg')}else if(d.type==='album'&&d.photos?.length){a=d.photos.filter(p=>typeof p==='string').slice(0,10).map(p=>p.startsWith('http')?p:BASE+p)}else if(d.type==='item'&&d.image){a=[d.image.startsWith('http')?d.image:BASE+d.image]}else if(d.type==='picks'&&d.items?.length){a=d.items.slice(0,10).map(i=>i.img).filter(Boolean)}else if(d.card?.images?.length){a=[imageFor(d)];}else{a=[imageFor(d)]}return a.length?a:[imageFor(d)]}
+function setupGalleryControls(count){
+ const gallery=$('gallery'),prev=$('galleryPrev'),next=$('galleryNext'),dots=$('galleryDots');
+ dots.replaceChildren();
+ const multi=count>1;
+ prev.hidden=!multi;next.hidden=!multi;dots.hidden=!multi;
+ if(!multi)return;
+ let index=0;
+ const select=number=>{
+  index=Math.max(0,Math.min(count-1,number));
+  gallery.scrollTo({left:index*gallery.clientWidth,behavior:'smooth'});
+  render();
+ };
+ const render=()=>{
+  prev.hidden=index===0;next.hidden=index===count-1;
+  [...dots.children].forEach((dot,i)=>{
+   dot.classList.toggle('selected',i===index);dot.setAttribute('aria-current',i===index?'true':'false');
+  });
+ };
+ for(let i=0;i<count;i++){
+  const dot=document.createElement('button');dot.type='button';dot.className='gallery-dot';
+  dot.setAttribute('aria-label','Фото '+(i+1)+' из '+count);
+  dot.onclick=()=>select(i);dots.append(dot);
+ }
+ prev.onclick=()=>select(index-1);next.onclick=()=>select(index+1);
+ gallery.onscroll=()=>{
+  const nextIndex=Math.min(count-1,Math.max(0,Math.round(gallery.scrollLeft/Math.max(1,gallery.clientWidth))));
+  if(nextIndex!==index){index=nextIndex;render()}
+ };
+ render();
+}
 function open(d){active=d;$('detail').classList.add('visible');$('detail').scrollTop=0;$('detailType').textContent=category(d.type);$('detailTitle').textContent=strip(d.text).slice(0,92)||d.id;
-$('gallery').replaceChildren();gallerySources(d).forEach(url=>{const box=document.createElement('div');box.className='slide';const im=document.createElement('img');im.src=url;im.alt='Фото черновика';im.onerror=()=>{box.textContent='Фото недоступно'};box.append(im);$('gallery').append(box)});
+$('gallery').replaceChildren();
+const galleryImages=gallerySources(d);
+galleryImages.forEach((url,index)=>{
+ const box=document.createElement('div');box.className='slide';const im=document.createElement('img');
+ im.src=url;im.alt='Фото '+(index+1)+' из '+galleryImages.length;im.loading=index===0?'eager':'lazy';
+ im.onerror=()=>{box.textContent='Фото недоступно'};box.append(im);$('gallery').append(box);
+});
+setupGalleryControls(galleryImages.length);
 const target=$('postText');target.replaceChildren();
 const source=new DOMParser().parseFromString('<div>'+String(d.text||'')+'</div>','text/html');
 function appendSafe(node,parent){if(node.nodeType===3){parent.append(document.createTextNode(node.textContent));return}if(node.nodeType!==1)return;
@@ -917,10 +1012,7 @@ async function act(action,d){
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
 // From the editorial workspace, return to the two-section launcher.
-const hubBtn=document.createElement('button');
-hubBtn.textContent='Разделы';hubBtn.className='space-back';
-hubBtn.onclick=()=>showSpace('hub');
-document.querySelector('.top').prepend(hubBtn);
+
 
 
 let ouraLive=null, sleepDays=7,tempDays=7;

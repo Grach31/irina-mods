@@ -9,7 +9,17 @@
       "description": "12 февраля 1947 года Кристиан Диор представил дебютную коллекцию. Подчёркнутая талия и пышные юбки стали символом нового послевоенного силуэта.",
       "then": "Приталенный жакет, акцентированная талия и широкая юбка.",
       "now": "Актуальная интерпретация — скульптурный жакет с чёткой линией талии.",
-      "category": "Модные дома"
+      "category": "Модные дома",
+      "photos": [
+        {
+          "url": "https://framemark.vam.ac.uk/collections/2018LB9106/full/735,/0/default.jpg",
+          "caption": "Костюм Bar Кристиана Диора, 1947. Музей Виктории и Альберта (V&A).",
+          "credit": "Victoria and Albert Museum, London",
+          "source_url": "https://collections.vam.ac.uk/item/O75379/bar-skirt-suit-christian-dior/"
+        }
+      ],
+      "source_url": "https://collections.vam.ac.uk/item/O75379/bar-skirt-suit-christian-dior/",
+      "photo_note": "Редакционное превью архивного изображения. Авторские права принадлежат указанному правообладателю."
     },
     {
       "year": 1966,
@@ -18,7 +28,17 @@
       "description": "Ив Сен-Лоран представил женский смокинг как вечернюю альтернативу платью; он стал знаковой вещью в истории женского гардероба.",
       "then": "Мужские коды вечернего костюма в женской одежде.",
       "now": "Смокинг сочетают с минималистичным верхом и современными аксессуарами.",
-      "category": "Силуэты"
+      "category": "Силуэты",
+      "photos": [
+        {
+          "url": "https://cdn.sanity.io/images/cctd4ker/production/24104d7d5a5407e935af46f4fccd4868bce9f18e-806x1080.jpg?auto=format&fit=clip&q=75&w=1200",
+          "caption": "Le Smoking, Yves Saint Laurent, осень–зима 1966. Архив Музея Ива Сен-Лорана.",
+          "credit": "Musée Yves Saint Laurent Paris / The Metropolitan Museum of Art",
+          "source_url": "https://www.metmuseum.org/perspectives/yves-saint-laurent"
+        }
+      ],
+      "source_url": "https://www.metmuseum.org/perspectives/yves-saint-laurent",
+      "photo_note": "Редакционное превью архивного изображения. Авторские права принадлежат указанному правообладателю."
     },
     {
       "year": 1981,
@@ -27,7 +47,17 @@
       "description": "Comme des Garçons показал первую парижскую коллекцию, повлиявшую на отношение к асимметрии, объёму и традиционным представлениям о красоте.",
       "then": "Нестандартная конструкция, асимметрия, чёрный цвет.",
       "now": "Деконструированные жакеты и нестандартная многослойность.",
-      "category": "Дизайнеры"
+      "category": "Дизайнеры",
+      "photos": [
+        {
+          "url": "https://api.europeana.eu/thumbnail/v3/400/bdab32739ab9bae2361873f66830daa3",
+          "caption": "Показ Comme des Garçons, осень–зима 1982–1983. Фотография следующего сезона, не дебюта 1981 года.",
+          "credit": "Europeana, fashion archive",
+          "source_url": "https://www.europeana.eu/en/item/2048232/europeana_fashion_56503504_jpg"
+        }
+      ],
+      "source_url": "https://www.europeana.eu/en/item/2048232/europeana_fashion_56503504_jpg",
+      "photo_note": "Редакционное превью архивного изображения. Авторские права принадлежат указанному правообладателю."
     },
     {
       "year": 1997,
@@ -36,7 +66,23 @@
       "description": "В конце 1990-х эстетика Dior получила яркую театральную интерпретацию, сочетавшую исторические цитаты и зрелищную подиумную подачу.",
       "then": "Театральность, исторические силуэты, драматические детали.",
       "now": "Дозированное использование винтажных мотивов и вечерней выразительности.",
-      "category": "Модные дома"
+      "category": "Модные дома",
+      "photos": [
+        {
+          "url": "https://assets.vogue.com/photos/5fbec2d42cab27a392792560/master/w_960,c_limit/GettyImages-592339275.jpg",
+          "caption": "Christian Dior Haute Couture, весна 1997. Дизайнер — Джон Гальяно.",
+          "credit": "Guy Marineau / Condé Nast via Getty Images; Vogue",
+          "source_url": "https://www.vogue.com/article/in-vogue-the-1990s-podcast-bonus-episode-john-galliano-in-conversation-with-hamish-bowles"
+        },
+        {
+          "url": "https://assets.vogue.com/photos/5fbec2d52c84c5db1851daad/master/w_960,c_limit/CN10000415.jpg",
+          "caption": "Christian Dior, весна 1997. Второй кадр из архива первого сезона Гальяно.",
+          "credit": "Guy Marineau / Condé Nast Archive; Vogue",
+          "source_url": "https://www.vogue.com/article/in-vogue-the-1990s-podcast-bonus-episode-john-galliano-in-conversation-with-hamish-bowles"
+        }
+      ],
+      "source_url": "https://www.vogue.com/article/in-vogue-the-1990s-podcast-bonus-episode-john-galliano-in-conversation-with-hamish-bowles",
+      "photo_note": "Редакционное превью архивного изображения. Авторские права принадлежат указанному правообладателю."
     },
     {
       "year": 2008,
@@ -45,7 +91,23 @@
       "description": "Коллекция Louis Vuitton весна–лето 2008 времён Марка Джейкобса соединяла моду и художественные образы из творчества Ричарда Принса.",
       "then": "Визуальные цитаты из искусства и смелая подиумная драматургия.",
       "now": "Архивные вещи и переосмысление характерных образов эпохи.",
-      "category": "Коллекции"
+      "category": "Коллекции",
+      "photos": [
+        {
+          "url": "https://img3.selfimg.com.cn/uedvoguecms/2020/09/14/1600064920_Ukn6xC.jpg",
+          "caption": "Модели в образах медсестёр, показ Louis Vuitton весна–лето 2008.",
+          "credit": "Vogue China / Louis Vuitton",
+          "source_url": "https://www.vogue.com.cn/fashion/industry/news_1231975f1515f935.html"
+        },
+        {
+          "url": "https://assets.vogue.com/photos/55c6518408298d8be2231755/16:9/pass/01m.jpg",
+          "caption": "Louis Vuitton, весна–лето 2008 — коллекция Марка Джейкобса совместно с Ричардом Принсом.",
+          "credit": "Vogue Runway / Louis Vuitton",
+          "source_url": "https://www.vogue.com/fashion-shows/spring-2008-ready-to-wear/louis-vuitton"
+        }
+      ],
+      "source_url": "https://www.vogue.com/fashion-shows/spring-2008-ready-to-wear/louis-vuitton",
+      "photo_note": "Редакционное превью архивного изображения. Авторские права принадлежат указанному правообладателю."
     }
   ]
 }

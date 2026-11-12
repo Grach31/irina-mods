@@ -40,6 +40,34 @@ class MySpaceReleaseTests(unittest.TestCase):
                 self.assertGreaterEqual(len(data["items"]), min_count)
                 self.assertTrue(all(item.get("title") for item in data["items"]))
 
+    def test_new_covers_are_exact_bundled_artwork(self):
+        for name in ("reels", "trends", "history"):
+            with self.subTest(name=name):
+                svg = (APP / "assets" / f"{name}-approved.svg").read_text(encoding="utf-8")
+                self.assertIn("data:image/webp;base64,", svg)
+                self.assertGreater(len(svg), 10000)
+                self.assertIn(f'assets/{name}-approved.svg', self.html)
+
+    def test_moda_has_only_one_hub_navigation_button(self):
+        self.assertIn('id="modaBack"', self.html)
+        self.assertNotIn("const hubBtn=document.createElement('button')", self.html)
+        self.assertIn('id="galleryPrev"', self.html)
+        self.assertIn('id="galleryNext"', self.html)
+        self.assertIn('id="galleryDots"', self.html)
+        self.assertIn("setupGalleryControls(galleryImages.length)", self.html)
+
+    def test_historical_cards_have_photo_and_source_attribution(self):
+        data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(data["items"]), 5)
+        for item in data["items"]:
+            self.assertTrue(item.get("photos"), item["title"])
+            for photo in item["photos"]:
+                self.assertTrue(photo.get("caption"), item["title"])
+                self.assertTrue(photo.get("credit"), item["title"])
+                self.assertTrue(photo["url"].startswith("https://"), item["title"])
+                self.assertTrue(photo["source_url"].startswith("https://"), item["title"])
+        self.assertIn("msHistoryFigure(", self.html)
+
     def test_fashion_articles_have_real_image_previews(self):
         data = json.loads((APP / "fashion-daily.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 12)
