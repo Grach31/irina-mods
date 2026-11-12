@@ -1,5 +1,5 @@
 {
-  "offset": 84639525,
+  "offset": 84639526,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -973,7 +973,7 @@
       "sent_at": "2026-11-11T10:40+03:00"
     },
     "2026-11-11-looks": {
-      "status": "sent",
+      "status": "rejected",
       "slot": null,
       "msg_id": 339,
       "file_ids": [
