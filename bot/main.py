@@ -204,6 +204,7 @@ def send_new_drafts(state, requests):
             continue
         state.get("held", {}).pop(did, None)
         is_video = draft.get("type") == "item" and bool(draft.get("video"))
+        delivered_message_ids = []
         try:
             if is_video:
                 # визуализация вещи: видео по ссылке (Higgsfield) — скачиваем, шлём Ирине; в канал уйдёт по file_id
@@ -234,28 +235,43 @@ def send_new_drafts(state, requests):
                 first_mid = None
                 for images, caption in groups:
                     album = tg.send_media_group_bytes(config.IRINA, [render.to_jpeg(im) for im in images], caption=caption)
+                    if len(album) != len(images):
+                        raise RuntimeError(f"Telegram returned {len(album)}/{len(images)} photos for look")
                     if first_mid is None:
                         first_mid = album[0]["message_id"]
                     all_ids.append([m["photo"][-1]["file_id"] for m in album])
+                    delivered_message_ids.append([m["message_id"] for m in album])
                 msg = tg.call("sendMessage", chat_id=config.IRINA, reply_to_message_id=first_mid,
                               text=f"Подборка: {len(all_ids)} образа(ов). Опубликовать все альбомы?",
                               reply_markup=keyboard(did, draft.get("slot")))
-                extra = {"album_file_ids": all_ids, "file_id": all_ids[0][0]}
+                extra = {"album_file_ids": all_ids, "file_id": all_ids[0][0],
+                         "album_message_ids": delivered_message_ids,
+                         "photo_count": sum(map(len, delivered_message_ids))}
             elif len(jpegs) > 1:
                 # карусель: альбом с подписью, кнопки — отдельным сообщением (к альбому их не прикрепить)
                 album = tg.send_media_group_bytes(config.IRINA, jpegs, caption=draft["text"])
+                if len(album) != len(jpegs):
+                    raise RuntimeError(f"Telegram returned {len(album)}/{len(jpegs)} photos")
+                delivered_message_ids.append([m["message_id"] for m in album])
                 msg = tg.call("sendMessage", chat_id=config.IRINA, reply_to_message_id=album[0]["message_id"],
                               text=f"Карусель из {len(jpegs)} фото ☝️ Публикуем?",
                               reply_markup=keyboard(did, draft.get("slot")))
                 extra = {"file_ids": [m["photo"][-1]["file_id"] for m in album]}
                 extra["file_id"] = extra["file_ids"][0]
+                extra["album_message_ids"] = delivered_message_ids
+                extra["photo_count"] = len(album)
             else:
                 msg = tg.send_photo_bytes(config.IRINA, jpegs[0], caption=draft["text"],
                                           reply_markup=keyboard(did, draft.get("slot")))
                 extra = {"file_id": msg["photo"][-1]["file_id"]}
         except Exception as e:
             traceback.print_exc()
-            state["drafts"][did] = {"status": "error", "error": str(e)[:300]}
+            state["drafts"][did] = {"status": "partial_error" if delivered_message_ids else "error",
+                                    "error": str(e)[:300],
+                                    "album_message_ids": delivered_message_ids,
+                                    "photo_count": sum(map(len, delivered_message_ids))}
+            # Do not retry automatically: Telegram may have accepted some messages.
+            # An operator must reconcile partial delivery before resending.
             continue
         state["drafts"][did] = {"status": "sent", "slot": draft.get("slot"), "msg_id": msg["message_id"],
                                 **extra, "sent_at": now().isoformat(timespec="minutes")}
@@ -352,26 +368,38 @@ def publish_due(state):
         draft = load(os.path.join(ROOT, "drafts", f"{did}.json"), None)
         try:
             if d.get("video_file_id"):
-                tg.call("sendVideo", chat_id=config.CHANNEL, video=d["video_file_id"], caption=draft["text"],
-                        parse_mode="HTML", supports_streaming="true")
+                posted = tg.call("sendVideo", chat_id=config.CHANNEL, video=d["video_file_id"], caption=draft["text"],
+                                 parse_mode="HTML", supports_streaming="true")
+                d["published_message_ids"] = [posted["message_id"]]
             elif d.get("album_file_ids"):
                 # Публикуем каждый образ отдельным альбомом в исходном порядке.
+                posted_groups = d.setdefault("published_album_message_ids", [])
                 for i, ids in enumerate(d["album_file_ids"]):
+                    if i < len(posted_groups):
+                        continue  # Resume without duplicating already confirmed albums.
                     look = draft["looks"][i]
                     parts = [f"<b>Образ {i + 1}. {html.escape(look.get('title', ''))}</b>"]
                     for it in look["items"]:
                         parts.append(f'<a href="{html.escape(it["url"], quote=True)}">{html.escape(it.get("short") or it["name"])}</a> — {it["price"]:,} ₽ · {html.escape(it["shop"])}')
                     media = [{"type": "photo", "media": fid} for fid in ids]
                     media[0].update(caption="\\n".join(parts), parse_mode="HTML")
-                    tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
+                    posted = tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
+                    if len(posted) != len(media):
+                        raise RuntimeError(f"Published {len(posted)}/{len(media)} photos in look {i + 1}")
+                    posted_groups.append([m["message_id"] for m in posted])
             elif d.get("file_ids"):
                 media = [{"type": "photo", "media": fid} for fid in d["file_ids"]]
                 media[0].update(caption=draft["text"], parse_mode="HTML")
-                tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
+                posted = tg.call("sendMediaGroup", chat_id=config.CHANNEL, media=media)
+                if len(posted) != len(media):
+                    raise RuntimeError(f"Published {len(posted)}/{len(media)} photos")
+                d["published_message_ids"] = [m["message_id"] for m in posted]
             else:
-                tg.call("sendPhoto", chat_id=config.CHANNEL, photo=d["file_id"], caption=draft["text"],
-                        parse_mode="HTML")
+                posted = tg.call("sendPhoto", chat_id=config.CHANNEL, photo=d["file_id"], caption=draft["text"],
+                                 parse_mode="HTML")
+                d["published_message_ids"] = [posted["message_id"]]
             d.update(status="published", published_at=t.isoformat(timespec="minutes"))
+            d.pop("error", None)
             tg.call("editMessageReplyMarkup", chat_id=config.IRINA, message_id=d["msg_id"],
                     reply_markup=status_markup(f"✅ Опубликовано {t:%d.%m в %H:%M}"))
         except Exception as e:
