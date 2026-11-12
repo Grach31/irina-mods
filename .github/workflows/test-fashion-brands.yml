@@ -122,3 +122,28 @@ jobs:
                   if not found:print('NEEDS CUSTOM PARSER: no complete cards extracted')
               except Exception as e:print('ERROR',type(e).__name__,str(e)[:180])
           PY
+
+      - name: Inspect catalog card structure
+        run: |
+          python - <<'PY'
+          import urllib.request,re,collections
+          from bs4 import BeautifulSoup
+          for brand,url in [('STUDIO 29','https://studio-29.ru/catalog/verhnyaya-odejda-sp'),('ALL WE NEED','https://allweneed.ru/catalog')]:
+              print('BRAND',brand,flush=True)
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 Chrome/130 Safari/537.36'}),timeout=25) as r:soup=BeautifulSoup(r.read(),'lxml')
+                  classes=collections.Counter(c for t in soup.find_all(True) for c in t.get('class',[]) if any(w in c.lower() for w in ('product','card','price','catalog','item')))
+                  print('PRODUCT CLASS COUNTS:',classes.most_common(18))
+                  for a in soup.select('a[href]'):
+                      href=a.get('href','')
+                      if '/product/' not in href and not a.find_parent(class_=re.compile('productCard|product-card',re.I)):continue
+                      p=a
+                      for depth in range(4):
+                          if p is None:break
+                          print('LINK',href[:100],'DEPTH',depth,'TAG',p.name,'CLASS',p.get('class',[])[:5],'TEXT',p.get_text(' ',strip=True)[:130],'IMGS',len(p.find_all('img')))
+                          p=p.parent
+                      break
+                  for tag in soup.find_all(class_=re.compile('productCard',re.I))[:2]:
+                      print('STUDIO CARD',tag.name,tag.get('class'),'TEXT',tag.get_text(' ',strip=True)[:160],'LINKS',[(a.get('href') or '')[:100] for a in tag.find_all('a',href=True)[:3]],'IMGS',[(im.get('src') or im.get('data-src') or '')[:100] for im in tag.find_all('img')[:2]])
+              except Exception as e:print('ERROR',str(e)[:150])
+          PY
