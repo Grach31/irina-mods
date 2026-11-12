@@ -142,15 +142,27 @@ def on_message(state, requests, m):
         return
     text = (m.get("text") or m.get("caption") or "").strip()
     if uid not in config.ALLOWED:
-        if text.split()[0:1] in (["/start"], ["/panel"]):
+        if text.split()[0:1] in (["/start"], ["/panel"], ["/ping"]):
             tg.call("sendMessage", chat_id=chat, text=(
                 "Доступ к панели Stambo.i ограничен. "
                 "Этот Telegram-аккаунт не добавлен в список редакторов. "
                 "Попроси владельца проекта добавить твой Telegram ID в настройки бота."
             ))
         return
+    if text.split()[0:1] == ["/ping"]:
+        tg.call("sendMessage", chat_id=chat, text="Stambo.i на связи ✅. Для панели отправь /panel.")
+        return
     if text.split()[0:1] == ["/panel"]:
-        widget.send(chat)
+        try:
+            widget.send(chat)
+        except Exception as exc:
+            # Never silently ignore a failed widget delivery. Keep moderation private.
+            log("widget delivery failed:", type(exc).__name__, str(exc)[:200])
+            tg.call("sendMessage", chat_id=chat, text=(
+                "Панель временно не открылась. Бот работает, но Telegram отклонил виджет. "
+                "Попробуй обновить Telegram и повторить /panel. "
+                "Оригинальные черновики остаются в чате; публикация не затронута."
+            ))
         return
     if text.startswith("/start"):
         if uid in config.READ_ONLY:
