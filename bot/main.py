@@ -151,10 +151,10 @@ def on_message(state, requests, m):
         return
     if text.split()[0:1] in (["/app"], ["/miniapp"]):
         tg.call("sendMessage", chat_id=chat, text=(
-            "Stambo.i — редакторская панель. Открывай черновики и фотографии "
+            "My Space — два раздела: Moda и Oura Ring. Открывай черновики и показатели "
             "на весь экран. Публикация только после подтверждения."
-        ), reply_markup={"keyboard": [[{"text": "✦ Открыть Stambo.i",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-navfix2"}}]],
+        ), reply_markup={"keyboard": [[{"text": "✦ Открыть My Space",
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-myspace1"}}]],
             "resize_keyboard": True, "is_persistent": True})
         return
     if m.get("web_app_data"):
