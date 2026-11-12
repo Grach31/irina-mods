@@ -655,7 +655,7 @@ function renderCycleDetails(cycle){
   place.append(box);
  }
  note.textContent=day>avg?'Сейчас день '+day+'; средняя длина по отметкам Oura — '+avg+' дней. Реальный цикл может отличаться.':'Точки — дни цикла. Розовая первая точка обозначает зафиксированное начало периода, обводка — сегодняшний день.';
- const active=place.querySelector('.current');if(active)requestAnimationFrame(()=>active.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'}));
+ const active=place.querySelector('.current');if(active)requestAnimationFrame(()=>{place.scrollLeft=Math.max(0,active.offsetLeft-place.offsetLeft-place.clientWidth/2+active.offsetWidth/2)});
 }
 function renderOura(d){
  ouraLive=d;
