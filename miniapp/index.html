@@ -113,6 +113,29 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .oura-status{padding:12px 16px;border:1px solid #ffffff26;border-radius:12px;color:#a7a4c5;font-size:11px;line-height:1.55;margin:16px 0}
 @media (min-width:530px){.oura-hero{height:290px}.oura-score strong{font-size:37px}.oura-metric-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.oura-metric-wide{grid-column:span 1}}
 @media (prefers-reduced-motion:reduce){.oura-space *{animation:none!important}}
+
+/* Interactive Oura score explanations and readable 7/30-day charts */
+.oura-score{cursor:pointer;color:#f6f4ff;font:inherit;transition:transform .2s,border-color .2s;min-height:100px}
+.oura-score[aria-pressed=true]{border-color:#c7aeff;box-shadow:0 0 0 1px #c7aeff60,0 6px 24px #20124570;transform:translateY(-2px)}
+.oura-score small{line-height:1.27;min-height:29px}
+.oura-eval{border:1px solid #625080;background:linear-gradient(120deg,#2a2141,#19182f);border-radius:16px;padding:17px;margin:-6px 0 18px}
+.oura-eval-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.oura-eval-top h2{font:normal 22px Georgia,serif;margin:0}
+.oura-eval-status{font-size:12px;color:#decaf7;margin:8px 0}
+.oura-eval-text{font-size:12px;line-height:1.6;color:#c7c0dd;margin:8px 0 15px}
+.oura-eval-list{display:grid;gap:6px;border-top:1px solid #ffffff25;padding-top:12px}
+.oura-eval-row{display:flex;justify-content:space-between;gap:12px;font-size:11px;padding:3px 0;color:#bcb5d2}
+.oura-eval-row b{font-size:12px;color:#e5ddfa}
+.oura-eval-row.active{color:#fff}.oura-eval-row.active b{color:#b5f0cc}
+.oura-chartbox .oura-chart-summary{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;margin:7px 4px 10px;font-size:10px;color:#c3bed9}
+.oura-chart-summary strong{font-size:13px;color:#fff}
+.oura-chartbox .oura-chart-hint{font-size:10px;color:#aeb0c9;line-height:1.4;margin:8px 4px 0}
+.oura-chartbox svg .oura-hit{cursor:pointer;outline:none}
+.oura-chartbox svg .oura-hit:focus{stroke:#fff;stroke-width:2}
+.oura-day-detail{background:#24243c;border:1px solid #77709b;border-radius:10px;padding:11px 13px;margin:12px 3px 0;line-height:1.7;font-size:12px;color:#ece9f8}
+.oura-day-detail strong{display:block;margin-bottom:4px;color:#fff}
+.oura-chart-title .oura-switch{flex-shrink:0}
+.oura-switch button:focus-visible,.oura-score:focus-visible{outline:2px solid #d5b5ff;outline-offset:2px}
 </style></head><body>
 <section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM</div></div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
@@ -126,11 +149,18 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
 <div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="data:image/webp;base64,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"><span class="hero-shade"></span></div>
 <div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
-<div class="oura-scoreline">
-<div class="oura-score"><small>Сон</small><strong id="ouraSleep">—</strong></div>
-<div class="oura-score"><small>Готовность</small><strong id="ouraReady">—</strong></div>
-<div class="oura-score"><small>Активность</small><strong id="ouraActivity">—</strong></div>
+<div class="oura-scoreline" id="ouraScoreTiles">
+<button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
+<button type="button" class="oura-score" data-score="readiness" aria-pressed="false"><small>Готовность организма</small><strong id="ouraReady">—</strong></button>
+<button type="button" class="oura-score" data-score="activity" aria-pressed="false"><small>Активность</small><strong id="ouraActivity">—</strong></button>
 </div>
+<section class="oura-eval" id="ouraScoreExplanation" aria-live="polite">
+<div class="oura-eval-top"><h2 id="ouraEvalTitle">Сон</h2><strong id="ouraEvalValue">— / 100</strong></div>
+<p class="oura-eval-status" id="ouraEvalStatus">Ожидаем оценку</p>
+<p class="oura-eval-text" id="ouraEvalText">Выбери плашку, чтобы узнать значение оценки.</p>
+<div class="oura-eval-list" id="ouraEvalRanges"></div>
+<p class="oura-footnote">Расшифровка ориентировочная; сам балл рассчитывает Oura.</p>
+</section>
 <div class="oura-section">
 <div class="oura-headline"><h2>Сон</h2><b id="ouraSleepScore">—</b></div>
 <p class="oura-caption" id="sleepSummary">Данные о последней ночи загружаются.</p>
@@ -144,21 +174,21 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <div class="oura-metric"><small>Легла спать</small><strong id="slBed">—</strong></div>
 <div class="oura-metric"><small>Проснулась</small><strong id="slWake">—</strong></div>
 </div>
-<div class="oura-chartbox"><div class="oura-chart-title"><span>Сон по дням</span><div class="oura-switch" id="sleepRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div id="sleepChart"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Сон по дням · часы + баллы</span><div class="oura-switch" id="sleepRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-summary" id="sleepStats"></div><div id="sleepChart"></div><p class="oura-chart-hint">Столбики — часы сна, линия — оценка от 0 до 100. Нажми на день.</p><div class="oura-day-detail hidden" id="sleepDayDetail"></div></div>
 <div class="oura-chartbox"><div class="oura-chart-title">Стадии последней ночи</div><div id="sleepStageChart"></div>
 <div class="oura-legend"><span style="--dot:#8c64db">Глубокий</span><span style="--dot:#6b90fc">Лёгкий</span><span style="--dot:#5ed4df">REM</span><span style="--dot:#e497cf">Пробуждение</span></div></div>
 <p class="oura-footnote">График стадий строится по пятиминутным интервалам Oura, если они доступны в API.</p>
 </div>
 <div class="oura-section green">
-<div class="oura-headline"><h2>Готовность</h2><b id="ouraReadyScore">—</b></div>
+<div class="oura-headline"><h2>Готовность организма</h2><b id="ouraReadyScore">—</b></div>
 <p class="oura-caption" id="readinessSummary">Оценка восстановления организма.</p>
 <div class="oura-metric-grid">
 <div class="oura-metric"><small>HRV за ночь</small><strong id="readyHrv">—</strong></div>
 <div class="oura-metric"><small>Минимальный пульс</small><strong id="readyHr">—</strong></div>
 <div class="oura-metric"><small>Температура от базовой</small><strong id="readyTemp">—</strong></div>
 </div>
-<div class="oura-chartbox"><div class="oura-chart-title"><span>Готовность за 7 дней</span></div><div id="readyChart"></div></div>
-<div class="oura-chartbox"><div class="oura-chart-title"><span>Температура от базовой</span><div class="oura-switch" id="tempRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div id="tempChart"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Готовность организма · баллы</span><div class="oura-switch" id="readyRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-summary" id="readyStats"></div><div id="readyChart"></div><p class="oura-chart-hint">Оценка от 0 до 100, отдельно от температуры. Нажми на точку.</p><div class="oura-day-detail hidden" id="readyDayDetail"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Температура от базовой</span><div class="oura-switch" id="tempRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-summary" id="tempStats"></div><div id="tempChart"></div><p class="oura-chart-hint">0 °C — личная базовая температура; выше и ниже — отклонение. Нажми на точку.</p><div class="oura-day-detail hidden" id="tempDayDetail"></div></div>
 <p class="oura-footnote">Температура — отклонение от личной базовой линии, не абсолютная температура тела. Единица: °C.</p>
 </div>
 <div class="oura-section pink">
@@ -181,7 +211,7 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <div class="oura-metric"><small>Интенсивная нагрузка</small><strong id="actHigh">—</strong></div>
 <div class="oura-metric"><small>Умеренная нагрузка</small><strong id="actMedium">—</strong></div>
 </div>
-<div class="oura-chartbox"><div class="oura-chart-title">Активность по дням</div><div id="activityChart"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Активность по дням</span><div class="oura-switch" id="activityRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-switch" id="activityMeasure" style="margin:10px 3px"><button data-measure="steps" class="selected">Шаги</button><button data-measure="calories">Калории</button><button data-measure="minutes">Активное время</button></div><div class="oura-chart-summary" id="activityStats"></div><div id="activityChart"></div><p class="oura-chart-hint">Столбики — выбранная метрика; линия — оценка активности от 0 до 100. Нажми на день.</p><div class="oura-day-detail hidden" id="activityDayDetail"></div></div>
 </div>
 <div class="oura-status" id="ouraStatus">Получаю защищённые данные с кольца…</div>
 </div></section><div class="shell" id="modaShell" style="display:none"><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
