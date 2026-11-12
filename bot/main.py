@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import config  # noqa: E402
 import render  # noqa: E402
 import tg  # noqa: E402
+import widget  # noqa: E402
 
 ROOT = config.DATA  # закрытый репозиторий данных (черновики, состояние, просьбы)
 STATE = os.path.join(ROOT, "state", "state.json")
@@ -83,11 +84,13 @@ def status_markup(text):
 
 def handle_updates(state, requests, wait=0):
     updates = tg.call("getUpdates", offset=state.get("offset", 0), timeout=wait,
-                      allowed_updates=["message", "callback_query"])
+                      allowed_updates=["message", "callback_query", "widget_query"])
     for u in updates:
         state["offset"] = u["update_id"] + 1
         try:
-            if "callback_query" in u:
+            if "widget_query" in u:
+                widget.handle(state, u["widget_query"])
+            elif "callback_query" in u:
                 on_button(state, u["callback_query"])
             elif "message" in u:
                 on_message(state, requests, u["message"])
@@ -138,6 +141,9 @@ def on_message(state, requests, m):
     if uid not in config.ALLOWED or m["chat"]["type"] != "private":
         return
     text = (m.get("text") or m.get("caption") or "").strip()
+    if text.split()[0:1] == ["/panel"]:
+        widget.send(chat)
+        return
     if text.startswith("/start"):
         tg.call("sendMessage", chat_id=chat, text=(
             "Привет! Я помощник канала Stambo.i 🤍\n\n"
