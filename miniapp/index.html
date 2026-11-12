@@ -32,12 +32,23 @@ const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
 const imageFor=d=>{let p=d.id;return BASE+'drafts/img/'+encodeURIComponent(p)+'.jpg'};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
-async function load(){ $('list').innerHTML='<div class="loader">Загружаю материалы…</div>';try{
-state=await readJson(BASE+'state/state.json');let all=Object.entries(state.drafts||{});
-const allowed=all.filter(([id,s])=>['sent','awaiting_edit','published','rejected'].includes(s.status)).sort((a,b)=>(b[1].sent_at||'').localeCompare(a[1].sent_at||'')).slice(0,120);
-$('pending').textContent=all.filter(([id,s])=>s.status==='sent').length;$('published').textContent=all.filter(([id,s])=>s.status==='published').length;$('rejected').textContent=all.filter(([id,s])=>s.status==='rejected').length;
-items=await Promise.all(allowed.map(async([id,s])=>{try{let d=await readJson(BASE+'drafts/'+encodeURIComponent(id)+'.json');return {...d,meta:s}}catch(e){return null}}));items=items.filter(Boolean);render()
-}catch(e){$('list').innerHTML='<div class="message">Не удалось загрузить материалы. Проверь подключение и обнови экран.<br><small>'+escapeHtml(e.message)+'</small></div>'}}
+async function load(){
+ $('list').innerHTML='<div class="loader">Загружаю материалы…</div>';
+ try{
+  const catalog=await Promise.race([
+    readJson('catalog.json?v='+Date.now()),
+    new Promise((_,reject)=>setTimeout(()=>reject(Error('Превышено время загрузки')),12000))
+  ]);
+  $('pending').textContent=catalog.pending??0;
+  $('published').textContent=catalog.published??0;
+  $('rejected').textContent=catalog.rejected??0;
+  items=Array.isArray(catalog.items)?catalog.items:[];
+  if(!items.length){$('list').innerHTML='<div class="message">Каталог пока пуст. Проверь формирование данных в GitHub Actions.</div>';return}
+  render();
+ }catch(e){
+  $('list').innerHTML='<div class="message">Не удалось получить материалы. Нажми «Обновить».<br><small>'+escapeHtml(e.message)+'</small></div>';
+ }
+}
 function current(){return items.filter(d=>(mode==='pending'?['sent','awaiting_edit'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter))}
 function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
