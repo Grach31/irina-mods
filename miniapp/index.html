@@ -256,6 +256,12 @@ html.oura-active{color-scheme:dark}
 .hub-card-news .hub-visual{width:42%;min-width:42%;min-height:140px;background:linear-gradient(140deg,#33312e,#9f7767,#ddd0b7)}
 .hub-card-news .hub-card-body{display:flex;flex-direction:column;justify-content:center}
 .hub-card-news .hub-visual .news-visual-label{font:normal 44px Georgia,serif;letter-spacing:-3px;color:#fff5e9;text-shadow:0 3px 20px #0006}
+
+.fashion-article-section{margin:20px 0 24px}
+.fashion-article-section h3{border-top:1px solid #e6ddd2;padding-top:16px;color:#302823}
+.fashion-article-section p{margin:10px 0 13px}
+.fashion-story-more{display:inline-flex;gap:5px;align-items:center}
+.fashion-article .source-link{margin-top:24px;padding:12px 14px;border:1px solid #dbcabc;border-radius:10px;background:#f7eee6;text-decoration:none}
 </style></head><body>
 <section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -511,11 +517,13 @@ function fashionOpen(item){
  $('fashionList').classList.add('hidden');$('fashionFilters').classList.add('hidden');
  const url=fashionSafeUrl(item.url);if(!url)return;
  const card=document.createElement('article');card.className='fashion-article';
- const detail=Array.isArray(item.details)?item.details.slice(0,5):[];
- card.innerHTML=fashionArt(item)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+
+ const detail=Array.isArray(item.article_sections)&&item.article_sections.length?
+ item.article_sections.filter(x=>x&&typeof x==='object').slice(0,12):
+ [{heading:'Что произошло',paragraphs:Array.isArray(item.details)?item.details.slice(0,8):[]}];
+ card.innerHTML=fashionArt(item)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(section=>'<section class="fashion-article-section">'+(section.heading?'<h3>'+escapeHtml(section.heading)+'</h3>':'')+(Array.isArray(section.paragraphs)?section.paragraphs:[]).slice(0,8).filter(p=>typeof p==='string').map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')+
  (item.why?'<div class="editor-note"><strong>Почему это важно</strong><p>'+escapeHtml(item.why)+'</p></div>':'')+
- '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Читать оригинал · '+escapeHtml(item.source||'Источник')+' ↗</a>'+
- '<button type="button" class="fashion-post-disabled" disabled aria-disabled="true">Сформировать пост для Telegram · скоро</button><p class="fashion-rights">Кнопка пока не работает и ничего не публикует. Полные тексты и оригинальные фотографии — по ссылке на источник.</p></div>';
+ '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Полная статья на сайте '+escapeHtml(item.source||'источника')+' ↗</a>'+
+ '<button type="button" class="fashion-post-disabled" disabled aria-disabled="true">Сформировать пост для Telegram · скоро</button><p class="fashion-rights">Подробный оригинальный пересказ на русском. Дословная версия публикации и фотографии правообладателя — по ссылке на источник. Кнопка публикации отключена.</p></div>';
  article.appendChild(card);
  article.classList.remove('hidden');$('fashionBack').textContent='← К новостям';
  $('fashionSpace').scrollTop=0;
