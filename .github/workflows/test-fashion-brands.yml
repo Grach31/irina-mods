@@ -147,3 +147,28 @@ jobs:
                       print('STUDIO CARD',tag.name,tag.get('class'),'TEXT',tag.get_text(' ',strip=True)[:160],'LINKS',[(a.get('href') or '')[:100] for a in tag.find_all('a',href=True)[:3]],'IMGS',[(im.get('src') or im.get('data-src') or '')[:100] for im in tag.find_all('img')[:2]])
               except Exception as e:print('ERROR',str(e)[:150])
           PY
+
+      - name: Validate site-specific product selectors
+        run: |
+          python - <<'PY'
+          import urllib.request,urllib.parse,re,json
+          from bs4 import BeautifulSoup
+          for brand,url,selector in [('STUDIO 29','https://studio-29.ru/catalog/verhnyaya-odejda-sp','[class*="ProductSnippet_snippet"]'),('ALL WE NEED','https://allweneed.ru/catalog','.product-item.catalog__product')]:
+              print('BRAND',brand,flush=True)
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 Chrome/130 Safari/537.36'})
+                  with urllib.request.urlopen(req,timeout=25) as r:soup=BeautifulSoup(r.read(),'lxml')
+                  cards=soup.select(selector)
+                  print('CARDS',len(cards))
+                  for card in cards[:4]:
+                      name=card.select_one('[class*="ProductSnippetFooter_title"]') if brand=='STUDIO 29' else card.select_one('.product-item--name')
+                      price=card.select_one('[class*="Prices_prices"]') if brand=='STUDIO 29' else card.select_one('.product-item--price')
+                      links=[a.get('href','') for a in card.select('a[href]')]
+                      image_attrs=[]
+                      for tag in card.find_all(True):
+                          for key,val in tag.attrs.items():
+                              if key in ('src','srcset','data-src','data-original','data-background','style') or 'image' in key.lower():
+                                  image_attrs.append((tag.name,key,str(val)[:160]))
+                      print('ITEM',json.dumps({'name':name.get_text(' ',strip=True)[:100] if name else None,'price':price.get_text(' ',strip=True)[:100] if price else None,'links':links[:4],'image_attributes':image_attrs[:5],'html_class':card.get('class')},ensure_ascii=False))
+              except Exception as e:print('ERROR',type(e).__name__,str(e)[:160])
+          PY
