@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#f7f5f1">
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#171b34">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="My Space">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
 <title>Stambo.i — Editorial Studio</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f6f4ef;--ink:#171716;--muted:#837f79;--border:#e2ddd5;--card:#fffefa;--accent:#ab9179}
@@ -136,8 +143,45 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .oura-day-detail strong{display:block;margin-bottom:4px;color:#fff}
 .oura-chart-title .oura-switch{flex-shrink:0}
 .oura-switch button:focus-visible,.oura-score:focus-visible{outline:2px solid #d5b5ff;outline-offset:2px}
+
+/* Safari standalone sign-in; no effect on Telegram moderation. */
+.pwa-gate{position:fixed;inset:0;z-index:90;overflow:auto;background:radial-gradient(ellipse at 30% 0%,#d6ddf8,#f8f9fe 64%,#f0edf6);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top) + 25px) 22px calc(env(safe-area-inset-bottom) + 30px)}
+.pwa-gate-card{width:100%;max-width:390px;background:#ffffffd9;border:1px solid #ffffff;border-radius:25px;padding:30px 23px;box-shadow:0 20px 55px #25325322;color:#1a2445;text-align:center}
+.pwa-gate-card img{width:102px;height:102px;border-radius:24px;margin:0 auto 17px}
+.pwa-gate-card h2{font:normal 36px Georgia,serif;margin:0 0 10px}.pwa-gate-card p{color:#626b86;line-height:1.6;font-size:13px}
+.pwa-code{width:100%;font:600 19px/1.3 ui-monospace,SFMono-Regular,monospace;text-transform:uppercase;text-align:center;letter-spacing:1px;background:#f1f3fb;border:1px solid #b9c4df;border-radius:12px;padding:14px;color:#263451;min-height:51px}
+.pwa-button{border:0;background:#1b2b5f;color:white;border-radius:12px;padding:13px 15px;min-height:44px;font-weight:600;font-size:13px}
+.pwa-button.alt{background:#e8eaf6;color:#293452}
+.pwa-gate-card .pwa-button{width:100%;margin-top:10px}
+.pwa-pair{border:1px solid #c7cee0;border-radius:15px;background:#ffffffdf;margin:15px auto;max-width:680px;padding:15px 17px;color:#2a3251;font-size:12px;line-height:1.55}
+.pwa-pair strong{display:block;font-size:15px;margin-bottom:7px}
+.pwa-pair input{margin:8px 0;width:100%}
+.pwa-pair .pwa-button{margin-right:6px}
+.pwa-pair-trigger{margin-top:15px;border:1px solid #bbb5c7;border-radius:10px;background:#fffaf7;padding:12px 14px;color:#413a55;font-size:12px}
+.pwa-hub-logout{border:none;background:none;color:#5d5f75;text-decoration:underline;font-size:12px;cursor:pointer;display:none}
+@media(display-mode:standalone){.pwa-gate{padding-top:calc(env(safe-area-inset-top) + 45px)}}
 </style></head><body>
-<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM</div></div><div class="hub-cards">
+<section class="pwa-gate hidden" id="pwaGate">
+<div class="pwa-gate-card">
+<img src="icon.svg" alt="My Space" />
+<h2>My Space</h2>
+<p>Приватный вход для Moda и Oura Ring. Привяжи Safari к Telegram-аккаунту один раз — затем приложение будет открываться с экрана iPhone.</p>
+<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="32" placeholder="Код из Telegram" aria-label="Одноразовый код"/>
+<button type="button" class="pwa-button" id="pwaClaim">Подключить My Space</button>
+<p id="pwaLoginStatus" aria-live="polite">Чтобы получить код, открой в Telegram бота Moda → /app → My Space → «Подключить Safari».</p>
+</div>
+</section>
+<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM + SAFARI</div>
+<button type="button" class="pwa-pair-trigger hidden" id="pwaPairBtn">＋ Подключить Safari / экран iPhone</button>
+<button type="button" class="pwa-hub-logout" id="pwaLogout">Выйти из Safari</button>
+<div class="pwa-pair hidden" id="pwaPairPanel">
+<strong>Одноразовый код для Safari</strong>
+<p>Открой My Space в Safari, вставь этот код и нажми «Подключить». Код действует 10 минут и используется только один раз.</p>
+<input class="pwa-code" readonly id="pwaPairCode" aria-label="Код подключения Safari">
+<button type="button" class="pwa-button" id="pwaCopyCode">Скопировать код</button>
+<small id="pwaPairNote"></small>
+</div>
+</div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button>
 </div></section>
