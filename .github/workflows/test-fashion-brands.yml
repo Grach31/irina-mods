@@ -71,3 +71,54 @@ jobs:
                 print('SAMPLE PRODUCT PATHS:',list(dict.fromkeys(re.findall(r'/(?:catalog|product)/[a-zA-Z0-9_/-]{8,100}',body)))[:3])
               except Exception as e: print('ERROR:',type(e).__name__,str(e)[:160])
           PY
+
+      - name: Extract candidate product cards and verify images
+        run: |
+          python -m pip install -q beautifulsoup4 lxml
+          python - <<'PY'
+          import urllib.request,urllib.parse,re,json
+          from bs4 import BeautifulSoup
+          sites={'STUDIO 29':'https://studio-29.ru/catalog/verhnyaya-odejda-sp','ALL WE NEED':'https://allweneed.ru/catalog'}
+          headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36','Accept-Language':'ru-RU,ru;q=0.9'}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=25) as r:return r.read(3000000)
+          for brand,url in sites.items():
+              print('\\nBRAND',brand,flush=True)
+              try:
+                  soup=BeautifulSoup(get(url),'lxml')
+                  found={}
+                  for a in soup.select('a[href]'):
+                      href=a.get('href','')
+                      if brand=='ALL WE NEED':
+                          if '/product/' not in href:continue
+                      else:
+                          if not (a.find_parent(class_=re.compile('productCard|product-card',re.I)) or re.search(r'/product/|/item/|/catalog/[^/]+/[^/]+',href)):continue
+                      target=urllib.parse.urljoin(url,href)
+                      if target in found:continue
+                      card=a
+                      for i in range(6):
+                          if card is None:break
+                          text=card.get_text(' ',strip=True)
+                          img=card.find('img')
+                          if img and re.search(r'\\d[\\d\\s]{2,9}\\s*(?:₽|руб)',text,re.I):break
+                          card=card.parent
+                      if card is None:continue
+                      text=card.get_text(' ',strip=True)
+                      price=re.search(r'\\d[\\d\\s]{2,9}\\s*(?:₽|руб)',text,re.I)
+                      img=card.find('img')
+                      if not price or not img:continue
+                      src=img.get('data-src') or img.get('src') or img.get('data-original') or ''
+                      if not src and img.get('srcset'):src=img['srcset'].split(',')[0].strip().split(' ')[0]
+                      if not src or src.startswith('data:'):continue
+                      title=a.get_text(' ',strip=True) or img.get('alt','')
+                      found[target]={'name':title[:100],'price_text':price.group(),'url':target,'img':urllib.parse.urljoin(url,src)}
+                  print('COMPLETE CANDIDATES:',len(found))
+                  for item in list(found.values())[:5]:
+                      try:
+                          req=urllib.request.Request(item['img'],headers={**headers,'Range':'bytes=0-1023'})
+                          with urllib.request.urlopen(req,timeout=15) as r: item['image_http']=r.status;item['image_type']=r.headers.get('Content-Type','')
+                      except Exception as e:item['image_error']=str(e)[:100]
+                      print('ITEM',json.dumps(item,ensure_ascii=False))
+                  if not found:print('NEEDS CUSTOM PARSER: no complete cards extracted')
+              except Exception as e:print('ERROR',type(e).__name__,str(e)[:180])
+          PY
