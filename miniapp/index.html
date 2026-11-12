@@ -72,7 +72,48 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .oura-cycle-days{display:flex;gap:3px;overflow-x:auto;padding:16px 0 10px}.oura-cycle-days span{flex:0 0 12px;height:12px;border-radius:50%;background:#61587b}.oura-cycle-days span.period{background:#e399b9}.oura-cycle-days span.current{outline:2px solid #e8dcff;outline-offset:3px}
 .oura-section-description{font-size:12px;color:#c0bed4;line-height:1.7;margin:8px 0}.oura-status-panel{font-size:11px;color:#aaa8c2;padding:12px 0 15px;text-align:center;line-height:1.6}
 @media(max-width:360px){.oura-block{padding:13px}.oura-tile{padding:10px}.ring-hero{height:210px}}
-.approved-ring-hero{padding:0;overflow:hidden;background:#0c0e21;min-height:220px;border:none}.approved-ring-hero .approved-ceramic-photo{position:static;transform:none;filter:none;mix-blend-mode:normal;object-fit:cover;object-position:center;width:100%;height:100%;min-height:220px;max-height:340px;opacity:1;border:0;border-radius:15px}.approved-ring-hero .approved-ceramic-photo::before{display:none}</style></head><body>
+
+/* Oura editorial dashboard */
+.oura-space{background:radial-gradient(ellipse 95% 400px at 80% 5%,#241c4b 0%,#121321 55%,#0c0d19 100%);color:#f6f4ff;padding:0 17px calc(env(safe-area-inset-bottom,0px) + 55px)}
+.oura-space .space-head{background:rgba(12,13,25,.96);border-color:#2a2b49;top:0;backdrop-filter:blur(14px)}
+.oura-inner{padding:24px 0 15px;max-width:680px}
+.oura-inner h1{font-size:43px;margin:8px 0 6px}.oura-desc{color:#b7b5ca;line-height:1.65;font-size:13px;margin-bottom:20px}
+.oura-kicker{font-size:10px;letter-spacing:3px;color:#aca6bf}
+.oura-hero{height:235px;position:relative;border-radius:23px;overflow:hidden;background:radial-gradient(ellipse at 55% 45%,#2b315b,#101222 77%);margin:14px 0 19px}
+.oura-hero img{width:100%;height:100%;object-fit:cover;object-position:center}
+.oura-hero .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,#0d0e1c 100%);pointer-events:none}
+.oura-date{font-size:11px;color:#a5a4be;letter-spacing:1px;margin:10px 0 15px}
+.oura-scoreline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0 21px}
+.oura-score{border:1px solid #3d3a61;border-radius:15px;padding:13px 8px 12px;text-align:center;background:#1c1a32}
+.oura-score:nth-child(2){background:#132c2a;border-color:#305e52}.oura-score:nth-child(3){background:#12253d;border-color:#2d4b70}
+.oura-score small{display:block;font-size:11px;color:#dbd4ef}.oura-score strong{display:block;font:normal 31px Georgia,serif;margin-top:7px}
+.oura-section{border:1px solid #3d3a5e;border-radius:18px;background:linear-gradient(130deg,rgba(34,32,59,.95),rgba(17,19,38,.98));padding:19px 17px;margin:14px 0}
+.oura-section.green{border-color:#315750;background:linear-gradient(130deg,#142d2c,#151a30)}
+.oura-section.pink{border-color:#503951;background:linear-gradient(130deg,#2c1b36,#171729)}
+.oura-section.blue{border-color:#385070;background:linear-gradient(130deg,#15243b,#171a31)}
+.oura-headline{display:flex;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.oura-headline h2{margin:0;font:normal 25px Georgia,serif}.oura-headline b{font-size:19px;font-weight:500}
+.oura-caption{color:#adaabe;font-size:12px;line-height:1.6;margin:6px 0 14px}
+.oura-metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.oura-metric{border:1px solid #ffffff23;border-radius:13px;padding:12px;background:#ffffff08;min-width:0}
+.oura-metric small{display:block;color:#b9b7cb;font-size:10px;line-height:1.35;min-height:26px}
+.oura-metric strong{display:block;font-size:17px;margin-top:8px;font-weight:550;overflow-wrap:anywhere}
+.oura-metric-wide{grid-column:span 2}
+.oura-subtitle{font:normal 19px Georgia,serif;margin:20px 0 9px}
+.oura-chartbox{border:1px solid #ffffff20;border-radius:13px;background:#080a1780;padding:12px 9px;margin:12px 0}
+.oura-chartbox svg{width:100%;height:auto;display:block}
+.oura-chart-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:#dedbf0;margin:0 4px 10px}
+.oura-switch{display:flex;gap:3px;background:#ffffff12;padding:3px;border-radius:9px}
+.oura-switch button{background:transparent;color:#b7b2d0;border:0;font-size:11px;border-radius:7px;padding:6px 9px}
+.oura-switch button.selected{background:#6b529c;color:white}
+.oura-legend{display:flex;flex-wrap:wrap;gap:9px;font-size:10px;color:#b8b4ca;margin-top:9px}
+.oura-legend span:before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dot,#a889ed);margin-right:5px}
+.oura-cycle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.oura-footnote{font-size:11px;line-height:1.55;color:#aaa5c3}
+.oura-status{padding:12px 16px;border:1px solid #ffffff26;border-radius:12px;color:#a7a4c5;font-size:11px;line-height:1.55;margin:16px 0}
+@media (min-width:530px){.oura-hero{height:290px}.oura-score strong{font-size:37px}.oura-metric-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.oura-metric-wide{grid-column:span 1}}
+@media (prefers-reduced-motion:reduce){.oura-space *{animation:none!important}}
+</style></head><body>
 <section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM</div></div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button>
@@ -81,30 +122,69 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <section class="oura-space hidden" id="ouraSpace">
 <header class="space-head"><button class="space-back" id="ouraBack">← Все разделы</button></header>
 <div class="oura-inner">
-<div class="eyebrow">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
-<p class="oura-desc">Сон, восстановление, температура, активность и цикл — подробная аналитика по данным кольца.</p>
-<div class="ring-hero approved-ring-hero" aria-label="Три синих керамических кольца Oura">
-<img class="approved-ceramic-photo" src="data:image/webp;base64,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" alt="Три синих керамических кольца Oura в тёмной предметной съёмке">
+<div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
+<p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
+<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="data:image/webp;base64,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"><span class="hero-shade"></span></div>
+<div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
+<div class="oura-scoreline">
+<div class="oura-score"><small>Сон</small><strong id="ouraSleep">—</strong></div>
+<div class="oura-score"><small>Готовность</small><strong id="ouraReady">—</strong></div>
+<div class="oura-score"><small>Активность</small><strong id="ouraActivity">—</strong></div>
 </div>
-<div class="oura-status-panel" id="ouraStatus">Подключаем защищённые данные Oura…</div>
-<div id="ouraDashboard" aria-live="polite">
-<section class="oura-block"><div class="oura-topline"><div><div class="oura-kicker">СОН</div><h2>Качество сна</h2></div><span class="oura-score oura-violet" id="ouraSleep">—</span></div>
-<p class="oura-section-description" id="ouraSleepSummary">Данные последней ночи</p>
-<div class="oura-two">
-<div class="oura-tile"><label>Продолжительность сна</label><strong id="ouraDuration">—</strong></div>
-<div class="oura-tile"><label>Глубокий сон</label><strong id="ouraDeep">—</strong></div>
-<div class="oura-tile"><label>REM-сон</label><strong id="ouraRem">—</strong></div>
-<div class="oura-tile"><label>Эффективность сна</label><strong id="ouraEff">—</strong></div>
+<div class="oura-section">
+<div class="oura-headline"><h2>Сон</h2><b id="ouraSleepScore">—</b></div>
+<p class="oura-caption" id="sleepSummary">Данные о последней ночи загружаются.</p>
+<div class="oura-metric-grid">
+<div class="oura-metric"><small>Продолжительность</small><strong id="slTotal">—</strong></div>
+<div class="oura-metric"><small>Глубокий сон</small><strong id="slDeep">—</strong></div>
+<div class="oura-metric"><small>REM-сон</small><strong id="slRem">—</strong></div>
+<div class="oura-metric"><small>Лёгкий сон</small><strong id="slLight">—</strong></div>
+<div class="oura-metric"><small>Эффективность</small><strong id="slEfficiency">—</strong></div>
+<div class="oura-metric"><small>Время засыпания</small><strong id="slLatency">—</strong></div>
+<div class="oura-metric"><small>Легла спать</small><strong id="slBed">—</strong></div>
+<div class="oura-metric"><small>Проснулась</small><strong id="slWake">—</strong></div>
 </div>
-<div id="ouraSleepRows"></div>
-<div class="oura-kicker">СТАДИИ НОЧНОГО СНА</div><div id="ouraStages"></div>
-</section>
-<section class="oura-block"><div class="oura-topline"><h3>Оценка сна по дням</h3><div class="oura-range" id="ouraRanges"><button data-days="7" class="active">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-wrap" id="ouraSleepChart"></div></section>
-<section class="oura-block"><div class="oura-topline"><div><div class="oura-kicker">ВОССТАНОВЛЕНИЕ</div><h2>Готовность</h2></div><span class="oura-score oura-mint" id="ouraReady">—</span></div><p class="oura-section-description" id="ouraReadySummary">Сравнение с индивидуальным уровнем.</p><div id="ouraReadinessRows"></div><div class="oura-kicker">ГОТОВНОСТЬ ПО ДНЯМ</div><div class="oura-chart-wrap" id="ouraReadinessChart"></div></section>
-<section class="oura-block"><div class="oura-kicker">ТЕМПЕРАТУРА</div><div class="oura-topline"><h2>Отклонение от базовой</h2><span class="oura-score oura-rose" id="ouraTemp">—</span></div><p class="oura-section-description">Oura показывает изменение относительно личной базовой температуры, а не абсолютную температуру тела.</p><div class="oura-chart-wrap" id="ouraTemperatureChart"></div></section>
-<section class="oura-block"><div class="oura-kicker">ЖЕНСКОЕ ЗДОРОВЬЕ</div><h2>Цикл</h2><p class="oura-section-description">Даты рассчитываются только по доступным отметкам периода и истории циклов, не являются медицинским прогнозом.</p><div id="ouraCycleRows"></div><div class="oura-kicker">ТЕКУЩИЙ ЦИКЛ</div><div class="oura-cycle-days" id="ouraCycleDays"></div></section>
-<section class="oura-block"><div class="oura-topline"><div><div class="oura-kicker">ДВИЖЕНИЕ</div><h2>Активность</h2></div><span class="oura-score oura-blue" id="ouraActivity">—</span></div><div id="ouraActivityRows"></div><div class="oura-kicker">АКТИВНОСТЬ ПО ДНЯМ</div><div class="oura-chart-wrap" id="ouraActivityChart"></div></section>
-</div></div></section><div class="shell" id="modaShell" style="display:none"><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Сон по дням</span><div class="oura-switch" id="sleepRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div id="sleepChart"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title">Стадии последней ночи</div><div id="sleepStageChart"></div>
+<div class="oura-legend"><span style="--dot:#8c64db">Глубокий</span><span style="--dot:#6b90fc">Лёгкий</span><span style="--dot:#5ed4df">REM</span><span style="--dot:#e497cf">Пробуждение</span></div></div>
+<p class="oura-footnote">График стадий строится по пятиминутным интервалам Oura, если они доступны в API.</p>
+</div>
+<div class="oura-section green">
+<div class="oura-headline"><h2>Готовность</h2><b id="ouraReadyScore">—</b></div>
+<p class="oura-caption" id="readinessSummary">Оценка восстановления организма.</p>
+<div class="oura-metric-grid">
+<div class="oura-metric"><small>HRV за ночь</small><strong id="readyHrv">—</strong></div>
+<div class="oura-metric"><small>Минимальный пульс</small><strong id="readyHr">—</strong></div>
+<div class="oura-metric"><small>Температура от базовой</small><strong id="readyTemp">—</strong></div>
+</div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Готовность за 7 дней</span></div><div id="readyChart"></div></div>
+<div class="oura-chartbox"><div class="oura-chart-title"><span>Температура от базовой</span><div class="oura-switch" id="tempRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div id="tempChart"></div></div>
+<p class="oura-footnote">Температура — отклонение от личной базовой линии, не абсолютная температура тела. Единица: °C.</p>
+</div>
+<div class="oura-section pink">
+<div class="oura-headline"><h2>Женское здоровье и цикл</h2></div>
+<p class="oura-caption">Показатели рассчитываются только по отметкам периода, доступным через Oura API.</p>
+<div class="oura-cycle-grid">
+<div class="oura-metric"><small>День цикла</small><strong id="cycleDay">—</strong></div>
+<div class="oura-metric"><small>Начало периода</small><strong id="cycleStart">—</strong></div>
+<div class="oura-metric"><small>Средняя длина цикла</small><strong id="cycleAverage">—</strong></div>
+<div class="oura-metric"><small>Следующий период (прогноз)</small><strong id="cycleNext">—</strong></div>
+</div><p class="oura-footnote" id="cycleNote">Если история отметок неполная, прогноз не отображается. Это ориентировочная оценка, а не медицинское заключение.</p>
+</div>
+<div class="oura-section blue">
+<div class="oura-headline"><h2>Активность</h2><b id="ouraActivityScore">—</b></div>
+<p class="oura-caption" id="activitySummary">Показатели за последний завершённый день.</p>
+<div class="oura-metric-grid">
+<div class="oura-metric"><small>Шаги</small><strong id="actSteps">—</strong></div>
+<div class="oura-metric"><small>Активные калории</small><strong id="actActiveCal">—</strong></div>
+<div class="oura-metric"><small>Всего калорий</small><strong id="actTotalCal">—</strong></div>
+<div class="oura-metric"><small>Интенсивная нагрузка</small><strong id="actHigh">—</strong></div>
+<div class="oura-metric"><small>Умеренная нагрузка</small><strong id="actMedium">—</strong></div>
+</div>
+<div class="oura-chartbox"><div class="oura-chart-title">Активность по дням</div><div id="activityChart"></div></div>
+</div>
+<div class="oura-status" id="ouraStatus">Получаю защищённые данные с кольца…</div>
+</div></section><div class="shell" id="modaShell" style="display:none"><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
 <section class="hero"><span class="eyebrow">Редакторская панель / 2026</span><h1>Мода начинается<br>с деталей.</h1><p>Черновики, подборки и новости — все материалы перед публикацией.</p></section>
 <section class="stats"><div class="stat"><strong id="pending">—</strong><span>На проверке</span></div><div class="stat"><strong id="published">—</strong><span>Опубликовано</span></div><div class="stat"><strong id="rejected">—</strong><span>Отклонено</span></div></section>
 <section class="section"><h2 id="sectionTitle">Черновики</h2><small id="count"></small></section>
@@ -197,130 +277,91 @@ hubBtn.textContent='Разделы';hubBtn.className='space-back';
 hubBtn.onclick=()=>showSpace('hub');
 document.querySelector('.top').prepend(hubBtn);
 
-let ouraLive=null,ouraDays=7;
-const metricNum=v=>typeof v==='number'&&Number.isFinite(v)?v:null;
-const metric=v=>metricNum(v)===null?'—':String(Math.round(v));
-const unit=(v,suffix,digits=0)=>metricNum(v)===null?'—':Number(v).toFixed(digits).replace('.',',')+suffix;
-function duration(seconds){
- const v=metricNum(seconds);if(v===null)return '—';
- const h=Math.floor(v/3600),m=Math.round(v%3600/60);
- return h?h+' ч '+String(m).padStart(2,'0')+' мин':m+' мин';
-}
-function clock(value){return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(value||'')?value.substring(11,16):'—'}
-const displayDay=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.substring(8,10)+'.'+d.substring(5,7):'—';
-function setMetric(id,value){$(id).textContent=value}
-function row(label,value,color=''){
- const cleanLabel=escapeHtml(label),cleanValue=escapeHtml(String(value??'—'));
- return '<div class="oura-row"><span class="oura-row-label"><i class="oura-dot '+color+'"></i>'+cleanLabel+'</span><strong>'+cleanValue+'</strong></div>';
-}
-function drawLine(id,field,color,days=ouraDays,temperature=false){
- const raw=Array.isArray(ouraLive?.history)?ouraLive.history:[];
- const recent=raw.slice(-days).filter(item=>item&&typeof item.day==='string');
- const measured=recent.map((entry,i)=>({i,day:entry.day,value:metricNum(entry[field])})).filter(p=>p.value!==null);
- const el=$(id);
- if(!recent.length||!measured.length){el.innerHTML='<div class="oura-muted" style="padding:24px 8px">Нет данных за этот период</div>';return}
- const all=measured.map(p=>p.value);
- let low=temperature?Math.min(-.1,...all):Math.min(0,Math.floor(Math.min(...all)/10)*10);
- let high=temperature?Math.max(.1,...all):Math.max(100,Math.ceil(Math.max(...all)/10)*10);
- if(high-low<.01){low-=.5;high+=.5}
- const W=330,H=142,L=13,R=12,T=15,B=30, pw=W-L-R,ph=H-T-B;
- const x=i=>L+(recent.length===1?.5:i/(recent.length-1))*pw;
- const y=v=>T+(high-v)/(high-low)*ph;
- const points=measured.map(p=>[x(p.i),y(p.value)]);
- // Separate non-adjacent dates: missing metrics should never look like continuous observations.
+
+let ouraLive=null, sleepDays=7,tempDays=7;
+const valid=v=>typeof v==='number'&&Number.isFinite(v);
+const numeric=(v,unit='',digits=0)=>valid(v)?v.toFixed(digits).replace('.',',')+unit:'—';
+const integer=v=>valid(v)?Math.round(v).toLocaleString('ru-RU'):'—';
+const prettySeconds=v=>{if(!valid(v))return '—';let mins=Math.round(v/60);let h=Math.floor(mins/60),m=mins%60;return h? h+' ч '+String(m).padStart(2,'0')+' мин':m+' мин'};
+const dayName=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7):'—';
+const timeOf=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(s)?s.slice(11,16):'—';
+const setValue=(id,v)=>{const node=$(id);if(node)node.textContent=v};
+function plot(id,key,color,days=7,temp=false){
+ const out=$(id);if(!out)return;
+ const data=(Array.isArray(ouraLive?.history)?ouraLive.history:[]).slice(-days);
+ const values=data.map((r,i)=>({i,day:r.day,v:r[key]})).filter(r=>valid(r.v));
+ if(!values.length){out.innerHTML='<p class="oura-footnote">Нет данных за выбранный период.</p>';return}
+ const nums=values.map(d=>d.v),mi=Math.min(...nums),ma=Math.max(...nums);
+ const low=temp?Math.min(mi-.1,0):Math.max(0,Math.floor((mi-5)/10)*10);
+ const high=temp?Math.max(ma+.1,0):Math.min(100,Math.ceil((ma+5)/10)*10);
+ const lower=high===low?low-1:low,upper=high===low?high+1:high;
+ const X=i=>25+(data.length<=1?.5:i/(data.length-1))*280;
+ const Y=v=>15+(upper-v)/(upper-lower)*94;
  const runs=[];let run=[];
- for(const p of measured){if(run.length&&p.i-run[run.length-1].i>1){runs.push(run);run=[]}run.push(p)}
+ for(const p of values){if(run.length&&p.i-run[run.length-1].i>1){runs.push(run);run=[]}run.push(p)}
  if(run.length)runs.push(run);
- const grid=[0,.5,1].map(r=>'<line x1="'+L+'" y1="'+(T+r*ph)+'" x2="'+(W-R)+'" y2="'+(T+r*ph)+'" stroke="#aaa5c7" stroke-opacity=".17" stroke-width="1"/>').join('');
- const lines=runs.map(r=>'<polyline points="'+r.map(p=>x(p.i)+','+y(p.value)).join(' ')+'" stroke="'+color+'" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>').join('');
- const dots=measured.map(p=>'<circle cx="'+x(p.i)+'" cy="'+y(p.value)+'" r="3.2" fill="'+color+'" stroke="#161628" stroke-width="1.2"/>').join('');
- const indices=recent.length<9?[0,Math.floor((recent.length-1)/2),recent.length-1]:[0,Math.floor((recent.length-1)/3),Math.floor((recent.length-1)*2/3),recent.length-1];
- const labels=[...new Set(indices)].map(i=>'<text x="'+x(i)+'" y="136" fill="#a7a8bd" font-size="10" text-anchor="middle">'+displayDay(recent[i].day)+'</text>').join('');
- const rangeLabel=temperature?((v)=>v.toFixed(1).replace('.',',')+'°'):((v)=>String(Math.round(v)));
- el.innerHTML='<svg class="oura-chart-svg" viewBox="0 0 330 144" role="img" aria-label="Динамика '+(temperature?'температуры':'показателя')+' по датам">'+grid+
- '<text x="13" y="11" fill="#9c9ab6" font-size="9">'+rangeLabel(high)+'</text>'+
- '<text x="13" y="119" fill="#9c9ab6" font-size="9">'+rangeLabel(low)+'</text>'+lines+dots+labels+'</svg>';
+ const grid=[0,.5,1].map(f=>'<path d="M25 '+(15+f*94)+' H305" stroke="#ffffff22" stroke-width="1"/>').join('');
+ const line=runs.map(group=>'<polyline points="'+group.map(p=>X(p.i)+','+Y(p.v)).join(' ')+'" stroke="'+color+'" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>').join('');
+ const dots=values.map(p=>'<circle cx="'+X(p.i)+'" cy="'+Y(p.v)+'" r="3.1" fill="'+color+'"><title>'+dayName(p.day)+': '+numeric(p.v,temp?'°C':'',temp?2:0)+'</title></circle>').join('');
+ const ticks=[0,Math.floor((data.length-1)/2),data.length-1].filter((v,i,a)=>a.indexOf(v)===i);
+ const names=ticks.map(i=>'<text x="'+X(i)+'" y="131" fill="#acabc8" text-anchor="middle" font-size="10">'+dayName(data[i].day)+'</text>').join('');
+ out.innerHTML='<svg viewBox="0 0 330 145" role="img" aria-label="График по дням">'+grid+line+dots+names+'</svg>';
 }
-function renderCycle(c){
- const period=c||{};const current=metricNum(period.day),avg=metricNum(period.avg_length);
- $('ouraCycleRows').innerHTML=row('День цикла',current===null?'Нет данных':current+'-й день','pink')+
- row('Последнее начало периода',displayDay(period.period_start),'pink')+
- row('Средняя длина цикла',avg===null?'Недостаточно истории':avg+' дней','pink')+
- row('Следующий период',period.predicted_next?'Около '+displayDay(period.predicted_next):'Недостаточно истории','pink');
- const div=$('ouraCycleDays');div.replaceChildren();
- if(current===null){div.textContent='Нет отметок периода в Oura';return}
- const length=Math.min(40,Math.max(24,avg||28,current));
- for(let i=1;i<=length;i++){const d=document.createElement('span');d.title='День '+i;
- if(i<=5)d.classList.add('period');
- if(i===current)d.classList.add('current');
- div.append(d)}
-}
-function renderStages(d){
- const parts=[['Глубокий',d.deep_seconds,'#8759db'],['Лёгкий',d.light_seconds,'#638aec'],['REM',d.rem_seconds,'#65c4d9'],['Бодрствование',d.awake_seconds,'#e48dd4']];
- const valid=parts.filter(p=>metricNum(p[1])!==null);
- if(!valid.length){$('ouraStages').innerHTML='<p class="oura-muted">Стадии сна пока недоступны</p>';return}
- const total=valid.reduce((s,p)=>s+p[1],0)||1;
- const bars=valid.map(p=>'<span style="width:'+(100*p[1]/total).toFixed(2)+'%;background:'+p[2]+'"></span>').join('');
- const labels=valid.map(p=>'<span style="color:'+p[2]+'">● '+p[0]+' — '+duration(p[1])+'</span>').join('');
- let timeline='';
- if(/^[1-4]{2,300}$/.test(d.sleep_phase_5_min||'')){
-  const heights={1:60,2:49,3:28,4:75},colors={1:'#9d6de7',2:'#678af3',3:'#5fbed4',4:'#e79bd5'};
-  timeline='<div class="oura-stages-timeline" role="img" aria-label="Стадии сна в течение ночи">'+[...d.sleep_phase_5_min].map(v=>'<span style="height:'+heights[v]+'%;background:'+colors[v]+'"></span>').join('')+'</div>';
- }
- $('ouraStages').innerHTML=timeline+'<div class="oura-sleep-stages">'+bars+'</div><div class="oura-stage-legend">'+labels+'</div>';
+function stages(s){
+ const el=$('sleepStageChart');const phase=s?.sleep_phase_5_min||'';
+ if(!/^[1-4]{2,300}$/.test(phase)){el.innerHTML='<p class="oura-footnote">Нет поминутной разбивки стадий за эту ночь.</p>';return}
+ const palette={1:'#8c64db',2:'#6b90fc',3:'#5ed4df',4:'#e497cf'};
+ const height={1:80,2:61,3:35,4:12};
+ const unit=310/phase.length;
+ el.innerHTML='<svg viewBox="0 0 330 112" role="img" aria-label="Стадии сна в пятиминутных интервалах">'+
+ [...phase].map((v,i)=>'<rect x="'+(8+i*unit).toFixed(2)+'" y="'+height[v]+'" width="'+Math.max(1.4,unit+.15).toFixed(2)+'" height="'+(98-height[v])+'" rx=".6" fill="'+palette[v]+'"/>').join('')+'</svg>';
 }
 function renderOura(d){
  ouraLive=d;
- const sl=d.sleep||{},sd=sl.detail||{},rd=d.readiness||{},ac=d.activity||{};
- setMetric('ouraSleep',metric(sl.score));setMetric('ouraReady',metric(rd.score));setMetric('ouraActivity',metric(ac.score));
- setMetric('ouraDuration',duration(sd.total_seconds));setMetric('ouraDeep',duration(sd.deep_seconds));
- setMetric('ouraRem',duration(sd.rem_seconds));setMetric('ouraEff',unit(sd.efficiency,'%'));
- setMetric('ouraTemp',unit(rd.temperature,' °C',1).replace(/^(\d)/,'+$1'));
- $('ouraSleepSummary').textContent='Последняя зарегистрированная ночь'+(sd.day?' · '+displayDay(sd.day):'');
- $('ouraSleepRows').innerHTML=row('Лёгкий сон',duration(sd.light_seconds))+
- row('Время бодрствования',duration(sd.awake_seconds))+
- row('Засыпание',clock(sd.bedtime_start))+
- row('Пробуждение',clock(sd.bedtime_end))+
- row('Время до засыпания',duration(sd.latency_seconds));
- renderStages(sd);
- $('ouraReadySummary').textContent=metricNum(rd.score)===null?'Оценка пока не синхронизирована':rd.score>=85?'Высокая готовность':rd.score>=70?'Умеренная готовность':'Возможно, стоит снизить нагрузку';
- $('ouraReadinessRows').innerHTML=row('Вариабельность ритма (HRV)',unit(rd.hrv,' мс'),'mint')+
- row('Пульс в покое',unit(rd.resting_hr,' уд/мин'),'mint')+
- row('Отклонение температуры',unit(rd.temperature,' °C',2),'pink');
- renderCycle(d.cycle);
- $('ouraActivityRows').innerHTML=row('Дата активности',displayDay(ac.day),'blue')+
- row('Шаги',metricNum(ac.steps)===null?'—':Math.round(ac.steps).toLocaleString('ru-RU'),'blue')+
- row('Активные калории',unit(ac.active_calories,' ккал'),'blue')+
- row('Всего калорий',unit(ac.total_calories,' ккал'),'blue')+
- row('Высокая активность',duration(ac.high_activity_seconds),'blue')+
- row('Средняя активность',duration(ac.medium_activity_seconds),'blue');
- renderOuraCharts();
+ const sl=d.sleep||{}, sd=sl.detail||{}, r=d.readiness||{}, ac=d.activity||{}, cy=d.cycle||{};
+ for(const [key,v] of [['ouraSleep',sl.score],['ouraReady',r.score],['ouraActivity',ac.score],['ouraSleepScore',sl.score],['ouraReadyScore',r.score],['ouraActivityScore',ac.score]])setValue(key,integer(v));
+ setValue('sleepSummary',sd.day?'Ночь '+dayName(sd.day)+' · показатели Oura API':'Подробные данные сна ещё не синхронизированы.');
+ setValue('slTotal',prettySeconds(sd.total_seconds));setValue('slDeep',prettySeconds(sd.deep_seconds));
+ setValue('slRem',prettySeconds(sd.rem_seconds));setValue('slLight',prettySeconds(sd.light_seconds));
+ setValue('slEfficiency',numeric(sd.efficiency,'%'));setValue('slLatency',prettySeconds(sd.latency_seconds));
+ setValue('slBed',timeOf(sd.bedtime_start));setValue('slWake',timeOf(sd.bedtime_end));
+ setValue('readyHrv',numeric(r.hrv,' мс'));setValue('readyHr',numeric(r.resting_hr,' уд/мин'));
+ setValue('readyTemp',valid(r.temperature)?(r.temperature>0?'+':'')+numeric(r.temperature,' °C',2):'—');
+ setValue('readinessSummary',valid(r.score)?(r.score>=85?'Высокая готовность к нагрузке':r.score>=70?'Умеренная готовность':'Сниженная готовность: обрати внимание на отдых'):'Оценка готовности пока недоступна.');
+ setValue('cycleDay',valid(cy.day)?cy.day+'-й':'—');
+ setValue('cycleStart',dayName(cy.period_start));
+ setValue('cycleAverage',valid(cy.avg_length)?cy.avg_length+' дней':'—');
+ setValue('cycleNext',dayName(cy.predicted_next));
+ setValue('cycleNote',cy.has_history&&cy.predicted_next?'Прогноз ориентировочный и основан на записанных циклах. Он не заменяет медицинскую консультацию.':'Для прогноза нужно не менее двух отмеченных начал менструации. При отсутствии данных ничего не рассчитывается.');
+ setValue('activitySummary',ac.day?'Сведения за '+dayName(ac.day):'За последний синхронизированный день.');
+ setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
+ setValue('actHigh',prettySeconds(ac.high_activity_seconds));setValue('actMedium',prettySeconds(ac.medium_activity_seconds));
+ if(d.updated_at){const dt=new Date(d.updated_at);setValue('ouraDate','Обновлено '+dt.toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Moscow'})+' МСК')}
+ plot('sleepChart','sleep','#b7a0fa',sleepDays);
+ plot('readyChart','readiness','#70d5b0',7);
+ plot('tempChart','temperature','#df9fef',tempDays,true);
+ plot('activityChart','activity','#8bc5f2',7);
+ stages(sd);
 }
-function renderOuraCharts(){
- drawLine('ouraSleepChart','sleep','#b69bfa');
- drawLine('ouraReadinessChart','readiness','#70dcb2');
- drawLine('ouraTemperatureChart','temperature','#de99da',ouraDays,true);
- drawLine('ouraActivityChart','activity','#9cc9fa');
+for(const [rangeId,setDays] of [['sleepRange',v=>{sleepDays=v;plot('sleepChart','sleep','#b7a0fa',v)}],['tempRange',v=>{tempDays=v;plot('tempChart','temperature','#df9fef',v,true)}]]){
+ $(rangeId).onclick=e=>{const btn=e.target.closest('[data-days]');if(!btn)return;
+  const days=Number(btn.dataset.days);$(rangeId).querySelectorAll('button').forEach(b=>b.classList.toggle('selected',b===btn));
+  if(ouraLive)setDays(days);
+ };
 }
-$('ouraRanges').onclick=e=>{
- const target=e.target.closest('[data-days]');if(!target)return;
- ouraDays=Number(target.dataset.days)||7;
- $('ouraRanges').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===target));
- if(ouraLive)renderOuraCharts();
-};
 async function loadOura(){
- $('ouraStatus').textContent='Загружаю данные Oura…';
+ setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
-  if(!initData){$('ouraStatus').textContent='Открой My Space через новую кнопку /app в Telegram для просмотра защищённых показателей.';return}
-  const ctrl=new AbortController(), timer=setTimeout(()=>ctrl.abort(),12000);
-  let res;
-  try{res=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:ctrl.signal})}finally{clearTimeout(timer)}
-  if(!res.ok){$('ouraStatus').textContent=res.status===403?'Этот Telegram-аккаунт не имеет доступа к данным кольца.':res.status===404?'Ожидаем первую синхронизацию Oura API.':'Данные пока недоступны (код '+res.status+').';return}
-  const d=await res.json();
-  renderOura(d);
-  $('ouraStatus').textContent=d.updated_at?'Синхронизировано: '+new Date(d.updated_at).toLocaleString('ru-RU'):'Данные Oura получены';
- }catch(e){$('ouraStatus').textContent='Не удалось получить данные Oura. Проверь соединение и открой раздел повторно.'}
+  if(!initData){setValue('ouraStatus','Открой My Space через новую кнопку /app в Telegram, чтобы подтвердить аккаунт.');return}
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+  let response;
+  try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
+  if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
+  const data=await response.json();
+  renderOura(data);
+  setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');
+ }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.')}
 }
 $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
 // Telegram may populate initDataUnsafe after its webview has already rendered.
