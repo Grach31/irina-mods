@@ -130,7 +130,7 @@ const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
 if(['p','div','li','br'].includes(name))parent.append(document.createElement('br'))}
 for(const child of Array.from(source.body.firstElementChild?.childNodes||[]))appendSafe(child,target);
-const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly){[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']].forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
+const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&!tg?.initData){[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']].forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
 function act(action,d){if(!tg?.sendData){alert('Открой приложение кнопкой в Telegram-боте');return}let msg=action==='ok'?'Опубликовать этот пост в канал?':action==='no'?'Отклонить этот черновик?':'Запросить правки?';if(!confirm(msg))return;tg.sendData(JSON.stringify({type:'stambo_miniapp',action,id:d.id}));tg.close()}
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
@@ -176,7 +176,8 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Telegram may populate initDataUnsafe after its webview has already rendered.
 // Start loading content unconditionally; backend still enforces editing permissions.
 // Deep-link Oura from the bot's authenticated inline web_app button.
-if(new URLSearchParams(location.search).get('space')==='oura')showSpace('oura');
+const requestedSpace=new URLSearchParams(location.search).get('space');
+if(requestedSpace==='oura'||requestedSpace==='moda')showSpace(requestedSpace);
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
 window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load()});
