@@ -1,0 +1,61 @@
+name: Stambo Mini App
+on:
+  push:
+    branches: [main]
+    paths:
+      - miniapp/**
+      - .github/workflows/miniapp-pages.yml
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - miniapp/**
+      - bot/miniapp.py
+      - bot/main.py
+      - tests/test_miniapp.py
+      - .github/workflows/miniapp-pages.yml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: stambo-miniapp-pages
+  cancel-in-progress: false
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python compilation
+        run: python -m compileall -q bot
+      - name: Test Mini App handling
+        run: python -m unittest discover -s tests -p test_miniapp.py -v
+      - name: Check JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path('miniapp/index.html').read_text()
+          scripts=re.findall(r'<script(?: [^>]*)?>(.*?)</script>',html,re.S)
+          inline=[s for s in scripts if s.strip()]
+          assert len(inline)==1, len(inline)
+          Path('/tmp/stambo-miniapp.js').write_text(inline[0])
+          PY
+          node --check /tmp/stambo-miniapp.js
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: checks
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: miniapp
+      - id: deployment
+        uses: actions/deploy-pages@v4
