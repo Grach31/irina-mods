@@ -581,8 +581,8 @@ let currentSpace='hub';
 const showSpace=space=>{
  if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
- const dark=space==='oura';
- document.documentElement.classList.toggle('oura-active',dark);
+ const dark=space==='oura'||(document.documentElement.dataset.msTheme==='dark');
+ document.documentElement.classList.toggle('oura-active',space==='oura');
  const bg=dark?'#0c0d19':'#f6f4ef';
  const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg;
  if(isTelegramClient&&tg){
@@ -595,10 +595,138 @@ const showSpace=space=>{
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
  $('fashionSpace').classList.toggle('hidden',space!=='fashion');
+ $('settingsSpace').classList.toggle('hidden',space!=='settings');
+ $('reelsSpace').classList.toggle('hidden',space!=='reels');
+ $('trendsSpace').classList.toggle('hidden',space!=='trends');
+ $('historySpace').classList.toggle('hidden',space!=='history');
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')loadOura();
  if(space==='fashion')loadFashion();
+ if(space==='settings')refreshSettings();
+ if(space==='reels'||space==='trends'||space==='history')loadMySpaceEditorial(space);
 };
+
+const msThemeKey='myspace.theme.v1';
+const msQuery=window.matchMedia?.('(prefers-color-scheme: dark)');
+function preferredMsTheme(){try{return localStorage.getItem(msThemeKey)||'auto'}catch{return 'auto'}}
+function applyMsTheme(){
+ const pref=preferredMsTheme(),effective=pref==='auto'?(msQuery?.matches?'dark':'light'):pref;
+ document.documentElement.dataset.msTheme=effective;
+ document.querySelectorAll('[data-theme-choice]').forEach(el=>{
+  const chosen=el.dataset.themeChoice===pref;el.classList.toggle('selected',chosen);el.setAttribute('aria-pressed',String(chosen));
+ });
+ const dark=currentSpace==='oura'||effective==='dark',bg=dark?'#0c0d19':'#f6f4ef';
+ const tag=document.querySelector('meta[name="theme-color"]');if(tag)tag.content=bg;
+ if(isTelegramClient&&tg){try{tg.setHeaderColor?.(bg);tg.setBackgroundColor?.(bg);tg.setBottomBarColor?.(bg)}catch{}}
+}
+msQuery?.addEventListener?.('change',()=>{if(preferredMsTheme()==='auto')applyMsTheme()});
+document.querySelectorAll('[data-theme-choice]').forEach(btn=>btn.onclick=()=>{
+ try{localStorage.setItem(msThemeKey,btn.dataset.themeChoice)}catch{}
+ applyMsTheme();
+});
+function refreshSettings(){
+ $('settingsAccount').textContent=pwaSession?'Safari · подключённый аккаунт':isTelegramClient?'Telegram · авторизован через Mini App':'Требуется вход';
+ $('settingsLogout').hidden=!pwaSession;
+ applyMsTheme();
+}
+$('openSettings').onclick=()=>showSpace('settings');
+$('settingsBack').onclick=()=>showSpace('hub');
+$('modaBack').onclick=()=>showSpace('hub');
+for(const name of ['reels','trends','history']){
+ $(name+'Back').onclick=()=>showSpace('hub');
+ const openId={reels:'openReels',trends:'openTrends',history:'openHistory'}[name];
+ $(openId).onclick=()=>showSpace(name);
+}
+const msEditorialMap={reels:{path:'reels-studio.json',container:'reelsItems'},trends:{path:'trend-radar.json',container:'trendsItems'},history:{path:'style-time-machine.json',container:'historyItems'}};
+let msEditorialCache={};
+function msText(label,value){
+ const wrap=document.createElement('div'),head=document.createElement('strong'),p=document.createElement('p');
+ head.textContent=label;p.textContent=String(value||'');wrap.append(head,p);return wrap;
+}
+function msBulletList(title,values){
+ const wrap=document.createElement('div'),head=document.createElement('strong'),ul=document.createElement('ul');
+ head.textContent=title;wrap.append(head);
+ for(const value of values||[]){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}
+ wrap.append(ul);return wrap;
+}
+function msRenderEditorial(type,data){
+ const root=$(msEditorialMap[type].container);root.replaceChildren();
+ const list=Array.isArray(data.items)?data.items:[];
+ if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
+ list.forEach(item=>{
+  const card=document.createElement('article');card.className='myspace-idea';
+  const meta=document.createElement('div');meta.className='myspace-idea-meta';
+  meta.textContent=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
+  const title=document.createElement('h2');title.textContent=item.title||'Без названия';
+  const lead=document.createElement('p');lead.textContent=item.summary||item.description||item.hook||'';
+  const toggle=document.createElement('button');toggle.type='button';toggle.textContent='Подробнее ↓';toggle.setAttribute('aria-expanded','false');
+  const detail=document.createElement('div');detail.className='myspace-idea-detail hidden';
+  if(type==='reels'){
+   detail.append(msText('Хук',item.hook),msText('Формат',(item.duration||30)+' секунд · '+(item.format||'')));
+   detail.append(msBulletList('Сценарий',item.script),msBulletList('Кадры',item.shots),msText('Призыв к действию',item.cta));
+  }else if(type==='trends'){
+   detail.append(msText('Статус',item.status),msText('Для стилиста',item.stylist),msText('Подтверждение',item.evidence));
+  }else detail.append(msText('Тогда',item.then),msText('Сейчас',item.now));
+  toggle.onclick=()=>{const expanded=!detail.classList.toggle('hidden');toggle.setAttribute('aria-expanded',String(expanded));toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓'};
+  card.append(meta,title,lead,toggle,detail);root.append(card);
+ });
+}
+async function loadMySpaceEditorial(type,force=false){
+ if(!msEditorialMap[type])return;
+ if(!force&&msEditorialCache[type]){msRenderEditorial(type,msEditorialCache[type]);return}
+ const root=$(msEditorialMap[type].container);root.textContent='Загружаю материалы…';
+ try{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+  let response;try{response=await fetch(msEditorialMap[type].path+'?t='+Date.now(),{cache:'no-store',signal:controller.signal})}finally{clearTimeout(timer)}
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const json=await response.json();if(!Array.isArray(json.items))throw Error('Неверный формат');
+  msEditorialCache[type]=json;msRenderEditorial(type,json);
+ }catch{root.textContent='Не удалось загрузить материалы. Потяни вниз для повторной попытки.'}
+}
+applyMsTheme();
+function msGoBack(){
+ if(document.querySelector('#detail.visible')){$('back')?.click();return}
+ if(currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')){$('fashionBack').click();return}
+ if(currentSpace!=='hub')showSpace('hub');
+}
+function msActiveScroller(){
+ if(document.querySelector('#detail.visible'))return $('detail');
+ if(currentSpace==='fashion')return $('fashionSpace');
+ if(currentSpace==='oura')return $('ouraSpace');
+ if(currentSpace==='moda')return $('modaShell');
+ if(currentSpace==='hub')return $('hub');
+ return $(currentSpace+'Space');
+}
+let msGesture=null,msRefreshing=false;
+document.addEventListener('touchstart',ev=>{
+ if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
+ const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
+ if(!scroller||!scroller.contains(el))return;
+ const nested=el.closest('.gallery,.fashion-tags,.oura-switch,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select');
+ msGesture={x:t.clientX,y:t.clientY,nearTop:scroller.scrollTop<=2,fromEdge:t.clientX<=34,nested:!!nested};
+},{passive:true});
+document.addEventListener('touchend',ev=>{
+ if(!msGesture||!ev.changedTouches.length)return;
+ const start=msGesture;msGesture=null;
+ const t=ev.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
+ if(start.nested||Math.abs(dx)<25&&Math.abs(dy)<55)return;
+ if(start.fromEdge&&dx>95&&Math.abs(dy)<65){msGoBack();return}
+ if(start.nearTop&&dy>105&&Math.abs(dx)<65)msRefreshCurrent();
+},{passive:true});
+async function msRefreshCurrent(){
+ if(msRefreshing)return;msRefreshing=true;
+ $('pullMessage').textContent='Обновляю…';$('pullIndicator').classList.add('shown');
+ try{
+  if(currentSpace==='moda'){lastLoaded=0;await load()}
+  else if(currentSpace==='oura')await loadOura();
+  else if(currentSpace==='fashion'){fashionDigest=null;await loadFashion()}
+  else if(msEditorialMap[currentSpace])await loadMySpaceEditorial(currentSpace,true);
+  else if(currentSpace==='hub')await load();
+  $('pullMessage').textContent='Готово';
+ }catch{$('pullMessage').textContent='Ошибка обновления'}
+ finally{setTimeout(()=>{$('pullIndicator').classList.remove('shown');msRefreshing=false},550)}
+}
+
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('openFashion').onclick=()=>showSpace('fashion');
