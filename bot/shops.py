@@ -33,6 +33,8 @@ SHOPS = {
     # 12 Storeez: сайт закрыт JS-проверкой от ботов (servicepipe), обычным сбором не берётся — убран 02.11.2026
     # IDOL — премиум-бренд Melon Fashion (как Love Republic, Zarina, Befree), каталог предположительно такой же
     "IDOL": (["https://idol.ru/catalog/new/woman/"], r"/product/[a-z0-9-]+-id\d+-\d+/", "dream"),
+    "STUDIO 29": (["https://studio-29.ru/catalog/verhnyaya-odejda-sp"], r"/products/", "daily"),
+    "ALL WE NEED": (["https://allweneed.ru/catalog"], r"/product/", "daily"),
 }
 
 PRICE = re.compile(r"(\d[\d\s  ]{2,9})\s*(?:₽|РУБ|руб)", re.I)
@@ -224,6 +226,63 @@ def parse_idol(html, base):
     return out
 
 
+
+def parse_studio29(html, base):
+    """Studio 29: карточки ProductSnippet, изображения в srcset, текущая цена перед старой."""
+    soup = BeautifulSoup(html, "lxml")
+    out, seen = [], set()
+    for card in soup.select('[class*="ProductSnippet_snippet"]'):
+        title = card.select_one('[class*="ProductSnippetFooter_title"]')
+        prices = card.select_one('[class*="Prices_prices"]')
+        link = card.select_one('a[href*="/products/"]')
+        image = card.select_one('img[srcset]')
+        if not (title and prices and link and image):
+            continue
+        matches = list(PRICE.finditer(prices.get_text(" ", strip=True)))
+        if not matches:
+            continue
+        price = int(re.sub(r"\D", "", matches[0].group(1)))
+        name = re.sub(r"\s+", " ", title.get_text(" ", strip=True))
+        srcset = image.get("srcset", "")
+        candidates = [part.strip().split(" ")[0] for part in srcset.split(",") if part.strip()]
+        if not candidates:
+            continue
+        img = urllib.parse.urljoin(base, candidates[-1])
+        url = urllib.parse.urljoin(base, link["href"].split("?")[0])
+        if not name or price < 2500 or not img.startswith("https://") or url in seen:
+            continue
+        seen.add(url)
+        out.append({"name": name[:90].capitalize() if name.isupper() else name[:90],
+                    "price": price, "url": url, "img": img})
+    return out
+
+
+def parse_allweneed(html, base):
+    """All We Need: фотографии в CSS background-image карточек каталога."""
+    soup = BeautifulSoup(html, "lxml")
+    out, seen = [], set()
+    for card in soup.select(".product-item.catalog__product"):
+        title = card.select_one(".product-item--name")
+        price_el = card.select_one(".product-item--price")
+        link = card.select_one('a[href*="/product/"]')
+        image_el = card.select_one('[style*="background-image"][style*="/media/products/"]')
+        if not (title and price_el and link and image_el):
+            continue
+        match = PRICE.search(price_el.get_text(" ", strip=True))
+        image_match = re.search(r'background-image\s*:\s*url\(["\']?([^)"\']+)', image_el.get("style", ""), re.I)
+        if not (match and image_match):
+            continue
+        price = int(re.sub(r"\D", "", match.group(1)))
+        name = re.sub(r"\s+", " ", title.get_text(" ", strip=True))
+        url = urllib.parse.urljoin(base, link["href"].split("?")[0])
+        img = urllib.parse.urljoin(base, image_match.group(1))
+        if not name or price < 2500 or not img.startswith("https://") or url in seen:
+            continue
+        seen.add(url)
+        out.append({"name": name[:90], "price": price, "url": url, "img": img})
+    return out
+
+
 def collect(log=print):
     result = {}
     for shop, (urls, pattern, kind) in SHOPS.items():
@@ -232,6 +291,8 @@ def collect(log=print):
             try:
                 html = fetch(u)
                 found = (parse_2mood(html, u) if shop == "2MOOD" else parse_idol(html, u) if shop == "IDOL"
+                         else parse_studio29(html, u) if shop == "STUDIO 29"
+                         else parse_allweneed(html, u) if shop == "ALL WE NEED"
                          else parse(html, u, pattern))
                 for it in found:
                     if it["url"] not in seen:
