@@ -1006,6 +1006,26 @@
       ],
       "file_id": "AgACAgIAAxUHavRJv7IwyrbzDnSkbReeIwbvPZUAAgsaaxuOTqFLhvhHCUYsj8MBAAMCAAN3AAM9BA",
       "sent_at": "2026-11-11T13:56+03:00"
+    },
+    "2026-11-12-mix-outerwear-test": {
+      "status": "sent",
+      "slot": null,
+      "msg_id": 350,
+      "file_ids": [
+        "AgACAgIAAxUHavVxkrarXHrJX1TfsiIB7ERLCpIAAmcbaxuOTqlLYmr6xWX55roBAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHavVxj22tnZcxwT5LYZCT6hvBazoAAmYbaxuOTqlLE093JnO_7RABAAMCAAN5AAM9BA",
+        "AgACAgIAAxUHavVxj5C3j15SavmG2ZIAAY2Q35IEAAJlG2sbjk6pSxB3yC9OFaVkAQADAgADeQADPQQ"
+      ],
+      "file_id": "AgACAgIAAxUHavVxkrarXHrJX1TfsiIB7ERLCpIAAmcbaxuOTqlLYmr6xWX55roBAAMCAAN5AAM9BA",
+      "album_message_ids": [
+        [
+          347,
+          348,
+          349
+        ]
+      ],
+      "photo_count": 3,
+      "sent_at": "2026-11-12T10:58+03:00"
     }
   },
   "held": {
