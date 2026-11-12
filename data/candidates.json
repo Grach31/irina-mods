@@ -108,7 +108,7 @@
    "name": "Мини-платье из вискозы",
    "price": 8999,
    "url": "https://limestore.com/ru_ru/product/39265-4842_144_540_pylno_lilovyi",
-   "img": "https://a.cdn.lime-shine.com/p/1b6a528b2cb35100899a262a6ea4c533.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/1314c537b41857138d301cff8ca0745b.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -763,6 +763,30 @@
   {
    "name": "Двухсторонняя куртка-дубленка",
    "price": 49900,
+   "url": "https://www.ushatava.ru/store/w/novinki/dvukhstoronyaya-kurtka-dublenka-163a-83969/",
+   "img": "https://www.ushatava.ru/upload/iblock/0d4/b691ct1fj2fum9eh828s4fnmo49dadup/0-_47_.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Кожаные угги",
+   "price": 26900,
+   "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
+   "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Брелок-овечка × Moms",
+   "price": 9900,
+   "url": "https://www.ushatava.ru/store/w/novinki/brelok-ovechka-by-moms-83234/",
+   "img": "https://www.ushatava.ru/upload/iblock/0e5/p5fbqaefxa126z76d7y5vip1ad8d8xna/ushatava_items1_1155.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Двухсторонняя куртка-дубленка",
+   "price": 49900,
    "url": "https://www.ushatava.ru/store/w/novinki/dvukhstoronyaya-kurtka-dublenka-163a-83977/",
    "img": "https://www.ushatava.ru/upload/iblock/399/1e467be3orlddmzr8771yw8gcw4bjnzw/50.jpg",
    "shop": "Ushatava",
@@ -785,30 +809,6 @@
    "kind": "dream"
   },
   {
-   "name": "Сумка-клатч Tiniko",
-   "price": 65900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sumka-klatch-79472/",
-   "img": "https://www.ushatava.ru/upload/iblock/7ed/mz5z06hys7q804kkpwbusv9u45gqdfof/8-_-kopiya.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Двухсторонняя куртка-дубленка",
-   "price": 49900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dvukhstoronyaya-kurtka-dublenka-163a-83969/",
-   "img": "https://www.ushatava.ru/upload/iblock/0d4/b691ct1fj2fum9eh828s4fnmo49dadup/0-_47_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Кожаные угги",
-   "price": 26900,
-   "url": "https://www.ushatava.ru/store/w/novinki/uggi-kozha-83482/",
-   "img": "https://www.ushatava.ru/upload/iblock/b5e/1702b3hqlambx3wl1p3aavc4p65mdqux/62.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Пуховик-пальто",
    "price": 59900,
    "url": "https://www.ushatava.ru/store/w/novinki/pukhovik-palto-84530/",
@@ -817,18 +817,18 @@
    "kind": "dream"
   },
   {
-   "name": "Дубленка 90's из натурального меха",
-   "price": 229900,
-   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
-   "img": "https://www.ushatava.ru/upload/iblock/1ab/2pgd6a6m8bnuf3cmow89dfzkturtdtf1/ushatava_fw4_6136.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Укороченные перчатки в горошек",
    "price": 18900,
    "url": "https://www.ushatava.ru/store/w/novinki/ukorochennye-perchatki-bordovyy-goroshek-82597/",
    "img": "https://www.ushatava.ru/upload/iblock/f4d/ygtqfp0cigtbg0l5ipustki43fx5toct/102.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Сумка-клатч Tiniko",
+   "price": 65900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sumka-klatch-79472/",
+   "img": "https://www.ushatava.ru/upload/iblock/7ed/mz5z06hys7q804kkpwbusv9u45gqdfof/8-_-kopiya.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -845,6 +845,22 @@
    "price": 26900,
    "url": "https://www.ushatava.ru/store/w/novinki/uggi--83474/",
    "img": "https://www.ushatava.ru/upload/iblock/4f0/kfq5f11c3e2ckf7nd7af5oherm67s8li/58.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Короткие митенки",
+   "price": 7900,
+   "url": "https://www.ushatava.ru/store/w/novinki/korotkie-mitenki-83920/",
+   "img": "https://www.ushatava.ru/upload/iblock/90b/dht3fuhn58vqem28oztsarpssbf65icj/172.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Дубленка 90's из натурального меха",
+   "price": 229900,
+   "url": "https://www.ushatava.ru/store/w/novinki/dublenka-90-s-iz-naturalnogo-mekha-84298/",
+   "img": "https://www.ushatava.ru/upload/iblock/1ab/2pgd6a6m8bnuf3cmow89dfzkturtdtf1/ushatava_fw4_6136.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -873,18 +889,10 @@
    "kind": "dream"
   },
   {
-   "name": "Короткие митенки",
-   "price": 7900,
-   "url": "https://www.ushatava.ru/store/w/novinki/korotkie-mitenki-83920/",
-   "img": "https://www.ushatava.ru/upload/iblock/90b/dht3fuhn58vqem28oztsarpssbf65icj/172.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто",
-   "price": 57900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/",
-   "img": "https://www.ushatava.ru/upload/iblock/73a/naa7drfwkrmoevr6m7ltb7soq1ids549/ushatava_ctlg_fw3_1556.jpg",
+   "name": "Шарф с капюшоном",
+   "price": 29900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-ushatava-s-kapyushonom-83930/",
+   "img": "https://www.ushatava.ru/upload/iblock/ca0/awie3cz2ippyy4n89ohxg5h960n5nxug/ushatava_fw4_5296_1_.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -893,6 +901,14 @@
    "price": 19900,
    "url": "https://www.ushatava.ru/store/w/novinki/bluzka-iz-shifona-80718/",
    "img": "https://www.ushatava.ru/upload/iblock/538/e8b9wqixbi69vll7l2lyqp3g66yz46f6/87.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто",
+   "price": 57900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-83965/",
+   "img": "https://www.ushatava.ru/upload/iblock/73a/naa7drfwkrmoevr6m7ltb7soq1ids549/ushatava_ctlg_fw3_1556.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -921,22 +937,6 @@
    "kind": "dream"
   },
   {
-   "name": "Шарф с капюшоном",
-   "price": 29900,
-   "url": "https://www.ushatava.ru/store/w/novinki/sharf-ushatava-s-kapyushonom-83930/",
-   "img": "https://www.ushatava.ru/upload/iblock/ca0/awie3cz2ippyy4n89ohxg5h960n5nxug/ushatava_fw4_5296_1_.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Лонгслив Henley",
-   "price": 10900,
-   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
-   "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Лонгслив Henley",
    "price": 10900,
    "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83571/",
@@ -961,10 +961,18 @@
    "kind": "dream"
   },
   {
-   "name": "Бомбер-худи",
-   "price": 45900,
-   "url": "https://www.ushatava.ru/store/w/novinki/bomber-khudi-83871/",
-   "img": "https://www.ushatava.ru/upload/iblock/e63/3ca41kr4s3fgdadn3aab0lbvl8ofhq2l/ushatava_ctlg_fw3_1293.jpg",
+   "name": "Лонгслив Henley",
+   "price": 10900,
+   "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83579/",
+   "img": "https://www.ushatava.ru/upload/iblock/a80/x2kru0v7j4zkamogvhrrxpz81t4j3207/long.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Строгое пальто мини",
+   "price": 49900,
+   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/",
+   "img": "https://www.ushatava.ru/upload/iblock/eb4/c4vsethxsvqsn47srcyzvk7w2ph13208/ushatava_fw4_5501.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -989,14 +997,6 @@
    "price": 24900,
    "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-sviter-knot-83421/",
    "img": "https://www.ushatava.ru/upload/iblock/6d3/8dajas37ncz15ehqjw0jhmhsad98lq89/lamoda3_0000_1.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
-   "name": "Строгое пальто мини",
-   "price": 49900,
-   "url": "https://www.ushatava.ru/store/w/novinki/strogoe-palto-mini-050b-83981/",
-   "img": "https://www.ushatava.ru/upload/iblock/eb4/c4vsethxsvqsn47srcyzvk7w2ph13208/ushatava_fw4_5501.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   },
@@ -1883,14 +1883,6 @@
  ],
  "STUDIO 29": [
   {
-   "name": "Пуховик на кулиске",
-   "price": 11900,
-   "url": "https://studio-29.ru/products/puhovik-na-kuliske-krasnyiy-6-112901",
-   "img": "https://avatars.mds.yandex.net/get-yastore/21127450/x2rqfc2m8bvvrtj6dl9cb4z54vwjl779/optimize",
-   "shop": "STUDIO 29",
-   "kind": "daily"
-  },
-  {
    "name": "Парка из плащевой ткани с хлопком",
    "price": 15900,
    "url": "https://studio-29.ru/products/parka-iz-plashchevoiy-tkani-s-hlopkom-krasnyiy-4-112918",
@@ -1913,102 +1905,110 @@
    "img": "https://avatars.mds.yandex.net/get-yastore/20896824/sgxhm7fd2frlk26xhbk7l4vkmg5w7ghd/optimize",
    "shop": "STUDIO 29",
    "kind": "daily"
+  },
+  {
+   "name": "Пальто утепленное с тонким поясом",
+   "price": 9900,
+   "url": "https://studio-29.ru/products/palto-uteplennoe-s-tonkim-poyasom-siniiy-1-101040",
+   "img": "https://avatars.mds.yandex.net/get-yastore/20580517/2nsbl8g86jxr8mnpfb48cll296zljgsz/optimize",
+   "shop": "STUDIO 29",
+   "kind": "daily"
   }
  ],
  "ALL WE NEED": [
   {
-   "name": "Капор ажурный",
-   "price": 6900,
-   "url": "https://allweneed.ru/product/kapor-azhurnyj-molochnyj-190799",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/01/2025-10-031107_2.jpg.844x1266_q90.jpg",
+   "name": "Корсет",
+   "price": 11900,
+   "url": "https://allweneed.ru/product/korset-chernyj-280706",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_4.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Шуба из шерсти мериноса",
-   "price": 69900,
-   "url": "https://allweneed.ru/product/palto-iz-shersti-merinosa-bezhevyj-265837",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5704-02_4.jpg.844x1266_q90.jpg",
+   "name": "Брюки струящиеся",
+   "price": 12900,
+   "url": "https://allweneed.ru/product/brjuki-strujaschiesja-chernyj-280188",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_11.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Шапка из шерсти мериноса",
-   "price": 5900,
-   "url": "https://allweneed.ru/product/shapka-iz-shersti-merinosa-sero-korichnevyj-277498",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6612-53_1.jpg.844x1266_q90.jpg",
+   "name": "Жилет из жаккардовой ткани",
+   "price": 12900,
+   "url": "https://allweneed.ru/product/zhilet-iz-zhakkardovoj-tkani-chernyj-280650",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_2.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Джемпер с шерстью енота",
-   "price": 18900,
-   "url": "https://allweneed.ru/product/dzhemper-s-sherstju-enota-mjatnyj-272809",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/09/2609W35108P-65_1.jpg.844x1266_q90.jpg",
+   "name": "Воротник с лентами",
+   "price": 3900,
+   "url": "https://allweneed.ru/product/vorotnik-s-lentami-molochnyj-282471",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_52.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Юбка с шерстью енота",
-   "price": 15900,
-   "url": "https://allweneed.ru/product/jubka-s-sherstju-enota-mjatnyj-279835",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/2610W3707P-65_1.jpg.844x1266_q90.jpg",
+   "name": "Юбка из кружева со сборкой",
+   "price": 12900,
+   "url": "https://allweneed.ru/product/jubka-iz-kruzheva-so-sborkoj-molochnyj-280720",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_14.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Пуховик с поясом",
-   "price": 29900,
-   "url": "https://allweneed.ru/product/puhovik-s-pojasom-korichnevyj-271147",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5903-19_1.jpg.844x1266_q90.jpg",
+   "name": "Платье мини с лентами",
+   "price": 17900,
+   "url": "https://allweneed.ru/product/plate-mini-s-lentami-chernyj-280651",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_6.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Шарф из шерсти мериноса",
-   "price": 9900,
-   "url": "https://allweneed.ru/product/sharf-iz-shersti-merinosa-slivovyj-277502",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6136-016_1.jpg.844x1266_q90.jpg",
+   "name": "Платье-комбинация",
+   "price": 19900,
+   "url": "https://allweneed.ru/product/plate-kombinatsija-bordovyj-280718",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_24.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Джемпер из хлопка с шерстью",
-   "price": 13900,
-   "url": "https://allweneed.ru/product/dzhemper-iz-hlopka-s-sherstju-bordovyj-272203",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2608W35101-019_2.jpg.844x1266_q90.jpg",
-   "shop": "ALL WE NEED",
-   "kind": "daily"
-  },
-  {
-   "name": "Рубашка в клетку",
-   "price": 10900,
-   "url": "https://allweneed.ru/product/rubashka-v-kletku-sero-bordovaja-kletka-267225",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/09/2608W1382-146_1.jpg.844x1266_q90.jpg",
-   "shop": "ALL WE NEED",
-   "kind": "daily"
-  },
-  {
-   "name": "Джинсы объемного силуэта",
-   "price": 14900,
-   "url": "https://allweneed.ru/product/dzhinsy-obemnogo-silueta-goluboj-273294",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W4640-17_2.jpg.844x1266_q90.jpg",
-   "shop": "ALL WE NEED",
-   "kind": "daily"
-  },
-  {
-   "name": "Пуховик объемный",
+   "name": "Жакет со съемным шарфом",
    "price": 27900,
-   "url": "https://allweneed.ru/product/puhovik-obemnyj-chernyj-271146",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5930-01_1.jpg.844x1266_q90.jpg",
+   "url": "https://allweneed.ru/product/zhaket-so-semnym-sharfom-chernyj-280588",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_13.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   },
   {
-   "name": "Шапка из шерсти мериноса",
-   "price": 6900,
-   "url": "https://allweneed.ru/product/shapka-iz-shersti-merinosa-krasnyj-277500",
-   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6612-07_1.jpg.844x1266_q90.jpg",
+   "name": "Жакет приталенный",
+   "price": 22900,
+   "url": "https://allweneed.ru/product/zhaket-pritalennyj-bordovyj-280705",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_21.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Брюки струящиеся",
+   "price": 12900,
+   "url": "https://allweneed.ru/product/brjuki-strujaschiesja-goluboj-280716",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_32.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Блуза без рукавов",
+   "price": 9900,
+   "url": "https://allweneed.ru/product/bluza-bez-rukavov-chernyj-280186",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_46.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Бомбер из фактурной ткани",
+   "price": 15900,
+   "url": "https://allweneed.ru/product/bomber-iz-fakturnoj-tkani-rozovyj-280184",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/Frame_49.jpg.844x1266_q90.jpg",
    "shop": "ALL WE NEED",
    "kind": "daily"
   }
