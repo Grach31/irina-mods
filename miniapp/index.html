@@ -30,7 +30,7 @@ if(tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
-const imageFor=d=>{let p=d.id;return BASE+'drafts/img/'+encodeURIComponent(p)+'.jpg'};
+const imageFor=d=>{return 'media/'+encodeURIComponent(d.id)+'.jpg'};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 async function load(){
  $('list').innerHTML='<div class="loader">Загружаю материалы…</div>';
