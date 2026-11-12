@@ -277,9 +277,9 @@ html.oura-active{color-scheme:dark}
 <p id="pwaLoginStatus" aria-live="polite">Чтобы получить код, открой в Telegram бота Moda → /app → My Space → «Подключить Safari».</p>
 </div>
 </section>
-<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM + SAFARI</div>
+<section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
 <button type="button" class="pwa-pair-trigger hidden" id="pwaPairBtn">＋ Подключить Safari / экран iPhone</button>
-<button type="button" class="pwa-hub-logout" id="pwaLogout">Выйти из Safari</button>
+
 <div class="pwa-pair hidden" id="pwaPairPanel">
 <strong>Одноразовый код для Safari</strong>
 <p>Открой My Space в Safari, вставь этот код и нажми «Подключить». Код действует 10 минут и используется только один раз.</p>
@@ -288,10 +288,48 @@ html.oura-active{color-scheme:dark}
 <small id="pwaPairNote"></small>
 </div>
 </div><div class="hub-cards">
-<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
-<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button><button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><span class="news-visual-label" aria-hidden="true">F.</span></div><div class="hub-card-body"><strong>Новости моды</strong><small>Fashion Daily · мировая редакционная лента</small><span class="go">Читать выпуск →</span></div></button>
+<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.webp" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
+<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.webp" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
+<button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.webp" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
+<button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><span aria-hidden="true">◌</span></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
+<button id="openTrends" class="hub-card hub-card-extra"><div class="hub-visual hub-trends"><span aria-hidden="true">✳</span></div><div class="hub-card-body"><strong>Trend Radar</strong><small>Мировые и российские тенденции</small></div></button>
+<button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><span aria-hidden="true">1947 — 2026</span></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
 </div></section>
 
+<section class="myspace-extra hidden" id="settingsSpace">
+<header class="myspace-top"><button class="myspace-return" type="button" id="settingsBack">← Все разделы</button></header>
+<div class="myspace-extra-inner">
+<div class="myspace-kicker">MY SPACE / PREFERENCES</div><h1>Настройки</h1>
+<div class="myspace-setting-group">
+<div class="myspace-setting-row"><span>♙</span><div><strong>Аккаунт</strong><small id="settingsAccount">Текущая авторизация My Space</small></div></div>
+<div class="myspace-setting-row"><span>♧</span><div><strong>Уведомления</strong><small>Уведомления приложения будут доступны после настройки разрешений</small></div></div>
+<div class="myspace-setting-row"><span>🌐</span><div><strong>Язык</strong><small>Русский</small></div></div>
+<div class="myspace-setting-row"><span>ⓘ</span><div><strong>О приложении</strong><small>My Space · Safari и Telegram</small></div></div>
+</div>
+<div class="myspace-setting-group"><h2>Оформление</h2><p>Выбранная тема сохраняется на этом устройстве.</p>
+<div class="myspace-themes" role="group" aria-label="Тема оформления">
+<button type="button" class="myspace-theme" data-theme-choice="auto">Автоматически <small>Как на iPhone</small></button>
+<button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
+<button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
+</div></div>
+<button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
+</div>
+</section>
+<section class="myspace-extra hidden" id="reelsSpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="reelsBack">← Все разделы</button><span>CONTENT STUDIO</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">CREATIVE / DAILY IDEAS</div><h1>Reels Studio.</h1>
+<p class="myspace-intro">Идеи Reels, сценарии, визуальные акценты и планы монтажа для стилиста.</p>
+<div id="reelsItems" class="myspace-extra-list"><p>Загрузка идей…</p></div></div></section>
+<section class="myspace-extra hidden" id="trendsSpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="trendsBack">← Все разделы</button><span>WEEKLY INTELLIGENCE</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">STYLE INSIGHTS</div><h1>Trend Radar.</h1>
+<p class="myspace-intro">Наблюдения за изменениями в моде. Отдельно отмечаем подтверждённые факты и гипотезы.</p>
+<div id="trendsItems" class="myspace-extra-list"><p>Загрузка аналитики…</p></div></div></section>
+<section class="myspace-extra hidden" id="historySpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="historyBack">← Все разделы</button><span>FASHION HISTORY</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">THEN / NOW</div><h1>Style Time Machine.</h1>
+<p class="myspace-intro">Путешествие через эпохи, коллекции и знаковые силуэты.</p>
+<div id="historyItems" class="myspace-extra-list"><p>Загрузка историй…</p></div></div></section>
 <section class="fashion-space hidden" id="fashionSpace">
 <header class="fashion-top"><button class="fashion-back" type="button" id="fashionBack">← Все разделы</button><span class="fashion-top-meta">MY SPACE / FASHION DAILY</span></header>
 <div class="fashion-inner">
@@ -310,7 +348,7 @@ html.oura-active{color-scheme:dark}
 <div class="oura-inner">
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
-<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="data:image/webp;base64,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"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
+<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.webp"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
 <div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
