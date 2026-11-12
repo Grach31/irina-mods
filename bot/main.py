@@ -138,9 +138,17 @@ def on_button(state, q):
 def on_message(state, requests, m):
     uid = m.get("from", {}).get("id")
     chat = m["chat"]["id"]
-    if uid not in config.ALLOWED or m["chat"]["type"] != "private":
+    if m["chat"]["type"] != "private":
         return
     text = (m.get("text") or m.get("caption") or "").strip()
+    if uid not in config.ALLOWED:
+        if text.split()[0:1] in (["/start"], ["/panel"]):
+            tg.call("sendMessage", chat_id=chat, text=(
+                "Доступ к панели Stambo.i ограничен. "
+                "Этот Telegram-аккаунт не добавлен в список редакторов. "
+                "Попроси владельца проекта добавить твой Telegram ID в настройки бота."
+            ))
+        return
     if text.split()[0:1] == ["/panel"]:
         widget.send(chat)
         return
