@@ -461,14 +461,90 @@ const showSpace=space=>{
  $('hub').classList.toggle('hidden',space!=='hub');
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
+ $('fashionSpace').classList.toggle('hidden',space!=='fashion');
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')loadOura();
+ if(space==='fashion')loadFashion();
 };
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
+$('openFashion').onclick=()=>showSpace('fashion');
+$('fashionBack').onclick=()=>showSpace('hub');
 $('ouraBack').onclick=()=>showSpace('hub');
 if(isTelegramClient&&tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+let fashionDigest=null,fashionCategory='Все',fashionSelected=null,fashionLoading=null;
+const fashionCategories=['Все','Дома моды','Коллаборации','Кампании','Бизнес','Тренды','Архив'];
+const fashionSafeUrl=value=>{
+ try{const u=new URL(value);return u.protocol==='https:'&&/^(www\.)?(vogue\.com|fashionunited\.com|businessoffashion\.com|wwd\.com|harpersbazaar\.com|highsnobiety\.com)$/i.test(u.hostname)?u.href:null}catch{return null}
+};
+const fashionArt=d=>{
+ const label=escapeHtml(String(d.brand||'FASHION').slice(0,34));
+ const local=(typeof d.image==='string'&&/^images\/fashion\/[a-zA-Z0-9_.-]+\.(jpg|png|webp)$/.test(d.image)&&d.image_rights==='licensed')?d.image:null;
+ return local?'<div class="fashion-artwork" style="background:#37303a"><img alt="'+label+'" loading="lazy" style="width:100%;height:100%;object-fit:cover" src="'+local+'"></div>':
+ '<div class="fashion-artwork"><strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small></div>';
+};
+const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):'Дата не указана';
+function fashionCard(item){
+ const url=fashionSafeUrl(item.url);
+ if(!url||!item.title||!item.summary||!item.id)return null;
+ const button=document.createElement('button');button.type='button';button.className='fashion-story';
+ button.innerHTML=fashionArt(item)+'<div class="fashion-story-body"><div class="fashion-story-meta">'+escapeHtml(item.category||'Мода')+' · '+escapeHtml(item.source||'Источник')+' · '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p>'+escapeHtml(item.summary)+'</p><div class="fashion-story-more">Читать обзор →</div></div>';
+ button.onclick=()=>fashionOpen(item);
+ return button;
+}
+function fashionRender(){
+ const list=$('fashionList'),filters=$('fashionFilters');filters.replaceChildren();list.replaceChildren();
+ $('fashionArticle').classList.add('hidden');$('fashionArticle').replaceChildren();
+ const digest=fashionDigest||{},items=Array.isArray(digest.items)?digest.items.filter(d=>fashionSafeUrl(d.url)):[];
+ $('fashionEdition').textContent='Выпуск: '+fashionDate(digest.edition_date)+(digest.editor_note?' · редакционная подборка':'');
+ $('fashionCount').textContent=items.length+' материалов';
+ const present=['Все',...fashionCategories.slice(1).filter(c=>items.some(x=>x.category===c))];
+ present.forEach(cat=>{const b=document.createElement('button');b.type='button';b.textContent=cat;b.classList.toggle('active',cat===fashionCategory);b.onclick=()=>{fashionCategory=cat;fashionRender()};filters.appendChild(b)});
+ const show=items.filter(x=>fashionCategory==='Все'||x.category===fashionCategory);
+ if(!show.length){list.innerHTML='<div class="fashion-empty">В этом разделе пока нет проверенных материалов.</div>';return}
+ show.forEach(item=>{const b=fashionCard(item);if(b)list.appendChild(b)});
+}
+function fashionOpen(item){
+ const article=$('fashionArticle');article.replaceChildren();
+ $('fashionList').classList.add('hidden');$('fashionFilters').classList.add('hidden');
+ const url=fashionSafeUrl(item.url);if(!url)return;
+ const card=document.createElement('article');card.className='fashion-article';
+ const detail=Array.isArray(item.details)?item.details.slice(0,5):[];
+ card.innerHTML=fashionArt(item)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+
+ (item.why?'<div class="editor-note"><strong>Почему это важно</strong><p>'+escapeHtml(item.why)+'</p></div>':'')+
+ '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Читать оригинал · '+escapeHtml(item.source||'Источник')+' ↗</a>'+
+ '<button type="button" class="fashion-post-disabled" disabled aria-disabled="true">Сформировать пост для Telegram · скоро</button><p class="fashion-rights">Кнопка пока не работает и ничего не публикует. Полные тексты и оригинальные фотографии — по ссылке на источник.</p></div>';
+ article.appendChild(card);
+ article.classList.remove('hidden');$('fashionBack').textContent='← К новостям';
+ $('fashionSpace').scrollTop=0;
+}
+$('fashionBack').onclick=()=>{
+ if(!$('fashionArticle').classList.contains('hidden')){
+  $('fashionArticle').classList.add('hidden');$('fashionList').classList.remove('hidden');
+  $('fashionFilters').classList.remove('hidden');$('fashionBack').textContent='← Все разделы';$('fashionSpace').scrollTop=0;return;
+ }
+ showSpace('hub');
+};
+async function loadFashion(){
+ if(fashionDigest){fashionRender();return}
+ if(fashionLoading)return fashionLoading;
+ fashionLoading=(async()=>{
+  try{
+   const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),12000);
+   try{
+    const r=await fetch('fashion-daily.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});
+    if(!r.ok)throw Error('HTTP '+r.status);
+    const d=await r.json();if(!d||!Array.isArray(d.items))throw Error('Unexpected edition');
+    fashionDigest=d;fashionRender();
+   }finally{clearTimeout(timer)}
+  }catch(e){$('fashionList').innerHTML='<div class="fashion-empty">Не удалось загрузить выпуск. Проверь соединение и открой раздел ещё раз.</div>'}
+  finally{fashionLoading=null}
+ })();
+ return fashionLoading;
+}
+
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
 const imageFor=d=>{return 'media/'+encodeURIComponent(d.id)+'.jpg'};
