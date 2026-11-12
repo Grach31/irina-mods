@@ -142,12 +142,24 @@ def on_message(state, requests, m):
         return
     text = (m.get("text") or m.get("caption") or "").strip()
     if uid not in config.ALLOWED:
-        if text.split()[0:1] in (["/start"], ["/panel"], ["/ping"]):
+        if text.split()[0:1] in (["/start"], ["/panel"], ["/ping"], ["/app"], ["/miniapp"]):
             tg.call("sendMessage", chat_id=chat, text=(
                 "Доступ к панели Stambo.i ограничен. "
                 "Этот Telegram-аккаунт не добавлен в список редакторов. "
                 "Попроси владельца проекта добавить твой Telegram ID в настройки бота."
             ))
+        return
+    if text.split()[0:1] in (["/app"], ["/miniapp"]):
+        tg.call("sendMessage", chat_id=chat, text=(
+            "Stambo.i — редакторская панель. Открывай черновики и фотографии "
+            "на весь экран. Публикация только после подтверждения."
+        ), reply_markup={"keyboard": [[{"text": "✦ Открыть Stambo.i",
+            "web_app": {"url": "https://grach31.github.io/irina-mods/miniapp/"}}]],
+            "resize_keyboard": True, "is_persistent": True})
+        return
+    if m.get("web_app_data"):
+        import miniapp
+        miniapp.handle(state, m, tg, config, now)
         return
     if text.split()[0:1] == ["/ping"]:
         tg.call("sendMessage", chat_id=chat, text="Stambo.i на связи ✅. Для панели отправь /panel.")
@@ -166,7 +178,7 @@ def on_message(state, requests, m):
         return
     if text.startswith("/start"):
         if uid in config.READ_ONLY:
-            tg.call("sendMessage", chat_id=chat, text="Доступ к Stambo.i открыт в режиме просмотра. Отправь /panel.")
+            tg.call("sendMessage", chat_id=chat, text="Доступ к Stambo.i открыт в режиме просмотра. Отправь /app.")
             return
         tg.call("sendMessage", chat_id=chat, text=(
             "Привет! Я помощник канала Stambo.i 🤍\n\n"
@@ -175,7 +187,7 @@ def on_message(state, requests, m):
             "или «пост про кожаные брюки», можно с ссылкой или фото — сделаю черновик в течение часа."))
         return
     if uid in config.READ_ONLY:
-        tg.call("sendMessage", chat_id=chat, text="У тебя доступ только к просмотру. Открой /panel.")
+        tg.call("sendMessage", chat_id=chat, text="У тебя доступ только к просмотру. Открой /app.")
         return
     photos = []
     if m.get("photo"):
