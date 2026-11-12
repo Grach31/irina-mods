@@ -33,18 +33,10 @@
    "kind": "daily"
   },
   {
-   "name": "Брюки на кулиске из 100% шерсти",
-   "price": 7999,
-   "url": "https://limestore.com/ru_ru/product/36732-7792_454_032_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/d2e24b46d67a54848b07eebc0eb851d3.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
    "name": "Кардиган на молнии из 100% шерсти",
    "price": 8999,
    "url": "https://limestore.com/ru_ru/product/36722-9552_454_032_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/13f09ff17fe55e5a89d04e7b585b1560.jpeg?w=1280&q=85",
+   "img": "https://a.cdn.lime-shine.com/p/d8a732d6fcd85815acb57040e9cf5db2.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -83,14 +75,6 @@
   {
    "name": "Лонгслив из шерстяного джерси",
    "price": 4599,
-   "url": "https://limestore.com/ru_ru/product/31425_3659_077-3659_077_211_koricnevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/0f7f2e8adfcf5b8b90b2ceea02cb5729.jpeg?w=1280&q=85",
-   "shop": "Lime",
-   "kind": "daily"
-  },
-  {
-   "name": "Лонгслив из шерстяного джерси",
-   "price": 4599,
    "url": "https://limestore.com/ru_ru/product/31425_3659_077-temno_seryi_melanz",
    "img": "https://a.cdn.lime-shine.com/p/9bef3c8f7ee95225b6d4518e982f4e8d.jpeg?w=1280&q=85",
    "shop": "Lime",
@@ -121,10 +105,10 @@
    "kind": "daily"
   },
   {
-   "name": "Атласное платье с шарфом-лавальер",
-   "price": 6999,
-   "url": "https://limestore.com/ru_ru/product/36137-1596_691_999_mnogocvetnyi",
-   "img": "https://a.cdn.lime-shine.com/p/f4163d7b85cc50d9903f0d6141a23ce4.jpeg?w=1280&q=85",
+   "name": "Мини-платье из вискозы",
+   "price": 8999,
+   "url": "https://limestore.com/ru_ru/product/39265-4842_144_540_pylno_lilovyi",
+   "img": "https://a.cdn.lime-shine.com/p/1b6a528b2cb35100899a262a6ea4c533.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
@@ -147,23 +131,23 @@
   {
    "name": "Брюки-джоггеры из шерстяного джерси",
    "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/31423_3666_077-3666_077_211_koricnevyi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/a75c474e38465736b993ce3cb0a2bc7c.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/31423_3666_077-temno_seryi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/b7b66d1392bc587b85bbef8afc799989.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   },
   {
    "name": "Брюки-джоггеры из шерстяного джерси",
    "price": 5999,
-   "url": "https://limestore.com/ru_ru/product/31423_3666_077-temno_seryi_melanz",
-   "img": "https://a.cdn.lime-shine.com/p/1eb5b8d53f995724a94a713b9aec9ad1.jpeg?w=1280&q=85",
+   "url": "https://limestore.com/ru_ru/product/31423_3666_077-3666_077_211_koricnevyi_melanz",
+   "img": "https://a.cdn.lime-shine.com/p/a75c474e38465736b993ce3cb0a2bc7c.jpeg?w=1280&q=85",
    "shop": "Lime",
    "kind": "daily"
   }
  ],
  "Love Republic": [
   {
-   "name": "Жакет женский",
+   "name": "Жакет",
    "price": 14999,
    "url": "https://loverepublic.ru/catalog/odezhda/zhakety/337460/",
    "img": "https://imgcdn.loverepublic.ru/upload/images/64522/thumb/600_9999/6452205605_3.jpg",
@@ -769,14 +753,6 @@
    "kind": "dream"
   },
   {
-   "name": "Тонкий меховой шарф",
-   "price": 13900,
-   "url": "https://www.ushatava.ru/store/w/novinki/tonkiy-mekhovoy-sharf-84288/",
-   "img": "https://www.ushatava.ru/upload/iblock/a1a/uxupky0pmmfsyaoaha6hvl9k1zohvf45/56.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Шуба с английским воротником",
    "price": 59900,
    "url": "https://www.ushatava.ru/store/w/novinki/shuba-mini-s-angliyskim-vorotnikom-84284/",
@@ -961,14 +937,6 @@
    "kind": "dream"
   },
   {
-   "name": "Кожаные джинсы Relaxed Fit",
-   "price": 89900,
-   "url": "https://www.ushatava.ru/store/w/novinki/kozhanye-dzhinsy-relaxed-fit-79185/",
-   "img": "https://www.ushatava.ru/upload/iblock/f5f/2z23391jqla3xb6324reee3z20azf3nj/ushatava_ctlg_fw3_2947.jpg",
-   "shop": "Ushatava",
-   "kind": "dream"
-  },
-  {
    "name": "Лонгслив Henley",
    "price": 10900,
    "url": "https://www.ushatava.ru/store/w/novinki/longsliv-henley-83571/",
@@ -1037,6 +1005,22 @@
    "price": 45900,
    "url": "https://www.ushatava.ru/store/w/novinki/pidzhak-subtle-83832/",
    "img": "https://www.ushatava.ru/upload/iblock/c7a/k201d26ebsstykyds8hxjjk2mialw3do/ushatava_ctlg_fw3_2461.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Брюки Baggy из футера",
+   "price": 16900,
+   "url": "https://www.ushatava.ru/store/w/novinki/bryuki-baggy-iz-futera-088a-81270/",
+   "img": "https://www.ushatava.ru/upload/iblock/17c/r4b5llu84wqcnvaax7a521px6nbrba0k/ushatava_ctlg_fw3_2196.jpg",
+   "shop": "Ushatava",
+   "kind": "dream"
+  },
+  {
+   "name": "Шерстяной шарф",
+   "price": 13900,
+   "url": "https://www.ushatava.ru/store/w/novinki/sharf-mini-83934/",
+   "img": "https://www.ushatava.ru/upload/iblock/6c9/340sj1h87ot8n84gd3eszx6jdyh2xkb2/13.jpg",
    "shop": "Ushatava",
    "kind": "dream"
   }
@@ -1448,7 +1432,7 @@
   },
   {
    "name": "новинка Шуба приталенная утепленная с тигровым принтом",
-   "price": 8999,
+   "price": 7999,
    "url": "https://befree.ru/zhenskaya/product/BF2641602038/99",
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641602038/BF2641602038_99_12.webp",
    "shop": "Befree",
@@ -1560,17 +1544,9 @@
   },
   {
    "name": "новинка Сапоги высокие с двойным голенищем",
-   "price": 6999,
+   "price": 4999,
    "url": "https://befree.ru/zhenskaya/product/BF2646685007/50",
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2646685007/BF2646685007_50_13.webp",
-   "shop": "Befree",
-   "kind": "daily"
-  },
-  {
-   "name": "новинка Шарф объемный пушистый",
-   "price": 2599,
-   "url": "https://befree.ru/zhenskaya/product/BF2645341011/50",
-   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2645341011/BF2645341011_50_13.webp",
    "shop": "Befree",
    "kind": "daily"
   },
@@ -1632,7 +1608,7 @@
   },
   {
    "name": "новинка Шуба короткая утепленная",
-   "price": 8999,
+   "price": 7999,
    "url": "https://befree.ru/zhenskaya/product/BF2641602024/99",
    "img": "https://imgcdn.befree.ru/storage/products/videos/BF2641/6020/BF2641602024_99_1/1280/BF2641602024_99_1.webp",
    "shop": "Befree",
@@ -1691,6 +1667,14 @@
    "price": 4299,
    "url": "https://befree.ru/zhenskaya/product/BF2641209083/102",
    "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209083/BF2641209083_102_1.webp",
+   "shop": "Befree",
+   "kind": "daily"
+  },
+  {
+   "name": "новинка Джинсы широкие блестящие с высокой посадкой",
+   "price": 4299,
+   "url": "https://befree.ru/zhenskaya/product/BF2641209047/109",
+   "img": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641209047/BF2641209047_109_1.webp",
    "shop": "Befree",
    "kind": "daily"
   }
@@ -1895,6 +1879,138 @@
    "img": "https://cdn.idol.ru/upload/resize_cache/items/38/id/430_932_1793957876/id6381917104_38_00.jpg",
    "shop": "IDOL",
    "kind": "dream"
+  }
+ ],
+ "STUDIO 29": [
+  {
+   "name": "Пуховик на кулиске",
+   "price": 11900,
+   "url": "https://studio-29.ru/products/puhovik-na-kuliske-krasnyiy-6-112901",
+   "img": "https://avatars.mds.yandex.net/get-yastore/21127450/x2rqfc2m8bvvrtj6dl9cb4z54vwjl779/optimize",
+   "shop": "STUDIO 29",
+   "kind": "daily"
+  },
+  {
+   "name": "Парка из плащевой ткани с хлопком",
+   "price": 15900,
+   "url": "https://studio-29.ru/products/parka-iz-plashchevoiy-tkani-s-hlopkom-krasnyiy-4-112918",
+   "img": "https://avatars.mds.yandex.net/get-yastore/20776375/8hblhkgq89rzqrdwwczrpz9jnm6ctv4f/optimize",
+   "shop": "STUDIO 29",
+   "kind": "daily"
+  },
+  {
+   "name": "Ветровка из плащевой ткани с принтом",
+   "price": 11900,
+   "url": "https://studio-29.ru/products/vetrovka-iz-plashchevoiy-tkani-s-printom-slivochnyiy-3-113089",
+   "img": "https://avatars.mds.yandex.net/get-yastore/21696355/s4fnq5pg2kvchg5vcct5zqsmnr7nm9v4/optimize",
+   "shop": "STUDIO 29",
+   "kind": "daily"
+  },
+  {
+   "name": "Тренч из плащевой ткани с хлопком",
+   "price": 11900,
+   "url": "https://studio-29.ru/products/trench-iz-plashchevoiy-tkani-s-hlopkom-chernyiy-2-112899",
+   "img": "https://avatars.mds.yandex.net/get-yastore/20896824/sgxhm7fd2frlk26xhbk7l4vkmg5w7ghd/optimize",
+   "shop": "STUDIO 29",
+   "kind": "daily"
+  }
+ ],
+ "ALL WE NEED": [
+  {
+   "name": "Капор ажурный",
+   "price": 6900,
+   "url": "https://allweneed.ru/product/kapor-azhurnyj-molochnyj-190799",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/01/2025-10-031107_2.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Шуба из шерсти мериноса",
+   "price": 69900,
+   "url": "https://allweneed.ru/product/palto-iz-shersti-merinosa-bezhevyj-265837",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5704-02_4.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Шапка из шерсти мериноса",
+   "price": 5900,
+   "url": "https://allweneed.ru/product/shapka-iz-shersti-merinosa-sero-korichnevyj-277498",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6612-53_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Джемпер с шерстью енота",
+   "price": 18900,
+   "url": "https://allweneed.ru/product/dzhemper-s-sherstju-enota-mjatnyj-272809",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/09/2609W35108P-65_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Юбка с шерстью енота",
+   "price": 15900,
+   "url": "https://allweneed.ru/product/jubka-s-sherstju-enota-mjatnyj-279835",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/11/2610W3707P-65_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Пуховик с поясом",
+   "price": 29900,
+   "url": "https://allweneed.ru/product/puhovik-s-pojasom-korichnevyj-271147",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5903-19_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Шарф из шерсти мериноса",
+   "price": 9900,
+   "url": "https://allweneed.ru/product/sharf-iz-shersti-merinosa-slivovyj-277502",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6136-016_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Джемпер из хлопка с шерстью",
+   "price": 13900,
+   "url": "https://allweneed.ru/product/dzhemper-iz-hlopka-s-sherstju-bordovyj-272203",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2608W35101-019_2.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Рубашка в клетку",
+   "price": 10900,
+   "url": "https://allweneed.ru/product/rubashka-v-kletku-sero-bordovaja-kletka-267225",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/09/2608W1382-146_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Джинсы объемного силуэта",
+   "price": 14900,
+   "url": "https://allweneed.ru/product/dzhinsy-obemnogo-silueta-goluboj-273294",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W4640-17_2.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Пуховик объемный",
+   "price": 27900,
+   "url": "https://allweneed.ru/product/puhovik-obemnyj-chernyj-271146",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2610W5930-01_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
+  },
+  {
+   "name": "Шапка из шерсти мериноса",
+   "price": 6900,
+   "url": "https://allweneed.ru/product/shapka-iz-shersti-merinosa-krasnyj-277500",
+   "img": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/10/2609W6612-07_1.jpg.844x1266_q90.jpg",
+   "shop": "ALL WE NEED",
+   "kind": "daily"
   }
  ]
 }
