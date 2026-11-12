@@ -386,6 +386,16 @@ let currentSpace='hub';
 const showSpace=space=>{
  if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
+ const dark=space==='oura';
+ document.documentElement.classList.toggle('oura-active',dark);
+ const bg=dark?'#0c0d19':'#f6f4ef';
+ const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg;
+ if(isTelegramClient&&tg){
+  try{tg.setHeaderColor?.(bg)}catch(e){}
+  try{tg.setBackgroundColor?.(bg)}catch(e){}
+  try{tg.setBottomBarColor?.(bg)}catch(e){}
+ }
+
  $('hub').classList.toggle('hidden',space!=='hub');
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
@@ -610,6 +620,43 @@ function stages(s){
  el.innerHTML='<svg viewBox="0 0 330 112" role="img" aria-label="Стадии сна в пятиминутных интервалах">'+
  [...phase].map((v,i)=>'<rect x="'+(8+i*unit).toFixed(2)+'" y="'+height[v]+'" width="'+Math.max(1.4,unit+.15).toFixed(2)+'" height="'+(98-height[v])+'" rx=".6" fill="'+palette[v]+'"/>').join('')+'</svg>';
 }
+function renderCycleDetails(cycle){
+ const c=cycle||{}, day=valid(c.day)?Math.round(c.day):null;
+ const avg=valid(c.avg_length)?Math.round(c.avg_length):null;
+ const knownStart=/^\d{4}-\d{2}-\d{2}$/.test(c.period_start||'');
+ setValue('cycleFeatureDay',day?'День '+day+' цикла':'История цикла');
+ setValue('cycleFeatureSubtitle',day?'Начало последнего периода: '+dayName(c.period_start):'Ожидаю отметку начала периода из Oura');
+ const place=$('cycleTimeline'),note=$('cycleTimelineNote');
+ place.replaceChildren();
+ if(!knownStart||day===null||day<1||day>180){
+  note.textContent='Пока нет подтверждённого начала периода. Лента не строится без реальных записей.';
+  setValue('cycleTimelineLabel','Нет данных');
+  return;
+ }
+ // Use only an actually recorded average. Never invent a typical 28-day cycle or ovulation date.
+ if(avg===null||avg<20||avg>40){
+  setValue('cycleTimelineLabel','Сегодня — день '+day);
+  const chip=document.createElement('span');chip.className='cycle-day-dot current';
+  chip.innerHTML='<span class="dot"></span><span>'+day+'</span>';chip.setAttribute('aria-label','Текущий день '+day);
+  place.append(chip);
+  note.textContent='Для полной ленты и прогноза нужно не менее двух подтверждённых начал периодов.';
+  return;
+ }
+ const length=Math.min(60,Math.max(avg,day));
+ setValue('cycleTimelineLabel','Средний цикл — '+avg+' дней');
+ for(let n=1;n<=length;n++){
+  const box=document.createElement('span');box.className='cycle-day-dot';
+  if(n===1)box.classList.add('period');
+  if(n===day){box.classList.add('current');box.setAttribute('aria-current','date')}
+  const dot=document.createElement('span');dot.className='dot';
+  const count=document.createElement('span');count.textContent=String(n);
+  box.append(dot,count);
+  box.title=(n===1?'Начало последнего отмеченного периода · ':'')+'День '+n+(n===day?' · сегодня':'');
+  place.append(box);
+ }
+ note.textContent=day>avg?'Сейчас день '+day+'; средняя длина по отметкам Oura — '+avg+' дней. Реальный цикл может отличаться.':'Точки — дни цикла. Розовая первая точка обозначает зафиксированное начало периода, обводка — сегодняшний день.';
+ const active=place.querySelector('.current');if(active)requestAnimationFrame(()=>active.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'}));
+}
 function renderOura(d){
  ouraLive=d;
  const sl=d.sleep||{}, sd=sl.detail||{}, r=d.readiness||{}, ac=d.activity||{}, cy=d.cycle||{};
@@ -626,6 +673,7 @@ function renderOura(d){
  setValue('cycleStart',dayName(cy.period_start));
  setValue('cycleAverage',valid(cy.avg_length)?cy.avg_length+' дней':'—');
  setValue('cycleNext',dayName(cy.predicted_next));
+ renderCycleDetails(cy);
  setValue('cycleNote',cy.has_history&&cy.predicted_next?'Прогноз ориентировочный и основан на записанных циклах. Он не заменяет медицинскую консультацию.':'Для прогноза нужно не менее двух отмеченных начал менструации. При отсутствии данных ничего не рассчитывается.');
  setValue('activitySummary',ac.day?'Сведения за '+dayName(ac.day):'За последний синхронизированный день.');
  setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
