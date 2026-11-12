@@ -13,6 +13,8 @@ tg = types.ModuleType("tg")
 tg.call = lambda method, **kwargs: calls.append((method, kwargs)) or {"message_id": 1}
 config = types.ModuleType("config")
 config.ALLOWED = {42}
+config.READ_ONLY = set()
+config.DATA = str(ROOT)
 config.MSK = __import__("datetime").timezone(__import__("datetime").timedelta(hours=3))
 sys.modules["tg"] = tg
 sys.modules["config"] = config
@@ -56,6 +58,22 @@ class WidgetTests(unittest.TestCase):
         self.request(42, "ok:draft-test")
         self.assertEqual(self.state["drafts"]["draft-test"]["status"], "approved")
         self.assertIn("уже обработан", json.loads(calls[-1][1]["data"])["notice"])
+    def test_view_sends_photo_without_approval(self):
+        self.state["drafts"]["draft-test"]["file_id"] = "photo123"
+        # A minimal file fixture for the preview handler.
+        import tempfile
+        with tempfile.TemporaryDirectory() as base:
+            folder = pathlib.Path(base) / "drafts"
+            folder.mkdir()
+            (folder / "draft-test.json").write_text(json.dumps({"text": "Тестовый пост"}), encoding="utf-8")
+            previous = config.DATA
+            config.DATA = base
+            try:
+                self.request(42, "view:draft-test")
+            finally:
+                config.DATA = previous
+        self.assertEqual(self.state["drafts"]["draft-test"]["status"], "sent")
+        self.assertTrue(any(method == "sendPhoto" for method, _ in calls))
     def test_snapshot(self):
         self.assertEqual(json.loads(widget.snapshot(self.state))["pending"],1)
 if __name__=="__main__": unittest.main()
