@@ -262,6 +262,10 @@ html.oura-active{color-scheme:dark}
 .fashion-article-section p{margin:10px 0 13px}
 .fashion-story-more{display:inline-flex;gap:5px;align-items:center}
 .fashion-article .source-link{margin-top:24px;padding:12px 14px;border:1px solid #dbcabc;border-radius:10px;background:#f7eee6;text-decoration:none}
+
+.fashion-tags button:nth-child(2){border-color:#a66d56;color:#a05238}
+.fashion-tags button:nth-child(2).active{background:#9f563e;color:#fff;border-color:#9f563e}
+.fashion-story[data-region="ru"] .fashion-story-meta::before{content:"РОССИЯ · ";font-weight:700;color:#af6049}
 </style></head><body>
 <section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -481,9 +485,9 @@ if(isTelegramClient&&tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}cat
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 let fashionDigest=null,fashionCategory='Все',fashionSelected=null,fashionLoading=null;
-const fashionCategories=['Все','Дома моды','Коллаборации','Кампании','Бизнес','Тренды','Архив'];
+const fashionCategories=['Все','Российские','Дома моды','Коллаборации','Кампании','Бизнес','Тренды','Архив'];
 const fashionSafeUrl=value=>{
- try{const u=new URL(value);return u.protocol==='https:'&&/^(www\.)?(vogue\.com|vogue\.co\.uk|fashionunited\.com|businessoffashion\.com|wwd\.com|harpersbazaar\.com|highsnobiety\.com)$/i.test(u.hostname)?u.href:null}catch{return null}
+ try{const u=new URL(value);return u.protocol==='https:'&&/^(www\.)?(vogue\.com|vogue\.co\.uk|fashionunited\.com|businessoffashion\.com|wwd\.com|harpersbazaar\.com|highsnobiety\.com|theblueprint\.ru|buro247\.ru|style\.rbc\.ru|kommersant\.ru|moscowfashion\.ru|the-day\.ru|t-j\.ru|dresscodemag\.ru)$/i.test(u.hostname)?u.href:null}catch{return null}
 };
 const fashionArt=d=>{
  const label=escapeHtml(String(d.brand||'FASHION').slice(0,34));
@@ -495,7 +499,7 @@ const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice
 function fashionCard(item){
  const url=fashionSafeUrl(item.url);
  if(!url||!item.title||!item.summary||!item.id)return null;
- const button=document.createElement('button');button.type='button';button.className='fashion-story';
+ const button=document.createElement('button');button.type='button';button.className='fashion-story';button.dataset.region=item.region||'world';
  button.innerHTML=fashionArt(item)+'<div class="fashion-story-body"><div class="fashion-story-meta">'+escapeHtml(item.category||'Мода')+' · '+escapeHtml(item.source||'Источник')+' · '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p>'+escapeHtml(item.summary)+'</p><div class="fashion-story-more">Читать обзор →</div></div>';
  button.onclick=()=>fashionOpen(item);
  return button;
@@ -505,10 +509,10 @@ function fashionRender(){
  $('fashionArticle').classList.add('hidden');$('fashionArticle').replaceChildren();
  const digest=fashionDigest||{},items=Array.isArray(digest.items)?digest.items.filter(d=>fashionSafeUrl(d.url)):[];
  $('fashionEdition').textContent='Выпуск: '+fashionDate(digest.edition_date)+(digest.editor_note?' · редакционная подборка':'');
- $('fashionCount').textContent=items.length+' материалов';
- const present=['Все',...fashionCategories.slice(1).filter(c=>items.some(x=>x.category===c))];
+ $('fashionCount').textContent=items.length+' материалов · '+items.filter(x=>x.region==='ru').length+' российских';
+ const present=['Все','Российские',...fashionCategories.slice(2).filter(c=>items.some(x=>x.category===c))];
  present.forEach(cat=>{const b=document.createElement('button');b.type='button';b.textContent=cat;b.classList.toggle('active',cat===fashionCategory);b.onclick=()=>{fashionCategory=cat;fashionRender()};filters.appendChild(b)});
- const show=items.filter(x=>fashionCategory==='Все'||x.category===fashionCategory);
+ const show=items.filter(x=>fashionCategory==='Все' || (fashionCategory==='Российские' ? x.region==='ru' : x.region!=='ru'&&x.category===fashionCategory)).sort((a,b)=>b.date.localeCompare(a.date));
  if(!show.length){list.innerHTML='<div class="fashion-empty">В этом разделе пока нет проверенных материалов.</div>';return}
  show.forEach(item=>{const b=fashionCard(item);if(b)list.appendChild(b)});
 }
