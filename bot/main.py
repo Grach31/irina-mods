@@ -157,7 +157,7 @@ def on_message(state, requests, m):
             "Для подтверждения публикаций используй команду /moda."
         ), reply_markup={"inline_keyboard": [[{
             "text": "✦ Открыть My Space",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-myspace-auth2"}
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-dashboard-full1"}
         }]]})
         return
     if text.split()[0:1] in (["/moda"], ["/editor"]):
