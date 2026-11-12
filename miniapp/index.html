@@ -707,7 +707,7 @@ document.addEventListener('touchstart',ev=>{
  if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
  const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
  if(!scroller||!scroller.contains(el))return;
- const nested=el.closest('.gallery,.fashion-tags,.oura-switch,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select');
+ const nested=el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select');
  msGesture={x:t.clientX,y:t.clientY,nearTop:scroller.scrollTop<=2,fromEdge:t.clientX<=34,nested:!!nested};
 },{passive:true});
 document.addEventListener('touchend',ev=>{
