@@ -1,6 +1,6 @@
 {
   "edition_date": "2026-11-12",
-  "updated_at": "2026-11-12T18:30:00+03:00",
+  "updated_at": "2026-11-12T19:49:50.604Z",
   "language": "ru",
   "edition_title": "Fashion Daily — 12 ноября",
   "editor_note": "Мировая подборка и отдельная вкладка «Российские» с проверенными редакционными материалами. Российские материалы первого наполнения датированы 2–3 ноября 2026 года; новые материалы будут добавляться по мере подтверждения.",
@@ -50,7 +50,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://media.vogue.co.uk/photos/6aed7cdc791bba39aa3a62f5/16:9/w_1280,c_limit/MARTINE-NEW-SOCIAL.jpg",
+      "image_source": "British Vogue",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-loewe-tim-burton",
@@ -97,7 +100,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://r.fashionunited.com/BrtAd9cE77zzN2ciUTaIyCkrFM9794R5vOZvn00uyv8/resize:fit:1200:630:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9pbWcvdXBsb2FkLzIwMjYvMTEvMDkvbG9ld2UtdGltLWJ1cnRvbi1uYXZpZGFkLTEtcHE2NXJyY2MtMjAyNi0xMS0wOS5qeGw.jpeg",
+      "image_source": "FashionUnited",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-capri-ceo",
@@ -144,7 +150,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://r.fashionunited.com/0vqWjEVikbRhAmdpAb99cvRMpWHPoYXUi7n1SYnUU-E/resize:fit:1200:630:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9pbWcvdXBsb2FkLzIwMjIvMDkvMjYvanVzdGluYi1oZWFkc2hvdC0yMDIyLW9jaXk4Y3YyLTIwMjItMDktMjYuanhs.jpeg",
+      "image_source": "FashionUnited",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-ebay-fashion-archives",
@@ -191,7 +200,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://r.fashionunited.com/swfXsUd4KD-QlQftOILtRWhDC-ahYa6s2bT_6dsuYqw/resize:fit:1200:630:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9pbWcvdXBsb2FkLzIwMjYvMTEvMTEvdGhlLWFyY2hpdmUtZWZmZWN0LXlidDh5eGt4LTIwMjYtMTEtMTEuanhs.jpeg",
+      "image_source": "FashionUnited",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-moncler-andre-3000",
@@ -238,7 +250,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://r.fashionunited.com/5fWT1N-r1uvgHWdA6IsEoTKsUpqWdTN-EBZVJ-g59ss/resize:fit:1200:630:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9pbWcvdXBsb2FkLzIwMjYvMTEvMDkvYW5kcmUtMzAwMC1yeHhyZTNyby0yMDI2LTExLTA5Lmp4bA.jpeg",
+      "image_source": "FashionUnited",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-max-mara-mm",
@@ -285,7 +300,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://r.fashionunited.com/ACkl67gZIE4lpxsHM-wPVbMPCWiSXUMfazBFp_9VDeA/resize:fit:1200:630:0/gravity:ce/quality:70/aHR0cHM6Ly9mYXNoaW9udW5pdGVkLmNvbS9pbWcvdXBsb2FkLzIwMjYvMTEvMDkvMzAtMDMtMjAyNi0wMDExLTYxMm0zM3ZvLTIwMjYtMTEtMDkuanhs.jpeg",
+      "image_source": "FashionUnited",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-burberry-daniel-lee",
@@ -332,7 +350,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://assets.vogue.com/photos/6af48d2f559da5a0db80bfd5/16:9/w_1280,c_limit/0006533-R1-00-20A_R1_RGB.jpg",
+      "image_source": "Vogue",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-lv-archive-kim",
@@ -379,7 +400,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://assets.vogue.com/photos/6af5a92bbfcd935d62a386dd/16:9/w_1280,c_limit/SnapInsta.to_902228669_18644075386034176_5966907638364990914_n.jpg",
+      "image_source": "Vogue",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "20261112-vogue-fw26-trends",
@@ -427,7 +451,10 @@
           ]
         }
       ],
-      "region": "world"
+      "region": "world",
+      "image_url": "https://assets.vogue.com/photos/6a55325385415eee2f879431/16:9/w_1280,c_limit/v2%20fashion%20trends%20lead%20holding.jpg",
+      "image_source": "Vogue",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "ru-20261103-theblueprint-young-designers",
@@ -468,7 +495,10 @@
             "Изучение молодых марок расширяет выбор за пределами привычных массовых брендов и помогает находить индивидуальные решения для гардероба."
           ]
         }
-      ]
+      ],
+      "image_url": "https://theblueprint.ru/upload/22407/social_image.png",
+      "image_source": "The Blueprint",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "ru-20261102-dotdays-local-brands",
@@ -509,7 +539,10 @@
             "Для читателей Fashion Daily это прежде всего источник новых имён. Перед покупкой стоит отдельно проверять ассортимент, доступность и качество каждой марки."
           ]
         }
-      ]
+      ],
+      "image_url": "https://theblueprint.ru/upload/42699/social_image.png",
+      "image_source": "The Blueprint",
+      "image_rights": "publisher_preview_hotlink"
     },
     {
       "id": "ru-20261103-november-fashion-digest",
@@ -550,7 +583,10 @@
             "При этом речь идёт о разных проектах, объединённых редакцией в одном тематическом дайджесте, а не об их совместной коллекции."
           ]
         }
-      ]
+      ],
+      "image_url": "https://the-day.ru/html-to-img/og/td69B32MJbZtIWWEmBVhJg/article-id76740045-16x9.jpg?1794396840",
+      "image_source": "theDay",
+      "image_rights": "publisher_preview_hotlink"
     }
   ]
 }

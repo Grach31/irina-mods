@@ -266,8 +266,98 @@ html.oura-active{color-scheme:dark}
 .fashion-tags button:nth-child(2){border-color:#a66d56;color:#a05238}
 .fashion-tags button:nth-child(2).active{background:#9f563e;color:#fff;border-color:#9f563e}
 .fashion-story[data-region="ru"] .fashion-story-meta::before{content:"РОССИЯ · ";font-weight:700;color:#af6049}
+
+/* My Space unified mobile polish, November 2026 */
+:root{--ms-page:#f6f4ef;--ms-card:#fffdfa;--ms-text:#1d1b1a;--ms-sub:#827c77;--ms-line:#ded5ca;--ms-accent:#8d5d45}
+html[data-ms-theme="dark"]{--bg:#12151d;--ink:#f3efea;--muted:#aea8a4;--border:#3b3d47;--card:#20222b;--ms-page:#12151d;--ms-card:#20222b;--ms-text:#f3efea;--ms-sub:#aaa7b2;--ms-line:#42434d;--ms-accent:#d3a88b;color-scheme:dark}
+html[data-ms-theme="light"]{color-scheme:light}
+html,body{background:var(--ms-page);color:var(--ms-text)}
+.hub{background:var(--ms-page);padding:calc(env(safe-area-inset-top,0px) + 66px) 18px calc(70px + env(safe-area-inset-bottom,0px))}
+.hub-header{text-align:center;max-width:680px;position:relative;margin:0 auto 33px;padding:0 48px}
+.hub-logo{font-size:clamp(36px,9vw,52px);letter-spacing:-2px;white-space:nowrap}
+.hub-sub{margin-top:13px;font-size:10px;letter-spacing:3.4px;white-space:nowrap}
+.hub-settings-trigger{position:absolute;right:0;top:0;width:46px;height:46px;display:grid;place-items:center;background:var(--ms-card);color:var(--ms-text);border:1px solid var(--ms-line);border-radius:16px;font-size:25px;line-height:1}
+.hub-cards{gap:12px}
+.hub-card{background:var(--ms-card);color:var(--ms-text);border-color:var(--ms-line);border-radius:17px;min-height:0}
+.hub-card:focus-visible,.hub-settings-trigger:focus-visible,.myspace-return:focus-visible{outline:2px solid var(--ms-accent);outline-offset:3px}
+.hub-visual{height:clamp(180px,47vw,290px);width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hub-visual img{width:100%;height:100%;object-fit:cover}
+.hub-card-body{padding:15px 14px 19px}
+.hub-card-body strong{font-size:clamp(23px,5vw,30px)}
+.hub-card-body small{color:var(--ms-sub);font-size:11px;margin:7px 0 0}
+.hub-card-body .go{display:none!important}
+.hub-card-news{grid-column:1/-1;display:flex!important;flex-direction:column!important}
+.hub-card-news .hub-visual{width:100%!important;min-width:0!important;height:clamp(215px,52vw,350px);min-height:0}
+.hub-card-news .hub-card-body{width:100%;padding:18px 17px 22px}
+.hub-card-news .hub-card-body strong{font-size:32px}
+.hub-card-extra .hub-visual{height:170px}
+.hub-reels{background:linear-gradient(145deg,#d9bba4,#5d454d);color:#fff4e6}
+.hub-trends{background:linear-gradient(135deg,#253c4c,#908372);color:#f9eddd}
+.hub-history{background:linear-gradient(145deg,#372f36,#ad8a70);color:#fff4e6}
+.hub-card-extra .hub-visual span{font:normal 48px Georgia,serif;letter-spacing:-1px}
+.hub-history span{font-size:38px!important}
+.space-back,.fashion-back,.myspace-return,.detail-top .back,.top-hub-return{min-height:46px!important;min-width:0!important;display:inline-flex;align-items:center;justify-content:center;border:1px solid currentColor!important;border-radius:999px!important;padding:11px 19px!important;background:transparent!important;color:inherit;font-size:13px!important;letter-spacing:0!important;font-weight:650;white-space:nowrap;line-height:1.1}
+.fashion-top{padding:calc(env(safe-area-inset-top,0px) + 13px) 14px 13px;gap:10px;flex-wrap:wrap;align-items:center}
+.fashion-top-meta{font-size:9px;letter-spacing:.8px;min-width:0;white-space:normal;max-width:42%;text-align:right}
+.oura-space .space-head{padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 12px!important}
+.oura-space .space-back{color:#edeaf3!important;border-color:#6b6b81!important}
+.shell .top{padding-top:5px}
+.top-hub-return{background:var(--ms-card)!important;color:var(--ms-text)!important;border-color:var(--ms-line)!important;margin:0 0 14px}
+.detail:before{height:calc(env(safe-area-inset-top,0px) + 18px)}
+.detail-top{top:0}
+.oura-hero{background:#101a2c!important}
+.oura-hero img{filter:none!important;object-fit:cover;object-position:center}
+.myspace-extra{position:fixed;inset:0;z-index:43;background:var(--ms-page);color:var(--ms-text);overflow-y:auto;overscroll-behavior-y:contain;padding-bottom:calc(45px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch}
+.myspace-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 13px) 18px 13px;position:sticky;top:0;z-index:5;background:var(--ms-page);border-bottom:1px solid var(--ms-line)}
+.myspace-top span{font-size:10px;letter-spacing:1.2px;color:var(--ms-sub);text-align:right}
+.myspace-extra-inner{max-width:680px;margin:0 auto;padding:29px 20px 50px}
+.myspace-kicker{font-size:10px;letter-spacing:3px;color:var(--ms-accent);font-weight:650;margin-bottom:11px}
+.myspace-extra h1{font:normal clamp(35px,10vw,52px)/1.07 Georgia,serif;margin:0 0 14px;letter-spacing:-1.5px}
+.myspace-intro{font-size:13px;line-height:1.6;color:var(--ms-sub);margin:0 0 25px}
+.myspace-setting-group,.myspace-idea{background:var(--ms-card);border:1px solid var(--ms-line);border-radius:17px;padding:18px;margin-bottom:15px}
+.myspace-setting-group h2{font:normal 25px Georgia,serif;margin:0 0 10px}
+.myspace-setting-group p{font-size:12px;color:var(--ms-sub);margin:0 0 17px}
+.myspace-setting-row{display:flex;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid var(--ms-line)}
+.myspace-setting-row:last-child{border:0}
+.myspace-setting-row>span{font-size:22px;min-width:26px;text-align:center}
+.myspace-setting-row strong{font-size:14px}
+.myspace-setting-row small{display:block;font-size:11px;color:var(--ms-sub);line-height:1.5;margin-top:4px}
+.myspace-themes{display:grid;gap:8px}
+.myspace-theme{border:1px solid var(--ms-line);border-radius:12px;padding:12px 14px;background:transparent;color:var(--ms-text);font-size:14px;text-align:left}
+.myspace-theme small{display:block;font-size:11px;color:var(--ms-sub);margin-top:3px}
+.myspace-theme.selected{border-color:var(--ms-accent);box-shadow:0 0 0 1px var(--ms-accent)}
+.myspace-theme.selected:before{content:'✓';float:right;font-weight:700;color:var(--ms-accent)}
+[hidden]{display:none!important}.myspace-logout{display:block;width:100%;padding:15px;background:transparent;border:1px solid #bf6f6f;border-radius:15px;color:#b65253;font-size:14px;font-weight:650}
+.myspace-extra-list{display:grid;gap:14px}
+.myspace-idea h2{font:normal 27px Georgia,serif;margin:7px 0 10px}
+.myspace-idea p{font-size:13px;line-height:1.65;color:var(--ms-sub)}
+.myspace-idea-meta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-accent)}
+.myspace-idea button{border:1px solid var(--ms-line);border-radius:999px;padding:11px 16px;background:transparent;color:var(--ms-text);font-size:12px}
+.myspace-idea-detail{padding:14px 3px 0;border-top:1px solid var(--ms-line);margin-top:12px}
+.myspace-idea-detail strong{display:block;font-size:12px;margin:12px 0 5px}
+.myspace-idea-detail ul{padding-left:20px;font-size:12px;line-height:1.75;color:var(--ms-sub)}
+html[data-ms-theme=dark] .hub,html[data-ms-theme=dark] .fashion-space,html[data-ms-theme=dark] .shell,html[data-ms-theme=dark] .detail{background:var(--ms-page);color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-story,html[data-ms-theme=dark] .fashion-article,html[data-ms-theme=dark] .fashion-empty{background:var(--ms-card);color:var(--ms-text);border-color:var(--ms-line)}
+html[data-ms-theme=dark] .fashion-inner,html[data-ms-theme=dark] .fashion-story-body,html[data-ms-theme=dark] .fashion-article-body{color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-story p,html[data-ms-theme=dark] .fashion-article p,html[data-ms-theme=dark] .fashion-lede{color:var(--ms-sub)}
+html[data-ms-theme=dark] .fashion-top{background:#20222bf4;color:var(--ms-text)}
+html[data-ms-theme=dark] .fashion-tags button{color:var(--ms-text);border-color:var(--ms-line)}
+html[data-ms-theme=dark] .fashion-tags button.active{background:#ded0bd;color:#171717}
+html[data-ms-theme=dark] .stats .stat,html[data-ms-theme=dark] .draft{background:var(--ms-card);color:var(--ms-text)}
+html[data-ms-theme=dark] .nav,html[data-ms-theme=dark] .detail-top,html[data-ms-theme=dark] .detail-actions{background:#20222bf2;color:var(--ms-text)}
+#pullIndicator{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 9px);left:50%;transform:translate(-50%,-110px);height:46px;min-width:46px;display:flex;align-items:center;gap:9px;border:1px solid var(--ms-line);background:var(--ms-card);color:var(--ms-text);box-shadow:0 9px 30px #0003;border-radius:999px;padding:0 13px;transition:transform .25s}
+#pullIndicator.shown{transform:translate(-50%,0)}
+#pullIndicator .pull-ring{width:19px;height:19px;border:2px solid #a0a0af;border-top-color:var(--ms-accent);border-radius:50%;animation:ms-spin .75s linear infinite}
+#pullIndicator span{font-size:11px}
+@keyframes ms-spin{to{transform:rotate(360deg)}}
+@media(max-width:390px){.hub-header{padding:0 37px}.hub-sub{letter-spacing:2.1px;font-size:9px}.hub-settings-trigger{width:40px;height:40px;font-size:21px}.hub-card-body strong{font-size:23px}.hub-card-news .hub-card-body strong{font-size:29px}}
+
+.fashion-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
+.fashion-artwork.has-photo:before,.fashion-artwork.has-photo strong{display:none}
+.fashion-artwork.has-photo small{z-index:2;color:#fff;text-shadow:0 1px 5px #000c;background:#0007;border-radius:4px;padding:5px 7px;max-width:88%}
+.fashion-article .fashion-artwork{height:clamp(210px,58vw,340px)}
 </style></head><body>
-<section class="pwa-gate hidden" id="pwaGate">
+<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
@@ -277,9 +367,9 @@ html.oura-active{color-scheme:dark}
 <p id="pwaLoginStatus" aria-live="polite">Чтобы получить код, открой в Telegram бота Moda → /app → My Space → «Подключить Safari».</p>
 </div>
 </section>
-<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM + SAFARI</div>
+<section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
 <button type="button" class="pwa-pair-trigger hidden" id="pwaPairBtn">＋ Подключить Safari / экран iPhone</button>
-<button type="button" class="pwa-hub-logout" id="pwaLogout">Выйти из Safari</button>
+
 <div class="pwa-pair hidden" id="pwaPairPanel">
 <strong>Одноразовый код для Safari</strong>
 <p>Открой My Space в Safari, вставь этот код и нажми «Подключить». Код действует 10 минут и используется только один раз.</p>
@@ -288,10 +378,48 @@ html.oura-active{color-scheme:dark}
 <small id="pwaPairNote"></small>
 </div>
 </div><div class="hub-cards">
-<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
-<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button><button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><span class="news-visual-label" aria-hidden="true">F.</span></div><div class="hub-card-body"><strong>Новости моды</strong><small>Fashion Daily · мировая редакционная лента</small><span class="go">Читать выпуск →</span></div></button>
+<button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
+<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
+<button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.svg" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
+<button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><span aria-hidden="true">◌</span></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
+<button id="openTrends" class="hub-card hub-card-extra"><div class="hub-visual hub-trends"><span aria-hidden="true">✳</span></div><div class="hub-card-body"><strong>Trend Radar</strong><small>Мировые и российские тенденции</small></div></button>
+<button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><span aria-hidden="true">1947 — 2026</span></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
 </div></section>
 
+<section class="myspace-extra hidden" id="settingsSpace">
+<header class="myspace-top"><button class="myspace-return" type="button" id="settingsBack">← Все разделы</button></header>
+<div class="myspace-extra-inner">
+<div class="myspace-kicker">MY SPACE / PREFERENCES</div><h1>Настройки</h1>
+<div class="myspace-setting-group">
+<div class="myspace-setting-row"><span>♙</span><div><strong>Аккаунт</strong><small id="settingsAccount">Текущая авторизация My Space</small></div></div>
+<div class="myspace-setting-row"><span>♧</span><div><strong>Уведомления</strong><small>Уведомления приложения будут доступны после настройки разрешений</small></div></div>
+<div class="myspace-setting-row"><span>🌐</span><div><strong>Язык</strong><small>Русский</small></div></div>
+<div class="myspace-setting-row"><span>ⓘ</span><div><strong>О приложении</strong><small>My Space · Safari и Telegram</small></div></div>
+</div>
+<div class="myspace-setting-group"><h2>Оформление</h2><p>Выбранная тема сохраняется на этом устройстве.</p>
+<div class="myspace-themes" role="group" aria-label="Тема оформления">
+<button type="button" class="myspace-theme" data-theme-choice="auto">Автоматически <small>Как на iPhone</small></button>
+<button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
+<button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
+</div></div>
+<button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
+</div>
+</section>
+<section class="myspace-extra hidden" id="reelsSpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="reelsBack">← Все разделы</button><span>CONTENT STUDIO</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">CREATIVE / DAILY IDEAS</div><h1>Reels Studio.</h1>
+<p class="myspace-intro">Идеи Reels, сценарии, визуальные акценты и планы монтажа для стилиста.</p>
+<div id="reelsItems" class="myspace-extra-list"><p>Загрузка идей…</p></div></div></section>
+<section class="myspace-extra hidden" id="trendsSpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="trendsBack">← Все разделы</button><span>WEEKLY INTELLIGENCE</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">STYLE INSIGHTS</div><h1>Trend Radar.</h1>
+<p class="myspace-intro">Наблюдения за изменениями в моде. Отдельно отмечаем подтверждённые факты и гипотезы.</p>
+<div id="trendsItems" class="myspace-extra-list"><p>Загрузка аналитики…</p></div></div></section>
+<section class="myspace-extra hidden" id="historySpace">
+<header class="myspace-top"><button type="button" class="myspace-return" id="historyBack">← Все разделы</button><span>FASHION HISTORY</span></header>
+<div class="myspace-extra-inner"><div class="myspace-kicker">THEN / NOW</div><h1>Style Time Machine.</h1>
+<p class="myspace-intro">Путешествие через эпохи, коллекции и знаковые силуэты.</p>
+<div id="historyItems" class="myspace-extra-list"><p>Загрузка историй…</p></div></div></section>
 <section class="fashion-space hidden" id="fashionSpace">
 <header class="fashion-top"><button class="fashion-back" type="button" id="fashionBack">← Все разделы</button><span class="fashion-top-meta">MY SPACE / FASHION DAILY</span></header>
 <div class="fashion-inner">
@@ -310,7 +438,7 @@ html.oura-active{color-scheme:dark}
 <div class="oura-inner">
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
-<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="data:image/webp;base64,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"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
+<div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.svg"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
 <div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
@@ -388,7 +516,7 @@ html.oura-active{color-scheme:dark}
 <div class="oura-chartbox"><div class="oura-chart-title"><span>Активность по дням</span><div class="oura-switch" id="activityRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-switch" id="activityMeasure" style="margin:10px 3px"><button data-measure="steps" class="selected">Шаги</button><button data-measure="calories">Калории</button><button data-measure="minutes">Активное время</button></div><div class="oura-chart-summary" id="activityStats"></div><div id="activityChart"></div><p class="oura-chart-hint">Столбики — выбранная метрика; линия — оценка активности от 0 до 100. Нажми на день.</p><div class="oura-day-detail hidden" id="activityDayDetail"></div></div>
 </div>
 <div class="oura-status" id="ouraStatus">Получаю защищённые данные с кольца…</div>
-</div></section><div class="shell" id="modaShell" style="display:none"><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
+</div></section><div class="shell" id="modaShell" style="display:none"><button type="button" class="top-hub-return" id="modaBack">← Все разделы</button><header class="top"><div><div class="wordmark">Stambo.i</div><div class="eyebrow">Fashion editorial studio</div></div><div class="avatar">S</div></header>
 <section class="hero"><span class="eyebrow">Редакторская панель / 2026</span><h1>Мода начинается<br>с деталей.</h1><p>Черновики, подборки и новости — все материалы перед публикацией.</p></section>
 <section class="stats"><div class="stat"><strong id="pending">—</strong><span>На проверке</span></div><div class="stat"><strong id="published">—</strong><span>Опубликовано</span></div><div class="stat"><strong id="rejected">—</strong><span>Отклонено</span></div></section>
 <section class="section"><h2 id="sectionTitle">Черновики</h2><small id="count"></small></section>
@@ -419,7 +547,7 @@ async function restorePwaSession(){
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
   pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
-  $('pwaLogout').style.display='inline-block';showPwaGate(false);
+  $('settingsLogout').style.display='inline-block';showPwaGate(false);
  }catch{
   pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
  }
@@ -446,11 +574,11 @@ $('pwaClaim').onclick=async()=>{
   const login=await pwaApi({action:'pair_claim',code});
   pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
   pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
-  $('pwaCode').value='';showPwaGate(false);$('pwaLogout').style.display='inline-block';render();
+  $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
  }catch(e){$('pwaLoginStatus').textContent='Код неверный, уже использован или истёк. Получи новый в Telegram.'}
  finally{$('pwaClaim').disabled=false}
 };
-$('pwaLogout').onclick=async()=>{
+$('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
 };
@@ -458,8 +586,8 @@ let currentSpace='hub';
 const showSpace=space=>{
  if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
- const dark=space==='oura';
- document.documentElement.classList.toggle('oura-active',dark);
+ const dark=space==='oura'||(document.documentElement.dataset.msTheme==='dark');
+ document.documentElement.classList.toggle('oura-active',space==='oura');
  const bg=dark?'#0c0d19':'#f6f4ef';
  const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg;
  if(isTelegramClient&&tg){
@@ -472,10 +600,138 @@ const showSpace=space=>{
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
  $('fashionSpace').classList.toggle('hidden',space!=='fashion');
+ $('settingsSpace').classList.toggle('hidden',space!=='settings');
+ $('reelsSpace').classList.toggle('hidden',space!=='reels');
+ $('trendsSpace').classList.toggle('hidden',space!=='trends');
+ $('historySpace').classList.toggle('hidden',space!=='history');
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')loadOura();
  if(space==='fashion')loadFashion();
+ if(space==='settings')refreshSettings();
+ if(space==='reels'||space==='trends'||space==='history')loadMySpaceEditorial(space);
 };
+
+const msThemeKey='myspace.theme.v1';
+const msQuery=window.matchMedia?.('(prefers-color-scheme: dark)');
+function preferredMsTheme(){try{return localStorage.getItem(msThemeKey)||'auto'}catch{return 'auto'}}
+function applyMsTheme(){
+ const pref=preferredMsTheme(),effective=pref==='auto'?(msQuery?.matches?'dark':'light'):pref;
+ document.documentElement.dataset.msTheme=effective;
+ document.querySelectorAll('[data-theme-choice]').forEach(el=>{
+  const chosen=el.dataset.themeChoice===pref;el.classList.toggle('selected',chosen);el.setAttribute('aria-pressed',String(chosen));
+ });
+ const dark=currentSpace==='oura'||effective==='dark',bg=dark?'#0c0d19':'#f6f4ef';
+ const tag=document.querySelector('meta[name="theme-color"]');if(tag)tag.content=bg;
+ if(isTelegramClient&&tg){try{tg.setHeaderColor?.(bg);tg.setBackgroundColor?.(bg);tg.setBottomBarColor?.(bg)}catch{}}
+}
+msQuery?.addEventListener?.('change',()=>{if(preferredMsTheme()==='auto')applyMsTheme()});
+document.querySelectorAll('[data-theme-choice]').forEach(btn=>btn.onclick=()=>{
+ try{localStorage.setItem(msThemeKey,btn.dataset.themeChoice)}catch{}
+ applyMsTheme();
+});
+function refreshSettings(){
+ $('settingsAccount').textContent=pwaSession?'Safari · подключённый аккаунт':isTelegramClient?'Telegram · авторизован через Mini App':'Требуется вход';
+ $('settingsLogout').hidden=!pwaSession;
+ applyMsTheme();
+}
+$('openSettings').onclick=()=>showSpace('settings');
+$('settingsBack').onclick=()=>showSpace('hub');
+$('modaBack').onclick=()=>showSpace('hub');
+for(const name of ['reels','trends','history']){
+ $(name+'Back').onclick=()=>showSpace('hub');
+ const openId={reels:'openReels',trends:'openTrends',history:'openHistory'}[name];
+ $(openId).onclick=()=>showSpace(name);
+}
+const msEditorialMap={reels:{path:'reels-studio.json',container:'reelsItems'},trends:{path:'trend-radar.json',container:'trendsItems'},history:{path:'style-time-machine.json',container:'historyItems'}};
+let msEditorialCache={};
+function msText(label,value){
+ const wrap=document.createElement('div'),head=document.createElement('strong'),p=document.createElement('p');
+ head.textContent=label;p.textContent=String(value||'');wrap.append(head,p);return wrap;
+}
+function msBulletList(title,values){
+ const wrap=document.createElement('div'),head=document.createElement('strong'),ul=document.createElement('ul');
+ head.textContent=title;wrap.append(head);
+ for(const value of values||[]){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}
+ wrap.append(ul);return wrap;
+}
+function msRenderEditorial(type,data){
+ const root=$(msEditorialMap[type].container);root.replaceChildren();
+ const list=Array.isArray(data.items)?data.items:[];
+ if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
+ list.forEach(item=>{
+  const card=document.createElement('article');card.className='myspace-idea';
+  const meta=document.createElement('div');meta.className='myspace-idea-meta';
+  meta.textContent=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
+  const title=document.createElement('h2');title.textContent=item.title||'Без названия';
+  const lead=document.createElement('p');lead.textContent=item.summary||item.description||item.hook||'';
+  const toggle=document.createElement('button');toggle.type='button';toggle.textContent='Подробнее ↓';toggle.setAttribute('aria-expanded','false');
+  const detail=document.createElement('div');detail.className='myspace-idea-detail hidden';
+  if(type==='reels'){
+   detail.append(msText('Хук',item.hook),msText('Формат',(item.duration||30)+' секунд · '+(item.format||'')));
+   detail.append(msBulletList('Сценарий',item.script),msBulletList('Кадры',item.shots),msText('Призыв к действию',item.cta));
+  }else if(type==='trends'){
+   detail.append(msText('Статус',item.status),msText('Для стилиста',item.stylist),msText('Подтверждение',item.evidence));
+  }else detail.append(msText('Тогда',item.then),msText('Сейчас',item.now));
+  toggle.onclick=()=>{const expanded=!detail.classList.toggle('hidden');toggle.setAttribute('aria-expanded',String(expanded));toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓'};
+  card.append(meta,title,lead,toggle,detail);root.append(card);
+ });
+}
+async function loadMySpaceEditorial(type,force=false){
+ if(!msEditorialMap[type])return;
+ if(!force&&msEditorialCache[type]){msRenderEditorial(type,msEditorialCache[type]);return}
+ const root=$(msEditorialMap[type].container);root.textContent='Загружаю материалы…';
+ try{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+  let response;try{response=await fetch(msEditorialMap[type].path+'?t='+Date.now(),{cache:'no-store',signal:controller.signal})}finally{clearTimeout(timer)}
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const json=await response.json();if(!Array.isArray(json.items))throw Error('Неверный формат');
+  msEditorialCache[type]=json;msRenderEditorial(type,json);
+ }catch{root.textContent='Не удалось загрузить материалы. Потяни вниз для повторной попытки.'}
+}
+applyMsTheme();
+function msGoBack(){
+ if(document.querySelector('#detail.visible')){$('back')?.click();return}
+ if(currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')){$('fashionBack').click();return}
+ if(currentSpace!=='hub')showSpace('hub');
+}
+function msActiveScroller(){
+ if(document.querySelector('#detail.visible'))return $('detail');
+ if(currentSpace==='fashion')return $('fashionSpace');
+ if(currentSpace==='oura')return $('ouraSpace');
+ if(currentSpace==='moda')return $('modaShell');
+ if(currentSpace==='hub')return $('hub');
+ return $(currentSpace+'Space');
+}
+let msGesture=null,msRefreshing=false;
+document.addEventListener('touchstart',ev=>{
+ if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
+ const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
+ if(!scroller||!scroller.contains(el))return;
+ const nested=el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select');
+ msGesture={x:t.clientX,y:t.clientY,nearTop:scroller.scrollTop<=2,fromEdge:t.clientX<=34,nested:!!nested};
+},{passive:true});
+document.addEventListener('touchend',ev=>{
+ if(!msGesture||!ev.changedTouches.length)return;
+ const start=msGesture;msGesture=null;
+ const t=ev.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
+ if(start.nested||Math.abs(dx)<25&&Math.abs(dy)<55)return;
+ if(start.fromEdge&&dx>95&&Math.abs(dy)<65){msGoBack();return}
+ if(start.nearTop&&dy>105&&Math.abs(dx)<65)msRefreshCurrent();
+},{passive:true});
+async function msRefreshCurrent(){
+ if(msRefreshing)return;msRefreshing=true;
+ $('pullMessage').textContent='Обновляю…';$('pullIndicator').classList.add('shown');
+ try{
+  if(currentSpace==='moda'){lastLoaded=0;await load()}
+  else if(currentSpace==='oura')await loadOura();
+  else if(currentSpace==='fashion'){fashionDigest=null;await loadFashion()}
+  else if(msEditorialMap[currentSpace])await loadMySpaceEditorial(currentSpace,true);
+  else if(currentSpace==='hub')await load();
+  $('pullMessage').textContent='Готово';
+ }catch{$('pullMessage').textContent='Ошибка обновления'}
+ finally{setTimeout(()=>{$('pullIndicator').classList.remove('shown');msRefreshing=false},550)}
+}
+
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('openFashion').onclick=()=>showSpace('fashion');
@@ -492,7 +748,9 @@ const fashionSafeUrl=value=>{
 const fashionArt=d=>{
  const label=escapeHtml(String(d.brand||'FASHION').slice(0,34));
  const local=(typeof d.image==='string'&&/^images\/fashion\/[a-zA-Z0-9_.-]+\.(jpg|png|webp)$/.test(d.image)&&d.image_rights==='licensed')?d.image:null;
+ const preview=(typeof d.image_url==='string' && /^https:\/\/(assets\.vogue\.com|media\.vogue\.co\.uk|r\.fashionunited\.com|theblueprint\.ru|the-day\.ru)\//.test(d.image_url))?d.image_url:null;
  return local?'<div class="fashion-artwork" style="background:#37303a"><img alt="'+label+'" loading="lazy" style="width:100%;height:100%;object-fit:cover" src="'+local+'"></div>':
+ preview?'<div class="fashion-artwork"><img src="'+escapeHtml(preview)+'" alt="'+label+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.parentElement.classList.add(\'has-photo\')" onerror="this.remove()"><strong>'+label+'</strong><small>'+escapeHtml(d.source||'')+' · фото оригинальной статьи</small></div>':
  '<div class="fashion-artwork"><strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small></div>';
 };
 const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):'Дата не указана';
