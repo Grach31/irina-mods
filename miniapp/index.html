@@ -211,6 +211,51 @@ html.oura-active{color-scheme:dark}
 .oura-hero-caption{position:absolute;bottom:12px;left:15px;font-size:9px;color:#c8d2e7;
  letter-spacing:2px;text-shadow:0 1px 7px #000}
 .oura-hero img{object-fit:cover;object-position:50% 47%;filter:contrast(1.08) saturate(1.1)}
+
+/* Fashion Daily — independent, editorial and source-attributed news reader */
+.fashion-space{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;z-index:28;background:#f4f0e9;color:#24221f;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+.fashion-top{min-height:56px;display:flex;align-items:center;gap:14px;padding:max(14px,env(safe-area-inset-top,0px)) 20px 12px;position:sticky;top:0;z-index:3;background:#f4f0e9f0;backdrop-filter:blur(15px);border-bottom:1px solid #e4dbcd}
+.fashion-back{border:0;background:none;color:#4a403b;font-size:13px;font-weight:600;padding:10px 2px;min-height:40px}
+.fashion-top-meta{margin-left:auto;font-size:10px;letter-spacing:1px;color:#987b64}
+.fashion-inner{max-width:680px;margin:auto;padding:25px 18px 35px}
+.fashion-eyebrow{font-size:10px;letter-spacing:3px;color:#936a52;font-weight:650}
+.fashion-inner h1{font:normal clamp(38px,11vw,58px)/.98 Georgia,serif;letter-spacing:-2px;margin:13px 0 12px}
+.fashion-lede{color:#786e65;font-size:13px;line-height:1.6;max-width:470px}
+.fashion-edition{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:#84766b;margin:23px 0 14px;border-top:1px solid #cbbbae;padding-top:12px}
+.fashion-tags{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:4px 0 16px}
+.fashion-tags::-webkit-scrollbar{display:none}
+.fashion-tags button{border:1px solid #cfbfb2;border-radius:40px;background:transparent;color:#6a5d52;font-size:11px;padding:9px 14px;white-space:nowrap}
+.fashion-tags button.active{background:#342a27;color:#fff;border-color:#342a27}
+.fashion-list{display:grid;gap:18px}
+.fashion-story{width:100%;padding:0;text-align:left;border:1px solid #ded3c6;border-radius:17px;background:#fffdfa;overflow:hidden;color:#201c1c;cursor:pointer;box-shadow:0 8px 28px #2a1e1610}
+.fashion-story:focus-visible,.fashion-tags button:focus-visible,.fashion-back:focus-visible{outline:2px solid #b97759;outline-offset:2px}
+.fashion-artwork{height:160px;background:linear-gradient(135deg,#322d42,#766b75);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fashion-artwork:before{content:'';width:230px;height:230px;border-radius:50%;border:28px solid #ffffff14;transform:rotate(40deg);box-shadow:0 0 60px #ffffff12}
+.fashion-artwork strong{position:absolute;font:normal clamp(25px,6.5vw,45px) Georgia,serif;letter-spacing:-1px;color:#f8ede7;text-shadow:0 3px 24px #121017b0;padding:15px;text-align:center}
+.fashion-artwork small{position:absolute;bottom:11px;left:14px;color:#fff9;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.fashion-story:nth-child(3n+2) .fashion-artwork{background:linear-gradient(115deg,#5a3d36,#b99a8a)}
+.fashion-story:nth-child(3n+3) .fashion-artwork{background:linear-gradient(115deg,#1d3f45,#779c9d)}
+.fashion-story-body{padding:16px 18px 18px}
+.fashion-story-meta{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8f715c;margin-bottom:9px}
+.fashion-story h2{font:normal 25px/1.15 Georgia,serif;margin:0 0 11px}
+.fashion-story p{font-size:12px;line-height:1.65;color:#6d6059;margin:0 0 13px}
+.fashion-story-more{font-size:11px;color:#9b6a4d;font-weight:650}
+.fashion-article{background:#fffdfa;border:1px solid #ded3c6;border-radius:18px;overflow:hidden;margin-top:10px}
+.fashion-article .fashion-artwork{height:210px}
+.fashion-article-body{padding:22px 21px 24px}
+.fashion-article h2{font:normal 34px/1.07 Georgia,serif;letter-spacing:-.5px;margin:8px 0 15px}
+.fashion-article p{font-size:13px;color:#554e48;line-height:1.75}
+.fashion-article .byline{font-size:10px;color:#987b64;text-transform:uppercase;letter-spacing:1px}
+.fashion-article h3{font:normal 20px Georgia,serif;margin:22px 0 10px}
+.fashion-article .editor-note{border-left:3px solid #aa7c60;background:#f6efe9;padding:13px;font-size:12px;line-height:1.6;color:#624f46;margin:18px 0}
+.fashion-article .source-link{display:inline-block;margin:14px 0;color:#985c39;font-size:12px;font-weight:650;text-underline-offset:3px;overflow-wrap:anywhere}
+.fashion-post-disabled{display:block;width:100%;background:#e5e0dc;border:1px solid #d0cac5;border-radius:12px;padding:14px;color:#8b8580;text-align:center;font-weight:650;font-size:12px}
+.fashion-rights{font-size:10px!important;color:#93867b!important}
+.fashion-empty{border:1px solid #dcccbf;padding:18px;border-radius:14px;background:#fffaf5;color:#766b62;font-size:12px;line-height:1.55}
+.hub-card-news{grid-column:1/-1;display:flex!important;align-items:stretch;min-height:143px}
+.hub-card-news .hub-visual{width:42%;min-width:42%;min-height:140px;background:linear-gradient(140deg,#33312e,#9f7767,#ddd0b7)}
+.hub-card-news .hub-card-body{display:flex;flex-direction:column;justify-content:center}
+.hub-card-news .hub-visual .news-visual-label{font:normal 44px Georgia,serif;letter-spacing:-3px;color:#fff5e9;text-shadow:0 3px 20px #0006}
 </style></head><body>
 <section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -234,9 +279,22 @@ html.oura-active{color-scheme:dark}
 </div>
 </div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
-<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button>
+<button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button><button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><span class="news-visual-label" aria-hidden="true">F.</span></div><div class="hub-card-body"><strong>Новости моды</strong><small>Fashion Daily · мировая редакционная лента</small><span class="go">Читать выпуск →</span></div></button>
 </div></section>
 
+<section class="fashion-space hidden" id="fashionSpace">
+<header class="fashion-top"><button class="fashion-back" type="button" id="fashionBack">← Все разделы</button><span class="fashion-top-meta">MY SPACE / FASHION DAILY</span></header>
+<div class="fashion-inner">
+<div class="fashion-eyebrow">THE WORLD OF FASHION</div>
+<h1>Fashion Daily.</h1>
+<p class="fashion-lede">Главное из мира моды — на русском, с оригинальными источниками. Независимая редакционная подборка.</p>
+<div class="fashion-edition"><span id="fashionEdition">Получаю свежий выпуск…</span><span id="fashionCount">— новостей</span></div>
+<div class="fashion-tags" id="fashionFilters"></div>
+<div id="fashionList" class="fashion-list"><div class="fashion-empty">Загружаю подборку…</div></div>
+<div id="fashionArticle" class="hidden"></div>
+<p class="fashion-rights">Материалы подготовлены как краткие авторские пересказы. Фотографии издателей показываются по ссылке в оригинале до подтверждения прав на повторное размещение.</p>
+</div>
+</section>
 <section class="oura-space hidden" id="ouraSpace">
 <header class="space-head"><button class="space-back" id="ouraBack">← Все разделы</button></header>
 <div class="oura-inner">
