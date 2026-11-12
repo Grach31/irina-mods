@@ -5,6 +5,7 @@ Note: GitHub Pages is public, so this catalog is not a privacy boundary.
 """
 import glob
 import json
+import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,8 @@ def main():
         reverse=True,
     )[:120]
     items = []
+    media_dir = ROOT / 'miniapp' / 'media'
+    media_dir.mkdir(parents=True, exist_ok=True)
     for did, meta in rows:
         file = ROOT / "drafts" / (did + ".json")
         if not file.is_file():
@@ -40,6 +43,10 @@ def main():
                 item[key] = draft[key]
         if "card" in draft and isinstance(draft["card"], dict):
             item["card"] = {"images": draft["card"].get("images", [])}
+        # Include the first generated JPEG in Pages, avoiding cross-domain image failures.
+        src = ROOT / "drafts" / "img" / (did + ".jpg")
+        if src.is_file() and src.stat().st_size < 5_000_000:
+            shutil.copyfile(src, media_dir / (did + ".jpg"))
         items.append(item)
     result = {
         "pending": sum(d.get("status") == "sent" for d in all_drafts.values()),
