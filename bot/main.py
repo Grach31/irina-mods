@@ -157,6 +157,16 @@ def on_message(state, requests, m):
             "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-myspace1"}}]],
             "resize_keyboard": True, "is_persistent": True})
         return
+    if text.split()[0:1] in (["/oura"], ["/ring"]):
+        # Inline Web App buttons include signed Telegram initData; reply keyboard buttons do not.
+        tg.call("sendMessage", chat_id=chat, text=(
+            "Oura Ring — открой защищённый раздел кнопкой ниже. "
+            "Доступ к показателям проверяется по аккаунту Telegram."
+        ), reply_markup={"inline_keyboard": [[{
+            "text": "◉ Открыть Oura Ring",
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-inline&space=oura"}
+        }]]})
+        return
     if m.get("web_app_data"):
         import miniapp
         miniapp.handle(state, m, tg, config, now)
