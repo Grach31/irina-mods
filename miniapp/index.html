@@ -151,7 +151,7 @@ async function loadOura(){
   if(!initData){$('ouraStatus').textContent='Открой Mini App через Telegram для просмотра данных кольца.';return}
   const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),7500);
   let res;
-  try{res=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData}),signal:ctrl.signal})}finally{clearTimeout(timer)}
+  try{res=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:ctrl.signal})}finally{clearTimeout(timer)}
   if(!res.ok){$('ouraStatus').textContent='Данные Oura пока не подключены к защищённой панели.';return}
   const d=await res.json();
   for(const [key,element] of [['sleep','ouraSleep'],['readiness','ouraReady'],['activity','ouraActivity']]){
