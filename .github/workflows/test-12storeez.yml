@@ -23,6 +23,8 @@ jobs:
           urls = [
               'https://12storeez.com/catalog/new/womencollection',
               'https://12storeez.com/',
+              'https://admin.12storeez.com/catalog/new/womencollection',
+              'https://12storeez.com/catalog/items/new',
           ]
           for url in urls:
               print('URL:', url, flush=True)
