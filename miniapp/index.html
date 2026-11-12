@@ -160,6 +160,53 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .pwa-pair-trigger{margin-top:15px;border:1px solid #bbb5c7;border-radius:10px;background:#fffaf7;padding:12px 14px;color:#413a55;font-size:12px}
 .pwa-hub-logout{border:none;background:none;color:#5d5f75;text-decoration:underline;font-size:12px;cursor:pointer;display:none}
 @media(display-mode:standalone){.pwa-gate{padding-top:calc(env(safe-area-inset-top) + 45px)}}
+
+/* iOS Telegram and standalone PWA edge-to-edge polish */
+html.oura-active,html.oura-active body{background:#0c0d19!important}
+html.oura-active{color-scheme:dark}
+.oura-space{inset:0!important;background:#0c0d19!important;
+ background-image:radial-gradient(ellipse 90% 420px at 75% 0%,#242344 0%,#111321 75%,#0c0d19 100%)!important;
+ padding:0 16px max(42px,env(safe-area-inset-bottom,0px))!important;
+ overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.oura-space .space-head{margin:0 -16px!important;min-height:54px!important;
+ padding:max(10px,env(safe-area-inset-top,0px)) 16px 8px!important;
+ background:#10101d!important;border:0!important;box-shadow:0 1px 0 #ffffff18;top:0!important}
+.oura-space .space-back{min-height:40px!important;padding:0 9px!important;font-size:13px!important}
+.oura-inner{padding-top:17px!important}
+.oura-hero{height:clamp(205px,55vw,310px)!important;isolation:isolate;
+ background:linear-gradient(130deg,#101426,#242e54)!important}
+.oura-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;
+ transform:translateZ(0);filter:contrast(1.11) saturate(1.12) brightness(1.04)}
+.oura-hero .hero-shade{background:linear-gradient(180deg,transparent 84%,#0e101d9c 100%)}
+.oura-section.pink{background:linear-gradient(140deg,#2a1b36,#181b31 68%,#211729);
+ border-color:#745377}
+.cycle-feature{display:flex;align-items:center;gap:13px;padding:13px 14px;
+ border:1px solid #ba86af57;border-radius:15px;margin:13px 0 16px;
+ background:linear-gradient(100deg,#5c355974,#38305769)}
+.cycle-feature-icon{width:41px;height:41px;border-radius:50%;display:grid;place-items:center;
+ color:#f7cae7;font-size:23px;background:#9d6d9935;flex-shrink:0}
+.cycle-feature strong{font:normal 23px Georgia,serif;color:#f7d2ec}
+.cycle-feature small{color:#e4c8df;font-size:11px;display:block;margin-top:3px}
+.cycle-timeline{margin:17px 0 12px;padding:15px 12px 12px;border:1px solid #aa75a641;
+ border-radius:15px;background:#140f235c}
+.cycle-timeline-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;
+ margin-bottom:13px;color:#e6c9e1;font-size:12px}
+.cycle-day-scroll{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:5px 2px 14px;
+ scroll-snap-type:x proximity}
+.cycle-day-scroll::-webkit-scrollbar{display:none}
+.cycle-day-dot{flex:0 0 34px;width:34px;height:41px;border:0;background:none;color:#bcaacb;
+ font-size:10px;display:flex;align-items:center;flex-direction:column;gap:5px;scroll-snap-align:center}
+.cycle-day-dot .dot{width:15px;height:15px;border-radius:50%;background:#5a4b73;border:1px solid #a17caa55}
+.cycle-day-dot.period .dot{background:#d37bba;border-color:#f3b7db}
+.cycle-day-dot.current{color:#fff;font-weight:700}
+.cycle-day-dot.current .dot{width:19px;height:19px;margin:-2px 0;outline:2px solid #f9d7ef;outline-offset:3px;
+ background:#e7a1d8;box-shadow:0 0 13px #e7a1d885}
+.cycle-legend{display:flex;flex-wrap:wrap;gap:13px;font-size:10px;color:#bdb2cb}
+.cycle-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#b7a2ca}
+.cycle-legend i.period{background:#d37bba}.cycle-legend i.current{background:#f5c0e5;outline:1px solid #fff}
+.cycle-description{color:#b6a6c2;font-size:11px;line-height:1.65;margin:12px 0 3px}
+@media (max-width:380px){.oura-space{padding-left:12px!important;padding-right:12px!important}
+.oura-space .space-head{margin-left:-12px!important;margin-right:-12px!important}}
 </style></head><body>
 <section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -235,15 +282,26 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <div class="oura-chartbox"><div class="oura-chart-title"><span>Температура от базовой</span><div class="oura-switch" id="tempRange"><button data-days="7" class="selected">7 дней</button><button data-days="30">30 дней</button></div></div><div class="oura-chart-summary" id="tempStats"></div><div id="tempChart"></div><p class="oura-chart-hint">0 °C — личная базовая температура; выше и ниже — отклонение. Нажми на точку.</p><div class="oura-day-detail hidden" id="tempDayDetail"></div></div>
 <p class="oura-footnote">Температура — отклонение от личной базовой линии, не абсолютная температура тела. Единица: °C.</p>
 </div>
-<div class="oura-section pink">
-<div class="oura-headline"><h2>Женское здоровье и цикл</h2></div>
-<p class="oura-caption">Показатели рассчитываются только по отметкам периода, доступным через Oura API.</p>
+<div class="oura-section pink" id="ouraCycleSection">
+<div class="oura-headline"><h2>Женское здоровье</h2></div>
+<p class="oura-caption">Цикл, даты и изменения — по отметкам, полученным из Oura.</p>
+<div class="cycle-feature">
+<div class="cycle-feature-icon" aria-hidden="true">✦</div>
+<div><strong id="cycleFeatureDay">Данные цикла</strong><small id="cycleFeatureSubtitle">Сверяю последние записи Oura</small></div>
+</div>
 <div class="oura-cycle-grid">
 <div class="oura-metric"><small>День цикла</small><strong id="cycleDay">—</strong></div>
-<div class="oura-metric"><small>Начало периода</small><strong id="cycleStart">—</strong></div>
+<div class="oura-metric"><small>Начало последнего периода</small><strong id="cycleStart">—</strong></div>
 <div class="oura-metric"><small>Средняя длина цикла</small><strong id="cycleAverage">—</strong></div>
-<div class="oura-metric"><small>Следующий период (прогноз)</small><strong id="cycleNext">—</strong></div>
-</div><p class="oura-footnote" id="cycleNote">Если история отметок неполная, прогноз не отображается. Это ориентировочная оценка, а не медицинское заключение.</p>
+<div class="oura-metric"><small>Следующий период · ориентировочно</small><strong id="cycleNext">—</strong></div>
+</div>
+<div class="cycle-timeline">
+<div class="cycle-timeline-heading"><strong>Лента текущего цикла</strong><span id="cycleTimelineLabel">—</span></div>
+<div class="cycle-day-scroll" id="cycleTimeline" aria-label="Дни текущего цикла"></div>
+<div class="cycle-legend"><span><i class="period"></i>Начало периода</span><span><i class="current"></i>Сегодня</span></div>
+<p class="cycle-description" id="cycleTimelineNote">Лента появится, когда Oura передаст начало периода и историю цикла.</p>
+</div>
+<p class="oura-footnote" id="cycleNote">Ориентировочные даты не являются медицинским заключением.</p>
 </div>
 <div class="oura-section blue">
 <div class="oura-headline"><h2>Активность</h2><b id="ouraActivityScore">—</b></div>
