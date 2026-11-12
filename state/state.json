@@ -1,5 +1,5 @@
 {
-  "offset": 84639524,
+  "offset": 84639525,
   "awaiting_edit": null,
   "drafts": {
     "2026-10-18-history": {
@@ -995,7 +995,7 @@
       "published_at": "2026-11-11T13:42+03:00"
     },
     "2026-11-11-lime-album-test": {
-      "status": "sent",
+      "status": "published",
       "slot": null,
       "msg_id": 345,
       "file_ids": [
@@ -1005,7 +1005,15 @@
         "AgACAgIAAxUHavRJv2lc6dr-VDB9ns_YLTNsC6kAAg0aaxuOTqFLXpjS6uenu9YBAAMCAAN3AAM9BA"
       ],
       "file_id": "AgACAgIAAxUHavRJv7IwyrbzDnSkbReeIwbvPZUAAgsaaxuOTqFLhvhHCUYsj8MBAAMCAAN3AAM9BA",
-      "sent_at": "2026-11-11T13:56+03:00"
+      "sent_at": "2026-11-11T13:56+03:00",
+      "publish_at": "2026-11-12T12:53:25.011105+03:00",
+      "published_message_ids": [
+        524,
+        525,
+        526,
+        527
+      ],
+      "published_at": "2026-11-12T12:53+03:00"
     },
     "2026-11-12-mix-outerwear-test": {
       "status": "sent",
