@@ -316,27 +316,117 @@ const prettySeconds=v=>{if(!valid(v))return '—';let mins=Math.round(v/60);let 
 const dayName=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7):'—';
 const timeOf=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(s)?s.slice(11,16):'—';
 const setValue=(id,v)=>{const node=$(id);if(node)node.textContent=v};
-function plot(id,key,color,days=7,temp=false){
- const out=$(id);if(!out)return;
- const data=(Array.isArray(ouraLive?.history)?ouraLive.history:[]).slice(-days);
- const values=data.map((r,i)=>({i,day:r.day,v:r[key]})).filter(r=>valid(r.v));
- if(!values.length){out.innerHTML='<p class="oura-footnote">Нет данных за выбранный период.</p>';return}
- const nums=values.map(d=>d.v),mi=Math.min(...nums),ma=Math.max(...nums);
- const low=temp?Math.min(mi-.1,0):Math.max(0,Math.floor((mi-5)/10)*10);
- const high=temp?Math.max(ma+.1,0):Math.min(100,Math.ceil((ma+5)/10)*10);
- const lower=high===low?low-1:low,upper=high===low?high+1:high;
- const X=i=>25+(data.length<=1?.5:i/(data.length-1))*280;
- const Y=v=>15+(upper-v)/(upper-lower)*94;
- const runs=[];let run=[];
- for(const p of values){if(run.length&&p.i-run[run.length-1].i>1){runs.push(run);run=[]}run.push(p)}
- if(run.length)runs.push(run);
- const grid=[0,.5,1].map(f=>'<path d="M25 '+(15+f*94)+' H305" stroke="#ffffff22" stroke-width="1"/>').join('');
- const line=runs.map(group=>'<polyline points="'+group.map(p=>X(p.i)+','+Y(p.v)).join(' ')+'" stroke="'+color+'" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>').join('');
- const dots=values.map(p=>'<circle cx="'+X(p.i)+'" cy="'+Y(p.v)+'" r="3.1" fill="'+color+'"><title>'+dayName(p.day)+': '+numeric(p.v,temp?'°C':'',temp?2:0)+'</title></circle>').join('');
- const ticks=[0,Math.floor((data.length-1)/2),data.length-1].filter((v,i,a)=>a.indexOf(v)===i);
- const names=ticks.map(i=>'<text x="'+X(i)+'" y="131" fill="#acabc8" text-anchor="middle" font-size="10">'+dayName(data[i].day)+'</text>').join('');
- out.innerHTML='<svg viewBox="0 0 330 145" role="img" aria-label="График по дням">'+grid+line+dots+names+'</svg>';
+const scoreInfo={
+ sleep:{title:'Сон',levels:['Оптимальное качество сна','Хороший сон','Сон требует внимания','Низкая оценка сна'],desc:'Учитываются продолжительность, стадии, эффективность сна и другие параметры. Высокая оценка не исключает плохого самочувствия.'},
+ readiness:{title:'Готовность организма',levels:['Отличное восстановление','Хорошее восстановление','Восстановление ниже оптимального','Стоит уделить внимание отдыху'],desc:'Показывает восстановление с учётом сна, пульса, HRV, температуры и предыдущей нагрузки. Не является медицинским диагнозом.'},
+ activity:{title:'Активность',levels:['Оптимальный уровень активности','Хорошая активность','Активность ниже оптимальной','Низкая оценка активности'],desc:'Учитываются объём и баланс движения, нагрузка и восстановление. Оценка 100 не означает необходимость максимально тренироваться каждый день.'}
+};
+let selectedScore='sleep',readyDays=7,activityDays=7,activityMeasure='steps';
+function scoreTier(score){return !valid(score)?-1:score>=85?0:score>=70?1:score>=60?2:3}
+function explainScore(kind){
+ selectedScore=kind;
+ const spec=scoreInfo[kind],actual=ouraLive?.[kind]?.score,tier=scoreTier(actual);
+ setValue('ouraEvalTitle',spec.title);
+ setValue('ouraEvalValue',valid(actual)?Math.round(actual)+' / 100':'Нет данных');
+ setValue('ouraEvalStatus',tier<0?'Оценка ещё не поступила':spec.levels[tier]);
+ setValue('ouraEvalText',spec.desc);
+ const levels=['85–100','70–84','60–69','0–59'];
+ $('ouraEvalRanges').innerHTML=spec.levels.map((text,i)=>'<div class="oura-eval-row'+(i===tier?' active':'')+'"><b>'+levels[i]+'</b><span>'+text+'</span></div>').join('');
+ $('ouraScoreTiles').querySelectorAll('[data-score]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.score===kind)));
 }
+$('ouraScoreTiles').onclick=e=>{
+ const tile=e.target.closest('[data-score]');if(tile)explainScore(tile.dataset.score);
+};
+function dateHistory(days){return (Array.isArray(ouraLive?.history)?ouraLive.history:[]).slice(-days).filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.day||''))}
+const meanMetric=(arr,key)=>{const n=arr.map(x=>x[key]).filter(valid);return n.length?n.reduce((a,b)=>a+b,0)/n.length:null};
+const activeMinutes=x=>valid(x.medium_activity_seconds)||valid(x.high_activity_seconds)?
+ ((valid(x.medium_activity_seconds)?x.medium_activity_seconds:0)+(valid(x.high_activity_seconds)?x.high_activity_seconds:0))/60:null;
+function displayChartDetail(type,entry){
+ const target=$(type+'DayDetail');if(!target)return;
+ const values={
+  sleep:[
+   ['Сон',prettySeconds(entry.total_sleep_seconds)],['Оценка',integer(entry.sleep)+' / 100'],
+   ['Глубокий',prettySeconds(entry.deep_sleep_seconds)],['REM',prettySeconds(entry.rem_sleep_seconds)],
+   ['Лёгкий',prettySeconds(entry.light_sleep_seconds)],['Эффективность',numeric(entry.sleep_efficiency,'%')],
+   ['Легла',timeOf(entry.bedtime_start)],['Проснулась',timeOf(entry.bedtime_end)]
+  ],
+  ready:[['Готовность организма',valid(entry.readiness)?integer(entry.readiness)+' / 100':'—']],
+  temp:[['Отклонение от базовой',valid(entry.temperature)?(entry.temperature>0?'+':'')+numeric(entry.temperature,' °C',2):'—']],
+  activity:[['Шаги',integer(entry.steps)],['Активные калории',numeric(entry.active_calories,' ккал')],
+            ['Активное время',numeric(activeMinutes(entry),' мин')],['Оценка',valid(entry.activity)?integer(entry.activity)+' / 100':'—']]
+ }[type];
+ target.innerHTML='<strong>'+dayName(entry.day)+'</strong>'+values.map(([k,v])=>'<div style="display:flex;justify-content:space-between;gap:10px"><span>'+k+'</span><b>'+v+'</b></div>').join('');
+ target.classList.remove('hidden');
+}
+function drawMetricChart(type){
+ const cfg={
+  sleep:{id:'sleepChart',stat:'sleepStats',days:sleepDays,bar:'total_sleep_seconds',line:'sleep',unit:'hours',color:'#a98aef'},
+  ready:{id:'readyChart',stat:'readyStats',days:readyDays,line:'readiness',unit:'score',color:'#79dfb8'},
+  temp:{id:'tempChart',stat:'tempStats',days:tempDays,line:'temperature',unit:'temp',color:'#e6a3e7'},
+  activity:{id:'activityChart',stat:'activityStats',days:activityDays,bar:activityMeasure,line:'activity',unit:'activity',color:'#87c7ff'}
+ }[type];
+ const data=dateHistory(cfg.days),root=$(cfg.id),stats=$(cfg.stat);
+ const label=cfg.unit==='temp'?'°C':cfg.unit==='hours'?'ч сна':cfg.unit==='activity'?(activityMeasure==='steps'?'шаги':activityMeasure==='calories'?'ккал':'мин'):'баллы';
+ const barValue=x=>cfg.unit==='hours'?(valid(x.total_sleep_seconds)?x.total_sleep_seconds/3600:null):
+ cfg.unit==='activity'?(activityMeasure==='steps'?x.steps:activityMeasure==='calories'?x.active_calories:activeMinutes(x)):null;
+ const lineValue=x=>cfg.line==='temperature'?x.temperature:x[cfg.line];
+ const numericBar=data.map(barValue).filter(valid),numericLine=data.map(lineValue).filter(valid);
+ const n=(cfg.bar?numericBar:numericLine);
+ const latest=n.length?n[n.length-1]:null;
+ const average=n.length?n.reduce((a,b)=>a+b,0)/n.length:null;
+ const format=v=>!valid(v)?'—':cfg.unit==='hours'?numeric(v,' ч',1):cfg.unit==='temp'?(v>0?'+':'')+numeric(v,' °C',2):cfg.unit==='activity'?integer(v)+(activityMeasure==='steps'?' шагов':activityMeasure==='calories'?' ккал':' мин'):integer(v)+'/100';
+ stats.innerHTML='<span>Последнее: <strong>'+format(latest)+'</strong></span><span>Среднее за '+cfg.days+' дн.: <strong>'+format(average)+'</strong></span>';
+ if(!numericBar.length&&!numericLine.length){root.innerHTML='<p class="oura-footnote">Нет данных для графика за выбранный период.</p>';return}
+ const width=340,height=180,L=36,R=34,T=23,B=34,plotW=width-L-R,plotH=height-T-B;
+ const X=i=>L+(i+.5)/data.length*plotW;
+ const barMax=cfg.bar?Math.max(1,...numericBar)*1.18:1;
+ const ymax=cfg.unit==='temp'?Math.max(.3,...numericLine.map(v=>Math.abs(v)))*1.15:100;
+ const yLine=v=>cfg.unit==='temp'?T+(ymax-v)/(2*ymax)*plotH:T+(100-v)/100*plotH;
+ const yBar=v=>T+plotH-(v/barMax)*plotH;
+ const bottom=T+plotH;
+ const hGrid=[0,.5,1].map(fr=>'<line x1="'+L+'" y1="'+(T+fr*plotH)+'" x2="'+(width-R)+'" y2="'+(T+fr*plotH)+'" stroke="#ffffff25" stroke-width="1"/>').join('');
+ const ticks=[0,Math.floor((data.length-1)/2),data.length-1].filter((v,i,a)=>a.indexOf(v)===i);
+ const labels=ticks.map(i=>'<text x="'+X(i)+'" y="'+(height-12)+'" fill="#adb0ca" font-size="10" text-anchor="middle">'+dayName(data[i].day)+'</text>').join('');
+ const span=Math.max(3,Math.min(19,plotW/data.length*.65));
+ let bars='';
+ if(cfg.bar)bars=data.map((item,i)=>{
+  const v=barValue(item);if(!valid(v))return '';
+  return '<rect x="'+(X(i)-span/2)+'" y="'+yBar(v)+'" width="'+span+'" height="'+(bottom-yBar(v))+'" rx="2" fill="'+cfg.color+'" opacity=".68"/>';
+ }).join('');
+ const connected=[];let run=[];
+ data.forEach((item,i)=>{
+  const v=lineValue(item);if(!valid(v)){if(run.length)connected.push(run);run=[];return}
+  run.push([i,v]);
+ });
+ if(run.length)connected.push(run);
+ const lineColor=cfg.bar?'#f2dcff':cfg.color;
+ const paths=connected.map(seq=>'<polyline points="'+seq.map(([i,v])=>X(i)+','+yLine(v)).join(' ')+'" fill="none" stroke="'+lineColor+'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>').join('');
+ const circles=data.map((item,i)=>valid(lineValue(item))?'<circle cx="'+X(i)+'" cy="'+yLine(lineValue(item))+'" r="2.9" fill="'+lineColor+'"/>':'').join('');
+ const zero=cfg.unit==='temp'?'<line x1="'+L+'" x2="'+(width-R)+'" y1="'+yLine(0)+'" y2="'+yLine(0)+'" stroke="#ecdfef" stroke-dasharray="4 4" opacity=".7"/>':'';
+ const yLabels=cfg.unit==='temp'?'<text x="2" y="'+(yLine(ymax)+5)+'" fill="#bcb8d0" font-size="9">+'+ymax.toFixed(1)+'°</text><text x="4" y="'+(yLine(0)+3)+'" fill="#bcb8d0" font-size="9">0°</text><text x="2" y="'+yLine(-ymax)+'" fill="#bcb8d0" font-size="9">-'+ymax.toFixed(1)+'°</text>':
+ cfg.bar?'<text x="3" y="24" fill="#bcb8d0" font-size="9">'+(Math.round(barMax*10)/10)+'</text><text x="306" y="24" fill="#bcb8d0" font-size="9">100</text><text x="306" y="'+(bottom+2)+'" fill="#bcb8d0" font-size="9">0</text>':
+ '<text x="5" y="24" fill="#bcb8d0" font-size="9">100</text><text x="5" y="'+(bottom+2)+'" fill="#bcb8d0" font-size="9">0</text>';
+ const hits=data.map((item,i)=>'<rect class="oura-hit" tabindex="0" role="button" aria-label="'+dayName(item.day)+' — показать значения" data-index="'+i+'" x="'+(L+i*plotW/data.length)+'" y="'+T+'" width="'+plotW/data.length+'" height="'+plotH+'" fill="transparent"/>').join('');
+ root.innerHTML='<svg viewBox="0 0 '+width+' '+height+'" role="group" aria-label="'+label+' по дням">'+hGrid+zero+bars+paths+circles+yLabels+labels+hits+'</svg>';
+ const action=e=>{const hit=e.target.closest('[data-index]');if(hit)displayChartDetail(type,data[Number(hit.dataset.index)])};
+ root.onclick=action;
+ root.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();action(e)}};
+}
+function renderOuraCharts(){for(const section of ['sleep','ready','temp','activity'])drawMetricChart(section)}
+for(const [id,change] of [
+ ['sleepRange',v=>sleepDays=v],['readyRange',v=>readyDays=v],['tempRange',v=>tempDays=v],['activityRange',v=>activityDays=v]
+]){
+ $(id).onclick=e=>{const b=e.target.closest('[data-days]');if(!b)return;
+  $(id).querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));
+  change(Number(b.dataset.days));if(ouraLive)renderOuraCharts();
+ };
+}
+$('activityMeasure').onclick=e=>{
+ const b=e.target.closest('[data-measure]');if(!b)return;
+ activityMeasure=b.dataset.measure;
+ $('activityMeasure').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));
+ if(ouraLive)drawMetricChart('activity');
+};
 function stages(s){
  const el=$('sleepStageChart');const phase=s?.sleep_phase_5_min||'';
  if(!/^[1-4]{2,300}$/.test(phase)){el.innerHTML='<p class="oura-footnote">Нет поминутной разбивки стадий за эту ночь.</p>';return}
@@ -367,17 +457,9 @@ function renderOura(d){
  setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
  setValue('actHigh',prettySeconds(ac.high_activity_seconds));setValue('actMedium',prettySeconds(ac.medium_activity_seconds));
  if(d.updated_at){const dt=new Date(d.updated_at);setValue('ouraDate','Обновлено '+dt.toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Moscow'})+' МСК')}
- plot('sleepChart','sleep','#b7a0fa',sleepDays);
- plot('readyChart','readiness','#70d5b0',7);
- plot('tempChart','temperature','#df9fef',tempDays,true);
- plot('activityChart','activity','#8bc5f2',7);
+ renderOuraCharts();
+ explainScore(selectedScore);
  stages(sd);
-}
-for(const [rangeId,setDays] of [['sleepRange',v=>{sleepDays=v;plot('sleepChart','sleep','#b7a0fa',v)}],['tempRange',v=>{tempDays=v;plot('tempChart','temperature','#df9fef',v,true)}]]){
- $(rangeId).onclick=e=>{const btn=e.target.closest('[data-days]');if(!btn)return;
-  const days=Number(btn.dataset.days);$(rangeId).querySelectorAll('button').forEach(b=>b.classList.toggle('selected',b===btn));
-  if(ouraLive)setDays(days);
- };
 }
 async function loadOura(){
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
