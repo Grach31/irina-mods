@@ -154,7 +154,7 @@ def on_message(state, requests, m):
             "Stambo.i — редакторская панель. Открывай черновики и фотографии "
             "на весь экран. Публикация только после подтверждения."
         ), reply_markup={"keyboard": [[{"text": "✦ Открыть Stambo.i",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/"}}]],
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-navfix2"}}]],
             "resize_keyboard": True, "is_persistent": True})
         return
     if m.get("web_app_data"):
