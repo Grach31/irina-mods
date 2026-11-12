@@ -172,3 +172,23 @@ jobs:
                       print('ITEM',json.dumps({'name':name.get_text(' ',strip=True)[:100] if name else None,'price':price.get_text(' ',strip=True)[:100] if price else None,'links':links[:4],'image_attributes':image_attrs[:5],'html_class':card.get('class')},ensure_ascii=False))
               except Exception as e:print('ERROR',type(e).__name__,str(e)[:160])
           PY
+
+      - name: Validate integrated shop parsers
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'.')
+          from bot.shops import fetch,parse_studio29,parse_allweneed
+          for brand,url,parser in [('STUDIO 29','https://studio-29.ru/catalog/verhnyaya-odejda-sp',parse_studio29),('ALL WE NEED','https://allweneed.ru/catalog',parse_allweneed)]:
+              try:
+                  items=parser(fetch(url),url)
+                  print('BRAND',brand,'VALID ITEMS',len(items),flush=True)
+                  for it in items[:3]:
+                      print('PRODUCT',it['name'],'PRICE',it['price'],'URL',it['url'],'IMAGE',it['img'][:130])
+                  if not items:
+                      print('VALIDATION FAILED: zero products')
+                      sys.exit(1)
+              except Exception as e:
+                  print('VALIDATION ERROR',brand,type(e).__name__,str(e)[:180])
+                  sys.exit(1)
+          PY
