@@ -192,3 +192,27 @@ jobs:
                   print('VALIDATION ERROR',brand,type(e).__name__,str(e)[:180])
                   sys.exit(1)
           PY
+
+      - name: Verify product image responses and catalog persistence
+        run: |
+          python - <<'PY'
+          import sys,urllib.request,json,pathlib
+          from bot.shops import fetch,parse_studio29,parse_allweneed
+          cases=[('STUDIO 29','https://studio-29.ru/catalog/verhnyaya-odejda-sp',parse_studio29),('ALL WE NEED','https://allweneed.ru/catalog',parse_allweneed)]
+          failed=False
+          for brand,url,parser in cases:
+              items=parser(fetch(url),url)
+              good=0
+              for it in items[:5]:
+                  try:
+                      req=urllib.request.Request(it['img'],headers={'User-Agent':'Mozilla/5.0','Range':'bytes=0-1023'})
+                      with urllib.request.urlopen(req,timeout=15) as r:
+                          mime=r.headers.get('Content-Type','')
+                          ok=r.status in (200,206) and mime.lower().startswith('image/')
+                          good+=bool(ok)
+                          print('IMAGE',brand,r.status,mime,'OK',ok,flush=True)
+                  except Exception as e:print('IMAGE ERROR',brand,str(e)[:100],flush=True)
+              print('SUMMARY',brand,'items',len(items),'images_ok',good,'tested',min(5,len(items)),flush=True)
+              if not items or good==0:failed=True
+          if failed:sys.exit('FAIL: missing items or no accessible images')
+          PY
