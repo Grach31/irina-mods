@@ -33,8 +33,8 @@ el('pending').textContent=data.pending||0;el('published').textContent=data.publi
 var a=data.items||[],d=a[index];el('num').textContent=a.length?(index+1)+' / '+a.length:'';
 el('title').textContent=d?d.title:'Нет черновиков на проверке';
 el('meta').textContent=d?d.kind+' · '+d.id:'Новые материалы появятся здесь';
-el('approve').disabled=el('edit').disabled=el('reject').disabled=!d;
-el('approve').textContent=confirmId&&d&&confirmId===d.id?'Подтвердить публикацию':'Опубликовать';
+el('approve').disabled=el('edit').disabled=el('reject').disabled=!d||!!data.read_only;
+el('approve').textContent=data.read_only?'Только просмотр':confirmId&&d&&confirmId===d.id?'Подтвердить публикацию':'Опубликовать';
 }
 function req(s){el('notice').textContent='Обрабатываю…';TelegramWidget.request(s).then(function(r){try{data=JSON.parse(r.result||'{}');index=0;confirmId='';show();el('notice').textContent=data.notice||''}catch(e){el('notice').textContent='Ошибка ответа'}},function(e){el('notice').textContent=e.code||'Ошибка связи'})}
 el('refresh').onclick=function(){req('refresh')};
@@ -46,13 +46,13 @@ el('edit').onclick=function(){var d=(data.items||[])[index];if(d)req('edit:'+d.i
 show();req('refresh');
 </script></body></html>'''
 
-def snapshot(state, notice=''):
+def snapshot(state, notice='', read_only=False):
     drafts=state.get('drafts',{})
     pending=[(k,v) for k,v in drafts.items() if v.get('status')=='sent']
     pending.sort(key=lambda item:item[1].get('sent_at',''),reverse=True)
     result={'pending':len(pending),'published':sum(v.get('status')=='published' for v in drafts.values()),
             'rejected':sum(v.get('status')=='rejected' for v in drafts.values()),'items':[],
-            'notice':notice[:140]}
+            'read_only':bool(read_only),'notice':notice[:140]}
     for did,d in pending[:6]:
         kind='Черновик'
         if '-news-' in did: kind='Новости моды'
@@ -79,13 +79,16 @@ def handle(state,q):
         tg.call('answerWidgetQuery',widget_query_id=q['id'],data='{"notice":"Нет доступа"}')
         return
     action,_,did=q.get('data','').partition(':')
+    read_only = uid in getattr(config, 'READ_ONLY', set())
     if len(q.get('data','').encode('utf-8')) > 64:
         tg.call('answerWidgetQuery', widget_query_id=q['id'], data='{"notice":"Некорректный запрос"}')
         return
     notice=''
     d=state.get('drafts',{}).get(did)
     if action in ('ok','no','edit'):
-        if not d or d.get('status')!='sent':
+        if read_only:
+            notice='Доступ только для просмотра'
+        elif not d or d.get('status')!='sent':
             notice='Черновик уже обработан'
         elif action=='ok':
             from datetime import datetime
@@ -105,4 +108,4 @@ def handle(state,q):
             notice='Напиши правки сообщением в этот чат'
     elif action!='refresh':
         notice='Неизвестное действие'
-    tg.call('answerWidgetQuery',widget_query_id=q['id'],data=snapshot(state,notice))
+    tg.call('answerWidgetQuery',widget_query_id=q['id'],data=snapshot(state,notice,read_only=read_only))
