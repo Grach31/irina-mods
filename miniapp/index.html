@@ -277,130 +277,91 @@ hubBtn.textContent='Разделы';hubBtn.className='space-back';
 hubBtn.onclick=()=>showSpace('hub');
 document.querySelector('.top').prepend(hubBtn);
 
-let ouraLive=null,ouraDays=7;
-const metricNum=v=>typeof v==='number'&&Number.isFinite(v)?v:null;
-const metric=v=>metricNum(v)===null?'—':String(Math.round(v));
-const unit=(v,suffix,digits=0)=>metricNum(v)===null?'—':Number(v).toFixed(digits).replace('.',',')+suffix;
-function duration(seconds){
- const v=metricNum(seconds);if(v===null)return '—';
- const h=Math.floor(v/3600),m=Math.round(v%3600/60);
- return h?h+' ч '+String(m).padStart(2,'0')+' мин':m+' мин';
-}
-function clock(value){return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(value||'')?value.substring(11,16):'—'}
-const displayDay=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.substring(8,10)+'.'+d.substring(5,7):'—';
-function setMetric(id,value){$(id).textContent=value}
-function row(label,value,color=''){
- const cleanLabel=escapeHtml(label),cleanValue=escapeHtml(String(value??'—'));
- return '<div class="oura-row"><span class="oura-row-label"><i class="oura-dot '+color+'"></i>'+cleanLabel+'</span><strong>'+cleanValue+'</strong></div>';
-}
-function drawLine(id,field,color,days=ouraDays,temperature=false){
- const raw=Array.isArray(ouraLive?.history)?ouraLive.history:[];
- const recent=raw.slice(-days).filter(item=>item&&typeof item.day==='string');
- const measured=recent.map((entry,i)=>({i,day:entry.day,value:metricNum(entry[field])})).filter(p=>p.value!==null);
- const el=$(id);
- if(!recent.length||!measured.length){el.innerHTML='<div class="oura-muted" style="padding:24px 8px">Нет данных за этот период</div>';return}
- const all=measured.map(p=>p.value);
- let low=temperature?Math.min(-.1,...all):Math.min(0,Math.floor(Math.min(...all)/10)*10);
- let high=temperature?Math.max(.1,...all):Math.max(100,Math.ceil(Math.max(...all)/10)*10);
- if(high-low<.01){low-=.5;high+=.5}
- const W=330,H=142,L=13,R=12,T=15,B=30, pw=W-L-R,ph=H-T-B;
- const x=i=>L+(recent.length===1?.5:i/(recent.length-1))*pw;
- const y=v=>T+(high-v)/(high-low)*ph;
- const points=measured.map(p=>[x(p.i),y(p.value)]);
- // Separate non-adjacent dates: missing metrics should never look like continuous observations.
+
+let ouraLive=null, sleepDays=7,tempDays=7;
+const valid=v=>typeof v==='number'&&Number.isFinite(v);
+const numeric=(v,unit='',digits=0)=>valid(v)?v.toFixed(digits).replace('.',',')+unit:'—';
+const integer=v=>valid(v)?Math.round(v).toLocaleString('ru-RU'):'—';
+const prettySeconds=v=>{if(!valid(v))return '—';let mins=Math.round(v/60);let h=Math.floor(mins/60),m=mins%60;return h? h+' ч '+String(m).padStart(2,'0')+' мин':m+' мин'};
+const dayName=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7):'—';
+const timeOf=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(s)?s.slice(11,16):'—';
+const setValue=(id,v)=>{const node=$(id);if(node)node.textContent=v};
+function plot(id,key,color,days=7,temp=false){
+ const out=$(id);if(!out)return;
+ const data=(Array.isArray(ouraLive?.history)?ouraLive.history:[]).slice(-days);
+ const values=data.map((r,i)=>({i,day:r.day,v:r[key]})).filter(r=>valid(r.v));
+ if(!values.length){out.innerHTML='<p class="oura-footnote">Нет данных за выбранный период.</p>';return}
+ const nums=values.map(d=>d.v),mi=Math.min(...nums),ma=Math.max(...nums);
+ const low=temp?Math.min(mi-.1,0):Math.max(0,Math.floor((mi-5)/10)*10);
+ const high=temp?Math.max(ma+.1,0):Math.min(100,Math.ceil((ma+5)/10)*10);
+ const lower=high===low?low-1:low,upper=high===low?high+1:high;
+ const X=i=>25+(data.length<=1?.5:i/(data.length-1))*280;
+ const Y=v=>15+(upper-v)/(upper-lower)*94;
  const runs=[];let run=[];
- for(const p of measured){if(run.length&&p.i-run[run.length-1].i>1){runs.push(run);run=[]}run.push(p)}
+ for(const p of values){if(run.length&&p.i-run[run.length-1].i>1){runs.push(run);run=[]}run.push(p)}
  if(run.length)runs.push(run);
- const grid=[0,.5,1].map(r=>'<line x1="'+L+'" y1="'+(T+r*ph)+'" x2="'+(W-R)+'" y2="'+(T+r*ph)+'" stroke="#aaa5c7" stroke-opacity=".17" stroke-width="1"/>').join('');
- const lines=runs.map(r=>'<polyline points="'+r.map(p=>x(p.i)+','+y(p.value)).join(' ')+'" stroke="'+color+'" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>').join('');
- const dots=measured.map(p=>'<circle cx="'+x(p.i)+'" cy="'+y(p.value)+'" r="3.2" fill="'+color+'" stroke="#161628" stroke-width="1.2"/>').join('');
- const indices=recent.length<9?[0,Math.floor((recent.length-1)/2),recent.length-1]:[0,Math.floor((recent.length-1)/3),Math.floor((recent.length-1)*2/3),recent.length-1];
- const labels=[...new Set(indices)].map(i=>'<text x="'+x(i)+'" y="136" fill="#a7a8bd" font-size="10" text-anchor="middle">'+displayDay(recent[i].day)+'</text>').join('');
- const rangeLabel=temperature?((v)=>v.toFixed(1).replace('.',',')+'°'):((v)=>String(Math.round(v)));
- el.innerHTML='<svg class="oura-chart-svg" viewBox="0 0 330 144" role="img" aria-label="Динамика '+(temperature?'температуры':'показателя')+' по датам">'+grid+
- '<text x="13" y="11" fill="#9c9ab6" font-size="9">'+rangeLabel(high)+'</text>'+
- '<text x="13" y="119" fill="#9c9ab6" font-size="9">'+rangeLabel(low)+'</text>'+lines+dots+labels+'</svg>';
+ const grid=[0,.5,1].map(f=>'<path d="M25 '+(15+f*94)+' H305" stroke="#ffffff22" stroke-width="1"/>').join('');
+ const line=runs.map(group=>'<polyline points="'+group.map(p=>X(p.i)+','+Y(p.v)).join(' ')+'" stroke="'+color+'" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>').join('');
+ const dots=values.map(p=>'<circle cx="'+X(p.i)+'" cy="'+Y(p.v)+'" r="3.1" fill="'+color+'"><title>'+dayName(p.day)+': '+numeric(p.v,temp?'°C':'',temp?2:0)+'</title></circle>').join('');
+ const ticks=[0,Math.floor((data.length-1)/2),data.length-1].filter((v,i,a)=>a.indexOf(v)===i);
+ const names=ticks.map(i=>'<text x="'+X(i)+'" y="131" fill="#acabc8" text-anchor="middle" font-size="10">'+dayName(data[i].day)+'</text>').join('');
+ out.innerHTML='<svg viewBox="0 0 330 145" role="img" aria-label="График по дням">'+grid+line+dots+names+'</svg>';
 }
-function renderCycle(c){
- const period=c||{};const current=metricNum(period.day),avg=metricNum(period.avg_length);
- $('ouraCycleRows').innerHTML=row('День цикла',current===null?'Нет данных':current+'-й день','pink')+
- row('Последнее начало периода',displayDay(period.period_start),'pink')+
- row('Средняя длина цикла',avg===null?'Недостаточно истории':avg+' дней','pink')+
- row('Следующий период',period.predicted_next?'Около '+displayDay(period.predicted_next):'Недостаточно истории','pink');
- const div=$('ouraCycleDays');div.replaceChildren();
- if(current===null){div.textContent='Нет отметок периода в Oura';return}
- const length=Math.min(40,Math.max(24,avg||28,current));
- for(let i=1;i<=length;i++){const d=document.createElement('span');d.title='День '+i;
- if(i<=5)d.classList.add('period');
- if(i===current)d.classList.add('current');
- div.append(d)}
-}
-function renderStages(d){
- const parts=[['Глубокий',d.deep_seconds,'#8759db'],['Лёгкий',d.light_seconds,'#638aec'],['REM',d.rem_seconds,'#65c4d9'],['Бодрствование',d.awake_seconds,'#e48dd4']];
- const valid=parts.filter(p=>metricNum(p[1])!==null);
- if(!valid.length){$('ouraStages').innerHTML='<p class="oura-muted">Стадии сна пока недоступны</p>';return}
- const total=valid.reduce((s,p)=>s+p[1],0)||1;
- const bars=valid.map(p=>'<span style="width:'+(100*p[1]/total).toFixed(2)+'%;background:'+p[2]+'"></span>').join('');
- const labels=valid.map(p=>'<span style="color:'+p[2]+'">● '+p[0]+' — '+duration(p[1])+'</span>').join('');
- let timeline='';
- if(/^[1-4]{2,300}$/.test(d.sleep_phase_5_min||'')){
-  const heights={1:60,2:49,3:28,4:75},colors={1:'#9d6de7',2:'#678af3',3:'#5fbed4',4:'#e79bd5'};
-  timeline='<div class="oura-stages-timeline" role="img" aria-label="Стадии сна в течение ночи">'+[...d.sleep_phase_5_min].map(v=>'<span style="height:'+heights[v]+'%;background:'+colors[v]+'"></span>').join('')+'</div>';
- }
- $('ouraStages').innerHTML=timeline+'<div class="oura-sleep-stages">'+bars+'</div><div class="oura-stage-legend">'+labels+'</div>';
+function stages(s){
+ const el=$('sleepStageChart');const phase=s?.sleep_phase_5_min||'';
+ if(!/^[1-4]{2,300}$/.test(phase)){el.innerHTML='<p class="oura-footnote">Нет поминутной разбивки стадий за эту ночь.</p>';return}
+ const palette={1:'#8c64db',2:'#6b90fc',3:'#5ed4df',4:'#e497cf'};
+ const height={1:80,2:61,3:35,4:12};
+ const unit=310/phase.length;
+ el.innerHTML='<svg viewBox="0 0 330 112" role="img" aria-label="Стадии сна в пятиминутных интервалах">'+
+ [...phase].map((v,i)=>'<rect x="'+(8+i*unit).toFixed(2)+'" y="'+height[v]+'" width="'+Math.max(1.4,unit+.15).toFixed(2)+'" height="'+(98-height[v])+'" rx=".6" fill="'+palette[v]+'"/>').join('')+'</svg>';
 }
 function renderOura(d){
  ouraLive=d;
- const sl=d.sleep||{},sd=sl.detail||{},rd=d.readiness||{},ac=d.activity||{};
- setMetric('ouraSleep',metric(sl.score));setMetric('ouraReady',metric(rd.score));setMetric('ouraActivity',metric(ac.score));
- setMetric('ouraDuration',duration(sd.total_seconds));setMetric('ouraDeep',duration(sd.deep_seconds));
- setMetric('ouraRem',duration(sd.rem_seconds));setMetric('ouraEff',unit(sd.efficiency,'%'));
- setMetric('ouraTemp',unit(rd.temperature,' °C',1).replace(/^(\d)/,'+$1'));
- $('ouraSleepSummary').textContent='Последняя зарегистрированная ночь'+(sd.day?' · '+displayDay(sd.day):'');
- $('ouraSleepRows').innerHTML=row('Лёгкий сон',duration(sd.light_seconds))+
- row('Время бодрствования',duration(sd.awake_seconds))+
- row('Засыпание',clock(sd.bedtime_start))+
- row('Пробуждение',clock(sd.bedtime_end))+
- row('Время до засыпания',duration(sd.latency_seconds));
- renderStages(sd);
- $('ouraReadySummary').textContent=metricNum(rd.score)===null?'Оценка пока не синхронизирована':rd.score>=85?'Высокая готовность':rd.score>=70?'Умеренная готовность':'Возможно, стоит снизить нагрузку';
- $('ouraReadinessRows').innerHTML=row('Вариабельность ритма (HRV)',unit(rd.hrv,' мс'),'mint')+
- row('Пульс в покое',unit(rd.resting_hr,' уд/мин'),'mint')+
- row('Отклонение температуры',unit(rd.temperature,' °C',2),'pink');
- renderCycle(d.cycle);
- $('ouraActivityRows').innerHTML=row('Дата активности',displayDay(ac.day),'blue')+
- row('Шаги',metricNum(ac.steps)===null?'—':Math.round(ac.steps).toLocaleString('ru-RU'),'blue')+
- row('Активные калории',unit(ac.active_calories,' ккал'),'blue')+
- row('Всего калорий',unit(ac.total_calories,' ккал'),'blue')+
- row('Высокая активность',duration(ac.high_activity_seconds),'blue')+
- row('Средняя активность',duration(ac.medium_activity_seconds),'blue');
- renderOuraCharts();
+ const sl=d.sleep||{}, sd=sl.detail||{}, r=d.readiness||{}, ac=d.activity||{}, cy=d.cycle||{};
+ for(const [key,v] of [['ouraSleep',sl.score],['ouraReady',r.score],['ouraActivity',ac.score],['ouraSleepScore',sl.score],['ouraReadyScore',r.score],['ouraActivityScore',ac.score]])setValue(key,integer(v));
+ setValue('sleepSummary',sd.day?'Ночь '+dayName(sd.day)+' · показатели Oura API':'Подробные данные сна ещё не синхронизированы.');
+ setValue('slTotal',prettySeconds(sd.total_seconds));setValue('slDeep',prettySeconds(sd.deep_seconds));
+ setValue('slRem',prettySeconds(sd.rem_seconds));setValue('slLight',prettySeconds(sd.light_seconds));
+ setValue('slEfficiency',numeric(sd.efficiency,'%'));setValue('slLatency',prettySeconds(sd.latency_seconds));
+ setValue('slBed',timeOf(sd.bedtime_start));setValue('slWake',timeOf(sd.bedtime_end));
+ setValue('readyHrv',numeric(r.hrv,' мс'));setValue('readyHr',numeric(r.resting_hr,' уд/мин'));
+ setValue('readyTemp',valid(r.temperature)?(r.temperature>0?'+':'')+numeric(r.temperature,' °C',2):'—');
+ setValue('readinessSummary',valid(r.score)?(r.score>=85?'Высокая готовность к нагрузке':r.score>=70?'Умеренная готовность':'Сниженная готовность: обрати внимание на отдых'):'Оценка готовности пока недоступна.');
+ setValue('cycleDay',valid(cy.day)?cy.day+'-й':'—');
+ setValue('cycleStart',dayName(cy.period_start));
+ setValue('cycleAverage',valid(cy.avg_length)?cy.avg_length+' дней':'—');
+ setValue('cycleNext',dayName(cy.predicted_next));
+ setValue('cycleNote',cy.has_history&&cy.predicted_next?'Прогноз ориентировочный и основан на записанных циклах. Он не заменяет медицинскую консультацию.':'Для прогноза нужно не менее двух отмеченных начал менструации. При отсутствии данных ничего не рассчитывается.');
+ setValue('activitySummary',ac.day?'Сведения за '+dayName(ac.day):'За последний синхронизированный день.');
+ setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
+ setValue('actHigh',prettySeconds(ac.high_activity_seconds));setValue('actMedium',prettySeconds(ac.medium_activity_seconds));
+ if(d.updated_at){const dt=new Date(d.updated_at);setValue('ouraDate','Обновлено '+dt.toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Moscow'})+' МСК')}
+ plot('sleepChart','sleep','#b7a0fa',sleepDays);
+ plot('readyChart','readiness','#70d5b0',7);
+ plot('tempChart','temperature','#df9fef',tempDays,true);
+ plot('activityChart','activity','#8bc5f2',7);
+ stages(sd);
 }
-function renderOuraCharts(){
- drawLine('ouraSleepChart','sleep','#b69bfa');
- drawLine('ouraReadinessChart','readiness','#70dcb2');
- drawLine('ouraTemperatureChart','temperature','#de99da',ouraDays,true);
- drawLine('ouraActivityChart','activity','#9cc9fa');
+for(const [rangeId,setDays] of [['sleepRange',v=>{sleepDays=v;plot('sleepChart','sleep','#b7a0fa',v)}],['tempRange',v=>{tempDays=v;plot('tempChart','temperature','#df9fef',v,true)}]]){
+ $(rangeId).onclick=e=>{const btn=e.target.closest('[data-days]');if(!btn)return;
+  const days=Number(btn.dataset.days);$(rangeId).querySelectorAll('button').forEach(b=>b.classList.toggle('selected',b===btn));
+  if(ouraLive)setDays(days);
+ };
 }
-$('ouraRanges').onclick=e=>{
- const target=e.target.closest('[data-days]');if(!target)return;
- ouraDays=Number(target.dataset.days)||7;
- $('ouraRanges').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===target));
- if(ouraLive)renderOuraCharts();
-};
 async function loadOura(){
- $('ouraStatus').textContent='Загружаю данные Oura…';
+ setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
-  if(!initData){$('ouraStatus').textContent='Открой My Space через новую кнопку /app в Telegram для просмотра защищённых показателей.';return}
-  const ctrl=new AbortController(), timer=setTimeout(()=>ctrl.abort(),12000);
-  let res;
-  try{res=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:ctrl.signal})}finally{clearTimeout(timer)}
-  if(!res.ok){$('ouraStatus').textContent=res.status===403?'Этот Telegram-аккаунт не имеет доступа к данным кольца.':res.status===404?'Ожидаем первую синхронизацию Oura API.':'Данные пока недоступны (код '+res.status+').';return}
-  const d=await res.json();
-  renderOura(d);
-  $('ouraStatus').textContent=d.updated_at?'Синхронизировано: '+new Date(d.updated_at).toLocaleString('ru-RU'):'Данные Oura получены';
- }catch(e){$('ouraStatus').textContent='Не удалось получить данные Oura. Проверь соединение и открой раздел повторно.'}
+  if(!initData){setValue('ouraStatus','Открой My Space через новую кнопку /app в Telegram, чтобы подтвердить аккаунт.');return}
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+  let response;
+  try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
+  if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
+  const data=await response.json();
+  renderOura(data);
+  setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');
+ }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.')}
 }
 $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
 // Telegram may populate initDataUnsafe after its webview has already rendered.
