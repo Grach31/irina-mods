@@ -164,7 +164,7 @@ def on_message(state, requests, m):
             "Доступ к показателям проверяется по аккаунту Telegram."
         ), reply_markup={"inline_keyboard": [[{
             "text": "◉ Открыть Oura Ring",
-            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-inline&space=oura"}
+            "web_app": {"url": "https://grach31.github.io/irina-mods/?v=20261112-oura-live&space=oura"}
         }]]})
         return
     if m.get("web_app_data"):
