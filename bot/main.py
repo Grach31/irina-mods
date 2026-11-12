@@ -107,8 +107,8 @@ def handle_updates(state, requests, wait=0):
 
 def on_button(state, q):
     uid = q["from"]["id"]
-    if uid not in config.ALLOWED:
-        tg.call("answerCallbackQuery", callback_query_id=q["id"])
+    if uid not in config.ALLOWED or uid in config.READ_ONLY:
+        tg.call("answerCallbackQuery", callback_query_id=q["id"], text="Только просмотр")
         return
     action, _, did = q.get("data", "").partition(":")
     d = state["drafts"].get(did)
@@ -153,11 +153,17 @@ def on_message(state, requests, m):
         widget.send(chat)
         return
     if text.startswith("/start"):
+        if uid in config.READ_ONLY:
+            tg.call("sendMessage", chat_id=chat, text="Доступ к Stambo.i открыт в режиме просмотра. Отправь /panel.")
+            return
         tg.call("sendMessage", chat_id=chat, text=(
             "Привет! Я помощник канала Stambo.i 🤍\n\n"
             "Каждый день присылаю черновики постов — жми ✅, ✏️ или ❌.\n"
             "Можешь написать мне идею, например «подборка тёплых свитеров до 10 тысяч» "
             "или «пост про кожаные брюки», можно с ссылкой или фото — сделаю черновик в течение часа."))
+        return
+    if uid in config.READ_ONLY:
+        tg.call("sendMessage", chat_id=chat, text="У тебя доступ только к просмотру. Открой /panel.")
         return
     photos = []
     if m.get("photo"):
