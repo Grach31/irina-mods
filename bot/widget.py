@@ -1,20 +1,19 @@
 """Telegram HTML-widget для приватной панели модерации Stambo.i."""
 import json
-import html as html_lib
 import tg
 import config
 
 HTML = r'''<!doctype html><html><head><meta charset="utf-8"><style>
-body{font-family:Arial,sans-serif;color:var(--tg-theme-text-color,#222);margin:0;padding:13px;background:var(--tg-theme-bg-color,#faf8f5)}
+body{font-family:system-ui,sans-serif;color:var(--tg-theme-text-color,#222);margin:0;padding:13px;background:var(--tg-theme-bg-color,#faf8f5)}
 header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #bbb;padding-bottom:9px}
-.logo{font-family:Georgia,serif;font-size:29px;letter-spacing:-1px}.tag{font-size:10px;letter-spacing:2px;color:var(--tg-theme-hint-color,#777)}
-h2{font:24px Georgia,serif;margin:20px 0 12px}
+.logo{font-family:serif;font-size:29px;letter-spacing:-1px}.tag{font-size:10px;letter-spacing:2px;color:var(--tg-theme-hint-color,#777)}
+h2{font:24px serif;margin:20px 0 12px}
 .stats{display:flex;gap:7px;margin:12px 0}
 .stat{background:var(--tg-theme-secondary-bg-color,#eae5de);border-radius:10px;padding:10px;flex:1;text-align:center}
 .stat b{font-size:22px;display:block}.stat small{font-size:10px}
 article{background:var(--tg-theme-secondary-bg-color,#eee8e1);border-radius:12px;padding:14px;margin-top:12px}
 .kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase}
-.headline{font:19px Georgia,serif;margin:9px 0}
+.headline{font:19px serif;margin:9px 0}
 .meta{color:var(--tg-theme-hint-color,#777);font-size:12px;word-break:break-word}
 .actions{display:flex;gap:6px;margin-top:15px;flex-wrap:wrap}
 button{border:0;border-radius:8px;padding:12px 10px;background:var(--tg-theme-button-color,#181818);color:var(--tg-theme-button-text-color,#fff);flex:1;font-size:12px}
@@ -67,6 +66,10 @@ def snapshot(state, notice=''):
     return json.dumps(result,ensure_ascii=False,separators=(',',':'))
 
 def send(chat):
+    import zlib
+    raw = HTML.encode('utf-8')
+    if len(raw) > 32768 or len(zlib.compress(raw, 9)) > 4096:
+        raise ValueError('Widget exceeds Telegram HTML limits')
     return tg.call('sendWidget',chat_id=chat,html=HTML,height=510,allow_queries=True,
                    caption='Stambo.i · модерация публикаций')
 
@@ -76,6 +79,9 @@ def handle(state,q):
         tg.call('answerWidgetQuery',widget_query_id=q['id'],data='{"notice":"Нет доступа"}')
         return
     action,_,did=q.get('data','').partition(':')
+    if len(q.get('data','').encode('utf-8')) > 64:
+        tg.call('answerWidgetQuery', widget_query_id=q['id'], data='{"notice":"Некорректный запрос"}')
+        return
     notice=''
     d=state.get('drafts',{}).get(did)
     if action in ('ok','no','edit'):
