@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#f7f5f1">
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#171b34">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="My Space">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
 <title>Stambo.i — Editorial Studio</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f6f4ef;--ink:#171716;--muted:#837f79;--border:#e2ddd5;--card:#fffefa;--accent:#ab9179}
@@ -136,8 +143,45 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .oura-day-detail strong{display:block;margin-bottom:4px;color:#fff}
 .oura-chart-title .oura-switch{flex-shrink:0}
 .oura-switch button:focus-visible,.oura-score:focus-visible{outline:2px solid #d5b5ff;outline-offset:2px}
+
+/* Safari standalone sign-in; no effect on Telegram moderation. */
+.pwa-gate{position:fixed;inset:0;z-index:90;overflow:auto;background:radial-gradient(ellipse at 30% 0%,#d6ddf8,#f8f9fe 64%,#f0edf6);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top) + 25px) 22px calc(env(safe-area-inset-bottom) + 30px)}
+.pwa-gate-card{width:100%;max-width:390px;background:#ffffffd9;border:1px solid #ffffff;border-radius:25px;padding:30px 23px;box-shadow:0 20px 55px #25325322;color:#1a2445;text-align:center}
+.pwa-gate-card img{width:102px;height:102px;border-radius:24px;margin:0 auto 17px}
+.pwa-gate-card h2{font:normal 36px Georgia,serif;margin:0 0 10px}.pwa-gate-card p{color:#626b86;line-height:1.6;font-size:13px}
+.pwa-code{width:100%;font:600 19px/1.3 ui-monospace,SFMono-Regular,monospace;text-transform:uppercase;text-align:center;letter-spacing:1px;background:#f1f3fb;border:1px solid #b9c4df;border-radius:12px;padding:14px;color:#263451;min-height:51px}
+.pwa-button{border:0;background:#1b2b5f;color:white;border-radius:12px;padding:13px 15px;min-height:44px;font-weight:600;font-size:13px}
+.pwa-button.alt{background:#e8eaf6;color:#293452}
+.pwa-gate-card .pwa-button{width:100%;margin-top:10px}
+.pwa-pair{border:1px solid #c7cee0;border-radius:15px;background:#ffffffdf;margin:15px auto;max-width:680px;padding:15px 17px;color:#2a3251;font-size:12px;line-height:1.55}
+.pwa-pair strong{display:block;font-size:15px;margin-bottom:7px}
+.pwa-pair input{margin:8px 0;width:100%}
+.pwa-pair .pwa-button{margin-right:6px}
+.pwa-pair-trigger{margin-top:15px;border:1px solid #bbb5c7;border-radius:10px;background:#fffaf7;padding:12px 14px;color:#413a55;font-size:12px}
+.pwa-hub-logout{border:none;background:none;color:#5d5f75;text-decoration:underline;font-size:12px;cursor:pointer;display:none}
+@media(display-mode:standalone){.pwa-gate{padding-top:calc(env(safe-area-inset-top) + 45px)}}
 </style></head><body>
-<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM</div></div><div class="hub-cards">
+<section class="pwa-gate hidden" id="pwaGate">
+<div class="pwa-gate-card">
+<img src="icon.svg" alt="My Space" />
+<h2>My Space</h2>
+<p>Приватный вход для Moda и Oura Ring. Привяжи Safari к Telegram-аккаунту один раз — затем приложение будет открываться с экрана iPhone.</p>
+<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="32" placeholder="Код из Telegram" aria-label="Одноразовый код"/>
+<button type="button" class="pwa-button" id="pwaClaim">Подключить My Space</button>
+<p id="pwaLoginStatus" aria-live="polite">Чтобы получить код, открой в Telegram бота Moda → /app → My Space → «Подключить Safari».</p>
+</div>
+</section>
+<section class="hub" id="hub"><div class="hub-header"><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD / TELEGRAM + SAFARI</div>
+<button type="button" class="pwa-pair-trigger hidden" id="pwaPairBtn">＋ Подключить Safari / экран iPhone</button>
+<button type="button" class="pwa-hub-logout" id="pwaLogout">Выйти из Safari</button>
+<div class="pwa-pair hidden" id="pwaPairPanel">
+<strong>Одноразовый код для Safari</strong>
+<p>Открой My Space в Safari, вставь этот код и нажми «Подключить». Код действует 10 минут и используется только один раз.</p>
+<input class="pwa-code" readonly id="pwaPairCode" aria-label="Код подключения Safari">
+<button type="button" class="pwa-button" id="pwaCopyCode">Скопировать код</button>
+<small id="pwaPairNote"></small>
+</div>
+</div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><span class="fashion-art">M.</span></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small><span class="go">Открыть →</span></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><span class="ring-art" aria-hidden="true"></span></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small><span class="go">Открыть →</span></div></button>
 </div></section>
@@ -225,9 +269,64 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
+const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
+const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
+const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
+let pwaSession=isTelegramClient?'':(localStorage.getItem('myspace.session.v1')||'');
+let pwaModerator=false;
+let readonly=isTelegramClient?viewerId===731539637:true;
+async function pwaApi(payload){
+ const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
+ const data=await res.json().catch(()=>({}));
+ if(!res.ok)throw Error(data.error||'HTTP '+res.status);
+ return data;
+}
+function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
+async function restorePwaSession(){
+ if(isTelegramClient){if(tg?.initData)$('pwaPairBtn').classList.remove('hidden');return}
+ if(!pwaSession){showPwaGate(true);return}
+ try{
+  const identity=await pwaApi({action:'whoami',session:pwaSession});
+  pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
+  $('pwaLogout').style.display='inline-block';showPwaGate(false);
+ }catch{
+  pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
+ }
+}
+$('pwaPairBtn').onclick=async()=>{
+ $('pwaPairBtn').disabled=true;
+ try{
+  const r=await pwaApi({action:'pair_start',initData:tg?.initData||''});
+  $('pwaPairCode').value=r.code.toUpperCase();
+  $('pwaPairPanel').classList.remove('hidden');
+  $('pwaPairNote').textContent='Код действителен 10 минут. Вставь его в Safari по адресу grach31.github.io/irina-mods/';
+ }catch(e){$('pwaPairPanel').classList.remove('hidden');$('pwaPairNote').textContent='Не удалось создать код. Открой My Space через /app в Telegram и попробуй снова.'}
+ finally{$('pwaPairBtn').disabled=false}
+};
+$('pwaCopyCode').onclick=async()=>{
+ const input=$('pwaPairCode');input.select();
+ try{await navigator.clipboard.writeText(input.value);$('pwaPairNote').textContent='Код скопирован. Открой Safari и вставь его в поле входа.'}
+ catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
+};
+$('pwaClaim').onclick=async()=>{
+ const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи код из Telegram.';return}
+ $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
+ try{
+  const login=await pwaApi({action:'pair_claim',code});
+  pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
+  pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
+  $('pwaCode').value='';showPwaGate(false);$('pwaLogout').style.display='inline-block';render();
+ }catch(e){$('pwaLoginStatus').textContent='Код неверный, уже использован или истёк. Получи новый в Telegram.'}
+ finally{$('pwaClaim').disabled=false}
+};
+$('pwaLogout').onclick=async()=>{
+ const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
+ try{await pwaApi({action:'signout',session:token})}catch{}
+};
 let currentSpace='hub';
 const showSpace=space=>{
+ if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
  $('hub').classList.toggle('hidden',space!=='hub');
  $('modaShell').style.display=space==='moda'?'':'none';
@@ -238,8 +337,7 @@ const showSpace=space=>{
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('ouraBack').onclick=()=>showSpace('hub');
-const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);const readonly=viewerId===731539637;
-if(tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
+if(isTelegramClient&&tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
@@ -297,8 +395,26 @@ const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
 if(['p','div','li','br'].includes(name))parent.append(document.createElement('br'))}
 for(const child of Array.from(source.body.firstElementChild?.childNodes||[]))appendSafe(child,target);
-const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&!tg?.initData){[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']].forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
-function act(action,d){if(!tg?.sendData){alert('Открой приложение кнопкой в Telegram-боте');return}let msg=action==='ok'?'Опубликовать этот пост в канал?':action==='no'?'Отклонить этот черновик?':'Запросить правки?';if(!confirm(msg))return;tg.sendData(JSON.stringify({type:'stambo_miniapp',action,id:d.id}));tg.close()}
+const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&(pwaSession||!tg?.initData)){const buttons=pwaSession?[['Правки через Telegram','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']]:[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
+async function act(action,d){
+ if(pwaSession){
+  if(action==='edit'){alert('Для правок напиши боту Moda в Telegram через /moda. Опубликовать и отклонить можно здесь.');return}
+  const msg=action==='ok'?'Подтвердить публикацию этого поста?':'Отклонить этот черновик?';
+  if(!confirm(msg))return;
+  try{
+   const result=await pwaApi({action:'moda_action',session:pwaSession,id:d.id,decision:action});
+   if(!result.queued)throw Error('not queued');
+   d.meta.status='queued';$('detail').classList.remove('visible');active=null;
+   alert('Решение передано боту. После обработки он обновит статус публикации.');
+   render();
+  }catch(e){alert('Не удалось передать решение. Повтори после проверки соединения.')}
+  return;
+ }
+ if(!tg?.sendData){alert('Открой редактор через /moda в Telegram');return}
+ const msg=action==='ok'?'Опубликовать этот пост в канал?':action==='no'?'Отклонить этот черновик?':'Запросить правки?';
+ if(!confirm(msg))return;
+ tg.sendData(JSON.stringify({type:'stambo_miniapp',action,id:d.id}));tg.close();
+}
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
 // From the editorial workspace, return to the two-section launcher.
@@ -465,12 +581,18 @@ async function loadOura(){
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
-  if(!initData){setValue('ouraStatus','Открой My Space через новую кнопку /app в Telegram, чтобы подтвердить аккаунт.');return}
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
-  let response;
-  try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
-  if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
-  const data=await response.json();
+  let data;
+  if(!initData&&pwaSession){
+    try{data=await pwaApi({action:'oura_read',session:pwaSession})}
+    catch(e){setValue('ouraStatus','Сеанс Safari истёк. Войди повторно через Telegram.');showPwaGate(true);return}
+  }else{
+    if(!initData){setValue('ouraStatus','Открой My Space через /app в Telegram или авторизуйся в Safari.');return}
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+    let response;
+    try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
+    if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
+    data=await response.json();
+  }
   renderOura(data);
   setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');
  }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.')}
@@ -481,8 +603,12 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Deep-link Oura from the bot's authenticated inline web_app button.
 const requestedSpace=new URLSearchParams(location.search).get('space');
 if(requestedSpace==='oura'||requestedSpace==='moda')showSpace(requestedSpace);
+restorePwaSession();
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+ navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/'}).catch(()=>{});
+}
 window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load()});
 })();

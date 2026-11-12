@@ -21,6 +21,7 @@ import config  # noqa: E402
 import render  # noqa: E402
 import tg  # noqa: E402
 import widget  # noqa: E402
+import pwa_actions  # noqa: E402
 
 ROOT = config.DATA  # закрытый репозиторий данных (черновики, состояние, просьбы)
 STATE = os.path.join(ROOT, "state", "state.json")
@@ -512,6 +513,52 @@ def sync_push():
         log("pushed")
 
 
+def handle_pwa_actions(state):
+    """Consume server-validated Safari decisions; reuse existing publishing state machine."""
+    try:
+        queue = pwa_actions.pending()
+    except Exception as exc:
+        log("PWA queue unavailable:", type(exc).__name__)
+        return
+    finished = []
+    for entry in queue:
+        action_id = entry.get("id")
+        draft_id = entry.get("draft_id")
+        action = entry.get("decision")
+        if not isinstance(action_id, str):
+            continue
+        if entry.get("telegram_user_id") != config.IRINA or action not in ("ok", "no"):
+            finished.append(action_id)
+            continue
+        draft = state.get("drafts", {}).get(draft_id)
+        if not draft or draft.get("status") != "sent":
+            finished.append(action_id)
+            continue
+        if action == "ok":
+            draft.update(status="approved", publish_at=now().isoformat())
+            log("PWA approved draft", draft_id)
+        elif action == "no":
+            draft["status"] = "rejected"
+            if draft.get("msg_id"):
+                try:
+                    tg.call("editMessageReplyMarkup", chat_id=config.IRINA,
+                            message_id=draft["msg_id"],
+                            reply_markup=status_markup("❌ Не публикуем"))
+                except Exception:
+                    pass
+            log("PWA rejected draft", draft_id)
+        finished.append(action_id)
+    if finished:
+        # Commit changes before acknowledging the queue; duplicate delivery is harmless
+        # because only drafts in the "sent" state can be modified.
+        save(STATE, state)
+        sync_push()
+        try:
+            pwa_actions.acknowledge(finished)
+        except Exception as exc:
+            log("PWA ack retry next poll:", type(exc).__name__)
+
+
 def one_pass(state, requests, wait=0):
     n = handle_updates(state, requests, wait)
     publish_due(state)
@@ -549,6 +596,7 @@ def main():
                 os.environ["LOOP_MINUTES"] = str(left)
                 os.execv(sys.executable, [sys.executable, "-u", os.path.abspath(__file__)])
             try:
+                handle_pwa_actions(state)
                 send_new_drafts(state, requests)
                 backfill_previews(state)
             except Exception:
