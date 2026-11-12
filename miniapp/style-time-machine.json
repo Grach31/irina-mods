@@ -94,16 +94,16 @@
       "category": "Коллекции",
       "photos": [
         {
-          "url": "https://assets.vogue.com/photos/55c6518408298d8be2231755/16:9/pass/01m.jpg",
-          "caption": "Louis Vuitton, весна–лето 2008 — коллекция Марка Джейкобса совместно с Ричардом Принсом.",
-          "credit": "Vogue Runway / Louis Vuitton",
-          "source_url": "https://www.vogue.com/fashion-shows/spring-2008-ready-to-wear/louis-vuitton"
-        },
-        {
           "url": "https://img3.selfimg.com.cn/uedvoguecms/2020/09/14/1600064920_Ukn6xC.jpg",
           "caption": "Модели в образах медсестёр, показ Louis Vuitton весна–лето 2008.",
           "credit": "Vogue China / Louis Vuitton",
           "source_url": "https://www.vogue.com.cn/fashion/industry/news_1231975f1515f935.html"
+        },
+        {
+          "url": "https://assets.vogue.com/photos/55c6518408298d8be2231755/16:9/pass/01m.jpg",
+          "caption": "Louis Vuitton, весна–лето 2008 — коллекция Марка Джейкобса совместно с Ричардом Принсом.",
+          "credit": "Vogue Runway / Louis Vuitton",
+          "source_url": "https://www.vogue.com/fashion-shows/spring-2008-ready-to-wear/louis-vuitton"
         }
       ],
       "source_url": "https://www.vogue.com/fashion-shows/spring-2008-ready-to-wear/louis-vuitton",
