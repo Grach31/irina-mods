@@ -605,13 +605,13 @@ async function pwaApi(payload){
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
 async function restorePwaSession(){
  if(isTelegramClient){if(tg?.initData)$('pwaPairBtn').classList.remove('hidden');return}
- if(!pwaSession){showPwaGate(true);return}
+ if(!pwaSession){showPwaGate(false);readonly=true;return}
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
   pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
   $('settingsLogout').style.display='inline-block';showPwaGate(false);render();
  }catch{
-  pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
+  pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showPwaGate(false);
  }
 }
 $('pwaPairBtn').onclick=async()=>{
@@ -657,7 +657,6 @@ $('settingsLogout').onclick=async()=>{
 const msLastSpaceKey='myspace.last-space.v1';
 let currentSpace='hub';
 const showSpace=space=>{
- if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
  try{sessionStorage.setItem(msLastSpaceKey,space)}catch(e){}
  const dark=space==='oura'||(document.documentElement.dataset.msTheme==='dark');
@@ -1296,6 +1295,7 @@ let savedSpace='hub';
 try{savedSpace=sessionStorage.getItem(msLastSpaceKey)||'hub'}catch(e){}
 const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history'];
 const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
+showPwaGate(false);
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
 /* Prefetch Moda while the two-card launcher is visible. */
