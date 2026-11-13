@@ -746,7 +746,7 @@ function msHistoryFigure(photo,large){
 }
 function msRenderEditorial(type,data){
  const root=$(msEditorialMap[type].container);root.replaceChildren();
- const list=Array.isArray(data.items)?[...data.items].sort((a,b)=>String(b.created_at||b.published_at||b.date||b.added_at||b.id||'').localeCompare(String(a.created_at||a.published_at||a.date||a.added_at||a.id||''))):[];
+ const list=Array.isArray(data.items)?data.items.map((item,index)=>({item,index})).sort((a,b)=>{const date=x=>String(x.created_at||x.published_at||x.date||x.added_at||'');const ad=date(a.item),bd=date(b.item);return ad&&bd?bd.localeCompare(ad):b.index-a.index}).map(x=>x.item):[];
  if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
  list.forEach(item=>{
   const card=document.createElement('article');card.className='myspace-idea';
