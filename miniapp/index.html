@@ -494,7 +494,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
 <div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.svg"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
-<div class="oura-date" id="ouraDate">Последняя синхронизация: —</div>
+<div class="oura-date" id="ouraDate">Последняя синхронизация: —</div><div class="oura-date" id="ouraSelectedDay" aria-live="polite">Последние показатели</div><button type="button" id="ouraToday" class="oura-range" style="padding:7px 12px;margin:6px 0 12px;background:#584c85;color:white;border-radius:12px;border:0">Последний день</button>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
 <button type="button" class="oura-score" data-score="readiness" aria-pressed="false"><small>Готовность организма</small><strong id="ouraReady">—</strong></button>
@@ -1054,7 +1054,7 @@ $('pending').closest('.stat')?.addEventListener('click',()=>{mode='pending';rend
 
 
 
-let ouraLive=null, sleepDays=7,tempDays=7;
+let ouraLive=null, sleepDays=7,tempDays=7,ouraSelectedDate=null;
 const valid=v=>typeof v==='number'&&Number.isFinite(v);
 const numeric=(v,unit='',digits=0)=>valid(v)?v.toFixed(digits).replace('.',',')+unit:'—';
 const integer=v=>valid(v)?Math.round(v).toLocaleString('ru-RU'):'—';
@@ -1087,6 +1087,26 @@ function dateHistory(days){return (Array.isArray(ouraLive?.history)?ouraLive.his
 const meanMetric=(arr,key)=>{const n=arr.map(x=>x[key]).filter(valid);return n.length?n.reduce((a,b)=>a+b,0)/n.length:null};
 const activeMinutes=x=>valid(x.medium_activity_seconds)||valid(x.high_activity_seconds)?
  ((valid(x.medium_activity_seconds)?x.medium_activity_seconds:0)+(valid(x.high_activity_seconds)?x.high_activity_seconds:0))/60:null;
+function selectOuraDay(entry){
+ if(!entry?.day)return;
+ ouraSelectedDate=entry.day;
+ setValue('ouraSelectedDay','Показатели за '+dayName(entry.day));
+ const map=[['ouraSleep','sleep'],['ouraSleepScore','sleep'],['ouraReady','readiness'],['ouraReadyScore','readiness'],['ouraActivity','activity'],['ouraActivityScore','activity']];
+ map.forEach(([id,key])=>setValue(id,integer(entry[key])));
+ setValue('sleepSummary','Ночь '+dayName(entry.day)+' · архивные показатели');
+ setValue('slTotal',prettySeconds(entry.total_sleep_seconds));setValue('slDeep',prettySeconds(entry.deep_sleep_seconds));
+ setValue('slRem',prettySeconds(entry.rem_sleep_seconds));setValue('slLight',prettySeconds(entry.light_sleep_seconds));
+ setValue('slEfficiency',numeric(entry.sleep_efficiency,'%'));setValue('slLatency',prettySeconds(entry.latency_seconds));
+ setValue('slBed',timeOf(entry.bedtime_start));setValue('slWake',timeOf(entry.bedtime_end));
+ setValue('readyHrv',numeric(entry.hrv,' мс'));setValue('readyHr',numeric(entry.resting_hr,' уд/мин'));
+ setValue('readyTemp',valid(entry.temperature)?(entry.temperature>0?'+':'')+numeric(entry.temperature,' °C',2):'—');
+ setValue('readinessSummary',valid(entry.readiness)?(entry.readiness>=85?'Высокая готовность к нагрузке':entry.readiness>=70?'Умеренная готовность':'Сниженная готовность: обрати внимание на отдых'):'Нет оценки за выбранный день');
+ setValue('activitySummary','Активность за '+dayName(entry.day));setValue('actSteps',integer(entry.steps));
+ setValue('actActiveCal',numeric(entry.active_calories,' ккал'));setValue('actTotalCal',numeric(entry.total_calories,' ккал'));
+ setValue('actHigh',prettySeconds(entry.high_activity_seconds));setValue('actMedium',prettySeconds(entry.medium_activity_seconds));
+ renderOuraCharts();
+}
+$('ouraToday').onclick=()=>{ouraSelectedDate=null;if(ouraLive)renderOura(ouraLive)};
 function displayChartDetail(type,entry){
  const target=$(type+'DayDetail');if(!target)return;
  const values={
@@ -1147,14 +1167,14 @@ function drawMetricChart(type){
  if(run.length)connected.push(run);
  const lineColor=cfg.bar?'#f2dcff':cfg.color;
  const paths=connected.map(seq=>'<polyline points="'+seq.map(([i,v])=>X(i)+','+yLine(v)).join(' ')+'" fill="none" stroke="'+lineColor+'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>').join('');
- const circles=data.map((item,i)=>valid(lineValue(item))?'<circle cx="'+X(i)+'" cy="'+yLine(lineValue(item))+'" r="2.9" fill="'+lineColor+'"/>':'').join('');
+ const circles=data.map((item,i)=>valid(lineValue(item))?'<circle cx="'+X(i)+'" cy="'+yLine(lineValue(item))+'" r="'+(item.day===ouraSelectedDate?'5':'2.9')+'" stroke="'+(item.day===ouraSelectedDate?'white':'none')+'" stroke-width="1.5" fill="'+lineColor+'"/>':'').join('');
  const zero=cfg.unit==='temp'?'<line x1="'+L+'" x2="'+(width-R)+'" y1="'+yLine(0)+'" y2="'+yLine(0)+'" stroke="#ecdfef" stroke-dasharray="4 4" opacity=".7"/>':'';
  const yLabels=cfg.unit==='temp'?'<text x="2" y="'+(yLine(ymax)+5)+'" fill="#bcb8d0" font-size="9">+'+ymax.toFixed(1)+'°</text><text x="4" y="'+(yLine(0)+3)+'" fill="#bcb8d0" font-size="9">0°</text><text x="2" y="'+yLine(-ymax)+'" fill="#bcb8d0" font-size="9">-'+ymax.toFixed(1)+'°</text>':
  cfg.bar?'<text x="3" y="24" fill="#bcb8d0" font-size="9">'+(Math.round(barMax*10)/10)+'</text><text x="306" y="24" fill="#bcb8d0" font-size="9">100</text><text x="306" y="'+(bottom+2)+'" fill="#bcb8d0" font-size="9">0</text>':
  '<text x="5" y="24" fill="#bcb8d0" font-size="9">100</text><text x="5" y="'+(bottom+2)+'" fill="#bcb8d0" font-size="9">0</text>';
  const hits=data.map((item,i)=>'<rect class="oura-hit" tabindex="0" role="button" aria-label="'+dayName(item.day)+' — показать значения" data-index="'+i+'" x="'+(L+i*plotW/data.length)+'" y="'+T+'" width="'+plotW/data.length+'" height="'+plotH+'" fill="transparent"/>').join('');
  root.innerHTML='<svg viewBox="0 0 '+width+' '+height+'" role="group" aria-label="'+label+' по дням">'+hGrid+zero+bars+paths+circles+yLabels+labels+hits+'</svg>';
- const action=e=>{const hit=e.target.closest('[data-index]');if(hit)displayChartDetail(type,data[Number(hit.dataset.index)])};
+ const action=e=>{const hit=e.target.closest('[data-index]');if(hit){const entry=data[Number(hit.dataset.index)];displayChartDetail(type,entry);selectOuraDay(entry)}};
  root.onclick=action;
  root.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();action(e)}};
 }
@@ -1244,6 +1264,8 @@ function renderOura(d){
  renderOuraCharts();
  explainScore(selectedScore);
  stages(sd);
+ if(ouraSelectedDate){const saved=(Array.isArray(d.history)?d.history:[]).find(x=>x.day===ouraSelectedDate);if(saved)selectOuraDay(saved);else ouraSelectedDate=null}
+ if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
 async function loadOura(){
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
