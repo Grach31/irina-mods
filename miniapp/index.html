@@ -650,10 +650,12 @@ $('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
 };
+const msLastSpaceKey='myspace.last-space.v1';
 let currentSpace='hub';
 const showSpace=space=>{
  if(!isTelegramClient&&!pwaSession){showPwaGate(true);return}
  currentSpace=space;
+ try{sessionStorage.setItem(msLastSpaceKey,space)}catch(e){}
  const dark=space==='oura'||(document.documentElement.dataset.msTheme==='dark');
  document.documentElement.classList.toggle('oura-active',space==='oura');
  const bg=dark?'#0c0d19':'#f6f4ef';
@@ -809,7 +811,6 @@ document.addEventListener('touchend',ev=>{
  const start=msGesture;msGesture=null;
  const t=ev.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
  if(start.nested||Math.abs(dx)<25&&Math.abs(dy)<55)return;
- if(start.fromEdge&&dx>95&&Math.abs(dy)<65){msGoBack();return}
  if(start.nearTop&&dy>105&&Math.abs(dx)<65)msRefreshCurrent();
 },{passive:true});
 async function msRefreshCurrent(){
@@ -1262,7 +1263,11 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Start loading content unconditionally; backend still enforces editing permissions.
 // Deep-link Oura from the bot's authenticated inline web_app button.
 const requestedSpace=new URLSearchParams(location.search).get('space');
-if(requestedSpace==='oura'||requestedSpace==='moda')showSpace(requestedSpace);
+let savedSpace='hub';
+try{savedSpace=sessionStorage.getItem(msLastSpaceKey)||'hub'}catch(e){}
+const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history'];
+const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
+if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
