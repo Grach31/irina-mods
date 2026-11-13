@@ -456,7 +456,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
 <button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
 </div></div>
-<button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
+<button type="button" id="passkeyEmail" class="myspace-logout">Подтвердить владельца по электронной почте</button><div id="passkeyEmailPanel" class="hidden"><input id="passkeyEmailCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Код из письма" aria-label="Код из письма"><button type="button" id="passkeyEmailVerify" class="myspace-logout">Подтвердить код</button></div><button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
 <button type="button" id="independentEnroll" class="myspace-logout">Создать независимый ключ входа</button><p id="independentEnrollStatus" style="overflow-wrap:anywhere"></p>
 <button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
 </div>
@@ -631,18 +631,34 @@ async function restorePwaSession(){
   pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showPwaGate(false);try{await activatePasskeySession()}catch(e){}
  }
 }
+$('passkeyEmail').onclick=async()=>{
+ const status=$('passkeyStatus');status.textContent='Отправляем код на почту владельца…';
+ try{
+  const client=await passkeyClient();
+  const result=await client.auth.signInWithOtp({email:'g.tatulyan@gmail.com',options:{shouldCreateUser:false}});
+  if(result.error)throw result.error;
+  $('passkeyEmailPanel').classList.remove('hidden');
+  status.textContent='Проверь почту владельца и введи код из письма.';
+ }catch(e){status.textContent='Не удалось отправить код: '+(e.message||e)}
+};
+$('passkeyEmailVerify').onclick=async()=>{
+ const status=$('passkeyStatus');status.textContent='Проверяем код…';
+ try{
+  const client=await passkeyClient();
+  const token=$('passkeyEmailCode').value.trim();
+  if(!/^\\d{6,8}$/.test(token))throw Error('Введи цифровой код из письма.');
+  const result=await client.auth.verifyOtp({email:'g.tatulyan@gmail.com',token,type:'email'});
+  if(result.error)throw result.error;
+  if(!await activatePasskeySession())throw Error('Не удалось подтвердить аккаунт владельца.');
+  status.textContent='Аккаунт подтверждён. Теперь нажми «Настроить вход через Face ID».';
+ }catch(e){status.textContent='Ошибка подтверждения: '+(e.message||e)}
+};
 $('passkeyEnroll').onclick=async()=>{
  const status=$('passkeyStatus');status.textContent='Подготовка Face ID…';
  try{
   const client=await passkeyClient();
   const existing=await client.auth.getSession();
-  if(!existing.data.session){
-   const oldToken=localStorage.getItem('myspace.session.v1')||'';
-   if(!oldToken)throw Error('Для первой привязки нужна действующая сессия Safari.');
-   const bootstrap=await pwaApi({action:'passkey_bootstrap',session:oldToken});
-   const verified=await client.auth.verifyOtp({token_hash:bootstrap.token_hash,type:'magiclink'});
-   if(verified.error)throw verified.error;
-  }
+  if(!existing.data.session)throw Error('Сначала подтверди владельца по электронной почте кнопкой выше.');
   const registered=await client.auth.registerPasskey();
   if(registered.error)throw registered.error;
   await activatePasskeySession();
