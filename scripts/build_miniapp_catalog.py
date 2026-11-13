@@ -44,7 +44,7 @@ def main():
         # Keep only content needed to display the post; do not export owner-only state.
         item = {"id": did, "type": draft.get("type", ""),
                 "text": draft.get("text", ""),
-                "meta": {"status": meta.get("status", "queued"), "sent_at": meta.get("sent_at", "")}}
+                "meta": {"status": meta.get("status", "sent"), "sent_at": meta.get("sent_at", "")}}
         for key in ("items", "looks", "photos", "image"):
             if key in draft:
                 item[key] = draft[key]
@@ -56,9 +56,9 @@ def main():
             shutil.copyfile(src, media_dir / (did + ".jpg"))
         items.append(item)
     result = {
-        "pending": sum(d.get("status") == "sent" for d in all_drafts.values()),
-        "published": sum(d.get("status") == "published" for d in all_drafts.values()),
-        "rejected": sum(d.get("status") == "rejected" for d in all_drafts.values()),
+        "pending": sum(i["meta"]["status"] in ("sent", "awaiting_edit") for i in items),
+        "published": sum(i["meta"]["status"] == "published" for i in items),
+        "rejected": sum(i["meta"]["status"] == "rejected" for i in items),
         "items": items,
     }
     TARGET.parent.mkdir(parents=True, exist_ok=True)
