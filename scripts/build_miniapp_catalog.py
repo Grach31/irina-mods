@@ -25,9 +25,9 @@ def main():
     today = datetime.now(ZoneInfo('Europe/Moscow')).date().isoformat()
     for file in (ROOT / "drafts").glob("*.json"):
         did = file.stem
-        if not did.startswith(today + '-'):
-            continue
         meta = all_drafts.get(did, {})
+        if meta.get('status') != 'published' and not did.startswith(today + '-'):
+            continue
         if meta.get("status") in {"error", "partial_error", "replaced"}:
             continue
         if meta.get("status") and meta["status"] not in permitted:
