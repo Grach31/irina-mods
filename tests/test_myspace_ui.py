@@ -103,6 +103,18 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("Технический тест · не публиковать", self.html)
         self.assertIn("Ожидает одобрения", self.html)
 
+    def test_trend_radar_native_layout(self):
+        self.assertIn('id="trendsSpace"', self.html)
+        self.assertIn("function renderTrendRadar(data)", self.html)
+        self.assertIn("if(type==='trends'){renderTrendRadar(data);return}", self.html)
+        self.assertIn("trendCategories=['Все','Цвета','Фактуры'", self.html)
+        self.assertIn("trend-feature", self.html)
+        self.assertIn("trend-grid", self.html)
+        self.assertIn("image_url||item.photo?.url", self.html)
+        data = json.loads((APP / "trend-radar.json").read_text(encoding="utf-8"))
+        self.assertTrue(data.get("period_label"))
+        self.assertGreaterEqual(len(data["items"]), 3)
+
     def test_historical_cards_have_photo_and_source_attribution(self):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 5)
