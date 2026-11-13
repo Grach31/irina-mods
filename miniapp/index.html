@@ -1010,10 +1010,20 @@ const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
 if(['p','div','li','br'].includes(name))parent.append(document.createElement('br'))}
 for(const child of Array.from(source.body.firstElementChild?.childNodes||[]))appendSafe(child,target);
-const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&(pwaSession||!tg?.initData)){const buttons=pwaSession?[['Правки через Telegram','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']]:[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
+const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&(pwaSession||!tg?.initData)){const buttons=pwaSession?[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']]:[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
 async function act(action,d){
  if(pwaSession){
-  if(action==='edit'){alert('Для правок напиши боту Moda в Telegram через /moda. Опубликовать и отклонить можно здесь.');return}
+  if(action==='edit'){
+   const notes=prompt('Что изменить в черновике? Опиши правки для редакции:');
+   if(notes===null)return;
+   if(notes.trim().length<3){alert('Напиши, что нужно исправить.');return}
+   try{
+    await publishApi({action:'edit',session:pwaSession,id:d.id,notes:notes.trim()});
+    d.meta.status='edit_requested';$('detail').classList.remove('visible');active=null;render();
+    alert('Правки сохранены в My Space. В Telegram ничего не отправлено.');
+   }catch(e){alert('Не удалось сохранить правки: '+e.message)}
+   return;
+  }
   const msg=action==='ok'?'Подтвердить публикацию этого поста?':'Отклонить этот черновик?';
   if(!confirm(msg))return;
   try{
