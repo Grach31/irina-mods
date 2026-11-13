@@ -1,5 +1,8 @@
 name: Новинки магазинов
 on:
+  schedule:
+    # 07:00 Moscow (UTC+3), before the 09:00 GPT editorial run.
+    - cron: '0 4 * * *'
   workflow_dispatch:
 permissions:
   contents: write
