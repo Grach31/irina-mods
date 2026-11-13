@@ -144,6 +144,9 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .oura-chart-title .oura-switch{flex-shrink:0}
 .oura-switch button:focus-visible,.oura-score:focus-visible{outline:2px solid #d5b5ff;outline-offset:2px}
 
+/* Neutral splash while restoring the saved session; never flash the login form. */
+.pwa-boot{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:#f6f4ef;color:#29272a}
+.pwa-boot-brand{font:normal 44px/1.1 Georgia,serif;letter-spacing:-2px}
 /* Safari standalone sign-in; no effect on Telegram moderation. */
 .pwa-gate{position:fixed;inset:0;z-index:90;overflow:auto;background:radial-gradient(ellipse at 30% 0%,#d6ddf8,#f8f9fe 64%,#f0edf6);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top) + 25px) 22px calc(env(safe-area-inset-bottom) + 30px)}
 .pwa-gate-card{width:100%;max-width:390px;background:#ffffffd9;border:1px solid #ffffff;border-radius:25px;padding:30px 23px;box-shadow:0 20px 55px #25325322;color:#1a2445;text-align:center}
@@ -412,7 +415,7 @@ body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
 #loginKeyBtn,#independentEnroll,#independentEnrollStatus{display:none!important}\n</style></head><body>
-<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate" id="pwaGate" style="display:flex">
+<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-boot" id="pwaBoot" role="status" aria-label="Загрузка My Space"><div class="pwa-boot-brand">My Space.</div></section><section class="pwa-gate hidden" id="pwaGate" style="display:none">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
@@ -625,7 +628,7 @@ async function pwaApi(payload){
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show);$('pwaGate').style.display=show?'flex':'none'}
 async function restorePwaSession(){
  readonly=true;pwaModerator=false;pwaSession='';
- showPwaGate(true);
+ let restored=false;
  try{
   const client=await passkeyClient();
   const {data,error}=await client.auth.getSession();
@@ -634,11 +637,13 @@ async function restorePwaSession(){
   if(data.session.user?.id!=='9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'){
    await client.auth.signOut({scope:'local'});return;
   }
-  await activatePasskeySession();
-  if(currentSpace==='oura')loadOura();
+  restored=await activatePasskeySession();
+  if(restored&&currentSpace==='oura')loadOura();
  }catch(e){
   $('pwaLoginStatus').textContent='Сохранённый вход не восстановлен. Введи пароль один раз.';
-  showPwaGate(true);
+ }finally{
+  if(!restored)showPwaGate(true);
+  $('pwaBoot').classList.add('hidden');
  }
 }
 $('passkeyEmail').onclick=async()=>{
@@ -1409,7 +1414,6 @@ let savedSpace='hub';
 try{savedSpace=sessionStorage.getItem(msLastSpaceKey)||'hub'}catch(e){}
 const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history'];
 const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
-showPwaGate(false);
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
 /* Legacy automatic passkey bootstrap disabled. */
