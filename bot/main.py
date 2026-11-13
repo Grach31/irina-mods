@@ -269,7 +269,11 @@ def send_new_drafts(state, requests):
         if did in state["drafts"]:
             continue
         if draft.get("hold"):
-            preview_held(state, draft)
+            try:
+                preview_held(state, draft)
+            except Exception:
+                log("held preview failed:", did)
+                traceback.print_exc()
             continue
         state.get("held", {}).pop(did, None)
         is_video = draft.get("type") == "item" and bool(draft.get("video"))
