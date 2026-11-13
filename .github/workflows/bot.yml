@@ -1,7 +1,6 @@
 name: Бот канала
 on:
-  schedule:
-    - cron: "*/15 * * * *"   # короткие циклы доставки и обработки решений
+  # Legacy bot polling disabled: My Space owns moderation; manual dispatch retained for rollback.
   workflow_dispatch:
     inputs:
       minutes:
