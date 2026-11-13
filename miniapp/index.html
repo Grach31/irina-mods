@@ -689,7 +689,8 @@ $('pwaCopyCode').onclick=async()=>{
  catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
 };
 $('pwaClaim').onclick=async()=>{
- const password=$('pwaCode').value;\n const email=$('pwaEmail').value.trim().toLowerCase();
+ const password=$('pwaCode').value;
+ const email=$('pwaEmail').value.trim().toLowerCase();
  if(!email||!password){$('pwaLoginStatus').textContent='Введи почту и пароль.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяем пароль…';
  try{
