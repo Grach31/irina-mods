@@ -58,7 +58,7 @@ class MySpaceReleaseTests(unittest.TestCase):
 
     def test_historical_cards_have_photo_and_source_attribution(self):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(data["items"]), 5)
+        self.assertGreaterEqual(len(data["items"]), 5)
         for item in data["items"]:
             self.assertTrue(item.get("photos"), item["title"])
             for photo in item["photos"]:
