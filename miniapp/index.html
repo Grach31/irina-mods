@@ -605,7 +605,7 @@ async function restorePwaSession(){
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
   pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
-  $('settingsLogout').style.display='inline-block';showPwaGate(false);
+  $('settingsLogout').style.display='inline-block';showPwaGate(false);render();
  }catch{
   pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);
  }
@@ -946,7 +946,7 @@ function load(){
     try{
      const decisions=await publishApi({action:'list',session:pwaSession});
      const byId=new Map((decisions.items||[]).map(x=>[x.draft_id,x.status]));
-     items.forEach(d=>{const status=byId.get(d.id);if(status==='published'||status==='rejected')d.meta.status=status});
+     items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested'].includes(status))d.meta.status=status});
     }catch(e){console.warn('Could not refresh My Space decisions')}
    }
    lastLoaded=Date.now();
@@ -958,7 +958,7 @@ function load(){
  })();
  return loading;
 }
-function current(){return items.filter(d=>(mode==='pending'?['sent','awaiting_edit'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter))}
+function current(){return items.filter(d=>(mode==='pending'?['sent','awaiting_edit','edit_requested'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter))}
 function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
@@ -1010,7 +1010,7 @@ const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
 if(['p','div','li','br'].includes(name))parent.append(document.createElement('br'))}
 for(const child of Array.from(source.body.firstElementChild?.childNodes||[]))appendSafe(child,target);
-const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&(pwaSession||!tg?.initData)){const buttons=pwaSession?[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']]:[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':'Материал обработан';actions.append(p)}}
+const actions=$('actions');actions.replaceChildren();if(d.meta.status==='sent'&&!readonly&&(pwaSession||!tg?.initData)){const buttons=pwaSession?[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']]:[['Правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)})}else{const p=document.createElement('span');p.className='eyebrow';p.textContent=readonly?'Только просмотр':d.meta.status==='sent'&&tg?.initData?'Чтобы опубликовать, открой /moda в боте':d.meta.status==='published'?'Опубликовано':d.meta.status==='edit_requested'?'Правки запрошены':'Материал обработан';actions.append(p)}}
 async function act(action,d){
  if(pwaSession){
   if(action==='edit'){
