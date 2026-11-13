@@ -34,7 +34,7 @@ def main():
                 if text not in ("/start","/start@"+os.environ.get("BOT_USERNAME",""),"Получить ключ"):continue
                 try:
                     code=issue()
-                    api("sendMessage",{"chat_id":OWNER,"text":"Ключ для входа в My Space (10 минут, один раз):\\n<code>"+code+"</code>\\n\\nhttps://grach31.github.io/irina-mods/","parse_mode":"HTML","reply_markup":{"keyboard":[[{"text":"Получить ключ"}]],"resize_keyboard":True}})
+                    api("sendMessage",{"chat_id":OWNER,"text":"Ключ для входа в My Space (10 минут, один раз):\\n<code>"+code+"</code>\n\nhttps://grach31.github.io/irina-mods/","parse_mode":"HTML","reply_markup":{"keyboard":[[{"text":"Получить ключ"}]],"resize_keyboard":True}})
                 except Exception as e:print("issue_failed",type(e).__name__)
         except Exception as e:
             print("poll_error",type(e).__name__)
