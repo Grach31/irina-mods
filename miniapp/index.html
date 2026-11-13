@@ -632,13 +632,13 @@ async function restorePwaSession(){
  }
 }
 $('passkeyEmail').onclick=async()=>{
- const status=$('passkeyStatus');status.textContent='Отправляем код на почту владельца…';
+ const status=$('passkeyStatus');status.textContent='Отправляем ссылку для подтверждения…';
  try{
   const client=await passkeyClient();
-  const result=await client.auth.signInWithOtp({email:'g.tatulyan@gmail.com',options:{shouldCreateUser:false}});
+  const result=await client.auth.signInWithOtp({email:'g.tatulyan@gmail.com',options:{shouldCreateUser:false,emailRedirectTo:'https://grach31.github.io/irina-mods/?space=settings'}});
   if(result.error)throw result.error;
-  $('passkeyEmailPanel').classList.remove('hidden');
-  status.textContent='Проверь почту владельца и введи код из письма.';
+  $('passkeyEmailPanel').classList.add('hidden');
+  status.textContent='Открой ссылку из письма. После возвращения в My Space нажми «Настроить вход через Face ID».';
  }catch(e){status.textContent='Не удалось отправить код: '+(e.message||e)}
 };
 $('passkeyEmailVerify').onclick=async()=>{
@@ -1358,6 +1358,21 @@ const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpa
 showPwaGate(false);
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
+(async()=>{
+ try{
+  const client=await passkeyClient();
+  const {data,error}=await client.auth.getSession();
+  if(error)throw error;
+  if(data.session){
+   await activatePasskeySession();
+   if(location.hash.includes('access_token=')||location.search.includes('code=')){
+    history.replaceState(null,'',location.pathname+'?space=settings');
+    showSpace('settings');
+   }
+   $('passkeyStatus').textContent='Аккаунт подтверждён. Теперь нажми «Настроить вход через Face ID».';
+  }
+ }catch(e){$('passkeyStatus').textContent='Подтверждение входа: '+(e.message||e)}
+})();
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
