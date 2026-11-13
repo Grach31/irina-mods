@@ -111,9 +111,18 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("trend-feature", self.html)
         self.assertIn("trend-grid", self.html)
         self.assertIn("image_url||item.photo?.url", self.html)
+        self.assertIn("trendPhotoCredit(item)", self.html)
+        self.assertIn("img.onerror=()=>card.classList.add('hidden')", self.html)
         data = json.loads((APP / "trend-radar.json").read_text(encoding="utf-8"))
         self.assertTrue(data.get("period_label"))
-        self.assertGreaterEqual(len(data["items"]), 3)
+        self.assertGreaterEqual(len(data["items"]), 6)
+        self.assertFalse(any(item.get("added_at_source") == "catalog_baseline" for item in data["items"]))
+        for item in data["items"]:
+            self.assertTrue(item["image_url"].startswith("https://"), item["id"])
+            self.assertTrue(item["image_source_url"].startswith("https://"), item["id"])
+            self.assertTrue(item["image_credit"], item["id"])
+            self.assertTrue(item["image_license"].startswith(("CC BY ", "CC BY-SA ")), item["id"])
+            self.assertTrue(item["sources"], item["id"])
 
     def test_historical_cards_have_photo_and_source_attribution(self):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
