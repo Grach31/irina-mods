@@ -411,7 +411,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
-</style></head><body>
+#loginKeyBtn,#independentEnroll,#independentEnrollStatus,#settingsLogout{display:none!important}\n</style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
@@ -622,6 +622,8 @@ async function pwaApi(payload){
 }
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
 async function restorePwaSession(){
+ // Public preview: all non-sensitive sections are available without login.
+ showPwaGate(false);readonly=true;pwaModerator=false;return;
  if(isTelegramClient){return}
  if(!pwaSession){showPwaGate(false);readonly=true;try{await activatePasskeySession()}catch(e){}return}
  try{
@@ -1333,6 +1335,7 @@ function renderOura(d){
  if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
 async function loadOura(){
+ setValue('ouraStatus','Данные Oura закрыты в публичном режиме.');return;
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
