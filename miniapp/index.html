@@ -416,7 +416,7 @@ body>nav.nav{display:none!important}
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Введи пароль владельца для доступа к My Space.</p>
+<p>Введи почту и пароль своего аккаунта My Space.</p>\n<input class="pwa-code" id="pwaEmail" type="email" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="Электронная почта" aria-label="Электронная почта" />
 <input class="pwa-code" id="pwaCode" type="password" autocomplete="current-password" maxlength="256" placeholder="Пароль" aria-label="Пароль"/>
 <button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button hidden" id="pwaCancel">Отмена</button>
 <p id="pwaLoginStatus" aria-live="polite">Вход защищён Supabase Auth.</p>
@@ -688,14 +688,14 @@ $('pwaCopyCode').onclick=async()=>{
  catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
 };
 $('pwaClaim').onclick=async()=>{
- const password=$('pwaCode').value;
- if(!password){$('pwaLoginStatus').textContent='Введи пароль.';return}
+ const password=$('pwaCode').value;\n const email=$('pwaEmail').value.trim().toLowerCase();
+ if(!email||!password){$('pwaLoginStatus').textContent='Введи почту и пароль.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяем пароль…';
  try{
   const client=await passkeyClient();
-  const result=await client.auth.signInWithPassword({email:'g.tatulyan@gmail.com',password});
+  const result=await client.auth.signInWithPassword({email,password});
   if(result.error)throw result.error;
-  if(!await activatePasskeySession())throw Error('Аккаунт не имеет прав владельца.');
+  if(!await activatePasskeySession()){await client.auth.signOut({scope:'local'});throw Error('Аккаунт не имеет прав владельца.')}
   $('pwaCode').value='';$('pwaLoginStatus').textContent='';
  }catch(e){$('pwaLoginStatus').textContent='Неверный пароль или вход недоступен.'}
  finally{$('pwaClaim').disabled=false}
