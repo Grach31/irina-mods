@@ -416,10 +416,10 @@ body>nav.nav{display:none!important}
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Получи одноразовый ключ в старом Telegram-боте командой /start и вставь его сюда. Ключ действует 10 минут.</p>
-<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Одноразовый ключ из Telegram" aria-label="Одноразовый код"/>
+<p>Введи постоянный ключ владельца. Если у тебя уже открыта действующая сессия, создай ключ в настройках My Space.</p>
+<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Ключ владельца" aria-label="Одноразовый код"/>
 <button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button" id="pwaCancel">Отмена</button>
-<p id="pwaLoginStatus" aria-live="polite">Ключ можно использовать только один раз.</p>
+<p id="pwaLoginStatus" aria-live="polite">Постоянный ключ не зависит от Telegram.</p>
 </div>
 </section>
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
@@ -691,14 +691,14 @@ $('pwaCopyCode').onclick=async()=>{
  catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
 };
 $('pwaClaim').onclick=async()=>{
- const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи код из Telegram.';return}
+ const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи ключ владельца.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
  try{
-  const login=await pwaApi({action:'pair_claim',code});
+  const login=await pwaApi({action:code.replace(/[\s-]/g,'').length===64?'independent_login':'pair_claim',code});
   pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
   pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
   $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
- }catch(e){$('pwaLoginStatus').textContent='Ключ входа неверный или код подключения истёк.'}
+ }catch(e){$('pwaLoginStatus').textContent='Ключ неверный или срок действия одноразового кода истёк.'}
  finally{$('pwaClaim').disabled=false}
 };
 $('independentEnroll').onclick=async()=>{
