@@ -95,6 +95,14 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("touchcancel", self.html)
         self.assertNotIn("if(start.nearTop&&dy>105", self.html)
 
+    def test_moderation_buttons_for_queued_drafts(self):
+        self.assertIn("const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].includes(d.meta.status)", self.html)
+        self.assertIn("reviewable&&!readonly&&pwaSession&&!isTestDraft", self.html)
+        self.assertIn("['Опубликовать','ok','']", self.html)
+        self.assertIn("['Отклонить','no','secondary']", self.html)
+        self.assertIn("Технический тест · не публиковать", self.html)
+        self.assertIn("Ожидает одобрения", self.html)
+
     def test_historical_cards_have_photo_and_source_attribution(self):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 5)
