@@ -1,40 +1,218 @@
 {
-  "updated_at": "2026-11-12",
-  "intro": "Пилотная версия Trend Radar: стартовые наблюдения, а не подтверждённый рейтинг. Первый еженедельный выпуск с проверенными источниками готовится. Статусы не являются процентами популярности.",
+  "updated_at": "2026-11-13",
+  "period_label": "9–15 ноября 2026 · первый выпуск",
+  "intro": "Радар осень–зима 2026. Проверяемые сигналы с практическим разбором. Фотографии Wikimedia Commons — иллюстрации цвета, формы или предмета, а не доказательство появления тренда на показе 2026. Подтверждения — в ссылках Vogue и Pinterest. Модные статусы — качественная оценка, не рейтинг продаж.",
   "items": [
     {
-      "id": "trend-01",
-      "title": "Скульптурные пропорции",
+      "id": "2026w46-color-blue",
+      "title": "Холодный синий",
+      "category": "Цвета",
       "status": "Наблюдаем",
-      "category": "Силуэты",
-      "summary": "Объёмные плечи, выразительная линия талии и контраст узкого с широким.",
-      "stylist": "Начинать с одной акцентной пропорции и уравновешивать её более спокойной вещью.",
-      "evidence": "Требует подтверждения свежими показами при следующем редакционном выпуске.",
+      "summary": "Холодные синие акценты — один из прогнозируемых цветовых сигналов 2026. В осенних коллекциях заметен более смелый монохром.",
+      "stylist": "Выбери одну вещь синего оттенка и оставь остальной комплект нейтральным. Для цельного образа сочетай оттенки синего, различающиеся по глубине.",
+      "evidence": "Pinterest Predicts 2026 отмечает Cool Blue как прогноз; Vogue в обзоре FW26 выделяет яркие монохромные сочетания. Это прогноз и подиумный сигнал, а не доказательство массовых продаж.",
       "added_at": "2026-11-13",
-      "added_at_source": "catalog_baseline"
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20Fashion%20Show%20Dress.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Холодный синий. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Brendan Lally",
+      "image_license": "CC BY 2.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Blue%20Fashion%20Show%20Dress.jpg",
+      "sources": [
+        {
+          "title": "Pinterest Predicts 2026 · Cool Blue",
+          "url": "https://business.pinterest.com/en-gb/blog/pinterest-predicts-2026-turn-trends-into-unlimited-possibilities/",
+          "date": "2025-12-09"
+        },
+        {
+          "title": "Vogue · Fall/Winter 2026 trends",
+          "url": "https://www.vogue.com/article/fall-winter-2026-fashion-trends",
+          "date": "2026-11-09"
+        }
+      ],
+      "featured": true
     },
     {
-      "id": "trend-02",
-      "title": "Тактильные фактуры",
-      "status": "Наблюдаем",
+      "id": "2026w46-texture-velvet",
+      "title": "Бархат и выразительные фактуры",
       "category": "Фактуры",
-      "summary": "Замша, кожа, объёмный трикотаж и контраст матовой и гладкой поверхности.",
-      "stylist": "Сочетать фактуры в единой цветовой гамме, чтобы визуальная сложность оставалась управляемой.",
-      "evidence": "Подборка конкретных подиумных примеров будет добавлена после проверки источников.",
+      "status": "Набирает силу",
+      "summary": "Бархат, жаккард, парча и блестящие поверхности переводят верхнюю одежду из фоновой вещи в главный акцент комплекта.",
+      "stylist": "Бархатный жакет или пальто сочетай с матовым трикотажем, прямыми брюками или простыми джинсами.",
+      "evidence": "Vogue в ноябре фиксирует выразительную верхнюю одежду и насыщенные материалы; сезонный прогноз отмечает декоративные фактуры вечерних вещей.",
       "added_at": "2026-11-13",
-      "added_at_source": "catalog_baseline"
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Velvet%20fabric.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Бархат и выразительные фактуры. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Shiva Theerthagiri",
+      "image_license": "CC BY 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Velvet%20fabric.jpg",
+      "sources": [
+        {
+          "title": "Vogue · Statement outerwear",
+          "url": "https://www.vogue.com/article/statement-outerwear-trend",
+          "date": "2026-11-12"
+        },
+        {
+          "title": "Vogue · Fall 2026 fashion forecast",
+          "url": "https://www.vogue.com/article/fall-2026-fashion-forecast",
+          "date": "2026-09"
+        }
+      ]
     },
     {
-      "id": "trend-03",
-      "title": "Архивные вещи в современном гардеробе",
-      "status": "Наблюдаем",
-      "category": "Стайлинг",
-      "summary": "Повторное внимание к коллекциям и узнаваемым приёмам прошлых креативных директоров.",
-      "stylist": "Использовать оригинальную архивную вещь или воспроизводить приём через актуальные доступные изделия.",
-      "evidence": "Направление обсуждается в отчётах вторичного рынка; конкретные показатели нужно сверять с первоисточником.",
+      "id": "2026w46-coat-90s",
+      "title": "Длинное лаконичное пальто",
+      "category": "Вещи",
+      "status": "Набирает силу",
+      "summary": "Прямое однобортное пальто ниже колена в духе 1990-х — противовес декоративным моделям сезона.",
+      "stylist": "Обрати внимание на чёткую посадку плеч и достаточную ширину для трикотажа. Носи с прямыми джинсами или платьем.",
+      "evidence": "Vogue 13 ноября выделяет длинное минималистичное пальто как зимнее направление; это редакционный прогноз, а не количественный рейтинг.",
       "added_at": "2026-11-13",
-      "added_at_source": "catalog_baseline"
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Look%20in%20wool%20coat.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Длинное лаконичное пальто. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Sasha Kargaltsev",
+      "image_license": "CC BY 2.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Look%20in%20wool%20coat.jpg",
+      "sources": [
+        {
+          "title": "Vogue · The 90s-style coat trend",
+          "url": "https://www.vogue.com/article/90s-coat-trend",
+          "date": "2026-11-13"
+        },
+        {
+          "title": "Vogue · Fall/Winter 2026 trends",
+          "url": "https://www.vogue.com/article/fall-winter-2026-fashion-trends",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "2026w46-shoes-animal",
+      "title": "Анималистичные акценты на обуви",
+      "category": "Обувь",
+      "status": "Набирает силу",
+      "summary": "Леопардовые, зебровые и змеиные мотивы выходят на туфли, балетки и сапоги.",
+      "stylist": "Оставь обувь единственным рисунком в образе: тёмный деним, однотонный трикотаж и лаконичная сумка.",
+      "evidence": "Сезонный обувной обзор Vogue выделяет animal prints; второй сигнал — общий рост выразительных аксессуаров и персональных деталей в сезоне.",
+      "added_at": "2026-11-13",
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Animal%20Print%20Strap%20Shoes.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Анималистичные акценты на обуви. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Nabunje Leticia",
+      "image_license": "Wikimedia Commons · проверь условия на странице файла",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Animal%20Print%20Strap%20Shoes.jpg",
+      "sources": [
+        {
+          "title": "Vogue · Fall/Winter 2026 shoes",
+          "url": "https://www.vogue.com/article/fall-2026-shoe-trends",
+          "date": "2026-11"
+        },
+        {
+          "title": "Vogue · Fall 2026 accessory trends",
+          "url": "https://www.vogue.com/article/fall-2026-accessory-trends",
+          "date": "2026-09-04"
+        }
+      ]
+    },
+    {
+      "id": "2026w46-accessory-floral",
+      "title": "Цветочная брошь",
+      "category": "Аксессуары",
+      "status": "Набирает силу",
+      "summary": "Флоральные броши возвращают объёмную ювелирную деталь на жакеты, пальто и трикотаж.",
+      "stylist": "Одна крупная брошь на лацкане или несколько миниатюрных рядом с воротом превращают базовую вещь в индивидуальную.",
+      "evidence": "Vogue отмечает цветочные броши в коллекциях Chanel, Dior, Khaite, Loro Piana и Kallmeyer; Pinterest Predicts отдельно фиксирует Brooched.",
+      "added_at": "2026-11-13",
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Rose%20quartz%20and%20nephrite%20flower%20brooch%202.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Цветочная брошь. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "W.carter",
+      "image_license": "CC BY 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Rose%20quartz%20and%20nephrite%20flower%20brooch%202.jpg",
+      "sources": [
+        {
+          "title": "Vogue · Fall 2026 accessories",
+          "url": "https://www.vogue.com/article/fall-2026-accessory-trends",
+          "date": "2026-09-04"
+        },
+        {
+          "title": "Pinterest Predicts 2026 · Brooched",
+          "url": "https://business.pinterest.com/en-gb/blog/pinterest-predicts-2026-turn-trends-into-unlimited-possibilities/",
+          "date": "2025-12-09"
+        }
+      ]
+    },
+    {
+      "id": "2026w46-print-floral",
+      "title": "Флористика на тёмном фоне",
+      "category": "Принты",
+      "status": "Набирает силу",
+      "summary": "Осенние цветочные узоры становятся глубже по цвету и ближе к фактурному жаккарду и сложной драпировке.",
+      "stylist": "Начни с одной юбки или платья с цветочным принтом и сочетай с однотонными вещами в оттенках рисунка.",
+      "evidence": "Vogue отмечает мрачноватые флоральные мотивы и жаккард в коллекциях Dries Van Noten, Erdem и Simone Rocha.",
+      "added_at": "2026-11-13",
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue-prairie-dress-closeup.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Флористика на тёмном фоне. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Firstcultural",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Blue-prairie-dress-closeup.jpg",
+      "sources": [
+        {
+          "title": "Vogue · Fall/Winter 2026 trends",
+          "url": "https://www.vogue.com/article/fall-winter-2026-fashion-trends",
+          "date": "2026-11-09"
+        },
+        {
+          "title": "Vogue · Fall 2026 fashion forecast",
+          "url": "https://www.vogue.com/article/fall-2026-fashion-forecast",
+          "date": "2026-09"
+        }
+      ]
+    },
+    {
+      "id": "2026w46-styling-monochrome",
+      "title": "Цвет как главный приём",
+      "category": "Стайлинг",
+      "status": "Набирает силу",
+      "summary": "Монохромный комплект строится вокруг одного насыщенного оттенка, но не обязательно одной фактуры.",
+      "stylist": "Повтори цвет в пальто, платье и сумке, меняя фактуры и близкие оттенки: так комплект не выглядит плоским.",
+      "evidence": "Vogue выделяет насыщенный цветовой монохром (True Colors) в обзоре сезона; Pinterest отслеживает отдельные новые цветовые направления.",
+      "added_at": "2026-11-13",
+      "updated_at": "2026-11-13",
+      "last_checked_at": "2026-11-13",
+      "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20blue%20outfit%20and%20matching%20hijab%20show%20modesty%20and%20style.jpg?width=900",
+      "image_alt": "Иллюстрация детали: Цвет как главный приём. Историческая/современная фотография, не подиум 2026.",
+      "image_caption": "Иллюстрация визуальной идеи; не фотография актуального показа.",
+      "image_credit": "Wikimedia Commons contributor",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:The%20blue%20outfit%20and%20matching%20hijab%20show%20modesty%20and%20style.jpg",
+      "sources": [
+        {
+          "title": "Vogue · Fall/Winter 2026 trends",
+          "url": "https://www.vogue.com/article/fall-winter-2026-fashion-trends",
+          "date": "2026-11-09"
+        },
+        {
+          "title": "Pinterest Predicts 2026",
+          "url": "https://business.pinterest.com/en-gb/blog/pinterest-predicts-2026-turn-trends-into-unlimited-possibilities/",
+          "date": "2025-12-09"
+        }
+      ]
     }
-  ],
-  "period_label": "Пилотный обзор · до первого выпуска"
+  ]
 }
