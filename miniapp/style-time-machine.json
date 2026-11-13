@@ -148,7 +148,14 @@
       "then": "Стёганая сумка с клапаном, металлической цепочкой и прямоугольной застёжкой — функциональный аксессуар середины XX века.",
       "now": "Носить компактную сумку на плече или через плечо, сочетая её с лаконичным жакетом и современными свободными брюками.",
       "category": "Аксессуары",
-      "photos": [],
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chanel_2.55.jpg",
+          "caption": "Сумка Chanel 2.55, современная фотография модели. Снимок 2009 года, не архивная фотография 1955 года.",
+          "credit": "Liu Wen Cheng / Wikimedia Commons, CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Chanel_2.55.jpg"
+        }
+      ],
       "source_url": "https://www.chanel.com/us/about-chanel/the-house-of-chanel/1950/",
       "photo_note": "Архивная фотография не добавлена до проверки прав использования.",
       "added_at": "2026-11-13",
