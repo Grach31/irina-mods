@@ -609,9 +609,9 @@ async function passkeySession(){
  const client=await passkeyClient();const {data}=await client.auth.getSession();return data.session?.access_token||'';
 }
 async function activatePasskeySession(){
- const token=await passkeySession();if(!token)return false;
- const identity=await pwaApi({action:'whoami',session:token});
- pwaSession=token;pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
+ const accessToken=await passkeySession();if(!accessToken)return false;
+ const exchanged=await pwaApi({action:'session_exchange',access_token:accessToken});
+ pwaSession=exchanged.token;pwaModerator=exchanged.can_moderate===true;readonly=!pwaModerator;
  showPwaGate(false);render();return true;
 }
 async function pwaApi(payload){
