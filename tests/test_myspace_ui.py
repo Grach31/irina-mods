@@ -34,6 +34,15 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("await client.auth.getSession()", self.html)
         self.assertIn("await activatePasskeySession()", self.html)
 
+    def test_login_gate_does_not_flash_during_session_restore(self):
+        self.assertIn('id="pwaBoot"', self.html)
+        self.assertIn('class="pwa-gate hidden" id="pwaGate" style="display:none"', self.html)
+        self.assertIn("restored=await activatePasskeySession();", self.html)
+        self.assertIn("if(!restored)showPwaGate(true);", self.html)
+        self.assertIn("document", self.html)
+        self.assertIn("$('pwaBoot').classList.add('hidden');", self.html)
+        self.assertNotIn("showPwaGate(true);\n try{", self.html)
+
     def test_settings_and_gestures_present(self):
         self.assertIn("myspace.theme.v1", self.html)
         self.assertIn("prefers-color-scheme: dark", self.html)
