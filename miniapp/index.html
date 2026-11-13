@@ -882,20 +882,52 @@ function msActiveScroller(){
  if(currentSpace==='hub')return $('hub');
  return $(currentSpace+'Space');
 }
-let msGesture=null,msRefreshing=false;
+// Edge back gesture and deliberate pull-to-refresh. Keep nested carousels native.
+let msGesture=null,msRefreshing=false,msLastScrollAt=0;
+document.addEventListener('scroll',ev=>{
+ const scroller=msActiveScroller();
+ if(ev.target===scroller)msLastScrollAt=Date.now();
+},true);
 document.addEventListener('touchstart',ev=>{
+ msGesture=null;
  if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
  const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
  if(!scroller||!scroller.contains(el))return;
- const nested=el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select');
- msGesture={x:t.clientX,y:t.clientY,nearTop:scroller.scrollTop<=2,fromEdge:t.clientX<=34,nested:!!nested};
+ const nested=!!el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select,button,a');
+ const width=document.documentElement.clientWidth;
+ const edge=34;
+ msGesture={
+  x:t.clientX,y:t.clientY,at:Date.now(),scroller,space:currentSpace,
+  startScrollTop:scroller.scrollTop,
+  refreshEligible:scroller.scrollTop<=1&&Date.now()-msLastScrollAt>550&&!nested,
+  fromLeft:t.clientX<=edge,fromRight:t.clientX>=width-edge,
+  nested,verticalMoved:false,scrollMoved:false
+ };
 },{passive:true});
+document.addEventListener('touchmove',ev=>{
+ if(!msGesture||ev.touches.length!==1){msGesture=null;return}
+ const g=msGesture,t=ev.touches[0];
+ const dx=t.clientX-g.x,dy=t.clientY-g.y;
+ if(Math.abs(dy)>20&&Math.abs(dy)>Math.abs(dx)*1.1)g.verticalMoved=true;
+ if(g.scroller.scrollTop>2)g.scrollMoved=true;
+}, {passive:true});
+document.addEventListener('touchcancel',()=>{msGesture=null},{passive:true});
 document.addEventListener('touchend',ev=>{
  if(!msGesture||!ev.changedTouches.length)return;
- const start=msGesture;msGesture=null;
- const t=ev.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
- if(start.nested||Math.abs(dx)<25&&Math.abs(dy)<55)return;
- if(start.nearTop&&dy>105&&Math.abs(dx)<65)msRefreshCurrent();
+ const g=msGesture;msGesture=null;
+ if(g.space!==currentSpace)return;
+ const t=ev.changedTouches[0],dx=t.clientX-g.x,dy=t.clientY-g.y;
+ const duration=Date.now()-g.at;
+ // The right edge swipes left; the left edge swipes right (native iOS convention).
+ const edgeBack=(g.fromRight&&dx< -85)||(g.fromLeft&&dx>85);
+ if(!g.nested&&currentSpace!=='hub'&&edgeBack&&Math.abs(dx)>Math.abs(dy)*1.45&&duration<1000&&!g.verticalMoved){
+  msGoBack();return;
+ }
+ // Start from a genuinely settled top position; don't refresh on scroll reversal.
+ if(g.refreshEligible&&!g.scrollMoved&&g.startScrollTop<=1&&dy>=175&&Math.abs(dx)<=55&&
+    dy>Math.abs(dx)*2&&duration>=280&&duration<=2400&&g.scroller.scrollTop<=1){
+  msRefreshCurrent();
+ }
 },{passive:true});
 async function msRefreshCurrent(){
  if(msRefreshing)return;msRefreshing=true;
