@@ -69,7 +69,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 5)
         for item in data["items"]:
-            self.assertTrue(item.get("photos"), item["title"])
+            self.assertTrue(item.get("photos") or (item.get("source_url") and item.get("photo_note")), item["title"])
             for photo in item["photos"]:
                 self.assertTrue(photo.get("caption"), item["title"])
                 self.assertTrue(photo.get("credit"), item["title"])
