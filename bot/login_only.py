@@ -19,7 +19,7 @@ def main():
     api("setMyCommands",{"commands":[{"command":"start","description":"Получить ключ для My Space"}]})
     offset=None
     start=time.time()
-    while time.time()-start<115:
+    while time.time()-start<230:
         try:
             args={"timeout":20,"allowed_updates":["message"]}
             if offset is not None:args["offset"]=offset
@@ -29,9 +29,9 @@ def main():
                 msg=u.get("message") or {}
                 chat=msg.get("chat") or {}
                 if msg.get("from",{}).get("id")!=OWNER or chat.get("type")!="private":continue
-                if msg.get("date",0)<start-300:continue
+                if msg.get("date",0)<start-600:continue
                 text=str(msg.get("text","")).strip()
-                if text not in ("/start","/start@"+os.environ.get("BOT_USERNAME",""),"Получить ключ"):continue
+                if text.split("@")[0] not in ("/start","Получить ключ"):continue
                 try:
                     code=issue()
                     message="Ключ для входа в My Space (10 минут, один раз):\\n<code>"+code+"</code>\\n\\nhttps://grach31.github.io/irina-mods/"
