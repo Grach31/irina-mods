@@ -722,6 +722,7 @@ $('pwaCancel').onclick=()=>showPwaGate(false);
 $('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
+ try{const client=await passkeyClient();await client.auth.signOut()}catch{}
 };
 const msLastSpaceKey='myspace.last-space.v1';
 let currentSpace='hub';
