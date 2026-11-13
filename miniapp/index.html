@@ -377,6 +377,8 @@ html[data-ms-theme="light"] #modaShell .tabs .tab.active{
 }
 html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 
+.trend-photo-credit{display:block;margin-top:12px;color:var(--ms-sub);font-size:10px;line-height:1.4;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
+.trend-feature:has(>img) .trend-photo-credit{color:#f3eade}
 /* Trend Radar: scoped to its own screen; reuse My Space's theme tokens. */
 .trend-inner{padding-top:26px}
 .trend-radar-content{display:block}
@@ -792,9 +794,16 @@ function trendElement(tag,cls,textValue){
  if(textValue!==undefined)el.textContent=String(textValue);
  return el;
 }
+function trendPhotoCredit(item){
+ const url=String(item.image_source_url||'');
+ if(!/^https:\/\//i.test(url))return null;
+ const link=trendElement('a','trend-photo-credit','Фото: '+String(item.image_credit||'автор не указан')+' · '+String(item.image_license||'лицензия не указана'));
+ link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+ return link;
+}
 function renderTrendRadar(data){
  const root=$('trendsItems');root.replaceChildren();root.className='trend-radar-content';
- const items=Array.isArray(data.items)?data.items.filter(x=>x&&x.title):[];
+ const items=Array.isArray(data.items)?data.items.filter(x=>x&&x.title&&trendSafePhoto(x)&&x.image_source_url&&x.image_credit&&x.image_license):[];
  const dateLabel=String(data.period_label||data.updated_at||'Обзор в подготовке');
  const toolbar=trendElement('div','trend-edition');
  toolbar.append(trendElement('span','',dateLabel),trendElement('span','',items.length+' направлений'));
@@ -813,17 +822,18 @@ function renderTrendRadar(data){
  const main=chosen.find(x=>x.featured===true)||chosen[0];
  const hero=trendElement('article','trend-feature');
  const heroPhoto=trendSafePhoto(main);
- if(heroPhoto){const img=document.createElement('img');img.src=heroPhoto;img.alt=main.image_alt||main.title;img.loading='lazy';img.onerror=()=>img.remove();hero.append(img)}
+ if(heroPhoto){const img=document.createElement('img');img.src=heroPhoto;img.alt=main.image_alt||main.title;img.loading='lazy';img.onerror=()=>{hero.classList.add('hidden');};hero.append(img)}
  const heroBody=trendElement('div','trend-feature-body');
  heroBody.append(trendElement('div','trend-eyebrow',main.featured?'ГЛАВНЫЙ СИГНАЛ НЕДЕЛИ':'В ФОКУСЕ · '+trendCategoryOf(main)),trendElement('h2','',main.title),trendElement('p','',main.summary||''));
  heroBody.append(trendElement('span','trend-status',main.status||'Наблюдаем'));
+ const mainCredit=trendPhotoCredit(main);if(mainCredit)heroBody.append(mainCredit);
  hero.append(heroBody);root.append(hero);
  root.append(trendElement('h2','trend-section-title','Сигналы недели'));
  const grid=trendElement('div','trend-grid');
  for(const item of chosen){
   const card=trendElement('article','trend-tile');
   const photo=trendSafePhoto(item);
-  if(photo){const img=document.createElement('img');img.src=photo;img.alt=item.image_alt||item.title;img.loading='lazy';img.onerror=()=>img.remove();card.append(img)}
+  if(photo){const img=document.createElement('img');img.src=photo;img.alt=item.image_alt||item.title;img.loading='lazy';img.onerror=()=>card.classList.add('hidden');card.append(img)}
   const content=trendElement('div','trend-tile-body');
   content.append(trendElement('span','trend-category',trendCategoryOf(item)),trendElement('h3','',item.title),trendElement('p','',item.summary||''));
   const details=trendElement('div','trend-tile-detail hidden');
@@ -836,6 +846,7 @@ function renderTrendRadar(data){
   const toggle=trendElement('button','trend-expand','Подробнее ↓');toggle.type='button';toggle.setAttribute('aria-expanded','false');
   toggle.onclick=()=>{const expanded=!details.classList.toggle('hidden');toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓';toggle.setAttribute('aria-expanded',String(expanded))};
   content.append(trendElement('span','trend-status',item.status||'Наблюдаем'),toggle,details);
+  const credit=trendPhotoCredit(item);if(credit)content.append(credit);
   card.append(content);grid.append(card);
  }
  root.append(grid);
