@@ -411,15 +411,15 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
-#loginKeyBtn,#independentEnroll,#independentEnrollStatus,#settingsLogout{display:none!important}\n</style></head><body>
-<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
+#loginKeyBtn,#independentEnroll,#independentEnrollStatus{display:none!important}\n</style></head><body>
+<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate" id="pwaGate">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Введи постоянный ключ владельца. Если у тебя уже открыта действующая сессия, создай ключ в настройках My Space.</p>
-<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Ключ владельца" aria-label="Одноразовый код"/>
-<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button" id="pwaCancel">Отмена</button>
-<p id="pwaLoginStatus" aria-live="polite">Постоянный ключ не зависит от Telegram.</p>
+<p>Введи пароль владельца для доступа к My Space.</p>
+<input class="pwa-code" id="pwaCode" type="password" autocomplete="current-password" maxlength="256" placeholder="Пароль" aria-label="Пароль"/>
+<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button hidden" id="pwaCancel">Отмена</button>
+<p id="pwaLoginStatus" aria-live="polite">Вход защищён Supabase Auth.</p>
 </div>
 </section>
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
@@ -622,8 +622,9 @@ async function pwaApi(payload){
 }
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
 async function restorePwaSession(){
- // Public preview: all non-sensitive sections are available without login.
- showPwaGate(false);readonly=true;pwaModerator=false;return;
+ showPwaGate(true);readonly=true;pwaModerator=false;
+ try{if(await activatePasskeySession())return}catch(e){}
+ pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);return;
  if(isTelegramClient){return}
  if(!pwaSession){showPwaGate(false);readonly=true;try{await activatePasskeySession()}catch(e){}return}
  try{
@@ -693,16 +694,19 @@ $('pwaCopyCode').onclick=async()=>{
  catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
 };
 $('pwaClaim').onclick=async()=>{
- const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи ключ владельца.';return}
- $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
+ const password=$('pwaCode').value;
+ if(!password){$('pwaLoginStatus').textContent='Введи пароль.';return}
+ $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяем пароль…';
  try{
-  const login=await pwaApi({action:code.replace(/[\s-]/g,'').length===64?'independent_login':'pair_claim',code});
-  pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
-  pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
-  $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
- }catch(e){$('pwaLoginStatus').textContent='Ключ неверный или срок действия одноразового кода истёк.'}
+  const client=await passkeyClient();
+  const result=await client.auth.signInWithPassword({email:'g.tatulyan@gmail.com',password});
+  if(result.error)throw result.error;
+  if(!await activatePasskeySession())throw Error('Аккаунт не имеет прав владельца.');
+  $('pwaCode').value='';$('pwaLoginStatus').textContent='';
+ }catch(e){$('pwaLoginStatus').textContent='Неверный пароль или вход недоступен.'}
  finally{$('pwaClaim').disabled=false}
 };
+$('pwaCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('pwaClaim').click()});
 $('independentEnroll').onclick=async()=>{
  if(!pwaSession){$('independentEnrollStatus').textContent='Сначала войди в My Space.';return}
  if(!confirm('Создать новый ключ входа? Старый ключ перестанет работать. Сохрани новый в менеджере паролей.'))return;
@@ -1367,6 +1371,8 @@ const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpa
 showPwaGate(false);
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
+/* Legacy automatic passkey bootstrap disabled. */
+/*
 (async()=>{
  try{
   const client=await passkeyClient();
@@ -1382,6 +1388,7 @@ restorePwaSession();
   }
  }catch(e){$('passkeyStatus').textContent='Подтверждение входа: '+(e.message||e)}
 })();
+*/
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
