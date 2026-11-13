@@ -1,12 +1,12 @@
 name: Бот канала
 on:
   schedule:
-    - cron: "*/30 * * * *"   # если бот не запущен — запустить; каждый запуск работает ~5,5 часа
+    - cron: "*/15 * * * *"   # короткие циклы доставки и обработки решений
   workflow_dispatch:
     inputs:
       minutes:
         description: "Сколько минут работать"
-        default: "330"
+        default: "12"
 permissions:
   contents: write
   id-token: write
@@ -17,7 +17,7 @@ jobs:
   run:
     if: ${{ !github.event.repository.private }}   # долгий запуск только в открытом репозитории
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,4 +32,4 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           DATA_DIR: "."
-          LOOP_MINUTES: ${{ inputs.minutes || '330' }}
+          LOOP_MINUTES: ${{ inputs.minutes || '12' }}
