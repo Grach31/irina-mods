@@ -377,6 +377,39 @@ html[data-ms-theme="light"] #modaShell .tabs .tab.active{
 }
 html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 
+/* Trend Radar: scoped to its own screen; reuse My Space's theme tokens. */
+.trend-inner{padding-top:26px}
+.trend-radar-content{display:block}
+.trend-edition{display:flex;justify-content:space-between;gap:12px;padding:13px 0;margin:0 0 14px;border-top:1px solid var(--ms-line);font-size:11px;color:var(--ms-sub)}
+.trend-filters{display:flex;overflow-x:auto;gap:8px;padding:1px 0 19px;margin-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.trend-filters::-webkit-scrollbar{display:none}
+.trend-filters button{flex:0 0 auto;background:transparent;color:var(--ms-text);border:1px solid var(--ms-line);border-radius:999px;padding:10px 15px;font-size:12px;min-height:40px}
+.trend-filters button.active{background:var(--ms-accent);color:var(--ms-page);border-color:var(--ms-accent)}
+.trend-feature{position:relative;min-height:240px;border:1px solid var(--ms-line);border-radius:20px;background:linear-gradient(125deg,var(--ms-card),var(--ms-page));overflow:hidden;margin-bottom:26px}
+.trend-feature>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.65}
+.trend-feature:has(>img):after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#111118e8,#11111852);pointer-events:none}
+.trend-feature-body{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:240px;padding:24px 21px;max-width:430px}
+.trend-feature:has(>img) .trend-feature-body{color:#f6f1ec}
+.trend-feature:has(>img) .trend-feature-body p{color:#eee9e2}
+.trend-eyebrow{letter-spacing:2.6px;font-size:10px;font-weight:700;color:var(--ms-accent);text-transform:uppercase}
+.trend-feature h2{font:normal clamp(30px,9vw,45px)/1.08 Georgia,serif;margin:15px 0 12px}
+.trend-feature p{font-size:13px;line-height:1.6;max-width:320px;margin:0 0 13px;color:var(--ms-sub)}
+.trend-status{display:inline-flex;align-items:center;align-self:flex-start;border:1px solid var(--ms-line);border-radius:999px;padding:6px 10px;font-size:10px;font-weight:650;letter-spacing:.3px}
+.trend-section-title{font:normal 27px/1.1 Georgia,serif;margin:0 0 15px}
+.trend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trend-tile{min-width:0;overflow:hidden;border:1px solid var(--ms-line);background:var(--ms-card);border-radius:16px}
+.trend-tile>img{display:block;width:100%;aspect-ratio:1.2;object-fit:cover}
+.trend-tile-body{padding:16px 13px}
+.trend-category{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ms-accent)}
+.trend-tile h3{font:normal 21px/1.14 Georgia,serif;margin:9px 0}
+.trend-tile p{font-size:12px;line-height:1.5;color:var(--ms-sub);margin:0 0 12px}
+.trend-expand{display:block;background:transparent;border:0;border-top:1px solid var(--ms-line);color:var(--ms-text);font-size:12px;width:100%;text-align:left;padding:12px 0;margin-top:12px}
+.trend-tile-detail{border-top:1px solid var(--ms-line);padding-top:12px}
+.trend-tile-detail strong{font-size:11px;display:block;margin:8px 0}
+.trend-source{display:block;font-size:11px;color:var(--ms-accent);margin:8px 0;overflow-wrap:anywhere}
+.trend-footer-note,.trend-empty{color:var(--ms-sub);font-size:12px;line-height:1.6;margin-top:18px}
+@media(max-width:350px){.trend-grid{grid-template-columns:1fr}}
+
 /* Multi-image draft carousel — subtle arrows and dots only when needed. */
 .gallery-wrap{position:relative;background:var(--ms-card,#f5f1ed)}
 .gallery{gap:0;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
@@ -457,8 +490,8 @@ body>nav.nav{display:none!important}
 <div id="reelsItems" class="myspace-extra-list"><p>Загрузка идей…</p></div></div></section>
 <section class="myspace-extra hidden" id="trendsSpace">
 <header class="myspace-top"><button type="button" class="myspace-return" id="trendsBack">← Все разделы</button><span>WEEKLY INTELLIGENCE</span></header>
-<div class="myspace-extra-inner"><div class="myspace-kicker">STYLE INSIGHTS</div><h1>Trend Radar.</h1>
-<p class="myspace-intro">Наблюдения за изменениями в моде. Отдельно отмечаем подтверждённые факты и гипотезы.</p>
+<div class="myspace-extra-inner trend-inner"><div class="myspace-kicker">THE WORLD OF FASHION</div><h1>Trend Radar.</h1>
+<p class="myspace-intro">Еженедельный обзор цветов, фактур, силуэтов и модных сигналов. Только проверенные тенденции отмечаем подтверждёнными.</p>
 <div id="trendsItems" class="myspace-extra-list"><p>Загрузка аналитики…</p></div></div></section>
 <section class="myspace-extra hidden" id="historySpace">
 <header class="myspace-top"><button type="button" class="myspace-return" id="historyBack">← Все разделы</button><span>FASHION HISTORY</span></header>
@@ -741,7 +774,76 @@ function msHistoryFigure(photo,large){
  }
  return figure;
 }
+const trendCategories=['Все','Цвета','Фактуры','Силуэты','Вещи','Обувь','Аксессуары','Принты','Стайлинг','Бьюти','Микротренды','Антитренды','Подиум'];
+let trendCategory='Все';
+function trendCategoryOf(item){
+ const raw=String(item.category||'').toLowerCase();
+ const groups=[['Цвета',/цвет|палитр|оттен/],['Фактуры',/фактур|материал|ткан/],['Силуэты',/силуэт|крой|пропорц/],['Вещи',/вещ|одежд|пальто/],['Обувь',/обув|сапог/],['Аксессуары',/аксессуар|сумк|украшен/],['Принты',/принт|узор/],['Стайлинг',/стайлинг|сочетан/],['Бьюти',/бьюти|макияж|волос/],['Микротренды',/микро/],['Антитренды',/антитренд|угас/],['Подиум',/подиум|бренд|культур/]];
+ return groups.find(([,re])=>re.test(raw))?.[0]||'Стайлинг';
+}
+function trendSafePhoto(item){
+ const url=String(item.image_url||item.photo?.url||'');
+ if(!/^https:\/\//i.test(url))return '';
+ try{return new URL(url).href}catch{return ''}
+}
+function trendElement(tag,cls,textValue){
+ const el=document.createElement(tag);
+ if(cls)el.className=cls;
+ if(textValue!==undefined)el.textContent=String(textValue);
+ return el;
+}
+function renderTrendRadar(data){
+ const root=$('trendsItems');root.replaceChildren();root.className='trend-radar-content';
+ const items=Array.isArray(data.items)?data.items.filter(x=>x&&x.title):[];
+ const dateLabel=String(data.period_label||data.updated_at||'Обзор в подготовке');
+ const toolbar=trendElement('div','trend-edition');
+ toolbar.append(trendElement('span','',dateLabel),trendElement('span','',items.length+' направлений'));
+ root.append(toolbar);
+ const chips=trendElement('div','trend-filters');
+ chips.setAttribute('role','group');chips.setAttribute('aria-label','Категории модных трендов');
+ for(const cat of trendCategories){
+  const btn=trendElement('button',trendCategory===cat?'active':'',cat);btn.type='button';
+  btn.setAttribute('aria-pressed',String(trendCategory===cat));
+  btn.onclick=()=>{trendCategory=cat;renderTrendRadar(data);};
+  chips.append(btn);
+ }
+ root.append(chips);
+ const chosen=trendCategory==='Все'?items:items.filter(x=>trendCategoryOf(x)===trendCategory);
+ if(!chosen.length){root.append(trendElement('p','trend-empty','Для этой категории пока нет подтверждённых материалов.'));return}
+ const main=chosen.find(x=>x.featured===true)||chosen[0];
+ const hero=trendElement('article','trend-feature');
+ const heroPhoto=trendSafePhoto(main);
+ if(heroPhoto){const img=document.createElement('img');img.src=heroPhoto;img.alt=main.image_alt||main.title;img.loading='lazy';img.onerror=()=>img.remove();hero.append(img)}
+ const heroBody=trendElement('div','trend-feature-body');
+ heroBody.append(trendElement('div','trend-eyebrow',main.featured?'ГЛАВНЫЙ СИГНАЛ НЕДЕЛИ':'В ФОКУСЕ · '+trendCategoryOf(main)),trendElement('h2','',main.title),trendElement('p','',main.summary||''));
+ heroBody.append(trendElement('span','trend-status',main.status||'Наблюдаем'));
+ hero.append(heroBody);root.append(hero);
+ root.append(trendElement('h2','trend-section-title','Сигналы недели'));
+ const grid=trendElement('div','trend-grid');
+ for(const item of chosen){
+  const card=trendElement('article','trend-tile');
+  const photo=trendSafePhoto(item);
+  if(photo){const img=document.createElement('img');img.src=photo;img.alt=item.image_alt||item.title;img.loading='lazy';img.onerror=()=>img.remove();card.append(img)}
+  const content=trendElement('div','trend-tile-body');
+  content.append(trendElement('span','trend-category',trendCategoryOf(item)),trendElement('h3','',item.title),trendElement('p','',item.summary||''));
+  const details=trendElement('div','trend-tile-detail hidden');
+  details.append(trendElement('strong','','Как носить'),trendElement('p','',item.stylist||'Практический разбор готовится.'));
+  details.append(trendElement('strong','','Основание'),trendElement('p','',item.evidence||'Пока нет достаточных подтверждений.'));
+  if(Array.isArray(item.sources))for(const source of item.sources){
+   if(!source?.url||!/^https:\/\//i.test(source.url))continue;
+   const a=trendElement('a','trend-source',source.title||'Первоисточник');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';details.append(a);
+  }
+  const toggle=trendElement('button','trend-expand','Подробнее ↓');toggle.type='button';toggle.setAttribute('aria-expanded','false');
+  toggle.onclick=()=>{const expanded=!details.classList.toggle('hidden');toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓';toggle.setAttribute('aria-expanded',String(expanded))};
+  content.append(trendElement('span','trend-status',item.status||'Наблюдаем'),toggle,details);
+  card.append(content);grid.append(card);
+ }
+ root.append(grid);
+ const note=trendElement('p','trend-footer-note',data.intro||'Статусы отражают степень подтверждения, а не измеренную популярность.');
+ root.append(note);
+}
 function msRenderEditorial(type,data){
+ if(type==='trends'){renderTrendRadar(data);return}
  const root=$(msEditorialMap[type].container);root.replaceChildren();
  const list=Array.isArray(data.items)?data.items.map((item,index)=>({item,index})).sort((a,b)=>{const date=x=>String(x.added_at||x.created_at||'');const ad=date(a.item),bd=date(b.item);return ad!==bd?bd.localeCompare(ad):b.index-a.index}).map(x=>x.item):[];
  if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
