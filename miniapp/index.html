@@ -416,9 +416,10 @@ body>nav.nav{display:none!important}
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Введи почту и пароль своего аккаунта My Space.</p>
+<p>Введи почту и пароль своего аккаунта My Space. <small style="display:block;margin-top:6px">Версия входа 14:40</small></p>
 <input class="pwa-code" id="pwaEmail" type="email" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="Электронная почта" aria-label="Электронная почта" />
 <input class="pwa-code" id="pwaCode" type="password" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="text" maxlength="256" placeholder="Пароль" aria-label="Пароль"/>
+<button type="button" class="pwa-button alt" id="pwaReveal" style="margin-top:6px">Показать пароль</button>
 <button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button hidden" id="pwaCancel">Отмена</button>
 <p id="pwaLoginStatus" aria-live="polite">Вход защищён Supabase Auth.</p>
 </div>
@@ -688,6 +689,7 @@ $('pwaCopyCode').onclick=async()=>{
  try{await navigator.clipboard.writeText(input.value);$('pwaPairNote').textContent='Код скопирован. Открой Safari и вставь его в поле входа.'}
  catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
 };
+$('pwaReveal').onclick=()=>{const field=$('pwaCode');const visible=field.type==='password';field.type=visible?'text':'password';$('pwaReveal').textContent=visible?'Скрыть пароль':'Показать пароль';};
 $('pwaClaim').onclick=async()=>{
  const password=$('pwaCode').value;
  const email=$('pwaEmail').value.trim().toLowerCase();
