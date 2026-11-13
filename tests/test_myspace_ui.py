@@ -32,16 +32,28 @@ class MySpaceReleaseTests(unittest.TestCase):
 
     def test_saved_owner_session_is_restored(self):
         self.assertIn("await client.auth.getSession()", self.html)
-        self.assertIn("await activatePasskeySession()", self.html)
+        self.assertIn("await activatePasswordSession()", self.html)
 
     def test_login_gate_does_not_flash_during_session_restore(self):
         self.assertIn('id="pwaBoot"', self.html)
         self.assertIn('class="pwa-gate hidden" id="pwaGate" style="display:none"', self.html)
-        self.assertIn("restored=await activatePasskeySession();", self.html)
+        self.assertIn("restored=await activatePasswordSession();", self.html)
         self.assertIn("if(!restored)showPwaGate(true);", self.html)
         self.assertIn("document", self.html)
         self.assertIn("$('pwaBoot').classList.add('hidden');", self.html)
         self.assertNotIn("showPwaGate(true);\n try{", self.html)
+
+    def test_obsolete_login_options_removed(self):
+        self.assertIn("signInWithPassword", self.html)
+        self.assertIn("myspace.auth.v1", self.html)
+        self.assertNotIn("registerPasskey", self.html)
+        self.assertNotIn("signInWithPasskey", self.html)
+        self.assertNotIn("experimental:{passkey:true}", self.html)
+        self.assertNotIn('id="passkeyEnroll"', self.html)
+        self.assertNotIn('id="pwaPairBtn"', self.html)
+        self.assertNotIn('id="loginKeyBtn"', self.html)
+        self.assertNotIn('id="independentEnroll"', self.html)
+        self.assertNotIn("Face ID", self.html)
 
     def test_settings_and_gestures_present(self):
         self.assertIn("myspace.theme.v1", self.html)
