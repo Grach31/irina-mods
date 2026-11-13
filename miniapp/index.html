@@ -456,6 +456,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
 <button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
 </div></div>
+<button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
 <button type="button" id="independentEnroll" class="myspace-logout">Создать независимый ключ входа</button><p id="independentEnrollStatus" style="overflow-wrap:anywhere"></p>
 <button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
 </div>
@@ -596,6 +597,22 @@ const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
 let pwaSession=isTelegramClient?'':(localStorage.getItem('myspace.session.v1')||'');
 let pwaModerator=false;
 let readonly=isTelegramClient?viewerId===731539637:true;
+let passkeyClientPromise=null;
+function passkeyClient(){
+ if(!passkeyClientPromise)passkeyClientPromise=import('https://esm.sh/@supabase/supabase-js@2.105.0').then(m=>m.createClient(
+ 'https://rjnfokknhjmtuzturvub.supabase.co','sb_publishable_-im1EhmHJbndeWGWKiW1Hw_-glH-AHn',
+ {auth:{experimental:{passkey:true},persistSession:true,autoRefreshToken:true,storageKey:'myspace.passkey.auth'}}));
+ return passkeyClientPromise;
+}
+async function passkeySession(){
+ const client=await passkeyClient();const {data}=await client.auth.getSession();return data.session?.access_token||'';
+}
+async function activatePasskeySession(){
+ const token=await passkeySession();if(!token)return false;
+ const identity=await pwaApi({action:'whoami',session:token});
+ pwaSession=token;pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
+ showPwaGate(false);render();return true;
+}
 async function pwaApi(payload){
  const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
  const data=await res.json().catch(()=>({}));
@@ -605,15 +622,42 @@ async function pwaApi(payload){
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
 async function restorePwaSession(){
  if(isTelegramClient){if(tg?.initData)$('pwaPairBtn').classList.remove('hidden');return}
- if(!pwaSession){showPwaGate(false);readonly=true;return}
+ if(!pwaSession){showPwaGate(false);readonly=true;try{await activatePasskeySession()}catch(e){}return}
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
   pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
   $('settingsLogout').style.display='inline-block';showPwaGate(false);render();
  }catch{
-  pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showPwaGate(false);
+  pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showPwaGate(false);try{await activatePasskeySession()}catch(e){}
  }
 }
+$('passkeyEnroll').onclick=async()=>{
+ const status=$('passkeyStatus');status.textContent='Подготовка Face ID…';
+ try{
+  const client=await passkeyClient();
+  const existing=await client.auth.getSession();
+  if(!existing.data.session){
+   const oldToken=localStorage.getItem('myspace.session.v1')||'';
+   if(!oldToken)throw Error('Для первой привязки нужна действующая сессия Safari.');
+   const bootstrap=await pwaApi({action:'passkey_bootstrap',session:oldToken});
+   const verified=await client.auth.verifyOtp({token_hash:bootstrap.token_hash,type:'magiclink'});
+   if(verified.error)throw verified.error;
+  }
+  const registered=await client.auth.registerPasskey();
+  if(registered.error)throw registered.error;
+  await activatePasskeySession();
+  status.textContent='Face ID настроен. В следующий раз входи без Telegram.';
+ }catch(e){status.textContent='Не удалось настроить Face ID: '+(e.message||e)}
+};
+$('passkeyLogin').onclick=async()=>{
+ const status=$('passkeyStatus');status.textContent='Подтверди вход на iPhone…';
+ try{
+  const client=await passkeyClient();
+  const signed=await client.auth.signInWithPasskey();
+  if(signed.error)throw signed.error;
+  await activatePasskeySession();status.textContent='Вход через Face ID выполнен.';
+ }catch(e){status.textContent='Вход не выполнен: '+(e.message||e)}
+};
 $('pwaPairBtn').onclick=async()=>{
  $('pwaPairBtn').disabled=true;
  try{
