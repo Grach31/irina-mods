@@ -1,31 +1,13 @@
-name: Stambo private draft delivery
+# Retained for manual legacy diagnostics only. My Space handles all review and approval.
+# No automatic owner-DM delivery and no auto-publication.
+name: Stambo private draft delivery (manual legacy)
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'drafts/**'
-      - 'bot/deliver_private.py'
-      - '.github/workflows/private-delivery.yml'
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
 permissions:
-  contents: write
-concurrency:
-  group: stambo-private-delivery
-  cancel-in-progress: false
+  contents: read
 jobs:
-  deliver:
+  notice:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Deliver picks to owner only
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        run: python bot/deliver_private.py
+      - name: Private delivery disabled
+        run: echo "Automatic private draft delivery is disabled; review in My Space."
