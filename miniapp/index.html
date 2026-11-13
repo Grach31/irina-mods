@@ -156,12 +156,6 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .pwa-button{border:0;background:#1b2b5f;color:white;border-radius:12px;padding:13px 15px;min-height:44px;font-weight:600;font-size:13px}
 .pwa-button.alt{background:#e8eaf6;color:#293452}
 .pwa-gate-card .pwa-button{width:100%;margin-top:10px}
-.pwa-pair{border:1px solid #c7cee0;border-radius:15px;background:#ffffffdf;margin:15px auto;max-width:680px;padding:15px 17px;color:#2a3251;font-size:12px;line-height:1.55}
-.pwa-pair strong{display:block;font-size:15px;margin-bottom:7px}
-.pwa-pair input{margin:8px 0;width:100%}
-.pwa-pair .pwa-button{margin-right:6px}
-.pwa-pair-trigger{margin-top:15px;border:1px solid #bbb5c7;border-radius:10px;background:#fffaf7;padding:12px 14px;color:#413a55;font-size:12px}
-.pwa-hub-logout{border:none;background:none;color:#5d5f75;text-decoration:underline;font-size:12px;cursor:pointer;display:none}
 @media(display-mode:standalone){.pwa-gate{padding-top:calc(env(safe-area-inset-top) + 45px)}}
 
 /* iOS Telegram and standalone PWA edge-to-edge polish */
@@ -1079,10 +1073,9 @@ async function act(action,d){
   }catch(e){alert(e.message==='telegram_configuration_required'?'Публикация пока не подключена: серверу нужен токен и ID канала.':'Действие не выполнено: '+e.message)}
   return;
  }
- if(!tg?.sendData){alert('Открой редактор через /moda в Telegram');return}
- const msg=action==='ok'?'Опубликовать этот пост в канал?':action==='no'?'Отклонить этот черновик?':'Запросить правки?';
- if(!confirm(msg))return;
- tg.sendData(JSON.stringify({type:'stambo_miniapp',action,id:d.id}));tg.close();
+ // Legacy Telegram Mini App decision transport has been retired.
+ showPwaGate(true);
+ $('pwaLoginStatus').textContent='Войди в My Space по паролю, чтобы управлять черновиками.';
 }
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
