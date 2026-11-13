@@ -407,7 +407,8 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 .myspace-history-photo.history-photo-unavailable:before{content:'Архивное фото временно недоступно';display:block;padding:20px;color:#eae3dc;font-size:12px}
 .myspace-history-more{margin-top:4px}
 /* Moda uses inline sections; legacy fixed footer is redundant. */
-#modaShell>.nav{display:none!important}
+/* Footer nav is a sibling of #modaShell, not its child. */
+body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
 </style></head><body>
