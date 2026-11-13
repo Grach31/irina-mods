@@ -65,6 +65,15 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn('id="galleryDots"', self.html)
         self.assertIn("setupGalleryControls(galleryImages.length)", self.html)
 
+    def test_edge_back_and_deliberate_refresh_gestures(self):
+        self.assertIn("const edgeBack=(g.fromRight&&dx< -85)||(g.fromLeft&&dx>85)", self.html)
+        self.assertIn("msGoBack();return;", self.html)
+        self.assertIn("Date.now()-msLastScrollAt>550", self.html)
+        self.assertIn("dy>=175", self.html)
+        self.assertIn("duration>=280", self.html)
+        self.assertIn("touchcancel", self.html)
+        self.assertNotIn("if(start.nearTop&&dy>105", self.html)
+
     def test_historical_cards_have_photo_and_source_attribution(self):
         data = json.loads((APP / "style-time-machine.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 5)
