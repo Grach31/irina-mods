@@ -416,10 +416,10 @@ body>nav.nav{display:none!important}
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Приватный вход для Moda и Oura Ring. Войди по личному ключу My Space. Если ключ ещё не создан, используй старый одноразовый код подключения.</p>
-<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Личный ключ или код подключения" aria-label="Одноразовый код"/>
-<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button>
-<p id="pwaLoginStatus" aria-live="polite">Личный ключ создаётся в настройках My Space при действующей сессии. Старый способ подключения сохранён временно.</p>
+<p>Получи одноразовый ключ в старом Telegram-боте командой /start и вставь его сюда. Ключ действует 10 минут.</p>
+<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Одноразовый ключ из Telegram" aria-label="Одноразовый код"/>
+<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button" id="pwaCancel">Отмена</button>
+<p id="pwaLoginStatus" aria-live="polite">Ключ можно использовать только один раз.</p>
 </div>
 </section>
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
@@ -457,9 +457,9 @@ body>nav.nav{display:none!important}
 <button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
 <button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
 </div></div>
-<button type="button" id="passkeyEmail" class="myspace-logout">Подтвердить владельца по электронной почте</button><div id="passkeyEmailPanel" class="hidden"><input id="passkeyEmailCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Код из письма" aria-label="Код из письма"><button type="button" id="passkeyEmailVerify" class="myspace-logout">Подтвердить код</button></div><button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
+<button type="button" id="loginKeyBtn" class="myspace-logout">Войти по ключу из Telegram</button><div style="display:none" aria-hidden="true"><button type="button" id="passkeyEmail" class="myspace-logout">Подтвердить владельца по электронной почте</button><div id="passkeyEmailPanel" class="hidden"><input id="passkeyEmailCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Код из письма" aria-label="Код из письма"><button type="button" id="passkeyEmailVerify" class="myspace-logout">Подтвердить код</button></div><button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
 <button type="button" id="independentEnroll" class="myspace-logout">Создать независимый ключ входа</button><p id="independentEnrollStatus" style="overflow-wrap:anywhere"></p>
-<button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
+</div><button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
 </div>
 </section>
 <section class="myspace-extra hidden" id="reelsSpace">
@@ -622,7 +622,7 @@ async function pwaApi(payload){
 }
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
 async function restorePwaSession(){
- if(isTelegramClient){if(tg?.initData)$('pwaPairBtn').classList.remove('hidden');return}
+ if(isTelegramClient){return}
  if(!pwaSession){showPwaGate(false);readonly=true;try{await activatePasskeySession()}catch(e){}return}
  try{
   const identity=await pwaApi({action:'whoami',session:pwaSession});
@@ -694,7 +694,7 @@ $('pwaClaim').onclick=async()=>{
  const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи код из Telegram.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
  try{
-  const login=await pwaApi({action:/^[a-f0-9]{64}$/i.test(code)?'independent_login':'pair_claim',code});
+  const login=await pwaApi({action:'pair_claim',code});
   pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
   pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
   $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
@@ -711,6 +711,8 @@ $('independentEnroll').onclick=async()=>{
   alert('Новый ключ создан и по возможности скопирован. Сохрани его в менеджере паролей до выхода из приложения.');
  }catch(e){$('independentEnrollStatus').textContent='Не удалось создать ключ. Нужна сессия владельца.'}
 };
+$('loginKeyBtn').onclick=()=>{showPwaGate(true);$('pwaCode').focus()};
+$('pwaCancel').onclick=()=>showPwaGate(false);
 $('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
