@@ -757,9 +757,9 @@ const showSpace=space=>{
  $('historySpace').classList.toggle('hidden',space!=='history');
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')loadOura();
- if(space==='fashion')loadFashion();
+ if(space==='fashion')loadFashion(true);
  if(space==='settings')refreshSettings();
- if(space==='reels'||space==='trends'||space==='history')loadMySpaceEditorial(space);
+ if(space==='reels'||space==='trends'||space==='history')loadMySpaceEditorial(space,true);
 };
 
 const msThemeKey='myspace.theme.v1';
@@ -977,8 +977,8 @@ $('fashionBack').onclick=()=>{
  }
  showSpace('hub');
 };
-async function loadFashion(){
- if(fashionDigest){fashionRender();return}
+async function loadFashion(force=false){
+ if(!force&&fashionDigest){fashionRender();return}
  if(fashionLoading)return fashionLoading;
  fashionLoading=(async()=>{
   try{
