@@ -28,7 +28,9 @@
           "title": "FashionUnited — Shanghai Fashion Week SS27: Five key trends of the season (12.11.2026)",
           "url": "https://fashionunited.com/news/fashion/shanghai-fashion-week-ss27-five-key-trends-of-the-season/2026111275704"
         }
-      ]
+      ],
+      "added_at": "2026-11-13",
+      "added_at_source": "catalog_baseline"
     },
     {
       "id": "reels-20261113-02-12storeez-holiday",
@@ -57,7 +59,9 @@
           "title": "The Blueprint — Наталья Водянова и 12 Storeez, 12.11.2026",
           "url": "https://theblueprint.ru/news/42941"
         }
-      ]
+      ],
+      "added_at": "2026-11-13",
+      "added_at_source": "catalog_baseline"
     },
     {
       "id": "reels-20261113-03-vans-resale",
@@ -86,7 +90,9 @@
           "title": "FashionUnited — StockX Big Facts: 2026 Trends, 12.11.2026",
           "url": "https://fashionunited.com/news/fashion/stockx-reports-surging-demand-for-vans-activewear-and-live-commerce-in-2026-trend-report/2026111275720"
         }
-      ]
+      ],
+      "added_at": "2026-11-13",
+      "added_at_source": "catalog_baseline"
     },
     {
       "id": "reels-20261113-04-scarf-architecture",
@@ -110,7 +116,9 @@
         "00:18–00:24 | три быстрых общих плана с одинаковым кадрированием"
       ],
       "cta": "Сохрани как шпаргалку для одного платка.",
-      "sources": []
+      "sources": [],
+      "added_at": "2026-11-13",
+      "added_at_source": "catalog_baseline"
     },
     {
       "id": "reels-20261113-05-wardrobe-light",
@@ -134,7 +142,9 @@
         "00:21–00:28 | split-screen и финальная подсказка «Проверяй освещение»"
       ],
       "cta": "Было такое, что цвет покупки удивил дома?",
-      "sources": []
+      "sources": [],
+      "added_at": "2026-11-13",
+      "added_at_source": "catalog_baseline"
     }
   ]
 }
