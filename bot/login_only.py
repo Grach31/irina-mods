@@ -19,6 +19,7 @@ def main():
     api("setMyCommands",{"commands":[{"command":"start","description":"Получить ключ для My Space"}]})
     offset=None
     failures=0
+    total_failures=0
     start=time.time()
     while time.time()-start<230:
         try:
@@ -41,7 +42,10 @@ def main():
                 except Exception as e:print("issue_failed",type(e).__name__)
         except Exception as e:
             failures+=1
+            total_failures+=1
             print("poll_error",type(e).__name__,str(getattr(e,"reason",getattr(e,"code","")))[:160],flush=True)
             if failures>=3:raise RuntimeError("Telegram polling failed repeatedly") from e
             time.sleep(5)
+    if total_failures:
+        raise RuntimeError("Telegram polling experienced network errors; run is not healthy")
 if __name__=="__main__":main()
