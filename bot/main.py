@@ -1,9 +1,8 @@
-"""Бот канала Stambo.i. Работает в GitHub Actions почти без перерыва (LOOP_MINUTES) и сразу отвечает на кнопки.
+"""Stambo.i delivery-only Telegram gateway.
 
-1. Забирает сообщения и нажатия кнопок Ирины.
-2. Отправляет Ирине новые черновики из drafts/ с кнопками.
-3. Публикует в канал одобренные посты, когда подошло их время.
-Состояние хранится в state/state.json, просьбы Ирины — в data/requests.json.
+Editorial drafts are authored exclusively by GPT and stored in drafts/.
+This process only transports existing drafts, records requests and moderation
+choices, and publishes after explicit approval. It never researches or writes posts.
 """
 import glob
 import hashlib
@@ -133,7 +132,7 @@ def on_button(state, q):
         tg.call("answerCallbackQuery", callback_query_id=q["id"])
         tg.call("sendMessage", chat_id=chat, reply_to_message_id=mid,
                 text="Напиши одним сообщением, что поправить: текст, вещи, фото, время. "
-                     "Переделаю и пришлю новый вариант в течение часа.")
+                     "Запрос на правку записан для GPT-редактора.")
 
 
 def on_message(state, requests, m):
@@ -209,7 +208,7 @@ def on_message(state, requests, m):
             "Привет! Я помощник канала Stambo.i 🤍\n\n"
             "Каждый день присылаю черновики постов — жми ✅, ✏️ или ❌.\n"
             "Можешь написать мне идею, например «подборка тёплых свитеров до 10 тысяч» "
-            "или «пост про кожаные брюки», можно с ссылкой или фото — сделаю черновик в течение часа."))
+            "или «пост про кожаные брюки», можно с ссылкой или фото — GPT-редактор подготовит черновик отдельно."))
         return
     if uid in config.READ_ONLY:
         tg.call("sendMessage", chat_id=chat, text="У тебя доступ только к просмотру. Открой /app.")
@@ -243,7 +242,7 @@ def on_message(state, requests, m):
     if gid:
         req["group"] = gid
     requests.append(req)
-    tg.call("sendMessage", chat_id=chat, text="Поняла идею 🙌 Черновик пришлю в течение часа.")
+    tg.call("sendMessage", chat_id=chat, text="Поняла идею 🙌 Запрос записан для GPT-редактора.")
 
 
 def save_photos(prefix, file_ids):
