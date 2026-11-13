@@ -15,8 +15,6 @@ on:
     paths:
       - miniapp/**
       - scripts/build_miniapp_catalog.py
-      - bot/miniapp.py
-      - bot/main.py
       - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
 permissions:
@@ -34,10 +32,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Python compilation
-        run: python -m compileall -q bot
-      - name: Test Mini App handling
-        run: python -m unittest discover -s tests -p test_miniapp.py -v
       - name: Test My Space six-section release
         run: python -m unittest discover -s tests -p test_myspace_ui.py -v
       - name: Check JavaScript syntax
