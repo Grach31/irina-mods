@@ -25,6 +25,15 @@ class MySpaceReleaseTests(unittest.TestCase):
         for id_ in ("settingsSpace", "reelsSpace", "trendsSpace", "historySpace"):
             self.assertIn(f'id="{id_}"', self.html)
 
+    def test_editorial_sections_refresh_when_opened(self):
+        self.assertIn("if(space==='fashion')loadFashion(true);", self.html)
+        self.assertIn("loadMySpaceEditorial(space,true);", self.html)
+        self.assertIn("async function loadFashion(force=false)", self.html)
+
+    def test_saved_owner_session_is_restored(self):
+        self.assertIn("await client.auth.getSession()", self.html)
+        self.assertIn("await activatePasskeySession()", self.html)
+
     def test_settings_and_gestures_present(self):
         self.assertIn("myspace.theme.v1", self.html)
         self.assertIn("prefers-color-scheme: dark", self.html)
