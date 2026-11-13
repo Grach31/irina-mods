@@ -4,7 +4,8 @@ No config, Telegram IDs, file IDs or request records are exported.
 Note: GitHub Pages is public, so this catalog is not a privacy boundary.
 """
 import glob
-from datetime import date
+from datetime import datetime
+from zoneinfo import ZoneInfo
 import json
 import shutil
 from pathlib import Path
@@ -21,10 +22,10 @@ def main():
     rows = []
     # Show only the current editorial day's drafts in Moda; keep older files
     # and moderation history intact for audit and deduplication.
-    today = date.today().isoformat()
+    today = datetime.now(ZoneInfo('Europe/Moscow')).date().isoformat()
     for file in (ROOT / "drafts").glob("*.json"):
         did = file.stem
-        if not did.startswith(today + '-'): 
+        if not did.startswith(today + '-'):
             continue
         meta = all_drafts.get(did, {})
         if meta.get("status") in {"error", "partial_error", "replaced"}:
