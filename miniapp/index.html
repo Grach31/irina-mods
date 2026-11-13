@@ -411,10 +411,10 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
-<p>Приватный вход для Moda и Oura Ring. Привяжи Safari к Telegram-аккаунту один раз — затем приложение будет открываться с экрана iPhone.</p>
-<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="32" placeholder="Код из Telegram" aria-label="Одноразовый код"/>
-<button type="button" class="pwa-button" id="pwaClaim">Подключить My Space</button>
-<p id="pwaLoginStatus" aria-live="polite">Чтобы получить код, открой в Telegram бота Moda → /app → My Space → «Подключить Safari».</p>
+<p>Приватный вход для Moda и Oura Ring. Войди по личному ключу My Space. Если ключ ещё не создан, используй старый одноразовый код подключения.</p>
+<input class="pwa-code" id="pwaCode" type="text" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="64" placeholder="Личный ключ или код подключения" aria-label="Одноразовый код"/>
+<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button>
+<p id="pwaLoginStatus" aria-live="polite">Личный ключ создаётся в настройках My Space при действующей сессии. Старый способ подключения сохранён временно.</p>
 </div>
 </section>
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
@@ -452,6 +452,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 <button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
 <button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
 </div></div>
+<button type="button" id="independentEnroll" class="myspace-logout">Создать независимый ключ входа</button><p id="independentEnrollStatus" style="overflow-wrap:anywhere"></p>
 <button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
 </div>
 </section>
@@ -628,12 +629,22 @@ $('pwaClaim').onclick=async()=>{
  const code=$('pwaCode').value.trim();if(!code){$('pwaLoginStatus').textContent='Введи код из Telegram.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяю одноразовый код…';
  try{
-  const login=await pwaApi({action:'pair_claim',code});
+  const login=await pwaApi({action:/^[a-f0-9]{64}$/i.test(code)?'independent_login':'pair_claim',code});
   pwaSession=login.token;localStorage.setItem('myspace.session.v1',pwaSession);
   pwaModerator=login.can_moderate===true;readonly=!pwaModerator;
   $('pwaCode').value='';showPwaGate(false);$('settingsLogout').style.display='inline-block';render();
- }catch(e){$('pwaLoginStatus').textContent='Код неверный, уже использован или истёк. Получи новый в Telegram.'}
+ }catch(e){$('pwaLoginStatus').textContent='Ключ входа неверный или код подключения истёк.'}
  finally{$('pwaClaim').disabled=false}
+};
+$('independentEnroll').onclick=async()=>{
+ if(!pwaSession){$('independentEnrollStatus').textContent='Сначала войди в My Space.';return}
+ if(!confirm('Создать новый ключ входа? Старый ключ перестанет работать. Сохрани новый в менеджере паролей.'))return;
+ try{
+  const result=await pwaApi({action:'independent_enroll',session:pwaSession});
+  $('independentEnrollStatus').textContent='Сохрани ключ: '+result.code+' — он показывается только один раз.';
+  try{await navigator.clipboard.writeText(result.code)}catch{}
+  alert('Новый ключ создан и по возможности скопирован. Сохрани его в менеджере паролей до выхода из приложения.');
+ }catch(e){$('independentEnrollStatus').textContent='Не удалось создать ключ. Нужна сессия владельца.'}
 };
 $('settingsLogout').onclick=async()=>{
  const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
