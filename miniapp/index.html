@@ -911,7 +911,7 @@ async function loadFashion(){
 
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
-const imageFor=d=>{return 'media/'+encodeURIComponent(d.id)+'.jpg'};
+const imageFor=d=>{if(d.type==='picks'&&d.items?.length){const first=d.items.find(i=>typeof i.img==='string'&&/^https:\/\//i.test(i.img));if(first)return first.img}return 'media/'+encodeURIComponent(d.id)+'.jpg'};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 let loading=null,lastLoaded=0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
