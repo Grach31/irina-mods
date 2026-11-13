@@ -806,12 +806,15 @@ function msHistoryFigure(photo,large){
 }
 function msRenderEditorial(type,data){
  const root=$(msEditorialMap[type].container);root.replaceChildren();
- const list=Array.isArray(data.items)?data.items.map((item,index)=>({item,index})).sort((a,b)=>{const date=x=>String(x.created_at||x.published_at||x.date||x.added_at||'');const ad=date(a.item),bd=date(b.item);return ad&&bd?bd.localeCompare(ad):b.index-a.index}).map(x=>x.item):[];
+ const list=Array.isArray(data.items)?data.items.map((item,index)=>({item,index})).sort((a,b)=>{const date=x=>String(x.added_at||x.created_at||'');const ad=date(a.item),bd=date(b.item);return ad!==bd?bd.localeCompare(ad):b.index-a.index}).map(x=>x.item):[];
  if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
  list.forEach(item=>{
   const card=document.createElement('article');card.className='myspace-idea';
   const meta=document.createElement('div');meta.className='myspace-idea-meta';
-  meta.textContent=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
+  const baseMeta=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
+  const added=String(item.added_at||item.created_at||'').slice(0,10);
+  const formatted=/^\\d{4}-\\d{2}-\\d{2}$/.test(added)?added.slice(8,10)+'.'+added.slice(5,7)+'.'+added.slice(0,4):'';
+  meta.textContent=baseMeta+(formatted?' · '+(item.added_at_source==='catalog_baseline'?'В каталоге с ':'Добавлено ')+formatted:'');
   const title=document.createElement('h2');title.textContent=item.title||'Без названия';
   const historyPhotos=type==='history'&&Array.isArray(item.photos)?item.photos.filter(photo=>typeof photo?.url==='string'&&/^https:\/\//.test(photo.url)):[];
   const heroPhoto=historyPhotos.length?msHistoryFigure(historyPhotos[0],false):null;
