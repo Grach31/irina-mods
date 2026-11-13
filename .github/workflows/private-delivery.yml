@@ -1,5 +1,11 @@
 name: Stambo private draft delivery
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/**'
+      - 'bot/deliver_private.py'
+      - '.github/workflows/private-delivery.yml'
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
