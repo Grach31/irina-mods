@@ -1,5 +1,5 @@
 """Minimal owner-only My Space login-code bot. No editorial or publishing actions."""
-import json, os, time, urllib.request, urllib.parse
+import json, os, time, urllib.request, urllib.parse, urllib.error
 TOKEN=os.environ["TELEGRAM_TOKEN"]
 OWNER=880098519
 API="https://api.telegram.org/bot"+TOKEN+"/"
@@ -18,12 +18,14 @@ def issue():
 def main():
     api("setMyCommands",{"commands":[{"command":"start","description":"Получить ключ для My Space"}]})
     offset=None
+    failures=0
     start=time.time()
     while time.time()-start<230:
         try:
             args={"timeout":20,"allowed_updates":["message"]}
             if offset is not None:args["offset"]=offset
             updates=api("getUpdates",args).get("result",[])
+            failures=0
             for u in updates:
                 offset=max(offset or 0,u["update_id"]+1)
                 msg=u.get("message") or {}
@@ -38,6 +40,8 @@ def main():
                     api("sendMessage",{"chat_id":OWNER,"text":message,"parse_mode":"HTML","reply_markup":{"keyboard":[[{"text":"Получить ключ"}]],"resize_keyboard":True}})
                 except Exception as e:print("issue_failed",type(e).__name__)
         except Exception as e:
-            print("poll_error",type(e).__name__)
+            failures+=1
+            print("poll_error",type(e).__name__,str(getattr(e,"reason",getattr(e,"code","")))[:160],flush=True)
+            if failures>=3:raise RuntimeError("Telegram polling failed repeatedly") from e
             time.sleep(5)
 if __name__=="__main__":main()
