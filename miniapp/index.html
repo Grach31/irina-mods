@@ -414,7 +414,7 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
-#loginKeyBtn,#independentEnroll,#independentEnrollStatus{display:none!important}\n</style></head><body>
+</style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-boot" id="pwaBoot" role="status" aria-label="Загрузка My Space"><div class="pwa-boot-brand">My Space.</div></section><section class="pwa-gate hidden" id="pwaGate" style="display:none">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
@@ -423,20 +423,11 @@ body>nav.nav{display:none!important}
 <input class="pwa-code" id="pwaEmail" type="email" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="Электронная почта" aria-label="Электронная почта" />
 <input class="pwa-code" id="pwaCode" type="password" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="text" maxlength="256" placeholder="Пароль" aria-label="Пароль"/>
 <button type="button" class="pwa-button alt" id="pwaReveal" style="margin-top:6px">Показать пароль</button>
-<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button><button type="button" class="pwa-button hidden" id="pwaCancel">Отмена</button>
+<button type="button" class="pwa-button" id="pwaClaim">Войти в My Space</button>
 <p id="pwaLoginStatus" aria-live="polite">Вход защищён Supabase Auth.</p>
 </div>
 </section>
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
-<button type="button" class="pwa-pair-trigger hidden" id="pwaPairBtn">＋ Подключить Safari / экран iPhone</button>
-
-<div class="pwa-pair hidden" id="pwaPairPanel">
-<strong>Одноразовый код для Safari</strong>
-<p>Открой My Space в Safari, вставь этот код и нажми «Подключить». Код действует 10 минут и используется только один раз.</p>
-<input class="pwa-code" readonly id="pwaPairCode" aria-label="Код подключения Safari">
-<button type="button" class="pwa-button" id="pwaCopyCode">Скопировать код</button>
-<small id="pwaPairNote"></small>
-</div>
 </div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
@@ -462,9 +453,7 @@ body>nav.nav{display:none!important}
 <button type="button" class="myspace-theme" data-theme-choice="light">Светлая <small>Всегда светлая</small></button>
 <button type="button" class="myspace-theme" data-theme-choice="dark">Тёмная <small>Всегда тёмная</small></button>
 </div></div>
-<button type="button" id="loginKeyBtn" class="myspace-logout">Войти по ключу владельца</button><div style="display:none" aria-hidden="true"><button type="button" id="passkeyEmail" class="myspace-logout">Подтвердить владельца по электронной почте</button><div id="passkeyEmailPanel" class="hidden"><input id="passkeyEmailCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Код из письма" aria-label="Код из письма"><button type="button" id="passkeyEmailVerify" class="myspace-logout">Подтвердить код</button></div><button type="button" id="passkeyEnroll" class="myspace-logout">Настроить вход через Face ID</button><button type="button" id="passkeyLogin" class="myspace-logout">Войти через Face ID</button><p id="passkeyStatus" aria-live="polite"></p>
-
-</div><button type="button" id="independentEnroll" class="myspace-logout">Создать независимый ключ входа</button><p id="independentEnrollStatus" style="overflow-wrap:anywhere"></p><button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
+<button type="button" id="settingsLogout" class="myspace-logout">Выйти из аккаунта</button>
 </div>
 </section>
 <section class="myspace-extra hidden" id="reelsSpace">
@@ -600,21 +589,23 @@ async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
 const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
 const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
-let pwaSession=isTelegramClient?'':(localStorage.getItem('myspace.session.v1')||'');
+let pwaSession='';
 let pwaModerator=false;
 let readonly=isTelegramClient?viewerId===731539637:true;
-let passkeyClientPromise=null;
-function passkeyClient(){
- if(!passkeyClientPromise)passkeyClientPromise=import('https://esm.sh/@supabase/supabase-js@2.105.0').then(m=>m.createClient(
+// Migrate old Supabase password sessions without forcing another login.
+try{const old=localStorage.getItem('myspace.passkey.auth');if(old&&!localStorage.getItem('myspace.auth.v1'))localStorage.setItem('myspace.auth.v1',old);localStorage.removeItem('myspace.passkey.auth')}catch(e){}
+let authClientPromise=null;
+function authClient(){
+ if(!authClientPromise)authClientPromise=import('https://esm.sh/@supabase/supabase-js@2.105.0').then(m=>m.createClient(
  'https://rjnfokknhjmtuzturvub.supabase.co','sb_publishable_-im1EhmHJbndeWGWKiW1Hw_-glH-AHn',
- {auth:{experimental:{passkey:true},persistSession:true,autoRefreshToken:true,storageKey:'myspace.passkey.auth'}}));
- return passkeyClientPromise;
+ {auth:{persistSession:true,autoRefreshToken:true,storageKey:'myspace.auth.v1'}}));
+ return authClientPromise;
 }
-async function passkeySession(){
- const client=await passkeyClient();const {data}=await client.auth.getSession();return data.session?.access_token||'';
+async function authAccessToken(){
+ const client=await authClient();const {data}=await client.auth.getSession();return data.session?.access_token||'';
 }
-async function activatePasskeySession(){
- const accessToken=await passkeySession();if(!accessToken)return false;
+async function activatePasswordSession(){
+ const accessToken=await authAccessToken();if(!accessToken)return false;
  const exchanged=await pwaApi({action:'session_exchange',access_token:accessToken});
  pwaSession=exchanged.token;pwaModerator=exchanged.can_moderate===true;readonly=!pwaModerator;
  showPwaGate(false);render();if(currentSpace==='oura')loadOura();return true;
@@ -630,14 +621,14 @@ async function restorePwaSession(){
  readonly=true;pwaModerator=false;pwaSession='';
  let restored=false;
  try{
-  const client=await passkeyClient();
+  const client=await authClient();
   const {data,error}=await client.auth.getSession();
   if(error)throw error;
   if(!data.session)return;
   if(data.session.user?.id!=='9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'){
    await client.auth.signOut({scope:'local'});return;
   }
-  restored=await activatePasskeySession();
+  restored=await activatePasswordSession();
   if(restored&&currentSpace==='oura')loadOura();
  }catch(e){
   $('pwaLoginStatus').textContent='Сохранённый вход не восстановлен. Введи пароль один раз.';
@@ -646,64 +637,6 @@ async function restorePwaSession(){
   $('pwaBoot').classList.add('hidden');
  }
 }
-$('passkeyEmail').onclick=async()=>{
- const status=$('passkeyStatus');status.textContent='Отправляем ссылку для подтверждения…';
- try{
-  const client=await passkeyClient();
-  const result=await client.auth.signInWithOtp({email:'g.tatulyan@gmail.com',options:{shouldCreateUser:false,emailRedirectTo:'https://grach31.github.io/irina-mods/?space=settings'}});
-  if(result.error)throw result.error;
-  $('passkeyEmailPanel').classList.add('hidden');
-  status.textContent='Открой ссылку из письма. После возвращения в My Space нажми «Настроить вход через Face ID».';
- }catch(e){status.textContent='Не удалось отправить код: '+(e.message||e)}
-};
-$('passkeyEmailVerify').onclick=async()=>{
- const status=$('passkeyStatus');status.textContent='Проверяем код…';
- try{
-  const client=await passkeyClient();
-  const token=$('passkeyEmailCode').value.trim();
-  if(!/^\\d{6,8}$/.test(token))throw Error('Введи цифровой код из письма.');
-  const result=await client.auth.verifyOtp({email:'g.tatulyan@gmail.com',token,type:'email'});
-  if(result.error)throw result.error;
-  if(!await activatePasskeySession())throw Error('Не удалось подтвердить аккаунт владельца.');
-  status.textContent='Аккаунт подтверждён. Теперь нажми «Настроить вход через Face ID».';
- }catch(e){status.textContent='Ошибка подтверждения: '+(e.message||e)}
-};
-$('passkeyEnroll').onclick=async()=>{
- const status=$('passkeyStatus');status.textContent='Подготовка Face ID…';
- try{
-  const client=await passkeyClient();
-  const existing=await client.auth.getSession();
-  if(!existing.data.session)throw Error('Сначала подтверди владельца по электронной почте кнопкой выше.');
-  const registered=await client.auth.registerPasskey();
-  if(registered.error)throw registered.error;
-  await activatePasskeySession();
-  status.textContent='Face ID настроен. В следующий раз входи без Telegram.';
- }catch(e){status.textContent='Не удалось настроить Face ID: '+(e.message||e)}
-};
-$('passkeyLogin').onclick=async()=>{
- const status=$('passkeyStatus');status.textContent='Подтверди вход на iPhone…';
- try{
-  const client=await passkeyClient();
-  const signed=await client.auth.signInWithPasskey();
-  if(signed.error)throw signed.error;
-  await activatePasskeySession();status.textContent='Вход через Face ID выполнен.';
- }catch(e){status.textContent='Вход не выполнен: '+(e.message||e)}
-};
-$('pwaPairBtn').onclick=async()=>{
- $('pwaPairBtn').disabled=true;
- try{
-  const r=await pwaApi({action:'pair_start',initData:tg?.initData||''});
-  $('pwaPairCode').value=r.code.toUpperCase();
-  $('pwaPairPanel').classList.remove('hidden');
-  $('pwaPairNote').textContent='Код действителен 10 минут. Вставь его в Safari по адресу grach31.github.io/irina-mods/';
- }catch(e){$('pwaPairPanel').classList.remove('hidden');$('pwaPairNote').textContent='Не удалось создать код. Открой My Space через /app в Telegram и попробуй снова.'}
- finally{$('pwaPairBtn').disabled=false}
-};
-$('pwaCopyCode').onclick=async()=>{
- const input=$('pwaPairCode');input.select();
- try{await navigator.clipboard.writeText(input.value);$('pwaPairNote').textContent='Код скопирован. Открой Safari и вставь его в поле входа.'}
- catch{$('pwaPairNote').textContent='Выдели и скопируй код вручную.'}
-};
 $('pwaReveal').onclick=()=>{const field=$('pwaCode');const visible=field.type==='password';field.type=visible?'text':'password';$('pwaReveal').textContent=visible?'Скрыть пароль':'Показать пароль';};
 $('pwaClaim').onclick=async()=>{
  const password=$('pwaCode').value;
@@ -711,31 +644,19 @@ $('pwaClaim').onclick=async()=>{
  if(!email||!password){$('pwaLoginStatus').textContent='Введи почту и пароль.';return}
  $('pwaClaim').disabled=true;$('pwaLoginStatus').textContent='Проверяем пароль…';
  try{
-  const client=await passkeyClient();
+  const client=await authClient();
   const result=await client.auth.signInWithPassword({email,password});
   if(result.error)throw result.error;
-  if(!await activatePasskeySession()){await client.auth.signOut({scope:'local'});throw Error('Аккаунт не имеет прав владельца.')}
+  if(!await activatePasswordSession()){await client.auth.signOut({scope:'local'});throw Error('Аккаунт не имеет прав владельца.')}
   $('pwaCode').value='';$('pwaLoginStatus').textContent='';
  }catch(e){const msg=String(e?.message||'');$('pwaLoginStatus').textContent=/invalid login credentials/i.test(msg)?'Неверная почта или пароль. Проверь регистр пароля.':/email not confirmed/i.test(msg)?'Подтверди электронную почту в Supabase.':/Аккаунт не имеет прав владельца/.test(msg)?'Этот аккаунт не имеет доступа владельца.':'Ошибка входа: '+(msg||'проверь соединение.')}
  finally{$('pwaClaim').disabled=false}
 };
 $('pwaCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('pwaClaim').click()});
-$('independentEnroll').onclick=async()=>{
- if(!pwaSession){$('independentEnrollStatus').textContent='Сначала войди в My Space.';return}
- if(!confirm('Создать новый ключ входа? Старый ключ перестанет работать. Сохрани новый в менеджере паролей.'))return;
- try{
-  const result=await pwaApi({action:'independent_enroll',session:pwaSession});
-  $('independentEnrollStatus').textContent='Сохрани ключ: '+result.code+' — он показывается только один раз.';
-  try{await navigator.clipboard.writeText(result.code)}catch{}
-  alert('Новый ключ создан и по возможности скопирован. Сохрани его в менеджере паролей до выхода из приложения.');
- }catch(e){$('independentEnrollStatus').textContent='Не удалось создать ключ. Нужна сессия владельца.'}
-};
-$('loginKeyBtn').onclick=()=>{showPwaGate(true);$('pwaCode').focus()};
-$('pwaCancel').onclick=()=>showPwaGate(false);
 $('settingsLogout').onclick=async()=>{
- const token=pwaSession;pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showSpace('hub');showPwaGate(true);
+ const token=pwaSession;pwaSession='';readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
- try{const client=await passkeyClient();await client.auth.signOut()}catch{}
+ try{const client=await authClient();await client.auth.signOut()}catch{}
 };
 const msLastSpaceKey='myspace.last-space.v1';
 let currentSpace='hub';
@@ -1416,24 +1337,6 @@ const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','hi
 const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
-/* Legacy automatic passkey bootstrap disabled. */
-/*
-(async()=>{
- try{
-  const client=await passkeyClient();
-  const {data,error}=await client.auth.getSession();
-  if(error)throw error;
-  if(data.session){
-   await activatePasskeySession();
-   if(location.hash.includes('access_token=')||location.search.includes('code=')){
-    history.replaceState(null,'',location.pathname+'?space=settings');
-    showSpace('settings');
-   }
-   $('passkeyStatus').textContent='Аккаунт подтверждён. Теперь нажми «Настроить вход через Face ID».';
-  }
- }catch(e){$('passkeyStatus').textContent='Подтверждение входа: '+(e.message||e)}
-})();
-*/
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
