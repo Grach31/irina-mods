@@ -614,7 +614,7 @@ async function activatePasskeySession(){
  const accessToken=await passkeySession();if(!accessToken)return false;
  const exchanged=await pwaApi({action:'session_exchange',access_token:accessToken});
  pwaSession=exchanged.token;pwaModerator=exchanged.can_moderate===true;readonly=!pwaModerator;
- showPwaGate(false);render();return true;
+ showPwaGate(false);render();if(currentSpace==='oura')loadOura();return true;
 }
 async function pwaApi(payload){
  const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
@@ -624,12 +624,22 @@ async function pwaApi(payload){
 }
 function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show);$('pwaGate').style.display=show?'flex':'none'}
 async function restorePwaSession(){
- // Require explicit password on every fresh page open; no implicit stored login.
  readonly=true;pwaModerator=false;pwaSession='';
- localStorage.removeItem('myspace.session.v1');
  showPwaGate(true);
- try{const client=await passkeyClient();await client.auth.signOut({scope:'local'})}catch(e){}
- showPwaGate(true);
+ try{
+  const client=await passkeyClient();
+  const {data,error}=await client.auth.getSession();
+  if(error)throw error;
+  if(!data.session)return;
+  if(data.session.user?.id!=='9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'){
+   await client.auth.signOut({scope:'local'});return;
+  }
+  await activatePasskeySession();
+  if(currentSpace==='oura')loadOura();
+ }catch(e){
+  $('pwaLoginStatus').textContent='Сохранённый вход не восстановлен. Введи пароль один раз.';
+  showPwaGate(true);
+ }
 }
 $('passkeyEmail').onclick=async()=>{
  const status=$('passkeyStatus');status.textContent='Отправляем ссылку для подтверждения…';
