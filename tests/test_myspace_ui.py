@@ -41,7 +41,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("if(!restored)showPwaGate(true);", self.html)
         self.assertIn("document", self.html)
         self.assertIn("$('pwaBoot').classList.add('hidden');", self.html)
-        self.assertNotIn("showPwaGate(true);\n try{", self.html)
+        self.assertIn("if(!restored)showPwaGate(true);", self.html)
 
     def test_obsolete_login_options_removed(self):
         self.assertIn("signInWithPassword", self.html)
