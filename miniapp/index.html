@@ -930,6 +930,14 @@ function load(){
    $('published').textContent=catalog.published??0;
    $('rejected').textContent=catalog.rejected??0;
    items=catalog.items;
+   // Supabase is authoritative for decisions made in Safari; no bot queue.
+   if(pwaSession){
+    try{
+     const decisions=await publishApi({action:'list',session:pwaSession});
+     const byId=new Map((decisions.items||[]).map(x=>[x.draft_id,x.status]));
+     items.forEach(d=>{const status=byId.get(d.id);if(status==='published'||status==='rejected')d.meta.status=status});
+    }catch(e){console.warn('Could not refresh My Space decisions')}
+   }
    lastLoaded=Date.now();
    render();
   }catch(e){
