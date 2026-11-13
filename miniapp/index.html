@@ -583,6 +583,8 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
 const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
+const PUBLISH_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-publish';
+async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||'HTTP '+r.status);return data;}
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
 const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
 const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
@@ -996,12 +998,12 @@ async function act(action,d){
   const msg=action==='ok'?'Подтвердить публикацию этого поста?':'Отклонить этот черновик?';
   if(!confirm(msg))return;
   try{
-   const result=await pwaApi({action:'moda_action',session:pwaSession,id:d.id,decision:action});
-   if(!result.queued)throw Error('not queued');
-   d.meta.status='queued';$('detail').classList.remove('visible');active=null;
-   alert('Решение передано боту. После обработки он обновит статус публикации.');
+   const result=await publishApi({action:action==='ok'?'publish':'reject',session:pwaSession,id:d.id});
+   if(!result.ok)throw Error('not completed');
+   d.meta.status=action==='ok'?'published':'rejected';$('detail').classList.remove('visible');active=null;
+   alert(action==='ok'?'Опубликовано в Telegram-канале.':'Черновик отклонён в My Space. Telegram не задействован.');
    render();
-  }catch(e){alert('Не удалось передать решение. Повтори после проверки соединения.')}
+  }catch(e){alert(e.message==='telegram_configuration_required'?'Публикация пока не подключена: серверу нужен токен и ID канала.':'Действие не выполнено: '+e.message)}
   return;
  }
  if(!tg?.sendData){alert('Открой редактор через /moda в Telegram');return}
