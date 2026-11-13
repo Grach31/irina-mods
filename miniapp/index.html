@@ -406,6 +406,10 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 .myspace-history-photo.large img{aspect-ratio:auto;max-height:570px;object-fit:contain;background:#111118}
 .myspace-history-photo.history-photo-unavailable:before{content:'Архивное фото временно недоступно';display:block;padding:20px;color:#eae3dc;font-size:12px}
 .myspace-history-more{margin-top:4px}
+/* Moda uses inline sections; legacy fixed footer is redundant. */
+#modaShell>.nav{display:none!important}
+#modaShell .list{padding-bottom:22px}
+#modaShell #published{cursor:pointer}
 </style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate hidden" id="pwaGate">
 <div class="pwa-gate-card">
@@ -742,7 +746,7 @@ function msHistoryFigure(photo,large){
 }
 function msRenderEditorial(type,data){
  const root=$(msEditorialMap[type].container);root.replaceChildren();
- const list=Array.isArray(data.items)?data.items:[];
+ const list=Array.isArray(data.items)?[...data.items].sort((a,b)=>String(b.created_at||b.published_at||b.date||b.added_at||b.id||'').localeCompare(String(a.created_at||a.published_at||a.date||a.added_at||a.id||''))):[];
  if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
  list.forEach(item=>{
   const card=document.createElement('article');card.className='myspace-idea';
@@ -865,7 +869,8 @@ function fashionRender(){
  $('fashionCount').textContent=items.length+' материалов · '+items.filter(x=>x.region==='ru').length+' российских';
  const present=['Все','Российские',...fashionCategories.slice(2).filter(c=>items.some(x=>x.category===c))];
  present.forEach(cat=>{const b=document.createElement('button');b.type='button';b.textContent=cat;b.classList.toggle('active',cat===fashionCategory);b.onclick=()=>{fashionCategory=cat;fashionRender()};filters.appendChild(b)});
- const show=items.filter(x=>fashionCategory==='Все' || (fashionCategory==='Российские' ? x.region==='ru' : x.region!=='ru'&&x.category===fashionCategory)).sort((a,b)=>b.date.localeCompare(a.date));
+ const show=items.filter(x=>fashionCategory==='Все' || (fashionCategory==='Российские' ? x.region==='ru' : x.region!=='ru'&&x.category===fashionCategory)).sort((a,b)=>String(b.published_at||b.date||'').localeCompare(String(a.published_at||a.date||'')));
+
  if(!show.length){list.innerHTML='<div class="fashion-empty">В этом разделе пока нет проверенных материалов.</div>';return}
  show.forEach(item=>{const b=fashionCard(item);if(b)list.appendChild(b)});
 }
@@ -959,7 +964,7 @@ function load(){
  })();
  return loading;
 }
-function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter))}
+function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
 function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
@@ -1043,6 +1048,8 @@ async function act(action,d){
 }
 $('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
+$('published').closest('.stat')?.addEventListener('click',()=>{mode='history';render()});
+$('pending').closest('.stat')?.addEventListener('click',()=>{mode='pending';render()});
 // From the editorial workspace, return to the two-section launcher.
 
 
