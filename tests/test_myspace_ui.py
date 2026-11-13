@@ -81,7 +81,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         data = json.loads((APP / "fashion-daily.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["items"]), 12)
         for item in data["items"]:
-            self.assertTrue(item["image_url"].startswith("https://"), item["id"])
+            self.assertTrue((isinstance(item.get("image_url"), str) and item["image_url"].startswith("https://")) or (item.get("image_url") is None and item.get("image_rights") == "no_external_image"), item["id"])
             self.assertTrue(item.get("source") and item.get("url"))
             self.assertTrue(item.get("article_sections"))
 if __name__ == "__main__":
