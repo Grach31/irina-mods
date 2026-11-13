@@ -412,7 +412,7 @@ body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
 #loginKeyBtn,#independentEnroll,#independentEnrollStatus{display:none!important}\n</style></head><body>
-<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate" id="pwaGate">
+<div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-gate" id="pwaGate" style="display:flex">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
 <h2>My Space</h2>
@@ -620,20 +620,14 @@ async function pwaApi(payload){
  if(!res.ok)throw Error(data.error||'HTTP '+res.status);
  return data;
 }
-function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show)}
+function showPwaGate(show){$('pwaGate').classList.toggle('hidden',!show);$('pwaGate').style.display=show?'flex':'none'}
 async function restorePwaSession(){
- showPwaGate(true);readonly=true;pwaModerator=false;
- try{if(await activatePasskeySession())return}catch(e){}
- pwaSession='';localStorage.removeItem('myspace.session.v1');showPwaGate(true);return;
- if(isTelegramClient){return}
- if(!pwaSession){showPwaGate(false);readonly=true;try{await activatePasskeySession()}catch(e){}return}
- try{
-  const identity=await pwaApi({action:'whoami',session:pwaSession});
-  pwaModerator=identity.can_moderate===true;readonly=!pwaModerator;
-  $('settingsLogout').style.display='inline-block';showPwaGate(false);render();
- }catch{
-  pwaSession='';localStorage.removeItem('myspace.session.v1');readonly=true;showPwaGate(false);try{await activatePasskeySession()}catch(e){}
- }
+ // Require explicit password on every fresh page open; no implicit stored login.
+ readonly=true;pwaModerator=false;pwaSession='';
+ localStorage.removeItem('myspace.session.v1');
+ showPwaGate(true);
+ try{const client=await passkeyClient();await client.auth.signOut({scope:'local'})}catch(e){}
+ showPwaGate(true);
 }
 $('passkeyEmail').onclick=async()=>{
  const status=$('passkeyStatus');status.textContent='Отправляем ссылку для подтверждения…';
