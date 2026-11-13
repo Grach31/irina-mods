@@ -1338,14 +1338,14 @@ function renderOura(d){
  if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
 async function loadOura(){
- setValue('ouraStatus','Данные Oura закрыты в публичном режиме.');return;
+ if(!pwaSession){setValue('ouraStatus','Войди в My Space, чтобы загрузить защищённые данные Oura.');return;}
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
   let data;
   if(!initData&&pwaSession){
     try{data=await pwaApi({action:'oura_read',session:pwaSession})}
-    catch(e){setValue('ouraStatus','Сеанс Safari истёк. Войди повторно через Telegram.');showPwaGate(true);return}
+    catch(e){setValue('ouraStatus','Не удалось получить данные Oura: '+(e?.message||'ошибка доступа')+'.');return}
   }else{
     if(!initData){setValue('ouraStatus','Открой My Space через /app в Telegram или авторизуйся в Safari.');return}
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
