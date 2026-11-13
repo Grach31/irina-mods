@@ -63,7 +63,7 @@ def main():
             shutil.copyfile(src, media_dir / (did + ".jpg"))
         items.append(item)
     result = {
-        "pending": sum(i["meta"]["status"] in ("sent", "awaiting_edit") for i in items),
+        "pending": sum(i["meta"]["status"] in ("queued", "sent", "awaiting_edit", "edit_requested") for i in items),
         "published": sum(i["meta"]["status"] == "published" for i in items),
         "rejected": sum(i["meta"]["status"] == "rejected" for i in items),
         "items": items,
