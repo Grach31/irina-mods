@@ -63,16 +63,18 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn('id="pullIndicator"', self.html)
         self.assertNotIn("TELEGRAM + SAFARI", self.html)
 
-    def test_fashion_daily_sources_are_displayable(self):
-        """Every published story's source must pass the client-side domain allowlist."""
-        from urllib.parse import urlsplit
+    def test_fashion_daily_has_no_publisher_allowlist(self):
+        """Publisher domains must not silently hide editorial news."""
         data = json.loads((APP / "fashion-daily.json").read_text(encoding="utf-8"))
-        match = re.search(r"const fashionSafeUrl=value=>\\{(.+?)\\};", self.html, re.S)
-        self.assertIsNotNone(match, "Fashion Daily URL validator missing")
-        # Keep this check in sync with the explicit hostname allowlist in the UI.
-        for story in data["items"]:
-            hostname = (urlsplit(story["url"]).hostname or "").removeprefix("www.")
-            self.assertIn(hostname.replace(".", r"\\."), match.group(1), story["id"])
+        self.assertTrue(data["items"])
+        start = self.html.index("const fashionSafeUrl=value=>{")
+        end = self.html.index("const fashionArt=d=>", start)
+        validator = self.html[start:end]
+        self.assertIn("u.protocol==='https:'", validator)
+        self.assertNotIn("vogue\\.com", validator)
+        self.assertNotIn("posta-magazine\\.ru", validator)
+        self.assertNotIn("elle\\.com", validator)
+        self.assertNotIn("test(u.hostname)", validator)
 
     def test_editorial_json_is_structured(self):
         for name, min_count in (("reels-studio", 3), ("trend-radar", 3), ("style-time-machine", 5)):
