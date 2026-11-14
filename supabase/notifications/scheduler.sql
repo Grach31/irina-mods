@@ -6,6 +6,7 @@ language plpgsql security invoker set search_path='' as $$
 declare c myspace_private.notification_config; need boolean; begin
  select * into c from myspace_private.notification_config where id;
  if not c.enabled then return; end if;
+ perform public.ms_notice_oura();
  select (c.last_reconcile is null or c.last_reconcile<now()-interval '1 hour'
  or exists(select 1 from public.myspace_notification_events where kind='publication' and processed_at is null)
  or exists(select 1 from public.myspace_notifications n join public.myspace_push_subscriptions s on s.user_id=n.user_id and s.enabled join public.myspace_notification_preferences p on p.user_id=n.user_id

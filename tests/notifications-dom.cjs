@@ -12,7 +12,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('n
  window.fetch=async(url,options={})=>{
   url=String(url);let value;
   if(url.includes('/myspace-notifications')){if(offline)throw Error('offline');const b=JSON.parse(options.body);value={ok:true};if(b.action==='count')value={unread};if(b.action==='list')value={items:[{...row}],more:false,prefs,server_time:now};if(b.action==='preferences')value={prefs,public_key:'A'.repeat(87)};if(['read','read_all'].includes(b.action)){row.read_at=now;unread=0}}
-  else if(url.includes('/myspace-pwa'))value={token:'a'.repeat(64),can_moderate:true};else if(url.includes('/myspace-publish'))value={items:[]};
+  else if(url.includes('/myspace-pwa')){const b=JSON.parse(options.body);value=b.action==='oura_read'?{sleep:{score:80,detail:{}},readiness:{score:80},activity:{score:70},history:[]}:{token:'a'.repeat(64),can_moderate:true}}else if(url.includes('/myspace-publish'))value={items:[]};
   else {const filename=url.split('?')[0].split('/').at(-1);value=JSON.parse(fs.readFileSync(path.join(root,'miniapp',filename),'utf8'))}
   return {ok:true,status:200,json:async()=>value};
  };
@@ -24,7 +24,12 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('n
  assert.equal(doc.getElementById('notificationsSpace').classList.contains('hidden'),false);assert.equal(doc.documentElement.dataset.msTheme,'dark');
  doc.querySelector('.ms-notice-row').click();await settle(()=>doc.getElementById('detail').classList.contains('visible'));assert.equal(unread,0);click('back');assert.equal(doc.getElementById('notificationsSpace').classList.contains('hidden'),false);
  await settle(()=>doc.querySelector('.ms-notice-row.read'));assert.equal(doc.getElementById('noticeBadge').hidden,true);
- click('noticesSettings');await settle(()=>doc.querySelector('#noticeCategoryPrefs input'));assert.equal(doc.getElementById('noticeQuietEnd').value,'08:00');click('notificationSettingsBack');click('noticesBack');click('openSettings');doc.querySelector('[data-theme-choice="light"]').click();click('settingsBack');click('openNotifications');assert.equal(doc.documentElement.dataset.msTheme,'light');
+ // A ring notice uses the real app router, fetches saved metrics, and returns to the center.
+ Object.assign(row,{category:'oura',title:'Данные Oura обновлены',targets:[{space:'oura',id:'2026-11-14'}]});
+ doc.getElementById('noticesNew').click();await settle(()=>doc.querySelector('.ms-notice-meta')?.textContent.includes('OURA RING'));
+ doc.querySelector('.ms-notice-row').click();await settle(()=>!doc.getElementById('ouraSpace').classList.contains('hidden'));
+ click('ouraBack');assert.equal(doc.getElementById('notificationsSpace').classList.contains('hidden'),false);
+ click('noticesSettings');await settle(()=>doc.querySelector('#noticeCategoryPrefs input'));assert.equal(doc.querySelectorAll('#noticeCategoryPrefs input[data-kind="oura"]').length,2);assert.equal(doc.getElementById('noticeQuietEnd').value,'08:00');click('notificationSettingsBack');click('noticesBack');click('openSettings');doc.querySelector('[data-theme-choice="light"]').click();click('settingsBack');click('openNotifications');assert.equal(doc.documentElement.dataset.msTheme,'light');
  await new Promise(r=>setTimeout(r,50));offline=true;doc.getElementById('noticesNew').hidden=false;click('noticesNew');await settle(()=>doc.getElementById('noticesMessage').textContent.includes('Не удалось обновить'));assert.equal(doc.querySelectorAll('.ms-notice-row').length,1);
  console.log('PASS: actual app initialization, bell, center, material link/back, read sync, settings, dark/light themes, offline list');window.happyDOM.abort();
 })().catch(e=>{console.error(e);process.exit(1)});

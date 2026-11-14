@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {validSubscription,safeTarget,groupJobs,notificationPayload} from '../supabase/functions/myspace-notifications/core.ts';
+import {validSubscription,safeTarget,groupJobs,notificationPayload,CATEGORIES} from '../supabase/functions/myspace-notifications/core.ts';
 test('push endpoints reject SSRF, credentials, ports and invalid keys',()=>{
  const subscription={endpoint:'https://web.push.apple.com/QH/test',keys:{p256dh:'A'.repeat(87),auth:'B'.repeat(22)}};
  assert.equal(validSubscription(subscription),true);
@@ -10,7 +10,10 @@ test('push endpoints reject SSRF, credentials, ports and invalid keys',()=>{
 test('deep links allow only existing content sections',()=>{
  assert.equal(safeTarget({space:'moda',id:'draft-id'}),true);
  assert.equal(safeTarget({space:'https://evil.test',id:'x'}),false);
+ assert.equal(safeTarget({space:'oura',id:'2026-11-14'}),true);
+ assert.equal(safeTarget({space:'oura',id:'https://evil.test'}),false);
 });
+test('Oura has its own selectable notification category',()=>{assert.equal(CATEGORIES.includes('oura'),true);assert.equal(new Set(CATEGORIES).size,6)});
 test('one push bundles all eligible notifications for each device',()=>{
  const job=(id,s)=>({id,subscription_id:s,notification:{id,title:'Правки готовы',body:'Подборка обновлена.'}});
  const groups=groupJobs([job('1','a'),job('2','a'),job('3','b')]);assert.deepEqual(groups.map(x=>x.length),[2,1]);

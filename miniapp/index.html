@@ -621,7 +621,7 @@ body>nav.nav{display:none!important}
 <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
-<script src="notifications.js?v=20261114-3"></script>
+<script src="notifications.js?v=20261114-oura1"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -1001,7 +1001,7 @@ $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('openFashion').onclick=()=>showSpace('fashion');
 $('fashionBack').onclick=()=>showSpace('hub');
-$('ouraBack').onclick=()=>showSpace('hub');
+$('ouraBack').onclick=()=>msReturnOrHub();
 if(isTelegramClient&&tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -1482,7 +1482,8 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 
 async function msOpenNoticeTarget(target){
  if(target.space==='notifications'){showSpace('notifications');notices.message(target.id==='build'?'Не удалось развернуть обновление. Рабочая версия сохранена; причину можно проверить в GitHub Actions.':'Редакция сообщила о проблеме подготовки материала. Причина указана в уведомлении; остальные разделы продолжают работать.');return}
- const allowed=['moda','fashion','reels','history','trends'];if(!allowed.includes(target.space))throw Error('invalid_target');
+ const allowed=['moda','fashion','reels','history','trends','oura'];if(!allowed.includes(target.space))throw Error('invalid_target');
+ if(target.space==='oura'){if(!/^\d{4}-\d{2}-\d{2}$/.test(target.id))throw Error('invalid_target');ouraSelectedDate=null;msNoticeReturn=true;showSpace('oura');return}
  msNoticeReturn=true;showSpace(target.space);
  if(target.space==='moda'){await load();const item=items.find(x=>x.id===target.id);if(!item)throw Error('material_unavailable');open(item);return}
  if(target.space==='fashion'){await loadFashion(true);const item=fashionDigest?.items?.find(x=>x.id===target.id);if(!item)throw Error('material_unavailable');fashionOpen(item);return}

@@ -1,5 +1,5 @@
 import webpush from 'npm:web-push@3.6.7';
-import {validSubscription,safeTarget,groupJobs,notificationPayload} from './core.ts';
+import {validSubscription,safeTarget,groupJobs,notificationPayload,CATEGORIES} from './core.ts';
 const URL_BASE=Deno.env.get('SUPABASE_URL')!;
 const KEY=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 const OWNER='9983fe8e-9a69-4ed5-b8ec-f8e056c2f280';
@@ -33,6 +33,7 @@ async function worker(config:any,reconcileNow:boolean){
  if(reconcileNow||!config.last_reconcile||Date.now()-Date.parse(config.last_reconcile)>3600000){
  try{ingested=await reconcile();await rpc('ms_notice_cleanup')}catch(e){const code=e instanceof Error&&/^[a-z_]+(?:_\d{3})?$/.test(e.message)?e.message:'fetch_failed';await db('rpc/ms_notice_health','POST',{p_error:'release_reconcile_failed:'+code});}
  }
+ await rpc('ms_notice_oura');
  const jobs=await rpc('ms_notice_claim');let accepted=0;
  for(const group of groupJobs(jobs)){
  const uid=group[0].notification.user_id;
@@ -68,7 +69,7 @@ Deno.serve(async req=>{
  }
  if(action==='list'){
  const prefs=(await db('myspace_notification_preferences?'+own))[0];
- const cats=prefs.center_categories.filter((x:string)=>['draft','edit','updates','error','published'].includes(x));
+ const cats=prefs.center_categories.filter((x:string)=>CATEGORIES.includes(x));
  let path='myspace_notifications?'+own+'&category=in.('+cats.join(',')+')&order=created_at.desc,id.desc&limit=31';
  if(b.unread)path+='&read_at=is.null';
  if(b.cursor){const date=String(b.cursor.at),id=String(b.cursor.id);if(!/^\d{4}-\d\d-\d\dT[\d:.]+(?:Z|\+00:00)$/.test(date)||!/^[-a-f0-9]{36}$/.test(id))return out({error:'invalid_cursor'},400);path+='&or=(created_at.lt.'+encodeURIComponent(date)+',and(created_at.eq.'+encodeURIComponent(date)+',id.lt.'+id+'))';}
@@ -87,7 +88,7 @@ Deno.serve(async req=>{
  return out({ok:true});
  }
  if(action==='preferences'){
- if(b.values){const v=b.values;const valid=(a:any)=>Array.isArray(a)&&a.length<=5&&a.every((x:any)=>['draft','edit','updates','error','published'].includes(x));if(!valid(v.push_categories)||!valid(v.center_categories)||![v.quiet_start,v.quiet_end].every((x:any)=>Number.isInteger(x)&&x>=0&&x<=1439))return out({error:'invalid_preferences'},400);await db('myspace_notification_preferences?'+own,'PATCH',{push_categories:v.push_categories,center_categories:v.center_categories,quiet_start:v.quiet_start,quiet_end:v.quiet_end});}
+ if(b.values){const v=b.values;const valid=(a:any)=>Array.isArray(a)&&a.length<=CATEGORIES.length&&new Set(a).size===a.length&&a.every((x:any)=>CATEGORIES.includes(x));if(!valid(v.push_categories)||!valid(v.center_categories)||![v.quiet_start,v.quiet_end].every((x:any)=>Number.isInteger(x)&&x>=0&&x<=1439))return out({error:'invalid_preferences'},400);await db('myspace_notification_preferences?'+own,'PATCH',{push_categories:v.push_categories,center_categories:v.center_categories,quiet_start:v.quiet_start,quiet_end:v.quiet_end});}
  let config=await rpc('ms_notice_config');if(!config.vapid)config=await rpc('ms_notice_config',{p_vapid:webpush.generateVAPIDKeys()});
  const devices=/^[a-f0-9-]{36}$/.test(b.device_id||'')?await db('myspace_push_subscriptions?'+own+'&device_id=eq.'+b.device_id+'&select=enabled'):[];
  return out({prefs:(await db('myspace_notification_preferences?'+own))[0],public_key:config.vapid.publicKey,device_enabled:devices[0]?.enabled===true});

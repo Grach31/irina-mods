@@ -55,3 +55,15 @@ Pages is the only media build. It renders all active picks, uses per-item finger
 Publication requires the exact SHA-256 `revision` shown in the deployed ready catalog and rechecks the raw draft bytes. Once sending starts, ambiguous outcomes remain `publishing`/`uncertain`, blocking retries; acknowledgement storage is retried without resending Telegram. `uncertain` must be resolved by inspecting the actual channel and recording known message IDs, never by automatically reopening the claim.
 
 Sources for the pre-existing PWA/Auth, Telegram publication, Oura and retired webhook functions were recovered from deployed Supabase versions. Only myspace-publish and myspace-notifications are changed by this repair; the other source copies preserve their existing behavior.
+
+## Oura saved-data notification
+
+`oura.sql` adds a separate `oura` category (center and push enabled at first install; later user preferences are preserved). Apply it after `schema.sql`, then update the existing function in `scheduler.sql`. No new cron job, GPT task, upstream workflow or Oura API request is needed.
+
+The existing minute DB tick checks the singleton `stambo_oura_snapshot` row before deciding whether Edge delivery is needed. It waits for a post-install saved snapshot with today's sleep score/night duration and readiness score confirmed by today's history, plus the activity score, steps and calories for the latest completed day. The existing upstream contract normally returns yesterday's activity; demanding today's final activity would incorrectly prevent morning delivery. Optional cycle/temperature/HRV values are not required when Oura does not supply them. A stale/fallback readiness score without a matching current history entry never announces readiness.
+
+Only one durable `oura:YYYY-MM-DD` event is inserted per Moscow calendar day. Event creation and notification insertion share a transaction; simultaneous ticks, repeated saves, score changes and history cleanup cannot create another daily notice. First install establishes a silent watermark; pre-install data never announces. Incomplete data waits for a later sync. The scheduler retries the saved-data check without coupling failures to ingestion. Delivery keeps existing quiet hours (08:00 end), device preferences and bounded retries. Outdated pushes expire after the following day, while history retains its normal 90-day limit.
+
+Push content contains no health values: “Данные Oura обновлены / Сон, готовность и активность сохранены в My Space.” Opening it fetches the protected Oura screen; Back returns to the notification center. No metrics are copied into Pages, manifests or event payloads. The service-only invoker RPC has no browser execute privilege.
+
+`tests/oura-notifications.sql` runs readiness, baseline, partial-data, zero-value, duplicate, permanent-deduplication, permission and quiet-hours checks as `service_role` inside a rolled-back transaction. It never sends push or commits synthetic health data.

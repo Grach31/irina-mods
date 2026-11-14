@@ -15,8 +15,8 @@ create table if not exists public.myspace_notification_events (
 );
 create table if not exists public.myspace_notification_preferences (
  user_id uuid primary key references auth.users(id) on delete cascade,
- push_categories text[] not null default array['draft','edit','updates','error'],
- center_categories text[] not null default array['draft','edit','updates','error','published'],
+ push_categories text[] not null default array['draft','edit','updates','error','oura'],
+ center_categories text[] not null default array['draft','edit','updates','error','published','oura'],
  quiet_start integer not null default 1320 check(quiet_start between 0 and 1439),
  quiet_end integer not null default 480 check(quiet_end between 0 and 1439)
 );

@@ -1,4 +1,5 @@
-export const SPACES = new Set(['moda','fashion','reels','history','trends']);
+export const SPACES = new Set(['moda','fashion','reels','history','trends','oura']);
+export const CATEGORIES = ['draft','edit','updates','error','published','oura'];
 export function validSubscription(s: any) {
   try {
     const u=new URL(s.endpoint);
@@ -7,7 +8,7 @@ export function validSubscription(s: any) {
     return allowed && u.protocol==='https:' && !u.port && !u.username && !u.password && s.endpoint.length<2048 && /^[\w-]{80,100}$/.test(s.keys?.p256dh||'') && /^[\w-]{20,30}$/.test(s.keys?.auth||'');
   } catch {return false}
 }
-export function safeTarget(t: any) {return SPACES.has(t?.space) && typeof t?.id==='string' && t.id.length<=200}
+export function safeTarget(t: any) {return SPACES.has(t?.space) && typeof t?.id==='string' && t.id.length<=200 && (t.space!=='oura'||/^\d{4}-\d{2}-\d{2}$/.test(t.id))}
 export function groupJobs(jobs: any[]) {
   const groups=new Map<string,any[]>();
   for(const job of jobs){const key=job.subscription_id;groups.set(key,[...(groups.get(key)||[]),job])}return [...groups.values()];
