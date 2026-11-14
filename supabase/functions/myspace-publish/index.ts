@@ -1,4 +1,5 @@
 import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,telegramRejection} from './core.ts';
+import {handleEditorial} from './editorial.ts';
 const enc=new TextEncoder();
 const b64=(v:string)=>Uint8Array.from(atob(v.replace(/-/g,"+").replace(/_/g,"/").padEnd(Math.ceil(v.length/4)*4,"=")),x=>x.charCodeAt(0));
 async function githubAuth(jwt:string){
@@ -23,6 +24,12 @@ async function db(path:string,method="GET",payload?:unknown){const key=secretKey
 async function moderator(session:string){if(!/^[a-f0-9]{64}$/.test(session))return null;const rows=await db("stambo_pwa_sessions?token_hash=eq."+await hash(session)+"&select=telegram_user_id,expires_at&limit=1");if(rows.length!==1||new Date(rows[0].expires_at).getTime()<=Date.now())return null;const id=String(rows[0].telegram_user_id);if(id==="880098519")return id;const grants=await db("myspace_temporary_moderators?telegram_user_id=eq."+id+"&select=expires_at&limit=1");return grants.length&&new Date(grants[0].expires_at).getTime()>Date.now()?id:null}
 const rpc=(name:string,p:unknown)=>db('rpc/'+name,'POST',p);
 const safeError=(e:unknown)=>String((e as Error)?.message||'request_failed');
+async function editorialCredentials(){
+ let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'',channel=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
+ if(!token||!channel){const rows=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=rows[0]?.bot_token||token}
+ return {token,channel:'@stamboi'};
+}
+const editorialContext={db,rpc,hash,credentials:editorialCredentials};
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return new Response(null,{status:204,headers:H});
  if(req.method!=='POST')return respond({error:'method_not_allowed'},405);
@@ -33,6 +40,7 @@ Deno.serve(async req=>{
  const bearer=(req.headers.get('authorization')||'').replace(/^Bearer /i,'');
  if(!/^[a-f0-9]{64}$/.test(bearer))return respond({error:'unauthorized'},403);
  const config=await rpc('ms_notice_config',{});if(bearer!==config.worker_token)return respond({error:'unauthorized'},403);
+ if(b.space==='fashion'||b.space==='history'){const preview=await handleEditorial({...b,action:'editorial_preview'},editorialContext);return respond(preview.body,preview.status)}
  let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'';let configured=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
  if(!token||!configured){const rows=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=rows[0]?.bot_token||token;configured=String(rows[0]?.channel_id||configured)}
  const get=async(method:string,args:Record<string,unknown>={})=>{const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(args),signal:AbortSignal.timeout(10000)});return r.json()};
@@ -53,6 +61,7 @@ Deno.serve(async req=>{
  return saved.ok?respond({ok:true,configured:true}):respond({error:'credential_store_failed'},502);
  }
  const moderatorId=await moderator(String(b.session||''));if(!moderatorId)return respond({error:'unauthorized'},403);
+ if(['editorial_preview','editorial_publish','editorial_list','editorial_status'].includes(action)){const result=await handleEditorial(b,editorialContext);return respond(result.body,result.status)}
  if(action!=='list'&&!/^[a-zA-Z0-9_.-]{1,100}$/.test(id))return respond({error:'invalid_id'},400);
  if(action==='list'){
  const rows=await db('myspace_publications?select=draft_id,status,updated_at,error_code&order=updated_at.desc&limit=1000');

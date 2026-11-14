@@ -5,6 +5,7 @@
 <meta name="apple-mobile-web-app-title" content="My Space">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="notifications.css?v=20261114-3">
+<link rel="stylesheet" href="editorial-publish.css?v=20261114-1">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -628,6 +629,7 @@ body>nav.nav{display:none!important}
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
 <script src="notifications.js?v=20261114-refresh1"></script>
 <script src="gestures.js?v=20261114-1"></script>
+<script src="editorial-publish.js?v=20261114-1"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -656,7 +658,7 @@ async function activatePasswordSession(){
  const accessToken=await authAccessToken();if(!accessToken)return false;
  const exchanged=await pwaApi({action:'session_exchange',access_token:accessToken});
  pwaSession=exchanged.token;pwaModerator=exchanged.can_moderate===true;readonly=!pwaModerator;
- showPwaGate(false);render();if(currentSpace==='oura')loadOura();notices?.ready().catch(()=>{});return true;
+ showPwaGate(false);render();editorialPublisher?.repaint();editorialPublisher?.sync(true);if(currentSpace==='oura')loadOura();notices?.ready().catch(()=>{});return true;
 }
 async function pwaApi(payload){
  const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store',...(payload.action==='oura_read'?{signal:AbortSignal.timeout(12000)}:{})});
@@ -708,7 +710,7 @@ $('settingsLogout').onclick=async()=>{
  try{const client=await authClient();await client.auth.signOut()}catch{}
 };
 const msLastSpaceKey='myspace.last-space.v1';
-let currentSpace='hub',notices=null,msNoticeReturn=false,msPullController=null;
+let currentSpace='hub',notices=null,msNoticeReturn=false,msPullController=null,editorialPublisher=null;
 function msReturnOrHub(){if(msNoticeReturn){msNoticeReturn=false;showSpace('notifications')}else showSpace('hub')}
 const showSpace=space=>{
  msPullController?.cancel();
@@ -913,7 +915,7 @@ function msRenderEditorial(type,data){
   }
   toggle.onclick=()=>{const expanded=!detail.classList.toggle('hidden');toggle.setAttribute('aria-expanded',String(expanded));toggle.textContent=expanded?'Свернуть ↑':'Подробнее ↓'};
   if(heroPhoto)card.append(heroPhoto);
-  card.append(meta,title,lead,toggle,detail);root.append(card);
+  card.append(meta,title,lead,toggle,detail);if(type==='history')editorialPublisher?.attach(card,'history',item.id);root.append(card);
  });
 }
 const msEditorialLoading={};
@@ -1065,8 +1067,8 @@ function fashionOpen(item){
  card.innerHTML=fashionArt(item)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(section=>'<section class="fashion-article-section">'+(section.heading?'<h3>'+escapeHtml(section.heading)+'</h3>':'')+(Array.isArray(section.paragraphs)?section.paragraphs:[]).slice(0,8).filter(p=>typeof p==='string').map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')+
  (item.why?'<div class="editor-note"><strong>Почему это важно</strong><p>'+escapeHtml(item.why)+'</p></div>':'')+
  '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Полная статья на сайте '+escapeHtml(item.source||'источника')+' ↗</a>'+
- '<button type="button" class="fashion-post-disabled" disabled aria-disabled="true">Сформировать пост для Telegram · скоро</button><p class="fashion-rights">Подробный оригинальный пересказ на русском. Дословная версия публикации и фотографии правообладателя — по ссылке на источник. Кнопка публикации отключена.</p></div>';
- fashionWatchImages(card);article.appendChild(card);
+ '<p class="fashion-rights">Подробный оригинальный пересказ на русском. Оригинальная публикация — по ссылке на источник.</p></div>';
+ fashionWatchImages(card);editorialPublisher?.attach(card,'fashion',item.id);article.appendChild(card);
  article.classList.remove('hidden');$('fashionBack').textContent='← К новостям';
  $('fashionSpace').scrollTop=0;
 }
@@ -1511,6 +1513,7 @@ async function msOpenNoticeTarget(target){
  card.querySelector('button[aria-expanded="false"]')?.click();
  card.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
 }
+editorialPublisher=new window.MySpaceEditorialPublisher({api:payload=>publishApi({...payload,session:pwaSession}),enabled:()=>!!pwaSession&&!readonly});
 notices=new window.MySpaceNotifications({token:authAccessToken,showSpace,navigate:msOpenNoticeTarget,login:()=>showPwaGate(true),currentSpace:()=>currentSpace});
 
 const requestedSpace=new URLSearchParams(location.search).get('space');

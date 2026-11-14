@@ -23,7 +23,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
   return {ok:true,status:200,json:async()=>data};
  };
  inline=inline.replace(/import\('https:\/\/esm\.sh\/[^']+'\)/,'Promise.resolve({createClient:window.__createClient})');
- for(const name of ['notifications.js','gestures.js'])window.eval(fs.readFileSync(path.join(root,'miniapp',name),'utf8'));window.eval(inline);
+ for(const name of ['notifications.js','gestures.js','editorial-publish.js'])window.eval(fs.readFileSync(path.join(root,'miniapp',name),'utf8'));window.eval(inline);
  const settle=async(check,label)=>{for(let i=0;i<200;i++){if(check())return;await new Promise(r=>setTimeout(r,5))}throw Error('Timed out: '+label)};
  const click=id=>doc.getElementById(id).click(),get=id=>doc.getElementById(id);
  await settle(()=>doc.querySelector('#list .draft')&&get('pwaBoot').classList.contains('hidden'),'boot');await new Promise(r=>setTimeout(r,20));

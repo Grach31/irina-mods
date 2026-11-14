@@ -1,0 +1,21 @@
+begin;
+set local role service_role;
+do $$ declare c jsonb; r jsonb; plan jsonb:='[{"kind":"media"},{"kind":"text"}]'; token uuid; begin
+ delete from public.myspace_editorial_publications where source_id='qa-transaction-only';
+ assert not has_function_privilege('anon','public.ms_ep_claim(text,text,text,jsonb)','execute');
+ c:=public.ms_ep_claim('history','qa-transaction-only',repeat('a',64),plan);token:=(c->>'attempt_id')::uuid;
+ assert c->>'ok'='true';assert c->>'next_part'='0';
+ assert public.ms_ep_claim('history','qa-transaction-only',repeat('a',64),plan)->>'error'='already_processing';
+ r:=public.ms_ep_checkpoint('history','qa-transaction-only',gen_random_uuid(),0,'[100]');assert r->>'error'='checkpoint_rejected';
+ r:=public.ms_ep_checkpoint('history','qa-transaction-only',token,0,'[100]');assert r->>'status'='publishing';assert r->>'next_part'='1';
+ r:=public.ms_ep_checkpoint('history','qa-transaction-only',token,0,'[100]');assert r->>'ok'='true';assert r->>'next_part'='1';
+ assert public.ms_ep_fail('history','qa-transaction-only',token,'failed','telegram_api_400');
+ assert public.ms_ep_claim('history','qa-transaction-only',repeat('b',64),plan)->>'error'='partial_revision_changed';
+ c:=public.ms_ep_claim('history','qa-transaction-only',repeat('a',64),plan);assert c->>'next_part'='1';token:=(c->>'attempt_id')::uuid;
+ r:=public.ms_ep_checkpoint('history','qa-transaction-only',token,1,'[101]');assert r->>'status'='published';assert r->'message_ids'='[100,101]'::jsonb;
+ assert public.ms_ep_claim('history','qa-transaction-only',repeat('a',64),plan)->>'error'='already_published';
+ c:=public.ms_ep_claim('fashion','qa-transaction-only',repeat('a',64),plan);assert c->>'ok'='true';token:=(c->>'attempt_id')::uuid;
+ assert public.ms_ep_fail('fashion','qa-transaction-only',token,'uncertain','delivery_unconfirmed');
+ assert public.ms_ep_claim('fashion','qa-transaction-only',repeat('a',64),plan)->>'error'='delivery_unconfirmed';
+end $$;
+rollback;

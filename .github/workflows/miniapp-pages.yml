@@ -58,6 +58,7 @@ jobs:
           node --check miniapp/notifications.js
           node --check miniapp/sw.js
           node --check miniapp/gestures.js
+          node --check miniapp/editorial-publish.js
       - name: Check JavaScript syntax
         run: |
           python - <<'PY'

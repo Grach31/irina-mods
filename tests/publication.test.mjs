@@ -2,7 +2,7 @@ import {test} from 'node:test';import assert from 'node:assert/strict';import vm
 import {visibleCaption,validateCaption,downloadPublicationPhotos,telegramRejection} from '../supabase/functions/myspace-publish/core.ts';
 const root=new URL('../',import.meta.url),file=new URL('supabase/functions/myspace-publish/',root);
 const core=stripTypeScriptTypes(fs.readFileSync(new URL('core.ts',file),'utf8')).replace(/export /g,'');
-const index=stripTypeScriptTypes(fs.readFileSync(new URL('index.ts',file),'utf8')).replace(/^import .*\n/,'');
+const index=stripTypeScriptTypes(fs.readFileSync(new URL('index.ts',file),'utf8')).replace(/^import .*\n/gm,'');
 const actual=JSON.parse(fs.readFileSync(new URL('drafts/2026-11-14-mix-knit-and-satin.json',root),'utf8'));
 test('HTML link markup does not count toward the Telegram caption limit',()=>{assert(actual.text.length>1024);assert(visibleCaption(actual.text).length<1024);assert.doesNotThrow(()=>validateCaption(actual.text));assert.throws(()=>validateCaption('a'.repeat(1025)));assert.throws(()=>validateCaption('<b>unclosed'))});
 function fixture({mode='ok',ready=true}={}){
