@@ -4,8 +4,6 @@ No config, Telegram IDs, file IDs or request records are exported.
 Note: GitHub Pages is public, so this catalog is not a privacy boundary.
 """
 import glob
-from datetime import datetime
-from zoneinfo import ZoneInfo
 import json
 import shutil
 from pathlib import Path
@@ -20,14 +18,10 @@ def main():
     # Editorial-ready drafts are visible in Safari even before Telegram delivery.
     # A missing Telegram status is *queued*, not delivered or approved.
     rows = []
-    # Show only the current editorial day's drafts in Moda; keep older files
-    # and moderation history intact for audit and deduplication.
-    today = datetime.now(ZoneInfo('Europe/Moscow')).date().isoformat()
+    # Keep eligible drafts visible across days until a moderation decision.
     for file in (ROOT / "drafts").glob("*.json"):
         did = file.stem
         meta = all_drafts.get(did, {})
-        if meta.get('status') != 'published' and not did.startswith(today + '-'):
-            continue
         if meta.get("status") in {"error", "partial_error", "replaced"}:
             continue
         if meta.get("status") and meta["status"] not in permitted:
