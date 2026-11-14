@@ -1015,18 +1015,28 @@ const fashionSafeUrl=value=>{
 const fashionArt=d=>{
  const label=escapeHtml(String(d.brand||'FASHION').slice(0,34));
  const local=(typeof d.image==='string'&&/^images\/fashion\/[a-zA-Z0-9_.-]+\.(jpg|png|webp)$/.test(d.image)&&d.image_rights==='licensed')?d.image:null;
- const preview=(typeof d.image_url==='string' && /^https:\/\/(assets\.vogue\.com|media\.vogue\.co\.uk|r\.fashionunited\.com|theblueprint\.ru|the-day\.ru)\//.test(d.image_url))?d.image_url:null;
- return local?'<div class="fashion-artwork" style="background:#37303a"><img alt="'+label+'" loading="lazy" style="width:100%;height:100%;object-fit:cover" src="'+local+'"></div>':
- preview?'<div class="fashion-artwork"><img src="'+escapeHtml(preview)+'" alt="'+label+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.parentElement.classList.add(\'has-photo\')" onerror="this.remove()"><strong>'+label+'</strong><small>'+escapeHtml(d.source||'')+' · фото оригинальной статьи</small></div>':
- '<div class="fashion-artwork"><strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small></div>';
+ const preview=fashionSafeUrl(d.image_url||'');
+ const source=local||preview;
+ const credit=escapeHtml(String(d.image_credit||d.image_source||d.source||'Источник')+' · фото к новости');
+ const fallback='<strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small>';
+ return '<div class="fashion-artwork"'+(source?' data-photo-credit="'+credit+'"':'')+'>'+(source?'<img data-news-photo src="'+escapeHtml(source)+'" alt="'+escapeHtml(String(d.image_alt||d.title||d.brand||'Фото к новости'))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+fallback+'</div>';
 };
+function fashionWatchImages(root){
+ root.querySelectorAll('img[data-news-photo]').forEach(img=>{
+  const artwork=img.parentElement;
+  const loaded=()=>{artwork.classList.add('has-photo');artwork.querySelector('small').textContent=artwork.dataset.photoCredit};
+  img.addEventListener('load',loaded,{once:true});
+  img.addEventListener('error',()=>{artwork.classList.remove('has-photo');artwork.querySelector('small').textContent='Fashion Daily · редакционная обложка';img.remove()},{once:true});
+  if(img.complete&&img.naturalWidth>0)loaded();
+ });
+}
 const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):'Дата не указана';
 function fashionCard(item){
  const url=fashionSafeUrl(item.url);
  if(!url||!item.title||!item.summary||!item.id)return null;
  const button=document.createElement('button');button.type='button';button.className='fashion-story';button.dataset.region=item.region||'world';
  button.innerHTML=fashionArt(item)+'<div class="fashion-story-body"><div class="fashion-story-meta">'+escapeHtml(item.category||'Мода')+' · '+escapeHtml(item.source||'Источник')+' · '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p>'+escapeHtml(item.summary)+'</p><div class="fashion-story-more">Читать обзор →</div></div>';
- button.onclick=()=>fashionOpen(item);
+ fashionWatchImages(button);button.onclick=()=>fashionOpen(item);
  return button;
 }
 function fashionRender(){
@@ -1056,7 +1066,7 @@ function fashionOpen(item){
  (item.why?'<div class="editor-note"><strong>Почему это важно</strong><p>'+escapeHtml(item.why)+'</p></div>':'')+
  '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Полная статья на сайте '+escapeHtml(item.source||'источника')+' ↗</a>'+
  '<button type="button" class="fashion-post-disabled" disabled aria-disabled="true">Сформировать пост для Telegram · скоро</button><p class="fashion-rights">Подробный оригинальный пересказ на русском. Дословная версия публикации и фотографии правообладателя — по ссылке на источник. Кнопка публикации отключена.</p></div>';
- article.appendChild(card);
+ fashionWatchImages(card);article.appendChild(card);
  article.classList.remove('hidden');$('fashionBack').textContent='← К новостям';
  $('fashionSpace').scrollTop=0;
 }

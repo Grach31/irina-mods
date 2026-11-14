@@ -3,7 +3,7 @@
   "updated_at": "2026-11-14T09:00:00+03:00",
   "language": "ru",
   "edition_title": "Fashion Daily — 14 ноября 2026",
-  "editor_note": "Две подтверждённые новости (Россия и мир). Для новых материалов использованы оригинальные типографические обложки без сторонних фотографий. Предыдущий выпуск сохранён в архиве; старые записи сохранены.",
+  "editor_note": "Две подтверждённые новости (Россия и мир). К новым материалам добавлены превью фотографий из соответствующих публикаций с указанием источника. Предыдущий выпуск сохранён в архиве; старые записи сохранены.",
   "items": [
     {
       "id": "20261114-rimowa-maison-margiela",
@@ -23,9 +23,9 @@
       ],
       "why": "Коллаборация показывает, как намеренно изменяющаяся поверхность становится частью дизайна аксессуара.",
       "image": null,
-      "image_url": null,
-      "image_source": "Stambo.i / My Space — текстовая обложка приложения",
-      "image_rights": "no_external_image",
+      "image_url": "https://hips.hearstapps.com/hmg-prod/images/990d7783-6abd-41a8-b283-0a303829369c.jpg?crop=1xw%3A1xh%3Bcenter%2Ctop&resize=980%3A%2A",
+      "image_source": "Rimowa / ELLE",
+      "image_rights": "publisher_preview_hotlink",
       "article_sections": [
         {
           "heading": "В чём идея",
@@ -40,7 +40,10 @@
             "Интерес представляет не только совместный логотип, но и эстетика предмета, который меняется по мере использования. Это пример того, как фактура и патина становятся частью визуального кода."
           ]
         }
-      ]
+      ],
+      "image_credit": "Rimowa / ELLE",
+      "image_alt": "Кампания Rimowa × Maison Margiela: белые чемодан и сумка Bianchetto",
+      "image_source_url": "https://www.elle.com/fashion/shopping/a74336986/best-fashion-launches-november-2026/"
     },
     {
       "id": "ru-20261114-12storeez-vodianova-holiday",
@@ -60,9 +63,9 @@
       ],
       "why": "Кампания предлагает практичную праздничную формулу: одна нарядная фактура плюс спокойная база.",
       "image": null,
-      "image_url": null,
-      "image_source": "Stambo.i / My Space — текстовая обложка приложения",
-      "image_rights": "no_external_image",
+      "image_url": "https://posta-magazine.ru/wp-content/uploads/2026/11/01_fashion-digest-13-11-2026_posta-magazine.jpg",
+      "image_source": "12Storeez / Posta-Magazine",
+      "image_rights": "publisher_preview_hotlink",
       "article_sections": [
         {
           "heading": "Новогодняя история",
@@ -77,7 +80,10 @@
             "Для вечернего образа можно выбрать одну акцентную вещь — например, атласную юбку — и сочетать её с лаконичным трикотажем. Это стилистическая интерпретация кампании, а не утверждение о составе всей коллекции."
           ]
         }
-      ]
+      ],
+      "image_credit": "12Storeez / Posta-Magazine",
+      "image_alt": "Наталья Водянова в новогодней кампании 12Storeez «Настоящее чудо»",
+      "image_source_url": "https://posta-magazine.ru/article/fashion-digest-13-11-2026/"
     },
     {
       "id": "20261113-ugg-aime-leon-dore",
