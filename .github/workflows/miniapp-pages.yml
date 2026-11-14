@@ -11,6 +11,9 @@ on:
       - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Stambo JPG Builder"]
+    types: [completed]
   pull_request:
     paths:
       - miniapp/**
@@ -26,6 +29,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   checks:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
