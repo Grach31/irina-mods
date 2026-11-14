@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-14",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -159,6 +159,27 @@
       "source_url": "https://www.chanel.com/us/about-chanel/the-house-of-chanel/1950/",
       "photo_note": "Архивная фотография не добавлена до проверки прав использования.",
       "added_at": "2026-11-13",
+      "added_at_source": "editorial_verified"
+    },
+    {
+      "year": 1922,
+      "title": "Флэппер: новый силуэт 1920-х",
+      "period": "1920-е",
+      "description": "В 1922 году образ флэппер уже стал узнаваемым культурным символом: обложка американского журнала Life от 2 февраля 1922 года с иллюстрацией Фрэнка Ксавьера Лейендекера показывает модную героиню эпохи. Это иллюстрация, а не фотография конкретного показа.",
+      "then": "Свободный силуэт, укороченная длина, выразительные аксессуары и отход от жёсткой корсетной формы в массовом образе эпохи.",
+      "now": "В современной стилизации можно использовать платье прямого кроя и одну деталь ар-деко, избегая буквального костюма для тематической вечеринки.",
+      "category": "История силуэта",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Flapper_by_Frank_Xavier_Leyendecker.jpg",
+          "caption": "«The Flapper», обложка журнала Life, 2 февраля 1922 года. Историческая иллюстрация, не фотография.",
+          "credit": "Frank Xavier Leyendecker / Life (1922), Public Domain / Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_Flapper_by_Frank_Xavier_Leyendecker.jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_Flapper_by_Frank_Xavier_Leyendecker.jpg",
+      "photo_note": "Права: Public Domain Mark 1.0, подтверждено на странице Wikimedia Commons. Доступность прямого URL в приложении требует проверки после развёртывания.",
+      "added_at": "2026-11-14",
       "added_at_source": "editorial_verified"
     }
   ]
