@@ -73,8 +73,8 @@ create or replace function public.ms_notice_put(p_key text,p_category text,p_tit
 returns uuid language plpgsql security invoker set search_path='' as $$
 declare u uuid; n uuid; begin
  -- Single existing owner. Never infer privilege from client-editable metadata.
- select id into u from auth.users where id='9983fe8e-9a69-4ed5-b8ec-f8e056c2f280';
- if u is null then return null; end if;
+ -- Foreign keys validate this owner; reading auth.users requires unrelated privileges.
+ u := '9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'::uuid;
  insert into public.myspace_notification_preferences(user_id) values(u) on conflict do nothing;
  insert into public.myspace_notifications(user_id,group_key,category,title,body,targets,available_at)
  values(u,p_key,p_category,p_title,p_body,p_targets,now()+make_interval(secs=>p_delay))

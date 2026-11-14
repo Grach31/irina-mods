@@ -31,7 +31,7 @@ async function reconcile(){
 async function worker(config:any,reconcileNow:boolean){
  let ingested:any=null;
  if(reconcileNow||!config.last_reconcile||Date.now()-Date.parse(config.last_reconcile)>3600000){
- try{ingested=await reconcile();await rpc('ms_notice_cleanup')}catch{await db('rpc/ms_notice_health','POST',{p_error:'release_reconcile_failed'});}
+ try{ingested=await reconcile();await rpc('ms_notice_cleanup')}catch(e){const code=e instanceof Error&&/^[a-z_]+(?:_\d{3})?$/.test(e.message)?e.message:'fetch_failed';await db('rpc/ms_notice_health','POST',{p_error:'release_reconcile_failed:'+code});}
  }
  const jobs=await rpc('ms_notice_claim');let accepted=0;
  for(const group of groupJobs(jobs)){
