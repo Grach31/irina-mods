@@ -127,7 +127,13 @@ def main():
     ids = list(args.draft_id)
     if args.today:
         today = datetime.now(ZoneInfo("Europe/Moscow")).date().isoformat()
-        for path in sorted((ROOT / "drafts").glob(today + "-*.json")):\n            try:\n                data = json.loads(path.read_text(encoding="utf-8"))\n                if data.get("type") == "picks" and not data.get("hold"):\n                    ids.append(path.stem)\n            except (ValueError, OSError):\n                print(f"SKIP invalid draft: {path}")
+        for path in sorted((ROOT / "drafts").glob(today + "-*.json")):
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+                if data.get("type") == "picks" and not data.get("hold"):
+                    ids.append(path.stem)
+            except (ValueError, OSError):
+                print(f"SKIP invalid draft: {path}")
     ids = list(dict.fromkeys(ids))
     if not ids:
         print("No drafts selected")
