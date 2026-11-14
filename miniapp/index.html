@@ -627,7 +627,7 @@ body>nav.nav{display:none!important}
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
 const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
 const PUBLISH_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-publish';
-async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||'HTTP '+r.status);return data;}
+async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});const data=await r.json().catch(()=>({}));if(!r.ok){const e=Error(data.error||'HTTP '+r.status);e.telegramDescription=typeof data.description==='string'?data.description.slice(0,300):'';throw e}return data;}
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
 const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
 const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
@@ -1225,7 +1225,8 @@ async function act(action,d){
    render();
   }catch(e){
  const messages={telegram_configuration_required:'Публикация пока не подключена: серверу нужен токен и ID канала.',draft_changed:'Черновик изменился. Обнови список и просмотри новую версию перед публикацией.',revision_required:'Обнови приложение и заново открой черновик.',draft_not_ready:'Фотографии ещё готовятся. Обнови список немного позже.',editing_in_progress:'Редакция сейчас исправляет этот материал. Дождись завершения.',delivery_unconfirmed:'Результат отправки требует проверки. Повторная отправка заблокирована, чтобы не создать дубль.',already_processing:'Отправка уже выполняется.',caption_too_long:'Подпись слишком длинная. Запроси сокращение текста.'};
- alert(messages[e.message]||'Действие не выполнено: '+e.message);await load();
+ Object.assign(messages,{telegram_bot_not_allowed:'У бота нет доступа к каналу.',telegram_bot_not_admin:'У бота нет права публиковать в канале.',telegram_chat_not_found:'Telegram не нашёл канал публикации.',telegram_token_invalid:'Нужно проверить подключение Telegram-бота.',media_download_failed:'Не удалось загрузить одно из фото. Попробуй ещё раз немного позже.',media_format_invalid:'Одно из фото имеет неподдерживаемый формат. Запроси замену фотографии.',media_size_invalid:'Одно из фото превышает допустимый размер.',telegram_media_fetch_failed:'Telegram не смог получить фото. Обнови приложение и повтори.',telegram_media_invalid:'Telegram отклонил одно из изображений. Запроси замену фотографии.',caption_invalid:'Telegram не принял оформление подписи. Запроси исправление текста.'});
+ alert((messages[e.message]||'Действие не выполнено: '+e.message)+(e.telegramDescription?'\n\nTelegram: '+e.telegramDescription:''));await load();
  }
   return;
  }

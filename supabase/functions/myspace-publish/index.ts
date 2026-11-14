@@ -1,4 +1,4 @@
-import {TelegramRejected,validateCaption,publicationMedia} from './core.ts';
+import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,telegramRejection} from './core.ts';
 const enc=new TextEncoder();
 const b64=(v:string)=>Uint8Array.from(atob(v.replace(/-/g,"+").replace(/_/g,"/").padEnd(Math.ceil(v.length/4)*4,"=")),x=>x.charCodeAt(0));
 async function githubAuth(jwt:string){
@@ -29,6 +29,23 @@ Deno.serve(async req=>{
  try{
  const rawBody=await req.text();if(rawBody.length>20000)return respond({error:'too_large'},413);
  const b=JSON.parse(rawBody),action=String(b.action||''),id=String(b.id||'');
+ if(action==='diagnostics'){
+ const bearer=(req.headers.get('authorization')||'').replace(/^Bearer /i,'');
+ if(!/^[a-f0-9]{64}$/.test(bearer))return respond({error:'unauthorized'},403);
+ const config=await rpc('ms_notice_config',{});if(bearer!==config.worker_token)return respond({error:'unauthorized'},403);
+ let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'';let configured=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
+ if(!token||!configured){const rows=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=rows[0]?.bot_token||token;configured=String(rows[0]?.channel_id||configured)}
+ const get=async(method:string,args:Record<string,unknown>={})=>{const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(args),signal:AbortSignal.timeout(10000)});return r.json()};
+ const me=await get('getMe');if(!me.ok)return respond({error:'telegram_token_invalid'},502);
+ const destinations=[];for(const chat_id of [...new Set(['@stamboi',configured].filter(Boolean))]){
+ const chat=await get('getChat',{chat_id});const member=chat.ok?await get('getChatMember',{chat_id,user_id:me.result.id}):null;
+ destinations.push({requested:chat_id,ok:chat.ok,description:chat.description,id:chat.result?.id,type:chat.result?.type,title:chat.result?.title,username:chat.result?.username,bot_status:member?.result?.status,can_post_messages:member?.result?.can_post_messages});
+ }
+ let media;if(id){if(!/^[a-zA-Z0-9_.-]{1,100}$/.test(id))return respond({error:'invalid_id'},400);
+ const raw=await fetch('https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/'+encodeURIComponent(id)+'.json',{signal:AbortSignal.timeout(12000)});if(!raw.ok)return respond({error:'draft_unavailable'},404);
+ const draft=await raw.json();validateCaption(String(draft.text||''));const photos=await downloadPublicationPhotos(publicationMedia(draft,id));media=photos.map(p=>({bytes:p.bytes.length,type:p.mime}));}
+ return respond({bot:{id:me.result.id,username:me.result.username},destinations,media});
+ }
  if(action==='credential_transfer'){
  const assertion=(req.headers.get('authorization')||'').replace(/^Bearer /i,'');if(!await githubAuth(assertion))return respond({error:'github_oidc_unauthorized'},401);
  const token=String(b.token||''),channel=Number(b.channel_id);if(!/^\d{5,15}:[A-Za-z0-9_-]{25,}$/.test(token)||!Number.isSafeInteger(channel)||channel>=0)return respond({error:'invalid_credentials'},400);
@@ -65,26 +82,26 @@ Deno.serve(async req=>{
  let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'',channel=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
  if(!token||!channel){const stored=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=stored[0]?.bot_token||token;channel=String(stored[0]?.channel_id||channel)}
  if(!token)return respond({error:'telegram_configuration_required'},503);channel='@stamboi';
- // Download single-photo bytes BEFORE claiming: download errors are safe to retry.
- let photo:Uint8Array|null=null;if(images.length===1){const r=await fetch(images[0],{signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('media_download_failed');photo=new Uint8Array(await r.arrayBuffer());if(photo.length<100||photo.length>10000000)throw Error('media_size_invalid')}
+ // Download every photo BEFORE claiming. Telegram receives bytes, never store/CDN URLs.
+ const photos=await downloadPublicationPhotos(images);
  const claimed=await rpc('ms_publication_decide',{p_id:id,p_action:'claim',p_revision:b.revision});if(claimed.error)return respond(claimed,409);
  const attempt=claimed.attempt_id;let sent:any;
  try{
- let payload:any,method:string,requestBody:BodyInit,headers:Record<string,string>={};
- if(photo){method='sendPhoto';const form=new FormData();form.set('chat_id',channel);form.set('caption',caption);form.set('parse_mode','HTML');form.set('photo',new Blob([new Uint8Array(photo).buffer],{type:'image/jpeg'}),'photo.jpg');requestBody=form}
- else{method='sendMediaGroup';payload={chat_id:channel,media:images.map((media,i)=>({type:'photo',media,...(i===0?{caption,parse_mode:'HTML'}:{})}))};requestBody=JSON.stringify(payload);headers={'Content-Type':'application/json'}}
- const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers,body:requestBody,signal:AbortSignal.timeout(20000)});
+ const form=new FormData();form.set('chat_id',channel);let method:string;
+ if(photos.length===1){method='sendPhoto';form.set('caption',caption);form.set('parse_mode','HTML');const p=photos[0];form.set('photo',new Blob([new Uint8Array(p.bytes).buffer],{type:p.mime}),p.name)}
+ else{method='sendMediaGroup';form.set('media',JSON.stringify(photos.map((_,i)=>({type:'photo',media:'attach://photo'+i,...(i===0?{caption,parse_mode:'HTML'}:{})}))));photos.forEach((p,i)=>form.set('photo'+i,new Blob([new Uint8Array(p.bytes).buffer],{type:p.mime}),p.name))}
+ const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',body:form,signal:AbortSignal.timeout(20000)});
  const answer=await r.json();
- if(answer.ok===false){const code=Number(answer.error_code||r.status),description=String(answer.description||'').toLowerCase();const reason=code===403?'telegram_bot_not_allowed':code===401?'telegram_token_invalid':code===400&&description.includes('chat not found')?'telegram_chat_not_found':code===400&&description.includes('not enough rights')?'telegram_bot_not_admin':'telegram_api_'+code;throw new TelegramRejected(reason)}
+ if(answer.ok===false){const e=new TelegramRejected(telegramRejection(Number(answer.error_code||r.status),String(answer.description||'')));Object.assign(e,{description:String(answer.description||'').replaceAll(token,'[redacted]').replace(/https?:\/\/\S+/gi,'[url]').slice(0,300)});throw e}
  if(!r.ok||answer.ok!==true)throw Error('delivery_unconfirmed');
- sent=Array.isArray(answer.result)?answer.result:[answer.result];if(!sent.length||sent.some((x:any)=>!Number.isSafeInteger(x?.message_id)))throw Error('delivery_unconfirmed');
+ sent=Array.isArray(answer.result)?answer.result:[answer.result];if(sent.length!==photos.length||sent.some((x:any)=>!Number.isSafeInteger(x?.message_id)))throw Error('delivery_unconfirmed');
  }catch(e){const definite=e instanceof TelegramRejected;try{await rpc('ms_publication_finish',{p_id:id,p_attempt:attempt,p_status:definite?'failed':'uncertain',p_error:definite?safeError(e):'delivery_unconfirmed'})}catch{}
- return respond({error:definite?safeError(e):'delivery_unconfirmed'},502);
+ return respond({error:definite?safeError(e):'delivery_unconfirmed',...(definite?{description:(e as any).description}:{})},502);
  }
  const messageIds=sent.map((m:any)=>m.message_id);
  for(let i=0;i<3;i++){try{const saved=await rpc('ms_publication_finish',{p_id:id,p_attempt:attempt,p_status:'published',p_ids:messageIds});if(saved)return respond({ok:true,status:'published',message_ids:messageIds})}catch{}if(i<2)await new Promise(r=>setTimeout(r,200*(i+1)))}
  // Keep the durable claim on every ambiguous outcome; never reopen it for retry.
  try{await rpc('ms_publication_finish',{p_id:id,p_attempt:attempt,p_status:'uncertain',p_ids:messageIds,p_error:'confirmation_store_failed'})}catch{}
  return respond({error:'delivery_unconfirmed'},503);
- }catch(e){const message=safeError(e);const allowed=['caption_too_long','caption_invalid','media_download_failed','media_size_invalid','media_url_invalid','too_many_images'];return respond({error:allowed.includes(message)?message:'request_failed'},allowed.includes(message)?409:500)}
+ }catch(e){const message=safeError(e);const allowed=['caption_too_long','caption_invalid','media_download_failed','media_size_invalid','media_format_invalid','media_url_invalid','too_many_images'];return respond({error:allowed.includes(message)?message:'request_failed'},allowed.includes(message)?409:500)}
 });

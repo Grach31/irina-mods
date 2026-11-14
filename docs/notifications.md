@@ -54,6 +54,8 @@ Pages is the only media build. It renders all active picks, uses per-item finger
 
 Publication requires the exact SHA-256 `revision` shown in the deployed ready catalog and rechecks the raw draft bytes. Once sending starts, ambiguous outcomes remain `publishing`/`uncertain`, blocking retries; acknowledgement storage is retried without resending Telegram. `uncertain` must be resolved by inspecting the actual channel and recording known message IDs, never by automatically reopening the claim.
 
+Photo publication downloads and validates every JPEG/PNG before claiming a send. Albums use multipart files with matching `attach://photoN` references, so Telegram never needs to retrieve store/CDN URLs. Per-image and combined byte limits bound memory, and incomplete downloads cannot send a partial album. Error responses classify Telegram rejections and include a bounded, redacted explanation for the moderator. A server-only `diagnostics` action (existing worker bearer, never a browser session) uses only `getMe`, `getChat`, `getChatMember` and optional draft/image reads. It never sends messages, changes permissions or resets publication claims.
+
 Sources for the pre-existing PWA/Auth, Telegram publication, Oura and retired webhook functions were recovered from deployed Supabase versions. Only myspace-publish and myspace-notifications are changed by this repair; the other source copies preserve their existing behavior.
 
 ## Oura saved-data notification
