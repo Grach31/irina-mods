@@ -1,2 +1,6 @@
 __pycache__/
 bot/fonts/*.ttf
+node_modules/
+miniapp/catalog.json
+miniapp/media/
+miniapp/notification-manifest.json

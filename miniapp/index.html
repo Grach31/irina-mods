@@ -4,6 +4,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="My Space">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="notifications.css?v=20261114">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -456,7 +457,7 @@ body>nav.nav{display:none!important}
 <p id="pwaLoginStatus" aria-live="polite">Вход защищён Supabase Auth.</p>
 </div>
 </section>
-<section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
+<section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger hub-notification-trigger" id="openNotifications" aria-label="Уведомления"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="ms-notice-badge" id="noticeBadge" hidden></span></button><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
 </div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
@@ -466,13 +467,24 @@ body>nav.nav{display:none!important}
 <button id="openHistory" class="hub-card hub-card-news hub-card-extra"><div class="hub-visual hub-history"><img src="assets/history-approved.svg" alt="Историческая и современная мода" loading="lazy" decoding="async"></div><div class="hub-card-body"><strong>Style Time Machine</strong><small>История моды · тогда и сейчас</small></div></button>
 </div></section>
 
+
+<section class="myspace-extra hidden" id="notificationsSpace" aria-label="Уведомления">
+<div class="ms-notice-inner"><header class="ms-notice-header"><button class="ms-notice-icon" id="noticesBack" aria-label="Назад на главную">←</button><h1>Уведомления</h1><button class="ms-notice-icon" id="noticesSettings" aria-label="Настройки уведомлений">⚙</button></header>
+<div class="ms-notice-controls"><button data-notice-filter="all" aria-pressed="true">Все</button><button data-notice-filter="unread" aria-pressed="false">Непрочитанные</button><button class="ms-read-all" id="noticesReadAll">Прочитать всё</button></div>
+<button class="ms-notice-action ms-notice-new" id="noticesNew" hidden>Показать новые уведомления</button>
+<div id="noticesMessage" class="ms-notice-message" role="status" aria-live="polite"></div><div id="noticesList"></div><button class="ms-notice-action ms-notice-more" id="noticesMore" hidden>Показать ещё</button><div class="ms-notice-footer" id="noticesFooter">☾ Тихие часы 22:00–08:00 · Москва</div></div></section>
+<section class="myspace-extra hidden" id="notificationSettingsSpace"><div class="ms-notice-inner"><header class="ms-notice-header"><button class="ms-notice-icon" id="notificationSettingsBack" aria-label="Назад к уведомлениям">←</button><h1>Настройки</h1></header>
+<div class="myspace-setting-group ms-notice-setting"><h2>Push на этом устройстве</h2><p id="noticePermission">Проверяем подключение…</p><button class="ms-notice-action" id="noticeEnable" disabled>Включить уведомления</button><button class="ms-notice-action" id="noticeDisable">Отключить push</button></div>
+<div class="myspace-setting-group ms-notice-setting"><h2>Категории</h2><p>Выбери, что сохранять в центре и присылать на телефон.</p><div id="noticeCategoryPrefs"></div><fieldset><legend>Тихие часы · Москва</legend><label>С <input type="time" id="noticeQuietStart" value="22:00"></label><label>До <input type="time" id="noticeQuietEnd" value="08:00"></label></fieldset><p>Одинаковое время начала и окончания отключает тихие часы. Ночью события сохраняются в центре.</p><button class="ms-notice-action" id="noticeSave">Сохранить настройки</button></div><p id="noticeSettingsMessage" class="ms-notice-message" role="status" aria-live="polite"></p></div></section>
+<section class="myspace-extra hidden" id="noticeTargetsSpace"><div class="ms-notice-inner"><header class="ms-notice-header"><button class="ms-notice-icon" id="noticeTargetsBack" aria-label="Назад к уведомлениям">←</button><h1>Материалы</h1></header><div id="noticeTargetsList"></div></div></section>
+
 <section class="myspace-extra hidden" id="settingsSpace">
 <header class="myspace-top"><button class="myspace-return" type="button" id="settingsBack">← Все разделы</button></header>
 <div class="myspace-extra-inner">
 <div class="myspace-kicker">MY SPACE / PREFERENCES</div><h1>Настройки</h1>
 <div class="myspace-setting-group">
 <div class="myspace-setting-row"><span>♙</span><div><strong>Аккаунт</strong><small id="settingsAccount">Текущая авторизация My Space</small></div></div>
-<div class="myspace-setting-row"><span>♧</span><div><strong>Уведомления</strong><small>Уведомления приложения будут доступны после настройки разрешений</small></div></div>
+<button type="button" class="myspace-setting-row" id="openNotificationSettings" style="width:100%;background:none;color:inherit;border:0;text-align:left"><span>♧</span><span><strong>Уведомления</strong><small>Категории, push и тихие часы</small></span></button>
 <div class="myspace-setting-row"><span>🌐</span><div><strong>Язык</strong><small>Русский</small></div></div>
 <div class="myspace-setting-row"><span>ⓘ</span><div><strong>О приложении</strong><small>My Space · Safari и Telegram</small></div></div>
 </div>
@@ -609,6 +621,7 @@ body>nav.nav{display:none!important}
 <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
+<script src="notifications.js?v=20261114"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -637,7 +650,7 @@ async function activatePasswordSession(){
  const accessToken=await authAccessToken();if(!accessToken)return false;
  const exchanged=await pwaApi({action:'session_exchange',access_token:accessToken});
  pwaSession=exchanged.token;pwaModerator=exchanged.can_moderate===true;readonly=!pwaModerator;
- showPwaGate(false);render();if(currentSpace==='oura')loadOura();return true;
+ showPwaGate(false);render();if(currentSpace==='oura')loadOura();notices?.ready().catch(()=>{});return true;
 }
 async function pwaApi(payload){
  const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
@@ -683,12 +696,14 @@ $('pwaClaim').onclick=async()=>{
 };
 $('pwaCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('pwaClaim').click()});
 $('settingsLogout').onclick=async()=>{
+ try{await notices?.logout()}catch{alert('Не удалось отключить push. Проверь соединение и повтори выход.');return}
  const token=pwaSession;pwaSession='';readonly=true;showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
  try{const client=await authClient();await client.auth.signOut()}catch{}
 };
 const msLastSpaceKey='myspace.last-space.v1';
-let currentSpace='hub';
+let currentSpace='hub',notices=null,msNoticeReturn=false;
+function msReturnOrHub(){if(msNoticeReturn){msNoticeReturn=false;showSpace('notifications')}else showSpace('hub')}
 const showSpace=space=>{
  currentSpace=space;
  try{sessionStorage.setItem(msLastSpaceKey,space)}catch(e){}
@@ -710,6 +725,9 @@ const showSpace=space=>{
  $('reelsSpace').classList.toggle('hidden',space!=='reels');
  $('trendsSpace').classList.toggle('hidden',space!=='trends');
  $('historySpace').classList.toggle('hidden',space!=='history');
+ for(const name of ['notifications','notificationSettings','noticeTargets'])$(name+'Space').classList.toggle('hidden',space!==name);
+ if(space==='notifications')notices?.enter();
+ if(space==='notificationSettings')notices?.settings();
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')loadOura();
  if(space==='fashion')loadFashion(true);
@@ -742,9 +760,9 @@ function refreshSettings(){
 }
 $('openSettings').onclick=()=>showSpace('settings');
 $('settingsBack').onclick=()=>showSpace('hub');
-$('modaBack').onclick=()=>showSpace('hub');
+$('modaBack').onclick=msReturnOrHub;
 for(const name of ['reels','trends','history']){
- $(name+'Back').onclick=()=>showSpace('hub');
+ $(name+'Back').onclick=msReturnOrHub;
  const openId={reels:'openReels',trends:'openTrends',history:'openHistory'}[name];
  $(openId).onclick=()=>showSpace(name);
 }
@@ -859,7 +877,7 @@ function msRenderEditorial(type,data){
  const list=Array.isArray(data.items)?data.items.map((item,index)=>({item,index})).sort((a,b)=>{const date=x=>String(x.added_at||x.created_at||'');const ad=date(a.item),bd=date(b.item);return ad!==bd?bd.localeCompare(ad):b.index-a.index}).map(x=>x.item):[];
  if(!list.length){root.textContent='Пока нет материалов. Первый выпуск готовится.';return}
  list.forEach(item=>{
-  const card=document.createElement('article');card.className='myspace-idea';
+  const card=document.createElement('article');card.className='myspace-idea';card.dataset.materialId=item.id||'';
   const meta=document.createElement('div');meta.className='myspace-idea-meta';
   const baseMeta=type==='history'?(item.year+' · '+(item.period||'')):(item.category||item.format||'Редакция');
   const added=String(item.added_at||item.created_at||'').slice(0,10);
@@ -905,7 +923,8 @@ applyMsTheme();
 function msGoBack(){
  if(document.querySelector('#detail.visible')){$('back')?.click();return}
  if(currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')){$('fashionBack').click();return}
- if(currentSpace!=='hub')showSpace('hub');
+ if(currentSpace==='notificationSettings'||currentSpace==='noticeTargets'){showSpace('notifications');return}
+ if(currentSpace!=='hub')msReturnOrHub();
 }
 function msActiveScroller(){
  if(document.querySelector('#detail.visible'))return $('detail');
@@ -970,7 +989,9 @@ async function msRefreshCurrent(){
   else if(currentSpace==='oura')await loadOura();
   else if(currentSpace==='fashion'){fashionDigest=null;await loadFashion()}
   else if(msEditorialMap[currentSpace])await loadMySpaceEditorial(currentSpace,true);
-  else if(currentSpace==='hub')await load();
+  else if(currentSpace==='notifications')await notices.refresh(false,true);
+  else if(currentSpace==='notificationSettings')await notices.settings();
+  else if(currentSpace==='hub'){await load();await notices?.count(true)}
   $('pullMessage').textContent='Готово';
  }catch{$('pullMessage').textContent='Ошибка обновления'}
  finally{setTimeout(()=>{$('pullIndicator').classList.remove('shown');msRefreshing=false},550)}
@@ -1039,6 +1060,7 @@ function fashionOpen(item){
  $('fashionSpace').scrollTop=0;
 }
 $('fashionBack').onclick=()=>{
+ if(msNoticeReturn){$('fashionArticle').classList.add('hidden');$('fashionList').classList.remove('hidden');$('fashionFilters').classList.remove('hidden');msReturnOrHub();return}
  if(!$('fashionArticle').classList.contains('hidden')){
   $('fashionArticle').classList.add('hidden');$('fashionList').classList.remove('hidden');
   $('fashionFilters').classList.remove('hidden');$('fashionBack').textContent='← Все разделы';$('fashionSpace').scrollTop=0;return;
@@ -1204,7 +1226,7 @@ async function act(action,d){
  showPwaGate(true);
  $('pwaLoginStatus').textContent='Войди в My Space по паролю, чтобы управлять черновиками.';
 }
-$('back').onclick=()=>{$('detail').classList.remove('visible');active=null};
+$('back').onclick=()=>{$('detail').classList.remove('visible');active=null;if(msNoticeReturn)msReturnOrHub()};
 $('navPending').onclick=()=>{mode='pending';render()};$('navPublished').onclick=()=>{mode='history';render()};$('navRefresh').onclick=load;
 $('published').closest('.stat')?.addEventListener('click',()=>{mode='history';render()});
 $('pending').closest('.stat')?.addEventListener('click',()=>{mode='pending';render()});
@@ -1450,10 +1472,25 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Telegram may populate initDataUnsafe after its webview has already rendered.
 // Start loading content unconditionally; backend still enforces editing permissions.
 // Deep-link Oura from the bot's authenticated inline web_app button.
+
+async function msOpenNoticeTarget(target){
+ if(target.space==='notifications'){showSpace('notifications');notices.message('Не удалось развернуть обновление. Рабочая версия сохранена; причину можно проверить в GitHub Actions.');return}
+ const allowed=['moda','fashion','reels','history','trends'];if(!allowed.includes(target.space))throw Error('invalid_target');
+ msNoticeReturn=true;showSpace(target.space);
+ if(target.space==='moda'){await load();const item=items.find(x=>x.id===target.id);if(!item)throw Error('material_unavailable');open(item);return}
+ if(target.space==='fashion'){await loadFashion(true);const item=fashionDigest?.items?.find(x=>x.id===target.id);if(!item)throw Error('material_unavailable');fashionOpen(item);return}
+ await loadMySpaceEditorial(target.space,true);
+ const card=[...$(target.space+'Items').querySelectorAll('[data-material-id]')].find(x=>x.dataset.materialId===target.id);
+ if(!card)throw Error('material_unavailable');
+ card.querySelector('button[aria-expanded="false"]')?.click();
+ card.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
+notices=new window.MySpaceNotifications({token:authAccessToken,showSpace,navigate:msOpenNoticeTarget,login:()=>showPwaGate(true),currentSpace:()=>currentSpace});
+
 const requestedSpace=new URLSearchParams(location.search).get('space');
 let savedSpace='hub';
 try{savedSpace=sessionStorage.getItem(msLastSpaceKey)||'hub'}catch(e){}
-const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history'];
+const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history','notifications','notificationSettings'];
 const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
