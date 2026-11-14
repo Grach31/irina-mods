@@ -26,7 +26,7 @@ class MySpaceNotifications {
  async resume(){try{await this.flush();if(this.currentSpace()==='notifications')await this.refresh();else await this.count()}catch{}}
  message(text){this.$('noticesMessage').textContent=text}
  async count(force=false){if(this.counting)return this.counting;if(!force&&Date.now()-this.lastCount<30000)return;
-  this.counting=(async()=>{try{const d=await this.api('count');this.unread=d.unread;this.lastCount=Date.now();this.badge()}catch{}finally{this.counting=null}})();return this.counting;
+  this.counting=(async()=>{try{const d=await this.api('count');this.unread=d.unread;this.lastCount=Date.now();this.badge();return true}catch{return false}finally{this.counting=null}})();return this.counting;
  }
  badge(){const b=this.$('noticeBadge');b.hidden=this.unread===0;b.textContent=this.unread>9?'9+':String(this.unread);this.$('openNotifications').setAttribute('aria-label','Уведомления, непрочитанных: '+this.unread);
   if('setAppBadge' in navigator)(this.unread?navigator.setAppBadge(this.unread):navigator.clearAppBadge()).catch(()=>{});
@@ -72,7 +72,7 @@ class MySpaceNotifications {
    const row=document.createElement('div');row.className='ms-notice-category';const text=document.createElement('span');text.textContent=label;row.append(text);
    for(const channel of ['center','push']){const l=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.dataset.kind=kind;input.dataset.channel=channel;input.checked=this.prefs[channel+'_categories'].includes(kind);input.setAttribute('aria-label',label+': '+(channel==='push'?'push':'в центре'));l.append(input,document.createTextNode(channel==='push'?' Push':' Центр'));row.append(l)}root.append(row)}
   const time=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');this.$('noticeQuietStart').value=time(this.prefs.quiet_start);this.$('noticeQuietEnd').value=time(this.prefs.quiet_end);this.$('noticeSettingsMessage').textContent='';this.footer();await this.permissionStatus();
- }catch{this.$('noticeSettingsMessage').textContent='Не удалось загрузить настройки. Вернись и попробуй ещё раз.'}}
+ return true;}catch{this.$('noticeSettingsMessage').textContent='Не удалось загрузить настройки. Вернись и попробуй ещё раз.';return false}}
  async permissionStatus(){let text;const supported='Notification' in window&&'PushManager' in window&&'serviceWorker' in navigator;const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);const standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
   if(ios&&!standalone)text='Добавь My Space на экран «Домой» и открой с его иконки.';else if(!supported)text='Push недоступны в этом окружении. Центр уведомлений работает.';else if(Notification.permission==='denied')text='Push запрещены в iOS. Измени разрешение в настройках уведомлений My Space.';else if(Notification.permission==='granted'){try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();text=sub&&this.deviceEnabled!==false?'Включены на этом устройстве':'Отключены на этом устройстве'}catch{text='Не удалось проверить подключение'}}else text='Push пока не включены.';
   this.$('noticePermission').textContent=text;this.$('noticeEnable').disabled=!supported||(ios&&!standalone)||(supported&&Notification.permission==='denied')||!this.publicKey;

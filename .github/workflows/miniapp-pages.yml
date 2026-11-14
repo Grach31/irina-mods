@@ -57,6 +57,7 @@ jobs:
           node --test tests/*.test.mjs
           node --check miniapp/notifications.js
           node --check miniapp/sw.js
+          node --check miniapp/gestures.js
       - name: Check JavaScript syntax
         run: |
           python - <<'PY'

@@ -345,7 +345,12 @@ html[data-ms-theme=dark] .stats .stat,html[data-ms-theme=dark] .draft{background
 html[data-ms-theme=dark] .nav,html[data-ms-theme=dark] .detail-top,html[data-ms-theme=dark] .detail-actions{background:#20222bf2;color:var(--ms-text)}
 #pullIndicator{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 9px);left:50%;transform:translate(-50%,-110px);height:46px;min-width:46px;display:flex;align-items:center;gap:9px;border:1px solid var(--ms-line);background:var(--ms-card);color:var(--ms-text);box-shadow:0 9px 30px #0003;border-radius:999px;padding:0 13px;transition:transform .25s}
 #pullIndicator.shown{transform:translate(-50%,0)}
-#pullIndicator .pull-ring{width:19px;height:19px;border:2px solid #a0a0af;border-top-color:var(--ms-accent);border-radius:50%;animation:ms-spin .75s linear infinite}
+#pullIndicator .pull-ring{width:19px;height:19px;border:2px solid #a0a0af;border-top-color:var(--ms-accent);border-radius:50%;transform:rotate(var(--pull-turn,0deg))}
+#pullIndicator.loading .pull-ring{animation:ms-spin .75s linear infinite}
+#pullIndicator.dragging{transform:translate(-50%,var(--pull-y,-36px));transition:none}
+#pullIndicator.failed{border-color:#b95757}
+html,body{overscroll-behavior-y:none}
+@media(prefers-reduced-motion:reduce){#pullIndicator{transition:none}#pullIndicator.loading .pull-ring{animation:none}}
 #pullIndicator span{font-size:11px}
 @keyframes ms-spin{to{transform:rotate(360deg)}}
 @media(max-width:390px){.hub-header{padding:0 37px}.hub-sub{letter-spacing:2.1px;font-size:9px}.hub-settings-trigger{width:40px;height:40px;font-size:21px}.hub-card-body strong{font-size:23px}.hub-card-news .hub-card-body strong{font-size:29px}}
@@ -621,13 +626,14 @@ body>nav.nav{display:none!important}
 <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
-<script src="notifications.js?v=20261114-oura1"></script>
+<script src="notifications.js?v=20261114-refresh1"></script>
+<script src="gestures.js?v=20261114-1"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
 const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
 const PUBLISH_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-publish';
-async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});const data=await r.json().catch(()=>({}));if(!r.ok){const e=Error(data.error||'HTTP '+r.status);e.telegramDescription=typeof data.description==='string'?data.description.slice(0,300):'';throw e}return data;}
+async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store',...(payload.action==='list'?{signal:AbortSignal.timeout(12000)}:{})});const data=await r.json().catch(()=>({}));if(!r.ok){const e=Error(data.error||'HTTP '+r.status);e.telegramDescription=typeof data.description==='string'?data.description.slice(0,300):'';throw e}return data;}
 const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
 const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
 const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
@@ -653,7 +659,7 @@ async function activatePasswordSession(){
  showPwaGate(false);render();if(currentSpace==='oura')loadOura();notices?.ready().catch(()=>{});return true;
 }
 async function pwaApi(payload){
- const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
+ const res=await fetch(PWA_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store',...(payload.action==='oura_read'?{signal:AbortSignal.timeout(12000)}:{})});
  const data=await res.json().catch(()=>({}));
  if(!res.ok)throw Error(data.error||'HTTP '+res.status);
  return data;
@@ -702,9 +708,11 @@ $('settingsLogout').onclick=async()=>{
  try{const client=await authClient();await client.auth.signOut()}catch{}
 };
 const msLastSpaceKey='myspace.last-space.v1';
-let currentSpace='hub',notices=null,msNoticeReturn=false;
+let currentSpace='hub',notices=null,msNoticeReturn=false,msPullController=null;
 function msReturnOrHub(){if(msNoticeReturn){msNoticeReturn=false;showSpace('notifications')}else showSpace('hub')}
 const showSpace=space=>{
+ msPullController?.cancel();
+ if(space!==currentSpace)$('pullIndicator').classList.remove('shown','dragging');
  currentSpace=space;
  try{sessionStorage.setItem(msLastSpaceKey,space)}catch(e){}
  const dark=space==='oura'||(document.documentElement.dataset.msTheme==='dark');
@@ -850,6 +858,7 @@ function renderTrendRadar(data){
  const grid=trendElement('div','trend-grid');
  for(const item of chosen){
   const card=trendElement('article','trend-tile');
+  card.dataset.materialId=item.id;
   const photo=trendSafePhoto(item);
   if(photo){const img=document.createElement('img');img.src=photo;img.alt=item.image_alt||item.title;img.loading='lazy';img.onerror=()=>card.classList.add('hidden');card.append(img)}
   const content=trendElement('div','trend-tile-body');
@@ -907,17 +916,26 @@ function msRenderEditorial(type,data){
   card.append(meta,title,lead,toggle,detail);root.append(card);
  });
 }
-async function loadMySpaceEditorial(type,force=false){
- if(!msEditorialMap[type])return;
- if(!force&&msEditorialCache[type]){msRenderEditorial(type,msEditorialCache[type]);return}
- const root=$(msEditorialMap[type].container);root.textContent='Загружаю материалы…';
+const msEditorialLoading={};
+function loadMySpaceEditorial(type,force=false){
+ if(!msEditorialMap[type])return Promise.resolve(false);
+ if(msEditorialLoading[type])return msEditorialLoading[type];
+ if(!force&&msEditorialCache[type]){msRenderEditorial(type,msEditorialCache[type]);return Promise.resolve(true)}
+ const root=$(msEditorialMap[type].container);if(!msEditorialCache[type])root.textContent='Загружаю материалы…';
+ msEditorialLoading[type]=(async()=>{
  try{
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
   let response;try{response=await fetch(msEditorialMap[type].path+'?t='+Date.now(),{cache:'no-store',signal:controller.signal})}finally{clearTimeout(timer)}
   if(!response.ok)throw Error('HTTP '+response.status);
   const json=await response.json();if(!Array.isArray(json.items))throw Error('Неверный формат');
+  const scroller=$(type+'Space'),top=scroller.scrollTop;
+  const expanded=[...root.querySelectorAll('[data-material-id]')].filter(c=>c.querySelector('[aria-expanded="true"]')).map(c=>c.dataset.materialId);
   msEditorialCache[type]=json;msRenderEditorial(type,json);
- }catch{root.textContent='Не удалось загрузить материалы. Потяни вниз для повторной попытки.'}
+  root.querySelectorAll('[data-material-id]').forEach(c=>{if(expanded.includes(c.dataset.materialId))c.querySelector('button[aria-expanded="false"]')?.click()});
+  scroller.scrollTop=top;return true;
+ }catch{if(!msEditorialCache[type])root.textContent='Не удалось загрузить материалы. Потяни вниз для повторной попытки.';return false}
+ finally{delete msEditorialLoading[type]}
+ })();return msEditorialLoading[type];
 }
 applyMsTheme();
 function msGoBack(){
@@ -930,72 +948,53 @@ function msActiveScroller(){
  if(document.querySelector('#detail.visible'))return $('detail');
  if(currentSpace==='fashion')return $('fashionSpace');
  if(currentSpace==='oura')return $('ouraSpace');
- if(currentSpace==='moda')return $('modaShell');
+ if(currentSpace==='moda')return document.scrollingElement||document.documentElement;
  if(currentSpace==='hub')return $('hub');
  return $(currentSpace+'Space');
 }
-// Edge back gesture and deliberate pull-to-refresh. Keep nested carousels native.
-let msGesture=null,msRefreshing=false,msLastScrollAt=0;
-document.addEventListener('scroll',ev=>{
- const scroller=msActiveScroller();
- if(ev.target===scroller)msLastScrollAt=Date.now();
-},true);
-document.addEventListener('touchstart',ev=>{
- msGesture=null;
- if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
- const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
- if(!scroller||!scroller.contains(el))return;
- const nested=!el.closest('.ms-notice-row')&&!!el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select,button,a');
- const width=document.documentElement.clientWidth;
- const edge=34;
- msGesture={
-  x:t.clientX,y:t.clientY,at:Date.now(),scroller,space:currentSpace,
-  startScrollTop:scroller.scrollTop,
-  refreshEligible:scroller.scrollTop<=1&&Date.now()-msLastScrollAt>550&&!nested,
-  fromLeft:t.clientX<=edge,fromRight:t.clientX>=width-edge,
-  nested,verticalMoved:false,scrollMoved:false
- };
-},{passive:true});
-document.addEventListener('touchmove',ev=>{
- if(!msGesture||ev.touches.length!==1){msGesture=null;return}
- const g=msGesture,t=ev.touches[0];
- const dx=t.clientX-g.x,dy=t.clientY-g.y;
- if(Math.abs(dy)>20&&Math.abs(dy)>Math.abs(dx)*1.1)g.verticalMoved=true;
- if(g.scroller.scrollTop>2)g.scrollMoved=true;
-}, {passive:true});
-document.addEventListener('touchcancel',()=>{msGesture=null},{passive:true});
-document.addEventListener('touchend',ev=>{
- if(!msGesture||!ev.changedTouches.length)return;
- const g=msGesture;msGesture=null;
- if(g.space!==currentSpace)return;
- const t=ev.changedTouches[0],dx=t.clientX-g.x,dy=t.clientY-g.y;
- const duration=Date.now()-g.at;
- // The right edge swipes left; the left edge swipes right (native iOS convention).
- const edgeBack=(g.fromRight&&dx< -85)||(g.fromLeft&&dx>85);
- if(!g.nested&&currentSpace!=='hub'&&edgeBack&&Math.abs(dx)>Math.abs(dy)*1.45&&duration<1000&&!g.verticalMoved){
-  msGoBack();return;
- }
- // Start from a genuinely settled top position; don't refresh on scroll reversal.
- if(g.refreshEligible&&!g.scrollMoved&&g.startScrollTop<=1&&dy>=175&&Math.abs(dx)<=55&&
-    dy>Math.abs(dx)*2&&duration>=280&&duration<=2400&&g.scroller.scrollTop<=1){
-  msRefreshCurrent();
- }
-},{passive:true});
-async function msRefreshCurrent(){
- if(msRefreshing)return;msRefreshing=true;
- $('pullMessage').textContent='Обновляю…';$('pullIndicator').classList.add('shown');
- try{
-  if(currentSpace==='moda'){lastLoaded=0;await load()}
-  else if(currentSpace==='oura')await loadOura();
-  else if(currentSpace==='fashion'){fashionDigest=null;await loadFashion()}
-  else if(msEditorialMap[currentSpace])await loadMySpaceEditorial(currentSpace,true);
-  else if(currentSpace==='notifications')await notices.refresh(false,true);
-  else if(currentSpace==='notificationSettings')await notices.settings();
-  else if(currentSpace==='hub'){await load();await notices?.count(true)}
-  $('pullMessage').textContent='Готово';
- }catch{$('pullMessage').textContent='Ошибка обновления'}
- finally{setTimeout(()=>{$('pullIndicator').classList.remove('shown');msRefreshing=false},550)}
+// Shared top pull works on cards as well as empty space; horizontal gestures stay native.
+let msRefreshing=false,msRefreshPromise=null,msPullTimer=null;
+function msRefreshKey(){return currentSpace+':'+($('detail').classList.contains('visible')?(active?.id||'detail'):currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')?(fashionSelected?.id||'article'):'list')}
+function msPullProgress(distance){
+ if(msRefreshing)return;clearTimeout(msPullTimer);
+ const indicator=$('pullIndicator');indicator.classList.remove('shown','loading','failed');
+ indicator.classList.toggle('dragging',distance>0);indicator.style.setProperty('--pull-y',Math.min(35,distance*.55)-36+'px');
+ indicator.style.setProperty('--pull-turn',Math.min(1,distance/84)*300+'deg');
+ const message=distance>=84?'Отпусти, чтобы обновить':'Потяни для обновления';if($('pullMessage').textContent!==message)$('pullMessage').textContent=message;
 }
+async function msRefreshCurrent(){
+ if(msRefreshPromise)return msRefreshPromise;
+ const space=currentSpace,key=msRefreshKey(),draftId=$('detail').classList.contains('visible')?active?.id:null;
+ const articleId=space==='fashion'&&!$('fashionArticle').classList.contains('hidden')?fashionSelected?.id:null;
+ msRefreshing=true;clearTimeout(msPullTimer);const indicator=$('pullIndicator');indicator.classList.remove('dragging','failed');indicator.classList.add('shown','loading');$('pullMessage').textContent='Обновляю…';
+ msRefreshPromise=Promise.resolve().then(async()=>{
+ try{
+  let ok=true;
+  if(space==='moda'){
+   ok=await load({refresh:true});
+   if(draftId&&key===msRefreshKey()){const d=items.find(x=>x.id===draftId);if(d){const top=$('detail').scrollTop;open(d);$('detail').scrollTop=top}}
+  }else if(space==='oura')ok=await loadOura();
+  else if(space==='fashion'){
+   ok=await loadFashion(true);
+   if(articleId&&key===msRefreshKey()){const d=fashionDigest?.items?.find(x=>x.id===articleId);if(d)fashionOpen(d)}
+  }else if(msEditorialMap[space])ok=await loadMySpaceEditorial(space,true);
+  else if(space==='notifications')await notices.refresh(false,true);
+  else if(space==='notificationSettings')ok=await notices.settings();
+  else if(space==='settings')refreshSettings();
+  else if(space==='noticeTargets')await notices.count(true);
+  else if(space==='hub'){const results=await Promise.all([load({refresh:true}),notices?.count(true)]);ok=results.every(x=>x!==false)}
+  if(ok===false)throw Error('refresh_failed');
+  $('pullMessage').textContent='Обновлено';return true;
+ }catch{$('pullMessage').textContent='Не удалось обновить';indicator.classList.add('failed');return false}
+ finally{indicator.classList.remove('loading');msRefreshing=false;msRefreshPromise=null;msPullTimer=setTimeout(()=>{indicator.classList.remove('shown','failed')},900)}
+ });return msRefreshPromise;
+}
+msPullController=new window.MySpaceGestures({
+ context:()=>({key:msRefreshKey(),scroller:msActiveScroller(),width:document.documentElement.clientWidth,
+  busy:msRefreshing,disabled:!$('pwaGate').classList.contains('hidden'),refreshable:true,
+  canBack:currentSpace!=='hub'||$('detail').classList.contains('visible')}),
+ refresh:msRefreshCurrent,back:msGoBack,progress:msPullProgress
+});
 
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
@@ -1032,6 +1031,7 @@ function fashionCard(item){
 }
 function fashionRender(){
  const list=$('fashionList'),filters=$('fashionFilters');filters.replaceChildren();list.replaceChildren();
+ list.classList.remove('hidden');filters.classList.remove('hidden');$('fashionBack').textContent='← Все разделы';fashionSelected=null;
  $('fashionArticle').classList.add('hidden');$('fashionArticle').replaceChildren();
  const digest=fashionDigest||{},items=Array.isArray(digest.items)?digest.items.filter(d=>fashionSafeUrl(d.url)):[];
  $('fashionEdition').textContent='Выпуск: '+fashionDate(digest.edition_date)+(digest.editor_note?' · редакционная подборка':'');
@@ -1044,6 +1044,7 @@ function fashionRender(){
  show.forEach(item=>{const b=fashionCard(item);if(b)list.appendChild(b)});
 }
 function fashionOpen(item){
+ fashionSelected=item;
  const article=$('fashionArticle');article.replaceChildren();
  $('fashionList').classList.add('hidden');$('fashionFilters').classList.add('hidden');
  const url=fashionSafeUrl(item.url);if(!url)return;
@@ -1068,7 +1069,7 @@ $('fashionBack').onclick=()=>{
  showSpace('hub');
 };
 async function loadFashion(force=false){
- if(!force&&fashionDigest){fashionRender();return}
+ if(!force&&fashionDigest){fashionRender();return true}
  if(fashionLoading)return fashionLoading;
  fashionLoading=(async()=>{
   try{
@@ -1077,9 +1078,12 @@ async function loadFashion(force=false){
     const r=await fetch('fashion-daily.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});
     if(!r.ok)throw Error('HTTP '+r.status);
     const d=await r.json();if(!d||!Array.isArray(d.items))throw Error('Unexpected edition');
-    fashionDigest=d;fashionRender();
+    const selected=currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')?fashionSelected?.id:null;
+    const top=$('fashionSpace').scrollTop;fashionDigest=d;fashionRender();
+    if(selected){const item=d.items.find(x=>x.id===selected);if(item)fashionOpen(item)}
+    $('fashionSpace').scrollTop=top;return true;
    }finally{clearTimeout(timer)}
-  }catch(e){$('fashionList').innerHTML='<div class="fashion-empty">Не удалось загрузить выпуск. Проверь соединение и открой раздел ещё раз.</div>'}
+  }catch(e){if(!fashionDigest)$('fashionList').innerHTML='<div class="fashion-empty">Не удалось загрузить выпуск. Проверь соединение и открой раздел ещё раз.</div>';return false}
   finally{fashionLoading=null}
  })();
  return fashionLoading;
@@ -1091,9 +1095,9 @@ const imageFor=d=>{if(d.type==='picks'&&d.items?.length){const first=d.items.fin
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 let loading=null,lastLoaded=0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-async function fetchCatalog(){
+async function fetchCatalog(attempts=3){
  let error;
- for(let attempt=0;attempt<3;attempt++){
+ for(let attempt=0;attempt<attempts;attempt++){
   const controller=new AbortController();
   const timeout=setTimeout(()=>controller.abort(),9000);
   try{
@@ -1102,17 +1106,18 @@ async function fetchCatalog(){
    const catalog=await response.json();
    if(!catalog||!Array.isArray(catalog.items))throw Error('Неверный формат каталога');
    return catalog;
-  }catch(e){error=e;if(attempt<2)await pause(900*(attempt+1))}
+  }catch(e){error=e;if(attempt<attempts-1)await pause(900*(attempt+1))}
   finally{clearTimeout(timeout)}
  }
  throw error||Error('Не удалось загрузить каталог');
 }
-function load(){
+function load({refresh=false}={}){
  if(loading)return loading;
- $('list').innerHTML='<div class="loader">Загружаю публикации…</div>';
+ if(!items.length)$('list').innerHTML='<div class="loader">Загружаю публикации…</div>';
  loading=(async()=>{
   try{
-   const catalog=await fetchCatalog();
+   const catalog=await fetchCatalog(refresh?1:3);
+   const previous=new Map(items.map(d=>[d.id,d.meta.status]));let complete=true;
    $('pending').textContent=catalog.pending??0;
    $('published').textContent=catalog.published??0;
    $('rejected').textContent=catalog.rejected??0;
@@ -1123,13 +1128,13 @@ function load(){
      const decisions=await publishApi({action:'list',session:pwaSession});
      const byId=new Map((decisions.items||[]).map(x=>[x.draft_id,x.status]));
      items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status});
-    }catch(e){console.warn('Could not refresh My Space decisions')}
+    }catch(e){complete=false;items.forEach(d=>{if(previous.has(d.id))d.meta.status=previous.get(d.id)});console.warn('Could not refresh My Space decisions')}
    }
    lastLoaded=Date.now();
-   render();
+   render();return complete;
   }catch(e){
-   if(items.length){render();return}
-   $('list').innerHTML='<div class="message">Не удалось загрузить материалы автоматически. Нажми «Обновить».<br><small>'+escapeHtml(e.message)+'</small></div>';
+   if(items.length){render();return false}
+   $('list').innerHTML='<div class="message">Не удалось загрузить материалы автоматически. Нажми «Обновить».<br><small>'+escapeHtml(e.message)+'</small></div>';return false;
   }finally{loading=null}
  })();
  return loading;
@@ -1455,26 +1460,28 @@ function renderOura(d){
  if(ouraSelectedDate){const saved=(Array.isArray(d.history)?d.history:[]).find(x=>x.day===ouraSelectedDate);if(saved)selectOuraDay(saved);else ouraSelectedDate=null}
  if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
-async function loadOura(){
- if(!pwaSession){setValue('ouraStatus','Войди в My Space, чтобы загрузить защищённые данные Oura.');return;}
+let ouraLoading=null;
+function loadOura(){if(!ouraLoading)ouraLoading=Promise.resolve().then(fetchOura).finally(()=>{ouraLoading=null});return ouraLoading}
+async function fetchOura(){
+ if(!pwaSession){setValue('ouraStatus','Войди в My Space, чтобы загрузить защищённые данные Oura.');return false;}
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
  try{
   const initData=tg?.initData||'';
   let data;
   if(!initData&&pwaSession){
     try{data=await pwaApi({action:'oura_read',session:pwaSession})}
-    catch(e){setValue('ouraStatus','Не удалось получить данные Oura: '+(e?.message||'ошибка доступа')+'.');return}
+    catch(e){setValue('ouraStatus','Не удалось получить данные Oura: '+(e?.message||'ошибка доступа')+'.');return false}
   }else{
-    if(!initData){setValue('ouraStatus','Открой My Space через /app в Telegram или авторизуйся в Safari.');return}
+    if(!initData){setValue('ouraStatus','Открой My Space через /app в Telegram или авторизуйся в Safari.');return false}
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
     let response;
     try{response=await fetch('https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/oura-dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'read',initData}),signal:controller.signal})}finally{clearTimeout(timer)}
-    if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return}
+    if(!response.ok){setValue('ouraStatus',response.status===403?'Аккаунт Telegram не имеет доступа к данным Oura.':response.status===404?'Ожидаю синхронизацию Oura API.':'Данные временно недоступны (HTTP '+response.status+').');return false}
     data=await response.json();
   }
   renderOura(data);
-  setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');
- }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.')}
+  setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');return true;
+ }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.');return false}
 }
 $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
 // Telegram may populate initDataUnsafe after its webview has already rendered.

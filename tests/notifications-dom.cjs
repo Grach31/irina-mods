@@ -17,7 +17,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('n
   return {ok:true,status:200,json:async()=>value};
  };
  inline=inline.replace(/import\('https:\/\/esm\.sh\/[^']+'\)/,'Promise.resolve({createClient:window.__createClient})');
- window.eval(fs.readFileSync(path.join(root,'miniapp/notifications.js'),'utf8'));window.eval(inline);
+ window.eval(fs.readFileSync(path.join(root,'miniapp/notifications.js'),'utf8'));window.eval(fs.readFileSync(path.join(root,'miniapp/gestures.js'),'utf8'));window.eval(inline);
  const settle=async check=>{for(let i=0;i<100;i++){if(check())return;await new Promise(r=>setTimeout(r,10))}throw Error('DOM condition timed out')};
  await settle(()=>!doc.getElementById('noticeBadge').hidden);
  const click=id=>doc.getElementById(id).click();click('openNotifications');await settle(()=>doc.querySelector('.ms-notice-row'));

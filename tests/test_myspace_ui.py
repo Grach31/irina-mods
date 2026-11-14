@@ -109,14 +109,9 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn('id="galleryDots"', self.html)
         self.assertIn("setupGalleryControls(galleryImages.length)", self.html)
 
-    def test_edge_back_and_deliberate_refresh_gestures(self):
-        self.assertIn("const edgeBack=(g.fromRight&&dx< -85)||(g.fromLeft&&dx>85)", self.html)
-        self.assertIn("msGoBack();return;", self.html)
-        self.assertIn("Date.now()-msLastScrollAt>550", self.html)
-        self.assertIn("dy>=175", self.html)
-        self.assertIn("duration>=280", self.html)
-        self.assertIn("touchcancel", self.html)
-        self.assertNotIn("if(start.nearTop&&dy>105", self.html)
+    def test_shared_gesture_controller_is_deployed(self):
+        self.assertIn('src="gestures.js?', self.html)
+        self.assertTrue((APP / 'gestures.js').is_file())
 
     def test_moderation_buttons_for_queued_drafts(self):
         self.assertIn("const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].includes(d.meta.status)", self.html)

@@ -4,6 +4,7 @@ The notification center is a private Supabase-backed addition to the existing Pa
 
 ## Components
 - `miniapp/notifications.js`, `notifications.css`: center, preferences, unread count, offline read synchronization and explicit push permission.
+- `miniapp/gestures.js`: shared directional touch handling for top pull and edge back. Cards remain refreshable; horizontal galleries and scrolled content retain native behavior. `index.html` routes refresh to each actual scroll container and loader, preserves opened content, shares in-flight requests and reports real success/failure. Oura refresh reads the saved snapshot; it does not initiate upstream synchronization.
 - `miniapp/sw.js`: visible Web Push and validated same-origin click routing. No caching of sensitive responses.
 - `scripts/build_notification_manifest.py`: deployment inventory, semantic content hashes (ignores check timestamps), validated edit receipts.
 - `scripts/report_editorial.py`: explicit per-section success/blocking reports; successful recovery supersedes obsolete error pushes.
@@ -69,3 +70,5 @@ Only one durable `oura:YYYY-MM-DD` event is inserted per Moscow calendar day. Ev
 Push content contains no health values: “Данные Oura обновлены / Сон, готовность и активность сохранены в My Space.” Opening it fetches the protected Oura screen; Back returns to the notification center. No metrics are copied into Pages, manifests or event payloads. The service-only invoker RPC has no browser execute privilege.
 
 `tests/oura-notifications.sql` runs readiness, baseline, partial-data, zero-value, duplicate, permanent-deduplication, permission and quiet-hours checks as `service_role` inside a rolled-back transaction. It never sends push or commits synthetic health data.
+
+Touch regressions run with `node --test tests/gestures.test.mjs`. The optional `HAPPY_DOM_PATH=/path/to/happy-dom/lib/index.js node tests/refresh-dom.cjs` integration exercises the real app routes with synthetic touches and isolated network responses: all six sections, notification center/settings, document scrolling in Moda, opened drafts/articles, offline cached content, duplicate prevention and navigation during a pending refresh. These do not replace a physical iPhone feel check.
