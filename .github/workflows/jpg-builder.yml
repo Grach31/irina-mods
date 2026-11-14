@@ -31,7 +31,7 @@ jobs:
         run: python -m pip install --quiet Pillow==11.3.0
       - name: Validate renderer syntax
         run: python -m py_compile scripts/render_draft_jpg.py
-      - name: Render current picks and first existing real-draft smoke test
+      - name: Render current picks or requested draft
         env:
           REQUESTED_DRAFT: ${{ inputs.draft_id }}
         run: |
@@ -39,7 +39,6 @@ jobs:
             python scripts/render_draft_jpg.py --draft-id "$REQUESTED_DRAFT"
           else
             python scripts/render_draft_jpg.py --today
-            python scripts/render_draft_jpg.py --draft-id 2026-11-13-allweneed-evening-edit
           fi
       - name: Verify JPEG files
         run: |
