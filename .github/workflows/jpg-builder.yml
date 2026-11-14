@@ -1,0 +1,65 @@
+name: Stambo JPG Builder
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/*.json'
+      - 'scripts/render_draft_jpg.py'
+      - '.github/workflows/jpg-builder.yml'
+  workflow_dispatch:
+    inputs:
+      draft_id:
+        description: 'Existing picks draft ID (optional; otherwise today)'
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: stambo-jpg-builder
+  cancel-in-progress: false
+jobs:
+  build-jpg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image tooling
+        run: python -m pip install --quiet Pillow==11.3.0
+      - name: Validate renderer syntax
+        run: python -m py_compile scripts/render_draft_jpg.py
+      - name: Render current picks and first existing real-draft smoke test
+        env:
+          REQUESTED_DRAFT: ${{ inputs.draft_id }}
+        run: |
+          if [ -n "$REQUESTED_DRAFT" ]; then
+            python scripts/render_draft_jpg.py --draft-id "$REQUESTED_DRAFT"
+          else
+            python scripts/render_draft_jpg.py --today
+          fi
+      - name: Verify JPEG files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          files=list(Path('drafts/img').glob('*.jpg'))
+          assert files, 'No JPG files in drafts/img'
+          for file in files:
+              with Image.open(file) as image:
+                  image.verify()
+          print(f'Validated {len(files)} JPEGs')
+          PY
+      - name: Commit newly generated JPGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add drafts/img/*.jpg
+          if git diff --cached --quiet; then
+            echo "No new JPGs to commit"
+          else
+            git commit -m "Generate verified Stambo picks JPG assets"
+            git push
+          fi
