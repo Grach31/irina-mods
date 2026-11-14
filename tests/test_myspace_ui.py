@@ -63,6 +63,16 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn('id="pullIndicator"', self.html)
         self.assertNotIn("TELEGRAM + SAFARI", self.html)
 
+    def test_moda_keeps_older_drafts_visible(self):
+        """Unpublished drafts must not disappear at midnight."""
+        builder = (ROOT / "scripts" / "build_miniapp_catalog.py").read_text(encoding="utf-8")
+        self.assertNotIn("did.startswith(today", builder)
+        self.assertNotIn("meta.get('status') != 'published' and", builder)
+        for name in ("2026-11-13-allweneed-evening-edit",
+                     "2026-11-13-mix-contrast-details",
+                     "2026-11-13-myspace-panel-test"):
+            self.assertTrue((ROOT / "drafts" / (name + ".json")).is_file(), name)
+
     def test_fashion_daily_has_no_publisher_allowlist(self):
         """Publisher domains must not silently hide editorial news."""
         data = json.loads((APP / "fashion-daily.json").read_text(encoding="utf-8"))
