@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="My Space">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="notifications.css?v=20261114-2">
+<link rel="stylesheet" href="notifications.css?v=20261114-3">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -621,7 +621,7 @@ body>nav.nav{display:none!important}
 <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
-<script src="notifications.js?v=20261114-2"></script>
+<script src="notifications.js?v=20261114-3"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -1122,7 +1122,7 @@ function load(){
     try{
      const decisions=await publishApi({action:'list',session:pwaSession});
      const byId=new Map((decisions.items||[]).map(x=>[x.draft_id,x.status]));
-     items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing'].includes(status))d.meta.status=status});
+     items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status});
     }catch(e){console.warn('Could not refresh My Space decisions')}
    }
    lastLoaded=Date.now();
@@ -1134,11 +1134,15 @@ function load(){
  })();
  return loading;
 }
-function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested','failed','publishing'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
-function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
+function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested','failed','publishing','uncertain'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
+function render(){
+ $('pending').textContent=items.filter(x=>['queued','sent','awaiting_edit','edit_requested','failed','publishing','uncertain'].includes(x.meta.status)).length;
+ $('published').textContent=items.filter(x=>x.meta.status==='published').length;
+ $('rejected').textContent=items.filter(x=>x.meta.status==='rejected').length;
+ let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
-list.forEach(d=>{const card=document.createElement('button');card.className='draft';const title=strip(d.text).slice(0,100)||d.id;card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+imageFor(d)+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(title.slice(0,77))+'</h3><p class="preview">'+escapeHtml(title.slice(77)||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{e.target.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Stambo.i'}))};card.onclick=()=>open(d);$('list').append(card)})}
+list.forEach(d=>{const card=document.createElement('button');card.className='draft';const title=strip(d.text).slice(0,100)||d.id;card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(title.slice(0,77))+'</h3><p class="preview">'+escapeHtml(title.slice(77)||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{e.target.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Stambo.i'}))};card.onclick=()=>open(d);$('list').append(card)})}
 function gallerySources(d){let a=[];const root=BASE+'drafts/img/';if(d.type==='looks'){const count=Math.min(10,1+(d.looks?.length||0));for(let i=1;i<=count;i++)a.push(root+encodeURIComponent(d.id)+(i===1?'':'-'+i)+'.jpg')}else if(d.type==='album'&&d.photos?.length){a=d.photos.filter(p=>typeof p==='string').slice(0,10).map(p=>p.startsWith('http')?p:BASE+p)}else if(d.type==='item'&&d.image){a=[d.image.startsWith('http')?d.image:BASE+d.image]}else if(d.type==='picks'&&d.items?.length){a=d.items.slice(0,10).map(i=>i.img).filter(Boolean)}else if(d.card?.images?.length){a=[imageFor(d)];}else{a=[imageFor(d)]}return a.length?a:[imageFor(d)]}
 function setupGalleryControls(count){
  const gallery=$('gallery'),prev=$('galleryPrev'),next=$('galleryNext'),dots=$('galleryDots');
@@ -1192,10 +1196,10 @@ const isTestDraft=/(?:^|[-_])(test|panel-test)(?:$|[-_])/i.test(d.id)||/ТЕСТ
 const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].includes(d.meta.status);
 if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
  const buttons=[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];
- buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);actions.append(btn)});
+ buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);if(action==='ok'&&d.ready===false){btn.disabled=true;btn.textContent='Фото готовятся'}actions.append(btn)});
 }else{
  const p=document.createElement('span');p.className='eyebrow';
- p.textContent=isTestDraft?'Технический тест · не публиковать':readonly?'Только просмотр':d.meta.status==='published'?'Опубликовано':d.meta.status==='rejected'?'Отклонено':d.meta.status==='queued'?'Ожидает одобрения':'Материал обработан';
+ p.textContent=isTestDraft?'Технический тест · не публиковать':readonly?'Только просмотр':d.meta.status==='published'?'Опубликовано':d.meta.status==='rejected'?'Отклонено':d.meta.status==='uncertain'?'Отправка требует проверки · повтор заблокирован':d.meta.status==='publishing'?'Отправка выполняется':d.meta.status==='queued'?'Ожидает одобрения':'Материал обработан';
  actions.append(p);
 }}
 async function act(action,d){
@@ -1214,12 +1218,15 @@ async function act(action,d){
   const msg=action==='ok'?'Подтвердить публикацию этого поста?':'Отклонить этот черновик?';
   if(!confirm(msg))return;
   try{
-   const result=await publishApi({action:action==='ok'?'publish':'reject',session:pwaSession,id:d.id});
+   const result=await publishApi({action:action==='ok'?'publish':'reject',session:pwaSession,id:d.id,revision:d.revision});
    if(!result.ok)throw Error('not completed');
    d.meta.status=action==='ok'?'published':'rejected';$('detail').classList.remove('visible');active=null;
    alert(action==='ok'?'Опубликовано в Telegram-канале.':'Черновик отклонён в My Space. Telegram не задействован.');
    render();
-  }catch(e){alert(e.message==='telegram_configuration_required'?'Публикация пока не подключена: серверу нужен токен и ID канала.':'Действие не выполнено: '+e.message)}
+  }catch(e){
+ const messages={telegram_configuration_required:'Публикация пока не подключена: серверу нужен токен и ID канала.',draft_changed:'Черновик изменился. Обнови список и просмотри новую версию перед публикацией.',revision_required:'Обнови приложение и заново открой черновик.',draft_not_ready:'Фотографии ещё готовятся. Обнови список немного позже.',editing_in_progress:'Редакция сейчас исправляет этот материал. Дождись завершения.',delivery_unconfirmed:'Результат отправки требует проверки. Повторная отправка заблокирована, чтобы не создать дубль.',already_processing:'Отправка уже выполняется.',caption_too_long:'Подпись слишком длинная. Запроси сокращение текста.'};
+ alert(messages[e.message]||'Действие не выполнено: '+e.message);await load();
+ }
   return;
  }
  // Legacy Telegram Mini App decision transport has been retired.

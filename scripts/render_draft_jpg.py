@@ -3,6 +3,7 @@ import argparse
 import io
 import json
 import os
+from media_contract import render_fingerprint, media_ready, sha
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -62,11 +63,15 @@ def render(draft, photos, target):
     draw.text((55, 40), title, font=font(34, True), fill="#202020")
     draw.line((55, 102, 1025, 102), fill="#b8b0a5", width=2)
     count = len(photos)
+    cols=min(count,3);rows=(count+cols-1)//cols
     gap = 14
-    tile_width = (970 - (count - 1) * gap) // count
+    tile_width = (970 - (cols - 1) * gap) // cols
+    cell_height=1060//rows
     top, bottom = 150, 1060
     for index, (item, photo) in enumerate(zip(draft["items"], photos)):
-        left = 55 + index * (tile_width + gap)
+        left = 55 + (index%cols) * (tile_width + gap)
+        top=135+(index//cols)*cell_height
+        bottom=top+cell_height-155
         tile = ImageOps.contain(photo, (tile_width, bottom - top), Image.Resampling.LANCZOS)
         # Neutral background; preserve full garment rather than cropping it.
         x = left + (tile_width - tile.width) // 2
@@ -74,14 +79,14 @@ def render(draft, photos, target):
         canvas.paste(tile, (x, y))
         draw.rectangle((left, top, left + tile_width, bottom), outline="#ddd8d1", width=2)
         label = str(item["shop"])[:25]
-        draw.text((left, 1080), label, font=font(22, True), fill="#252525")
+        draw.text((left, bottom+15), label, font=font(22, True), fill="#252525")
         price = item.get("price")
-        draw.text((left, 1120), f"{price:,} RUB".replace(",", " "), font=font(22), fill="#555555")
+        draw.text((left, bottom+48), f"{price:,} RUB".replace(",", " "), font=font(22), fill="#555555")
         name = str(item["name"]).strip()
         # Short labels only; full item names and links stay in JSON.
         while name and draw.textbbox((0, 0), name, font=font(19))[2] > tile_width:
             name = name[:-1]
-        draw.text((left, 1160), name, font=font(19), fill="#303030")
+        draw.text((left, bottom+83), name, font=font(19), fill="#303030")
     draw.line((55, 1230, 1025, 1230), fill="#b8b0a5", width=2)
     draw.text((55, 1260), "EDITORIAL SELECTION  /  ORIGINAL PRODUCT PHOTOS", font=font(19), fill="#77716c")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -104,8 +109,8 @@ def run(draft_id, output_dir):
     if draft.get("id") != draft_id or draft.get("type") != "picks":
         raise ValueError("Not a matching picks draft")
     items = draft.get("items")
-    if not isinstance(items, list) or not 2 <= len(items) <= 3:
-        raise ValueError("Only complete 2–3 item picks drafts are supported")
+    if not isinstance(items, list) or not 2 <= len(items) <= 10:
+        raise ValueError("Only complete 2–10 item picks drafts are supported")
     for item in items:
         if not all(item.get(key) for key in ("name", "price", "url", "img", "shop")):
             raise ValueError("Product metadata incomplete")
@@ -114,6 +119,7 @@ def run(draft_id, output_dir):
     photos = [fetch_photo(item["img"]) for item in items]
     target = output_dir / (draft_id + ".jpg")
     render(draft, photos, target)
+    target.with_suffix(".render.json").write_text(json.dumps({"fingerprint":render_fingerprint(draft),"jpeg_sha256":sha(target.read_bytes())}))
     print(f"VERIFIED JPEG: {target} ({target.stat().st_size} bytes)")
     return target
 
@@ -122,6 +128,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--draft-id", action="append", default=[])
     parser.add_argument("--today", action="store_true")
+    parser.add_argument("--pending", action="store_true")
+    parser.add_argument("--keep-going", action="store_true")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "drafts" / "img")
     args = parser.parse_args()
     ids = list(args.draft_id)
@@ -134,6 +142,12 @@ def main():
                     ids.append(path.stem)
             except (ValueError, OSError):
                 print(f"SKIP invalid draft: {path}")
+    if args.pending:
+        state=json.loads((ROOT/'state/state.json').read_text()).get('drafts',{})
+        for path in sorted((ROOT/'drafts').glob('*.json')):
+            d=json.loads(path.read_text())
+            if d.get('type')=='picks' and not d.get('hold') and 'test' not in path.stem and state.get(path.stem,{}).get('status') not in ('published','rejected','replaced','error','partial_error'):
+                ids.append(path.stem)
     ids = list(dict.fromkeys(ids))
     if not ids:
         print("No drafts selected")
@@ -141,15 +155,16 @@ def main():
     failures = []
     for draft_id in ids:
         target = args.output_dir / (draft_id + ".jpg")
-        if target.exists():
-            print(f"SKIP existing: {target}")
+        draft=json.loads((ROOT/"drafts"/(draft_id+".json")).read_text())
+        if media_ready(draft,args.output_dir):
+            print(f"SKIP verified current: {target}")
             continue
         try:
             run(draft_id, args.output_dir)
         except Exception as exc:
             print(f"FAILED {draft_id}: {type(exc).__name__}: {exc}", flush=True)
             failures.append(draft_id)
-    if failures:
+    if failures and not args.keep_going:
         raise SystemExit(f"Could not render: {', '.join(failures)}")
 
 

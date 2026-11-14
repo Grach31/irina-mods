@@ -25,7 +25,7 @@ def build(root=ROOT):
             iid = item.get('id')
             if not iid:
                 raise ValueError(f'{filename}: stable id missing')
-            if space == 'moda' and ('test' in iid.lower() or item.get('meta', {}).get('status') in ('rejected', 'published')):
+            if space == 'moda' and (item.get('ready') is not True or 'test' in iid.lower() or item.get('meta', {}).get('status') in ('rejected', 'published')):
                 continue
             result['items'].append({'source_id': f'{space}:{iid}', 'version': version(item), 'kind': 'draft' if space == 'moda' else 'updates', 'target': {'space': space, 'id': iid}})
     for file in (root / 'editorial' / 'edit-completions').glob('*.json'):
@@ -35,8 +35,8 @@ def build(root=ROOT):
             raise ValueError('Invalid draft id')
         draft = root / 'drafts' / f'{did}.json'
         # Invalid/stale receipts never announce completion.
-        if draft.exists() and digest(draft.read_bytes()) == receipt.get('content_hash'):
-            result['completions'].append({k: receipt[k] for k in ('draft_id', 'request_created_at', 'content_hash')})
+        if draft.exists() and receipt.get('lease_token') and digest(draft.read_bytes()) == receipt.get('content_hash') and any(x['source_id']=='moda:'+did for x in result['items']):
+            result['completions'].append({k: receipt[k] for k in ('draft_id', 'request_created_at', 'content_hash','lease_token')})
     for file in (root / 'editorial' / 'status').glob('*.json'):
         report = json.loads(file.read_text())
         if report.get('section') in FILES and report.get('state') in ('ready', 'blocked'):

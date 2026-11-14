@@ -8,19 +8,24 @@ on:
       - state/state.json
       - scripts/build_miniapp_catalog.py
       - scripts/build_notification_manifest.py
+      - scripts/render_draft_jpg.py
+      - scripts/media_contract.py
+      - supabase/**
+      - tests/**
       - editorial/**
       - tests/test_myspace_ui.py
       - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Stambo JPG Builder"]
-    types: [completed]
   pull_request:
     paths:
       - miniapp/**
       - scripts/build_miniapp_catalog.py
       - scripts/build_notification_manifest.py
+      - scripts/render_draft_jpg.py
+      - scripts/media_contract.py
+      - supabase/**
+      - tests/**
       - editorial/**
       - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
@@ -33,22 +38,23 @@ concurrency:
   cancel-in-progress: false
 jobs:
   checks:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install test image tooling
+        run: python -m pip install --quiet Pillow==11.3.0
       - name: Test My Space six-section release
-        run: python -m unittest discover -s tests -p test_myspace_ui.py -v
+        run: python -m unittest discover -s tests -v
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - name: Test notifications
         run: |
           python -m unittest discover -s tests -p test_notifications.py -v
-          node --test tests/notifications.test.mjs
+          node --test tests/*.test.mjs
           node --check miniapp/notifications.js
           node --check miniapp/sw.js
       - name: Check JavaScript syntax
@@ -75,6 +81,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: drafts/img
+          key: jpg-v2-${{ hashFiles('drafts/*.json', 'scripts/render_draft_jpg.py', 'scripts/media_contract.py') }}
+          restore-keys: jpg-v2-
+      - name: Build current verified media
+        run: |
+          python -m pip install --quiet Pillow==11.3.0
+          python scripts/render_draft_jpg.py --pending --keep-going
       - name: Build current publications catalog
         run: |
           python scripts/build_miniapp_catalog.py

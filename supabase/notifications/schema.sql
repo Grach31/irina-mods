@@ -111,10 +111,11 @@ begin
  if c.initialized then
  for receipt in select value from jsonb_array_elements(coalesce(p_manifest->'completions','[]')) loop
  select * into req from public.myspace_edit_requests where draft_id=receipt->>'draft_id' and created_at=(receipt->>'request_created_at')::timestamptz;
- if found and not exists(select 1 from public.myspace_publications where draft_id=req.draft_id and status in ('published','rejected')) then
+ if found and exists(select 1 from public.myspace_editorial_leases l where l.draft_id=req.draft_id and l.request_created_at=req.created_at and l.lease_token=(receipt->>'lease_token')::uuid and l.state='submitted') and not exists(select 1 from public.myspace_publications where draft_id=req.draft_id and status in ('published','rejected','uncertain')) then
  insert into public.myspace_edit_completions(draft_id,request_created_at,content_hash,deployed_sha)
  values(req.draft_id,req.created_at,receipt->>'content_hash',p_manifest->>'sha') on conflict do nothing;
  if found then
+ update public.myspace_editorial_leases set state='completed',updated_at=now(),expires_at=now() where draft_id=req.draft_id and lease_token=(receipt->>'lease_token')::uuid;
  perform public.ms_notice_put('edit:'||req.draft_id||':'||req.created_at,'edit','Правки готовы','Подборка обновлена по твоим замечаниям.',jsonb_build_array(jsonb_build_object('space','moda','id',req.draft_id,'request_created_at',req.created_at)),0);
  end if; end if;
  end loop; end if;
@@ -124,6 +125,7 @@ begin
  if updates is null then select jsonb_agg(value->'target') into updates from jsonb_array_elements(p_manifest->'items') where value->>'kind'='updates' and exists(select 1 from public.myspace_notification_events e where e.event_key=(value->>'source_id')||':'||(value->>'version') and e.created_at>now()-interval '1 minute'); end if;
  select coalesce(jsonb_agg(v),'[]') into updates from (select distinct value as v from jsonb_array_elements(updates))q;
  perform public.ms_notice_put('updates:'||today,'updates','Новое в твоём пространстве','Обновлены материалы My Space.',updates);
+ update public.myspace_notifications set read_at=null where group_key='updates:'||today;
  end if;
  if p_manifest->>'built_at' is not null and (p_manifest->>'built_at')::timestamptz<=now()+interval '5 minutes' then update public.myspace_notifications set expires_at=least(expires_at,now()) where group_key like 'build-failed:%' and created_at<=(p_manifest->>'built_at')::timestamptz; end if;
  update myspace_private.notification_config set initialized=true,last_reconcile=now(),last_success=now(),last_error=null where id;
@@ -132,7 +134,7 @@ end $$;
 -- Publication writes only a local durable event; network failure cannot affect publication.
 create or replace function myspace_private.notice_publication() returns trigger
 language plpgsql security invoker set search_path='' as $$ begin
- if new.status not in ('published','failed','rejected') then return new; end if;
+ if new.status not in ('published','failed','rejected','uncertain') then return new; end if;
  if TG_OP='UPDATE' then if old.status=new.status and old.updated_at=new.updated_at then return new; end if; end if;
  insert into public.myspace_notification_events(event_key,kind,source_id,version,payload)
  values('publication:'||new.draft_id||':'||new.status||':'||new.updated_at,'publication',new.draft_id,new.updated_at::text,to_jsonb(new)) on conflict do nothing;
@@ -143,9 +145,9 @@ create trigger myspace_notice_publication after insert or update on public.myspa
 -- Cron reconciliation repairs a missing event after transient capture failures and is idempotent.
 create or replace function public.ms_notice_publications() returns void
 language plpgsql security invoker set search_path='' as $$ declare r record; begin
- for r in select p.* from public.myspace_publications p,myspace_private.notification_config c where p.updated_at>=c.baseline_at and p.status in ('published','failed','rejected') loop
+ for r in select p.* from public.myspace_publications p,myspace_private.notification_config c where p.updated_at>=c.baseline_at and p.status in ('published','failed','rejected','uncertain') loop
  if r.status='published' then perform public.ms_notice_put('published:'||r.draft_id||':'||r.updated_at,'published','Публикация отправлена','Подборка опубликована в Telegram.',jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0);
- elsif r.status='failed' then perform public.ms_notice_put('failed:'||r.draft_id||':'||r.updated_at,'error','Публикация не выполнена',case r.error_code when 'telegram_bot_not_admin' then 'Боту нужны права администратора Telegram-канала.' when 'telegram_bot_not_allowed' then 'У бота нет доступа к Telegram-каналу.' when 'telegram_chat_not_found' then 'Telegram-канал не найден. Проверь подключение.' when 'telegram_token_invalid' then 'Нужно проверить подключение Telegram-бота.' when 'caption_too_long' then 'Подпись превышает допустимую длину Telegram.' when 'media_download_failed' then 'Не удалось загрузить изображение публикации.' else 'Отправка в Telegram не подтверждена. Открой материал для проверки.' end,jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0); end if;
+ elsif r.status in ('failed','uncertain') then perform public.ms_notice_put('failed:'||r.draft_id||':'||r.updated_at,'error','Публикация не выполнена',case r.error_code when 'delivery_unconfirmed' then 'Результат отправки не подтверждён. Повтор заблокирован до проверки.' when 'confirmation_store_failed' then 'Telegram принял пост, но сохранение статуса требует проверки. Не отправляй повторно.' when 'telegram_bot_not_admin' then 'Боту нужны права администратора Telegram-канала.' when 'telegram_bot_not_allowed' then 'У бота нет доступа к Telegram-каналу.' when 'telegram_chat_not_found' then 'Telegram-канал не найден. Проверь подключение.' when 'telegram_token_invalid' then 'Нужно проверить подключение Telegram-бота.' when 'caption_too_long' then 'Подпись превышает допустимую длину Telegram.' when 'media_download_failed' then 'Не удалось загрузить изображение публикации.' else 'Отправка в Telegram не подтверждена. Открой материал для проверки.' end,jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0); end if;
  -- Close outdated actionable cards once rejected/published, not their factual history.
  if r.status in ('published','rejected') then update public.myspace_notifications n set expires_at=least(expires_at,now()) where category in ('draft','edit','error') and targets @> jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)) and jsonb_array_length(targets)=1; end if;
  end loop;

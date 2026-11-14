@@ -17,9 +17,9 @@ class InventoryTests(unittest.TestCase):
  def test_receipt_is_only_exported_for_exact_deployed_draft_bytes(self):
   with tempfile.TemporaryDirectory() as td:
    r=Path(td);(r/'miniapp').mkdir();(r/'drafts').mkdir();(r/'editorial/edit-completions').mkdir(parents=True)
-   for file in m.FILES.values():(r/'miniapp'/file).write_text(json.dumps({'items':[{'id':'safe','title':'title'}]}))
+   for file in m.FILES.values():(r/'miniapp'/file).write_text(json.dumps({'items':[{'id':'safe','title':'title','ready':True}]}))
    raw=b'{"id":"safe","text":"corrected"}';(r/'drafts/safe.json').write_bytes(raw)
-   rec=r/'editorial/edit-completions/safe.json';data={'draft_id':'safe','request_created_at':'2026-11-14T08:00:00Z','content_hash':hashlib.sha256(raw).hexdigest()};rec.write_text(json.dumps(data))
+   rec=r/'editorial/edit-completions/safe.json';data={'draft_id':'safe','request_created_at':'2026-11-14T08:00:00Z','content_hash':hashlib.sha256(raw).hexdigest(),'lease_token':'11111111-1111-4111-8111-111111111111'};rec.write_text(json.dumps(data))
    with patch.object(m.subprocess,'check_output',return_value='a'*40):
     self.assertEqual(len(m.build(r)['completions']),1)
     (r/'drafts/safe.json').write_text('changed again');self.assertEqual(m.build(r)['completions'],[])
@@ -27,6 +27,6 @@ class InventoryTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as td:
    r=Path(td);(r/'miniapp').mkdir()
    for file in m.FILES.values():(r/'miniapp'/file).write_text('{"items":[]}')
-   (r/'miniapp/catalog.json').write_text(json.dumps({'items':[{'id':'demo-test'},{'id':'published','meta':{'status':'published'}},{'id':'ready','meta':{'status':'queued'}}]}))
+   (r/'miniapp/catalog.json').write_text(json.dumps({'items':[{'id':'demo-test'},{'id':'published','meta':{'status':'published'}},{'id':'ready','ready':True,'meta':{'status':'queued'}}]}))
    with patch.object(m.subprocess,'check_output',return_value='a'*40):self.assertEqual([x['target']['id'] for x in m.build(r)['items']],['ready'])
 if __name__=='__main__':unittest.main()

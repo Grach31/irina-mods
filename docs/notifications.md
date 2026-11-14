@@ -24,7 +24,7 @@ The notification center is a private Supabase-backed addition to the existing Pa
 Read the current Supabase request and verify its exact `created_at`. Perform all requested changes and checks. Then run:
 
 ```
-python scripts/complete_edit.py DRAFT_ID 'REQUEST_CREATED_AT'
+python scripts/complete_edit.py DRAFT_ID 'REQUEST_CREATED_AT' LEASE_TOKEN
 ```
 
 Commit the receipt with the corrected material. A newer request, changed bytes, rejected/published draft, or failed deployment prevents the completion notification. This does not change the moderation decision.
@@ -45,3 +45,13 @@ To stop delivery independently, set `myspace_private.notification_config.enabled
 - Database transaction/rollback checks: silent baseline, deduplication, 08:00/22:00 boundaries, lease exclusion, retry, acceptance and access restrictions.
 
 Do not claim physical iPhone testing from DOM emulation or a deployment success.
+
+
+## Publication and editorial safety
+The shared `ms_editorial_claim/verify/submit/release` lease protocol is mandatory for both GPT tasks. It fences receipts and prevents concurrent edits. Apply `supabase/editorial/pipeline.sql` before updating notification receipt handling. All new RPCs are service-only invoker functions.
+
+Pages is the only media build. It renders all active picks, uses per-item fingerprints and verifies the JPEG hash before marking an item ready. No renderer commits back into main, so concurrent editorial commits cannot reject a JPEG push. An individual image failure leaves that card `ready:false`, disables publication and suppresses its readiness notification; independent sections still deploy.
+
+Publication requires the exact SHA-256 `revision` shown in the deployed ready catalog and rechecks the raw draft bytes. Once sending starts, ambiguous outcomes remain `publishing`/`uncertain`, blocking retries; acknowledgement storage is retried without resending Telegram. `uncertain` must be resolved by inspecting the actual channel and recording known message IDs, never by automatically reopening the claim.
+
+Sources for the pre-existing PWA/Auth, Telegram publication, Oura and retired webhook functions were recovered from deployed Supabase versions. Only myspace-publish and myspace-notifications are changed by this repair; the other source copies preserve their existing behavior.

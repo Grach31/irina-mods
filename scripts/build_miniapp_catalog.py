@@ -6,6 +6,7 @@ Note: GitHub Pages is public, so this catalog is not a privacy boundary.
 import glob
 import json
 import shutil
+from media_contract import media_ready, sha
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -44,7 +45,7 @@ def main():
             continue
         # Keep only content needed to display the post; do not export owner-only state.
         item = {"id": did, "type": draft.get("type", ""),
-                "text": draft.get("text", ""),
+                "text": draft.get("text", ""), "revision":sha(file.read_bytes()),
                 "meta": {"status": meta.get("status", "queued"), "sent_at": meta.get("sent_at", "")}}
         for key in ("items", "looks", "photos", "image"):
             if key in draft:
@@ -53,8 +54,12 @@ def main():
             item["card"] = {"images": draft["card"].get("images", [])}
         # Include the first generated JPEG in Pages, avoiding cross-domain image failures.
         src = ROOT / "drafts" / "img" / (did + ".jpg")
-        if src.is_file() and src.stat().st_size < 5_000_000:
+        final=meta.get('status') in ('published','rejected')
+        ready=src.is_file() if draft.get('type')!='picks' or final else media_ready(draft,ROOT/'drafts/img')
+        item['ready']=bool(ready)
+        if ready and src.is_file() and src.stat().st_size < 5_000_000:
             shutil.copyfile(src, media_dir / (did + ".jpg"))
+            item["media_sha256"]=sha(src.read_bytes())
         items.append(item)
     result = {
         "pending": sum(i["meta"]["status"] in ("queued", "sent", "awaiting_edit", "edit_requested") for i in items),
