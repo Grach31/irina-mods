@@ -125,6 +125,7 @@ begin
  select coalesce(jsonb_agg(v),'[]') into updates from (select distinct value as v from jsonb_array_elements(updates))q;
  perform public.ms_notice_put('updates:'||today,'updates','Новое в твоём пространстве','Обновлены материалы My Space.',updates);
  end if;
+ if p_manifest->>'built_at' is not null and (p_manifest->>'built_at')::timestamptz<=now()+interval '5 minutes' then update public.myspace_notifications set expires_at=least(expires_at,now()) where group_key like 'build-failed:%' and created_at<=(p_manifest->>'built_at')::timestamptz; end if;
  update myspace_private.notification_config set initialized=true,last_reconcile=now(),last_success=now(),last_error=null where id;
  return jsonb_build_object('changes',n,'baseline',not c.initialized);
 end $$;
@@ -144,7 +145,7 @@ create or replace function public.ms_notice_publications() returns void
 language plpgsql security invoker set search_path='' as $$ declare r record; begin
  for r in select p.* from public.myspace_publications p,myspace_private.notification_config c where p.updated_at>=c.baseline_at and p.status in ('published','failed','rejected') loop
  if r.status='published' then perform public.ms_notice_put('published:'||r.draft_id||':'||r.updated_at,'published','Публикация отправлена','Подборка опубликована в Telegram.',jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0);
- elsif r.status='failed' then perform public.ms_notice_put('failed:'||r.draft_id||':'||r.updated_at,'error','Публикация не выполнена','Открой материал и проверь причину ошибки.',jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0); end if;
+ elsif r.status='failed' then perform public.ms_notice_put('failed:'||r.draft_id||':'||r.updated_at,'error','Публикация не выполнена',case r.error_code when 'telegram_bot_not_admin' then 'Боту нужны права администратора Telegram-канала.' when 'telegram_bot_not_allowed' then 'У бота нет доступа к Telegram-каналу.' when 'telegram_chat_not_found' then 'Telegram-канал не найден. Проверь подключение.' when 'telegram_token_invalid' then 'Нужно проверить подключение Telegram-бота.' when 'caption_too_long' then 'Подпись превышает допустимую длину Telegram.' when 'media_download_failed' then 'Не удалось загрузить изображение публикации.' else 'Отправка в Telegram не подтверждена. Открой материал для проверки.' end,jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)),0); end if;
  -- Close outdated actionable cards once rejected/published, not their factual history.
  if r.status in ('published','rejected') then update public.myspace_notifications n set expires_at=least(expires_at,now()) where category in ('draft','edit','error') and targets @> jsonb_build_array(jsonb_build_object('space','moda','id',r.draft_id)) and jsonb_array_length(targets)=1; end if;
  end loop;
@@ -209,3 +210,24 @@ create or replace function public.ms_notice_build_error(p_sha text) returns void
 end $$;
 revoke all on function public.ms_notice_build_error(text) from public,anon,authenticated;
 grant execute on function public.ms_notice_build_error(text) to service_role;
+create or replace function public.ms_notice_editorial(p_reports jsonb) returns void language plpgsql security invoker set search_path='' as $$
+declare r jsonb; base timestamptz; label text; k text; begin
+ select baseline_at into base from myspace_private.notification_config where id;
+ if jsonb_array_length(p_reports)>35 then raise exception 'report_limit'; end if;
+ for r in select value from jsonb_array_elements(p_reports) loop
+ if (r->>'recorded_at')::timestamptz<base or (r->>'recorded_at')::timestamptz>now()+interval '5 minutes' then continue; end if;
+ label:=case r->>'section' when 'moda' then 'Moda' when 'fashion' then 'Fashion Daily' when 'reels' then 'Reels Studio' when 'history' then 'Style Time Machine' when 'trends' then 'Trend Radar' else null end;
+ if label is null then continue; end if;
+ if r->>'state'='ready' then
+ update public.myspace_notifications n set expires_at=least(expires_at,now()) where group_key like 'editorial:%' and exists(select 1 from public.myspace_notification_events e where e.event_key=n.group_key and e.payload->>'section'=r->>'section' and (e.payload->>'recorded_at')::timestamptz<=(r->>'recorded_at')::timestamptz);
+ elsif r->>'state'='blocked' then
+ k:='editorial:'||(r->>'id')||':'||(r->>'recorded_at');
+ insert into public.myspace_notification_events(event_key,kind,source_id,version,payload) values(k,'error',r->>'section',r->>'id',r) on conflict do nothing;
+ if found then perform public.ms_notice_put(k,'error','Не удалось подготовить '||label,
+ case r->>'reason_code' when 'sources' then 'Не удалось подтвердить источники. Выпуск раздела задерживается.' when 'images' then 'Не удалось подобрать проверенные изображения. Выпуск раздела задерживается.' when 'access' then 'Редакции не удалось получить необходимый доступ.' when 'validation' then 'Материал не прошёл проверку. Выпуск раздела задерживается.' else 'Раздел пока не обновлён. Остальные материалы доступны.' end,
+ jsonb_build_array(jsonb_build_object('space','notifications','id',k)),0); end if;
+ end if;
+ end loop;
+end $$;
+revoke all on function public.ms_notice_editorial(jsonb) from public,anon,authenticated;
+grant execute on function public.ms_notice_editorial(jsonb) to service_role;

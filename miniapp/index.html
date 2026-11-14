@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="My Space">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="notifications.css?v=20261114">
+<link rel="stylesheet" href="notifications.css?v=20261114-2">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -621,7 +621,7 @@ body>nav.nav{display:none!important}
 <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Следующее фото" hidden><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="m6 4 9 9-9 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="gallery-dots" id="galleryDots" role="group" aria-label="Номера фотографий" hidden></div>
 </div><div class="detail-contents"><span class="eyebrow" id="detailType"></span><h1 class="detail-title" id="detailTitle"></h1><div class="post-text" id="postText"></div></div></div><div class="detail-actions" id="actions"></div></div>
-<script src="notifications.js?v=20261114"></script>
+<script src="notifications.js?v=20261114-2"></script>
 <script>
 (()=>{'use strict';
 const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/Grach31/irina-mods/main/';const API='https://api.github.com/repos/Grach31/irina-mods/contents/drafts';
@@ -945,7 +945,7 @@ document.addEventListener('touchstart',ev=>{
  if(ev.touches.length!==1||msRefreshing||!$('pwaGate').classList.contains('hidden'))return;
  const t=ev.touches[0],el=ev.target,scroller=msActiveScroller();
  if(!scroller||!scroller.contains(el))return;
- const nested=!!el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select,button,a');
+ const nested=!el.closest('.ms-notice-row')&&!!el.closest('.gallery,.fashion-tags,.oura-switch,.oura-chartbox,.tabs,.cycle-day-scroll,.myspace-themes,[role="slider"],input,textarea,select,button,a');
  const width=document.documentElement.clientWidth;
  const edge=34;
  msGesture={
@@ -1122,7 +1122,7 @@ function load(){
     try{
      const decisions=await publishApi({action:'list',session:pwaSession});
      const byId=new Map((decisions.items||[]).map(x=>[x.draft_id,x.status]));
-     items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested'].includes(status))d.meta.status=status});
+     items.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing'].includes(status))d.meta.status=status});
     }catch(e){console.warn('Could not refresh My Space decisions')}
    }
    lastLoaded=Date.now();
@@ -1134,7 +1134,7 @@ function load(){
  })();
  return loading;
 }
-function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
+function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested','failed','publishing'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
 function render(){let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
@@ -1474,7 +1474,7 @@ $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)ret
 // Deep-link Oura from the bot's authenticated inline web_app button.
 
 async function msOpenNoticeTarget(target){
- if(target.space==='notifications'){showSpace('notifications');notices.message('Не удалось развернуть обновление. Рабочая версия сохранена; причину можно проверить в GitHub Actions.');return}
+ if(target.space==='notifications'){showSpace('notifications');notices.message(target.id==='build'?'Не удалось развернуть обновление. Рабочая версия сохранена; причину можно проверить в GitHub Actions.':'Редакция сообщила о проблеме подготовки материала. Причина указана в уведомлении; остальные разделы продолжают работать.');return}
  const allowed=['moda','fashion','reels','history','trends'];if(!allowed.includes(target.space))throw Error('invalid_target');
  msNoticeReturn=true;showSpace(target.space);
  if(target.space==='moda'){await load();const item=items.find(x=>x.id===target.id);if(!item)throw Error('material_unavailable');open(item);return}
@@ -1497,7 +1497,7 @@ restorePwaSession();
 /* Prefetch Moda while the two-card launcher is visible. */
 load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
- navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/'}).catch(()=>{});
+ navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/',updateViaCache:'none'}).catch(()=>{});
 }
 window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load()});

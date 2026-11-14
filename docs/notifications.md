@@ -3,9 +3,10 @@
 The notification center is a private Supabase-backed addition to the existing Pages app. It does not send or approve Telegram publications. The worker never calls the Telegram API.
 
 ## Components
-- `miniapp/notifications.js`, `notifications.css`: center, preferences, unread count, in-memory offline handling and explicit push permission.
+- `miniapp/notifications.js`, `notifications.css`: center, preferences, unread count, offline read synchronization and explicit push permission.
 - `miniapp/sw.js`: visible Web Push and validated same-origin click routing. No caching of sensitive responses.
 - `scripts/build_notification_manifest.py`: deployment inventory, semantic content hashes (ignores check timestamps), validated edit receipts.
+- `scripts/report_editorial.py`: explicit per-section success/blocking reports; successful recovery supersedes obsolete error pushes.
 - `scripts/complete_edit.py`: explicit completion record bound to the request timestamp and exact draft bytes.
 - `supabase/functions/myspace-notifications`: owner-verified API, deployment OIDC verification, recovery reconciliation and Web Push.
 - `supabase/notifications/schema.sql`: canonical schema/function definitions, not an automatically replayable migration. RLS and revoked browser grants; service-role RPCs are invoker functions.

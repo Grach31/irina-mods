@@ -24,7 +24,9 @@ async function reconcile(){
  const v=await fetchJSON(file);if(await hash(v.text)!==expected)throw Error('release_not_coherent');
  }
  if(Object.keys(m.files||{}).length!==5||m.items.some((x:any)=>!safeTarget(x.target)||!['draft','updates'].includes(x.kind)||!/^[a-f0-9]{64}$/.test(x.version)))throw Error('invalid_inventory');
- return rpc('ms_notice_ingest',{p_manifest:m});
+ const result=await rpc('ms_notice_ingest',{p_manifest:m});
+ if(!result.baseline)await rpc('ms_notice_editorial',{p_reports:m.reports||[]});
+ return result;
 }
 async function worker(config:any,reconcileNow:boolean){
  let ingested:any=null;
@@ -100,7 +102,7 @@ Deno.serve(async req=>{
  const record={user_id:uid,device_id:b.device_id,subscription:b.subscription,endpoint_hash:endpointHash,enabled:true,updated_at:new Date().toISOString()};
  const current=await db('myspace_push_subscriptions?'+own+'&device_id=eq.'+b.device_id+'&select=id,enabled');
  if(current.length&&!current[0].enabled)Object.assign(record,{created_at:new Date().toISOString()});
- if(current.length)await db('myspace_push_subscriptions?'+own+'&device_id=eq.'+b.device_id,'PATCH',record);else await db('myspace_push_subscriptions','POST',record);
+ if(current.length)await db('myspace_push_subscriptions?'+own+'&device_id=eq.'+b.device_id,'PATCH',record);else if(occupied.length)await db('myspace_push_subscriptions?'+own+'&endpoint_hash=eq.'+endpointHash,'PATCH',{...record,created_at:new Date().toISOString()});else await db('myspace_push_subscriptions','POST',record);
  return out({ok:true});
  }
  return out({error:'unknown_action'},400);

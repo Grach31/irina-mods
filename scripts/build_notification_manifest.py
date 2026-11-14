@@ -2,6 +2,7 @@
 import hashlib
 import json
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +17,7 @@ def version(item):
 
 def build(root=ROOT):
     app = root / 'miniapp'
-    result = {'sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(), 'files': {}, 'items': [], 'completions': []}
+    result = {'built_at': datetime.now(timezone.utc).isoformat(), 'sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(), 'files': {}, 'items': [], 'completions': [], 'reports': []}
     for space, filename in FILES.items():
         raw = (app / filename).read_bytes()
         result['files'][filename] = digest(raw)
@@ -36,6 +37,11 @@ def build(root=ROOT):
         # Invalid/stale receipts never announce completion.
         if draft.exists() and digest(draft.read_bytes()) == receipt.get('content_hash'):
             result['completions'].append({k: receipt[k] for k in ('draft_id', 'request_created_at', 'content_hash')})
+    for file in (root / 'editorial' / 'status').glob('*.json'):
+        report = json.loads(file.read_text())
+        if report.get('section') in FILES and report.get('state') in ('ready', 'blocked'):
+            result['reports'].append({k: report[k] for k in ('id', 'section', 'state', 'reason_code', 'recorded_at')})
+    result['reports'] = sorted(result['reports'], key=lambda r: r['recorded_at'])[-35:]
     return result
 
 if __name__ == '__main__':

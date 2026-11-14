@@ -2,6 +2,7 @@
 class MySpaceNotifications {
  constructor({token,showSpace,navigate,login,currentSpace}){
   Object.assign(this,{token,showSpace,navigate,login,currentSpace});this.items=[];this.filter='all';this.pending=[];this.lastCount=0;this.unread=0;this.loaded=false;this.more=false;this.publicKey='';this.serverTime=new Date().toISOString();this.returnTop=0;this.opening=false;
+  try{const q=JSON.parse(localStorage.getItem('myspace.notice.read-queue.v1')||'[]');if(Array.isArray(q))this.pending=q.filter(x=>x&&((x.action==='read'&&/^[a-f0-9-]{36}$/.test(x.id))||(x.action==='read_all'&&Number.isFinite(Date.parse(x.before))))).slice(-200)}catch{}
   this.$=id=>document.getElementById(id);this.apiURL='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-notifications';
   try{this.device=localStorage.getItem('myspace.notice.device')||crypto.randomUUID();localStorage.setItem('myspace.notice.device',this.device)}catch{this.device=crypto.randomUUID()}
   this.$('openNotifications').onclick=()=>this.showSpace('notifications');this.$('noticesBack').onclick=()=>this.showSpace('hub');
@@ -61,8 +62,9 @@ class MySpaceNotifications {
    if(item.targets.length===1)await this.navigate(item.targets[0]);else{this.showSpace('noticeTargets');const root=this.$('noticeTargetsList');root.replaceChildren();for(const t of item.targets){const b=document.createElement('button');b.type='button';b.className='ms-notice-action ms-notice-target';const label={moda:'Moda',fashion:'Fashion Daily',reels:'Reels Studio',history:'Style Time Machine',trends:'Trend Radar'}[t.space]||'Материал';b.textContent=label+' · '+t.id;b.onclick=()=>this.navigate(t);root.append(b)}}
   }catch{this.showSpace('notifications');this.message('Материал временно недоступен. Попробуй открыть его ещё раз.')}finally{this.opening=false}
  }
- async readAll(){const before=this.serverTime;this.items.forEach(x=>{if(x.created_at<=before)x.read_at=new Date().toISOString()});this.unread=0;this.badge();this.render();this.pending.push({action:'read_all',before});await this.flush()}
- async flush(){if(this.flushing)return this.flushing;this.flushing=(async()=>{while(this.pending.length){const x=this.pending[0];try{await this.api(x.action,x);this.pending.shift()}catch{break}}})();try{await this.flushing}finally{this.flushing=null}}
+ async readAll(){const before=this.serverTime;this.items.forEach(x=>{if(x.created_at<=before)x.read_at=new Date().toISOString()});this.unread=0;this.badge();this.render();this.pending.push({action:'read_all',before});await this.flush();await this.count(true)}
+ persistReads(){try{localStorage.setItem('myspace.notice.read-queue.v1',JSON.stringify(this.pending.slice(-200)))}catch{}}
+ async flush(){this.persistReads();if(this.flushing)return this.flushing;this.flushing=(async()=>{while(this.pending.length){const x=this.pending[0];try{await this.api(x.action,x);this.pending.shift();this.persistReads()}catch{break}}})();try{await this.flushing}finally{this.flushing=null}}
  enter(){if(this.loaded){this.render();requestAnimationFrame(()=>this.$('notificationsSpace').scrollTop=this.returnTop)}this.refresh().catch(()=>{})}
  footer(){const time=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');if(this.prefs)this.$('noticesFooter').textContent=this.prefs.quiet_start===this.prefs.quiet_end?'Тихие часы отключены':'☾ Тихие часы '+time(this.prefs.quiet_start)+'–'+time(this.prefs.quiet_end)+' · Москва'}
  async settings(){try{const d=await this.api('preferences',{device_id:this.device});this.deviceEnabled=d.device_enabled;this.prefs=d.prefs;this.publicKey=d.public_key;const root=this.$('noticeCategoryPrefs');root.replaceChildren();
@@ -81,6 +83,6 @@ class MySpaceNotifications {
  }
  async disable(){try{await this.api('unsubscribe',{device_id:this.device});this.deviceEnabled=false;const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub)await sub.unsubscribe();await this.permissionStatus();this.$('noticeSettingsMessage').textContent='Push отключены на этом устройстве.'}catch{this.$('noticeSettingsMessage').textContent='Не удалось отключить. Проверь соединение и повтори.'}}
  async savePrefs(){const categories=channel=>[...this.$('noticeCategoryPrefs').querySelectorAll('input:checked')].filter(x=>x.dataset.channel===channel).map(x=>x.dataset.kind);const minutes=id=>{const [h,m]=this.$(id).value.split(':').map(Number);return h*60+m};try{const d=await this.api('preferences',{values:{push_categories:categories('push'),center_categories:categories('center'),quiet_start:minutes('noticeQuietStart'),quiet_end:minutes('noticeQuietEnd')}});this.prefs=d.prefs;this.loaded=false;this.items=[];this.footer();await this.count(true);this.$('noticeSettingsMessage').textContent='Настройки сохранены.'}catch{this.$('noticeSettingsMessage').textContent='Не удалось сохранить. Проверь соединение и повтори.'}}
- async logout(){await this.api('unsubscribe',{device_id:this.device});this.items=[];this.loaded=false;this.pending=[];this.unread=0;this.badge();this.$('noticesList').replaceChildren()}
+ async logout(){await this.api('unsubscribe',{device_id:this.device});this.items=[];this.loaded=false;this.pending=[];this.persistReads();this.unread=0;this.badge();this.$('noticesList').replaceChildren()}
 }
 window.MySpaceNotifications=MySpaceNotifications;
