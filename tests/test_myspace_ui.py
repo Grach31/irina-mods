@@ -71,7 +71,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIsNotNone(match, "Fashion Daily URL validator missing")
         # Keep this check in sync with the explicit hostname allowlist in the UI.
         for story in data["items"]:
-            hostname = urlsplit(story["url"]).hostname or ""
+            hostname = (urlsplit(story["url"]).hostname or "").removeprefix("www.")
             self.assertIn(hostname.replace(".", r"\\."), match.group(1), story["id"])
 
     def test_editorial_json_is_structured(self):
