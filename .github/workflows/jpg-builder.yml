@@ -38,7 +38,7 @@ jobs:
           if [ -n "$REQUESTED_DRAFT" ]; then
             python scripts/render_draft_jpg.py --draft-id "$REQUESTED_DRAFT"
           else
-            python scripts/render_draft_jpg.py --today
+            python scripts/render_draft_jpg.py --today\n            python scripts/render_draft_jpg.py --draft-id 2026-11-13-allweneed-evening-edit
           fi
       - name: Verify JPEG files
         run: |
