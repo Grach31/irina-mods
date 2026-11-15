@@ -1,9 +1,9 @@
 {
   "edition_date": "2026-11-15",
-  "updated_at": "2026-11-15T09:00:00+03:00",
+  "updated_at": "2026-11-15T10:10:32Z",
   "language": "ru",
   "edition_title": "Fashion Daily — 15 ноября 2026",
-  "editor_note": "Две новые проверенные международные публикации; без лицензированных фото использованы текстовые обложки. Прежние записи сохранены.",
+  "editor_note": "Две новые проверенные международные публикации с фотографиями-превью Vogue по ссылкам на оригиналы. Прежние записи сохранены.",
   "items": [
     {
       "id": "20261115-vogue-personal-labels",
@@ -23,9 +23,9 @@
       ],
       "why": "Для стилиста это повод смотреть не только на силуэт, но и на историю вещи.",
       "image": null,
-      "image_url": null,
-      "image_rights": "no_external_image",
-      "image_alt": "Текстовая обложка: личные истории в деталях одежды",
+      "image_url": "https://assets.vogue.com/photos/6af8d1e7f3830138ecc77bec/16:9/w_1280,c_limit/SnapInsta.to_901924449_18655914754043699_7619360128406125069_n.jpg",
+      "image_rights": "publisher_preview_hotlink",
+      "image_alt": "Чёрный жакет Chanel с личными нашивками и ярлыками на подкладке",
       "article_sections": [
         {
           "heading": "Что произошло",
@@ -41,7 +41,10 @@
           ]
         }
       ],
-      "telegram_text": "Мода становится личнее: Vogue рассказывает о скрытых посланиях, вышивке и памятных деталях в одежде — от Chanel до небольших авторских брендов. Это не статистика продаж, а интересный дизайнерский подход: иногда самая важная часть вещи остаётся невидимой окружающим."
+      "telegram_text": "Мода становится личнее: Vogue рассказывает о скрытых посланиях, вышивке и памятных деталях в одежде — от Chanel до небольших авторских брендов. Это не статистика продаж, а интересный дизайнерский подход: иногда самая важная часть вещи остаётся невидимой окружающим.",
+      "image_source": "Vogue",
+      "image_credit": "Instagram (@matthieu_blazy) / Vogue",
+      "image_source_url": "https://www.vogue.com/article/how-fashions-labels-got-personal-again"
     },
     {
       "id": "20261115-florence-pugh-harris-reed",
@@ -61,9 +64,9 @@
       ],
       "why": "Наглядный пример баланса объёма: один выразительный элемент задаёт характер всего силуэта.",
       "image": null,
-      "image_url": null,
-      "image_rights": "no_external_image",
-      "image_alt": "Текстовая обложка: архитектурные плечи Harris Reed",
+      "image_url": "https://assets.vogue.com/photos/6af84b6dfdd3f298d883d4c7/16:9/w_1280,c_limit/2305043942",
+      "image_rights": "publisher_preview_hotlink",
+      "image_alt": "Флоренс Пью в чёрном образе Harris Reed со скульптурными плечами",
       "article_sections": [
         {
           "heading": "Образ",
@@ -79,7 +82,10 @@
           ]
         }
       ],
-      "telegram_text": "Флоренс Пью появилась на мероприятии East of Eden в чёрном атласном образе Harris Reed из коллекции весна–2027. Главное здесь — почти скульптурные плечи и собранная талия. Хороший пример того, как один крупный акцент работает без лишних деталей."
+      "telegram_text": "Флоренс Пью появилась на мероприятии East of Eden в чёрном атласном образе Harris Reed из коллекции весна–2027. Главное здесь — почти скульптурные плечи и собранная талия. Хороший пример того, как один крупный акцент работает без лишних деталей.",
+      "image_source": "Vogue",
+      "image_credit": "Getty Images / Vogue",
+      "image_source_url": "https://www.vogue.com/article/florence-pugh-sees-your-statement-coat-and-raises-you-a-statement-shoulder-2026-11-14"
     },
     {
       "id": "20261114-rimowa-maison-margiela",
