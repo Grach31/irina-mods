@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
     paths:
+      - AGENT.md
       - miniapp/**
       - drafts/**
       - state/state.json
@@ -13,12 +14,13 @@ on:
       - supabase/**
       - tests/**
       - editorial/**
-      - tests/test_myspace_ui.py
-      - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
   workflow_dispatch:
   pull_request:
     paths:
+      - drafts/**
+      - state/state.json
+      - AGENT.md
       - miniapp/**
       - scripts/build_miniapp_catalog.py
       - scripts/build_notification_manifest.py
@@ -27,12 +29,9 @@ on:
       - supabase/**
       - tests/**
       - editorial/**
-      - tests/test_miniapp.py
       - .github/workflows/miniapp-pages.yml
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
   group: stambo-miniapp-pages
   cancel-in-progress: false
@@ -46,14 +45,13 @@ jobs:
           python-version: '3.12'
       - name: Install test image tooling
         run: python -m pip install --quiet Pillow==11.3.0
-      - name: Test My Space six-section release
+      - name: Test data contracts and My Space
         run: python -m unittest discover -s tests -v
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Test notifications
+      - name: Test JavaScript behavior
         run: |
-          python -m unittest discover -s tests -p test_notifications.py -v
           node --test tests/*.test.mjs
           node --check miniapp/notifications.js
           node --check miniapp/sw.js
@@ -71,13 +69,9 @@ jobs:
           Path('/tmp/stambo-miniapp.js').write_text(inline[0])
           PY
           node --check /tmp/stambo-miniapp.js
-  deploy:
-    if: github.event_name != 'pull_request'
+  build:
     needs: checks
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -106,10 +100,21 @@ jobs:
           for size in (180,192,512):
               cairosvg.svg2png(bytestring=icon,write_to=f'miniapp/icon-{size}.png',output_width=size,output_height=size)
           PY
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: miniapp
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
       - id: deployment
         uses: actions/deploy-pages@v4
 
@@ -129,8 +134,10 @@ jobs:
               print('Notification reconciliation:',response.status)
           PYCODE
   notify_failure:
-    if: always() && github.event_name != 'pull_request' && (needs.checks.result == 'failure' || needs.deploy.result == 'failure')
-    needs: [checks, deploy]
+    if: always() && github.event_name != 'pull_request' && (needs.checks.result == 'failure' || needs.build.result == 'failure' || needs.deploy.result == 'failure')
+    needs: [checks, build, deploy]
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Record deployment failure

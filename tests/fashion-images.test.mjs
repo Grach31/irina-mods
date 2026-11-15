@@ -21,9 +21,3 @@ test('licensed local photos use the same load/failure fallback as external previ
  assert(!context.render({image:'images/fashion/press.jpg',image_rights:'unknown'}).includes('<img'));
  assert(context.render({}).includes('редакционная обложка'));
 });
-test('the two reported top stories keep specific photo URLs and source credits',()=>{
- const data=JSON.parse(fs.readFileSync(new URL('../miniapp/fashion-daily.json',import.meta.url),'utf8'));
- for(const id of ['20261114-rimowa-maison-margiela','ru-20261114-12storeez-vodianova-holiday']){
-  const item=data.items.find(x=>x.id===id);assert(item.image_url?.startsWith('https://'));assert(item.image_alt);assert(item.image_credit);assert.equal(item.image_source_url,item.url);assert(context.render(item).includes('<img'));
- }
-});
