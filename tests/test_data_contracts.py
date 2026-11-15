@@ -30,6 +30,13 @@ class DataContractTests(unittest.TestCase):
             ids.append(item['id'])
         self.assertEqual(len(ids), len(set(ids)), 'duplicate IDs')
 
+    def https_url(self, value):
+        self.assertIsInstance(value, str)
+        url = urlsplit(value)
+        self.assertEqual(url.scheme, 'https')
+        self.assertTrue(url.hostname)
+        self.assertFalse(url.username or url.password)
+
     def local_images(self, obj, base):
         """Check referenced local files, not remote availability or licensing policy."""
         if isinstance(obj, list):
@@ -64,13 +71,21 @@ class DataContractTests(unittest.TestCase):
                         self.assertIsInstance(item['photos'], list)
                         for photo in item['photos']:
                             self.required(photo, ('url', 'caption', 'credit', 'source_url'))
+                            self.https_url(photo['url'])
+                            self.https_url(photo['source_url'])
                     if name == 'trend-radar':
+                        self.https_url(item['image_url'])
+                        self.https_url(item['image_source_url'])
                         self.assertIsInstance(item['sources'], list)
                         for source in item['sources']:
                             self.required(source, ('title', 'url', 'date'))
                     if name == 'fashion-daily':
                         self.assertIn(item['region'], ('ru', 'world'))
                         self.assertIsInstance(item['article_sections'], list)
+                        if item.get('image_url'):
+                            self.https_url(item['image_url'])
+                        elif not item.get('image'):
+                            self.assertEqual(item.get('image_rights'), 'no_external_image')
                     if name == 'reels-studio':
                         self.assertIsInstance(item['duration'], int)
                         self.assertIsInstance(item['script'], list)
