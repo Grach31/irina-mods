@@ -47,14 +47,27 @@ async function database(method:"GET"|"POST",payload?:Record<string,unknown>){
  });
  return {ok:res.ok,status:res.status,data:method==="GET"&&res.ok?await res.json():null};
 }
+async function syncRpc(name:string,body:Record<string,unknown>={}){
+ const {url,key}=dbCreds();if(!url||!key)throw Error('sync_unconfigured');
+ const result=await fetch(url+'/rest/v1/rpc/'+name,{method:'POST',
+  headers:{apikey:key,Authorization:'Bearer '+key,'Content-Type':'application/json'},
+  body:JSON.stringify(body),signal:AbortSignal.timeout(10000)});
+ if(!result.ok)throw Error('sync_configuration_failed');
+ return await result.json();
+}
 Deno.serve(async req=>{
  if(req.method==="OPTIONS")return new Response(null,{status:204,headers});
  if(req.method!=="POST")return reply({error:"method_not_allowed"},405);
  try{
   const body=await req.json();
-  if(body.action==="ingest"){
+  if(body.action==="ingest"||body.action==="sync_status"){
    const bearer=(req.headers.get("authorization")||"").replace(/^Bearer /i,"");
-   if(!await githubAuth(bearer))return reply({error:"github_oidc_unauthorized"},401);
+   let verified=false;try{verified=await githubAuth(bearer)}catch{/** invalid assertions deny access */}
+   if(!verified)return reply({error:"github_oidc_unauthorized"},401);
+   const status=await syncRpc('ms_oura_sync_request');
+   if(body.action==='sync_status')return reply({ok:true,scheduler_configured:status.configured===true});
+   // After handoff, an older GitHub run must never overwrite server-owned data or tokens.
+   if(status.configured===true)return reply({ok:true,scheduler_configured:true});
    const data=body.data;
    if(!data||typeof data!=="object"||!["sleep","readiness","activity"].every(k=>data[k]&&typeof data[k]==="object"))return reply({error:"invalid_metrics"},400);
    const botId=String(body.bot_id||"");if(!/^\d{5,16}$/.test(botId))return reply({error:"invalid_bot_id"},400);
@@ -100,7 +113,19 @@ Deno.serve(async req=>{
      history,bot_id:botId
    };
    const result=await database("POST",safe);
-   return result.ok?reply({ok:true}):reply({error:"data_write_failed"},502);
+   if(!result.ok)return reply({error:"data_write_failed"},502);
+   if(body.sync_config){
+    const config:Record<string,string>={};
+    for(const key of ['client_id','client_secret','access_token','refresh_token','expires_at']){
+     const value=body.sync_config[key];
+     if(typeof value!=='string'||!value||value.length>6000)return reply({error:'invalid_sync_config'},400);
+     config[key]=value;
+    }
+    const configured=await syncRpc('ms_oura_sync_configure',{p_config:config});
+    if(configured!==true)return reply({error:'sync_configuration_failed'},502);
+    return reply({ok:true,scheduler_configured:true});
+   }
+   return reply({ok:true});
   }
   if(body.action==="read"){
    const existing=await database("GET");

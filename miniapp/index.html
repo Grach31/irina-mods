@@ -1472,8 +1472,24 @@ function renderOura(d){
  if(ouraSelectedDate){const saved=(Array.isArray(d.history)?d.history:[]).find(x=>x.day===ouraSelectedDate);if(saved)selectOuraDay(saved);else ouraSelectedDate=null}
  if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
+function ouraStatusMessage(data,now=Date.now()){
+ const today=new Date(now+3*60*60*1000).toISOString().slice(0,10);
+ const sleepDay=data.sleep?.detail?.day;
+ const updated=Date.parse(data.updated_at||'');
+ const stale=Number.isFinite(updated)&&now-updated>30*60*1000;
+ let message;
+ if(/^\d{4}-\d{2}-\d{2}$/.test(sleepDay||'')&&sleepDay<today){
+  message='Данные сна за '+dayName(sleepDay)+'. Ожидаем синхронизацию с Oura.';
+ }else if(!valid(data.sleep?.detail?.total_seconds)){
+  message='Данные сна за сегодняшнюю ночь ещё не поступили из Oura.';
+ }else{
+  message='Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.';
+ }
+ return message+(stale?' Последнее обновление более 30 минут назад.':'');
+}
 let ouraLoading=null;
 function loadOura(){if(!ouraLoading)ouraLoading=Promise.resolve().then(fetchOura).finally(()=>{ouraLoading=null});return ouraLoading}
+function refreshVisibleOura(){if(!document.hidden&&currentSpace==='oura'&&pwaSession)return loadOura()}
 async function fetchOura(){
  if(!pwaSession){setValue('ouraStatus','Войди в My Space, чтобы загрузить защищённые данные Oura.');return false;}
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
@@ -1492,7 +1508,7 @@ async function fetchOura(){
     data=await response.json();
   }
   renderOura(data);
-  setValue('ouraStatus','Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.');return true;
+  setValue('ouraStatus',ouraStatusMessage(data));return true;
  }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.');return false}
 }
 $('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
@@ -1528,7 +1544,8 @@ load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
  navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/',updateViaCache:'none'}).catch(()=>{});
 }
-window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load()});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load()});
+window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load();else refreshVisibleOura()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load();else refreshVisibleOura()});
+setInterval(refreshVisibleOura,60000);
 })();
 </script></body></html>
