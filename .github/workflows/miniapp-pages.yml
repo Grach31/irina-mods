@@ -123,6 +123,7 @@ jobs:
         continue-on-error: true
         env:
           NOTICE_URL: https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-notifications
+          NOTICE_SHA: ${{ github.sha }}
         run: |
           python - <<'PYCODE'
           import json, os, urllib.request
@@ -132,6 +133,10 @@ jobs:
           req=urllib.request.Request(os.environ['NOTICE_URL'],data=b'{"action":"deployment"}',headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
           with urllib.request.urlopen(req,timeout=50) as response:
               print('Notification reconciliation:',response.status)
+              result=json.load(response)
+          if result.get('ok') is not True or result.get('disabled') or not isinstance(result.get('ingested'),dict):
+              raise RuntimeError('My Space did not confirm release reconciliation')
+          print('MYSPACE_DEPLOYMENT_RECONCILED '+json.dumps({'sha':os.environ['NOTICE_SHA'],'ingested':result['ingested']}))
           PYCODE
   notify_failure:
     if: always() && github.event_name != 'pull_request' && (needs.checks.result == 'failure' || needs.build.result == 'failure' || needs.deploy.result == 'failure')
