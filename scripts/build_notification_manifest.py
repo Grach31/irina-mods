@@ -1,6 +1,7 @@
 """Build an immutable deployment inventory; no moderation notes or secrets are exported."""
 import hashlib
 import json
+import re
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,6 +16,16 @@ def digest(raw):
 def version(item):
     return digest(json.dumps({k: v for k, v in item.items() if k not in ('updated_at', 'last_checked_at', 'meta')}, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode())
 
+def delivery_receipt(item, release_sha):
+    """Proof of an exported image/revision, separate from notification identity."""
+    if item.get('ready') is not True:
+        return None
+    for key in ('revision', 'media_sha256'):
+        if not re.fullmatch(r'[a-f0-9]{64}', str(item.get(key, ''))):
+            return None
+    return {'release_sha': release_sha, 'ready': True,
+            'revision': item['revision'], 'media_sha256': item['media_sha256']}
+
 def build(root=ROOT):
     app = root / 'miniapp'
     result = {'built_at': datetime.now(timezone.utc).isoformat(), 'sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(), 'files': {}, 'items': [], 'completions': [], 'reports': []}
@@ -27,7 +38,12 @@ def build(root=ROOT):
                 raise ValueError(f'{filename}: stable id missing')
             if space == 'moda' and (item.get('ready') is not True or 'test' in iid.lower() or item.get('meta', {}).get('status') in ('rejected', 'published')):
                 continue
-            result['items'].append({'source_id': f'{space}:{iid}', 'version': version(item), 'kind': 'draft' if space == 'moda' else 'updates', 'target': {'space': space, 'id': iid}})
+            entry = {'source_id': f'{space}:{iid}', 'version': version(item), 'kind': 'draft' if space == 'moda' else 'updates', 'target': {'space': space, 'id': iid}}
+            if space == 'moda':
+                receipt = delivery_receipt(item, result['sha'])
+                if receipt:
+                    entry['delivery'] = receipt
+            result['items'].append(entry)
     for file in (root / 'editorial' / 'edit-completions').glob('*.json'):
         receipt = json.loads(file.read_text())
         did = receipt['draft_id']
@@ -48,3 +64,6 @@ if __name__ == '__main__':
     output = build()
     (APP / 'notification-manifest.json').write_text(json.dumps(output, ensure_ascii=False, separators=(',', ':')))
     print(f'Notification inventory: {len(output["items"])} materials, {len(output["completions"])} receipts')
+    for entry in output['items']:
+        if 'delivery' in entry:
+            print('MYSPACE_DELIVERY_BUILD ' + json.dumps(entry, ensure_ascii=False, sort_keys=True))

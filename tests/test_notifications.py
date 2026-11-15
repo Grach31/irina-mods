@@ -1,4 +1,8 @@
 import hashlib
+import contextlib
+import io
+import os
+import textwrap
 import importlib.util
 import json
 import tempfile
@@ -29,4 +33,31 @@ class InventoryTests(unittest.TestCase):
    for file in m.FILES.values():(r/'miniapp'/file).write_text('{"items":[]}')
    (r/'miniapp/catalog.json').write_text(json.dumps({'items':[{'id':'demo-test'},{'id':'published','meta':{'status':'published'}},{'id':'ready','ready':True,'meta':{'status':'queued'}}]}))
    with patch.object(m.subprocess,'check_output',return_value='a'*40):self.assertEqual([x['target']['id'] for x in m.build(r)['items']],['ready'])
+ def test_delivery_proof_does_not_change_notification_version(self):
+  item={'id':'safe','ready':True,'revision':'b'*64,'media_sha256':'c'*64,'meta':{'status':'queued'}}
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td);(root/'miniapp').mkdir()
+   for file in m.FILES.values():(root/'miniapp'/file).write_text('{"items":[]}')
+   (root/'miniapp/catalog.json').write_text(json.dumps({'items':[item]}))
+   with patch.object(m.subprocess,'check_output',return_value='a'*40):entry=m.build(root)['items'][0]
+  self.assertEqual(entry['version'],m.version(item))
+  self.assertEqual(entry['delivery'],{'release_sha':'a'*40,'ready':True,'revision':'b'*64,'media_sha256':'c'*64})
+  for broken in ({**item,'ready':False},{**item,'revision':''},{**item,'media_sha256':'invalid'}):
+   self.assertIsNone(m.delivery_receipt(broken,'a'*40))
+
+ def test_deployment_requires_ingestion_not_just_http_200(self):
+  workflow=(ROOT/'.github/workflows/miniapp-pages.yml').read_text()
+  step=workflow.split('      - name: Notify My Space of deployed release',1)[1]
+  code=textwrap.dedent(step.split("python - <<'PYCODE'\n",1)[1].split('          PYCODE',1)[0])
+  for body,accepted in (({'ok':True,'ingested':{'changes':2}},True),({'ok':True,'ingested':None},False),({'ok':True,'disabled':True},False),({'error':'failed'},False)):
+   with self.subTest(body=body):
+    token=io.BytesIO(b'{"value":"mock-token"}');response=io.BytesIO(json.dumps(body).encode());response.status=200
+    stdout=io.StringIO()
+    env={'ACTIONS_ID_TOKEN_REQUEST_URL':'https://token.test/?x=1','ACTIONS_ID_TOKEN_REQUEST_TOKEN':'mock-request','NOTICE_URL':'https://notice.test/','NOTICE_SHA':'a'*40}
+    with patch.dict(os.environ,env),patch('urllib.request.urlopen',side_effect=[token,response]),contextlib.redirect_stdout(stdout):
+     if accepted:exec(compile(code,'deployment-step','exec'),{})
+     else:
+      with self.assertRaisesRegex(RuntimeError,'did not confirm'):exec(compile(code,'deployment-step','exec'),{})
+    self.assertEqual('MYSPACE_DEPLOYMENT_RECONCILED' in stdout.getvalue(),accepted)
+
 if __name__=='__main__':unittest.main()
