@@ -1,10 +1,86 @@
 {
-  "edition_date": "2026-11-15",
-  "updated_at": "2026-11-15T10:10:32Z",
+  "edition_date": "2026-11-16",
+  "updated_at": "2026-11-16T07:53:11.965Z",
   "language": "ru",
-  "edition_title": "Fashion Daily — 15 ноября 2026",
-  "editor_note": "Две новые проверенные международные публикации с фотографиями-превью Vogue по ссылкам на оригиналы. Прежние записи сохранены.",
+  "edition_title": "Fashion Daily — 16 ноября 2026",
+  "editor_note": "Два новых сюжета: Россия и мир. Даты публикаций и событий указаны отдельно; фотографии — внешние превью первоисточников с атрибуцией.",
   "items": [
+    {
+      "id": "20261116-la-perla-relaunch",
+      "title": "La Perla представила план возвращения",
+      "date": "2026-11-16",
+      "published_at": "2026-11-16T05:30:00Z",
+      "event_date": "2026-11-16",
+      "added_at": "2026-11-16",
+      "region": "world",
+      "category": "Индустрия",
+      "priority": "top",
+      "brand": "La Perla",
+      "source": "Vogue Business",
+      "url": "https://www.vogue.com/article/inside-the-new-la-perla",
+      "summary": "В интервью Vogue Business глава La Perla Алессио Ваннетти рассказал о восстановлении марки.",
+      "article_sections": [
+        {
+          "heading": "Что стало известно",
+          "paragraphs": [
+            "Материал опубликован 16 ноября. Компания делает ставку на бельё, собственное производство в Болонье и постепенное развитие продаж."
+          ]
+        },
+        {
+          "heading": "Что дальше",
+          "paragraphs": [
+            "Открытие магазинов в США входит в планы. Будущие точки нельзя считать уже работающими."
+          ]
+        }
+      ],
+      "why": "Следим за возвращением специализированного бельевого дома.",
+      "telegram_text": "La Perla возвращается с фокусом на бельё и постепенное развитие. Vogue Business опубликовал интервью руководителя.",
+      "image": null,
+      "image_url": "https://assets.vogue.com/photos/6af74a33e9eea466590bbc88/16:9/w_1280,c_limit/11-16-26-LA-PERLA-vogue-business-social-link.jpg",
+      "image_alt": "Модель в атласной комбинации La Perla с кружевной отделкой",
+      "image_source": "Vogue Business",
+      "image_credit": "Courtesy of La Perla / Vogue Business",
+      "image_source_url": "https://www.vogue.com/article/inside-the-new-la-perla",
+      "image_rights": "publisher_preview_hotlink"
+    },
+    {
+      "id": "ru-20261116-pampalche-closure",
+      "title": "Pampalche завершит работу 30 декабря",
+      "date": "2026-11-13",
+      "published_at": "2026-11-13T20:57:00+03:00",
+      "event_date": "2026-12-30",
+      "added_at": "2026-11-16",
+      "region": "ru",
+      "category": "Индустрия",
+      "priority": "top",
+      "brand": "Pampalche",
+      "source": "The Blueprint",
+      "url": "https://theblueprint.ru/news/42983",
+      "summary": "Основательница петербургской марки Дарья Благодарова объявила о закрытии. Бренд продолжит работу до 30 декабря.",
+      "article_sections": [
+        {
+          "heading": "Что произошло",
+          "paragraphs": [
+            "The Blueprint сообщил о решении 13 ноября. Благодарова связывает его с финансовыми трудностями и изменением спроса, к которому прежняя модель бизнеса не успела приспособиться."
+          ]
+        },
+        {
+          "heading": "Что важно знать",
+          "paragraphs": [
+            "Марка не прекратила работу в день объявления: указанная дата завершения — 30 декабря. Это новость о конкретном бизнесе, а не основание судить о состоянии всех российских брендов."
+          ]
+        }
+      ],
+      "why": "Для стилиста это повод проверить актуальность рекомендаций марки и условия покупки.",
+      "telegram_text": "Петербургский Pampalche объявил о закрытии. По сообщению The Blueprint, марка будет работать до 30 декабря; основательница объясняет решение изменениями спроса и финансовыми трудностями.",
+      "image": null,
+      "image_url": "https://theblueprint.ru/upload/42983/social_image.png",
+      "image_alt": "Модель Pampalche в светлой одежде с объёмной атласной деталью у шеи",
+      "image_source": "The Blueprint",
+      "image_credit": "@pampalche_ / The Blueprint",
+      "image_source_url": "https://theblueprint.ru/news/42983",
+      "image_rights": "publisher_preview_hotlink"
+    },
     {
       "id": "20261115-vogue-personal-labels",
       "date": "2026-11-15",
