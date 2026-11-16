@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15",
+  "updated_at": "2026-11-16",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -210,6 +210,27 @@
       "source_url": "https://www.metmuseum.org/art/collection/search/155987",
       "photo_note": "Музейная фотография предмета из коллекции The Met; Wikimedia Commons, лицензия CC0.",
       "added_at": "2026-11-15"
+    },
+    {
+      "id": "style-time-machine-20261116-seattle-evening-1920",
+      "year": 1920,
+      "title": "Вечерняя мода 1920 года: платье из рекламы Сиэтла",
+      "period": "1920-е",
+      "description": "9 октября 1920 года магазин Carman в Сиэтле рекламировал вечернее платье в местном журнале The Town Crier. Сохранившаяся иллюстрация показывает, как нарядную одежду представляли покупательницам в начале десятилетия; это реклама, а не фотография реального платья.",
+      "then": "Нарядный силуэт и выразительная иллюстрация вечернего туалета в торговой рекламе начала 1920-х.",
+      "now": "Используй историческую рекламу как вдохновение для вечернего образа: выбери одну декоративную деталь, сохрани современную посадку и не копируй костюм буквально.",
+      "category": "Мода и реклама",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Evening_gown_illustration_(1920).jpg?width=900",
+          "caption": "Иллюстрация вечернего платья из рекламы магазина Carman, The Town Crier, Сиэтл, 9 октября 1920 года; не фотография.",
+          "credit": "Carman (Seattle) / Seattle Public Library / Wikimedia Commons, Public Domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Evening_gown_illustration_(1920).jpg"
+        }
+      ],
+      "source_url": "https://commons.wikimedia.org/wiki/File:Evening_gown_illustration_(1920).jpg",
+      "photo_note": "Изображение исторической рекламы; Public Domain (публикация 1920 года), по карточке Wikimedia Commons.",
+      "added_at": "2026-11-16"
     }
   ]
 }
