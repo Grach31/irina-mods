@@ -537,7 +537,7 @@ body>nav.nav{display:none!important}
 <div class="oura-kicker">PERSONAL WELLNESS</div><h1>Oura Ring</h1>
 <p class="oura-desc">Ваш сон, восстановление, активность и женское здоровье — в деталях, по дням и без выдуманных показателей.</p>
 <div class="oura-hero"><img id="ouraHero" alt="Синие керамические кольца Oura Ring" src="assets/oura-banner.svg"><span class="hero-shade"></span><div class="oura-hero-caption" aria-hidden="true">OURA RING · CERAMIC MIDNIGHT</div></div>
-<div class="oura-date" id="ouraDate">Последняя синхронизация: —</div><div class="oura-date" id="ouraSelectedDay" aria-live="polite">Последние показатели</div><button type="button" id="ouraToday" class="oura-range" style="padding:7px 12px;margin:6px 0 12px;background:#584c85;color:white;border-radius:12px;border:0">Последний день</button>
+<div class="oura-date" id="ouraDate">Проверено в Oura: —</div><div class="oura-status" id="ouraSourceStatus" role="status">Ожидаю данные сна и готовности из Oura.</div><div class="oura-date" id="ouraSelectedDay" aria-live="polite">Последние показатели</div><button type="button" id="ouraToday" class="oura-range" style="padding:7px 12px;margin:6px 0 12px;background:#584c85;color:white;border-radius:12px;border:0">Последний день</button>
 <div class="oura-scoreline" id="ouraScoreTiles">
 <button type="button" class="oura-score" data-score="sleep" aria-pressed="true"><small>Сон</small><strong id="ouraSleep">—</strong></button>
 <button type="button" class="oura-score" data-score="readiness" aria-pressed="false"><small>Готовность организма</small><strong id="ouraReady">—</strong></button>
@@ -739,7 +739,7 @@ const showSpace=space=>{
  if(space==='notifications')notices?.enter();
  if(space==='notificationSettings')notices?.settings();
  if(space==='moda'){load();if(tg)tg.expand()}
- if(space==='oura')loadOura();
+ if(space==='oura')showLatestOura();
  if(space==='fashion')loadFashion(true);
  if(space==='settings')refreshSettings();
  if(space==='reels'||space==='trends'||space==='history')loadMySpaceEditorial(space,true);
@@ -1276,7 +1276,8 @@ let selectedScore='sleep',readyDays=7,activityDays=7,activityMeasure='steps';
 function scoreTier(score){return !valid(score)?-1:score>=85?0:score>=70?1:score>=60?2:3}
 function explainScore(kind){
  selectedScore=kind;
- const spec=scoreInfo[kind],actual=ouraLive?.[kind]?.score,tier=scoreTier(actual);
+ const archive=ouraSelectedDate?(ouraLive?.history||[]).find(x=>x.day===ouraSelectedDate):null;
+ const spec=scoreInfo[kind],actual=archive?archive[kind]:ouraLive?.[kind]?.score,tier=scoreTier(actual);
  setValue('ouraEvalTitle',spec.title);
  setValue('ouraEvalValue',valid(actual)?Math.round(actual)+' / 100':'Нет данных');
  setValue('ouraEvalStatus',tier<0?'Оценка ещё не поступила':spec.levels[tier]);
@@ -1295,7 +1296,7 @@ const activeMinutes=x=>valid(x.medium_activity_seconds)||valid(x.high_activity_s
 function selectOuraDay(entry){
  if(!entry?.day)return;
  ouraSelectedDate=entry.day;
- setValue('ouraSelectedDay','Показатели за '+dayName(entry.day));
+ setValue('ouraSelectedDay','Архив: показатели за '+dayName(entry.day));
  const map=[['ouraSleep','sleep'],['ouraSleepScore','sleep'],['ouraReady','readiness'],['ouraReadyScore','readiness'],['ouraActivity','activity'],['ouraActivityScore','activity']];
  map.forEach(([id,key])=>setValue(id,integer(entry[key])));
  setValue('sleepSummary','Ночь '+dayName(entry.day)+' · архивные показатели');
@@ -1310,6 +1311,8 @@ function selectOuraDay(entry){
  setValue('actActiveCal',numeric(entry.active_calories,' ккал'));setValue('actTotalCal',numeric(entry.total_calories,' ккал'));
  setValue('actHigh',prettySeconds(entry.high_activity_seconds));setValue('actMedium',prettySeconds(entry.medium_activity_seconds));
  renderOuraCharts();
+ explainScore(selectedScore);
+ stages(entry);
 }
 $('ouraToday').onclick=()=>{ouraSelectedDate=null;if(ouraLive)renderOura(ouraLive)};
 function displayChartDetail(type,entry){
@@ -1465,31 +1468,39 @@ function renderOura(d){
  setValue('activitySummary',ac.day?'Сведения за '+dayName(ac.day):'За последний синхронизированный день.');
  setValue('actSteps',integer(ac.steps));setValue('actActiveCal',numeric(ac.active_calories,' ккал'));setValue('actTotalCal',numeric(ac.total_calories,' ккал'));
  setValue('actHigh',prettySeconds(ac.high_activity_seconds));setValue('actMedium',prettySeconds(ac.medium_activity_seconds));
- if(d.updated_at){const dt=new Date(d.updated_at);setValue('ouraDate','Обновлено '+dt.toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Moscow'})+' МСК')}
+ if(d.updated_at){const dt=new Date(d.updated_at);setValue('ouraDate','Проверено в Oura '+dt.toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Moscow'})+' МСК')}
+ setValue('ouraSourceStatus',ouraSourceStatusMessage(d));
  renderOuraCharts();
  explainScore(selectedScore);
  stages(sd);
  if(ouraSelectedDate){const saved=(Array.isArray(d.history)?d.history:[]).find(x=>x.day===ouraSelectedDate);if(saved)selectOuraDay(saved);else ouraSelectedDate=null}
  if(!ouraSelectedDate)setValue('ouraSelectedDay','Последние синхронизированные показатели');
 }
-function ouraStatusMessage(data,now=Date.now()){
+function ouraSourceStatusMessage(data,now=Date.now()){
  const today=new Date(now+3*60*60*1000).toISOString().slice(0,10);
- const sleepDay=data.sleep?.detail?.day;
+ const asDay=value=>/^\d{4}-\d{2}-\d{2}$/.test(value||'')?value:null;
+ const sleepDay=valid(data.sleep?.detail?.total_seconds)?asDay(data.sleep?.detail?.day):null;
+ const historyReadiness=(Array.isArray(data.history)?data.history:[])
+  .filter(entry=>entry&&valid(entry.readiness)&&asDay(entry.day)&&entry.day<=today)
+  .map(entry=>entry.day).sort().at(-1);
+ const readinessDay=valid(data.readiness?.score)?asDay(data.readiness?.day)||historyReadiness:null;
+ const parts=[sleepDay?'Данные сна за '+dayName(sleepDay)+'.':'Дата данных сна пока не доступна.',
+  readinessDay?'Готовность за '+dayName(readinessDay)+'.':'Дата данных готовности пока не доступна.'];
+ const pending=[];
+ if(sleepDay!==today)pending.push('сон');
+ if(readinessDay!==today)pending.push('готовность');
+ if(pending.length)parts.push('За '+dayName(today)+' '+pending.join(' и ')+(pending.length===1?' ещё не поступил'+(pending[0]==='готовность'?'а':''):' ещё не поступили')+' из Oura. Откройте приложение Oura и дождитесь синхронизации кольца.');
+ return parts.join(' ');
+}
+function ouraStatusMessage(data,now=Date.now()){
  const updated=Date.parse(data.updated_at||'');
  const stale=Number.isFinite(updated)&&now-updated>30*60*1000;
- let message;
- if(/^\d{4}-\d{2}-\d{2}$/.test(sleepDay||'')&&sleepDay<today){
-  message='Данные сна за '+dayName(sleepDay)+'. Ожидаем синхронизацию с Oura.';
- }else if(!valid(data.sleep?.detail?.total_seconds)){
-  message='Данные сна за сегодняшнюю ночь ещё не поступили из Oura.';
- }else{
-  message='Показатели получены из Oura API. Прочерки означают, что конкретная метрика ещё не доступна.';
- }
- return message+(stale?' Последнее обновление более 30 минут назад.':'');
+ return stale?'Последняя проверка Oura была более 30 минут назад. Новая проверка выполняется автоматически.':'Новые показатели появятся автоматически, когда Oura передаст их. Прочерки означают, что конкретная метрика пока не доступна.';
 }
 let ouraLoading=null;
 function loadOura(){if(!ouraLoading)ouraLoading=Promise.resolve().then(fetchOura).finally(()=>{ouraLoading=null});return ouraLoading}
-function refreshVisibleOura(){if(!document.hidden&&currentSpace==='oura'&&pwaSession)return loadOura()}
+function showLatestOura(){ouraSelectedDate=null;if(ouraLive)renderOura(ouraLive);return loadOura()}
+function refreshVisibleOura({resetSelection=false}={}){if(!document.hidden&&currentSpace==='oura'&&pwaSession)return resetSelection?showLatestOura():loadOura()}
 async function fetchOura(){
  if(!pwaSession){setValue('ouraStatus','Войди в My Space, чтобы загрузить защищённые данные Oura.');return false;}
  setValue('ouraStatus','Загружаю защищённые данные кольца…');
@@ -1544,8 +1555,8 @@ load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
  navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/',updateViaCache:'none'}).catch(()=>{});
 }
-window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load();else refreshVisibleOura()});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load();else refreshVisibleOura()});
+window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load();else refreshVisibleOura({resetSelection:true})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load();else refreshVisibleOura({resetSelection:true})});
 setInterval(refreshVisibleOura,60000);
 })();
 </script></body></html>
