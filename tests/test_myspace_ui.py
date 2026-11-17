@@ -75,7 +75,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         data = json.loads((APP / "fashion-daily.json").read_text(encoding="utf-8"))
         self.assertTrue(data["items"])
         start = self.html.index("const fashionSafeUrl=value=>{")
-        end = self.html.index("const fashionArt=d=>", start)
+        end = self.html.index("const fashionArt=", start)
         validator = self.html[start:end]
         self.assertIn("u.protocol==='https:'", validator)
         self.assertNotIn("vogue\\.com", validator)
