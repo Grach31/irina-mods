@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-17",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -231,6 +231,26 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Evening_gown_illustration_(1920).jpg",
       "photo_note": "Изображение исторической рекламы; Public Domain (публикация 1920 года), по карточке Wikimedia Commons.",
       "added_at": "2026-11-16"
+    },
+    {
+      "id": "style-time-machine-20261117-gazette-bon-ton-1913",
+      "year": 1913,
+      "title": "Gazette du Bon Ton: мода как искусство иллюстрации",
+      "period": "1910-е",
+      "description": "Рождественский выпуск 1913 года — январь 1914 года французского журнала Gazette du Bon Ton объединял модные иллюстрации и тексты. В номере были представлены работы, связанные с домами Cheruit, Doeuillet, Doucet, Paquin, Poiret, Redfern и Worth. Обложка и листы из собрания Rijksmuseum показывают, как печатная графика представляла моду читателям начала XX века.",
+      "then": "Цветные иллюстрации модных домов, отдельные печатные листы и декоративная композиция.",
+      "now": "Для современного модного контента можно использовать иллюстративную подачу образа: чистый силуэт, один акцентный цвет и внимание к рисунку ткани.",
+      "category": "Модная пресса",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gazette_du_Bon_Ton._Art_-_Modes_%26_Frivolit%C3%A9s,_No._1_-_1913-1914,_RP-P-2009-1934.jpg",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gazette%20du%20Bon%20Ton.%20Art%20-%20Modes%20%26%20Frivolit%C3%A9s%2C%20No.%201%20-%201913-1914%2C%20RP-P-2009-1934.jpg",
+          "caption": "Gazette du Bon Ton, выпуск № 1 (Рождество 1913 — январь 1914). Исторический печатный выпуск, не фотография показа.",
+          "credit": "Rijksmuseum, Amsterdam / Wikimedia Commons, CC0 (Public Domain)",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Gazette_du_Bon_Ton._Art_-_Modes_%26_Frivolit%C3%A9s,_No._1_-_1913-1914,_RP-P-2009-1934.jpg"
+        }
+      ],
+      "added_at": "2026-11-17"
     }
   ]
 }
