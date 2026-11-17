@@ -50,12 +50,28 @@
         }
       ],
       "image": null,
-      "image_url": "https://theblueprint.ru/upload/43031/social_image.png",
+      "image_url": "https://theblueprint.ru/upload/43031/vms2/e7b5c7f41eaba376a3bde328def17060.webp",
       "image_alt": "Наталья Алавердян на улице в светлом пальто с розовой отделкой",
       "image_source": "The Blueprint",
       "image_credit": "Getty Images / The Blueprint",
       "image_source_url": "https://theblueprint.ru/news/43031",
-      "image_rights": "publisher_preview_hotlink"
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://www.theindustry.fashion/wp-content/uploads/2026/11/Natalia_Alaverdian_c_Sarah_Houcke_cropped-2.jpg",
+          "alt": "Чёрно-белый портрет Натальи Алавердян в очках",
+          "credit": "Sarah Houcke / TheIndustry.fashion",
+          "source_url": "https://www.theindustry.fashion/a-w-a-k-e-mode-founder-natalia-alaverdian-steps-down-as-creative-director/",
+          "rights": "publisher_preview_hotlink"
+        },
+        {
+          "url": "https://theblueprint.ru/upload/43031/social_image.png",
+          "alt": "Наталья Алавердян на улице в светлом пальто с розовой отделкой",
+          "credit": "Getty Images / The Blueprint",
+          "source_url": "https://theblueprint.ru/news/43031",
+          "rights": "publisher_preview_hotlink"
+        }
+      ]
     },
     {
       "id": "ru-20261117-nume-ilya-migmun-holiday",
@@ -94,12 +110,21 @@
       "why": "Праздничную выразительность можно собрать вокруг одной детали.",
       "telegram_text": "Илья Мигмун и Nume выпустили новогоднюю капсулу: корсетные силуэты, атлас и выразительные аксессуары. Онлайн-запуск состоялся 16 ноября; появление в физических магазинах ожидается в декабре.",
       "image": null,
-      "image_url": "https://theblueprint.ru/upload/43009/social_image.png",
+      "image_url": "https://theblueprint.ru/upload/43009/vms2/047032dd1ce78b255cb7530a4a940fc5.webp",
       "image_alt": "Две модели в ретро-образах Nume и Ильи Мигмуна с объёмными платками и перчатками",
       "image_source": "The Blueprint",
       "image_credit": "Пресс-служба Nume / The Blueprint",
       "image_source_url": "https://theblueprint.ru/news/43009",
-      "image_rights": "publisher_preview_hotlink"
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://theblueprint.ru/upload/43009/social_image.png",
+          "alt": "Две модели в ретро-образах Nume и Ильи Мигмуна с объёмными платками и перчатками",
+          "credit": "Пресс-служба Nume / The Blueprint",
+          "source_url": "https://theblueprint.ru/news/43009",
+          "rights": "publisher_preview_hotlink"
+        }
+      ]
     },
     {
       "id": "20261116-la-perla-relaunch",

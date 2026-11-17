@@ -358,6 +358,7 @@ html,body{overscroll-behavior-y:none}
 
 .fashion-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
 .fashion-artwork.has-photo:before,.fashion-artwork.has-photo strong{display:none}
+.fashion-artwork.photo-unavailable img{display:none}
 .fashion-artwork.has-photo small{z-index:2;color:#fff;text-shadow:0 1px 5px #000c;background:#0007;border-radius:4px;padding:5px 7px;max-width:88%}
 .fashion-article .fashion-artwork{height:clamp(210px,58vw,340px)}
 
@@ -1014,30 +1015,51 @@ const fashionSafeUrl=value=>{
   return u.protocol==='https:'&&u.hostname&&!u.username&&!u.password?u.href:null;
  }catch{return null}
 };
-const fashionArt=d=>{
+const fashionArt=(d,eager=false)=>{
  const label=escapeHtml(String(d.brand||'FASHION').slice(0,34));
  const local=(typeof d.image==='string'&&/^images\/fashion\/[a-zA-Z0-9_.-]+\.(jpg|png|webp)$/.test(d.image)&&d.image_rights==='licensed')?d.image:null;
  const preview=fashionSafeUrl(d.image_url||'');
  const source=local||preview;
+ const candidates=source?[{url:source,alt:d.image_alt||d.title||d.brand||'Фото к новости',credit:d.image_credit||d.image_source||d.source||'Источник'}]:[];
+ for(const photo of (Array.isArray(d.image_fallbacks)?d.image_fallbacks:[]).slice(0,3)){
+  const url=fashionSafeUrl(photo?.url||'');
+  if(url&&photo.rights==='publisher_preview_hotlink'&&fashionSafeUrl(photo.source_url||'')&&photo.credit&&!candidates.some(x=>x.url===url))candidates.push({url,alt:photo.alt||d.image_alt||d.title||'Фото к новости',credit:photo.credit});
+ }
  const credit=escapeHtml(String(d.image_credit||d.image_source||d.source||'Источник')+' · фото к новости');
  const fallback='<strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small>';
- return '<div class="fashion-artwork"'+(source?' data-photo-credit="'+credit+'"':'')+'>'+(source?'<img data-news-photo src="'+escapeHtml(source)+'" alt="'+escapeHtml(String(d.image_alt||d.title||d.brand||'Фото к новости'))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+fallback+'</div>';
+ return '<div class="fashion-artwork"'+(source?' data-photo-credit="'+credit+'" data-photo-candidates="'+escapeHtml(JSON.stringify(candidates))+'"':'')+'>'+(source?'<img data-news-photo src="'+escapeHtml(source)+'" alt="'+escapeHtml(String(d.image_alt||d.title||d.brand||'Фото к новости'))+'" loading="'+(eager?'eager':'lazy')+'" decoding="async" referrerpolicy="no-referrer">':'')+fallback+'</div>';
 };
 function fashionWatchImages(root){
  root.querySelectorAll('img[data-news-photo]').forEach(img=>{
+  if(img.dataset.photoBound)return;
+  img.dataset.photoBound='1';
   const artwork=img.parentElement;
-  const loaded=()=>{artwork.classList.add('has-photo');artwork.querySelector('small').textContent=artwork.dataset.photoCredit};
-  img.addEventListener('load',loaded,{once:true});
-  img.addEventListener('error',()=>{artwork.classList.remove('has-photo');artwork.querySelector('small').textContent='Fashion Daily · редакционная обложка';img.remove()},{once:true});
-  if(img.complete&&img.naturalWidth>0)loaded();
+  let candidates=[];try{candidates=JSON.parse(artwork.dataset.photoCandidates||'[]')}catch{}
+  let index=0,retried=false,timer=null;
+  const loaded=()=>{clearTimeout(timer);timer=null;img.hidden=false;artwork.classList.add('has-photo');artwork.classList.remove('photo-unavailable');artwork.querySelector('small').textContent=artwork.dataset.photoCredit};
+  const failed=()=>{
+   if(timer)return;
+   artwork.classList.remove('has-photo');
+   if(index+1<candidates.length){
+    const photo=candidates[++index];retried=false;
+    timer=setTimeout(()=>{timer=null;img.alt=photo.alt;artwork.dataset.photoCredit=photo.credit+' · фото к новости';img.src=photo.url},300);
+   }else if(!retried){
+    retried=true;timer=setTimeout(()=>{timer=null;const url=new URL(img.src,location.href);url.searchParams.set('_ms_photo_retry',Date.now());img.src=url.href},800);
+   }else{
+    img.hidden=true;artwork.classList.add('photo-unavailable');artwork.querySelector('small').textContent='Фото временно недоступно · обнови раздел';
+   }
+  };
+  img.addEventListener('load',loaded);
+  img.addEventListener('error',failed);
+  if(img.complete){if(img.naturalWidth>0)loaded();else failed()}
  });
 }
 const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):'Дата не указана';
-function fashionCard(item){
+function fashionCard(item,eager=false){
  const url=fashionSafeUrl(item.url);
  if(!url||!item.title||!item.summary||!item.id)return null;
  const button=document.createElement('button');button.type='button';button.className='fashion-story';button.dataset.region=item.region||'world';
- button.innerHTML=fashionArt(item)+'<div class="fashion-story-body"><div class="fashion-story-meta">'+escapeHtml(item.category||'Мода')+' · '+escapeHtml(item.source||'Источник')+' · '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p>'+escapeHtml(item.summary)+'</p><div class="fashion-story-more">Читать обзор →</div></div>';
+ button.innerHTML=fashionArt(item,eager)+'<div class="fashion-story-body"><div class="fashion-story-meta">'+escapeHtml(item.category||'Мода')+' · '+escapeHtml(item.source||'Источник')+' · '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p>'+escapeHtml(item.summary)+'</p><div class="fashion-story-more">Читать обзор →</div></div>';
  fashionWatchImages(button);button.onclick=()=>fashionOpen(item);
  return button;
 }
@@ -1053,7 +1075,7 @@ function fashionRender(){
  const show=items.filter(x=>fashionCategory==='Все' || (fashionCategory==='Российские' ? x.region==='ru' : x.region!=='ru'&&x.category===fashionCategory)).sort((a,b)=>String(b.published_at||b.date||'').localeCompare(String(a.published_at||a.date||'')));
 
  if(!show.length){list.innerHTML='<div class="fashion-empty">В этом разделе пока нет проверенных материалов.</div>';return}
- show.forEach(item=>{const b=fashionCard(item);if(b)list.appendChild(b)});
+ show.forEach((item,index)=>{const b=fashionCard(item,index<2);if(b)list.appendChild(b)});
 }
 function fashionOpen(item){
  fashionSelected=item;
@@ -1064,7 +1086,7 @@ function fashionOpen(item){
  const detail=Array.isArray(item.article_sections)&&item.article_sections.length?
  item.article_sections.filter(x=>x&&typeof x==='object').slice(0,12):
  [{heading:'Что произошло',paragraphs:Array.isArray(item.details)?item.details.slice(0,8):[]}];
- card.innerHTML=fashionArt(item)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(section=>'<section class="fashion-article-section">'+(section.heading?'<h3>'+escapeHtml(section.heading)+'</h3>':'')+(Array.isArray(section.paragraphs)?section.paragraphs:[]).slice(0,8).filter(p=>typeof p==='string').map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')+
+ card.innerHTML=fashionArt(item,true)+'<div class="fashion-article-body"><div class="byline">'+escapeHtml(item.category||'Мода')+' / '+escapeHtml(item.source||'Источник')+' / '+fashionDate(item.date)+'</div><h2>'+escapeHtml(item.title)+'</h2><p><strong>'+escapeHtml(item.summary)+'</strong></p>'+detail.map(section=>'<section class="fashion-article-section">'+(section.heading?'<h3>'+escapeHtml(section.heading)+'</h3>':'')+(Array.isArray(section.paragraphs)?section.paragraphs:[]).slice(0,8).filter(p=>typeof p==='string').map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')+
  (item.why?'<div class="editor-note"><strong>Почему это важно</strong><p>'+escapeHtml(item.why)+'</p></div>':'')+
  '<a class="source-link" href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer">Полная статья на сайте '+escapeHtml(item.source||'источника')+' ↗</a>'+
  '<p class="fashion-rights">Подробный оригинальный пересказ на русском. Оригинальная публикация — по ссылке на источник.</p></div>';
