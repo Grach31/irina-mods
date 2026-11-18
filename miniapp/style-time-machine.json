@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -251,6 +251,26 @@
         }
       ],
       "added_at": "2026-11-17"
+    },
+    {
+      "id": "style-time-machine-20261118-bicycle-dress-1895",
+      "year": 1895,
+      "title": "Велосипед и реформа женского костюма в 1895 году",
+      "period": "1890-е",
+      "description": "7 августа 1895 года американский журнал опубликовал хромолитографию Сэмюэла Д. Эрхарта «The bicycle — the great dress reformer of the nineteenth century!». На ней велосипед становится символом перемен: рядом с привычными длинными платьями показана более практичная одежда для движения. Это сатирическая иллюстрация эпохи, а не фотография реального костюма.",
+      "then": "Дискуссия о велосипедной одежде сделала заметнее запрос на свободу движения: укороченные формы и шаровары-блумеры противопоставлялись стесняющим нарядам.",
+      "now": "Исторический сюжет напоминает, что функциональность и удобство тоже формируют моду: выбирай одежду, в которой можно свободно двигаться.",
+      "category": "История костюма",
+      "source_url": "https://www.loc.gov/item/2012648650/",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/The_bicycle_-_the_great_dress_reformer_of_the_nineteenth_century%21_-_Ehrhart._LCCN2012648650.jpg?width=900",
+          "caption": "Сэмюэл Д. Эрхарт, сатирическая хромолитография о велосипеде и реформе одежды, 1895; не фотография.",
+          "credit": "S. D. Ehrhart / Library of Congress / Wikimedia Commons, Public Domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_bicycle_-_the_great_dress_reformer_of_the_nineteenth_century%21_-_Ehrhart._LCCN2012648650.jpg"
+        }
+      ],
+      "added_at": "2026-11-18"
     }
   ]
 }
