@@ -1,10 +1,116 @@
 {
-  "edition_date": "2026-11-17",
-  "updated_at": "2026-11-17T05:58:03.584Z",
+  "edition_date": "2026-11-18",
+  "updated_at": "2026-11-18T06:05:26.097Z",
   "language": "ru",
-  "edition_title": "Fashion Daily — 17 ноября 2026",
-  "editor_note": "Два новых сюжета из России и мировой модной индустрии. Фотографии — проверенные внешние превью источников; даты публикаций и событий указаны отдельно.",
+  "edition_title": "Fashion Daily — 18 ноября 2026",
+  "editor_note": "Два новых сюжета России и мира: Ekonika Sense и Moon Boot × Guest in Residence. Даты анонсов и запуска разделены; внешние фотографии с атрибуцией и проверенными резервами.",
   "items": [
+    {
+      "id": "ru-20261118-ekonika-sense-gattsiev",
+      "title": "Ekonika Sense с Ибрагимом Гатциевым выйдет 19 ноября",
+      "date": "2026-11-17",
+      "published_at": "2026-11-17T12:19:00+03:00",
+      "event_date": "2026-11-19",
+      "added_at": "2026-11-18",
+      "region": "ru",
+      "category": "Коллекции",
+      "priority": "normal",
+      "brand": "Ekonika Sense",
+      "source": "The Blueprint",
+      "url": "https://theblueprint.ru/news/43046",
+      "summary": "Ибрагим Гатциев создал для Ekonika капсулу с отсылками к старому Голливуду. Продажи заявлены на 19 ноября.",
+      "article_sections": [
+        {
+          "heading": "Что представили",
+          "paragraphs": [
+            "В публикации от 17 ноября стилист рассказал о работе над Ekonika Sense. В основе — винтажные формы 1920-х, 1940-х и 1950-х годов и настроение мюзиклов."
+          ]
+        },
+        {
+          "heading": "Когда появится",
+          "paragraphs": [
+            "Источник указывает 19 ноября как дату поступления всей капсулы в продажу. На дату этого выпуска это будущий запуск: анонс не подтверждает наличие конкретной пары или размера."
+          ]
+        },
+        {
+          "heading": "Взгляд стилиста",
+          "paragraphs": [
+            "Ретро-обувь можно сделать единственным выразительным акцентом вечернего комплекта. Такая стилизация не требует повторять весь образ из съёмки и не означает, что винтажные формы стали массовым трендом."
+          ]
+        }
+      ],
+      "why": "Повод присмотреться к вечерней обуви с мягкими ретро-линиями.",
+      "telegram_text": "Ekonika Sense и Ибрагим Гатциев обратились к старому Голливуду и винтажным формам обуви. По сообщению The Blueprint, вся капсула поступит в продажу 19 ноября.",
+      "image": null,
+      "image_url": "https://theblueprint.ru/upload/43046/vms2/a22f82fdd9a85252883cad25f8dd76dc.webp",
+      "image_alt": "Модель в розовой юбке и светлых туфлях в съёмке Ekonika Sense",
+      "image_source": "The Blueprint",
+      "image_credit": "Пресс-служба и соцсети Ekonika / The Blueprint",
+      "image_source_url": "https://theblueprint.ru/news/43046",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://theblueprint.ru/upload/43046/social_image.png",
+          "alt": "Кадр съёмки капсулы Ekonika Sense с туфлями и вечерним образом",
+          "credit": "Пресс-служба и соцсети Ekonika / The Blueprint",
+          "source_url": "https://theblueprint.ru/news/43046",
+          "rights": "publisher_preview_hotlink"
+        }
+      ]
+    },
+    {
+      "id": "20261118-moon-boot-guest-in-residence",
+      "title": "Moon Boot и Guest in Residence представили вторую коллаборацию",
+      "date": "2026-11-16",
+      "published_at": "2026-11-16T11:00:00Z",
+      "event_date": "2026-11-17",
+      "added_at": "2026-11-18",
+      "region": "world",
+      "category": "Коллаборации",
+      "priority": "normal",
+      "brand": "Moon Boot × Guest in Residence",
+      "source": "Vogue",
+      "url": "https://www.vogue.com/article/guest-in-residence-moon-boot-collaboration",
+      "summary": "Зимняя обувь получила вязаные фактуры и ретро-мотивы. Запуск назначили на 17 ноября.",
+      "article_sections": [
+        {
+          "heading": "Что произошло",
+          "paragraphs": [
+            "Vogue анонсировал вторую совместную коллекцию 16 ноября. Официальная карточка модели Icon Nolace Fair Isle также доступна на сайте Guest in Residence."
+          ]
+        },
+        {
+          "heading": "Как смотреть",
+          "paragraphs": [
+            "Это отдельная коллаборация, а не доказательство нового массового тренда. Наличие нужного размера проверяется отдельно."
+          ]
+        }
+      ],
+      "why": "Вязаная фактура добавляет зимней обуви выразительность.",
+      "telegram_text": "Moon Boot и Guest in Residence продолжили сотрудничество: зимняя обувь с вязаной отделкой и ретро-мотивами. Заявленная дата запуска — 17 ноября.",
+      "sources": [
+        {
+          "title": "Guest in Residence · Icon Nolace Fair Isle",
+          "url": "https://guestinresidence.com/products/mb-x-gir-icon-nolace-fair-isle-oatmeal"
+        }
+      ],
+      "image": null,
+      "image_url": "https://assets.vogue.com/photos/6af60c00e140b352ee061c75/master/w_640,c_limit/image5.jpg",
+      "image_alt": "Ботинки Moon Boot × Guest in Residence с вязаной отделкой и шнуровкой",
+      "image_source": "Vogue",
+      "image_credit": "Courtesy of Guest in Residence / Vogue",
+      "image_source_url": "https://www.vogue.com/article/guest-in-residence-moon-boot-collaboration",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://guestinresidence.com/cdn/shop/files/80D1410110-L039_01.jpg?v=1794904326",
+          "alt": "Ботинки Icon Nolace Fair Isle цвета Oatmeal на официальной фотографии",
+          "credit": "Guest in Residence / Moon Boot",
+          "source_url": "https://guestinresidence.com/products/mb-x-gir-icon-nolace-fair-isle-oatmeal",
+          "rights": "publisher_preview_hotlink"
+        }
+      ]
+    },
     {
       "id": "20261117-awake-mode-alaverdian-exit",
       "title": "Наталья Алавердян покидает A.W.A.K.E. Mode",
