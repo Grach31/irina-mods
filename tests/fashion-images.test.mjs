@@ -36,7 +36,7 @@ test('a cached failed photo recovers through its fallback and updates attributio
  const img={dataset:{},parentElement:artwork,complete:true,naturalWidth:0,src:'https://one.example/a.jpg',addEventListener:(n,f)=>{listeners[n]=f}};
  context.watch({querySelectorAll:()=>[img]});assert.equal(queue.length,1);queue.shift()();
  assert.equal(img.src,'https://two.example/b.jpg');assert.equal(img.alt,'Backup');
- listeners.load();assert(classes.has('has-photo'));assert.equal(small.textContent,'Backup author · фото к новости');
+ img.complete=true;img.naturalWidth=640;listeners.load();assert(classes.has('has-photo'));assert.equal(small.textContent,'Backup author · фото к новости');
 });
 test('persistent failure retries once and retains a clear unavailable state without looping',()=>{
  const queue=[];let timers=0;context.setTimeout=fn=>{queue.push(fn);return ++timers};context.clearTimeout=()=>{};context.location={href:'https://app.example/'};
@@ -44,4 +44,29 @@ test('persistent failure retries once and retains a clear unavailable state with
  const img={dataset:{},parentElement:artwork,complete:false,naturalWidth:0,src:'https://one.example/a.jpg',addEventListener:(n,f)=>{listeners[n]=f}};
  context.watch({querySelectorAll:()=>[img]});listeners.error();queue.shift()();assert(img.src.includes('_ms_photo_retry='));
  listeners.error();assert.equal(queue.length,0);assert.equal(img.hidden,true);assert(classes.has('photo-unavailable'));assert(small.textContent.includes('временно недоступно'));
+});
+
+function timedPhotoFixture(loading='eager'){
+ const timers=new Map(),listeners={},classes=new Set();let next=0,intersection;
+ const small={textContent:''};
+ const artwork={dataset:{photoCredit:'Primary author · фото к новости',photoCandidates:JSON.stringify([{url:'https://one.example/a.jpg',credit:'Primary author',alt:'First'},{url:'https://two.example/b.jpg',credit:'Backup author',alt:'Backup'}])},classList:{add:x=>classes.add(x),remove:x=>classes.delete(x)},querySelector:()=>small};
+ const img={dataset:{},parentElement:artwork,loading,isConnected:true,complete:false,naturalWidth:0,hidden:false,src:'https://one.example/a.jpg',addEventListener:(n,f)=>{listeners[n]=f}};
+ const ctx={URL,location:{href:'https://app.example/'},setTimeout:(fn,delay)=>{timers.set(++next,{fn,delay});return next},clearTimeout:id=>timers.delete(id),IntersectionObserver:class{constructor(fn){intersection=fn}observe(){}disconnect(){}}};
+ vm.runInNewContext(escapeCode+'\n'+html.slice(start,end)+'\nglobalThis.watch=fashionWatchImages;',ctx);
+ ctx.watch({querySelectorAll:()=>[img]});
+ return {img,small,listeners,classes,timers,intersect:()=>intersection([{isIntersecting:true}]),run:delay=>{const entry=[...timers].find(([,t])=>t.delay===delay);assert(entry,`No timer for ${delay}ms`);timers.delete(entry[0]);entry[1].fn()}};
+}
+test('a hanging photo advances to a credited fallback without waiting for a network error',async()=>{
+ const f=timedPhotoFixture();await Promise.resolve();f.run(10000);f.run(300);
+ assert.equal(f.img.src,'https://two.example/b.jpg');f.img.complete=true;f.img.naturalWidth=640;f.listeners.load();
+ assert.equal(f.small.textContent,'Backup author · фото к новости');assert.equal(f.timers.size,0);
+});
+test('a failed photo can restart at the primary source and restore its attribution',async()=>{
+ const f=timedPhotoFixture();await Promise.resolve();f.listeners.error();f.run(300);f.listeners.error();f.run(800);f.listeners.error();
+ assert(f.img.hidden);assert.equal(f.timers.size,0);
+ f.listeners['myspace-photo-retry']();assert.equal(f.img.hidden,false);assert(f.img.src.startsWith('https://one.example/a.jpg?'));
+ f.img.complete=true;f.img.naturalWidth=640;f.listeners.load();assert.equal(f.small.textContent,'Primary author · фото к новости');assert.equal(f.timers.size,0);
+});
+test('offscreen lazy photos do not start timeout retries before entering the viewport',async()=>{
+ const f=timedPhotoFixture('lazy');await Promise.resolve();assert.equal(f.timers.size,0);f.intersect();assert.equal(f.timers.size,1);
 });

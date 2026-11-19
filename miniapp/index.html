@@ -359,6 +359,8 @@ html,body{overscroll-behavior-y:none}
 .fashion-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
 .fashion-artwork.has-photo:before,.fashion-artwork.has-photo strong{display:none}
 .fashion-artwork.photo-unavailable img{display:none}
+.fashion-photo-refresh{display:block;margin:0 0 14px auto;padding:8px 12px;border:1px solid #b8a99a;border-radius:18px;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer}
+.fashion-photo-refresh:focus-visible{outline:2px solid #b97759;outline-offset:2px}
 .fashion-artwork.has-photo small{z-index:2;color:#fff;text-shadow:0 1px 5px #000c;background:#0007;border-radius:4px;padding:5px 7px;max-width:88%}
 .fashion-article .fashion-artwork{height:clamp(210px,58vw,340px)}
 
@@ -526,6 +528,7 @@ body>nav.nav{display:none!important}
 <h1>Fashion Daily.</h1>
 <p class="fashion-lede">Главное из мира моды — на русском, с оригинальными источниками. Независимая редакционная подборка.</p>
 <div class="fashion-edition"><span id="fashionEdition">Получаю свежий выпуск…</span><span id="fashionCount">— новостей</span></div>
+<button type="button" class="fashion-photo-refresh" id="fashionPhotosRefresh">Обновить фото</button>
 <div class="fashion-tags" id="fashionFilters"></div>
 <div id="fashionList" class="fashion-list"><div class="fashion-empty">Загружаю подборку…</div></div>
 <div id="fashionArticle" class="hidden"></div>
@@ -1026,7 +1029,7 @@ const fashionArt=(d,eager=false)=>{
   if(url&&photo.rights==='publisher_preview_hotlink'&&fashionSafeUrl(photo.source_url||'')&&photo.credit&&!candidates.some(x=>x.url===url))candidates.push({url,alt:photo.alt||d.image_alt||d.title||'Фото к новости',credit:photo.credit});
  }
  const credit=escapeHtml(String(d.image_credit||d.image_source||d.source||'Источник')+' · фото к новости');
- const fallback='<strong>'+label+'</strong><small>Fashion Daily · редакционная обложка</small>';
+ const fallback='<strong>'+label+'</strong><small>'+(source?'Загружаю фото…':'Fashion Daily · редакционная обложка')+'</small>';
  return '<div class="fashion-artwork"'+(source?' data-photo-credit="'+credit+'" data-photo-candidates="'+escapeHtml(JSON.stringify(candidates))+'"':'')+'>'+(source?'<img data-news-photo src="'+escapeHtml(source)+'" alt="'+escapeHtml(String(d.image_alt||d.title||d.brand||'Фото к новости'))+'" loading="'+(eager?'eager':'lazy')+'" decoding="async" referrerpolicy="no-referrer">':'')+fallback+'</div>';
 };
 function fashionWatchImages(root){
@@ -1035,26 +1038,54 @@ function fashionWatchImages(root){
   img.dataset.photoBound='1';
   const artwork=img.parentElement;
   let candidates=[];try{candidates=JSON.parse(artwork.dataset.photoCandidates||'[]')}catch{}
-  let index=0,retried=false,timer=null;
-  const loaded=()=>{clearTimeout(timer);timer=null;img.hidden=false;artwork.classList.add('has-photo');artwork.classList.remove('photo-unavailable');artwork.querySelector('small').textContent=artwork.dataset.photoCredit};
+  let index=0,retried=false,timer=null,watchdog=null,observer=null;
+  const primary=candidates[0]||{url:img.src,alt:img.alt,credit:artwork.dataset.photoCredit};
+  const watchLoad=()=>{
+   clearTimeout(watchdog);watchdog=null;
+   if(img.isConnected)watchdog=setTimeout(()=>{watchdog=null;if(!img.isConnected)return;if(img.complete&&img.naturalWidth>0)loaded();else failed()},10000);
+  };
+  const loaded=()=>{if(!img.complete||!img.naturalWidth)return;clearTimeout(timer);clearTimeout(watchdog);timer=null;watchdog=null;observer?.disconnect();img.hidden=false;artwork.classList.add('has-photo');artwork.classList.remove('photo-unavailable');artwork.querySelector('small').textContent=artwork.dataset.photoCredit};
   const failed=()=>{
+   clearTimeout(watchdog);watchdog=null;
    if(timer)return;
    artwork.classList.remove('has-photo');
    if(index+1<candidates.length){
     const photo=candidates[++index];retried=false;
-    timer=setTimeout(()=>{timer=null;img.alt=photo.alt;artwork.dataset.photoCredit=photo.credit+' · фото к новости';img.src=photo.url},300);
+    timer=setTimeout(()=>{timer=null;img.alt=photo.alt;artwork.dataset.photoCredit=photo.credit+' · фото к новости';img.src=photo.url;watchLoad()},300);
    }else if(!retried){
-    retried=true;timer=setTimeout(()=>{timer=null;const url=new URL(img.src,location.href);url.searchParams.set('_ms_photo_retry',Date.now());img.src=url.href},800);
+    retried=true;timer=setTimeout(()=>{timer=null;const url=new URL(img.src,location.href);url.searchParams.set('_ms_photo_retry',Date.now());img.src=url.href;watchLoad()},800);
    }else{
-    img.hidden=true;artwork.classList.add('photo-unavailable');artwork.querySelector('small').textContent='Фото временно недоступно · обнови раздел';
+    img.hidden=true;artwork.classList.add('photo-unavailable');artwork.querySelector('small').textContent='Фото временно недоступно · нажми «Обновить фото»';
    }
   };
   img.addEventListener('load',loaded);
   img.addEventListener('error',failed);
+  img.addEventListener('myspace-photo-retry',()=>{
+   clearTimeout(timer);clearTimeout(watchdog);timer=null;watchdog=null;index=0;retried=false;
+   img.hidden=false;artwork.classList.remove('photo-unavailable');artwork.classList.remove('has-photo');
+   img.alt=primary.alt;artwork.dataset.photoCredit=primary.credit+' · фото к новости';artwork.querySelector('small').textContent='Загружаю фото…';
+   const url=new URL(primary.url,location.href);url.searchParams.set('_ms_photo_retry',Date.now());img.src=url.href;watchLoad();
+  });
+  if(typeof IntersectionObserver!=='undefined'&&img.loading==='lazy'){
+   observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();watchLoad()}},{rootMargin:'200px'});observer.observe(img);
+  }else Promise.resolve().then(watchLoad);
   if(img.complete){if(img.naturalWidth>0)loaded();else failed()}
  });
 }
 const fashionDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):'Дата не указана';
+function fashionRecoverImages(force=false){
+ if(currentSpace!=='fashion'||document.hidden||navigator.onLine===false)return;
+ const root=$('fashionArticle').classList.contains('hidden')?$('fashionList'):$('fashionArticle');
+ root.querySelectorAll('img[data-news-photo]').forEach(img=>{
+  const art=img.parentElement,rect=art.getBoundingClientRect();
+  if(rect.bottom<0||rect.top>window.innerHeight||(!img.hidden&&img.naturalWidth>0))return;
+  if(force||art.classList.contains('photo-unavailable'))img.dispatchEvent(new Event('myspace-photo-retry'));
+ });
+}
+$('fashionPhotosRefresh').onclick=()=>fashionRecoverImages(true);
+window.addEventListener('online',()=>fashionRecoverImages());
+window.addEventListener('pageshow',()=>fashionRecoverImages());
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)fashionRecoverImages()});
 function fashionCard(item,eager=false){
  const url=fashionSafeUrl(item.url);
  if(!url||!item.title||!item.summary||!item.id)return null;
