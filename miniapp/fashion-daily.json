@@ -1,10 +1,139 @@
 {
-  "edition_date": "2026-11-18",
-  "updated_at": "2026-11-18T06:05:26.097Z",
+  "edition_date": "2026-11-19",
+  "updated_at": "2026-11-19T06:04:27.161Z",
   "language": "ru",
-  "edition_title": "Fashion Daily — 18 ноября 2026",
-  "editor_note": "Два новых сюжета России и мира: Ekonika Sense и Moon Boot × Guest in Residence. Даты анонсов и запуска разделены; внешние фотографии с атрибуцией и проверенными резервами.",
+  "edition_title": "Fashion Daily · 19 ноября 2026",
+  "editor_note": "Две новости России и мира. Даты событий и публикаций указаны отдельно; фотографии — внешние превью с атрибуцией.",
   "items": [
+    {
+      "id": "ru-20261119-olovo-jogel-rfs-osnova",
+      "title": "ОЛОВО, JOGEL и РФС представили ретроколлекцию «ОСНОВА»",
+      "date": "2026-11-16",
+      "published_at": "2026-11-16T11:00:00+03:00",
+      "event_date": "2026-11-16",
+      "added_at": "2026-11-19",
+      "region": "ru",
+      "category": "Коллаборации",
+      "priority": "normal",
+      "brand": "ОЛОВО × JOGEL × РФС",
+      "source": "Российский футбольный союз",
+      "url": "https://www.rfs.ru/news/225585",
+      "summary": "Спортивная капсула соединила игровую форму и повседневную одежду с отсылками к футбольной экипировке 1950–1960-х годов. О запуске продаж РФС сообщил 16 ноября.",
+      "article_sections": [
+        {
+          "heading": "Что выпустили",
+          "paragraphs": [
+            "РФС, JOGEL и ОЛОВО создали коллекцию «ОСНОВА»: в неё вошли игровая форма, вещи для разминки, парадный комплект и одежда для болельщиков. Источником образов стала футбольная экипировка середины прошлого века."
+          ]
+        },
+        {
+          "heading": "Какие детали заметны",
+          "paragraphs": [
+            "В игровом комплекте сочетаются красный верх с длинными рукавами и воротником-поло и белые шорты. За пределами поля эту тему продолжают олимпийка, худи с короткой молнией и прямые брюки. Коллекцию посвятили столетию со дня рождения Никиты Симоняна и 70-летию олимпийской победы в Мельбурне."
+          ]
+        },
+        {
+          "heading": "Когда и где",
+          "paragraphs": [
+            "В официальной публикации от 16 ноября начало продаж указано на тот же день — в магазинах РФС и ОЛОВО и на Ozon Select. Наличие отдельных размеров не проверялось. Для повседневного образа можно взять одну ретроспортивную вещь и сочетать её со спокойными джинсами или прямыми брюками."
+          ]
+        }
+      ],
+      "why": "Пример того, как футбольный архив становится основой повседневной капсулы.",
+      "telegram_text": "ОЛОВО, JOGEL и РФС представили «ОСНОВУ» — коллекцию с отсылками к футбольной форме 1950–1960-х годов. Помимо игровой экипировки в неё вошли олимпийка, худи и прямые брюки. О запуске продаж РФС сообщил 16 ноября.",
+      "image": null,
+      "image_url": "https://olovomsc.com/m/_versions/catalog/product/%D0%A6%D0%91-00009428/msh34629_vertical_preview.jpg",
+      "image_alt": "Модель в красной футболке с длинным рукавом и воротником-поло из коллекции «ОСНОВА»",
+      "image_source": "ОЛОВО",
+      "image_credit": "ОЛОВО / фото коллекции «ОСНОВА»",
+      "image_source_url": "https://olovomsc.com/catalog/olovo-h-osnova/",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://olovomsc.com/m/_versions/menu_item/banner_na_sajt_osnova_1600_1600_kopiya_4_og_image.jpg",
+          "alt": "Промокадр «ОСНОВЫ»: красная футболка-поло и название коллекции",
+          "credit": "ОЛОВО / промоматериалы коллекции «ОСНОВА»",
+          "source_url": "https://olovomsc.com/catalog/olovo-h-osnova/",
+          "rights": "publisher_preview_hotlink"
+        }
+      ],
+      "sources": [
+        {
+          "title": "РФС представляет ретроформу сборной России на матч с Венесуэлой",
+          "url": "https://www.rfs.ru/news/225585",
+          "date": "2026-11-16"
+        },
+        {
+          "title": "ОЛОВО — официальная страница коллекции «ОСНОВА»",
+          "url": "https://olovomsc.com/catalog/olovo-h-osnova/"
+        }
+      ]
+    },
+    {
+      "id": "20261119-blazy-belgian-fashion-awards",
+      "title": "Матье Блази стал дизайнером года на Belgian Fashion Awards",
+      "date": "2026-11-18",
+      "published_at": "2026-11-18T18:42:00+03:00",
+      "event_date": "2026-11-17",
+      "added_at": "2026-11-19",
+      "region": "world",
+      "category": "Индустрия",
+      "priority": "normal",
+      "brand": "Chanel",
+      "source": "The Blueprint",
+      "url": "https://theblueprint.ru/news/43079",
+      "summary": "Креативный директор Chanel получил главную дизайнерскую награду Belgian Fashion Awards 2026. Организаторы объявили лауреатов 17 ноября в Антверпене; The Blueprint сообщил об этом 18 ноября.",
+      "article_sections": [
+        {
+          "heading": "Что произошло",
+          "paragraphs": [
+            "Жюри Belgian Fashion Awards единогласно присудило Матье Блази звание Designer of the Year 2026. Церемония прошла 17 ноября в антверпенском театре Elckerlyc. Результат подтверждают официальный сайт премии и сообщение организаторов."
+          ]
+        },
+        {
+          "heading": "Кто получил награду",
+          "paragraphs": [
+            "Дизайнер не присутствовал на церемонии: награду за него принял наставник Тони Делкамп из La Cambre. В сообщении организаторов отмечены работа Блази в Chanel и влияние его коллекций на профессиональную среду."
+          ]
+        },
+        {
+          "heading": "Как читать новость",
+          "paragraphs": [
+            "Это решение отраслевого жюри, а не рейтинг покупательского спроса. В иллюстрации использован опубликованный The Blueprint кадр с дизайнером; он не изображает вручение награды. Российская публикация датирована 18 ноября, само событие произошло днём ранее."
+          ]
+        }
+      ],
+      "why": "Профессиональная награда фиксирует признание работы дизайнера в текущем сезоне.",
+      "telegram_text": "Матье Блази признан дизайнером года на Belgian Fashion Awards 2026. Лауреатов объявили 17 ноября в Антверпене. Награду за отсутствовавшего дизайнера принял его наставник Тони Делкамп.",
+      "image": null,
+      "image_url": "https://theblueprint.ru/upload/43079/vms2/2385e1093a45648aa2626abcb73f64d5.webp",
+      "image_alt": "Матье Блази на опубликованном The Blueprint фото; не церемония вручения Belgian Fashion Awards",
+      "image_source": "The Blueprint",
+      "image_credit": "Getty Images / The Blueprint",
+      "image_source_url": "https://theblueprint.ru/news/43079",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://www.belgianfashionawards.be/wp-content/uploads/2026/09/image00001-980x1251.jpeg",
+          "alt": "Чёрно-белый портрет Матье Блази на сайте Belgian Fashion Awards",
+          "credit": "Dana Lixenberg / Belgian Fashion Awards",
+          "source_url": "https://www.belgianfashionawards.be/designer-of-the-year/",
+          "rights": "publisher_preview_hotlink"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Designer of the Year 2026 — официальный результат",
+          "url": "https://www.belgianfashionawards.be/designer-of-the-year/",
+          "date": "2026-11-18"
+        },
+        {
+          "title": "Belgian Fashion Awards 2026 — сообщение организаторов",
+          "url": "https://press.flandersdistrictofcreativity.be/here-are-winners-of-the-the-belgian-fashion-awards-2026",
+          "date": "2026-11-17"
+        }
+      ]
+    },
     {
       "id": "ru-20261118-ekonika-sense-gattsiev",
       "title": "Ekonika Sense с Ибрагимом Гатциевым выйдет 19 ноября",
