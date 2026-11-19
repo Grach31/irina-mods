@@ -1084,8 +1084,6 @@ function fashionRecoverImages(force=false){
 }
 $('fashionPhotosRefresh').onclick=()=>fashionRecoverImages(true);
 window.addEventListener('online',()=>fashionRecoverImages());
-window.addEventListener('pageshow',()=>fashionRecoverImages());
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)fashionRecoverImages()});
 function fashionCard(item,eager=false){
  const url=fashionSafeUrl(item.url);
  if(!url||!item.title||!item.summary||!item.id)return null;
@@ -1608,8 +1606,8 @@ load();
 if('serviceWorker' in navigator&&location.protocol==='https:'){
  navigator.serviceWorker.register('sw.js',{scope:'/irina-mods/',updateViaCache:'none'}).catch(()=>{});
 }
-window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load();else refreshVisibleOura({resetSelection:true})});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load();else refreshVisibleOura({resetSelection:true})});
+window.addEventListener('pageshow',()=>{if(currentSpace==='moda')load();else if(currentSpace==='fashion')fashionRecoverImages();else refreshVisibleOura({resetSelection:true})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&currentSpace==='moda')load();else if(!document.hidden&&currentSpace==='fashion')fashionRecoverImages();else refreshVisibleOura({resetSelection:true})});
 setInterval(refreshVisibleOura,60000);
 })();
 </script></body></html>
