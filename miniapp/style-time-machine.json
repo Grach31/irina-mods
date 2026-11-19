@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18",
+  "updated_at": "2026-11-19",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -271,6 +271,27 @@
         }
       ],
       "added_at": "2026-11-18"
+    },
+    {
+      "id": "style-time-machine-20261119-worth-bustle-1888",
+      "year": 1888,
+      "title": "Турнюр и архитектура силуэта: платье House of Worth",
+      "period": "1880-е",
+      "description": "В 1888 году Дом Worth создал дневное платье из шёлка и металла с характерным для поздневикторианской моды объёмом сзади. Музей Метрополитен связывает возвращение выраженного турнюра в 1880-х с влиянием Чарльза Фредерика Ворта. Эта конструкция формировала силуэт не только тканью, но и внутренними опорами.",
+      "then": "Выраженный объём сзади, сложная драпировка и подчёркнутая талия создавали скульптурный силуэт.",
+      "now": "Идею архитектурного объёма можно переосмыслить через баску, драпировку или жакет с акцентом на талии — без исторического каркаса.",
+      "category": "Силуэты",
+      "source_url": "https://www.metmuseum.org/art/collection/search/159220",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Afternoon_dress_MET_41.913a-b_front_CP4.jpg",
+          "caption": "Дневное платье House of Worth, 1888, шёлк и металл, коллекция The Metropolitan Museum of Art.",
+          "credit": "The Metropolitan Museum of Art / Wikimedia Commons, CC0 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Afternoon_dress_MET_41.913a-b_front_CP4.jpg"
+        }
+      ],
+      "photo_note": "Открытая фотография музейного предмета, CC0 1.0; изображение опубликовано в Wikimedia Commons в рамках проекта The Met Open Access.",
+      "added_at": "2026-11-19"
     }
   ]
 }
