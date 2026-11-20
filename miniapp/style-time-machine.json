@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -292,6 +292,28 @@
       ],
       "photo_note": "Открытая фотография музейного предмета, CC0 1.0; изображение опубликовано в Wikimedia Commons в рамках проекта The Met Open Access.",
       "added_at": "2026-11-19"
+    },
+    {
+      "id": "style-time-machine-20261120-callot-soeurs-1910",
+      "title": "Callot Soeurs: вечернее платье с металлическим блеском",
+      "year": 1910,
+      "period": "1910-е",
+      "description": "Вечернее платье французского дома Callot Soeurs, датированное музеем 1910–1914 годами, соединяет хлопок, шёлк и металл. Экземпляр из коллекции The Metropolitan Museum of Art показывает, насколько выразительной могла быть отделка вечерней одежды до Первой мировой войны. Это сохранившийся музейный предмет, а не фотография показа.",
+      "then": "Ткань, металлические элементы и декоративная поверхность создавали торжественный эффект в вечернем туалете 1910-х.",
+      "now": "Для современной стилизации достаточно одной металлизированной детали на спокойном платье или топе — так можно процитировать исторический приём без костюмной реконструкции.",
+      "category": "История вечерней моды",
+      "source_url": "https://www.metmuseum.org/art/collection/search/81139",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Evening_dress_MET_DT414.jpg",
+          "caption": "Вечернее платье Callot Soeurs, Франция, 1910–1914; The Metropolitan Museum of Art, инв. 1981.380.2.",
+          "credit": "The Metropolitan Museum of Art / Wikimedia Commons, CC0 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Evening_dress_MET_DT414.jpg"
+        }
+      ],
+      "photo_note": "Музейная фотография опубликована на Wikimedia Commons под CC0 1.0.",
+      "added_at": "2026-11-20",
+      "added_at_source": "editorial_verified"
     }
   ]
 }
