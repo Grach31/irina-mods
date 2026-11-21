@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -313,6 +313,28 @@
       ],
       "photo_note": "Музейная фотография опубликована на Wikimedia Commons под CC0 1.0.",
       "added_at": "2026-11-20",
+      "added_at_source": "editorial_verified"
+    },
+    {
+      "id": "style-time-machine-20261121-bloomer-costume-1851",
+      "year": 1851,
+      "title": "Костюм блумер: юбка поверх брюк в 1851 году",
+      "period": "1850-е",
+      "description": "В 1851 году костюм с укороченной юбкой поверх свободных брюк стал заметным символом движения за реформу женской одежды. Его связывали с журналисткой и общественной деятельницей Амелией Блумер, хотя она не была единственной создательницей этой идеи. Литография фирмы N. Currier «The Bloomer Costume» показывает, как новый силуэт представляли публике.",
+      "then": "Вместо привычной длинной юбки — более короткая верхняя часть и свободные брюки, заметные ниже подола.",
+      "now": "Исторический пример того, как удобство и свобода движения становятся поводом пересмотреть привычный силуэт; не следует считать этот костюм прямым предком всех современных брюк.",
+      "category": "История костюма",
+      "source_url": "https://www.loc.gov/pictures/item/90711963/",
+      "photos": [
+        {
+          "url": "https://cdn.loc.gov/service/pnp/pga/06100/06193v.jpg",
+          "caption": "«The Bloomer Costume», литография фирмы N. Currier, 1851 год.",
+          "credit": "N. Currier (Firm) / Library of Congress; Public Domain Mark 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:The_bloomer_costume_LCCN90711963.jpg"
+        }
+      ],
+      "photo_note": "Library of Congress: no known restrictions on publication; Wikimedia Commons: Public Domain Mark 1.0. Прямой URL изображения указан в музейной записи, проверка отображения в My Space после деплоя обязательна.",
+      "added_at": "2026-11-21",
       "added_at_source": "editorial_verified"
     }
   ]
