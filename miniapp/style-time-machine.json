@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21",
+  "updated_at": "2026-11-22",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -336,6 +336,27 @@
       "photo_note": "Library of Congress: no known restrictions on publication; Wikimedia Commons: Public Domain Mark 1.0. Прямой URL изображения указан в музейной записи, проверка отображения в My Space после деплоя обязательна.",
       "added_at": "2026-11-21",
       "added_at_source": "editorial_verified"
+    },
+    {
+      "id": "style-time-machine-20261122-knit-day-dress-1927",
+      "title": "Трикотажное дневное платье 1927 года: удобство становится модой",
+      "year": 1927,
+      "period": "1920-е",
+      "description": "Французское дневное платье из шерстяного трикотажа, датированное 1927 годом, хранится в коллекции RISD Museum. Это предметный пример того, как в 1920-е годы трикотаж использовали не только для спортивной одежды, но и для повседневного гардероба. Музейная атрибуция позволяет говорить о материале, происхождении и датировке именно этого платья, не приписывая его конкретному модельеру.",
+      "then": "Шерстяной трикотаж и дневной силуэт конца 1920-х: практичность, мягкая структура и свобода движения.",
+      "now": "Современная стилизация — трикотажное платье с лаконичной обувью и аксессуарами; это интерпретация принципа комфорта, а не реконструкция музейного предмета.",
+      "category": "История вещей",
+      "source_url": "https://risdmuseum.org/art-design/collection/dress-6202723",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/1927_wool_knit_day_dress%2C_French_02.jpg",
+          "caption": "Французское дневное платье из шерстяного трикотажа, 1927. RISD Museum.",
+          "credit": "RISD Museum, staff photographer; CC0 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:1927_wool_knit_day_dress,_French_02.jpg"
+        }
+      ],
+      "photo_note": "Музейная фотография, CC0 1.0; сведения об объекте — RISD Museum.",
+      "added_at": "2026-11-22"
     }
   ]
 }
