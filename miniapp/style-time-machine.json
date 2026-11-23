@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -357,6 +357,27 @@
       ],
       "photo_note": "Музейная фотография, CC0 1.0; сведения об объекте — RISD Museum.",
       "added_at": "2026-11-22"
+    },
+    {
+      "id": "style-time-machine-20261123-poiret-iribe-1908",
+      "title": "Поль Пуаре и Поль Ириб: модная иллюстрация 1908 года",
+      "year": 1908,
+      "period": "1900-е",
+      "description": "В 1908 году художник Поль Ириб создал иллюстрации для альбома Les Robes de Paul Poiret. Вместо сухого технического рисунка костюм показывали как цельный художественный образ: фигура, поза, линия ткани и композиция работали вместе. Этот альбом — документ сотрудничества модельера и графика в начале XX века.",
+      "then": "Художественный рисунок представлял силуэт и настроение модели, а не только детали кроя.",
+      "now": "Современный мудборд также объединяет одежду, композицию и визуальный характер; это аналогия приёма презентации, а не прямое заимствование.",
+      "category": "Модная иллюстрация",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Iribe_Les_Robes_de_Paul_Poiret_p.15.jpg",
+      "photos": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Iribe_Les_Robes_de_Paul_Poiret_p.15.jpg",
+          "caption": "Поль Ириб, иллюстрация из Les Robes de Paul Poiret, 1908, стр. 15.",
+          "credit": "Paul Iribe / Wikimedia Commons; Public Domain Mark 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Iribe_Les_Robes_de_Paul_Poiret_p.15.jpg"
+        }
+      ],
+      "photo_note": "Wikimedia Commons: public domain (страна происхождения и США); источник изображения — альбом 1908 года.",
+      "added_at": "2026-11-23"
     }
   ]
 }
