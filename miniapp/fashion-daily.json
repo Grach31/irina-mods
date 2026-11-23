@@ -1,10 +1,134 @@
 {
-  "edition_date": "2026-11-19",
-  "updated_at": "2026-11-19T06:04:27.161Z",
+  "edition_date": "2026-11-23",
+  "updated_at": "2026-11-23T06:37:44.118Z",
   "language": "ru",
-  "edition_title": "Fashion Daily · 19 ноября 2026",
-  "editor_note": "Две новости России и мира. Даты событий и публикаций указаны отдельно; фотографии — внешние превью с атрибуцией.",
+  "edition_title": "Fashion Daily · неделя 16–22 ноября",
+  "editor_note": "Воскресный выпуск за 16–22 ноября, подготовленный 23 ноября после пропущенного запуска. Даты событий и публикаций сохранены.",
   "items": [
+    {
+      "id": "ru-20261123-loginova-orientmuseum",
+      "title": "LOGINOVA и Музей Востока представили «Сказку Востока»",
+      "date": "2026-11-21",
+      "published_at": "2026-11-21T16:33:00+03:00",
+      "event_date": "2026-11-16",
+      "added_at": "2026-11-23",
+      "region": "ru",
+      "category": "Коллаборации",
+      "priority": "normal",
+      "brand": "LOGINOVA × Музей Востока",
+      "source": "The Blueprint",
+      "url": "https://theblueprint.ru/news/43135",
+      "summary": "Российский бренд создал первую совместную капсулу с Музеем Востока. Музей сообщил о проекте 16 ноября, а The Blueprint представил коллекцию 21-го.",
+      "article_sections": [
+        {
+          "heading": "Музейный материал",
+          "paragraphs": [
+            "Анастасия Логинова разрабатывала «Сказку Востока» в диалоге с командой Музея Востока. Отправной точкой стали женские образы в искусстве и работа с историческими материалами. О первой коллаборации музей объявил 16 ноября."
+          ]
+        },
+        {
+          "heading": "Что изменилось в коллекции",
+          "paragraphs": [
+            "Вместо привычной для марки сдержанности здесь заметны бархат, шёлк, парча и золотая нить. Среди силуэтов — приталенные жакеты и свободные брюки-алладины. Для повседневной стилизации достаточно одного такого акцента рядом с простым трикотажем."
+          ]
+        },
+        {
+          "heading": "Что заявлено дальше",
+          "paragraphs": [
+            "Музей также анонсировал участие LOGINOVA в зимнем Фестивале цветов и совместные сувениры для своего магазина. Конкретные даты фестиваля в этом сообщении не указаны. Публикация The Blueprint от 21 ноября рассказывает об уже объявленном сотрудничестве, а не о втором запуске."
+          ]
+        }
+      ],
+      "why": "Пример работы российского бренда с музейным наследием через фактуру, декор и силуэт.",
+      "telegram_text": "LOGINOVA и Музей Востока представили капсулу «Сказка Востока»: бархат, шёлк, парча, приталенные жакеты и свободные брюки. Музей объявил о первой коллаборации 16 ноября; The Blueprint рассказал о ней 21 ноября.",
+      "image": null,
+      "image_url": "https://theblueprint.ru/upload/43135/vms2/fa657bfbe305cf11b9409e6a7b963525.webp",
+      "image_alt": "Модель в тёмном жакете со стойкой и с веером в съёмке коллекции LOGINOVA «Сказка Востока»",
+      "image_source": "The Blueprint",
+      "image_credit": "LOGINOVA / The Blueprint",
+      "image_source_url": "https://theblueprint.ru/news/43135",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://www.orientmuseum.ru/news/2026/noyabr/skazka_vostoka/4578_foto_1_01.jpg",
+          "alt": "Светлый комплект с широкими брюками из коллекции LOGINOVA «Сказка Востока» на странице музея",
+          "credit": "Музей Востока / материалы коллаборации LOGINOVA",
+          "source_url": "https://www.orientmuseum.ru/news/2026/noyabr/skazka_vostoka/index.php?lang=ru",
+          "rights": "publisher_preview_hotlink"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Музей Востока — официальный анонс коллаборации",
+          "url": "https://www.orientmuseum.ru/news/2026/noyabr/skazka_vostoka/index.php?lang=ru",
+          "date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "20261123-prada-index",
+      "title": "Prada запустила культурный журнал Prada Index",
+      "date": "2026-11-20",
+      "published_at": "2026-11-20T08:47:00+03:00",
+      "event_date": "2026-11-19",
+      "added_at": "2026-11-23",
+      "region": "world",
+      "category": "Индустрия",
+      "priority": "normal",
+      "brand": "Prada",
+      "source": "The Blueprint",
+      "url": "https://theblueprint.ru/news/43114",
+      "summary": "Дом представил печатное и цифровое издание о проектах Prada, Fondazione Prada и Luna Rossa. Запуск состоялся 19 ноября.",
+      "article_sections": [
+        {
+          "heading": "Что произошло",
+          "paragraphs": [
+            "Prada Index объединяет культурные проекты дома в одном издании. Официальный сайт Prada указывает 19 ноября как дату запуска первого номера; в Милане его представили в пространстве Appartamento в Prada Galleria."
+          ]
+        },
+        {
+          "heading": "Что внутри",
+          "paragraphs": [
+            "Почти 400 страниц первого выпуска посвящены девяти проектам 2026 года. Среди материалов — беседы с Артуром Джафой, Ричардом Принсом и Барри Дженкинсом. Над дизайном работала нью-йоркская студия 2×4."
+          ]
+        },
+        {
+          "heading": "Где читать",
+          "paragraphs": [
+            "Цифровой выпуск уже доступен на сайте Prada Index. По сообщению The Blueprint от 20 ноября, с 2027 года журнал планируют выпускать ежеквартально. Это новый издательский проект модного дома, а не анонс коллекции одежды."
+          ]
+        }
+      ],
+      "why": "Возможность познакомиться с искусством, кино и архитектурой, которые входят в культурную программу Prada.",
+      "telegram_text": "Prada представила Prada Index — печатный и цифровой журнал о культурных проектах дома, Fondazione Prada и Luna Rossa. Первый номер вышел 19 ноября, его цифровая версия доступна онлайн.",
+      "image": null,
+      "image_url": "https://theblueprint.ru/upload/43114/vms2/0fdde0a511855af7c985752a400a1bcb.webp",
+      "image_alt": "Фрагмент первого выпуска Prada Index с названием издания и перечнем культурных проектов",
+      "image_source": "The Blueprint",
+      "image_credit": "Prada Index / The Blueprint",
+      "image_source_url": "https://theblueprint.ru/news/43114",
+      "image_rights": "publisher_preview_hotlink",
+      "image_fallbacks": [
+        {
+          "url": "https://www.prada.com/content/dam/pradanux/pradasphere/2026/special-projects/11/prada-index/hero/hero_DT.jpg",
+          "alt": "Первый выпуск Prada Index на официальной странице проекта",
+          "credit": "Prada / Prada Index",
+          "source_url": "https://www.prada.com/us/en/pradasphere/special-projects/2026/prada-index.html",
+          "rights": "publisher_preview_hotlink"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prada — официальный анонс Prada Index",
+          "url": "https://www.prada.com/us/en/pradasphere/special-projects/2026/prada-index.html",
+          "date": "2026-11-19"
+        },
+        {
+          "title": "Prada Index — цифровой выпуск",
+          "url": "https://www.pradaindex.com/en/"
+        }
+      ]
+    },
     {
       "id": "ru-20261119-olovo-jogel-rfs-osnova",
       "title": "ОЛОВО, JOGEL и РФС представили ретроколлекцию «ОСНОВА»",
