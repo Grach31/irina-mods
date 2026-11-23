@@ -19,6 +19,19 @@ class MediaSafetyTests(unittest.TestCase):
   d={'id':'demo','items':[]}
   with tempfile.TemporaryDirectory() as td:
    p=Path(td);(p/'demo.jpg').write_bytes(b'changed');(p/'demo.render.json').write_text(json.dumps({'fingerprint':render_fingerprint(d),'jpeg_sha256':sha(b'original')}));self.assertFalse(media_ready(d,p))
+ def test_broken_image_error_identifies_product_and_url(self):
+  draft={'id':'demo','type':'picks','items':[
+   {'name':'Молочный кардиган','shop':'2MOOD','price':16980,'url':'https://example.com/cardigan','img':'https://img.example.com/missing.webp'},
+   {'name':'Юбка','shop':'GATE31','price':7990,'url':'https://example.com/skirt','img':'https://img.example.com/skirt.jpg'}]}
+  with tempfile.TemporaryDirectory() as td:
+   p=Path(td);(p/'drafts').mkdir();(p/'drafts/demo.json').write_text(json.dumps(draft))
+   with patch.object(renderer,'ROOT',p),patch.object(renderer,'fetch_photo',side_effect=FileNotFoundError('404')):
+    with self.assertRaises(ValueError) as cm:renderer.run('demo',p/'drafts/img')
+  message=str(cm.exception)
+  self.assertIn('item 1/2',message)
+  self.assertIn('2MOOD',message)
+  self.assertIn('Молочный кардиган',message)
+  self.assertIn('https://img.example.com/missing.webp',message)
  def test_pending_selection_includes_old_draft_and_rebuilds_stale_file(self):
   with tempfile.TemporaryDirectory() as td:
    p=Path(td);(p/'drafts/img').mkdir(parents=True);(p/'state').mkdir();(p/'state/state.json').write_text('{"drafts":{}}');(p/'drafts/2025-01-01-demo.json').write_text('{"id":"2025-01-01-demo","type":"picks","items":[]}');(p/'drafts/img/2025-01-01-demo.jpg').write_bytes(b'old')
