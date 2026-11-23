@@ -90,6 +90,27 @@ jobs:
         run: |
           python scripts/build_miniapp_catalog.py
           python scripts/build_notification_manifest.py
+      - name: Audit Moda draft delivery readiness
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          day = datetime.now(ZoneInfo('Europe/Moscow')).date().isoformat()
+          catalog = json.loads(Path('miniapp/catalog.json').read_text(encoding='utf-8'))
+          rows = [item for item in catalog['items'] if item.get('type') == 'picks' and item['id'].startswith(day + '-')]
+          passed = [item['id'] for item in rows if item.get('ready') is True]
+          failed = [item['id'] for item in rows if item.get('ready') is not True]
+          summary = f"## Moda media delivery — {day}\nReady: {len(passed)} / {len(rows)}\n\n"
+          summary += ''.join(f"- {'READY' if item['id'] in passed else 'MISSING JPG'}: {item['id']}\n" for item in rows)
+          if os.environ.get('GITHUB_STEP_SUMMARY'):
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as file:
+                  file.write(summary)
+          if failed:
+              print("::warning title=Moda images missing::Drafts without verified JPG: " + ", ".join(failed))
+          print("MODA_MEDIA_AUDIT " + json.dumps({'date': day, 'ready': passed, 'missing': failed}, ensure_ascii=False))
+          PY
       - name: Generate iPhone home screen icons
         run: |
           python -m pip install --quiet CairoSVG==2.7.1
