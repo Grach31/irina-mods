@@ -116,7 +116,17 @@ def run(draft_id, output_dir):
             raise ValueError("Product metadata incomplete")
         if urlsplit(item["url"]).scheme != "https":
             raise ValueError("Product page must be HTTPS")
-    photos = [fetch_photo(item["img"]) for item in items]
+    photos = []
+    for index, item in enumerate(items, start=1):
+        try:
+            photos.append(fetch_photo(item["img"]))
+        except Exception as exc:
+            # Item context is crucial: a 404 without the precise image URL
+            # makes a broken editorial draft impossible to repair reliably.
+            raise ValueError(
+                f"item {index}/{len(items)} ({item['shop']}: {item['name']}): "
+                f"image {item['img']!r} failed: {type(exc).__name__}: {exc}"
+            ) from exc
     target = output_dir / (draft_id + ".jpg")
     render(draft, photos, target)
     target.with_suffix(".render.json").write_text(json.dumps({"fingerprint":render_fingerprint(draft),"jpeg_sha256":sha(target.read_bytes())}))
