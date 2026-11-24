@@ -32,6 +32,8 @@ jobs:
               'https://emkashop.ru/yubka-s1124-peter',
               'https://allweneed.ru/product/sviter-iz-shersti-enota-premium-molochnyj-195386',
               'https://emkashop.ru/bryuki-d555-tricel',
+              'https://allweneed.ru/en/product/tufli-iz-kozhi-molochnogo-tsveta-slivochnyj-199315',
+              'https://allweneed.ru/en/product/brjuki-iz-viskozy-bezhevyj-189516',
           ]
           results=[]
           for url in pages:
