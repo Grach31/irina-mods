@@ -44,6 +44,9 @@ jobs:
                       body=response.read(3000000).decode('utf-8','replace')
                       record['page_http']=response.status
                   record['page_ok']=True
+                  record['page_title']=re.findall(r'<title[^>]*>(.*?)</title>',body,re.I|re.S)[:1]
+                  record['rub_prices']=list(dict.fromkeys(re.findall(r'(?<!\\d)\\d[\\d\\s\\xa0]{2,9}\\s*(?:₽|руб\\.)',body)))[:15]
+                  record['bag_links']=list(dict.fromkeys(urllib.parse.urljoin(url,x) for x in re.findall(r'href=["\\\']([^"\\\']*(?:sumka|bag|remeni|sharf|zhaket)[^"\\\']*)',body,re.I)))[:10]
                   p=Images();p.feed(body)
                   candidates=list(dict.fromkeys(urllib.parse.urljoin(url,html.unescape(s)) for s in p.urls if s))
                   record['image_candidates']=len(candidates)
