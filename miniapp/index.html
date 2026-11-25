@@ -468,7 +468,7 @@ body>nav.nav{display:none!important}
 #hub #openModa,#hub #openFinds,#hub #openOura,#hub #openFashion,#hub #openHistory{grid-column:1/-1}#hub #openModa{min-height:190px}#hub #openFinds{min-height:205px;background:#e8d2cd}#hub #openFinds .hub-card-body{background:linear-gradient(90deg,#e8d2cd 65%,transparent)}#hub #openFinds .hub-card-body:after{background:#914653}#hub #openTrends{order:4}#hub #openReels{order:5}#hub #openHistory{order:6}#hub #openFashion{order:3}#hub #openOura{order:2}#hub #openFinds{order:1}#hub #openModa{order:0}
 #hub #openTrends .hub-card-body,#hub #openReels .hub-card-body{width:85%;padding:15px 10px}#hub #openTrends .hub-card-body strong,#hub #openReels .hub-card-body strong{font-size:22px}
 #findsSpace{min-height:100dvh;background:#f7f1eb;color:#35231e;padding:20px 16px 40px}#findsSpace h1{font:normal 36px Georgia,serif;margin:20px 0 8px}#findsSpace .finds-filters{display:flex;gap:8px;overflow:auto;padding:12px 0}#findsSpace button{border:0;border-radius:24px;padding:12px 16px;background:#e9dfd5;color:#35231e;white-space:nowrap}#findsSpace button[aria-pressed=true]{background:#914653;color:white}#findsSpace .finds-empty{padding:32px 16px;text-align:center;border-radius:18px;background:#eee3dc;margin-top:16px}
-</style></head><body>
+</style><style>#findsSpace .finds-card{display:grid;grid-template-columns:44% 1fr;gap:12px;background:#fffdfa;border-radius:18px;overflow:hidden;margin:12px 0;padding:10px}#findsSpace .finds-card-body{padding:8px 0}#findsSpace h2{font:normal 23px Georgia,serif;margin:0}#findsSpace .finds-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:14px;aspect-ratio:1}#findsSpace .finds-photos img{width:100%;height:100%;object-fit:cover;flex:none;scroll-snap-align:start}#findsSpace .finds-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}#findsSpace .finds-actions a{background:#35231e;color:white;padding:12px 16px;border-radius:24px;text-decoration:none}html[data-ms-theme=dark] #findsSpace{background:#211b1b;color:#f7f1eb}html[data-ms-theme=dark] #findsSpace .finds-card,html[data-ms-theme=dark] #findsSpace .finds-empty{background:#352a2a;color:#f7f1eb}</style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-boot" id="pwaBoot" role="status" aria-label="Загрузка My Space"><div class="pwa-boot-brand">My Space.</div></section><section class="pwa-gate hidden" id="pwaGate" style="display:none">
 <div class="pwa-gate-card">
 <img src="icon.svg" alt="My Space" />
@@ -493,7 +493,7 @@ body>nav.nav{display:none!important}
 </div></section>
 
 
-<section class="myspace-extra hidden" id="findsSpace" aria-label="Находки из Китая"><button id="findsBack" type="button">← My Space</button><h1>Находки из Китая</h1><p>Находки AliExpress на Wildberries</p><div class="finds-filters" aria-label="Категории"><button type="button" aria-pressed="true" data-finds-category="Все">Все</button><button type="button" aria-pressed="false" data-finds-category="Одежда">Одежда</button><button type="button" aria-pressed="false" data-finds-category="Сумки">Сумки</button><button type="button" aria-pressed="false" data-finds-category="Обувь">Обувь</button><button type="button" aria-pressed="false" data-finds-category="Бижутерия">Бижутерия</button></div><div class="finds-empty" role="status">Подборки пока не добавлены.</div></section>
+<section class="myspace-extra hidden" id="findsSpace" aria-label="Находки из Китая"><button id="findsBack" type="button">← My Space</button><h1>Находки из Китая</h1><p>Находки AliExpress на Wildberries</p><div class="finds-filters" id="findsFilters" aria-label="Категории"><button type="button" aria-pressed="true" data-finds-category="Все">Все</button><button type="button" aria-pressed="false" data-finds-category="Одежда">Одежда</button><button type="button" aria-pressed="false" data-finds-category="Сумки">Сумки</button><button type="button" aria-pressed="false" data-finds-category="Обувь">Обувь</button><button type="button" aria-pressed="false" data-finds-category="Бижутерия">Бижутерия</button></div><button id="findsSaved" type="button" aria-pressed="false">♡ Избранное</button><div id="findsContent" aria-live="polite"></div></section>
 <section class="myspace-extra hidden" id="notificationsSpace" aria-label="Уведомления">
 <div class="ms-notice-inner"><header class="ms-notice-header"><button class="ms-notice-icon" id="noticesBack" aria-label="Назад на главную">←</button><h1>Уведомления</h1><button class="ms-notice-icon" id="noticesSettings" aria-label="Настройки уведомлений">⚙</button></header>
 <div class="ms-notice-controls"><button data-notice-filter="all" aria-pressed="true">Все</button><button data-notice-filter="unread" aria-pressed="false">Непрочитанные</button><button class="ms-read-all" id="noticesReadAll">Прочитать всё</button></div>
@@ -760,6 +760,7 @@ const showSpace=space=>{
  for(const name of ['notifications','notificationSettings','noticeTargets'])$(name+'Space').classList.toggle('hidden',space!==name);
  if(space==='notifications')notices?.enter();
  if(space==='notificationSettings')notices?.settings();
+ if(space==='finds')findsLoad();
  if(space==='moda'){load();if(tg)tg.expand()}
  if(space==='oura')showLatestOura();
  if(space==='fashion')loadFashion(true);
@@ -963,6 +964,7 @@ function loadMySpaceEditorial(type,force=false){
 }
 applyMsTheme();
 function msGoBack(){
+ if(currentSpace==='finds'&&findsSelected){findsRender();return}
  if(document.querySelector('#detail.visible')){$('back')?.click();return}
  if(currentSpace==='fashion'&&!$('fashionArticle').classList.contains('hidden')){$('fashionBack').click();return}
  if(currentSpace==='notificationSettings'||currentSpace==='noticeTargets'){showSpace('notifications');return}
@@ -997,7 +999,8 @@ async function msRefreshCurrent(){
   if(space==='moda'){
    ok=await load({refresh:true});
    if(draftId&&key===msRefreshKey()){const d=items.find(x=>x.id===draftId);if(d){const top=$('detail').scrollTop;open(d);$('detail').scrollTop=top}}
-  }else if(space==='oura')ok=await loadOura();
+  }else if(space==='finds')ok=await findsLoad();
+  else if(space==='oura')ok=await loadOura();
   else if(space==='fashion'){
    ok=await loadFashion(true);
    if(articleId&&key===msRefreshKey()){const d=fashionDigest?.items?.find(x=>x.id===articleId);if(d)fashionOpen(d)}
@@ -1020,9 +1023,20 @@ msPullController=new window.MySpaceGestures({
  refresh:msRefreshCurrent,back:msGoBack,progress:msPullProgress
 });
 
+let findsItems=[],findsCategory='Все',findsSelected=null,findsSavedOnly=false;
+const findsSafeUrl=v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
+const findsProductUrl=v=>{const u=findsSafeUrl(v);return u&&/^https:\/\/(www\.)?wildberries\.ru\/catalog\/\d+\/detail\.aspx(?:[?#].*)?$/.test(u)?u:null};
+function findsSaved(){try{return JSON.parse(localStorage.getItem('myspace.finds.saved')||'[]')}catch{return []}}
+function findsToggle(id){const a=new Set(findsSaved());a.has(id)?a.delete(id):a.add(id);try{localStorage.setItem('myspace.finds.saved',JSON.stringify([...a]))}catch{};findsSelected?findsOpen(findsSelected):findsRender()}
+function findsNode(tag,text,cls){const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n}
+function findsPhotos(d){const strip=findsNode('div','','finds-photos');for(const p of (Array.isArray(d.photos)?d.photos:[])){const raw=typeof p==='string'?p:p.url;const u=findsSafeUrl(raw)||(/^assets\/[\w./-]+\.(jpg|png|webp)$/i.test(raw||'')&&!raw.includes('..')?raw:null);if(!u)continue;const img=findsNode('img');img.src=u;img.alt=d.title;img.loading='lazy';strip.append(img)}return strip}
+function findsRender(){findsSelected=null;const host=$('findsContent');host.replaceChildren();$('findsFilters').hidden=false;const rows=findsItems.filter(d=>(findsCategory==='Все'||d.category===findsCategory)&&(!findsSavedOnly||findsSaved().includes(d.id)));if(!rows.length){host.append(findsNode('div',findsSavedOnly?'Нет сохранённых находок':'Подборки пока не добавлены.','finds-empty'));return}for(const d of rows){const card=findsNode('article','','finds-card');const body=findsNode('div','','finds-card-body');body.append(findsNode('h2',d.title),findsNode('p','Wildberries'),findsNode('strong',Number.isFinite(d.price)?d.price.toLocaleString('ru-RU')+' ₽':''));const b=findsNode('button','Смотреть →');b.onclick=()=>findsOpen(d);body.append(b);card.append(findsPhotos(d),body);host.append(card)}}
+function findsOpen(d){findsSelected=d;const host=$('findsContent');host.replaceChildren();$('findsFilters').hidden=true;host.append(findsPhotos(d),findsNode('h1',d.title),findsNode('strong',Number.isFinite(d.price)?d.price.toLocaleString('ru-RU')+' ₽':''),findsNode('p',d.description||''));const actions=findsNode('div','','finds-actions');const url=findsProductUrl(d.url);if(url){const a=findsNode('a','Открыть товар');a.href=url;a.target='_blank';a.rel='noopener noreferrer';actions.append(a)}const save=findsNode('button',findsSaved().includes(d.id)?'Сохранено':'Сохранить');save.onclick=()=>findsToggle(d.id);actions.append(save);host.append(actions);$('findsSpace').scrollTop=0}
+async function findsLoad(){try{const r=await fetch('china-finds.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();if(!Array.isArray(data.items))throw Error('format');findsItems=data.items.filter(d=>d&&typeof d.id==='string'&&typeof d.title==='string');findsSelected?findsOpen(findsItems.find(x=>x.id===findsSelected.id)||findsSelected):findsRender();return true}catch{$('findsContent').replaceChildren(findsNode('div','Не удалось загрузить подборки. Потяни вниз для обновления.','finds-empty'));return false}}
 $('openFinds').onclick=()=>showSpace('finds');
-$('findsBack').onclick=()=>showSpace('hub');
-document.querySelectorAll('[data-finds-category]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-finds-category]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+$('findsBack').onclick=()=>findsSelected?findsRender():showSpace('hub');
+$('findsSaved').onclick=()=>{findsSavedOnly=!findsSavedOnly;$('findsSaved').setAttribute('aria-pressed',String(findsSavedOnly));findsRender()};
+document.querySelectorAll('[data-finds-category]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-finds-category]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));findsCategory=b.dataset.findsCategory;findsRender()});
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('openFashion').onclick=()=>showSpace('fashion');
