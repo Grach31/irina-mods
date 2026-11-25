@@ -25,7 +25,12 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
  await page.screenshot({path:require('node:path').join(process.env.NOTICE_QA_DIR||require('node:os').tmpdir(),'notifications-light.png'),fullPage:true});
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);assert.equal(overflow,false);assert.deepEqual(errors,[]);
  // Left edge back gesture on the real notification scroller.
- await page.locator('#notificationsSpace').dispatchEvent('touchstart',{touches:[{clientX:8,clientY:240}],changedTouches:[]});
- await page.locator('#notificationsSpace').dispatchEvent('touchend',{touches:[],changedTouches:[{clientX:160,clientY:245}]});assert.equal(await page.locator('#hub').isVisible(),true);
+ await page.locator('#notificationsSpace').evaluate(element=>{
+  const start=new Touch({identifier:1,target:element,clientX:8,clientY:240});
+  const end=new Touch({identifier:1,target:element,clientX:160,clientY:245});
+  element.dispatchEvent(new TouchEvent('touchstart',{bubbles:true,touches:[start]}));
+  element.dispatchEvent(new TouchEvent('touchend',{bubbles:true,changedTouches:[end]}));
+ });
+ assert.equal(await page.locator('#hub').isVisible(),true);
  console.log('PASS: bell placement, center, material/back, read count, offline, settings, themes, mobile layout, swipe; no browser errors');await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
