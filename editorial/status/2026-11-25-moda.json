@@ -1,7 +1,7 @@
 {
   "id": "2026-11-25:moda",
   "section": "moda",
-  "state": "blocked",
-  "reason_code": "images",
-  "recorded_at": "2026-11-25T10:54:33.565214+03:00"
+  "state": "ready",
+  "reason_code": "ok",
+  "recorded_at": "2026-11-25T12:10:49.288448+03:00"
 }
