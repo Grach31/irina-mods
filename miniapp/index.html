@@ -460,6 +460,14 @@ html[data-ms-theme="dark"] #modaShell .nav button.active{color:#f7f1e9}
 body>nav.nav{display:none!important}
 #modaShell .list{padding-bottom:22px}
 #modaShell #published{cursor:pointer}
+</style><style id="editorial-redesign">
+#hub .hub-header{text-align:left;padding:0 90px 0 0;margin-bottom:20px}#hub .hub-logo{font:normal 44px Georgia,serif;letter-spacing:-2px}#hub .hub-sub{display:none}
+#hub .hub-cards{gap:12px}#hub .hub-card{position:relative;display:block!important;min-height:155px;border:0;border-radius:20px;overflow:hidden;background:#e9dfd5;color:#35231e;box-shadow:none}
+#hub .hub-card .hub-visual{position:absolute;inset:0 0 0 43%;width:57%!important;min-width:0!important;height:100%;background:transparent}#hub .hub-visual img{object-fit:cover}
+#hub .hub-card-body{position:relative;z-index:1;width:65%;padding:22px 15px;background:linear-gradient(90deg,#e9dfd5 65%,transparent);text-align:left}#hub .hub-card-body strong{font:normal clamp(23px,6vw,38px)/1.04 Georgia,serif}#hub .hub-card-body small{color:#604b40;font-size:13px;line-height:1.35}#hub .hub-card-body:after{content:'→';display:grid;place-items:center;background:#80645c;color:white;width:34px;height:34px;border-radius:50%;margin-top:14px}
+#hub #openModa,#hub #openFinds,#hub #openOura,#hub #openFashion,#hub #openHistory{grid-column:1/-1}#hub #openModa{min-height:190px}#hub #openFinds{min-height:205px;background:#e8d2cd}#hub #openFinds .hub-card-body{background:linear-gradient(90deg,#e8d2cd 65%,transparent)}#hub #openFinds .hub-card-body:after{background:#914653}#hub #openTrends{order:4}#hub #openReels{order:5}#hub #openHistory{order:6}#hub #openFashion{order:3}#hub #openOura{order:2}#hub #openFinds{order:1}#hub #openModa{order:0}
+#hub #openTrends .hub-card-body,#hub #openReels .hub-card-body{width:85%;padding:15px 10px}#hub #openTrends .hub-card-body strong,#hub #openReels .hub-card-body strong{font-size:22px}
+#findsSpace{min-height:100dvh;background:#f7f1eb;color:#35231e;padding:20px 16px 40px}#findsSpace h1{font:normal 36px Georgia,serif;margin:20px 0 8px}#findsSpace .finds-filters{display:flex;gap:8px;overflow:auto;padding:12px 0}#findsSpace button{border:0;border-radius:24px;padding:12px 16px;background:#e9dfd5;color:#35231e;white-space:nowrap}#findsSpace button[aria-pressed=true]{background:#914653;color:white}#findsSpace .finds-empty{padding:32px 16px;text-align:center;border-radius:18px;background:#eee3dc;margin-top:16px}
 </style></head><body>
 <div id="pullIndicator" role="status" aria-live="polite"><div class="pull-ring"></div><span id="pullMessage">Обновляю…</span></div><section class="pwa-boot" id="pwaBoot" role="status" aria-label="Загрузка My Space"><div class="pwa-boot-brand">My Space.</div></section><section class="pwa-gate hidden" id="pwaGate" style="display:none">
 <div class="pwa-gate-card">
@@ -476,6 +484,7 @@ body>nav.nav{display:none!important}
 <section class="hub" id="hub"><div class="hub-header"><button type="button" class="hub-settings-trigger hub-notification-trigger" id="openNotifications" aria-label="Уведомления"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="ms-notice-badge" id="noticeBadge" hidden></span></button><button type="button" class="hub-settings-trigger" id="openSettings" aria-label="Настройки" title="Настройки">⚙</button><div class="hub-logo">My Space.</div><div class="hub-sub">PERSONAL DASHBOARD</div>
 </div><div class="hub-cards">
 <button id="openModa" class="hub-card"><div class="hub-visual hub-fashion"><img src="assets/moda-cover.svg" alt="Редакционный блокнот Drafts" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Moda</strong><small>Публикации, подборки, модные новости</small></div></button>
+<button id="openFinds" class="hub-card"><div class="hub-visual"><img src="assets/finds-cover.svg" alt="Бордовая сумка" loading="lazy"></div><div class="hub-card-body"><strong>Находки из Китая</strong><small>Находки AliExpress на Wildberries</small></div></button>
 <button id="openOura" class="hub-card"><div class="hub-visual hub-oura"><img src="assets/oura-cover.svg" alt="Синее керамическое кольцо" loading="eager" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Oura Ring</strong><small>Сон, готовность и активность</small></div></button>
 <button id="openFashion" class="hub-card hub-card-news"><div class="hub-visual"><img src="assets/fashion-cover.svg" alt="Рабочее место модного редактора" loading="lazy" onerror="this.hidden=true"></div><div class="hub-card-body"><strong>Fashion Daily</strong><small>Мировые и российские новости моды</small></div></button>
 <button id="openReels" class="hub-card hub-card-extra"><div class="hub-visual hub-reels"><img src="assets/reels-approved.svg" alt="Съёмка модного Reels на смартфон" loading="lazy" decoding="async"></div><div class="hub-card-body"><strong>Reels Studio</strong><small>Идеи, сценарии и съёмка</small></div></button>
@@ -484,6 +493,7 @@ body>nav.nav{display:none!important}
 </div></section>
 
 
+<section class="myspace-extra hidden" id="findsSpace" aria-label="Находки из Китая"><button id="findsBack" type="button">← My Space</button><h1>Находки из Китая</h1><p>Находки AliExpress на Wildberries</p><div class="finds-filters" aria-label="Категории"><button type="button" aria-pressed="true" data-finds-category="Все">Все</button><button type="button" aria-pressed="false" data-finds-category="Одежда">Одежда</button><button type="button" aria-pressed="false" data-finds-category="Сумки">Сумки</button><button type="button" aria-pressed="false" data-finds-category="Обувь">Обувь</button><button type="button" aria-pressed="false" data-finds-category="Бижутерия">Бижутерия</button></div><div class="finds-empty" role="status">Подборки пока не добавлены.</div></section>
 <section class="myspace-extra hidden" id="notificationsSpace" aria-label="Уведомления">
 <div class="ms-notice-inner"><header class="ms-notice-header"><button class="ms-notice-icon" id="noticesBack" aria-label="Назад на главную">←</button><h1>Уведомления</h1><button class="ms-notice-icon" id="noticesSettings" aria-label="Настройки уведомлений">⚙</button></header>
 <div class="ms-notice-controls"><button data-notice-filter="all" aria-pressed="true">Все</button><button data-notice-filter="unread" aria-pressed="false">Непрочитанные</button><button class="ms-read-all" id="noticesReadAll">Прочитать всё</button></div>
@@ -739,6 +749,7 @@ const showSpace=space=>{
  }
 
  $('hub').classList.toggle('hidden',space!=='hub');
+ $('findsSpace').classList.toggle('hidden',space!=='finds');
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
  $('fashionSpace').classList.toggle('hidden',space!=='fashion');
@@ -1009,6 +1020,9 @@ msPullController=new window.MySpaceGestures({
  refresh:msRefreshCurrent,back:msGoBack,progress:msPullProgress
 });
 
+$('openFinds').onclick=()=>showSpace('finds');
+$('findsBack').onclick=()=>showSpace('hub');
+document.querySelectorAll('[data-finds-category]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-finds-category]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
 $('openModa').onclick=()=>showSpace('moda');
 $('openOura').onclick=()=>showSpace('oura');
 $('openFashion').onclick=()=>showSpace('fashion');
@@ -1615,7 +1629,7 @@ notices=new window.MySpaceNotifications({token:authAccessToken,showSpace,navigat
 const requestedSpace=new URLSearchParams(location.search).get('space');
 let savedSpace='hub';
 try{savedSpace=sessionStorage.getItem(msLastSpaceKey)||'hub'}catch(e){}
-const validSpaces=['hub','moda','oura','fashion','settings','reels','trends','history','notifications','notificationSettings'];
+const validSpaces=['finds','hub','moda','oura','fashion','settings','reels','trends','history','notifications','notificationSettings'];
 const initialSpace=validSpaces.includes(requestedSpace)?requestedSpace:(validSpaces.includes(savedSpace)?savedSpace:'hub');
 if(initialSpace!=='hub')showSpace(initialSpace);
 restorePwaSession();
