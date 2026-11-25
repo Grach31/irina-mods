@@ -145,7 +145,6 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 .hub-finds-shortcuts img { width: 100%; height: 41px; object-fit: cover; border-radius: 6px; }
 /* Finds catalog and product */
 #findsSpace { padding-bottom: calc(14px + env(safe-area-inset-bottom,0px)); }
-#findsSpace.finds-detail-mode { padding-bottom: calc(75px + env(safe-area-inset-bottom,0px)); }
 .finds-detail-mode .finds-search { display: none; }
 .finds-top {
   position: sticky;
@@ -211,17 +210,21 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 .finds-photo-dot { width: 24px; height: 24px; display: grid; place-items: center; border: 0; border-radius: 20px; background: transparent; padding: 0; pointer-events: auto; }
 .finds-photo-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 0 1px #0006; background: #fff9; }
 .finds-photo-dot[aria-current="true"]::after { background: #fff; width: 10px; height: 10px; }
-.finds-product { margin-inline: 6px; color: var(--ms-text); }
-.finds-kicker { margin: 7px 0 9px; color: var(--ms-accent); font-size: 10px; font-weight: 700; letter-spacing: .15em; }
-.finds-product .finds-gallery { aspect-ratio: 1.53; }
-.finds-product .finds-photos { height: 100%; }
-.finds-product h1 { margin: 9px 0 6px; font: 600 clamp(23px, 6vw, 38px)/1.06 var(--ms-serif); letter-spacing: -.04em; overflow-wrap: anywhere; }
-.finds-product-price { display: flex; gap: 11px; align-items: center; }
-.finds-product-price .finds-price { font-size: 26px; }
-.finds-market-tag { background: var(--ms-wash); color: var(--ms-accent); font-size: 12px; font-weight: 600; border-radius: 99px; padding: 4px 10px; }
-.finds-description, .finds-stylist p { font-size: 13px; line-height: 1.45; margin: 8px 0; white-space: pre-line; overflow-wrap: anywhere; }
-.finds-stylist { background: var(--ms-pink); border-radius: 12px; padding: 9px 12px; color: var(--ms-text); font-size: 12px; }
-.finds-stylist p { margin: 3px 0 0; }
+.finds-product { margin-inline: 3px; color: var(--ms-text); }
+.finds-kicker { margin: 8px 0 13px; text-align: center; color: var(--ms-accent); font-size: 11px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.finds-product .finds-gallery { background: transparent; overflow: visible; }
+.finds-product .finds-photos { height: auto; aspect-ratio: 1.08; border-radius: 15px; background: var(--ms-wash); }
+.finds-product .finds-slide img { object-fit: contain; }
+.finds-product .finds-photo-indicators { position: static; margin-top: 3px; }
+.finds-product .finds-photo-dot::after { background: var(--ms-line); box-shadow: none; }
+.finds-product .finds-photo-dot[aria-current="true"]::after { background: var(--ms-accent); }
+.finds-product h1 { margin: 12px 0 8px; font: 600 clamp(25px, 6.9vw, 40px)/1.08 var(--ms-serif); letter-spacing: -.04em; overflow-wrap: anywhere; }
+.finds-product .finds-price { display: block; font: 750 clamp(29px, 8vw, 42px)/1.15 -apple-system, BlinkMacSystemFont, sans-serif; }
+.finds-copy { margin: 9px 0 18px; color: var(--ms-text); font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; }
+.finds-copy p { margin: 0; white-space: pre-line; }
+.finds-copy p+p { margin-top: 4px; }
+.finds-specifications { margin-top: 16px; font-size: 13px; }
+.finds-specifications summary { padding: 10px 0; color: var(--ms-sub); cursor: pointer; }
 .finds-facts { margin: 6px 0 12px; }
 .finds-facts div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--ms-line); padding: 8px 3px; font-size: 12px; }
 .finds-facts dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
@@ -229,18 +232,25 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 .finds-related { display: flex; gap: 4px; overflow: auto; padding: 3px; }
 .finds-related button { flex: 0 0 77px; height: 69px; border: 0; padding: 0; border-radius: 10px; overflow: hidden; background: var(--ms-wash); color: var(--ms-text); }
 .finds-related img { width: 100%; height: 100%; object-fit: cover; }
-.finds-actions {
-  position: fixed;
-  z-index: 3;
-  inset: auto 0 0;
-  background: var(--ms-page);
-  border-top: 1px solid var(--ms-line);
-  padding: 8px max(14px,env(safe-area-inset-right),calc((100% - 635px)/2)) calc(8px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left),calc((100% - 635px)/2));
+.finds-actions { display: grid; gap: 9px; }
+.finds-buy, .finds-actions .ep-open {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 46px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--ms-primary);
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 650;
+  text-align: center;
 }
-.finds-buy, .finds-save { flex: 2; display: grid; place-items: center; border: 0; border-radius: 15px; padding: 9px; min-height: 44px; text-decoration: none; background: var(--ms-text); color: var(--ms-page); font-size: 13px; font-weight: 650; }
-.finds-save { flex: 1; background: var(--ms-wash); color: var(--ms-text); }
+.finds-buy { text-decoration: none; background: var(--ms-primary); color: var(--ms-primary-text); }
+.finds-actions .ep-actions { display: grid; gap: 7px; margin: 0; padding: 0; border: 0; }
+.finds-actions .ep-actions[hidden] { display: none; }
+.finds-actions .ep-open { background: transparent; color: var(--ms-accent); }
 
 /* Shared treatment for existing surfaces */
 .myspace-top, .fashion-top, #modaShell .nav, .detail-top, .detail-actions,

@@ -1059,11 +1059,10 @@ function findsButton(text,cls,action){
 }
 function findsPaintSave(btn,saved){
  btn.setAttribute('aria-pressed',String(saved));
- if(btn.classList.contains('finds-heart'))btn.setAttribute('aria-label',saved?'Убрать из избранного':'В избранное');
- else btn.textContent=saved?'Сохранено':'Сохранить';
+ btn.setAttribute('aria-label',saved?'Убрать из избранного':'В избранное');
 }
-function findsSaveButton(item,style){
- const btn=findsButton(style==='finds-heart'?'♡':'',style,()=>findsToggle(item.id));
+function findsSaveButton(item){
+ const btn=findsButton('♡','finds-heart',()=>findsToggle(item.id));
  btn.dataset.findSave=item.id;findsPaintSave(btn,findsSaved().has(item.id));return btn;
 }
 function findsPhotos(item,detail=false){
@@ -1086,7 +1085,9 @@ function findsPhotos(item,detail=false){
   dot.setAttribute('aria-label','Фото '+(index+1));indicators.append(dot);
  }
  if(!strip.childElementCount){
-  gallery.append(findsNode('p','Фото недоступно','finds-photo-error'));return gallery;
+  gallery.append(findsNode('p','Фото недоступно','finds-photo-error'));
+  if(detail)gallery.append(findsSaveButton(item));
+  return gallery;
  }
  if(strip.childElementCount>1){
   strip.tabIndex=0;
@@ -1096,7 +1097,7 @@ function findsPhotos(item,detail=false){
   };
   strip.addEventListener('scroll',update,{passive:true});update();gallery.append(strip,indicators);
  }else gallery.append(strip);
- if(detail)gallery.append(findsSaveButton(item,'finds-heart'));
+ if(detail)gallery.append(findsSaveButton(item));
  return gallery;
 }
 function findsPrice(item){
@@ -1125,7 +1126,7 @@ function findsRender({returnToList=false}={}){
   source.prepend(findsNode('span','WB','finds-wb'));
   body.append(findsNode('h2',item.title),source,findsPrice(item),
    findsButton('Смотреть →','finds-primary',()=>findsOpen(item)),
-   findsSaveButton(item,'finds-heart'));
+   findsSaveButton(item));
   card.append(findsPhotos(item),body);host.append(card);
  }
  findsFilterButtons();
@@ -1140,20 +1141,35 @@ function findsOpen(item,{preserveScroll=false}={}){
  $('findsBanner').hidden=true;$('findsFilters').hidden=true;
  surface.classList.add('finds-detail-mode');
  const detail=findsNode('article','','finds-product');
- detail.append(findsNode('p','✦  НАХОДКИ ИЗ КИТАЯ','finds-kicker'),findsPhotos(item,true),findsNode('h1',item.title));
- const price=findsNode('div','','finds-product-price');
- price.append(findsPrice(item),findsNode('span','Wildberries','finds-market-tag'));
- detail.append(price,findsNode('p',item.description,'finds-description'));
- if(item.stylist){
-  const note=findsNode('aside','','finds-stylist');
-  note.append(findsNode('strong','Совет стилиста'),findsNode('p',item.stylist));detail.append(note);
+ detail.append(findsNode('p','Находки из Китая','finds-kicker'),findsPhotos(item,true),
+  findsNode('h1',item.title),findsPrice(item));
+ const copy=findsNode('div','','finds-copy');
+ if(item.description)copy.append(findsNode('p',item.description));
+ if(item.stylist)copy.append(findsNode('p',item.stylist));
+ if(copy.childElementCount)detail.append(copy);
+
+ const actions=findsNode('div','','finds-actions');
+ const url=findsProductUrl(item.url,item.wb_article);
+ if(url){
+  const link=findsNode('a','Открыть на Wildberries','finds-buy');
+  const arrow=findsNode('span','↗');arrow.setAttribute('aria-hidden','true');
+  link.append(arrow);link.href=url;
+  // The direct HTTPS link lets iOS choose the installed app or Safari.
+  if(isTelegramClient&&tg?.openLink)link.addEventListener('click',event=>{event.preventDefault();tg.openLink(url,{try_instant_view:false})});
+  actions.append(link);
  }
+ editorialPublisher?.attach(actions,'finds',item.id);
+ detail.append(actions);
+
  const facts=findsNode('dl','','finds-facts');
  for(const [label,value] of [['Категория',item.category],['Материал',item.material],['Цвет',item.color],
   ['Стиль',item.style],['Артикул',item.wb_article]]){
   if(value){const row=findsNode('div');row.append(findsNode('dt',label),findsNode('dd',String(value)));facts.append(row)}
  }
- detail.append(facts);
+ if(facts.childElementCount){
+  const more=findsNode('details','','finds-specifications');
+  more.append(findsNode('summary','Характеристики'),facts);detail.append(more);
+ }
  const similar=findsItems.filter(other=>other.category===item.category&&other.id!==item.id).slice(0,5);
  if(similar.length){
   const strip=findsNode('div','','finds-related');
@@ -1166,17 +1182,7 @@ function findsOpen(item,{preserveScroll=false}={}){
   }
   detail.append(findsNode('h2','Похожие находки'),strip);
  }
- editorialPublisher?.attach(detail,'finds',item.id);
- const actions=findsNode('div','','finds-actions');
- const url=findsProductUrl(item.url,item.wb_article);
- if(url){
-  const link=findsNode('a','Открыть товар','finds-buy');link.href=url;
-  // A direct HTTPS link lets the device handle its verified universal link or open the site.
-  if(isTelegramClient&&tg?.openLink)link.addEventListener('click',event=>{event.preventDefault();tg.openLink(url,{try_instant_view:false})});
-  actions.append(link);
- }
- actions.append(findsSaveButton(item,'finds-save'));
- host.append(detail,actions);
+ host.append(detail);
  surface.scrollTop=preserveScroll?scroll:0;
 }
 function findsLoad(){
