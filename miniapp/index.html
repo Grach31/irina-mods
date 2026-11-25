@@ -485,7 +485,6 @@ body>nav.nav{display:none!important}
 <button type="button" id="openReels" class="hub-card hub-card-reels"><span class="hub-visual"><img src="assets/editorial/reels.webp" alt="" loading="lazy" decoding="async"></span><span class="hub-card-body"><strong>Reels Studio</strong><small>Создавай стильные<br>видео и образы</small><span class="hub-arrow"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h15m-6-5l5 5-5 5"/></svg></span></span></button>
 <button type="button" id="openHistory" class="hub-card hub-card-history"><span class="hub-visual"><img src="assets/editorial/history.webp" alt="" loading="lazy" decoding="async"></span><span class="hub-card-body"><strong>Style Time Machine</strong><small>Примеряй образы из разных эпох</small><span class="hub-arrow"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h15m-6-5l5 5-5 5"/></svg></span></span></button>
 </div></section>
-<nav id="editorialNav" aria-label="Основная навигация" hidden><button type="button" data-editorial-nav="hub"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9H4v-9m5 9v-6h6v6"/></svg><span>Главная</span></button><button type="button" data-editorial-nav="search"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0"/></svg><span>Поиск</span></button><button type="button" data-editorial-nav="reels"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 12h8m-4-4v8M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/></svg><span>Reels</span></button><button type="button" data-editorial-nav="saved"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0l-1 1-1-1a5.5 5.5 0 00-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 000-7.8z"/></svg><span>Избранное</span></button><button type="button" data-editorial-nav="finds"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l2 13H3L5 8zm4 2V6a3 3 0 016 0v4"/></svg><span>Находки</span></button><button type="button" data-editorial-nav="settings" hidden><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 21v-2a5 5 0 00-5-5H9a5 5 0 00-5 5v2m12-13a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span>Профиль</span></button></nav>
 <section class="myspace-extra hidden" id="findsSpace" aria-label="Находки из Китая">
 <header class="finds-top">
 <button id="findsBack" class="finds-icon" type="button" aria-label="Назад"><svg class="ms-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7"/></svg></button>
@@ -495,7 +494,7 @@ body>nav.nav{display:none!important}
 <div class="finds-inner">
 <div class="finds-banner" id="findsBanner"><h1>Находки из Китая</h1><p>Находки AliExpress на Wildberries</p></div>
 <div class="finds-filters" id="findsFilters" aria-label="Категории"><button type="button" aria-pressed="true" data-finds-category="Все">Все</button><button type="button" aria-pressed="false" data-finds-category="Одежда">Одежда</button><button type="button" aria-pressed="false" data-finds-category="Сумки">Сумки</button><button type="button" aria-pressed="false" data-finds-category="Обувь">Обувь</button><button type="button" aria-pressed="false" data-finds-category="Бижутерия">Украшения</button></div>
-<div class="finds-search" id="findsSearchBox" hidden><label for="findsSearch">Поиск по находкам</label><input id="findsSearch" type="search" placeholder="Название или артикул"></div>
+<div class="finds-search" id="findsSearchBox"><label for="findsSearch">Поиск по находкам</label><input id="findsSearch" type="search" placeholder="Название или артикул"></div>
 <div id="findsContent" aria-live="polite"></div>
 </div></section>
 <section class="myspace-extra hidden" id="notificationsSpace" aria-label="Уведомления">
@@ -753,7 +752,6 @@ const showSpace=space=>{
  }
 
  $('hub').classList.toggle('hidden',space!=='hub');
- syncEditorialNav(space);
  $('findsSpace').classList.toggle('hidden',space!=='finds');
  $('modaShell').style.display=space==='moda'?'':'none';
  $('ouraSpace').classList.toggle('hidden',space!=='oura');
@@ -1029,7 +1027,7 @@ msPullController=new window.MySpaceGestures({
 });
 
 const findsCategories=new Set(['Одежда','Сумки','Обувь','Бижутерия']);
-let findsItems=[],findsCategory='Все',findsSelected=null,findsSavedOnly=false,findsListScroll=0,findsSearchWasOpen=false,findsRequest=null;
+let findsItems=[],findsCategory='Все',findsSelected=null,findsSavedOnly=false,findsListScroll=0,findsRequest=null;
 function findsSafeUrl(value){
  try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:null}catch{return null}
 }
@@ -1108,22 +1106,9 @@ function findsFilterButtons(){
  for(const el of document.querySelectorAll('[data-finds-category]'))el.setAttribute('aria-pressed',String(el.dataset.findsCategory===findsCategory));
  $('findsSaved').setAttribute('aria-pressed',String(findsSavedOnly));
 }
-function syncEditorialNav(space=currentSpace){
- const inFinds=space==='finds';
- const nav=$('editorialNav');
- nav.hidden=space!=='hub'&&(!inFinds||!!findsSelected);
- const tab=space==='hub'?'hub':findsSavedOnly?'saved':!$('findsSearchBox').hidden?'search':'finds';
- for(const control of nav.querySelectorAll('[data-editorial-nav]')){
-  const name=control.dataset.editorialNav;
-  control.hidden=name==='reels'?inFinds:name==='settings'?!inFinds:false;
-  if(name===tab)control.setAttribute('aria-current','page');
-  else control.removeAttribute('aria-current');
- }
-}
 function findsRender({returnToList=false}={}){
  findsSelected=null;
  const host=$('findsContent'),search=$('findsSearch');
- if(returnToList)$('findsSearchBox').hidden=!findsSearchWasOpen;
  host.replaceChildren();$('findsBanner').hidden=false;$('findsFilters').hidden=false;
  $('findsSpace').classList.remove('finds-detail-mode');
  const query=search.value.trim().toLocaleLowerCase('ru');
@@ -1143,19 +1128,16 @@ function findsRender({returnToList=false}={}){
    findsSaveButton(item,'finds-heart'));
   card.append(findsPhotos(item),body);host.append(card);
  }
- findsFilterButtons();syncEditorialNav();
+ findsFilterButtons();
  if(returnToList)$('findsSpace').scrollTop=findsListScroll;
 }
 function findsOpen(item,{preserveScroll=false}={}){
  const surface=$('findsSpace');
- if(!findsSelected){
-  findsListScroll=surface.scrollTop;
-  findsSearchWasOpen=!$('findsSearchBox').hidden;
- }
+ if(!findsSelected)findsListScroll=surface.scrollTop;
  const scroll=surface.scrollTop;
  findsSelected=item;
  const host=$('findsContent');host.replaceChildren();
- $('findsBanner').hidden=true;$('findsFilters').hidden=true;$('findsSearchBox').hidden=true;
+ $('findsBanner').hidden=true;$('findsFilters').hidden=true;
  surface.classList.add('finds-detail-mode');
  const detail=findsNode('article','','finds-product');
  detail.append(findsNode('p','✦  НАХОДКИ ИЗ КИТАЯ','finds-kicker'),findsPhotos(item,true),findsNode('h1',item.title));
@@ -1194,7 +1176,7 @@ function findsOpen(item,{preserveScroll=false}={}){
   actions.append(link);
  }
  actions.append(findsSaveButton(item,'finds-save'));
- host.append(detail,actions);syncEditorialNav();
+ host.append(detail,actions);
  surface.scrollTop=preserveScroll?scroll:0;
 }
 function findsLoad(){
@@ -1217,21 +1199,18 @@ function findsLoad(){
  })().finally(()=>findsRequest=null);
  return findsRequest;
 }
-function findsEnter(mode='finds',category='Все'){
- findsSelected=null;findsCategory=category;findsSavedOnly=mode==='saved';
- $('findsSearchBox').hidden=mode!=='search';$('findsSearch').value='';
+function findsEnter(category='Все'){
+ findsSelected=null;findsCategory=category;findsSavedOnly=false;
+ $('findsSearch').value='';
  findsRender();$('findsSpace').scrollTop=0;
  if(currentSpace!=='finds')showSpace('finds');
- if(mode==='search')$('findsSearch').focus();
 }
-for(const btn of document.querySelectorAll('[data-editorial-nav]'))btn.onclick=()=>{
- const name=btn.dataset.editorialNav;
- if(['finds','saved','search'].includes(name))findsEnter(name);else showSpace(name);
-};
-for(const btn of document.querySelectorAll('[data-hub-finds]'))btn.onclick=()=>findsEnter('finds',btn.dataset.hubFinds);
+for(const btn of document.querySelectorAll('[data-hub-finds]'))btn.onclick=()=>findsEnter(btn.dataset.hubFinds);
 $('openFinds').onclick=()=>findsEnter();
 $('findsBack').onclick=()=>findsSelected?findsRender({returnToList:true}):showSpace('hub');
-$('findsSaved').onclick=()=>{findsSavedOnly=!findsSavedOnly;findsRender()};
+$('findsSaved').onclick=()=>{
+ findsSavedOnly=!findsSavedOnly;findsCategory='Все';$('findsSearch').value='';findsRender();
+};
 $('findsSearch').oninput=()=>findsRender();
 for(const btn of document.querySelectorAll('[data-finds-category]'))btn.onclick=()=>{
  findsCategory=btn.dataset.findsCategory;findsRender();
