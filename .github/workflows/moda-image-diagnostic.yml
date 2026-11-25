@@ -5,6 +5,11 @@ on:
     paths:
       - .github/workflows/moda-image-diagnostic.yml
   workflow_dispatch:
+    inputs:
+      product_urls:
+        description: Official HTTPS product URLs separated by whitespace
+        required: true
+        type: string
 permissions:
   contents: read
 jobs:
@@ -12,10 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
+      - name: Install image decoder
+        run: python -m pip install --disable-pip-version-check Pillow
       - name: Check official product pages and their image URLs
+        env:
+          PRODUCT_URLS: ${{ inputs.product_urls }}
         run: |
           python - <<'PY'
-          import html, re, urllib.request, urllib.parse, io, json
+          import html, re, urllib.request, urllib.parse, io, json, os, concurrent.futures
+          from PIL import Image
+          from pathlib import Path
           from html.parser import HTMLParser
           class Images(HTMLParser):
               def __init__(self):
@@ -27,23 +38,30 @@ jobs:
                   if tag=='img':
                       for k in ('src','data-src'):
                           if a.get(k): self.urls.append(a[k])
-          pages=[
-              'https://allweneed.ru/product/palto-halat-korichnevyj-276796',
-              'https://emkashop.ru/yubka-s1124-peter',
-              'https://allweneed.ru/product/sviter-iz-shersti-enota-premium-molochnyj-195386',
-              'https://emkashop.ru/bryuki-d555-tricel',
-              'https://allweneed.ru/en/product/tufli-iz-kozhi-molochnogo-tsveta-slivochnyj-199315',
-              'https://allweneed.ru/en/product/brjuki-iz-viskozy-bezhevyj-189516',
-              'https://allweneed.ru/product/sharf-iz-shersti-merinosa-sero-korichnevyj-277501',
+          pages=os.environ.get('PRODUCT_URLS','').split() or [
+              'https://allweneed.ru/product/zhaket-pritalennyj-s-aktsentnymi-plechami-bordovyj-v-polosku-266691',
+              'https://allweneed.ru/product/brjuki-so-skladkami-bordovyj-v-polosku-266794',
+              'https://emkashop.ru/bryuki-d544-pall',
+              'https://emkashop.ru/yubka-s1055-nuez',
+              'https://emkashop.ru/keyp-b3367-pallina',
+              'https://emkashop.ru/djemper-b3282-nivelle',
+              'https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/',
+              'https://www.2moodstore.com/collection/katalog/kardigan_s_pugovitsami_v_obtyazhku_serogo_tsveta/',
+              'https://www.gate31.ru/product/sumka-polumesyats-dublin',
+              'https://www.gate31.ru/product/sharf-iz-shersti-928f6c',
           ]
-          results=[]
-          for url in pages:
+          approved=set('sela.ru limestore.com loverepublic.ru befree.ru studio-29.ru allweneed.ru idol.ru tvoe.ru toptop.ru emkashop.ru charuel.ru brusnikabrand.com elis.ru gate31.ru cocos-moscow.ru 1811stores.com ushatava.ru laroom.ru sodamoda.ru belleyou.ru monochrome.ru grigri.ru ru.krakatauwear.com shuclothes.com novayawear.com rxbshoes.com askent.ru arnypraht.com jewelry-in-august.com saharokstore.ru qariqris.com alenaakhmadullina.ru tegin.com vassatrend.ru rubancouture.com 2moodstore.com'.split())
+          pages=[u for u in dict.fromkeys(pages) if urllib.parse.urlparse(u).scheme=='https' and (urllib.parse.urlparse(u).hostname or '').removeprefix('www.') in approved][:30]
+          Path('evidence').mkdir(exist_ok=True)
+          def probe(pair):
+              i,url=pair
               record={'product_url':url,'page_ok':False,'image_ok':False}
               try:
                   req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (compatible; ModaEditorial/1.0)'})
                   with urllib.request.urlopen(req,timeout=20) as response:
                       body=response.read(3000000).decode('utf-8','replace')
                       record['page_http']=response.status
+                      if response.status!=200 or (urllib.parse.urlparse(response.geturl()).hostname or '').removeprefix('www.') not in approved:raise ValueError('Unexpected product redirect or HTTP status')
                   record['page_ok']=True
                   record['price_context']=re.findall(r'.{0,70}(?:price|цена|₽|&#8381;|\\u20bd).{0,90}',body,re.I)[:8]
                   record['page_title']=re.findall(r'<title[^>]*>(.*?)</title>',body,re.I|re.S)[:1]
@@ -56,25 +74,26 @@ jobs:
                       try:
                           req=urllib.request.Request(image_url,headers={'User-Agent':'Mozilla/5.0','Referer':url})
                           with urllib.request.urlopen(req,timeout=15) as resp:
-                              data=resp.read(3000000);mime=resp.headers.get('Content-Type','')
+                              data=resp.read(12000001);mime=resp.headers.get('Content-Type','')
+                              if resp.status!=200 or len(data)>12000000:continue
                           if not mime.lower().startswith('image/') or len(data)<3000:continue
-                          try:
-                              from PIL import Image
-                              im=Image.open(io.BytesIO(data));im.verify()
-                              dimensions=list(im.size)
-                          except ImportError:
-                              signatures=(data.startswith(b'\xff\xd8\xff'),data.startswith(b'\x89PNG\r\n\x1a\n'),data.startswith(b'RIFF') and data[8:12]==b'WEBP')
-                              if not any(signatures):continue
-                              dimensions=None
+                          with Image.open(io.BytesIO(data)) as im:
+                              im.load();dimensions=list(im.size)
+                              if im.format not in ('JPEG','PNG','WEBP') or min(dimensions)<300:continue
+                              im.convert('RGB').save(f'evidence/{i:02d}.jpg','JPEG',quality=85)
                           record.update(image_ok=True,image_url=image_url,image_bytes=len(data),image_type=mime,image_dimensions=dimensions)
                           break
                       except Exception as exc:record['last_image_error']=str(exc)[:160]
               except Exception as exc:record['page_error']=str(exc)[:240]
-              results.append(record)
-              print('MODA_IMAGE_PROBE '+json.dumps(record,ensure_ascii=False))
+              return record
+          with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
+              results=list(pool.map(probe,enumerate(pages)))
+          for record in results:print('MODA_IMAGE_PROBE '+json.dumps(record,ensure_ascii=False))
           with open('moda-image-diagnostic.json','w') as f:json.dump(results,f,ensure_ascii=False,indent=2)
           PY
       - uses: actions/upload-artifact@v4
         with:
           name: moda-image-diagnostic
-          path: moda-image-diagnostic.json
+          path: |
+            moda-image-diagnostic.json
+            evidence/
