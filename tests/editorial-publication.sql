@@ -17,5 +17,11 @@ do $$ declare c jsonb; r jsonb; plan jsonb:='[{"kind":"media"},{"kind":"text"}]'
  c:=public.ms_ep_claim('fashion','qa-transaction-only',repeat('a',64),plan);assert c->>'ok'='true';token:=(c->>'attempt_id')::uuid;
  assert public.ms_ep_fail('fashion','qa-transaction-only',token,'uncertain','delivery_unconfirmed');
  assert public.ms_ep_claim('fashion','qa-transaction-only',repeat('a',64),plan)->>'error'='delivery_unconfirmed';
+ c:=public.ms_ep_claim('finds','qa-transaction-only',repeat('c',64),plan);
+ assert c->>'ok'='true';token:=(c->>'attempt_id')::uuid;
+ r:=public.ms_ep_checkpoint('finds','qa-transaction-only',token,0,'[201,202]');
+ assert r->>'next_part'='1';
+ r:=public.ms_ep_checkpoint('finds','qa-transaction-only',token,1,'[203]');
+ assert r->'message_ids'='[201,202,203]'::jsonb;
 end $$;
 rollback;

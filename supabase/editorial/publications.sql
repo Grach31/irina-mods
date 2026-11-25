@@ -1,11 +1,14 @@
 -- Independent editorial delivery state; existing Moda decisions are unchanged.
 create table if not exists public.myspace_editorial_publications (
- space text not null check(space in ('fashion','history')), source_id text not null,
+ space text not null, source_id text not null,
  revision text not null, plan jsonb not null, next_part integer not null default 0 check(next_part>=0),
  status text not null check(status in ('publishing','published','failed','uncertain')),
  attempt_id uuid not null default gen_random_uuid(), message_ids jsonb not null default '[]',
  error_code text, updated_at timestamptz not null default now(), primary key(space,source_id)
 );
+alter table public.myspace_editorial_publications
+ drop constraint if exists myspace_editorial_publications_space_check,
+ add constraint myspace_editorial_publications_space_check check(space in ('fashion','history','finds'));
 alter table public.myspace_editorial_publications enable row level security;
 revoke all on public.myspace_editorial_publications from public,anon,authenticated;
 grant all on public.myspace_editorial_publications to service_role;
@@ -13,7 +16,7 @@ grant all on public.myspace_editorial_publications to service_role;
 create or replace function public.ms_ep_claim(p_space text,p_id text,p_revision text,p_plan jsonb) returns jsonb
 language plpgsql security invoker set search_path='' as $$
 declare r public.myspace_editorial_publications; token uuid:=gen_random_uuid(); begin
- if p_space not in ('fashion','history') or p_id !~ '^[a-zA-Z0-9_.-]{1,200}$' or p_revision !~ '^[a-f0-9]{64}$'
+ if p_space not in ('fashion','history','finds') or p_id !~ '^[a-zA-Z0-9_.-]{1,200}$' or p_revision !~ '^[a-f0-9]{64}$'
  or jsonb_typeof(p_plan) is distinct from 'array' or jsonb_array_length(p_plan) not between 1 and 64 then raise exception 'invalid_plan'; end if;
  perform pg_advisory_xact_lock(hashtextextended('editorial:'||p_space||':'||p_id,0));
  select * into r from public.myspace_editorial_publications where space=p_space and source_id=p_id for update;

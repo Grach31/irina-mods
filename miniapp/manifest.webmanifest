@@ -1,14 +1,14 @@
 {
   "name": "My Space",
   "short_name": "My Space",
-  "description": "Moda и Oura Ring — личное пространство",
+  "description": "Редакция стиля, находки и личное пространство",
   "lang": "ru",
   "id": "/irina-mods/",
   "start_url": "/irina-mods/?source=pwa",
   "scope": "/irina-mods/",
   "display": "standalone",
-  "background_color": "#f6f4ef",
-  "theme_color": "#171b34",
+  "background_color": "#f5ede7",
+  "theme_color": "#f5ede7",
   "icons": [
     {
       "src": "icon-192.png",

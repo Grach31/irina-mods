@@ -10,16 +10,17 @@ class MySpaceReleaseTests(unittest.TestCase):
     def setUpClass(cls):
         cls.html = (APP / "index.html").read_text(encoding="utf-8")
 
-    def test_approved_images_are_bundled_and_nontrivial(self):
-        for name in ("moda-cover", "oura-cover", "fashion-cover", "oura-banner"):
+    def test_editorial_covers_are_bundled_webp(self):
+        for name in ("moda", "finds", "oura", "fashion", "trends", "reels", "history"):
             with self.subTest(name=name):
-                svg = (APP / "assets" / f"{name}.svg").read_text(encoding="utf-8")
-                self.assertIn("data:image/webp;base64,", svg)
-                self.assertGreater(len(svg), 6000)
-                self.assertIn(f"assets/{name}.svg", self.html)
+                path = APP / "assets" / "editorial" / f"{name}.webp"
+                image = path.read_bytes()
+                self.assertEqual(image[8:12], b"WEBP")
+                self.assertGreater(len(image), 5000)
+                self.assertIn(f"assets/editorial/{name}.webp", self.html)
 
-    def test_all_six_sections_present(self):
-        for id_ in ("openModa", "openOura", "openFashion", "openReels", "openTrends", "openHistory"):
+    def test_all_seven_sections_present(self):
+        for id_ in ("openModa", "openFinds", "openOura", "openFashion", "openReels", "openTrends", "openHistory"):
             self.assertIn(f'id="{id_}"', self.html)
         for id_ in ("settingsSpace", "reelsSpace", "trendsSpace", "historySpace"):
             self.assertIn(f'id="{id_}"', self.html)
@@ -82,14 +83,6 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertNotIn("posta-magazine\\.ru", validator)
         self.assertNotIn("elle\\.com", validator)
         self.assertNotIn("test(u.hostname)", validator)
-
-    def test_new_covers_are_exact_bundled_artwork(self):
-        for name in ("reels", "trends", "history"):
-            with self.subTest(name=name):
-                svg = (APP / "assets" / f"{name}-approved.svg").read_text(encoding="utf-8")
-                self.assertIn("data:image/webp;base64,", svg)
-                self.assertGreater(len(svg), 10000)
-                self.assertIn(f'assets/{name}-approved.svg', self.html)
 
     def test_moda_has_only_one_hub_navigation_button(self):
         self.assertIn('id="modaBack"', self.html)

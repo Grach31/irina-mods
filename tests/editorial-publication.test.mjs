@@ -21,7 +21,8 @@ function fixture({item=news,space='fashion',mode='ok'}={}){
  const response=(x,status=200)=>new Response(JSON.stringify(x),{status});
  const fetcher=async(url,opts={})=>{
   url=String(url);
-  if(url.startsWith('https://brand.example/')){photos++;if(mode==='image403')return response({},403);return new Response(new Uint8Array([255,216,255,...Array(197).fill(photoTail)]))}
+  if(url.startsWith('https://brand.example/')||url.startsWith('https://basket-01.wbbasket.ru/')){
+   if(space==='finds')assert.equal(opts.redirect,'error');photos++;if(mode==='image403')return response({},403);return new Response(new Uint8Array([255,216,255,...Array(197).fill(photoTail)]))}
   if(url.includes('api.telegram.org/')){
    sendCount++;const method=url.split('/').at(-1);sends.push(method);
    if(method==='sendMessage'&&!failedOnce&&mode==='failSecond'){failedOnce=true;return response({ok:false,error_code:400,description:'Bad Request'},400)}
@@ -68,4 +69,17 @@ test('an ambiguous partial delivery blocks retries',async()=>{
 });
 test('failed acknowledgement storage retries only storage, not Telegram',async()=>{
  const f=fixture({mode:'checkpointFailure'});const p=await f.call('editorial_preview');await f.call('editorial_publish',{revision:p.body.revision});assert.equal(f.get().sendCount,1);assert.equal(f.get().checkpoints,3);assert.equal(f.get().row.status,'uncertain');
+});
+
+test('Finds previews and sends actual photos, copy and the matching Wildberries product after approval',async()=>{
+ const item={id:'wb-123',title:'Сумка',category:'Сумки',description:'Мягкая сумка',stylist:'Добавь к жакету.',
+  wb_article:'123',price:2000,url:'https://www.wildberries.ru/catalog/123/detail.aspx',
+  photos:[{url:'https://basket-01.wbbasket.ru/photo/1.jpg'},{url:'https://basket-01.wbbasket.ru/photo/2.jpg'}]};
+ assert.throws(()=>buildEditorial('finds',{...item,url:item.url.replace('123','456')}),/editorial_unavailable/);
+ assert.throws(()=>buildEditorial('finds',{...item,photos:[{url:photo},item.photos[1]]}),/editorial_photo_required/);
+ const f=fixture({space:'finds',item});const preview=await f.call('editorial_preview');
+ assert.equal(preview.status,200);assert.equal(f.get().sendCount,0);
+ for(const value of [item.title,item.description,item.stylist,item.url])assert(preview.body.html.includes(value));
+ const sent=await f.call('editorial_publish',{revision:preview.body.revision});
+ assert.equal(sent.body.status,'published');assert.deepEqual(f.get().sends,['sendMediaGroup']);
 });

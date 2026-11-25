@@ -1,5 +1,5 @@
 import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,telegramRejection} from './core.ts';
-import {handleEditorial} from './editorial.ts';
+import {editorialFiles,handleEditorial} from './editorial.ts';
 const enc=new TextEncoder();
 const b64=(v:string)=>Uint8Array.from(atob(v.replace(/-/g,"+").replace(/_/g,"/").padEnd(Math.ceil(v.length/4)*4,"=")),x=>x.charCodeAt(0));
 async function githubAuth(jwt:string){
@@ -40,7 +40,7 @@ Deno.serve(async req=>{
  const bearer=(req.headers.get('authorization')||'').replace(/^Bearer /i,'');
  if(!/^[a-f0-9]{64}$/.test(bearer))return respond({error:'unauthorized'},403);
  const config=await rpc('ms_notice_config',{});if(bearer!==config.worker_token)return respond({error:'unauthorized'},403);
- if(b.space==='fashion'||b.space==='history'){const preview=await handleEditorial({...b,action:'editorial_preview'},editorialContext);return respond(preview.body,preview.status)}
+ if(Object.hasOwn(editorialFiles,b.space)){const preview=await handleEditorial({...b,action:'editorial_preview'},editorialContext);return respond(preview.body,preview.status)}
  let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'';let configured=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
  if(!token||!configured){const rows=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=rows[0]?.bot_token||token;configured=String(rows[0]?.channel_id||configured)}
  const get=async(method:string,args:Record<string,unknown>={})=>{const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(args),signal:AbortSignal.timeout(10000)});return r.json()};

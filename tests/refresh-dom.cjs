@@ -38,8 +38,21 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
  click('openOura');await settle(()=>count('pwa:oura_read')>0,'ring');await new Promise(r=>setTimeout(r,10));await refresh(get('ouraSelectedDay'),'pwa:oura_read');click('ouraBack');
  click('openFashion');await settle(()=>doc.querySelector('.fashion-story'),'fashion');
  const artwork=doc.querySelector('.fashion-story .fashion-artwork'),photo=artwork.querySelector('img');assert(photo,'top story has an actual image element');
- photo.dispatchEvent(new window.Event('load'));assert(artwork.classList.contains('has-photo'));assert(artwork.querySelector('small').textContent.includes('Rimowa / ELLE'));
- photo.dispatchEvent(new window.Event('error'));assert.equal(artwork.querySelector('img'),null);assert(!artwork.classList.contains('has-photo'));assert(artwork.querySelector('small').textContent.includes('редакционная обложка'));
+ Object.defineProperties(photo,{complete:{value:true},naturalWidth:{value:640,writable:true}});
+ photo.dispatchEvent(new window.Event('myspace-photo-retry'));
+ photo.dispatchEvent(new window.Event('load'));
+ assert(artwork.classList.contains('has-photo'));assert.equal(artwork.querySelector('small').textContent,artwork.dataset.photoCredit);
+ photo.naturalWidth=0;
+ const candidates=JSON.parse(artwork.dataset.photoCandidates);
+ for(const candidate of candidates.slice(1)){
+  photo.dispatchEvent(new window.Event('error'));
+  await settle(()=>photo.src===new URL(candidate.url,window.location.href).href,'fallback news photo');
+ }
+ photo.dispatchEvent(new window.Event('error'));
+ await settle(()=>photo.src.includes('_ms_photo_retry'),'last news photo retry');
+ photo.dispatchEvent(new window.Event('error'));
+ assert(photo.hidden);assert(!artwork.classList.contains('has-photo'));
+ assert(artwork.querySelector('small').textContent.includes('Фото временно недоступно'));
  await refresh(doc.querySelector('.fashion-story'),'fashion-daily.json');doc.querySelector('.fashion-story').click();assert(get('fashionArticle').querySelector('.fashion-artwork img'),'article shares the photo renderer');await refresh(get('fashionArticle'),'fashion-daily.json');assert.equal(get('fashionArticle').classList.contains('hidden'),false,'article stays open');click('fashionBack');click('fashionBack');
  for(const [open,type,file] of [['openReels','reels','reels-studio.json'],['openTrends','trends','trend-radar.json'],['openHistory','history','style-time-machine.json']]){
   click(open);await settle(()=>get(type+'Items').querySelector('[data-material-id]'),type);const card=get(type+'Items').querySelector('[data-material-id]');await refresh(card,file);

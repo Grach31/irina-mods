@@ -1,10 +1,28 @@
 import {downloadPublicationPhotos,telegramRejection,visibleCaption} from './core.ts';
 const escape=(s:unknown)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const https=(s:unknown)=>{try{const u=new URL(String(s));if(u.protocol==='https:'&&!u.username&&!u.password)return u.href}catch{}throw Error('editorial_photo_required')};
+export const editorialFiles:Record<string,string>={
+ fashion:'fashion-daily.json',
+ history:'style-time-machine.json',
+ finds:'china-finds.json',
+};
+const findsCategories=new Set(['Одежда','Сумки','Обувь','Бижутерия']);
+function findsPhoto(value:unknown){
+ const url=new URL(https(value));
+ if(url.port||!/^basket-\d+\.(?:wbbasket\.ru|wb\.ru|wbstatic\.net)$/.test(url.hostname)){
+  throw Error('editorial_photo_required');
+ }
+ return url.href;
+}
+function findsLink(value:unknown,article:unknown){
+ if(typeof article!=='string'||!/^\d{1,15}$/.test(article)||
+  value!==`https://www.wildberries.ru/catalog/${article}/detail.aspx`)throw Error('editorial_unavailable');
+ return value;
+}
 function chunks(s:string,max=3800){const out:string[]=[];let part='';for(const c of s){if(part.length+c.length>max){out.push(part);part=''}part+=c}if(part)out.push(part);return out}
 function format(s:string,first=false){if(!first)return escape(s);const n=s.indexOf('\n');return '<b>'+escape(n<0?s:s.slice(0,n))+'</b>'+(n<0?'':escape(s.slice(n)))}
 export function buildEditorial(space:string,item:any,override?:string){
- if(!['fashion','history'].includes(space)||!item?.title)throw Error('editorial_unavailable');
+ if(!Object.hasOwn(editorialFiles,space)||!item?.title)throw Error('editorial_unavailable');
  let text:string,photos:string[],footer:string;
  if(space==='fashion'){
   photos=[https(item.image_url||item.image&&('https://grach31.github.io/irina-mods/'+item.image))];
@@ -12,6 +30,18 @@ export function buildEditorial(space:string,item:any,override?:string){
   if(!text.trim()||text.length>12000)throw Error('editorial_text_invalid');
   footer='<a href="'+escape(https(item.url))+'">Источник: '+escape(item.source||'Оригинал')+'</a>';
   if(item.image_credit||item.image_source)footer+='\n<i>Фото: '+escape(item.image_credit||item.image_source)+'</i>';
+ }else if(space==='finds'){
+  const url=findsLink(item.url,item.wb_article);
+  if(item.id!=='wb-'+item.wb_article||!findsCategories.has(item.category)||
+   !Number.isFinite(item.price)||item.price<=0)throw Error('editorial_unavailable');
+  if(!Array.isArray(item.photos)||item.photos.length<2||item.photos.length>10)throw Error('editorial_photo_required');
+  photos=[...new Set<string>(item.photos.map((p:{url:unknown})=>findsPhoto(p?.url)))];
+  if(photos.length!==item.photos.length)throw Error('editorial_photo_required');
+  if(typeof item.description!=='string'||!item.description.trim()||typeof item.stylist!=='string'||!item.stylist.trim()||
+   item.description.length>1200||item.stylist.length>800)throw Error('editorial_text_invalid');
+  text=[item.title,item.price.toLocaleString('ru-RU')+' ₽ · Артикул '+item.wb_article,
+   item.description,'Совет стилиста: '+item.stylist].join('\n\n');
+  footer='<a href="'+escape(url)+'">Открыть на Wildberries</a>';
  }else{
   if(!Array.isArray(item.photos)||!item.photos.length)throw Error('editorial_photo_required');
   photos=[...new Set(item.photos.map((p:any)=>https(p.url)))];
@@ -39,10 +69,10 @@ export async function handleEditorial(b:any,c:Context){
  const result=(body:any,status=200)=>({body,status}),fetcher=c.fetcher||fetch;
  const space=String(b.space||''),id=String(b.id||'');
  if(b.action==='editorial_list')return result({items:await c.db('myspace_editorial_publications?select=space,source_id,status,message_ids,error_code,next_part&limit=1000')});
- if(!['fashion','history'].includes(space)||!(/^[a-zA-Z0-9_.-]{1,200}$/.test(id)))return result({error:'invalid_id'},400);
+ if(!Object.hasOwn(editorialFiles,space)||!(/^[a-zA-Z0-9_.-]{1,200}$/.test(id)))return result({error:'invalid_id'},400);
  if(b.action==='editorial_status')return result((await c.db('myspace_editorial_publications?space=eq.'+space+'&source_id=eq.'+id+'&select=status,message_ids,error_code,next_part'))[0]||{status:'draft'});
  try{
-  const file=space==='fashion'?'fashion-daily.json':'style-time-machine.json';
+  const file=editorialFiles[space];
   const read=async(root:string)=>{const r=await fetcher(root+file+'?publish='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('editorial_unavailable');return r.json()};
   const [source,deployed]=await Promise.all([read('https://raw.githubusercontent.com/Grach31/irina-mods/main/miniapp/'),read('https://grach31.github.io/irina-mods/')]);
   const item=source.items?.find((x:any)=>x.id===id),live=deployed.items?.find((x:any)=>x.id===id);
@@ -50,7 +80,10 @@ export async function handleEditorial(b:any,c:Context){
   if(JSON.stringify(item)!==JSON.stringify(live))throw Error('editorial_changed');
   if(b.text!==undefined&&typeof b.text!=='string')throw Error('editorial_text_invalid');
   const post=buildEditorial(space,item,space==='fashion'?b.text:undefined);
-  const photos=await downloadPublicationPhotos(post.photos,fetcher);
+  const mediaFetcher:typeof fetch=space==='finds'
+   ?(url,init)=>fetcher(url,{...init,redirect:'error'})
+   :fetcher;
+  const photos=await downloadPublicationPhotos(post.photos,mediaFetcher);
   const fingerprints=await Promise.all(photos.map(async p=>{const h=await crypto.subtle.digest('SHA-256',new Uint8Array(p.bytes).buffer);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}));
   const revision=await c.hash(JSON.stringify({item,parts:post.parts,fingerprints,version:1}));
   const status=(await c.db('myspace_editorial_publications?space=eq.'+space+'&source_id=eq.'+id+'&select=status,message_ids,error_code,next_part'))[0]||{status:'draft'};
