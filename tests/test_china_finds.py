@@ -27,9 +27,9 @@ class ChinaFindsContractTest(unittest.TestCase):
 
         self.assertTrue(data["updated_at"].endswith("Z"))
         datetime.fromisoformat(data["updated_at"])
-        days = defaultdict(Counter)
+        editions = defaultdict(Counter)
         ids = set()
-        dates = []
+        order = []
         for item in items:
             sku = item["wb_article"]
             self.assertRegex(sku, r"^\d{1,15}$")
@@ -43,9 +43,12 @@ class ChinaFindsContractTest(unittest.TestCase):
                 self.assertTrue(item[field].strip() and len(item[field]) <= limit)
             day = date.fromisoformat(item["date"])
             self.assertEqual(day.isoformat(), item["date"])
-            dates.append(day)
+            edition = item.get("edition", 1)
+            self.assertIs(type(edition), int)
+            self.assertGreaterEqual(edition, 1)
+            order.append((day, edition))
             self.assertIn(item["category"], CATEGORIES)
-            days[day][item["category"]] += 1
+            editions[(day, edition)][item["category"]] += 1
             photos = item["photos"]
             self.assertTrue(2 <= len(photos) <= 10)
             for photo in photos:
@@ -54,6 +57,6 @@ class ChinaFindsContractTest(unittest.TestCase):
                 self.assertTrue(LEGACY_PHOTO.fullmatch(url) or (geo and geo["sku"] == sku))
                 self.assertTrue(photo["alt"].strip())
             self.assertEqual(len(photos), len({photo["url"] for photo in photos}))
-        self.assertEqual(dates, sorted(dates, reverse=True))
-        for counts in days.values():
+        self.assertEqual(order, sorted(order, reverse=True))
+        for counts in editions.values():
             self.assertEqual(counts, Counter(dict.fromkeys(CATEGORIES, 2)))

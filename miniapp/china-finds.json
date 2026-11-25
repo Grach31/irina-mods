@@ -1,7 +1,183 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T17:01:28Z",
+  "updated_at": "2026-11-25T17:17:09Z",
   "items": [
+    {
+      "id": "wb-1368600767",
+      "wb_article": "1368600767",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Одежда",
+      "title": "Чёрное вязаное платье-свитер",
+      "price": 1072,
+      "description": "Женское вязаное платье-свитер из полиэстера.",
+      "stylist": "Сочетай с высокими сапогами и прямым пальто. Добавь ремень, если хочется подчеркнуть талию.",
+      "url": "https://www.wildberries.ru/catalog/1368600767/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-49.geobasket.ru/vol13686/part1368600/1368600767/images/big/1.webp?picsUpdate=0",
+          "alt": "Чёрное вязаное платье-свитер, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-49.geobasket.ru/vol13686/part1368600/1368600767/images/big/2.webp?picsUpdate=0",
+          "alt": "Чёрное вязаное платье-свитер, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1377346388",
+      "wb_article": "1377346388",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Одежда",
+      "title": "Чёрная утеплённая куртка Snow Pinnacle",
+      "price": 2591,
+      "description": "Женская утеплённая куртка из полиэстера.",
+      "stylist": "Сочетай с прямыми джинсами и контрастным шарфом. Если планируешь носить поверх жакета, сравни мерки с привычной курткой.",
+      "url": "https://www.wildberries.ru/catalog/1377346388/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-10.geobasket.ru/vol13773/part1377346/1377346388/images/big/1.webp?picsUpdate=0",
+          "alt": "Чёрная утеплённая куртка Snow Pinnacle, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-10.geobasket.ru/vol13773/part1377346/1377346388/images/big/2.webp?picsUpdate=0",
+          "alt": "Чёрная утеплённая куртка Snow Pinnacle, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1089301635",
+      "wb_article": "1089301635",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Сумки",
+      "title": "Серый клатч XMESSUN с тиснением",
+      "price": 2110,
+      "description": "Серый клатч из искусственной кожи с фактурой под кожу страуса.",
+      "stylist": "Добавь к однотонному платью или брючному костюму. Фактурная сумка оживит спокойную гамму.",
+      "url": "https://www.wildberries.ru/catalog/1089301635/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol10893/part1089301/1089301635/images/big/1.webp?picsUpdate=0",
+          "alt": "Серый клатч XMESSUN с тиснением, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol10893/part1089301/1089301635/images/big/2.webp?picsUpdate=0",
+          "alt": "Серый клатч XMESSUN с тиснением, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1001348422",
+      "wb_article": "1001348422",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Сумки",
+      "title": "Сумка с цветочным принтом",
+      "price": 1240,
+      "description": "Женская сумка с цветочным рисунком, вариант 5 в карточке Wildberries.",
+      "stylist": "Сочетай с однотонным пальто или джинсовой курткой, чтобы рисунок сумки оставался главным акцентом.",
+      "url": "https://www.wildberries.ru/catalog/1001348422/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-24.geobasket.ru/vol10013/part1001348/1001348422/images/big/1.webp?picsUpdate=0",
+          "alt": "Сумка с цветочным принтом, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-24.geobasket.ru/vol10013/part1001348/1001348422/images/big/2.webp?picsUpdate=0",
+          "alt": "Сумка с цветочным принтом, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1184397863",
+      "wb_article": "1184397863",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Обувь",
+      "title": "Чёрные зимние кроссовки ZANPACE",
+      "price": 1949,
+      "description": "Женские зимние кроссовки с толстой подошвой.",
+      "stylist": "Сочетай с прямыми джинсами и пуховиком. Сверь длину стопы с таблицей размера перед заказом.",
+      "url": "https://www.wildberries.ru/catalog/1184397863/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-25.geobasket.ru/vol11843/part1184397/1184397863/images/big/1.webp?picsUpdate=0",
+          "alt": "Чёрные зимние кроссовки ZANPACE, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-25.geobasket.ru/vol11843/part1184397/1184397863/images/big/2.webp?picsUpdate=0",
+          "alt": "Чёрные зимние кроссовки ZANPACE, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1374213885",
+      "wb_article": "1374213885",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Обувь",
+      "title": "Серые зимние домашние тапочки",
+      "price": 895,
+      "description": "Тёплые серые домашние тапочки, представленные в том числе в женских размерах.",
+      "stylist": "Сочетай с широкими трикотажными брюками и джемпером. Для свободной посадки сверь длину стопы по таблице.",
+      "url": "https://www.wildberries.ru/catalog/1374213885/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-47.geobasket.ru/vol13742/part1374213/1374213885/images/big/1.webp?picsUpdate=1",
+          "alt": "Серые зимние домашние тапочки, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-47.geobasket.ru/vol13742/part1374213/1374213885/images/big/2.webp?picsUpdate=1",
+          "alt": "Серые зимние домашние тапочки, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1410196924",
+      "wb_article": "1410196924",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Бижутерия",
+      "title": "Купольные серьги с цветами",
+      "price": 272,
+      "description": "Объёмные серьги с цветочным декором, модель ERGQ0279.",
+      "stylist": "Носи с открытой шеей и гладкой укладкой. Цветы хорошо заметны на фоне однотонной рубашки.",
+      "url": "https://www.wildberries.ru/catalog/1410196924/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-06.geobasket.ru/vol14101/part1410196/1410196924/images/big/1.webp?picsUpdate=0",
+          "alt": "Купольные серьги с цветами, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-06.geobasket.ru/vol14101/part1410196/1410196924/images/big/2.webp?picsUpdate=0",
+          "alt": "Купольные серьги с цветами, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1417233417",
+      "wb_article": "1417233417",
+      "date": "2026-11-25",
+      "edition": 2,
+      "category": "Бижутерия",
+      "title": "Серьги Christmas Ball",
+      "price": 401,
+      "description": "Праздничные серьги в форме ёлочных шаров, модель ER25Y0308.",
+      "stylist": "Добавь к чёрному платью или простому свитеру. Для вечернего образа достаточно одного такого акцента.",
+      "url": "https://www.wildberries.ru/catalog/1417233417/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-59.geobasket.ru/vol14172/part1417233/1417233417/images/big/1.webp?picsUpdate=0",
+          "alt": "Серьги Christmas Ball, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-59.geobasket.ru/vol14172/part1417233/1417233417/images/big/2.webp?picsUpdate=0",
+          "alt": "Серьги Christmas Ball, фото 2"
+        }
+      ]
+    },
     {
       "id": "wb-1027167295",
       "wb_article": "1027167295",
