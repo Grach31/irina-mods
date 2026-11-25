@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {buildEditorial,handleEditorial} from '../supabase/functions/myspace-publish/editorial.ts';
-import {visibleCaption} from '../supabase/functions/myspace-publish/core.ts';
+import {buildEditorial,handleEditorial,findsPhoto} from '../supabase/functions/myspace-publish/editorial.ts';
+import {downloadPublicationPhotos,visibleCaption} from '../supabase/functions/myspace-publish/core.ts';
 const photo='https://brand.example/photo.jpg';
 const news={id:'news-1',title:'Новая коллекция',summary:'Краткая выжимка.',why:'Почему это интересно.',source:'Издание',url:'https://source.example/article',image_url:photo,image_credit:'Бренд / Издание'};
 const history={id:'history-1',title:'История моды',year:1947,period:'1940-е',description:'Полный исходный текст.',then:'Исходный абзац «Тогда».',now:'Исходный абзац «Сейчас».',photos:[{url:photo,caption:'Подпись к архивному фото',credit:'Музей',source_url:'https://museum.example/item'}]};
@@ -82,4 +82,22 @@ test('Finds previews and sends actual photos, copy and the matching Wildberries 
  for(const value of [item.title,item.description,item.stylist,item.url])assert(preview.body.html.includes(value));
  const sent=await f.call('editorial_publish',{revision:preview.body.revision});
  assert.equal(sent.body.status,'published');assert.deepEqual(f.get().sends,['sendMediaGroup']);
+});
+
+test('Finds accepts direct originals on Wildberries regional CDN for the matching product',()=>{
+ const url='https://mow-basket-cdn-57.geobasket.ru/vol10271/part1027167/1027167295/images/big/1.webp?picsUpdate=0';
+ assert.equal(findsPhoto(url,'1027167295'),url);
+ assert.throws(()=>findsPhoto(url,'1027167296'),/editorial_photo_required/);
+ assert.throws(()=>findsPhoto(url.replace('geobasket.ru','geobasket.ru.example.org'),'1027167295'),/editorial_photo_required/);
+});
+test('The optional Finds WebP converter prepares a JPEG while other publication paths stay strict',async()=>{
+ const webp=new Uint8Array(132);webp.set(Buffer.from('RIFF'));webp.set(Buffer.from('WEBP'),8);
+ const fetcher=async()=>new Response(webp);
+ await assert.rejects(downloadPublicationPhotos(['https://example.org/1.webp'],fetcher),/media_format_invalid/);
+ const jpg=new Uint8Array(132);jpg.set([255,216,255]);
+ const [photo]=await downloadPublicationPhotos(['https://example.org/1.webp'],fetcher,async bytes=>{
+  assert.deepEqual(bytes,webp);return jpg;
+ });
+ assert.equal(photo.mime,'image/jpeg');
+ assert.deepEqual(photo.bytes,jpg);
 });

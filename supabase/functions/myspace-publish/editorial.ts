@@ -7,9 +7,13 @@ export const editorialFiles:Record<string,string>={
  finds:'china-finds.json',
 };
 const findsCategories=new Set(['Одежда','Сумки','Обувь','Бижутерия']);
-function findsPhoto(value:unknown){
+export function findsPhoto(value:unknown,article:string){
  const url=new URL(https(value));
- if(url.port||!/^basket-\d+\.(?:wbbasket\.ru|wb\.ru|wbstatic\.net)$/.test(url.hostname)){
+ if(!/^\d{1,15}$/.test(article))throw Error('editorial_photo_required');
+ const originalHost=/^basket-\d+\.(?:wbbasket\.ru|wb\.ru|wbstatic\.net)$/.test(url.hostname);
+ const geoHost=/^[a-z]{3}-basket-cdn-\d+\.geobasket\.ru$/.test(url.hostname);
+ const productImage=new RegExp(`^/vol\\d+/part\\d+/${article}/images/big/\\d+\\.webp$`).test(url.pathname);
+ if(url.port||!(originalHost||(geoHost&&productImage))){
   throw Error('editorial_photo_required');
  }
  return url.href;
@@ -35,7 +39,7 @@ export function buildEditorial(space:string,item:any,override?:string){
   if(item.id!=='wb-'+item.wb_article||!findsCategories.has(item.category)||
    !Number.isFinite(item.price)||item.price<=0)throw Error('editorial_unavailable');
   if(!Array.isArray(item.photos)||item.photos.length<2||item.photos.length>10)throw Error('editorial_photo_required');
-  photos=[...new Set<string>(item.photos.map((p:{url:unknown})=>findsPhoto(p?.url)))];
+  photos=[...new Set<string>(item.photos.map((p:{url:unknown})=>findsPhoto(p?.url,item.wb_article)))];
   if(photos.length!==item.photos.length)throw Error('editorial_photo_required');
   if(typeof item.description!=='string'||!item.description.trim()||typeof item.stylist!=='string'||!item.stylist.trim()||
    item.description.length>1200||item.stylist.length>800)throw Error('editorial_text_invalid');
@@ -83,7 +87,10 @@ export async function handleEditorial(b:any,c:Context){
   const mediaFetcher:typeof fetch=space==='finds'
    ?(url,init)=>fetcher(url,{...init,redirect:'error'})
    :fetcher;
-  const photos=await downloadPublicationPhotos(post.photos,mediaFetcher);
+  const convert=space==='finds'
+   ?async(bytes:Uint8Array)=>{const {webpToJpeg}=await import('./finds-image.ts');return webpToJpeg(bytes)}
+   :undefined;
+  const photos=await downloadPublicationPhotos(post.photos,mediaFetcher,convert);
   const fingerprints=await Promise.all(photos.map(async p=>{const h=await crypto.subtle.digest('SHA-256',new Uint8Array(p.bytes).buffer);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}));
   const revision=await c.hash(JSON.stringify({item,parts:post.parts,fingerprints,version:1}));
   const status=(await c.db('myspace_editorial_publications?space=eq.'+space+'&source_id=eq.'+id+'&select=status,message_ids,error_code,next_part'))[0]||{status:'draft'};

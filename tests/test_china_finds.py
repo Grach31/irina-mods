@@ -8,7 +8,11 @@ from pathlib import Path
 
 CATALOG = Path("miniapp/china-finds.json")
 CATEGORIES = {"Одежда", "Сумки", "Обувь", "Бижутерия"}
-PHOTO = re.compile(r"https://basket-\d+\.(?:wbbasket\.ru|wb\.ru|wbstatic\.net)/[^\s]+")
+LEGACY_PHOTO = re.compile(r"https://basket-\d+\.(?:wbbasket\.ru|wb\.ru|wbstatic\.net)/[^\s]+")
+GEO_PHOTO = re.compile(
+    r"https://[a-z]{3}-basket-cdn-\d+\.geobasket\.ru/vol\d+/part\d+/"
+    r"(?P<sku>\d+)/images/big/\d+\.webp(?:\?[^\s#]*)?"
+)
 
 
 class ChinaFindsContractTest(unittest.TestCase):
@@ -45,7 +49,9 @@ class ChinaFindsContractTest(unittest.TestCase):
             photos = item["photos"]
             self.assertTrue(2 <= len(photos) <= 10)
             for photo in photos:
-                self.assertIsNotNone(PHOTO.fullmatch(photo["url"]))
+                url = photo["url"]
+                geo = GEO_PHOTO.fullmatch(url)
+                self.assertTrue(LEGACY_PHOTO.fullmatch(url) or (geo and geo["sku"] == sku))
                 self.assertTrue(photo["alt"].strip())
             self.assertEqual(len(photos), len({photo["url"] for photo in photos}))
         self.assertEqual(dates, sorted(dates, reverse=True))

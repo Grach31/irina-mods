@@ -1,5 +1,5 @@
 export class TelegramRejected extends Error {}
-export async function downloadPublicationPhotos(images:string[],fetcher:typeof fetch=fetch){
+export async function downloadPublicationPhotos(images:string[],fetcher:typeof fetch=fetch,convertWebp?:(bytes:Uint8Array)=>Promise<Uint8Array>){
  const photos:{bytes:Uint8Array,mime:string,name:string}[]=[];let total=0;
  for(let start=0;start<images.length;start+=3){
  const batch=await Promise.all(images.slice(start,start+3).map(async(url,index)=>{
@@ -9,7 +9,12 @@ export async function downloadPublicationPhotos(images:string[],fetcher:typeof f
  const chunks:Uint8Array[]=[];let length=0;
  try{for(;;){const part=await reader.read();if(part.done)break;length+=part.value.length;if(length>10000000)throw Error('media_size_invalid');chunks.push(part.value)}}finally{await reader.cancel().catch(()=>{})}
  if(length<100)throw Error('media_size_invalid');
- const bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length}
+ let bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length}
+ const webp=String.fromCharCode(...bytes.subarray(0,4))==='RIFF'&&String.fromCharCode(...bytes.subarray(8,12))==='WEBP';
+ if(webp&&convertWebp){
+  try{bytes=new Uint8Array(await convertWebp(bytes))}catch{throw Error('media_format_invalid')}
+  if(bytes.length<100||bytes.length>10000000)throw Error('media_size_invalid');
+ }
  const jpeg=bytes[0]===255&&bytes[1]===216&&bytes[2]===255;
  const png=[137,80,78,71,13,10,26,10].every((value,i)=>bytes[i]===value);
  if(!jpeg&&!png)throw Error('media_format_invalid');

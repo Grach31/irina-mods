@@ -1,5 +1,174 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "items": []
+  "updated_at": "2026-11-25T17:01:28Z",
+  "items": [
+    {
+      "id": "wb-1027167295",
+      "wb_article": "1027167295",
+      "date": "2026-11-25",
+      "category": "Одежда",
+      "title": "Фактурный топ WEIRD PUSS",
+      "price": 1191,
+      "description": "Топ из полиэстера с пушистой фактурой.",
+      "stylist": "Добавь прямые чёрные брюки и лаконичные серьги, чтобы оставить акцент на фактуре.",
+      "url": "https://www.wildberries.ru/catalog/1027167295/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-57.geobasket.ru/vol10271/part1027167/1027167295/images/big/1.webp?picsUpdate=0",
+          "alt": "Фактурный топ WEIRD PUSS, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-57.geobasket.ru/vol10271/part1027167/1027167295/images/big/2.webp?picsUpdate=0",
+          "alt": "Фактурный топ WEIRD PUSS, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1380718803",
+      "wb_article": "1380718803",
+      "date": "2026-11-25",
+      "category": "Одежда",
+      "title": "Мини-юбка с крупными пайетками HFWOMENFZ",
+      "price": 2318,
+      "description": "Короткая юбка с крупными пайетками.",
+      "stylist": "Сочетай с матовым жакетом и плотными колготками. Украшения лучше выбрать небольшие.",
+      "url": "https://www.wildberries.ru/catalog/1380718803/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-05.geobasket.ru/vol13807/part1380718/1380718803/images/big/1.webp?picsUpdate=0",
+          "alt": "Мини-юбка с крупными пайетками HFWOMENFZ, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-05.geobasket.ru/vol13807/part1380718/1380718803/images/big/2.webp?picsUpdate=0",
+          "alt": "Мини-юбка с крупными пайетками HFWOMENFZ, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1070795689",
+      "wb_article": "1070795689",
+      "date": "2026-11-25",
+      "category": "Сумки",
+      "title": "Бордовая сумка на плечо Johnature",
+      "price": 4927,
+      "description": "Бордовая женская сумка на плечо. В карточке указан материал — натуральная кожа.",
+      "stylist": "Носи с серым пальто или тёмным денимом. Бордовый добавит цвет к нейтральному образу.",
+      "url": "https://www.wildberries.ru/catalog/1070795689/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-51.geobasket.ru/vol10707/part1070795/1070795689/images/big/1.webp?picsUpdate=0",
+          "alt": "Бордовая сумка на плечо Johnature, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-51.geobasket.ru/vol10707/part1070795/1070795689/images/big/2.webp?picsUpdate=0",
+          "alt": "Бордовая сумка на плечо Johnature, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1121686453",
+      "wb_article": "1121686453",
+      "date": "2026-11-25",
+      "category": "Сумки",
+      "title": "Коричневая сумка через плечо LA FESTIN",
+      "price": 4873,
+      "description": "Коричневая женская сумка через плечо.",
+      "stylist": "Сочетай с молочным трикотажем и прямыми джинсами. Поддержи оттенок ремнём в тёплой гамме.",
+      "url": "https://www.wildberries.ru/catalog/1121686453/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-15.geobasket.ru/vol11216/part1121686/1121686453/images/big/1.webp?picsUpdate=0",
+          "alt": "Коричневая сумка через плечо LA FESTIN, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-15.geobasket.ru/vol11216/part1121686/1121686453/images/big/2.webp?picsUpdate=0",
+          "alt": "Коричневая сумка через плечо LA FESTIN, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1411043210",
+      "wb_article": "1411043210",
+      "date": "2026-11-25",
+      "category": "Обувь",
+      "title": "Остроносые ботильоны из искусственной замши",
+      "price": 2296,
+      "description": "Женские зимние ботильоны из искусственной замши с острым носом.",
+      "stylist": "Попробуй с прямыми брюками в пол или юбкой-миди. Оставь мыс обуви видимым.",
+      "url": "https://www.wildberries.ru/catalog/1411043210/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-52.geobasket.ru/vol14110/part1411043/1411043210/images/big/1.webp?picsUpdate=0",
+          "alt": "Остроносые ботильоны из искусственной замши, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-52.geobasket.ru/vol14110/part1411043/1411043210/images/big/2.webp?picsUpdate=0",
+          "alt": "Остроносые ботильоны из искусственной замши, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1043153345",
+      "wb_article": "1043153345",
+      "date": "2026-11-25",
+      "category": "Обувь",
+      "title": "Женская утеплённая обувь LINLING",
+      "price": 2042,
+      "description": "Повседневная зимняя модель с плюшевой отделкой.",
+      "stylist": "Подойдёт к прямым джинсам и объёмному пуховику. Брюки лучше выбрать такой длины, чтобы они слегка касались обуви.",
+      "url": "https://www.wildberries.ru/catalog/1043153345/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol10431/part1043153/1043153345/images/big/1.webp?picsUpdate=0",
+          "alt": "Женская утеплённая обувь LINLING, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol10431/part1043153/1043153345/images/big/2.webp?picsUpdate=0",
+          "alt": "Женская утеплённая обувь LINLING, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1327539691",
+      "wb_article": "1327539691",
+      "date": "2026-11-25",
+      "category": "Бижутерия",
+      "title": "Розовые серьги-капли Sehuoran",
+      "price": 1064,
+      "description": "Серьги-капли с розовыми кристаллами, модель E1548 Pink.",
+      "stylist": "Носи с белой рубашкой или чёрным жакетом. Убери волосы за уши, чтобы показать форму капель.",
+      "url": "https://www.wildberries.ru/catalog/1327539691/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-33.geobasket.ru/vol13275/part1327539/1327539691/images/big/1.webp?picsUpdate=0",
+          "alt": "Розовые серьги-капли Sehuoran, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-33.geobasket.ru/vol13275/part1327539/1327539691/images/big/2.webp?picsUpdate=0",
+          "alt": "Розовые серьги-капли Sehuoran, фото 2"
+        }
+      ]
+    },
+    {
+      "id": "wb-1322373845",
+      "wb_article": "1322373845",
+      "date": "2026-11-25",
+      "category": "Бижутерия",
+      "title": "Зелёные серьги-подвески Sehuoran",
+      "price": 743,
+      "description": "Серьги-подвески с зелёными кристаллами, модель E1455 Rose Green.",
+      "stylist": "Сочетай с тёмно-синим или кремовым верхом. Простая горловина оставит серьгам достаточно внимания.",
+      "url": "https://www.wildberries.ru/catalog/1322373845/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol13223/part1322373/1322373845/images/big/1.webp?picsUpdate=0",
+          "alt": "Зелёные серьги-подвески Sehuoran, фото 1"
+        },
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol13223/part1322373/1322373845/images/big/2.webp?picsUpdate=0",
+          "alt": "Зелёные серьги-подвески Sehuoran, фото 2"
+        }
+      ]
+    }
+  ]
 }
