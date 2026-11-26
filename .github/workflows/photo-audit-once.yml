@@ -1,0 +1,78 @@
+name: Editorial photo audit
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/photo-audit-once.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==11.3.0
+      - name: Download and decode every editorial photo
+        run: |
+          python - <<'PY'
+          import concurrent.futures as cf, io, json, pathlib, urllib.request, urllib.parse
+          from PIL import Image, ImageOps
+          from collections import Counter
+          root=pathlib.Path('.')
+          rows=[]
+          def add(space,id,key,url):
+              if isinstance(url,str) and url.startswith('https://'): rows.append((space,id,key,url))
+              else: rows.append((space,id,key,''))
+          for f in sorted(root.glob('drafts/*.json')):
+              d=json.loads(f.read_text()); i=d.get('id',f.stem)
+              for n,x in enumerate(d.get('items',[]) or []): add('moda',i,'item-'+str(n+1),x.get('img'))
+              for n,x in enumerate(d.get('photos',[]) or []): add('moda',i,'photo-'+str(n+1),x if isinstance(x,str) else x.get('url'))
+              if d.get('image'): add('moda',i,'image',d['image'])
+          for f in [root/'miniapp/fashion-daily.json',*sorted(root.glob('miniapp/fashion-archive/*.json'))]:
+              for x in json.loads(f.read_text()).get('items',[]):
+                  add('fashion',x['id'],'primary',x.get('image_url') or ('https://grach31.github.io/irina-mods/'+x['image'] if x.get('image') else ''))
+                  for n,p in enumerate(x.get('image_fallbacks',[]) or []): add('fashion',x['id'],'fallback-'+str(n+1),p.get('url'))
+          for x in json.loads((root/'miniapp/style-time-machine.json').read_text()).get('items',[]):
+              for n,p in enumerate(x.get('photos',[]) or [{}]): add('history',x['id'],'photo-'+str(n+1),p.get('url'))
+          rows=list(dict.fromkeys(rows))
+          def check(url):
+              if not url: return {'status':'missing'}
+              if url.startswith('https://raw.githubusercontent.com/Grach31/irina-mods/main/'):
+                  p=root/url.split('/main/',1)[1]
+                  if p.is_file(): raw=p.read_bytes()
+                  else: return {'status':'missing_local'}
+              else:
+                  try:
+                      request=urllib.request.Request(url,headers={'User-Agent':'MySpacePhotoAudit/1.0 (editorial link verification)','Accept':'image/jpeg,image/png,image/webp,image/*;q=0.8'})
+                      with urllib.request.urlopen(request,timeout=12) as r: raw=r.read(10000001)
+                  except Exception as e: return {'status':'download_failed','detail':str(e)[:170]}
+              if len(raw)>10000000: return {'status':'oversize','bytes':len(raw)}
+              try:
+                  with Image.open(io.BytesIO(raw)) as im:
+                      im.load(); fmt=im.format; w,h=im.size
+                      if w+h>10000 or max(w,h)/min(w,h)>20: return {'status':'dimensions','format':fmt,'width':w,'height':h}
+                      if fmt in ('JPEG','PNG'): status='ok'
+                      elif fmt=='WEBP':
+                          out=io.BytesIO(); ImageOps.exif_transpose(im).convert('RGB').save(out,'JPEG',quality=90); status='convertible_webp'
+                      else: status='unsupported'
+                      return {'status':status,'format':fmt,'width':w,'height':h,'bytes':len(raw)}
+              except Exception as e: return {'status':'decode_failed','detail':str(e)[:170]}
+          urls=list(dict.fromkeys(r[3] for r in rows))
+          with cf.ThreadPoolExecutor(max_workers=8) as ex: results=dict(zip(urls,ex.map(check,urls)))
+          report=[dict(space=s,id=i,key=k,url=u,**results[u]) for s,i,k,u in rows]
+          pathlib.Path('photo-audit-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          for space in ('moda','fashion','history'):
+              group=[x for x in report if x['space']==space]
+              print('PHOTO_SUMMARY',space,len(set(x['id'] for x in group)),len(group),dict(Counter(x['status'] for x in group)))
+          for x in report:
+              if x['status']!='ok': print('PHOTO_ISSUE',json.dumps(x,ensure_ascii=False,separators=(',',':')))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editorial-photo-audit
+          path: photo-audit-report.json
+          retention-days: 7
