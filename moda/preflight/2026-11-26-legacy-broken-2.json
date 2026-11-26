@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-03-mix-milk-caramel",
+      "items": [
+        {
+          "key": "item-3",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082907-63/",
+          "preferred_images": [
+            "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082907_63_1.webp?t=1791533356"
+          ]
+        },
+        {
+          "key": "item-4",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082112-62/",
+          "preferred_images": [
+            "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082112_62_1.webp?t=1791533325"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-11-07-mix-evening-black",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://zarina.ru/catalog/product/ZR2612022906-27/",
+          "preferred_images": [
+            "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022906_27_1.webp?t=1791376551"
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://zarina.ru/catalog/product/ZR2612022903-50/",
+          "preferred_images": [
+            "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2612022903_50_1.webp?t=1791376547"
+          ]
+        }
+      ]
+    }
+  ]
+}
