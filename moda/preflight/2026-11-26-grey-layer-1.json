@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-26-mix-grey-layer-gentle",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.gate31.ru/product/dzhemper-luiz-s-kashemirom"
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.gate31.ru/product/bryuki-greys"
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://arnypraht.com/product/gentle-chernyij/"
+        }
+      ]
+    }
+  ]
+}
