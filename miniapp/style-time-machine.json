@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-26T09:00:48+03:00",
   "intro": "Редакционная интерактивная хронология ключевых событий истории моды.",
   "items": [
     {
@@ -378,6 +378,28 @@
       ],
       "photo_note": "Wikimedia Commons: public domain (страна происхождения и США); источник изображения — альбом 1908 года.",
       "added_at": "2026-11-23"
+    },
+    {
+      "id": "style-time-machine-20261126-robe-francaise",
+      "title": "Robe à la française: китайский шёлк во французском платье",
+      "year": 1770,
+      "period": "1770-е",
+      "description": "Французское платье около 1770 года из коллекции Метрополитен-музея сшито из китайского экспортного шёлка первой четверти XVIII века. Светлый дамаст показывает, как торговля тканями соединяла разные художественные традиции задолго до современной глобальной моды.",
+      "then": "Прилегающий лиф, свободные складки на спине и боковой объём юбки, поддерживаемый панье, формировали характерный силуэт.",
+      "now": "Попробуй перенести принцип в современный образ: спокойный приталенный верх, выразительная складка и ткань с деликатным жаккардовым рисунком.",
+      "category": "История костюма",
+      "source_url": "https://www.metmuseum.org/art/collection/search/82495",
+      "photos": [
+        {
+          "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/82495/261991/main-image",
+          "caption": "Robe à la française, около 1770 года, экспонат 1999.41a, b.",
+          "credit": "The Metropolitan Museum of Art, Costume Institute Benefit Fund, 1999; Public Domain",
+          "source_url": "https://www.metmuseum.org/art/collection/search/82495",
+          "license": "Public Domain"
+        }
+      ],
+      "photo_note": "The Met Open Access, Public Domain.",
+      "added_at": "2026-11-26"
     }
   ]
 }
