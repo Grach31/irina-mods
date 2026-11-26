@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-26-mix-red-knit-milk",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/"
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1179-grisal",
+          "preferred_images": [
+            "https://emkashop.ru/uploads/product/21000/21061/DSC0169914545.jpeg"
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c"
+        }
+      ]
+    }
+  ]
+}
