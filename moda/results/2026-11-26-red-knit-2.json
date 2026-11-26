@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-red-knit-2",
+  "request_sha256": "6c190c2532b3e3eb9e8a1fb61e91acdda566830260eb634d239cf1d18c9720d6",
+  "cards": [
+    {
+      "id": "2026-11-26-mix-red-knit-milk",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1193-esmi",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/yubka-s1193-esmi",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/21000/21008/S1193esmi_4.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/21000/21008/S1193esmi_4.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 3557640,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "6473cfa5dc6fd8592a6ae15b9ed561d7e5c21f17e89040b37282552a43c839cd",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/6473cfa5dc6fd8592a6ae15b9ed561d7e5c21f17e89040b37282552a43c839cd.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/2225/2290837681/M132SC_%D1%88%D0%B0%D1%80%D1%84_%D0%B8%D0%B7_%D1%88%D0%B5%D1%80%D1%81%D1%82%D0%B8_%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%82_.jpg",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/2225/2290837681/M132SC_%D1%88%D0%B0%D1%80%D1%84_%D0%B8%D0%B7_%D1%88%D0%B5%D1%80%D1%81%D1%82%D0%B8_%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%82_.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 146845,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "1dabb20275d6df6586698406722b03f4c0b5035e53ce255a0bcfa4b334283632",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/1dabb20275d6df6586698406722b03f4c0b5035e53ce255a0bcfa4b334283632.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
