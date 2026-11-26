@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-verify-69218c2",
+  "request_sha256": "e51ba8109d229fefb55392af4bbfc229bd578ce96205c69ae5b9879290e78cd8",
+  "cards": [
+    {
+      "id": "2026-11-25-mix-burgundy-midi-dublin",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://allweneed.ru/product/zhaket-pritalennyj-s-aktsentnymi-plechami-bordovyj-v-polosku-266691",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://allweneed.ru/product/zhaket-pritalennyj-s-aktsentnymi-plechami-bordovyj-v-polosku-266691",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/08/2026-08-02_AWN_catalog3564.jpg.1200x1600_q90.jpg",
+            "final_url": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/08/2026-08-02_AWN_catalog3564.jpg.1200x1600_q90.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 174112,
+            "width": 1166,
+            "height": 1600,
+            "attempts": 1,
+            "sha256": "663f7c56ea696d4657bd0f1a2426650cc5e902f9cdb2ee6840800dc836904896",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/663f7c56ea696d4657bd0f1a2426650cc5e902f9cdb2ee6840800dc836904896.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1055-nuez",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/yubka-s1055-nuez",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/20800/20864/S1055nuez98984.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/20800/20864/S1055nuez98984.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 1499723,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "a2fecced4c9c69f2ab38bacab9da775490d0a38210acc805387cbb5fb4150c59",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/a2fecced4c9c69f2ab38bacab9da775490d0a38210acc805387cbb5fb4150c59.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sumka-polumesyats-dublin",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/sumka-polumesyats-dublin",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/7441/3426319633/1111_GATE_7242.webp",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/7441/3426319633/1111_GATE_7242.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 112740,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "c4d96d6858a4ddc79003294fd5e31c1e4198d5cba6767166b4e2265305a96a23",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/c4d96d6858a4ddc79003294fd5e31c1e4198d5cba6767166b4e2265305a96a23.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-25-mix-cape-wine-white",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://allweneed.ru/product/brjuki-so-skladkami-bordovyj-v-polosku-266794",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://allweneed.ru/product/brjuki-so-skladkami-bordovyj-v-polosku-266794",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/08/2026-08-02_AWN_catalog3513.jpg.1200x1600_q90.jpg",
+            "final_url": "https://2b2d5c5a-7e22-4ce5-9cef-73b0be674a86.selcdn.net/media/products/2026/08/2026-08-02_AWN_catalog3513.jpg.1200x1600_q90.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 143758,
+            "width": 1166,
+            "height": 1600,
+            "attempts": 1,
+            "sha256": "cc424af4e973bcec2f8cdcb021b240844ee96b59af27acd742ffe1fdebec1d93",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/cc424af4e973bcec2f8cdcb021b240844ee96b59af27acd742ffe1fdebec1d93.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/keyp-b3367-pallina",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/keyp-b3367-pallina",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/20800/20863/B3367pallina_3.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/20800/20863/B3367pallina_3.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 2048430,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "d33e7bd22b1f24d5a09dedee484ad300d0af8ddd379fed8f693a07195032d7c1",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/d33e7bd22b1f24d5a09dedee484ad300d0af8ddd379fed8f693a07195032d7c1.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://emkashop.ru/djemper-b3282-nivelle",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/djemper-b3282-nivelle",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/20800/20859/B3282nivelle_3.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/20800/20859/B3282nivelle_3.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 1256289,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "e3b598fc8eb682e123c4cdcefc61864f6e23a469effb88dcd3660229e2d9c99a",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/e3b598fc8eb682e123c4cdcefc61864f6e23a469effb88dcd3660229e2d9c99a.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
