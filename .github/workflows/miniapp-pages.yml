@@ -11,6 +11,7 @@ on:
       - scripts/build_notification_manifest.py
       - scripts/render_draft_jpg.py
       - scripts/media_contract.py
+      - scripts/moda_photo_preflight.py
       - supabase/**
       - tests/**
       - editorial/**
@@ -26,6 +27,7 @@ on:
       - scripts/build_notification_manifest.py
       - scripts/render_draft_jpg.py
       - scripts/media_contract.py
+      - scripts/moda_photo_preflight.py
       - supabase/**
       - tests/**
       - editorial/**

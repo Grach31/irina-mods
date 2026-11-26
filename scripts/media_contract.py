@@ -6,6 +6,8 @@ from pathlib import Path
 
 MODA_PHOTOS = Path("drafts/photos/moda")
 MODA_PHOTO_URL = "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/"
+# These two renderer revisions produce the same collage from legacy URLs.
+SNAPSHOT_RENDERER = "a5f04b8d34d2e94d4f458b7a34df1120570548eb77cd789390fa878e733fe645"
 PREVIOUS_RENDERER = "a8613972cf5c02fbddcdbe207fb4e058c79c4176133a8bd7be88c949da093c5a"
 
 
@@ -33,20 +35,26 @@ def moda_photo(root, draft_id, item):
     return photo
 
 
-def sha(raw):return hashlib.sha256(raw).hexdigest()
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
 def render_fingerprint(draft, renderer=None):
     renderer = renderer or sha(Path(__file__).with_name('render_draft_jpg.py').read_bytes())
     payload = {"renderer": renderer, "items": draft.get("items", [])}
     return sha(json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode())
-def media_ready(draft,folder,root=None):
-    image=Path(folder)/(draft['id']+'.jpg');receipt=Path(folder)/(draft['id']+'.render.json')
+
+
+def media_ready(draft, folder, root=None):
+    image = Path(folder) / (draft['id'] + '.jpg')
+    receipt = Path(folder) / (draft['id'] + '.render.json')
     try:
-        data=json.loads(receipt.read_text())
+        data = json.loads(receipt.read_text())
         snapshots = [moda_photo(root or Path(__file__).resolve().parents[1], draft["id"], item)
                      for item in draft.get("items", [])]
-        fingerprints = {render_fingerprint(draft)}
-        if not any(snapshots):
-            # The collage layout, encoding and legacy photo loader are unchanged.
+        renderer = sha(Path(__file__).with_name('render_draft_jpg.py').read_bytes())
+        fingerprints = {render_fingerprint(draft, renderer)}
+        if renderer == SNAPSHOT_RENDERER and not any(snapshots):
             fingerprints.add(render_fingerprint(draft, PREVIOUS_RENDERER))
         return (image.is_file() and data['fingerprint'] in fingerprints
                 and data['jpeg_sha256'] == sha(image.read_bytes()))
