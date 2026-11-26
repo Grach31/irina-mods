@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-26-mix-red-knit-milk",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1193-esmi",
+          "preferred_images": [
+            "https://emkashop.ru/uploads/product/21000/21008/S1193esmi_4.jpeg"
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+          "preferred_images": [
+            "https://cdn.insales-shop.ru/images/products/1/2225/2290837681/M132SC_шарф_из_шерсти_графит_.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}
