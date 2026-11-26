@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-23-mix-check-and-naura",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.gate31.ru/product/zhaket-naura",
+          "preferred_images": [
+            "https://cdn.insales-shop.ru/images/products/1/4409/3177394489/1607_GAte_0334.webp"
+          ]
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.2moodstore.com/collection/katalog/rubashka_v_kletku_s_neobrabotannym_kraem_golubogo_tsveta/",
+          "preferred_images": [
+            "https://cdn.2moodstore.com/images/w495/upload/iblock/d7c/2dmrmypju28zitfs41ss8vrsxytu5jff-jpg.webp"
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/yubka-naura",
+          "preferred_images": [
+            "https://cdn.insales-shop.ru/images/products/1/3009/3177368513/1607_GAte_0271.webp"
+          ]
+        }
+      ]
+    }
+  ]
+}
