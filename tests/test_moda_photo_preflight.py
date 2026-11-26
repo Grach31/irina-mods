@@ -65,7 +65,7 @@ class ModaPhotoIntegration(unittest.TestCase):
                         "gone": ["/missing.jpg"],
                         "slow": ["/slow.jpg"],
                         "recover": ["/recover.jpg"],
-                        "corrupt": ["/corrupt.jpg", "/second.jpg"],
+                        "corrupt": ["/corrupt.jpg", "/резерв.jpg"],
                         "metadata": ["/html.jpg", "/tiny.jpg", "/small.png"],
                     }[name]
                     payload = json.dumps({"@type": "Product", "image": photos})
@@ -136,7 +136,7 @@ class ModaPhotoIntegration(unittest.TestCase):
             self.assertTrue(blocked["photo"]["source_url"].endswith("/fallback.jpg"))
             self.assertEqual(recovered["photo"]["attempts"], 2)
             self.assertEqual(corrupt["failures"][0]["code"], "decode")
-            self.assertTrue(corrupt["photo"]["source_url"].endswith("/second.jpg"))
+            self.assertTrue(corrupt["photo"]["source_url"].endswith("/%D1%80%D0%B5%D0%B7%D0%B5%D1%80%D0%B2.jpg"))
             gone, slow, metadata = bad["items"]
             self.assertEqual(gone["failures"][0]["code"], "http_404")
             self.assertEqual(slow["failures"][0]["code"], "timeout")

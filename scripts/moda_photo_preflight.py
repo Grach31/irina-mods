@@ -12,7 +12,7 @@ import re
 import socket
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import urldefrag, urljoin, urlsplit
+from urllib.parse import quote, urldefrag, urljoin, urlsplit
 from urllib.request import HTTPSHandler, HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
 from PIL import Image, ImageOps
@@ -94,7 +94,16 @@ class CheckedRedirect(HTTPRedirectHandler):
 
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         self.check(newurl)
-        return super().redirect_request(req, fp, code, msg, headers, newurl)
+        return super().redirect_request(req, fp, code, msg, headers, http_url(newurl))
+
+
+def http_url(url):
+    """Preserve existing escapes while making non-ASCII gallery paths requestable."""
+    parts = urlsplit(urldefrag(url).url)
+    return parts._replace(
+        path=quote(parts.path, safe="/%:@!$&'()*+,;=-._~"),
+        query=quote(parts.query, safe="/?%:@!$&'()*+,;=-._~[]"),
+    ).geturl()
 
 
 class Downloader:
@@ -114,11 +123,11 @@ class Downloader:
 
     def get(self, url, *, page=False, referer=None):
         origin = self.host(url)
-        product_path = urlsplit(url).path.rstrip("/")
+        product_path = urlsplit(http_url(url)).path.rstrip("/")
 
         def check(candidate):
             host = self.host(candidate)
-            if page and (host != origin or urlsplit(candidate).path.rstrip("/") != product_path):
+            if page and (host != origin or urlsplit(http_url(candidate)).path.rstrip("/") != product_path):
                 raise CheckError("unexpected_redirect", "Product URL redirected to a different page")
 
         opener = self.opener(check)
@@ -126,11 +135,11 @@ class Downloader:
         headers = {"User-Agent": "Mozilla/5.0 (compatible; StamboEditorial/1.0)",
                    "Accept": "text/html,application/xhtml+xml" if page else "image/*"}
         if referer:
-            headers["Referer"] = referer
+            headers["Referer"] = http_url(referer)
         for attempt in range(1, 4):
             retry_delay = 2 ** (attempt - 1)
             try:
-                with opener.open(Request(url, headers=headers), timeout=self.timeout) as response:
+                with opener.open(Request(http_url(url), headers=headers), timeout=self.timeout) as response:
                     if response.status != 200:
                         raise CheckError(f"http_{response.status}", "Expected HTTP 200", status=response.status)
                     mime = response.headers.get_content_type()
@@ -191,7 +200,7 @@ class ProductGallery(HTMLParser):
     """Read product metadata and marked product galleries, excluding ordinary images."""
 
     VOID = set("area base br col embed hr img input link meta param source track wbr".split())
-    GALLERY_CLASS = re.compile(r"(?:^|\s)(?:product[-_]gallery(?:\s|__|$)|product-page--slider(?:\s|$)|ProductGallery[A-Z])", re.I)
+    GALLERY_CLASS = re.compile(r"(?:^|\s)(?:product[-_]gallery(?:\s|__|$)|product-page--slider(?:\s|$)|styles_gallery(?:Container)?__|ProductGallery[A-Z])", re.I)
     RECOMMENDATIONS = re.compile(r"recommend|related|similar|cross[-_]?sell|upsell", re.I)
 
     def __init__(self, url):
@@ -285,6 +294,7 @@ class ProductGallery(HTMLParser):
                 check_url(url)
             except ValueError:
                 continue
+            url = http_url(url)
             if urlsplit(url).path.lower().endswith((".svg", ".mp4", ".avif", ".gif", ".html")):
                 continue
             verified[url] = None
@@ -340,10 +350,16 @@ def verify_item(item, download, brands):
     except CheckError as exc:
         errors.append(failure(url, exc))
         return result, None
-    preferred = item.get("preferred_images", [])
+    preferred = []
+    for raw in item.get("preferred_images", []):
+        try:
+            download.host(raw)
+            preferred.append(http_url(raw))
+        except ValueError:
+            errors.append(failure(raw, CheckError("invalid_url", "Invalid preferred image URL", attempts=0)))
     for image in preferred:
         if image not in candidates:
-            errors.append(failure(image, CheckError("not_in_gallery", "URL is absent from product gallery")))
+            errors.append(failure(image, CheckError("not_in_gallery", "URL is absent from product gallery", attempts=0)))
     ordered = list(dict.fromkeys([image for image in preferred if image in candidates] + candidates))
     if not ordered:
         errors.append(failure(page_url, CheckError("gallery_empty", "No attributable product photos found")))
