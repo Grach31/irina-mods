@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-red-knit-1",
+  "request_sha256": "5d71e46fa1e13f881d87452af85b884678e85599d2e7ded2e28cfdc456c9e607",
+  "cards": [
+    {
+      "id": "2026-11-26-mix-red-knit-milk",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://www.2moodstore.com/upload/iblock/7d7/dddik9y6qpvfzvss15dy990f13lbp8dp.jpg",
+            "final_url": "https://www.2moodstore.com/upload/iblock/7d7/dddik9y6qpvfzvss15dy990f13lbp8dp.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 796138,
+            "width": 1288,
+            "height": 1933,
+            "attempts": 1,
+            "sha256": "b7920a2d921bedc8cd15fe8fca4c53d48b9af87b3186c2dc7e031b7595528995",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/b7920a2d921bedc8cd15fe8fca4c53d48b9af87b3186c2dc7e031b7595528995.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1179-grisal",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/yubka-s1179-grisal",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/21000/21061/DSC0169914545.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/21000/21061/DSC0169914545.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 2325490,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "87f4c994761c93e59ae70193ab90c52796e7db64d104560b3f4766f2ea536222",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/87f4c994761c93e59ae70193ab90c52796e7db64d104560b3f4766f2ea536222.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/649/2353660553/GATE_1009_6447.jpg",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/649/2353660553/GATE_1009_6447.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 149678,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "3884d8014f0fe22a169fb0fb4316d9e2c5654c1f5b2fe30eac5e5d95adba3c2d",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/3884d8014f0fe22a169fb0fb4316d9e2c5654c1f5b2fe30eac5e5d95adba3c2d.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
