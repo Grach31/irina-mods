@@ -1,0 +1,111 @@
+name: Recover remaining legacy photo references
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/legacy-photo-recovery-once.yml']
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==11.3.0
+      - name: Recover exact existing products and documented museum originals
+        run: |
+          python - <<'PY'
+          import io,json,pathlib,urllib.request as ur,urllib.parse as up,hashlib,re,time
+          from PIL import Image,ImageOps
+          root=pathlib.Path('.')
+          def load(url,referer=None,max_bytes=35000000):
+              headers={'User-Agent':'Mozilla/5.0 (compatible; MySpaceEditorialPhotoRecovery/1.0)','Accept':'image/jpeg,image/png,image/webp,image/*;q=0.8'}
+              if referer: headers['Referer']=referer
+              with ur.urlopen(ur.Request(url,headers=headers),timeout=15) as r:
+                  raw=r.read(max_bytes+1)
+                  if len(raw)>max_bytes: raise ValueError('oversize')
+                  return raw
+          def jpeg(raw):
+              with Image.open(io.BytesIO(raw)) as im:
+                  im.load()
+                  if im.format not in ('JPEG','PNG','WEBP','AVIF') or min(im.size)<200: raise ValueError('not a full product/archive photo')
+                  im=ImageOps.exif_transpose(im).convert('RGB');im.thumbnail((1800,1800))
+                  buf=io.BytesIO();im.save(buf,'JPEG',quality=92,optimize=True);b=buf.getvalue()
+              with Image.open(io.BytesIO(b)) as check: check.load()
+              return b
+          def save(folder,b):
+              sha=hashlib.sha256(b).hexdigest();folder.mkdir(parents=True,exist_ok=True);(folder/(sha+'.jpg')).write_bytes(b);return sha
+          def report(**row):print('LEGACY_PHOTO_RECOVERY',json.dumps(row,ensure_ascii=False))
+          items={'2026-10-23-mix-fur':[3],'2026-11-02-mix-jackets':[1],'2026-11-03-mix-milk-caramel':[3,4],'2026-11-07-mix-evening-black':[2,3]}
+          for id,positions in items.items():
+              f=root/'drafts'/(id+'.json');d=json.loads(f.read_text());changed=False
+              for n in positions:
+                  x=d['items'][n-1];old=x['img'];product=x['url'];u=up.urlsplit(old)
+                  if x.get('image_preflight') or 'raw.githubusercontent.com/Grach31/irina-mods/' in old: continue
+                  if u.hostname=='imgcdn.zarina.ru' and up.urlsplit(product).hostname=='zarina.ru':
+                      # Try only the exact same SKU/shade/frame already stored in this legacy item.
+                      sku=re.search(r'/([^/]+)\.(?:webp|jpg)$',u.path,re.I)
+                      if not sku or sku.group(1).rsplit('_',1)[0].replace('_','-').lower() not in product.lower():
+                          report(space='moda',id=id,key=n,status='sku_not_matched');continue
+                      candidates=list(dict.fromkeys([old,up.urlunsplit((u.scheme,u.netloc,u.path,'','')),up.urlunsplit((u.scheme,u.netloc,re.sub(r'\.webp$','.jpg',u.path,flags=re.I),'',''))]))
+                  elif u.hostname=='www.ushatava.ru' and up.urlsplit(product).hostname=='www.ushatava.ru': candidates=[old]
+                  else: report(space='moda',id=id,key=n,status='source_not_matched');continue
+                  errors=[]
+                  for candidate in candidates:
+                      try:
+                          b=jpeg(load(candidate,product));sha=save(root/'drafts/photos/legacy',b)
+                          x['img']='https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/legacy/'+sha+'.jpg'
+                          x['image_legacy_source']=candidate
+                          x['image_legacy_sha256']=sha
+                          changed=True;report(space='moda',id=id,key=n,status='fixed',source=candidate,sha=sha);break
+                      except Exception as e:
+                          errors.append(str(e)[:120])
+                          if '429' in str(e):break
+                  else:
+                      report(space='moda',id=id,key=n,status='unresolved',errors=errors);continue
+                  if not x.get('image_legacy_sha256'):report(space='moda',id=id,key=n,status='unresolved',errors=errors)
+              if changed:f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          f=root/'miniapp/style-time-machine.json';d=json.loads(f.read_text());changed=False
+          for item in d['items']:
+              if item['id'] not in ('style-time-machine-20261119-worth-bustle-1888','style-time-machine-20261121-bloomer-costume-1851'):continue
+              p=item['photos'][0];old=p['url']
+              if '/history-photos/' in old:continue
+              try:
+                  if item['id'].endswith('worth-bustle-1888'):
+                      api='https://collectionapi.metmuseum.org/public/collection/v1/objects/159220'
+                      with ur.urlopen(api,timeout=15) as r: obj=json.load(r)
+                      if obj.get('objectID')!=159220 or obj.get('isPublicDomain') is not True or obj.get('objectNumber')!='2009.300.664a, b' and obj.get('objectNumber','').replace(' ','')!='2009.300.664a,b':raise ValueError('museum identity or rights not verified')
+                      candidate=obj.get('primaryImageSmall') or obj.get('primaryImage');source='https://www.metmuseum.org/art/collection/search/159220';credit='The Metropolitan Museum of Art, Open Access / Public Domain'
+                      if not candidate or up.urlsplit(candidate).hostname not in ('images.metmuseum.org','collectionapi.metmuseum.org'):raise ValueError('museum image missing')
+                  else:
+                      candidate='https://cdn.loc.gov/service/pnp/pga/06100/06193r.jpg';source='https://www.loc.gov/pictures/item/90711963/';credit='N. Currier (Firm) / Library of Congress; no known restrictions on publication'
+                  b=jpeg(load(candidate));sha=save(root/'miniapp/history-photos',b)
+                  p['url']='https://grach31.github.io/irina-mods/history-photos/'+sha+'.jpg';p['original_url']=old;p['original_source_url']=p.get('source_url');p['source_url']=source;p['credit']=credit;p['archive_source_url']=candidate;p['archive_sha256']=sha
+                  changed=True;report(space='history',id=item['id'],status='fixed',sha=sha,source=candidate)
+              except Exception as e:report(space='history',id=item['id'],status='unresolved',error=str(e)[:200])
+          if changed:f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          for p in sorted((root/'drafts/img').glob('*.jpg')):
+              try:
+                  with Image.open(p) as im:
+                      im.load();fmt=im.format;w,h=im.size
+                  if fmt!='JPEG' or w+h>10000 or max(w,h)/min(w,h)>20:
+                      b=jpeg(p.read_bytes());p.write_bytes(b);report(space='local',id=p.name,status='fixed')
+                  else:report(space='local',id=p.name,status='ok')
+              except Exception as e:report(space='local',id=p.name,status='unresolved',error=str(e)[:120])
+          PY
+      - name: Commit recovered originals without changing moderation state
+        run: |
+          set -euo pipefail
+          git add -- drafts miniapp/style-time-machine.json miniapp/history-photos
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Recover exact legacy product and museum photo originals'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
