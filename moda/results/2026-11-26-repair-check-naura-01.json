@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-repair-check-naura-01",
+  "request_sha256": "88c4761d0d932019a2cb944f4440de9bd988497391c38775c4184f7323674ac0",
+  "cards": [
+    {
+      "id": "2026-11-23-mix-check-and-naura",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.gate31.ru/product/zhaket-naura",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/zhaket-naura",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/4409/3177394489/1607_GAte_0334.webp",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/4409/3177394489/1607_GAte_0334.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 93278,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "6968b2495bc92322a2717ec8ff376e1523a4761b6d0445ee3215acc46aabc7ca",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/6968b2495bc92322a2717ec8ff376e1523a4761b6d0445ee3215acc46aabc7ca.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.2moodstore.com/collection/katalog/rubashka_v_kletku_s_neobrabotannym_kraem_golubogo_tsveta/",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.2moodstore.com/collection/katalog/rubashka_v_kletku_s_neobrabotannym_kraem_golubogo_tsveta/",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.2moodstore.com/images/w495/upload/iblock/d7c/2dmrmypju28zitfs41ss8vrsxytu5jff-jpg.webp",
+            "final_url": "https://cdn.2moodstore.com/images/w495/upload/iblock/d7c/2dmrmypju28zitfs41ss8vrsxytu5jff-jpg.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 43946,
+            "width": 495,
+            "height": 743,
+            "attempts": 1,
+            "sha256": "31cb26ecde276051ffd3a7e5d2c654247364c8276061dc29f40c6d1077794966",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/31cb26ecde276051ffd3a7e5d2c654247364c8276061dc29f40c6d1077794966.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/yubka-naura",
+          "status": "verified",
+          "failures": [
+            {
+              "url": "https://cdn.insales-shop.ru/images/products/1/3009/3177368513/1607_GAte_0271.webp",
+              "code": "not_in_gallery",
+              "http_status": null,
+              "attempts": 0,
+              "message": "URL is absent from product gallery"
+            }
+          ],
+          "page": {
+            "url": "https://www.gate31.ru/product/yubka-naura",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/4753/3386241681/21_10_3223.webp",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/4753/3386241681/21_10_3223.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 130968,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "131c0f1e1f4bb643cc797fdd62a1165403a1695b2cf1046b50b64cd2612ef858",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/131c0f1e1f4bb643cc797fdd62a1165403a1695b2cf1046b50b64cd2612ef858.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
