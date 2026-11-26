@@ -3,7 +3,7 @@ import argparse
 import io
 import json
 import os
-from media_contract import render_fingerprint, media_ready, sha
+from media_contract import render_fingerprint, media_ready, moda_photo, sha
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -119,7 +119,13 @@ def run(draft_id, output_dir):
     photos = []
     for index, item in enumerate(items, start=1):
         try:
-            photos.append(fetch_photo(item["img"]))
+            snapshot = moda_photo(ROOT, draft_id, item)
+            if snapshot is None:
+                photos.append(fetch_photo(item["img"]))
+            else:
+                with Image.open(snapshot) as photo:
+                    photo.load()
+                    photos.append(photo.convert("RGB"))
         except Exception as exc:
             # Item context is crucial: a 404 without the precise image URL
             # makes a broken editorial draft impossible to repair reliably.
@@ -166,7 +172,7 @@ def main():
     for draft_id in ids:
         target = args.output_dir / (draft_id + ".jpg")
         draft=json.loads((ROOT/"drafts"/(draft_id+".json")).read_text())
-        if media_ready(draft,args.output_dir):
+        if media_ready(draft,args.output_dir,ROOT):
             print(f"SKIP verified current: {target}")
             continue
         try:

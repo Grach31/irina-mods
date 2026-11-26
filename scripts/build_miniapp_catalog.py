@@ -55,7 +55,7 @@ def main():
         # Include the first generated JPEG in Pages, avoiding cross-domain image failures.
         src = ROOT / "drafts" / "img" / (did + ".jpg")
         final=meta.get('status') in ('published','rejected')
-        ready=src.is_file() if draft.get('type')!='picks' or final else media_ready(draft,ROOT/'drafts/img')
+        ready=src.is_file() if draft.get('type')!='picks' or final else media_ready(draft,ROOT/'drafts/img',ROOT)
         item['ready']=bool(ready)
         if ready and src.is_file() and src.stat().st_size < 5_000_000:
             shutil.copyfile(src, media_dir / (did + ".jpg"))

@@ -1,0 +1,95 @@
+name: Moda photo preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'moda/preflight/*.json'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==11.3.0
+      - name: Verify submitted requests
+        id: verify
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          mapfile -d '' requests < <(git diff --diff-filter=A --name-only -z "$BEFORE" "$GITHUB_SHA" -- 'moda/preflight/*.json')
+          if (( ${#requests[@]} == 0 )); then
+            exit 0
+          fi
+          python scripts/moda_photo_preflight.py --output "$RUNNER_TEMP/moda-preflight" -- "${requests[@]}"
+          echo 'results=true' >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: steps.verify.outputs.results == 'true'
+        with:
+          name: moda-preflight-${{ github.run_id }}
+          path: ${{ runner.temp }}/moda-preflight
+          if-no-files-found: error
+          retention-days: 7
+    outputs:
+      results: ${{ steps.verify.outputs.results }}
+
+  persist:
+    needs: verify
+    if: needs.verify.outputs.results == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: moda-preflight-${{ github.run_id }}
+          path: ${{ runner.temp }}/moda-preflight
+      - name: Commit photos and results atomically
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git reset --hard FETCH_HEAD
+            for result in "$RUNNER_TEMP"/moda-preflight/moda/results/*.json; do
+              name=${result##*/}
+              test "$(sha256sum "moda/preflight/$name" | cut -d' ' -f1)" = "$(jq -r .request_sha256 "$result")"
+              if [[ -f "moda/results/$name" ]]; then
+                test "$(jq -r .request_sha256 "moda/results/$name")" = "$(jq -r .request_sha256 "$result")"
+                continue
+              fi
+              while IFS= read -r digest; do
+                [[ "$digest" =~ ^[a-f0-9]{64}$ ]]
+                photo="drafts/photos/moda/$digest.jpg"
+                mkdir -p "$(dirname "$photo")"
+                test -f "$photo" || cp "$RUNNER_TEMP/moda-preflight/$photo" "$photo"
+                test "$(sha256sum "$photo" | cut -d' ' -f1)" = "$digest"
+                git add -- "$photo"
+              done < <(jq -r '.cards[].items[].photo.sha256 // empty' "$result")
+              mkdir -p moda/results
+              cp "$result" "moda/results/$name"
+              git add -- "moda/results/$name"
+            done
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+            git commit -m 'Moda: store verified product photos and preflight receipts'
+            if git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"; then
+              exit 0
+            fi
+            sleep "$attempt"
+          done
+          exit 1
