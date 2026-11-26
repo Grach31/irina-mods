@@ -1,7 +1,175 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T17:17:09Z",
+  "updated_at": "2026-11-26T06:50:07Z",
   "items": [
+    {
+      "id": "wb-1452180545",
+      "wb_article": "1452180545",
+      "date": "2026-11-26",
+      "category": "Одежда",
+      "title": "Бежевая укороченная куртка Guobioziy",
+      "price": 2075,
+      "description": "Короткая женская куртка из полиэстера с отложным воротником, пуговицами и двумя карманами спереди.",
+      "stylist": "Надень поверх тонкой шоколадной водолазки и добавь прямые джинсы с высокой посадкой. Короткая куртка откроет линию талии.",
+      "url": "https://www.wildberries.ru/catalog/1452180545/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol14521/part1452180/1452180545/images/big/1.webp?picsUpdate=0",
+          "alt": "Бежевая куртка Guobioziy спереди"
+        },
+        {
+          "url": "https://mow-basket-cdn-07.geobasket.ru/vol14521/part1452180/1452180545/images/big/3.webp?picsUpdate=0",
+          "alt": "Бежевая куртка Guobioziy со спины"
+        }
+      ]
+    },
+    {
+      "id": "wb-1648069316",
+      "wb_article": "1648069316",
+      "date": "2026-11-26",
+      "category": "Одежда",
+      "title": "Чёрная стёганая парка UETEEY",
+      "price": 4319,
+      "description": "Чёрная стёганая женская парка с капюшоном. В карточке указан состав из полиэстера и хлопка.",
+      "stylist": "Сочетай с прямыми графитовыми джинсами и ботинками на толстой подошве. Светлый шарф добавит контраст у лица.",
+      "url": "https://www.wildberries.ru/catalog/1648069316/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-58.geobasket.ru/vol16480/part1648069/1648069316/images/big/1.webp?picsUpdate=0",
+          "alt": "Чёрная стёганая парка UETEEY с капюшоном"
+        },
+        {
+          "url": "https://mow-basket-cdn-58.geobasket.ru/vol16480/part1648069/1648069316/images/big/5.webp?picsUpdate=0",
+          "alt": "Чёрная парка UETEEY на модели"
+        }
+      ]
+    },
+    {
+      "id": "wb-1352683998",
+      "wb_article": "1352683998",
+      "date": "2026-11-26",
+      "category": "Сумки",
+      "title": "Чёрный клатч из искусственного меха с бахромой",
+      "price": 1130,
+      "description": "Объёмный чёрный клатч с длинной фактурной бахромой и короткими ручками.",
+      "stylist": "Возьми к лаконичному атласному платью или смокингу. На гладкой ткани бахрома будет заметнее.",
+      "url": "https://www.wildberries.ru/catalog/1352683998/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-20.geobasket.ru/vol13526/part1352683/1352683998/images/big/1.webp?picsUpdate=0",
+          "alt": "Чёрный меховой клатч с бахромой спереди"
+        },
+        {
+          "url": "https://mow-basket-cdn-20.geobasket.ru/vol13526/part1352683/1352683998/images/big/6.webp?picsUpdate=0",
+          "alt": "Чёрный клатч с бахромой в руке, вид сбоку"
+        }
+      ]
+    },
+    {
+      "id": "wb-1064143535",
+      "wb_article": "1064143535",
+      "date": "2026-11-26",
+      "category": "Сумки",
+      "title": "Плетёный клатч DikizFly кофейного цвета",
+      "price": 1518,
+      "description": "Тёмно-коричневая плетёная сумка без подкладки, с прорезной ручкой.",
+      "stylist": "Сочетай со светлым льняным костюмом и коричневыми сандалиями. Плетение добавит фактуру однотонному комплекту.",
+      "url": "https://www.wildberries.ru/catalog/1064143535/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-37.geobasket.ru/vol10641/part1064143/1064143535/images/big/1.webp?picsUpdate=0",
+          "alt": "Кофейный клатч DikizFly крупным планом"
+        },
+        {
+          "url": "https://mow-basket-cdn-37.geobasket.ru/vol10641/part1064143/1064143535/images/big/3.webp?picsUpdate=0",
+          "alt": "Кофейный плетёный клатч DikizFly в руке"
+        }
+      ]
+    },
+    {
+      "id": "wb-1389948359",
+      "wb_article": "1389948359",
+      "date": "2026-11-26",
+      "category": "Обувь",
+      "title": "Чёрные лоферы на шнуровке DQTBE",
+      "price": 1668,
+      "description": "Женские лоферы в ретростиле с круглым носком и декоративным швом. Верх из полиуретана по характеристикам карточки.",
+      "stylist": "Носи с прямыми джинсами до щиколотки и молочными носками. Так будут видны шнуровка и шов на мыске.",
+      "url": "https://www.wildberries.ru/catalog/1389948359/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-01.geobasket.ru/vol13899/part1389948/1389948359/images/big/1.webp?picsUpdate=1",
+          "alt": "Чёрные лоферы DQTBE на ноге, вид сбоку"
+        },
+        {
+          "url": "https://mow-basket-cdn-01.geobasket.ru/vol13899/part1389948/1389948359/images/big/6.webp?picsUpdate=1",
+          "alt": "Чёрные лоферы DQTBE на ноге, вид спереди"
+        }
+      ]
+    },
+    {
+      "id": "wb-999320006",
+      "wb_article": "999320006",
+      "date": "2026-11-26",
+      "category": "Обувь",
+      "title": "Коричневые туфли Johnature с ремешком",
+      "price": 3171,
+      "description": "Женские туфли с круглым носком и ремешком поперёк подъёма. В карточке указан верх из натуральной кожи.",
+      "stylist": "Сочетай с юбкой миди и тонкими носками цвета овсянки. Однотонные носки подчеркнут ремешок.",
+      "url": "https://www.wildberries.ru/catalog/999320006/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-28.geobasket.ru/vol9993/part999320/999320006/images/big/1.webp?picsUpdate=0",
+          "alt": "Коричневая пара туфель Johnature с ремешками в руках"
+        },
+        {
+          "url": "https://mow-basket-cdn-28.geobasket.ru/vol9993/part999320/999320006/images/big/4.webp?picsUpdate=0",
+          "alt": "Коричневые туфли Johnature, вид сверху"
+        }
+      ]
+    },
+    {
+      "id": "wb-1183812866",
+      "wb_article": "1183812866",
+      "date": "2026-11-26",
+      "category": "Бижутерия",
+      "title": "Тёмно-синие серьги VEYO с кристаллами",
+      "price": 404,
+      "description": "Удлинённые серьги с тёмно-синими кристаллами в форме капель и лепестков. Вариант в карточке обозначен dark bule.",
+      "stylist": "Надень с молочной рубашкой и собери волосы. Открытая шея оставит серьги главным акцентом.",
+      "url": "https://www.wildberries.ru/catalog/1183812866/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-28.geobasket.ru/vol11838/part1183812/1183812866/images/big/1.webp?picsUpdate=0",
+          "alt": "Тёмно-синие серьги VEYO на белом фоне"
+        },
+        {
+          "url": "https://mow-basket-cdn-28.geobasket.ru/vol11838/part1183812/1183812866/images/big/5.webp?picsUpdate=0",
+          "alt": "Тёмно-синие серьги VEYO на держателе"
+        }
+      ]
+    },
+    {
+      "id": "wb-1027245632",
+      "wb_article": "1027245632",
+      "date": "2026-11-26",
+      "category": "Бижутерия",
+      "title": "Чокер YWUULI с серебристыми буквами GSPD",
+      "price": 519,
+      "description": "Чокер на тёмной ленте с серебристыми буквами. В карточке указана длина 32 + 7 см.",
+      "stylist": "Сочетай с белой майкой с открытым вырезом и свободным чёрным жакетом. Перед выбором сверь указанную длину с обхватом шеи.",
+      "url": "https://www.wildberries.ru/catalog/1027245632/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-34.geobasket.ru/vol10272/part1027245/1027245632/images/big/1.webp?picsUpdate=0",
+          "alt": "Чокер GSPD на тёмной ленте крупным планом"
+        },
+        {
+          "url": "https://mow-basket-cdn-34.geobasket.ru/vol10272/part1027245/1027245632/images/big/3.webp?picsUpdate=0",
+          "alt": "Чокер GSPD на шее модели"
+        }
+      ]
+    },
     {
       "id": "wb-1368600767",
       "wb_article": "1368600767",
