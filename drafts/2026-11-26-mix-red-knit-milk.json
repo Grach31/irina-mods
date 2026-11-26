@@ -1,0 +1,33 @@
+{
+  "id": "2026-11-26-mix-red-knit-milk",
+  "type": "picks",
+  "slot": null,
+  "daily": true,
+  "items": [
+    {
+      "name": "Красный джемпер из шерсти мериноса",
+      "price": 15980,
+      "shop": "2MOOD",
+      "url": "https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/b7920a2d921bedc8cd15fe8fca4c53d48b9af87b3186c2dc7e031b7595528995.jpg",
+      "image_preflight": "2026-11-26-red-knit-1"
+    },
+    {
+      "name": "Молочная юбка S1193/esmi",
+      "price": 22990,
+      "shop": "EMKA",
+      "url": "https://emkashop.ru/yubka-s1193-esmi",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/6473cfa5dc6fd8592a6ae15b9ed561d7e5c21f17e89040b37282552a43c839cd.jpg",
+      "image_preflight": "2026-11-26-red-knit-2"
+    },
+    {
+      "name": "Графитовый шарф из шерсти",
+      "price": 5990,
+      "shop": "GATE31",
+      "url": "https://www.gate31.ru/product/sharf-iz-shersti-928f6c",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/1dabb20275d6df6586698406722b03f4c0b5035e53ce255a0bcfa4b334283632.jpg",
+      "image_preflight": "2026-11-26-red-knit-2"
+    }
+  ],
+  "text": "<b>Красный, молочный и графит</b>\n\nКрасный джемпер оставь единственным ярким акцентом. Молочная юбка мидакси смягчит цвет, а графитовый шарф свяжет образ с тёмными сапогами. Для ужина после работы накинь шарф поверх прямого пальто, а в помещении оставь открытой линию горловины.\n\n• <a href=\"https://www.2moodstore.com/collection/katalog/dzhemper_iz_shersti_merinosa_krasnogo_tsveta/\">Красный джемпер из шерсти мериноса — 2MOOD</a> — 15 980 ₽\n• <a href=\"https://emkashop.ru/yubka-s1193-esmi\">Молочная юбка S1193/esmi — EMKA</a> — 22 990 ₽\n• <a href=\"https://www.gate31.ru/product/sharf-iz-shersti-928f6c\">Графитовый шарф из шерсти — GATE31</a> — 5 990 ₽\n\n<b>Итого 44 960 ₽</b>"
+}
