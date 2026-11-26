@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-legacy-broken-1",
+  "request_sha256": "06931d0c9f865ace71964785285d07903eeac3fe8405123fcc842475d1a59669",
+  "cards": [
+    {
+      "id": "2026-10-23-mix-fur",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
+          "status": "verified",
+          "failures": [
+            {
+              "url": "https://cdn.2moodstore.com/images/w729/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d-jpg.webp",
+              "code": "not_in_gallery",
+              "http_status": null,
+              "attempts": 0,
+              "message": "URL is absent from product gallery"
+            }
+          ],
+          "page": {
+            "url": "https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://www.2moodstore.com/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d.jpg",
+            "final_url": "https://www.2moodstore.com/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 950113,
+            "width": 1288,
+            "height": 1933,
+            "attempts": 1,
+            "sha256": "9b8a5d7af906021eea22d10ecaa4beedde5adcd0acadfff5de02fd759bef99a5",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/9b8a5d7af906021eea22d10ecaa4beedde5adcd0acadfff5de02fd759bef99a5.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg",
+              "code": "not_in_gallery",
+              "http_status": null,
+              "attempts": 0,
+              "message": "URL is absent from product gallery"
+            },
+            {
+              "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+              "code": "gallery_empty",
+              "http_status": null,
+              "attempts": 1,
+              "message": "No attributable product photos found"
+            }
+          ],
+          "page": {
+            "url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+            "http_status": 200,
+            "attempts": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-02-mix-jackets",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082507-63/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://zarina.ru/catalog/product/ZR2611082507-63/",
+              "code": "brand_not_allowed",
+              "http_status": null,
+              "attempts": 1,
+              "message": "Product URL must belong to an approved brand"
+            }
+          ]
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://befree.ru/zhenskaya/product/BF2641305017/50",
+          "status": "verified",
+          "failures": [
+            {
+              "url": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.webp",
+              "code": "not_in_gallery",
+              "http_status": null,
+              "attempts": 0,
+              "message": "URL is absent from product gallery"
+            }
+          ],
+          "page": {
+            "url": "https://befree.ru/zhenskaya/product/BF2641305017/50",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.jpg",
+            "final_url": "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 60469,
+            "width": 320,
+            "height": 480,
+            "attempts": 1,
+            "sha256": "833a0cdaf22e5b1977d41bb080cd30053b73d3a824c3955cb7554dc5f2c5a6c1",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/833a0cdaf22e5b1977d41bb080cd30053b73d3a824c3955cb7554dc5f2c5a6c1.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
