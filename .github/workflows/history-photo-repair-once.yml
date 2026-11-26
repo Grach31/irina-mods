@@ -1,0 +1,96 @@
+name: Repair licensed Time Machine photo links
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/history-photo-repair-once.yml']
+permissions:
+  contents: write
+concurrency:
+  group: history-photo-repair-once
+  cancel-in-progress: false
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==11.3.0
+      - name: Preserve exact open-license archive photos
+        run: |
+          python - <<'PY'
+          import hashlib, io, json, pathlib, urllib.parse as up, urllib.request as ur, time
+          from PIL import Image, ImageOps
+          ids={
+            'style-time-machine-4d948e265dd6ff49','style-time-machine-cc3b24d63f573593',
+            'style-time-machine-7912f3b8fdff0a6f','style-time-machine-20261117-gazette-bon-ton-1913',
+            'style-time-machine-20261119-worth-bustle-1888','style-time-machine-20261120-callot-soeurs-1910',
+            'style-time-machine-20261121-bloomer-costume-1851','style-time-machine-20261122-knit-day-dress-1927',
+            'style-time-machine-20261123-poiret-iribe-1908'}
+          path=pathlib.Path('miniapp/style-time-machine.json')
+          data=json.loads(path.read_text())
+          out=pathlib.Path('miniapp/history-photos')
+          out.mkdir(exist_ok=True)
+          report=[]
+          for item in data['items']:
+              if item['id'] not in ids: continue
+              for p in item.get('photos',[]):
+                  old=p['url']; credit=p.get('credit',''); src=p.get('source_url','')
+                  if old.startswith('https://grach31.github.io/irina-mods/history-photos/'): continue
+                  if not any(s in credit for s in ('CC0','Public Domain','CC BY-SA 2.0')) or not src.startswith('https://commons.wikimedia.org/wiki/File:'):
+                      report.append({'id':item['id'],'status':'license_or_source_not_verified'}); continue
+                  name=up.unquote(src.split('/wiki/File:',1)[1]).replace(' ','_')
+                  digest=hashlib.md5(name.encode()).hexdigest()
+                  q=up.quote(name,safe=''); base='https://upload.wikimedia.org/wikipedia/commons/'
+                  urls=[base+digest[0]+'/'+digest[:2]+'/'+q]
+                  # Use the canonical original file named in the existing attribution, not a different photo.
+                  last=''
+                  for url in urls:
+                      try:
+                          req=ur.Request(url,headers={'User-Agent':'MySpaceArchivePhotoRepair/1.0 (existing attributed editorial reference; Grach31/irina-mods)','Accept':'image/jpeg,image/png,image/webp'})
+                          with ur.urlopen(req,timeout=25) as res:
+                              raw=res.read(35000001)
+                              if len(raw)>35000000: raise ValueError('source exceeds download limit')
+                          with Image.open(io.BytesIO(raw)) as im:
+                              im.load()
+                              if im.format not in ('JPEG','PNG','WEBP') or min(im.size)<200: raise ValueError('unexpected image')
+                              im=ImageOps.exif_transpose(im).convert('RGB'); im.thumbnail((1800,1800))
+                              buf=io.BytesIO(); im.save(buf,'JPEG',quality=92,optimize=True); jpg=buf.getvalue()
+                          with Image.open(io.BytesIO(jpg)) as verify: verify.load()
+                          sha=hashlib.sha256(jpg).hexdigest(); (out/(sha+'.jpg')).write_bytes(jpg)
+                          p['url']='https://grach31.github.io/irina-mods/history-photos/'+sha+'.jpg'
+                          p['original_url']=old
+                          p['archive_source_url']=url
+                          p['archive_sha256']=sha
+                          if 'CC BY-SA 2.0' in credit:
+                              p['credit']=credit+'; JPEG conversion and resizing; https://creativecommons.org/licenses/by-sa/2.0/'
+                          report.append({'id':item['id'],'status':'fixed','sha':sha,'url':p['url']})
+                          break
+                      except Exception as e: last=str(e)[:180]
+                  else: report.append({'id':item['id'],'status':'unresolved','error':last})
+                  time.sleep(1)
+          for row in report: print('HISTORY_PHOTO_REPAIR',json.dumps(row,ensure_ascii=False))
+          if any(r['status']=='fixed' for r in report):
+              path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+          pathlib.Path('/tmp/history-photo-repair.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit only verified snapshots and existing photo fields
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- miniapp/style-time-machine.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- miniapp/style-time-machine.json miniapp/history-photos
+          git commit -m 'Preserve original open-license Time Machine images as verified JPEG'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: history-photo-repair
+          path: /tmp/history-photo-repair.json
+          retention-days: 7
