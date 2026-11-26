@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-10-23-mix-fur",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://www.2moodstore.com/collection/katalog/shuba_dlinnaya_iz_iskusstvennogo_mekha_temno_korichnevogo_tsveta/",
+          "preferred_images": [
+            "https://cdn.2moodstore.com/images/w729/upload/iblock/a23/8idxvjbfsfl3muq7a59eelxbrkpjkm5d-jpg.webp"
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.ushatava.ru/store/w/novinki/dublenka-na-kulise-novaya-iskustvennyy-mekh-84316/",
+          "preferred_images": [
+            "https://www.ushatava.ru/upload/iblock/4a2/urpk9umtifwujaae4ewxd4y7juqcvooy/0-_118_.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-11-02-mix-jackets",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082507-63/",
+          "preferred_images": [
+            "https://imgcdn.zarina.ru/upload/images/zr261/thumb/900_9999/zr2611082507_63_1.webp?t=1791533344"
+          ]
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://befree.ru/zhenskaya/product/BF2641305017/50",
+          "preferred_images": [
+            "https://imgcdn.befree.ru/rest/V1/images/320/product/images/BF2641305017/BF2641305017_50_1.webp"
+          ]
+        }
+      ]
+    }
+  ]
+}
