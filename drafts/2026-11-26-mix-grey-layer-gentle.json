@@ -1,0 +1,33 @@
+{
+  "id": "2026-11-26-mix-grey-layer-gentle",
+  "type": "picks",
+  "slot": null,
+  "daily": true,
+  "items": [
+    {
+      "name": "Серый джемпер Луиз с кашемиром",
+      "price": 15990,
+      "shop": "GATE31",
+      "url": "https://www.gate31.ru/product/dzhemper-luiz-s-kashemirom",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/ebea1234ded6fd16eb0a37a9d347c265e453da8181a27a4d1feb269dedcd1ef7.jpg",
+      "image_preflight": "2026-11-26-grey-layer-1"
+    },
+    {
+      "name": "Серые брюки Грейс",
+      "price": 10990,
+      "shop": "GATE31",
+      "url": "https://www.gate31.ru/product/bryuki-greys",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/b805daa9a744dfcb9db1085062945f2d2d3ee24819e7492001303cb1232adfde.jpg",
+      "image_preflight": "2026-11-26-grey-layer-1"
+    },
+    {
+      "name": "Чёрная сумка Gentle",
+      "price": 6175,
+      "shop": "ARNY PRAHT",
+      "url": "https://arnypraht.com/product/gentle-chernyij/",
+      "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/7be734b075f2600ddfd106cf3215b9aaae740d07801053d63693819175a34297.jpg",
+      "image_preflight": "2026-11-26-grey-layer-1"
+    }
+  ],
+  "text": "<b>Серый в два тона</b>\n\nСерый джемпер и брюки близкого оттенка собирают спокойный образ на рабочий день. Слегка заправь джемпер спереди, чтобы обозначить талию, и добавь мягкую чёрную сумку. На улицу подойдёт длинное пальто, а в помещении достаточно лоферов и небольших серебряных серёг.\n\n• <a href=\"https://www.gate31.ru/product/dzhemper-luiz-s-kashemirom\">Серый джемпер Луиз с кашемиром — GATE31</a> — 15 990 ₽\n• <a href=\"https://www.gate31.ru/product/bryuki-greys\">Серые брюки Грейс — GATE31</a> — 10 990 ₽\n• <a href=\"https://arnypraht.com/product/gentle-chernyij/\">Чёрная сумка Gentle — ARNY PRAHT</a> — 6 175 ₽\n\n<b>Итого 33 155 ₽</b>"
+}
