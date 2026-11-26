@@ -1,4 +1,4 @@
-import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,telegramRejection} from './core.ts';
+import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,convertPublicationWebp,telegramRejection} from './core.ts';
 import {editorialFiles,handleEditorial} from './editorial.ts';
 const enc=new TextEncoder();
 const b64=(v:string)=>Uint8Array.from(atob(v.replace(/-/g,"+").replace(/_/g,"/").padEnd(Math.ceil(v.length/4)*4,"=")),x=>x.charCodeAt(0));
@@ -51,7 +51,7 @@ Deno.serve(async req=>{
  }
  let media;if(id){if(!/^[a-zA-Z0-9_.-]{1,100}$/.test(id))return respond({error:'invalid_id'},400);
  const raw=await fetch('https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/'+encodeURIComponent(id)+'.json',{signal:AbortSignal.timeout(12000)});if(!raw.ok)return respond({error:'draft_unavailable'},404);
- const draft=await raw.json();validateCaption(String(draft.text||''));const photos=await downloadPublicationPhotos(publicationMedia(draft,id));media=photos.map(p=>({bytes:p.bytes.length,type:p.mime}));}
+ const draft=await raw.json();validateCaption(String(draft.text||''));const photos=await downloadPublicationPhotos(publicationMedia(draft,id),fetch,convertPublicationWebp);media=photos.map(p=>({bytes:p.bytes.length,type:p.mime}));}
  return respond({bot:{id:me.result.id,username:me.result.username},destinations,media});
  }
  if(action==='credential_transfer'){
@@ -92,7 +92,7 @@ Deno.serve(async req=>{
  if(!token||!channel){const stored=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=stored[0]?.bot_token||token;channel=String(stored[0]?.channel_id||channel)}
  if(!token)return respond({error:'telegram_configuration_required'},503);channel='@stamboi';
  // Download every photo BEFORE claiming. Telegram receives bytes, never store/CDN URLs.
- const photos=await downloadPublicationPhotos(images);
+ const photos=await downloadPublicationPhotos(images,fetch,convertPublicationWebp);
  const claimed=await rpc('ms_publication_decide',{p_id:id,p_action:'claim',p_revision:b.revision});if(claimed.error)return respond(claimed,409);
  const attempt=claimed.attempt_id;let sent:any;
  try{

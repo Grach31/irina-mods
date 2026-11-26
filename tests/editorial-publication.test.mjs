@@ -16,13 +16,13 @@ test('Time Machine preserves every displayed original field, photograph, caption
 test('long full text splits without truncation, broken HTML or surrogate pairs',()=>{
  const text='Очень длинный исходный текст 🤍 '.repeat(500);const p=buildEditorial('history',{...history,description:text});assert(p.parts.length>2);const chunks=p.parts.filter(x=>x.kind==='text').map(x=>visibleCaption(x.html));assert(chunks.join('').includes(text));for(const part of p.parts)assert(visibleCaption(part.html).length<=(part.kind==='media'?1024:4096));
 });
-function fixture({item=news,space='fashion',mode='ok'}={}){
+function fixture({item=news,space='fashion',mode='ok',convertWebp}={}){
  let row=null,sendCount=0,photos=0,failedOnce=false,checkpoints=0;let photoTail=0;const sends=[];
  const response=(x,status=200)=>new Response(JSON.stringify(x),{status});
  const fetcher=async(url,opts={})=>{
   url=String(url);
   if(url.startsWith('https://brand.example/')||url.startsWith('https://basket-01.wbbasket.ru/')){
-   if(space==='finds')assert.equal(opts.redirect,'error');photos++;if(mode==='image403')return response({},403);return new Response(new Uint8Array([255,216,255,...Array(197).fill(photoTail)]))}
+   if(space==='finds')assert.equal(opts.redirect,'error');photos++;if(mode==='image403'||(mode==='fallback'&&url===photo))return response({},403);if(mode==='webp'){const b=new Uint8Array(132);b.set(Buffer.from('RIFF'));b.set(Buffer.from('WEBP'),8);return new Response(b)}return new Response(new Uint8Array([255,216,255,...Array(197).fill(photoTail)]))}
   if(url.includes('api.telegram.org/')){
    sendCount++;const method=url.split('/').at(-1);sends.push(method);
    if(method==='sendMessage'&&!failedOnce&&mode==='failSecond'){failedOnce=true;return response({ok:false,error_code:400,description:'Bad Request'},400)}
@@ -43,7 +43,7 @@ function fixture({item=news,space='fashion',mode='ok'}={}){
   }
   if(name==='ms_ep_fail'){row.status=p.p_status;return true}throw Error(name);
  };
- const c={fetcher,rpc,db:async()=>row?[row]:[],hash:async s=>createHash('sha256').update(s).digest('hex'),credentials:async()=>({token:'test-token',channel:'@stamboi'})};
+ const c={fetcher,convertWebp,rpc,db:async()=>row?[row]:[],hash:async s=>createHash('sha256').update(s).digest('hex'),credentials:async()=>({token:'test-token',channel:'@stamboi'})};
  return {call:(action,extra={})=>handleEditorial({action,space,id:item.id,...extra},c),get:()=>({row,sendCount,sends,photos,checkpoints}),changePhoto:()=>photoTail++};
 }
 test('preview is read-only; publication needs its exact approved revision and blocks repeats',async()=>{
@@ -101,3 +101,6 @@ test('The optional Finds WebP converter prepares a JPEG while other publication 
  assert.equal(photo.mime,'image/jpeg');
  assert.deepEqual(photo.bytes,jpg);
 });
+
+test('Fashion and history use the same WebP normalization before moderation',async()=>{for(const [space,item] of [['fashion',news],['history',history]]){let calls=0;const f=fixture({space,item,mode:'webp',convertWebp:async bytes=>{calls++;assert.equal(String.fromCharCode(...bytes.slice(8,12)),'WEBP');const jpg=new Uint8Array(132);jpg.set([255,216,255]);return jpg}});const p=await f.call('editorial_preview');assert.equal(p.status,200);assert.equal(calls,1);assert.equal(f.get().sendCount,0)}});
+test('Fashion uses only an attributed approved fallback and binds it to the preview',async()=>{const url='https://brand.example/fallback.jpg';const f=fixture({mode:'fallback',item:{...news,image_fallbacks:[{url,credit:'Official fallback',source_url:'https://brand.example/article',rights:'publisher_preview_hotlink'}]}});const p=await f.call('editorial_preview');assert.equal(p.status,200);assert.deepEqual(p.body.photos,[url]);assert(p.body.html.includes('Official fallback'));assert(!p.body.html.includes(news.image_credit));assert.equal(f.get().sendCount,0);const no=fixture({mode:'fallback',item:{...news,image_fallbacks:[{url,credit:'No rights',source_url:'https://brand.example/article'}]}});assert.equal((await no.call('editorial_preview')).body.error,'media_download_failed')});

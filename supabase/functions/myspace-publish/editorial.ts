@@ -1,4 +1,4 @@
-import {downloadPublicationPhotos,telegramRejection,visibleCaption} from './core.ts';
+import {downloadPublicationPhotos,convertPublicationWebp,telegramRejection,visibleCaption} from './core.ts';
 const escape=(s:unknown)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const https=(s:unknown)=>{try{const u=new URL(String(s));if(u.protocol==='https:'&&!u.username&&!u.password)return u.href}catch{}throw Error('editorial_photo_required')};
 export const editorialFiles:Record<string,string>={
@@ -34,6 +34,7 @@ export function buildEditorial(space:string,item:any,override?:string){
   if(!text.trim()||text.length>12000)throw Error('editorial_text_invalid');
   footer='<a href="'+escape(https(item.url))+'">Источник: '+escape(item.source||'Оригинал')+'</a>';
   if(item.image_credit||item.image_source)footer+='\n<i>Фото: '+escape(item.image_credit||item.image_source)+'</i>';
+  if(item._publication_fallback_source)footer+='\n<a href="'+escape(https(item._publication_fallback_source))+'">Источник фотографии</a>';
  }else if(space==='finds'){
   const url=findsLink(item.url,item.wb_article);
   if(item.id!=='wb-'+item.wb_article||!findsCategories.has(item.category)||
@@ -68,7 +69,7 @@ export function buildEditorial(space:string,item:any,override?:string){
  if(parts.some(p=>visibleCaption(p.html).length>(p.kind==='media'?1024:4096)))throw Error('editorial_text_invalid');
  return {text,photos,html,plain,parts};
 }
-type Context={db:(path:string,method?:string,data?:unknown)=>Promise<any>,rpc:(name:string,data:unknown)=>Promise<any>,hash:(s:string)=>Promise<string>,credentials:()=>Promise<{token:string,channel:string}>,fetcher?:typeof fetch};
+type Context={db:(path:string,method?:string,data?:unknown)=>Promise<any>,rpc:(name:string,data:unknown)=>Promise<any>,hash:(s:string)=>Promise<string>,credentials:()=>Promise<{token:string,channel:string}>,fetcher?:typeof fetch,convertWebp?:(bytes:Uint8Array)=>Promise<Uint8Array>};
 export async function handleEditorial(b:any,c:Context){
  const result=(body:any,status=200)=>({body,status}),fetcher=c.fetcher||fetch;
  const space=String(b.space||''),id=String(b.id||'');
@@ -83,14 +84,31 @@ export async function handleEditorial(b:any,c:Context){
   if(!item||!live)throw Error('editorial_unavailable');
   if(JSON.stringify(item)!==JSON.stringify(live))throw Error('editorial_changed');
   if(b.text!==undefined&&typeof b.text!=='string')throw Error('editorial_text_invalid');
-  const post=buildEditorial(space,item,space==='fashion'?b.text:undefined);
   const mediaFetcher:typeof fetch=space==='finds'
    ?(url,init)=>fetcher(url,{...init,redirect:'error'})
    :fetcher;
-  const convert=space==='finds'
-   ?async(bytes:Uint8Array)=>{const {webpToJpeg}=await import('./finds-image.ts');return webpToJpeg(bytes)}
-   :undefined;
-  const photos=await downloadPublicationPhotos(post.photos,mediaFetcher,convert);
+  const convert=c.convertWebp||convertPublicationWebp;
+  let post:ReturnType<typeof buildEditorial>,photos:Awaited<ReturnType<typeof downloadPublicationPhotos>>;
+  try{
+   post=buildEditorial(space,item,space==='fashion'?b.text:undefined);
+   photos=await downloadPublicationPhotos(post.photos,mediaFetcher,convert);
+  }catch(e){
+   const code=String((e as Error).message);
+   if(space!=='fashion'||!['editorial_photo_required','media_download_failed','media_format_invalid','media_size_invalid'].includes(code))throw e;
+   let alternate:{post:ReturnType<typeof buildEditorial>,photos:Awaited<ReturnType<typeof downloadPublicationPhotos>>}|undefined;
+   for(const fallback of (Array.isArray(item.image_fallbacks)?item.image_fallbacks:[]).slice(0,3)){
+    if(fallback?.rights!=='publisher_preview_hotlink'||typeof fallback.credit!=='string'||!fallback.credit.trim())continue;
+    try{
+     const url=https(fallback.url),source=https(fallback.source_url);
+     if(url===item.image_url)continue;
+     const candidate=buildEditorial(space,{...item,image_url:url,image_credit:fallback.credit,image_source:fallback.credit,_publication_fallback_source:source},b.text);
+     const media=await downloadPublicationPhotos(candidate.photos,mediaFetcher,convert);
+     alternate={post:candidate,photos:media};break;
+    }catch{}
+   }
+   if(!alternate)throw e;
+   post=alternate.post;photos=alternate.photos;
+  }
   const fingerprints=await Promise.all(photos.map(async p=>{const h=await crypto.subtle.digest('SHA-256',new Uint8Array(p.bytes).buffer);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}));
   const revision=await c.hash(JSON.stringify({item,parts:post.parts,fingerprints,version:1}));
   const status=(await c.db('myspace_editorial_publications?space=eq.'+space+'&source_id=eq.'+id+'&select=status,message_ids,error_code,next_part'))[0]||{status:'draft'};

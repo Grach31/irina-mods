@@ -1,9 +1,11 @@
 export class TelegramRejected extends Error {}
+// Shared lazy decoder: no WASM initialization for already compatible JPEG/PNG.
+export async function convertPublicationWebp(bytes:Uint8Array){const {webpToJpeg}=await import('./finds-image.ts');return webpToJpeg(bytes)}
 export async function downloadPublicationPhotos(images:string[],fetcher:typeof fetch=fetch,convertWebp?:(bytes:Uint8Array)=>Promise<Uint8Array>){
  const photos:{bytes:Uint8Array,mime:string,name:string}[]=[];let total=0;
  for(let start=0;start<images.length;start+=3){
  const batch=await Promise.all(images.slice(start,start+3).map(async(url,index)=>{
- const r=await fetcher(url,{signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('media_download_failed');
+ let r:Response;try{r=await fetcher(url,{signal:AbortSignal.timeout(15000)})}catch{throw Error('media_download_failed')}if(!r.ok)throw Error('media_download_failed');
  if(Number(r.headers.get('content-length'))>10000000)throw Error('media_size_invalid');
  const reader=r.body?.getReader();if(!reader)throw Error('media_download_failed');
  const chunks:Uint8Array[]=[];let length=0;
