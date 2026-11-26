@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-grey-layer-1",
+  "request_sha256": "7d2059558b126035921e2a3cfbf8250c55bef9d4afcb1556289f4605fbc41031",
+  "cards": [
+    {
+      "id": "2026-11-26-mix-grey-layer-gentle",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://www.gate31.ru/product/dzhemper-luiz-s-kashemirom",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/dzhemper-luiz-s-kashemirom",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/137/3225780361/909GATE_4008_1.jpg",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/137/3225780361/909GATE_4008_1.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 152011,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "ebea1234ded6fd16eb0a37a9d347c265e453da8181a27a4d1feb269dedcd1ef7",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/ebea1234ded6fd16eb0a37a9d347c265e453da8181a27a4d1feb269dedcd1ef7.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.gate31.ru/product/bryuki-greys",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/bryuki-greys",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/1153/3226330241/1108Gate_3122.webp",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/1153/3226330241/1108Gate_3122.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 433348,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "b805daa9a744dfcb9db1085062945f2d2d3ee24819e7492001303cb1232adfde",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/b805daa9a744dfcb9db1085062945f2d2d3ee24819e7492001303cb1232adfde.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://arnypraht.com/product/gentle-chernyij/",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://arnypraht.com/product/gentle-chernyij/",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://storage.yandexcloud.net/arny2-media-prod/product-variants/01964555-1859-716f-aede-e68057cbd368/488-black-1-new.jpg",
+            "final_url": "https://storage.yandexcloud.net/arny2-media-prod/product-variants/01964555-1859-716f-aede-e68057cbd368/488-black-1-new.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 794129,
+            "width": 1840,
+            "height": 2300,
+            "attempts": 1,
+            "sha256": "7be734b075f2600ddfd106cf3215b9aaae740d07801053d63693819175a34297",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/7be734b075f2600ddfd106cf3215b9aaae740d07801053d63693819175a34297.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
