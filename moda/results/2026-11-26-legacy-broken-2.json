@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-26-legacy-broken-2",
+  "request_sha256": "5232bdc185b245b3559bf568b6daed495cb1d58b4a89307a65a5114db68413eb",
+  "cards": [
+    {
+      "id": "2026-11-03-mix-milk-caramel",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-3",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082907-63/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://zarina.ru/catalog/product/ZR2611082907-63/",
+              "code": "brand_not_allowed",
+              "http_status": null,
+              "attempts": 1,
+              "message": "Product URL must belong to an approved brand"
+            }
+          ]
+        },
+        {
+          "key": "item-4",
+          "product_url": "https://zarina.ru/catalog/product/ZR2611082112-62/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://zarina.ru/catalog/product/ZR2611082112-62/",
+              "code": "brand_not_allowed",
+              "http_status": null,
+              "attempts": 1,
+              "message": "Product URL must belong to an approved brand"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-11-07-mix-evening-black",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://zarina.ru/catalog/product/ZR2612022906-27/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://zarina.ru/catalog/product/ZR2612022906-27/",
+              "code": "brand_not_allowed",
+              "http_status": null,
+              "attempts": 1,
+              "message": "Product URL must belong to an approved brand"
+            }
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://zarina.ru/catalog/product/ZR2612022903-50/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://zarina.ru/catalog/product/ZR2612022903-50/",
+              "code": "brand_not_allowed",
+              "http_status": null,
+              "attempts": 1,
+              "message": "Product URL must belong to an approved brand"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
