@@ -1,7 +1,175 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-26T06:50:07Z",
+  "updated_at": "2026-11-27T06:50:07Z",
   "items": [
+    {
+      "id": "wb-1228328601",
+      "wb_article": "1228328601",
+      "date": "2026-11-27",
+      "category": "Одежда",
+      "title": "Жёлтый кардиган Hirsionsan",
+      "price": 2810,
+      "description": "Свободный вязаный кардиган из акрила на пуговицах. Мягкий жёлтый оттенок и объёмные рукава.",
+      "stylist": "Носи поверх белой майки с прямыми серыми джинсами. Если хочется обозначить талию, застегни только верхние пуговицы.",
+      "url": "https://www.wildberries.ru/catalog/1228328601/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-23.geobasket.ru/vol12283/part1228328/1228328601/images/big/1.webp?picsUpdate=0",
+          "alt": "Жёлтый кардиган Hirsionsan на модели крупным планом"
+        },
+        {
+          "url": "https://mow-basket-cdn-23.geobasket.ru/vol12283/part1228328/1228328601/images/big/7.webp?picsUpdate=0",
+          "alt": "Жёлтый кардиган Hirsionsan в образе в полный рост"
+        }
+      ]
+    },
+    {
+      "id": "wb-1372489395",
+      "wb_article": "1372489395",
+      "date": "2026-11-27",
+      "category": "Одежда",
+      "title": "Чёрное платье мини с полупрозрачными рукавами",
+      "price": 958,
+      "description": "Облегающее платье из полиэстера и спандекса. Длинные полупрозрачные рукава раскрываются к низу.",
+      "stylist": "Для вечера добавь чёрные лодочки и небольшой серебристый клатч. Волосы можно собрать, чтобы сохранить открытой линию плеч и рукавов.",
+      "url": "https://www.wildberries.ru/catalog/1372489395/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol13724/part1372489/1372489395/images/big/2.webp?picsUpdate=0",
+          "alt": "Чёрное мини-платье с полупрозрачными рукавами спереди"
+        },
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol13724/part1372489/1372489395/images/big/3.webp?picsUpdate=0",
+          "alt": "Чёрное мини-платье с полупрозрачными рукавами со спины"
+        }
+      ]
+    },
+    {
+      "id": "wb-1367349839",
+      "wb_article": "1367349839",
+      "date": "2026-11-27",
+      "category": "Сумки",
+      "title": "Стёганая сумка-тоут YogodLns цвета шампань",
+      "price": 1021,
+      "description": "Объёмная сумка с блестящей стёганой поверхностью, короткими ручками и длинным ремнём.",
+      "stylist": "Добавь её к тёмно-синему пальто и прямым джинсам. На матовом дениме блеск сумки будет заметнее.",
+      "url": "https://www.wildberries.ru/catalog/1367349839/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-01.geobasket.ru/vol13673/part1367349/1367349839/images/big/1.webp?picsUpdate=1",
+          "alt": "Стёганая сумка YogodLns цвета шампань с ручками и ремнём"
+        },
+        {
+          "url": "https://mow-basket-cdn-01.geobasket.ru/vol13673/part1367349/1367349839/images/big/4.webp?picsUpdate=1",
+          "alt": "Стёганая сумка YogodLns цвета шампань на плече"
+        }
+      ]
+    },
+    {
+      "id": "wb-1040703865",
+      "wb_article": "1040703865",
+      "date": "2026-11-27",
+      "category": "Сумки",
+      "title": "Карамельная сумка-тоут Ai Na Li",
+      "price": 3200,
+      "description": "Сумка-тоут лаконичной формы с двумя длинными ручками. Выбранный оттенок в карточке указан как Caramel.",
+      "stylist": "Сочетай с тёмно-синими джинсами, белой рубашкой и бордовыми лоферами. Карамельный оттенок смягчит контраст белого и тёмно-синего.",
+      "url": "https://www.wildberries.ru/catalog/1040703865/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-27.geobasket.ru/vol10407/part1040703/1040703865/images/big/1.webp?picsUpdate=0",
+          "alt": "Карамельная сумка-тоут Ai Na Li на плече"
+        },
+        {
+          "url": "https://mow-basket-cdn-27.geobasket.ru/vol10407/part1040703/1040703865/images/big/3.webp?picsUpdate=0",
+          "alt": "Карамельная сумка-тоут Ai Na Li в руке"
+        }
+      ]
+    },
+    {
+      "id": "wb-1351868722",
+      "wb_article": "1351868722",
+      "date": "2026-11-27",
+      "category": "Обувь",
+      "title": "Коричневые атласные туфли для танцев SWDZM",
+      "price": 1042,
+      "description": "Женские танцевальные туфли из атласа с открытым носком и регулируемым ремешком. Перед выбором размера сверь длину стопы с таблицей.",
+      "stylist": "Для занятий сочетай со свободной юбкой миди с разрезом. Ремешки останутся на виду и будут сочетаться с мягким движением ткани.",
+      "url": "https://www.wildberries.ru/catalog/1351868722/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-24.geobasket.ru/vol13518/part1351868/1351868722/images/big/2.webp?picsUpdate=0",
+          "alt": "Коричневые танцевальные туфли SWDZM, вид сбоку"
+        },
+        {
+          "url": "https://mow-basket-cdn-24.geobasket.ru/vol13518/part1351868/1351868722/images/big/3.webp?picsUpdate=0",
+          "alt": "Коричневые танцевальные туфли SWDZM сзади и сбоку"
+        }
+      ]
+    },
+    {
+      "id": "wb-1272527895",
+      "wb_article": "1272527895",
+      "date": "2026-11-27",
+      "category": "Обувь",
+      "title": "Коричневые женские оксфорды Lorilury",
+      "price": 3478,
+      "description": "Женские оксфорды на шнуровке с округлым носком и фактурной подошвой. В карточке указан верх из натуральной кожи.",
+      "stylist": "Носи с графитовыми брюками до щиколотки и молочными носками. Такой подворот оставит шнуровку и рельеф подошвы на виду.",
+      "url": "https://www.wildberries.ru/catalog/1272527895/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol12725/part1272527/1272527895/images/big/1.webp?picsUpdate=0",
+          "alt": "Коричневые оксфорды Lorilury на шнуровке"
+        },
+        {
+          "url": "https://mow-basket-cdn-17.geobasket.ru/vol12725/part1272527/1272527895/images/big/2.webp?picsUpdate=0",
+          "alt": "Коричневые оксфорды Lorilury со стороны подошвы и пятки"
+        }
+      ]
+    },
+    {
+      "id": "wb-1184242831",
+      "wb_article": "1184242831",
+      "date": "2026-11-27",
+      "category": "Бижутерия",
+      "title": "Серьги Huitan с жёлтым цирконием",
+      "price": 502,
+      "description": "Серьги из меди с прямоугольными жёлтыми камнями и прозрачными вставками. Вариант E1587.",
+      "stylist": "Сочетай с белой рубашкой и убранными за уши волосами. Жёлтые камни добавят тёплый акцент у лица.",
+      "url": "https://www.wildberries.ru/catalog/1184242831/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-33.geobasket.ru/vol11842/part1184242/1184242831/images/big/1.webp?picsUpdate=0",
+          "alt": "Серьги Huitan с жёлтыми камнями на светлой подставке"
+        },
+        {
+          "url": "https://mow-basket-cdn-33.geobasket.ru/vol11842/part1184242/1184242831/images/big/4.webp?picsUpdate=0",
+          "alt": "Серьги Huitan с жёлтыми камнями на красном фоне"
+        }
+      ]
+    },
+    {
+      "id": "wb-1362383344",
+      "wb_article": "1362383344",
+      "date": "2026-11-27",
+      "category": "Бижутерия",
+      "title": "Кулон Vegvisir на металлической цепочке",
+      "price": 856,
+      "description": "Круглый металлический кулон с золотистым рисунком на тёмном фоне. В карточке выбран вариант Gold with chain.",
+      "stylist": "Носи поверх однотонной чёрной водолазки или с расстёгнутым воротом белой рубашки. Круглый кулон станет акцентом по центру.",
+      "url": "https://www.wildberries.ru/catalog/1362383344/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-06.geobasket.ru/vol13623/part1362383/1362383344/images/big/1.webp?picsUpdate=0",
+          "alt": "Кулон Vegvisir с золотистым рисунком на тёмном камне"
+        },
+        {
+          "url": "https://mow-basket-cdn-06.geobasket.ru/vol13623/part1362383/1362383344/images/big/2.webp?picsUpdate=0",
+          "alt": "Кулон Vegvisir и звенья металлической цепочки крупно"
+        }
+      ]
+    },
     {
       "id": "wb-1452180545",
       "wb_article": "1452180545",
