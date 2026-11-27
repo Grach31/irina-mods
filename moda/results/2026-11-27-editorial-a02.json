@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-27-editorial-a02",
+  "request_sha256": "66419fc8ec1ede081b67f48cc91957d0ba57e3b67ad3072fea0513e14f5cb18b",
+  "cards": [
+    {
+      "id": "2026-11-27-mix-mocha-ecru",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://studio-29.ru/products/tonkiiy-djemper-s-alpakoiy-molochnyiy-100331",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://studio-29.ru/products/tonkiiy-djemper-s-alpakoiy-molochnyiy-100331",
+              "code": "http_404",
+              "http_status": 404,
+              "attempts": 1,
+              "message": "HTTP 404"
+            }
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sumka-pekin-e9ec9d",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://www.gate31.ru/product/sumka-pekin-e9ec9d",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://cdn.insales-shop.ru/images/products/1/4945/3397063505/NY_GATE_430.webp",
+            "final_url": "https://cdn.insales-shop.ru/images/products/1/4945/3397063505/NY_GATE_430.webp",
+            "http_status": 200,
+            "content_type": "image/webp",
+            "bytes": 76964,
+            "width": 900,
+            "height": 1200,
+            "attempts": 1,
+            "sha256": "05597679b94edde5c168b4f53bf502b38400684711e650f5ebb3432fd4b8da0d",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/05597679b94edde5c168b4f53bf502b38400684711e650f5ebb3432fd4b8da0d.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-mix-graphite-jacquard",
+      "status": "verified",
+      "items": [
+        {
+          "key": "item-3",
+          "product_url": "https://studio-29.ru/products/djemper-bez-rukavov-chernyiy-3-113068",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://studio-29.ru/products/djemper-bez-rukavov-chernyiy-3-113068",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://avatars.mds.yandex.net/get-yastore/20811730/9q65smjc67jhjm6dr7cfgkx6ntnv29p9/orig",
+            "final_url": "https://avatars.mds.yandex.net/get-yastore/20811730/9q65smjc67jhjm6dr7cfgkx6ntnv29p9/orig",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 81742,
+            "width": 762,
+            "height": 1100,
+            "attempts": 1,
+            "sha256": "a6614452932b4078b9431bc9004f298c1e90b56fe0c81958fbd3533524286c68",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/a6614452932b4078b9431bc9004f298c1e90b56fe0c81958fbd3533524286c68.jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
