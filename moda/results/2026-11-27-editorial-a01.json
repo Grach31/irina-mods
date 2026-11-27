@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "request_id": "2026-11-27-editorial-a01",
+  "request_sha256": "181412cb90cd8a020b999b168611f956c363aa3f79a8338e876b11cf9a2b95ba",
+  "cards": [
+    {
+      "id": "2026-11-27-mix-mocha-ecru",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://emkashop.ru/yubka-s1159-martlet",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/yubka-s1159-martlet",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/20600/20673/S1159martlet_4.jpeg",
+            "final_url": "https://emkashop.ru/uploads/product/20600/20673/S1159martlet_4.jpeg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 1165551,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "d4bbeeed96d3db61374249dfe7f06a88edc53a762a89f031469bc4b0363b10f8",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/d4bbeeed96d3db61374249dfe7f06a88edc53a762a89f031469bc4b0363b10f8.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_17/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_17/",
+              "code": "http_403",
+              "http_status": 403,
+              "attempts": 1,
+              "message": "HTTP 403"
+            }
+          ]
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://askent.ru/cat/arkhivnaya_rasprodazha/sumka_1236/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://askent.ru/cat/arkhivnaya_rasprodazha/sumka_1236/",
+              "code": "http_404",
+              "http_status": 404,
+              "attempts": 1,
+              "message": "HTTP 404"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-mix-graphite-jacquard",
+      "status": "needs_replacements",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://studio-29.ru/products/jaket-iz-kostymnogo-jakkarda-seryiy-100059",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://studio-29.ru/products/jaket-iz-kostymnogo-jakkarda-seryiy-100059",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://avatars.mds.yandex.net/get-yastore/21497181/xzl74zkg9mlz8jd9gvsrfxz5jrl9l866/orig",
+            "final_url": "https://avatars.mds.yandex.net/get-yastore/21497181/xzl74zkg9mlz8jd9gvsrfxz5jrl9l866/orig",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 77857,
+            "width": 762,
+            "height": 1100,
+            "attempts": 1,
+            "sha256": "893ec438742e372ed41df4e895c961e62e90effb64b7738000a155d115952b68",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/893ec438742e372ed41df4e895c961e62e90effb64b7738000a155d115952b68.jpg"
+          }
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1105-urgel",
+          "status": "verified",
+          "failures": [],
+          "page": {
+            "url": "https://emkashop.ru/yubka-s1105-urgel",
+            "http_status": 200,
+            "attempts": 1
+          },
+          "photo": {
+            "source_url": "https://emkashop.ru/uploads/product/18600/18605/3024377.jpg",
+            "final_url": "https://emkashop.ru/uploads/product/18600/18605/3024377.jpg",
+            "http_status": 200,
+            "content_type": "image/jpeg",
+            "bytes": 1838570,
+            "width": 1800,
+            "height": 2400,
+            "attempts": 1,
+            "sha256": "522f3548449936718531f2a1be4bf2b97802be2e70a6088a496b0ec97944bd16",
+            "img": "https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/photos/moda/522f3548449936718531f2a1be4bf2b97802be2e70a6088a496b0ec97944bd16.jpg"
+          }
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_30/",
+          "status": "replace_product",
+          "failures": [
+            {
+              "url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_30/",
+              "code": "http_403",
+              "http_status": 403,
+              "attempts": 1,
+              "message": "HTTP 403"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "completed"
+}
