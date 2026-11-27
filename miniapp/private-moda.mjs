@@ -28,10 +28,25 @@ export async function loadPrivate(client){
  const store=client.storage.from(BUCKET),{data,error}=await store.list('drafts',{limit:40,sortBy:{column:'name',order:'desc'}});
  if(error)throw Error('Private catalog unavailable');
  const rows=[];
- for(const folder of (data||[]).filter(x=>ID.test(x.name)).slice(0,20)){
-  try{rows.push(await readCard(store,folder.name))}catch(e){console.warn('Incomplete private draft skipped',folder.name)}
+ // Storage listing may repeat a virtual folder. Limit unique IDs, not listing rows.
+ const ids=[...new Set((data||[]).filter(x=>x&&typeof x.name==='string'&&ID.test(x.name)).map(x=>x.name))].slice(0,20);
+ for(const id of ids){
+  try{rows.push(await readCard(store,id))}catch(e){console.warn('Incomplete private draft skipped',id)}
  }
  return rows;
+}
+export function uniquePrivateRows(publicRows,privateRows){
+ // Keep each private draft ID exactly once, even if an upstream listing repeats it.
+ // An existing public ID keeps its original moderation behavior. Different outfits
+ // and different public IDs are never silently hidden.
+ const seen=new Set(publicRows.map(d=>d.id)),kept=[],dropped=[];
+ for(const row of privateRows){
+  if(seen.has(row.id))dropped.push(row);else{seen.add(row.id);kept.push(row)}
+ }
+ // Do not revoke a shared blob URL if a repeated row references the same object.
+ const retained=new Set(kept.flatMap(row=>row.privateUrls||[]));
+ for(const row of dropped)for(const url of row.privateUrls||[])if(!retained.has(url))URL.revokeObjectURL(url);
+ return kept;
 }
 async function immutablePut(store,name,blob){
  const {error}=await store.upload(name,blob,{contentType:blob.type,upsert:false,cacheControl:'0'});
