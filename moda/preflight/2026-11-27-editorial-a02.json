@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-27-mix-mocha-ecru",
+      "items": [
+        {
+          "key": "item-2",
+          "product_url": "https://studio-29.ru/products/tonkiiy-djemper-s-alpakoiy-molochnyiy-100331"
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.gate31.ru/product/sumka-pekin-e9ec9d"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-mix-graphite-jacquard",
+      "items": [
+        {
+          "key": "item-3",
+          "product_url": "https://studio-29.ru/products/djemper-bez-rukavov-chernyiy-3-113068"
+        }
+      ]
+    }
+  ]
+}
