@@ -30,10 +30,16 @@ export async function loadPrivate(client){
  const rows=[];
  // Storage listing may repeat a virtual folder. Limit unique IDs, not listing rows.
  const ids=[...new Set((data||[]).filter(x=>x&&typeof x.name==='string'&&ID.test(x.name)).map(x=>x.name))].slice(0,20);
- for(const id of ids){
-  try{rows.push(await readCard(store,id))}catch(e){console.warn('Incomplete private draft skipped',id)}
- }
- return rows;
+ try{
+  for(const id of ids){
+   // Only folders with a committed manifest are visible. A partial upload is not a card.
+   const listing=await store.list('drafts/'+id,{limit:100});
+   if(listing.error||!Array.isArray(listing.data))throw Error('Private folder unavailable');
+   if(!listing.data.some(row=>row.name==='manifest.json'))continue;
+   rows.push(await readCard(store,id));
+  }
+  return rows;
+ }catch(e){release(rows);throw Error('Private catalog refresh incomplete')}
 }
 export function uniquePrivateRows(publicRows,privateRows){
  // Keep each private draft ID exactly once, even if an upstream listing repeats it.
