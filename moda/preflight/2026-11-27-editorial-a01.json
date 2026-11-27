@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "2026-11-27-mix-mocha-ecru",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://emkashop.ru/yubka-s1159-martlet"
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_17/"
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://askent.ru/cat/arkhivnaya_rasprodazha/sumka_1236/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-mix-graphite-jacquard",
+      "items": [
+        {
+          "key": "item-1",
+          "product_url": "https://studio-29.ru/products/jaket-iz-kostymnogo-jakkarda-seryiy-100059"
+        },
+        {
+          "key": "item-2",
+          "product_url": "https://emkashop.ru/yubka-s1105-urgel"
+        },
+        {
+          "key": "item-3",
+          "product_url": "https://www.charuel.ru/catalogue/odezhda/trikotazh/dzhempery/dzhemper-zhenskiy_30/"
+        }
+      ]
+    }
+  ]
+}
