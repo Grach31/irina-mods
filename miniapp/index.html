@@ -729,7 +729,10 @@ $('pwaClaim').onclick=async()=>{
 $('pwaCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('pwaClaim').click()});
 $('settingsLogout').onclick=async()=>{
  try{await notices?.logout()}catch{alert('Не удалось отключить push. Проверь соединение и повтори выход.');return}
- const token=pwaSession;pwaSession='';readonly=true;showSpace('hub');showPwaGate(true);
+ const token=pwaSession;pwaSession='';readonly=true;
+ if(privateModaView)privateModaView.release(privateModaUrls);privateModaUrls=[];items=items.filter(d=>!d.privatePreview);
+ if(active?.privatePreview){$('detail').classList.remove('visible');active=null}
+ showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
  try{const client=await authClient();await client.auth.signOut()}catch{}
 };
@@ -1373,10 +1376,11 @@ async function loadFashion(force=false){
 
 const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
-const localMedia=d=>'media/'+encodeURIComponent(d.id)+'.jpg'+(d.media_sha256?'?v='+encodeURIComponent(d.media_sha256.slice(0,16)):'');
+const localMedia=d=>d.privatePreview?d.privateCover:'media/'+encodeURIComponent(d.id)+'.jpg'+(d.media_sha256?'?v='+encodeURIComponent(d.media_sha256.slice(0,16)):'');
  const imageFor=d=>{if(d.ready&&d.media_sha256)return localMedia(d);if(d.type==='picks'&&d.items?.length){const first=d.items.find(i=>typeof i.img==='string'&&/^https:\/\//i.test(i.img));if(first)return first.img}return localMedia(d)};
  const draftHeading=d=>{const doc=new DOMParser().parseFromString(String(d.text||''),'text/html');const first=doc.body.firstElementChild;const heading=first&&['B','STRONG'].includes(first.tagName)?first.textContent.trim():'';const text=strip(d.text);return {title:heading||text.slice(0,77)||d.id,preview:(heading?text.slice(heading.length).trim():text.slice(77).trim()).slice(0,145)}};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
+let privateModaView=null,privateModaUrls=[];
 let loading=null,lastLoaded=0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function fetchCatalog(attempts=3){
@@ -1422,7 +1426,23 @@ function load({refresh=false}={}){
     // Safari must restore its session before showing publication counts.
     return false;
    }
-   items=nextItems;
+   // Private Moda uses the same owner Auth session and never enters the publish API.
+   let nextPrivate=[];
+   if(pwaSession&&!readonly){
+    const session=pwaSession;
+    try{
+     privateModaView=await import('./private-moda.mjs');
+     const rows=await privateModaView.loadPrivate(await authClient());
+     if(pwaSession!==session){privateModaView.release(rows);return false}
+     const publicIds=new Set(nextItems.map(d=>d.id));
+     nextPrivate=rows.filter(d=>!publicIds.has(d.id));
+     privateModaView.release(rows.filter(d=>publicIds.has(d.id)));
+    }catch(e){console.warn('Private Moda unavailable',e.message)}
+   }
+   if(privateModaView)privateModaView.release(privateModaUrls);
+   if(active?.privatePreview){$('detail').classList.remove('visible');active=null}
+   privateModaUrls=nextPrivate;
+   items=[...nextItems,...nextPrivate];
    lastLoaded=Date.now();
    render();return true;
   }catch(e){
@@ -1440,7 +1460,11 @@ function render(){
  let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
-list.forEach(d=>{const card=document.createElement('button');card.className='draft';const heading=draftHeading(d);card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(heading.title)+'</h3><p class="preview">'+escapeHtml(heading.preview||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{const img=e.target;const fallback=localMedia(d);if(img.getAttribute('src')!==fallback){img.src=fallback;return}img.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Фото недоступно'}))};card.onclick=()=>open(d);$('list').append(card)})}
+if(mode==='pending'&&pwaSession&&!readonly&&(filter==='all'||filter==='picks')){
+ const importButton=document.createElement('button');importButton.type='button';importButton.className='secondary';importButton.textContent='Импорт приватных подборок';
+ importButton.onclick=()=>{const file=document.createElement('input');file.type='file';file.accept='.json,application/json';file.onchange=async()=>{if(!file.files?.[0])return;try{if(file.files[0].size>20000000)throw Error('Слишком большой пакет');if(!confirm('Сохранить пакет только в закрытом хранилище? В Telegram ничего не отправляется.'))return;const mod=await import('./private-moda.mjs');await mod.importPrivate(await authClient(),JSON.parse(await file.files[0].text()));await load({refresh:true});alert('Приватные черновики импортированы.')}catch(e){alert('Импорт не завершён: '+e.message)}};file.click()};$('list').append(importButton);
+}
+list.forEach(d=>{const card=document.createElement('button');card.className='draft';const heading=draftHeading(d);card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(d.privatePreview?'Приватная подборка':category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(heading.title)+'</h3><p class="preview">'+escapeHtml(heading.preview||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{const img=e.target;const fallback=localMedia(d);if(img.getAttribute('src')!==fallback){img.src=fallback;return}img.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Фото недоступно'}))};card.onclick=()=>open(d);$('list').append(card)})}
 function gallerySources(d){let a=[];const root=BASE+'drafts/img/';if(d.type==='looks'){const count=Math.min(10,1+(d.looks?.length||0));for(let i=1;i<=count;i++)a.push(root+encodeURIComponent(d.id)+(i===1?'':'-'+i)+'.jpg')}else if(d.type==='album'&&d.photos?.length){a=d.photos.filter(p=>typeof p==='string').slice(0,10).map(p=>p.startsWith('http')?p:BASE+p)}else if(d.type==='item'&&d.image){a=[d.image.startsWith('http')?d.image:BASE+d.image]}else if(d.type==='picks'&&d.items?.length){a=d.items.slice(0,10).map(i=>i.img).filter(Boolean);if(d.ready&&d.media_sha256)a.unshift(localMedia(d))}else if(d.card?.images?.length){a=[imageFor(d)];}else{a=[imageFor(d)]}return a.length?a:[imageFor(d)]}
 function setupGalleryControls(count){
  const gallery=$('gallery'),prev=$('galleryPrev'),next=$('galleryNext'),dots=$('galleryDots');
@@ -1492,7 +1516,8 @@ const accessLabel=$('detailAccessLabel');if(accessLabel)accessLabel.textContent=
 const actions=$('actions');actions.replaceChildren();
 const isTestDraft=/(?:^|[-_])(test|panel-test)(?:$|[-_])/i.test(d.id)||/ТЕСТ СВЯЗИ/i.test(String(d.text||''));
 const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].includes(d.meta.status);
-if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
+if(d.privatePreview){const p=document.createElement('span');p.className='eyebrow';p.textContent='Приватный предпросмотр · публикация отключена';actions.append(p);
+}else if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
  const buttons=[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];
  buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);if(action==='ok'&&d.ready===false){btn.disabled=true;btn.textContent='Фото готовятся'}actions.append(btn)});
 }else{
@@ -1501,6 +1526,7 @@ if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
  actions.append(p);
 }}
 async function act(action,d){
+ if(d.privatePreview)return;
  if(pwaSession){
   if(action==='edit'){
    const notes=prompt('Что изменить в черновике? Опиши правки для редакции:');
