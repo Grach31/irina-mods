@@ -1438,11 +1438,12 @@ function load({refresh=false}={}){
      nextPrivate=rows.filter(d=>!publicIds.has(d.id));
      privateModaView.release(rows.filter(d=>publicIds.has(d.id)));
     }catch(e){console.warn('Private Moda unavailable',e.message)}
+    if(pwaSession!==session)return false;
    }
    if(privateModaView)privateModaView.release(privateModaUrls);
    if(active?.privatePreview){$('detail').classList.remove('visible');active=null}
    privateModaUrls=nextPrivate;
-   items=[...nextItems,...nextPrivate];
+   items=nextPrivate.length?[...nextItems,...nextPrivate]:nextItems;
    lastLoaded=Date.now();
    render();return true;
   }catch(e){

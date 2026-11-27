@@ -14,7 +14,7 @@ function fixture({session='session',telegram=false}={}){
  const elements={list:{innerHTML:'existing'},pending:{textContent:'1'},published:{textContent:'0'},rejected:{textContent:'0'}};
  let resolve,reject;
  const response=new Promise((a,b)=>{resolve=a;reject=b});
- const c={items:old,loading:null,lastLoaded:0,pwaSession:session,isTelegramClient:telegram,console:{warn(){}},Date,
+ const c={items:old,loading:null,lastLoaded:0,pwaSession:session,isTelegramClient:telegram,readonly:true,privateModaView:null,privateModaUrls:[],active:null,console:{warn(){}},Date,
  $:id=>elements[id],fetchCatalog:async()=>({items:next,pending:30,published:0,rejected:0}),
  publishApi:()=>response};
  c.render=()=>{elements.pending.textContent=String(c.items.filter(x=>x.meta.status==='queued').length);elements.published.textContent=String(c.items.filter(x=>x.meta.status==='published').length);elements.rejected.textContent=String(c.items.filter(x=>x.meta.status==='rejected').length)};

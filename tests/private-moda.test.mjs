@@ -10,7 +10,12 @@ async function fixture(){
 }
 function fake(){
  const objects=new Map(),calls=[];
- return {objects,calls,client:{storage:{from(name){assert.equal(name,'myspace-moda-drafts');return {async upload(path,blob,options){calls.push(path);assert.equal(options.upsert,false);if(objects.has(path))return {error:{message:'exists'}};objects.set(path,blob);return {data:{}}},async download(path){return objects.has(path)?{data:objects.get(path)}:{error:{message:'missing'}}},async list(){return {data:[...new Set([...objects.keys()].map(p=>p.split('/')[1]))].map(name=>({name}))}}}}}}
+ const store={
+  async upload(path,blob,options){calls.push(path);assert.equal(options.upsert,false);if(objects.has(path))return {error:{message:'exists'}};objects.set(path,blob);return {data:{}}},
+  async download(path){return objects.has(path)?{data:objects.get(path)}:{error:{message:'missing'}}},
+  async list(){return {data:[...new Set([...objects.keys()].map(p=>p.split('/')[1]))].map(name=>({name}))}}
+ };
+ return {objects,calls,client:{storage:{from(name){assert.equal(name,'myspace-moda-drafts');return store}}}};
 }
 test('private package uploads manifest last, reads owner media, repeats without overwrites',async()=>{const p=await fixture(),s=fake();assert.equal(await importPrivate(s.client,p),1);assert.equal(s.objects.size,5);assert.match(s.calls.at(-1),/manifest.json$/);await importPrivate(s.client,p);assert.equal(s.objects.size,5);const rows=await loadPrivate(s.client);assert.equal(rows.length,1);assert.equal(rows[0].privatePreview,true);assert.equal(rows[0].items.length,3);assert.match(rows[0].privateCover,/^blob:/);release(rows)});
 test('reject corrupted media and invalid public or duplicated manifest before uploads',async()=>{const p=await fixture(),s=fake();const c=p.cards[0];c.images[c.manifest.cover_sha256]='AAAA';await assert.rejects(importPrivate(s.client,p));assert.equal(s.calls.length,0);c.manifest.publication_allowed=true;assert.throws(()=>validateManifest(c.manifest,c.manifest.id))});
