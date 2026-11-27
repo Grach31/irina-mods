@@ -730,7 +730,7 @@ $('pwaCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('pwaClaim').cli
 $('settingsLogout').onclick=async()=>{
  try{await notices?.logout()}catch{alert('Не удалось отключить push. Проверь соединение и повтори выход.');return}
  const token=pwaSession;pwaSession='';readonly=true;
- if(privateModaView)privateModaView.release(privateModaUrls);privateModaUrls=[];items=items.filter(d=>!d.privatePreview);
+ if(privateModaView)privateModaView.release(privateModaUrls);privateModaUrls=[];privateModaError=false;items=items.filter(d=>!d.privatePreview);
  if(active?.privatePreview){$('detail').classList.remove('visible');active=null}
  showSpace('hub');showPwaGate(true);
  try{await pwaApi({action:'signout',session:token})}catch{}
@@ -1380,7 +1380,8 @@ const localMedia=d=>d.privatePreview?d.privateCover:'media/'+encodeURIComponent(
  const imageFor=d=>{if(d.ready&&d.media_sha256)return localMedia(d);if(d.type==='picks'&&d.items?.length){const first=d.items.find(i=>typeof i.img==='string'&&/^https:\/\//i.test(i.img));if(first)return first.img}return localMedia(d)};
  const draftHeading=d=>{const doc=new DOMParser().parseFromString(String(d.text||''),'text/html');const first=doc.body.firstElementChild;const heading=first&&['B','STRONG'].includes(first.tagName)?first.textContent.trim():'';const text=strip(d.text);return {title:heading||text.slice(0,77)||d.id,preview:(heading?text.slice(heading.length).trim():text.slice(77).trim()).slice(0,145)}};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
-let privateModaView=null,privateModaUrls=[];
+let privateModaView=null,privateModaUrls=[],privateModaError=false;
+async function privateModaModule(){return import('./private-moda.mjs?v=20261127-3')}
 let loading=null,lastLoaded=0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function fetchCatalog(attempts=3){
@@ -1429,19 +1430,29 @@ function load({refresh=false}={}){
     return false;
    }
    // Private Moda uses the same owner Auth session and never enters the publish API.
-   let nextPrivate=[];
+   let nextPrivate=[],privateError=false;
    if(pwaSession&&!readonly){
     const session=pwaSession;
     try{
-     privateModaView=await import('./private-moda.mjs');
+     privateModaView=await privateModaModule();
      const rows=await privateModaView.loadPrivate(await authClient());
      if(pwaSession!==session){privateModaView.release(rows);return false}
-     nextPrivate=privateModaView.uniquePrivateRows(nextItems,rows);
-    }catch(e){console.warn('Private Moda unavailable',e.message)}
+     // Keep deduplication compatible with an older cached module, too.
+     const seen=new Set(nextItems.map(d=>d.id)),dropped=[];
+     for(const row of rows){if(seen.has(row.id))dropped.push(row);else{seen.add(row.id);nextPrivate.push(row)}}
+     const keptUrls=new Set(nextPrivate.flatMap(row=>row.privateUrls||[]));
+     for(const row of dropped)for(const url of row.privateUrls||[])if(!keptUrls.has(url))URL.revokeObjectURL(url);
+    }catch(e){
+     console.warn('Private Moda unavailable',e.message);
+     privateError=true;
+     const publicIds=new Set(nextItems.map(d=>d.id));
+     nextPrivate=privateModaUrls.filter(d=>!publicIds.has(d.id));
+    }
     if(pwaSession!==session)return false;
    }
-   if(privateModaView)privateModaView.release(privateModaUrls);
-   if(active?.privatePreview){$('detail').classList.remove('visible');active=null}
+   if(privateModaView){const kept=new Set(nextPrivate.flatMap(row=>row.privateUrls||[]));for(const row of privateModaUrls)for(const url of row.privateUrls||[])if(!kept.has(url))URL.revokeObjectURL(url)}
+   if(active?.privatePreview&&!nextPrivate.includes(active)){$('detail').classList.remove('visible');active=null}
+   privateModaError=privateError;
    privateModaUrls=nextPrivate;
    items=nextPrivate.length?[...nextItems,...nextPrivate]:nextItems;
    lastLoaded=Date.now();
@@ -1462,8 +1473,9 @@ function render(){
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
 if(mode==='pending'&&pwaSession&&!readonly&&(filter==='all'||filter==='picks')){
+ if(privateModaError){const warning=document.createElement('div');warning.className='message';warning.textContent='Приватные подборки не обновились. Потяни вниз для повторной загрузки.';$('list').append(warning)}
  const importButton=document.createElement('button');importButton.type='button';importButton.className='secondary';importButton.textContent='Импорт приватных подборок';
- importButton.onclick=()=>{const file=document.createElement('input');file.type='file';file.accept='.json,application/json';file.onchange=async()=>{if(!file.files?.[0])return;try{if(file.files[0].size>20000000)throw Error('Слишком большой пакет');if(!confirm('Сохранить пакет только в закрытом хранилище? В Telegram ничего не отправляется.'))return;const mod=await import('./private-moda.mjs');await mod.importPrivate(await authClient(),JSON.parse(await file.files[0].text()));await load({refresh:true});alert('Приватные черновики импортированы.')}catch(e){alert('Импорт не завершён: '+e.message)}};file.click()};$('list').append(importButton);
+ importButton.onclick=()=>{const file=document.createElement('input');file.type='file';file.accept='.json,application/json';file.onchange=async()=>{if(!file.files?.[0])return;try{if(file.files[0].size>20000000)throw Error('Слишком большой пакет');if(!confirm('Сохранить пакет только в закрытом хранилище? В Telegram ничего не отправляется.'))return;const mod=await import('./private-moda.mjs?v=20261127-3');await mod.importPrivate(await authClient(),JSON.parse(await file.files[0].text()));await load({refresh:true});alert('Приватные черновики импортированы.')}catch(e){alert('Импорт не завершён: '+e.message)}};file.click()};$('list').append(importButton);
 }
 list.forEach(d=>{const card=document.createElement('button');card.className='draft';const heading=draftHeading(d);card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(d.privatePreview?'Приватная подборка':category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(heading.title)+'</h3><p class="preview">'+escapeHtml(heading.preview||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{const img=e.target;const fallback=localMedia(d);if(img.getAttribute('src')!==fallback){img.src=fallback;return}img.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Фото недоступно'}))};card.onclick=()=>open(d);$('list').append(card)})}
 function gallerySources(d){let a=[];const root=BASE+'drafts/img/';if(d.type==='looks'){const count=Math.min(10,1+(d.looks?.length||0));for(let i=1;i<=count;i++)a.push(root+encodeURIComponent(d.id)+(i===1?'':'-'+i)+'.jpg')}else if(d.type==='album'&&d.photos?.length){a=d.photos.filter(p=>typeof p==='string').slice(0,10).map(p=>p.startsWith('http')?p:BASE+p)}else if(d.type==='item'&&d.image){a=[d.image.startsWith('http')?d.image:BASE+d.image]}else if(d.type==='picks'&&d.items?.length){a=d.items.slice(0,10).map(i=>i.img).filter(Boolean);if(d.ready&&d.media_sha256)a.unshift(localMedia(d))}else if(d.card?.images?.length){a=[imageFor(d)];}else{a=[imageFor(d)]}return a.length?a:[imageFor(d)]}

@@ -13,7 +13,7 @@ function fake({repeatFolders=false}={}){
  const store={
   async upload(path,blob,options){calls.push(path);assert.equal(options.upsert,false);if(objects.has(path))return {error:{message:'exists'}};objects.set(path,blob);return {data:{}}},
   async download(path){return objects.has(path)?{data:objects.get(path)}:{error:{message:'missing'}}},
-  async list(){const folders=[...new Set([...objects.keys()].map(p=>p.split('/')[1]))].map(name=>({name}));return {data:repeatFolders?folders.flatMap(x=>[x,x]):folders}}
+  async list(prefix){const folders=[...new Set([...objects.keys()].filter(p=>p.startsWith(prefix+'/')).map(p=>p.slice(prefix.length+1).split('/')[0]))].map(name=>({name}));return {data:repeatFolders?folders.flatMap(x=>[x,x]):folders}}
  };
  return {objects,calls,client:{storage:{from(name){assert.equal(name,'myspace-moda-drafts');return store}}}};
 }
@@ -39,3 +39,5 @@ test('private catalog merge does not repeat IDs or revoke retained shared blobs'
  assert.deepEqual(uniquePrivateRows([{id:row.id}],[row]),[]);
  await assert.rejects(fetch(row.privateCover));
 });
+
+test('incomplete upload is hidden, but a committed card with unavailable media fails refresh',async()=>{const p=await fixture(),s=fake();await importPrivate(s.client,p);const id=p.cards[0].manifest.id;const incomplete='2026-11-27-gcc-'+'c'.repeat(40);s.objects.set('drafts/'+incomplete+'/partial.jpg',new Blob(['x']));const rows=await loadPrivate(s.client);assert.equal(rows.length,1);release(rows);s.objects.delete('drafts/'+id+'/'+p.cards[0].manifest.cover_sha256+'.jpg');await assert.rejects(loadPrivate(s.client),/refresh incomplete/)});
