@@ -70,6 +70,7 @@ Deno.serve(async req=>{
  return saved.ok?respond({ok:true,configured:true}):respond({error:'credential_store_failed'},502);
  }
  const moderatorId=await moderator(String(b.session||''));if(!moderatorId)return respond({error:'unauthorized'},403);
+ const privateModaPublication=Deno.env.get('MYSPACE_PRIVATE_MODA_PUBLICATION')==='enabled';
  if(['editorial_preview','editorial_publish','editorial_list','editorial_status'].includes(action)){const result=await handleEditorial(b,editorialContext);return respond(result.body,result.status)}
  if(action!=='list'&&!/^[a-zA-Z0-9_.-]{1,100}$/.test(id))return respond({error:'invalid_id'},400);
  if(action==='list'){
@@ -78,9 +79,12 @@ Deno.serve(async req=>{
  const completions=await db('myspace_edit_completions?select=draft_id,request_created_at&limit=1000');
  const complete=new Set(completions.map((r:any)=>r.draft_id+':'+Date.parse(r.request_created_at)));
  for(const e of edits){if(!complete.has(e.draft_id+':'+Date.parse(e.created_at))&&!rows.some((x:any)=>x.draft_id===e.draft_id&&['published','rejected','publishing','uncertain'].includes(x.status)))rows.push({draft_id:e.draft_id,status:'edit_requested',updated_at:e.created_at})}
- return respond({items:rows});
+ return respond({items:rows,private_moda_publication:privateModaPublication});
  }
  if(action==='status'){const rows=await db('myspace_publications?draft_id=eq.'+id+'&select=status,telegram_message_ids,updated_at,error_code');return respond(rows[0]||{status:'draft'})}
+ if(b.private_moda===true&&action==='publish'&&!privateModaPublication){
+  return respond({error:'private_moda_pilot_publication_disabled'},403);
+ }
  const privateDraft=b.private_moda===true&&['edit','reject','publish'].includes(action)
   ? await readPrivateModa(id,String(b.revision||'')) : null;
  if(action==='edit'||action==='reject'){

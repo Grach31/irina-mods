@@ -10,7 +10,7 @@ const privateCard={schema_version:1,id:'2026-11-28-gcc-'+'a'.repeat(48),mode:'pr
  category:'bags',title:'Сумки для города',text:'<b>Сумки для города</b>\n\nВыбор зависит от того, чему отдать роль акцента.',
  publication_allowed:false,rights_verified:false,cover_sha256:'a'.repeat(64),source_archive_sha256:'b'.repeat(64),
  items:actual.items.map((item,i)=>({...item,photo_sha256:String(i+1).repeat(64)}))};
-function fixture({mode='ok',ready=true,privateModa=false}={}){
+function fixture({mode='ok',ready=true,privateModa=false,pilotPublication=true}={}){
  let handler,state=null,sends=0,finishAttempts=0,requests=[],uploads=[],methods=[];
  const draft=privateModa?privateCard:actual,raw=JSON.stringify(draft);
  const revision=createHash('sha256').update(raw).digest('hex');const response=(x,status=200)=>new Response(JSON.stringify(x),{status});
@@ -31,7 +31,7 @@ function fixture({mode='ok',ready=true,privateModa=false}={}){
  if(url.includes('api.telegram.org/')){sends++;uploads.push(opts.body);methods.push(url.split('/').at(-1));if(mode==='network_failure')throw Error('connection lost');if(mode==='rejected')return response({ok:false,error_code:403},403);if(mode==='photo_rejected')return response({ok:false,error_code:400,description:'Bad Request: PHOTO_INVALID_DIMENSIONS'},400);return response({ok:true,result:privateModa?{message_id:1}:[{message_id:1},{message_id:2},{message_id:3}]})}
  throw Error('Unmocked URL: '+url);
  };
- vm.runInNewContext(core+'\n'+index,{approvedPrivateModa,PRIVATE_MODA_ID,privateModaMessage,Deno:{env:{get:n=>({SUPABASE_URL:'https://db.test',SUPABASE_SERVICE_ROLE_KEY:'mock-key',MYSPACE_TELEGRAM_BOT_TOKEN:'mock-token',MYSPACE_TELEGRAM_CHANNEL_ID:'mock-channel'})[n]},serve:fn=>handler=fn},fetch,Response,Request,TextEncoder,TextDecoder,crypto:webcrypto,atob,URL,Date,Uint8Array,FormData,Blob,AbortSignal,setTimeout,console});
+ vm.runInNewContext(core+'\n'+index,{approvedPrivateModa,PRIVATE_MODA_ID,privateModaMessage,Deno:{env:{get:n=>({SUPABASE_URL:'https://db.test',SUPABASE_SERVICE_ROLE_KEY:'mock-key',MYSPACE_TELEGRAM_BOT_TOKEN:'mock-token',MYSPACE_TELEGRAM_CHANNEL_ID:'mock-channel',MYSPACE_PRIVATE_MODA_PUBLICATION:pilotPublication?'enabled':undefined})[n]},serve:fn=>handler=fn},fetch,Response,Request,TextEncoder,TextDecoder,crypto:webcrypto,atob,URL,Date,Uint8Array,FormData,Blob,AbortSignal,setTimeout,console});
  return {call:async(action='publish',rev=revision,session='a'.repeat(64))=>{const r=await handler(new Request('https://function.test',{method:'POST',body:JSON.stringify({action,id:draft.id,session,revision:rev,notes:'Another requested correction',private_moda:privateModa})}));return {status:r.status,data:await r.json()}},get:()=>({state,sends,finishAttempts,requests,uploads,methods})};
 }
 test('current long HTML caption publishes successfully in isolated transport',async()=>{const f=fixture();assert.equal((await f.call()).status,200);assert.equal(f.get().sends,1)});
@@ -71,4 +71,11 @@ test('held and test private drafts cannot become approved revisions',async()=>{
   const digest=async value=>createHash('sha256').update(value).digest('hex');
   await assert.rejects(approvedPrivateModa(draft.id,await digest(raw),raw,digest),/draft_held_or_invalid/);
  }
+});
+test('with pilot defaults a moderator cannot publish private Moda',async()=>{
+ const f=fixture({privateModa:true,pilotPublication:false});
+ const result=await f.call();
+ assert.equal(result.status,403);assert.equal(result.data.error,'private_moda_pilot_publication_disabled');
+ assert.equal(f.get().state,null);assert.equal(f.get().sends,0);
+ assert.equal((await f.call('edit')).data.status,'edit_requested');
 });

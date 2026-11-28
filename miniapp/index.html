@@ -1421,7 +1421,10 @@ function load({refresh=false}={}){
      if(!Array.isArray(decisions.items))throw Error('Invalid My Space decisions');
      if(pwaSession!==session)return false;
      const byId=new Map(decisions.items.map(x=>[x.draft_id,x.status]));
-     applyDecisions=rows=>rows.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status});
+     applyDecisions=rows=>rows.forEach(d=>{
+      const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status;
+      if(d.privateModeration)d.privatePublicationEnabled=decisions.private_moda_publication===true;
+     });
      applyDecisions(nextItems);
     }catch(e){
      // Preserve the last complete snapshot, including its counters and list.
@@ -1552,7 +1555,9 @@ const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].inc
 if(d.privatePreview&&!d.privateModeration){const p=document.createElement('span');p.className='eyebrow';p.textContent='Приватный предпросмотр · публикация отключена';actions.append(p);
 }else if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
  const buttons=[[d.privateModeration?'На доработку':'Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];
- buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);if(action==='ok'&&d.ready===false){btn.disabled=true;btn.textContent='Фото готовятся'}actions.append(btn)});
+ buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);if(action==='ok'&&d.ready===false){btn.disabled=true;btn.textContent='Фото готовятся'}
+  if(action==='ok'&&d.privateModeration&&!d.privatePublicationEnabled){btn.disabled=true;btn.title='Публикация отключена в пилоте'}
+  actions.append(btn)});
 }else{
  const p=document.createElement('span');p.className='eyebrow';
  p.textContent=isTestDraft?'Технический тест · не публиковать':readonly?'Только просмотр':d.meta.status==='published'?'Опубликовано':d.meta.status==='rejected'?'Отклонено':d.meta.status==='uncertain'?'Отправка требует проверки · повтор заблокирован':d.meta.status==='publishing'?'Отправка выполняется':d.meta.status==='queued'?'Ожидает одобрения':'Материал обработан';
@@ -1560,6 +1565,7 @@ if(d.privatePreview&&!d.privateModeration){const p=document.createElement('span'
 }}
 async function act(action,d){
  if(d.privatePreview&&!d.privateModeration)return;
+ if(action==='ok'&&d.privateModeration&&!d.privatePublicationEnabled)return;
  if(pwaSession){
   const privateFields=d.privateModeration?{private_moda:true,revision:d.revision}:{};
   if(action==='edit'){
