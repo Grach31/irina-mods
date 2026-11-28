@@ -1518,13 +1518,16 @@ function setupGalleryControls(count){
  render();
 }
 function open(d){active=d;$('detail').classList.add('visible');$('detail').scrollTop=0;$('detailType').textContent=modaCategoryLabel(d);$('detailTitle').textContent=draftHeading(d).title;
-$('gallery').replaceChildren();
+const gallery=$('gallery');
+gallery.onscroll=null;
+gallery.replaceChildren();
 const galleryImages=gallerySources(d);
 galleryImages.forEach((url,index)=>{
  const box=document.createElement('div');box.className='slide';const im=document.createElement('img');
  im.src=url;im.alt='Фото '+(index+1)+' из '+galleryImages.length;im.loading=index===0?'eager':'lazy';
- im.onerror=()=>{if(d.type==='picks'&&d.ready&&d.media_sha256&&im.getAttribute('src')!==localMedia(d)){im.src=localMedia(d);im.alt='Проверенная подборка';return}box.textContent='Фото недоступно'};box.append(im);$('gallery').append(box);
+ im.onerror=()=>{if(d.type==='picks'&&d.ready&&d.media_sha256&&im.getAttribute('src')!==localMedia(d)){im.src=localMedia(d);im.alt='Проверенная подборка';return}box.textContent='Фото недоступно'};box.append(im);gallery.append(box);
 });
+gallery.scrollTo({left:0,behavior:'instant'});
 setupGalleryControls(galleryImages.length);
 const target=$('postText');target.replaceChildren();
 const source=new DOMParser().parseFromString('<div>'+String(d.text||'')+'</div>','text/html');
