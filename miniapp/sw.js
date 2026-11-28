@@ -15,5 +15,9 @@ self.addEventListener('notificationclick',event=>{event.notification.close();eve
  const root=new URL('./',self.location.href);let url=new URL('?space=notifications',root);
  try{const candidate=new URL(event.notification.data?.url);if(candidate.origin===root.origin&&candidate.pathname===root.pathname)url=candidate}catch{}
  const pages=await self.clients.matchAll({type:'window',includeUncontrolled:true});const existing=pages.find(x=>x.url.startsWith(root.href));
- if(existing){await existing.navigate(url.href);await existing.focus()}else await self.clients.openWindow(url.href);
+ if(existing){
+  const navigated=await existing.navigate(url.href).catch(()=>null);
+  if(navigated){await navigated.focus();return}
+ }
+ await self.clients.openWindow(url.href);
 })())});

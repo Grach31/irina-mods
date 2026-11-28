@@ -16,7 +16,9 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('n
   else {const filename=url.split('?')[0].split('/').at(-1);value=JSON.parse(fs.readFileSync(path.join(root,'miniapp',filename),'utf8'))}
   return {ok:true,status:200,json:async()=>value};
  };
- inline=inline.replace(/import\('https:\/\/esm\.sh\/[^']+'\)/,'Promise.resolve({createClient:window.__createClient})');
+ window.supabase={createClient:window.__createClient};window.localStorage.setItem('myspace.auth.v1','fixture');
+ inline=inline.replace("import('./private-moda.mjs?v=20261128')","Promise.resolve({createPrivateReader:()=>({load:async()=>[],close:()=>{}})})");
+ window.eval(fs.readFileSync(path.join(root,'miniapp/network.js'),'utf8'));
  window.eval(fs.readFileSync(path.join(root,'miniapp/notifications.js'),'utf8'));window.eval(fs.readFileSync(path.join(root,'miniapp/gestures.js'),'utf8'));window.eval(fs.readFileSync(path.join(root,'miniapp/editorial-publish.js'),'utf8'));window.eval(inline);
  const settle=async check=>{for(let i=0;i<100;i++){if(check())return;await new Promise(r=>setTimeout(r,10))}throw Error('DOM condition timed out')};
  await settle(()=>!doc.getElementById('noticeBadge').hidden);

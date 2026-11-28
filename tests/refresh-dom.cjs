@@ -22,16 +22,19 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
   calls[key]=count(key)+1;if(offline)throw Error('offline');if(hold&&key===hold.key)await hold.promise;
   return {ok:true,status:200,json:async()=>data};
  };
- inline=inline.replace(/import\('https:\/\/esm\.sh\/[^']+'\)/,'Promise.resolve({createClient:window.__createClient})');
+ window.supabase={createClient:window.__createClient};window.localStorage.setItem('myspace.auth.v1','fixture');
+ inline=inline.replace("import('./private-moda.mjs?v=20261128')","Promise.resolve({createPrivateReader:()=>({load:async()=>[],close:()=>{}})})");
+ window.eval(fs.readFileSync(path.join(root,'miniapp/network.js'),'utf8'));
  for(const name of ['notifications.js','gestures.js','editorial-publish.js'])window.eval(fs.readFileSync(path.join(root,'miniapp',name),'utf8'));window.eval(inline);
  const settle=async(check,label)=>{for(let i=0;i<200;i++){if(check())return;await new Promise(r=>setTimeout(r,5))}throw Error('Timed out: '+label)};
  const click=id=>doc.getElementById(id).click(),get=id=>doc.getElementById(id);
- await settle(()=>doc.querySelector('#list .draft')&&get('pwaBoot').classList.contains('hidden'),'boot');await new Promise(r=>setTimeout(r,20));
+ await settle(()=>get('pwaBoot').classList.contains('hidden'),'boot');
+ assert.equal(count('catalog.json'),0);click('openModa');await settle(()=>doc.querySelector('#list .draft'),'Moda entry');
  function touch(target,name,x,y){const e=new window.Event(name,{bubbles:true,cancelable:true});const t={clientX:x,clientY:y};Object.defineProperties(e,{touches:{value:name==='touchend'?[]:[t]},changedTouches:{value:[t]}});target.dispatchEvent(e);return e}
  function drag(target,distance=110){touch(target,'touchstart',180,100);touch(target,'touchmove',180,122);const move=touch(target,'touchmove',180,100+distance);touch(target,'touchend',180,100+distance);if(move.defaultPrevented)target.click();return move}
  async function refresh(target,key){const before=count(key);assert.equal(drag(target).defaultPrevented,true);await settle(()=>count(key)>before&&!get('pullIndicator').classList.contains('loading'),'refresh '+key);assert.equal(get('pullMessage').textContent,'Обновлено');assert.equal(count(key),before+1,'one request per pull: '+key)}
  // Full sections and card targets; Moda uses the document, not its unscrollable shell.
- await refresh(get('openModa'),'catalog.json');click('openModa');await new Promise(r=>setTimeout(r,15));
+
  await refresh(doc.querySelector('#list .draft'),'catalog.json');
  const scroller=doc.scrollingElement||doc.documentElement;scroller.scrollTop=120;const before=count('catalog.json');drag(doc.querySelector('#list .draft'));await new Promise(r=>setTimeout(r,10));assert.equal(count('catalog.json'),before);scroller.scrollTop=0;
  doc.querySelector('#list .draft').click();await settle(()=>get('detail').classList.contains('visible'),'draft');const title=get('detailTitle').textContent;await refresh(get('detailTitle'),'catalog.json');assert.equal(get('detail').classList.contains('visible'),true);assert.equal(get('detailTitle').textContent,title);click('back');click('modaBack');
@@ -60,8 +63,8 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
  }
  click('openNotifications');await settle(()=>count('notices:list')>0,'notices');await new Promise(r=>setTimeout(r,10));await refresh(get('noticesList'),'notices:list');click('noticesSettings');await settle(()=>get('noticeCategoryPrefs').children.length>0,'preferences');await refresh(get('noticeCategoryPrefs'),'notices:preferences');click('notificationSettingsBack');click('noticesBack');click('openSettings');
  // Local settings must release the refresh lock even without a network await.
- drag(get('settingsAccount'));await settle(()=>!get('pullIndicator').classList.contains('loading'),'local settings');assert.equal(get('pullMessage').textContent,'Обновлено');click('settingsBack');await refresh(get('openModa'),'catalog.json');
+ drag(get('settingsAccount'));await settle(()=>!get('pullIndicator').classList.contains('loading'),'local settings');assert.equal(get('pullMessage').textContent,'Обновлено');click('settingsBack');click('openModa');await refresh(doc.querySelector('#list .draft'),'catalog.json');
  // A slow request blocks duplicate pulls; a navigation hides its old indicator.
- let release;hold={key:'catalog.json',promise:new Promise(r=>release=r)};drag(get('openModa'));await settle(()=>get('pullIndicator').classList.contains('loading'),'slow request');const total=count('catalog.json');drag(get('openModa'));assert.equal(count('catalog.json'),total);click('openOura');assert.equal(get('pullIndicator').classList.contains('shown'),false);release();hold=null;await settle(()=>!get('pullIndicator').classList.contains('loading'),'slow finish');
+ let release;hold={key:'catalog.json',promise:new Promise(r=>release=r)};drag(doc.querySelector('#list .draft'));await settle(()=>get('pullIndicator').classList.contains('loading'),'slow request');const total=count('catalog.json');drag(doc.querySelector('#list .draft'));assert.equal(count('catalog.json'),total);click('openOura');assert.equal(get('pullIndicator').classList.contains('shown'),false);release();hold=null;await settle(()=>!get('pullIndicator').classList.contains('loading'),'slow finish');
  console.log('PASS: all six sections, document scrolling, draft/article preservation, notification/settings refresh, cached errors, duplicate prevention and navigation');window.happyDOM.abort();
 })().catch(e=>{console.error(e);process.exit(1)});

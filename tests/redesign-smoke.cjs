@@ -71,14 +71,15 @@ async function verify(engine, browser, width) {
   const errors = [], publish = [];
   let authenticated = true, findsReads = 0;
   page.on('pageerror', error => errors.push(error.message));
+  await page.route('**/vendor/supabase-2.105.0.js', route=>route.fulfill({
+      contentType:'text/javascript',
+      body:`window.supabase={createClient(){return {auth:{getSession:async()=>({data:{session:${authenticated ?
+        JSON.stringify({access_token:'test-session',user:{id:'9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'}}) : 'null'}}}),signOut:async()=>({})}}} }`,
+  }));
+  await page.addInitScript(()=>localStorage.setItem('myspace.auth.v1','fixture'));
   await page.route('https://**/*', route => {
     const url = new URL(route.request().url());
     if (url.hostname==='telegram.org') return route.fulfill({contentType:'text/javascript',body:''});
-    if (url.hostname==='esm.sh') return route.fulfill({
-      contentType:'text/javascript',
-      body:`export function createClient(){return {auth:{getSession:async()=>({data:{session:${authenticated ?
-        JSON.stringify({access_token:'test-session',user:{id:'9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'}}) : 'null'}}}),signOut:async()=>({})}}}`,
-    });
     if (url.hostname==='fixture.invalid') return route.fulfill({path:path.join(root,'assets/editorial',path.basename(url.pathname))});
     if (url.pathname.endsWith('/myspace-pwa')) {
       const action=route.request().postDataJSON().action;

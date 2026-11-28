@@ -6,7 +6,7 @@ import vm from 'node:vm';
 const html=fs.readFileSync(new URL('../miniapp/index.html',import.meta.url),'utf8');
 const statusSource=html.slice(html.indexOf('function ouraSourceStatusMessage('),html.indexOf('let ouraLoading='));
 const loaderSource=html.slice(html.indexOf('let ouraLoading='),html.indexOf('async function fetchOura('));
-const resumeSource=html.slice(html.indexOf("window.addEventListener('pageshow'"),html.indexOf('})();',html.indexOf("window.addEventListener('pageshow'")));
+const resumeSource=html.slice(html.indexOf("function refreshVisibleSpace()"),html.indexOf('})();',html.indexOf("window.addEventListener('pageshow'")));
 const now=Date.parse('2026-11-16T09:30:00Z');
 const snapshot=(day='2026-11-16',updated='2026-11-16T09:30:00Z')=>({
  sleep:{score:91,detail:{day,total_seconds:27000}},readiness:{score:92},activity:{score:80},
@@ -82,16 +82,16 @@ test('resume and visible polling refresh Oura once, pause when hidden, and relea
   setInterval:(fn,ms)=>{assert.equal(ms,60000);poll=fn},
  });
  vm.runInContext(loaderSource+'\n'+resumeSource,context);
- events.pageshow();events.visibilitychange();poll();
+ events.pageshow({persisted:true});events.visibilitychange();poll();
  await Promise.resolve();await Promise.resolve();
  assert.equal(calls,1,'resume and polling share a single request');
- assert.equal(context.ouraSelectedDate,null,'resume resets an old archive selection');
+ assert.equal(context.ouraSelectedDate,'2026-11-15','resume preserves archive selection');
  release();await context.loadOura();
  context.ouraSelectedDate='2026-11-15';poll();await Promise.resolve();await Promise.resolve();
  assert.equal(context.ouraSelectedDate,'2026-11-15','regular polling preserves an intentional archive choice');
  release();await context.loadOura();
  context.document.hidden=true;events.visibilitychange();poll();
- context.document.hidden=false;context.currentSpace='hub';events.pageshow();poll();
+ context.document.hidden=false;context.currentSpace='hub';events.pageshow({persisted:true});poll();
  context.currentSpace='oura';context.pwaSession='';poll();
  await Promise.resolve();assert.equal(calls,2,'no hidden, other-section or signed-out polling');
  context.pwaSession='private-session';fail=true;

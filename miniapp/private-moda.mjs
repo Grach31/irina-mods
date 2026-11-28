@@ -13,53 +13,109 @@ export function validateManifest(m,id){
  return [...ids];
 }
 async function bytesOf(blob,limit){need(blob&&blob.size>0&&blob.size<=limit,'Invalid object size');return new Uint8Array(await blob.arrayBuffer())}
-async function checkedJpeg(blob,hash){const b=await bytesOf(blob,MAX);need(b[0]===255&&b[1]===216&&b[2]===255&&await digest(b)===hash,'JPEG checksum mismatch');return new Blob([b],{type:'image/jpeg'})}
-async function download(store,name){const {data,error}=await store.download(name);if(error)throw Error('Private object unavailable');return data}
-async function readCard(store,id){
- const manifest=JSON.parse(new TextDecoder().decode(await bytesOf(await download(store,path(id,'manifest.json')),100000)));
- const keys=validateManifest(manifest,id),blobs={};
- for(const key of keys)blobs[key]=await checkedJpeg(await download(store,path(id,key+'.jpg')),key);
- const urls=Object.fromEntries(keys.map(key=>[key,URL.createObjectURL(blobs[key])]));
- return {id,type:'picks',text:manifest.text,items:manifest.items.map(({name,shop,price,url,photo_sha256})=>({name,shop,price,url,img:urls[photo_sha256]})),
-  meta:{status:'queued',sent_at:id.slice(0,10)},ready:true,media_sha256:manifest.cover_sha256,privatePreview:true,privateCover:urls[manifest.cover_sha256],privateUrls:Object.values(urls)};
-}
-export function release(rows){for(const row of rows||[])for(const url of row.privateUrls||[])URL.revokeObjectURL(url)}
-export async function loadPrivate(client){
- const store=client.storage.from(BUCKET),{data,error}=await store.list('drafts',{limit:40,sortBy:{column:'name',order:'desc'}});
- if(error)throw Error('Private catalog unavailable');
- const rows=[];
- // Storage listing may repeat a virtual folder. Limit unique IDs, not listing rows.
- const ids=[...new Set((data||[]).filter(x=>x&&typeof x.name==='string'&&ID.test(x.name)).map(x=>x.name))].slice(0,20);
- try{
-  for(const id of ids){
-   // Only folders with a committed manifest are visible. A partial upload is not a card.
-   const listing=await store.list('drafts/'+id,{limit:100});
-   if(listing.error||!Array.isArray(listing.data))throw Error('Private folder unavailable');
-   if(!listing.data.some(row=>row.name==='manifest.json'))continue;
-   rows.push(await readCard(store,id));
+async function checkedJpeg(blob,hash){const b=await bytesOf(blob,MAX);need(b[0]===255&&b[1]===216&&b[2]===255&&await digest(b)===hash,'JPEG checksum mismatch');return blob.type==='image/jpeg'?blob:blob.slice(0,blob.size,'image/jpeg')}
+async function download(store,name,signal){const {data,error}=await store.download(name,{}, {signal,cache:'no-store'});if(error)throw Error('Private object unavailable');return data}
+
+const fingerprint=file=>file.metadata?.eTag||file.updated_at?JSON.stringify([file.id,file.updated_at,file.metadata?.eTag,file.metadata?.size]):'';
+export function createPrivateReader(client,deadline,{cacheBytes=32000000}={}){
+ const store=client.storage.from(BUCKET),scope=new AbortController();
+ const photos=new Map(),downloads=new Map(),queue=[];
+ let manifests=new Map(),running=0,bytes=0,catalog=null;
+
+ // Metadata and photos share the same Storage concurrency limit.
+ function pump(){
+  while(running<3&&queue.length){
+   const {signal,run,resolve,reject}=queue.shift();
+   if(signal.aborted){reject(Error('Private request cancelled'));continue}
+   running++;
+   Promise.resolve().then(run).then(resolve,reject).finally(()=>{running--;pump()});
   }
-  return rows;
- }catch(e){release(rows);throw Error('Private catalog refresh incomplete')}
-}
-export function uniquePrivateRows(publicRows,privateRows){
- // Keep each private draft ID exactly once, even if an upstream listing repeats it.
- // An existing public ID keeps its original moderation behavior. Different outfits
- // and different public IDs are never silently hidden.
- const seen=new Set(publicRows.map(d=>d.id)),kept=[],dropped=[];
- for(const row of privateRows){
-  if(seen.has(row.id))dropped.push(row);else{seen.add(row.id);kept.push(row)}
  }
- // Do not revoke a shared blob URL if a repeated row references the same object.
- const retained=new Set(kept.flatMap(row=>row.privateUrls||[]));
- for(const row of dropped)for(const url of row.privateUrls||[])if(!retained.has(url))URL.revokeObjectURL(url);
- return kept;
+ function schedule(signal,run){return new Promise((resolve,reject)=>{queue.push({signal,run,resolve,reject});pump()})}
+ async function list(prefix,options,signal){
+  const {data,error}=await schedule(signal,()=>store.list(prefix,options,{signal,cache:'no-store'}));
+  need(!error&&Array.isArray(data),'Private catalog unavailable');
+  return data;
+ }
+ async function readCatalog(signal){
+  const folders=await list('drafts',{limit:40,sortBy:{column:'name',order:'desc'}},signal);
+  // Storage listing may repeat a virtual folder. Limit unique IDs, not listing rows.
+  const ids=[...new Set(folders.map(x=>x?.name).filter(x=>typeof x==='string'&&ID.test(x)))].slice(0,20);
+  const confirmed=new Map();
+  const rows=await Promise.all(ids.map(async id=>{
+   const files=new Map((await list('drafts/'+id,{limit:100},signal)).map(file=>[file.name,file]));
+   // Only folders with a committed manifest are visible. A partial upload is not a card.
+   const entry=files.get('manifest.json');if(!entry)return null;
+   const version=fingerprint(entry),previous=manifests.get(id);
+   const manifest=version&&previous?.version===version?previous.manifest:
+    JSON.parse(new TextDecoder().decode(await bytesOf(await schedule(signal,()=>download(store,path(id,'manifest.json'),signal)),100000)));
+   const keys=validateManifest(manifest,id);
+   const privatePhotos=keys.map(hash=>{
+    const name=hash+'.jpg',file=files.get(name),size=file?.metadata?.size;
+    need(file&&(!Number.isFinite(size)||(size>0&&size<=MAX)),'Private JPEG unavailable');
+    const object=path(id,name);
+    return {object,hash,key:JSON.stringify([object,fingerprint(file)])};
+   });
+   confirmed.set(id,{version,manifest});
+   return {id,type:'picks',text:manifest.text,items:manifest.items,meta:{status:'queued',sent_at:id.slice(0,10)},
+    ready:true,media_sha256:manifest.cover_sha256,privatePreview:true,privatePhotos};
+  }));
+  need(!signal.aborted,'Private request cancelled');
+  manifests=confirmed;
+  return rows.filter(Boolean);
+ }
+ function prune(){
+  for(const [key,entry] of photos){
+   if(bytes<=cacheBytes)break;
+   if(!entry.users){bytes-=entry.blob.size;photos.delete(key)}
+  }
+ }
+ function getPhoto(photo){
+  if(photos.has(photo.key))return Promise.resolve(photos.get(photo.key));
+  if(downloads.has(photo.key))return downloads.get(photo.key);
+  const request=deadline(async signal=>{
+   const blob=await schedule(signal,async()=>checkedJpeg(await download(store,photo.object,signal),photo.hash));
+   need(!signal.aborted,'Private request cancelled');
+   return {blob,users:0,url:''};
+  },12000,scope.signal).finally(()=>downloads.delete(photo.key));
+  downloads.set(photo.key,request);
+  return request;
+ }
+ return {
+  load(){
+   if(!catalog)catalog=deadline(readCatalog,15000,scope.signal).finally(()=>catalog=null);
+   return catalog;
+  },
+  async acquire(photo){
+   const entry=await getPhoto(photo);
+   need(!scope.signal.aborted,'Private session closed');
+   // Keep verified bytes in RAM. Keep a Blob URL only while at least one image uses it.
+   if(!entry.url)entry.url=URL.createObjectURL(entry.blob);
+   entry.users++;
+   if(!photos.has(photo.key))bytes+=entry.blob.size;
+   photos.delete(photo.key);photos.set(photo.key,entry);prune();
+   let released=false;
+   return {url:entry.url,release(){
+    if(released)return;released=true;
+    if(--entry.users===0&&entry.url){URL.revokeObjectURL(entry.url);entry.url=''}
+    prune();
+   }};
+  },
+  close(){
+   scope.abort();manifests.clear();
+   for(const entry of photos.values()){if(entry.url)URL.revokeObjectURL(entry.url);entry.url=''}
+   photos.clear();bytes=0;
+  }
+ };
 }
-async function immutablePut(store,name,blob){
+async function immutablePut(store,name,blob,signal){
+ need(!signal?.aborted,'Private session closed');
  const {error}=await store.upload(name,blob,{contentType:blob.type,upsert:false,cacheControl:'0'});
- if(error){const previous=await download(store,name);need(await digest(await bytesOf(previous,MAX))===await digest(await bytesOf(blob,MAX)),'Existing object differs; no overwrite')}
- const saved=await download(store,name);need(await digest(await bytesOf(saved,MAX))===await digest(await bytesOf(blob,MAX)),'Uploaded bytes differ');
+ need(!signal?.aborted,'Private session closed');
+ if(error){const previous=await download(store,name,signal);need(await digest(await bytesOf(previous,MAX))===await digest(await bytesOf(blob,MAX)),'Existing object differs; no overwrite')}
+ const saved=await download(store,name,signal);need(await digest(await bytesOf(saved,MAX))===await digest(await bytesOf(blob,MAX)),'Uploaded bytes differ');
 }
-export async function importPrivate(client,pack){
+export async function importPrivate(client,pack,signal){
  need(pack?.schema_version===1&&pack.mode==='private_preview_import'&&Array.isArray(pack.cards)&&pack.cards.length>=1&&pack.cards.length<=2,'Invalid import package');
  const prepared=[],ids=new Set();
  // Validate the entire pack before any remote writes.
@@ -70,6 +126,6 @@ export async function importPrivate(client,pack){
   const manifest=new Blob([JSON.stringify(m)],{type:'application/json'});need(manifest.size<=100000,'Manifest too large');prepared.push({id:m.id,keys,blobs,manifest});
  }
  const store=client.storage.from(BUCKET);
- for(const c of prepared){for(const key of c.keys)await immutablePut(store,path(c.id,key+'.jpg'),c.blobs[key]);await immutablePut(store,path(c.id,'manifest.json'),c.manifest)}
+ for(const c of prepared){for(const key of c.keys)await immutablePut(store,path(c.id,key+'.jpg'),c.blobs[key],signal);await immutablePut(store,path(c.id,'manifest.json'),c.manifest,signal)}
  return prepared.length;
 }

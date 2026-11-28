@@ -6,7 +6,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
  const item={id,user_id:'owner',created_at:now,title:'Правки готовы',body:'Подборка обновлена по твоим замечаниям.',category:'edit',targets:[{space:'moda',id:'2026-11-14-mix-knit-and-satin'}],read_at:null};
  const prefs={push_categories:['draft','edit','updates','error'],center_categories:['draft','edit','updates','error','published'],quiet_start:1320,quiet_end:480};
  await page.route('**/telegram.org/**',r=>r.fulfill({contentType:'text/javascript',body:''}));
- await page.route('https://esm.sh/**',r=>r.fulfill({contentType:'text/javascript',body:`export function createClient(){return {auth:{getSession:async()=>({data:{session:{access_token:'eyJ.test.token',user:{id:'9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'}}}}),signOut:async()=>({})}}}`}));
+ await page.route('**/vendor/supabase-2.105.0.js',r=>r.fulfill({contentType:'text/javascript',body:`window.supabase={createClient(){return {auth:{getSession:async()=>({data:{session:{access_token:'eyJ.test.token',user:{id:'9983fe8e-9a69-4ed5-b8ec-f8e056c2f280'}}}}),signOut:async()=>({})}}} }`}));
  await page.route('**/functions/v1/myspace-pwa',r=>r.fulfill({json:{token:'a'.repeat(64),can_moderate:true}}));
  await page.route('**/functions/v1/myspace-publish',r=>r.fulfill({json:{items:[]}}));
  await page.route('**/functions/v1/myspace-notifications',async r=>{
@@ -14,7 +14,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
   let data={ok:true};if(b.action==='count')data={unread};if(b.action==='list')data={items:[item],more:false,prefs,server_time:now};if(b.action==='read'||b.action==='read_all'){unread=0;item.read_at=now}if(b.action==='preferences')data={prefs,public_key:'A'.repeat(87)};
   await r.fulfill({json:data});
  });
- await page.addInitScript(()=>localStorage.setItem('myspace.theme.v1','dark'));
+ await page.addInitScript(()=>{localStorage.setItem('myspace.theme.v1','dark');localStorage.setItem('myspace.auth.v1','fixture')});
  await page.goto('http://localhost:8765/');await page.locator('#pwaBoot').waitFor({state:'hidden'});await page.locator('#noticeBadge').waitFor({state:'visible'});
  const bell=await page.locator('#openNotifications').boundingBox(),gear=await page.locator('#openSettings').boundingBox();assert(bell.x<gear.x);assert.equal(Math.round(bell.y),Math.round(gear.y));
  await page.locator('#openNotifications').click();await page.locator('.ms-notice-row').waitFor();assert.equal(await page.locator('#notificationsSpace').isVisible(),true);

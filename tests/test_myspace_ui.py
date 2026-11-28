@@ -31,13 +31,13 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn("async function loadFashion(force=false)", self.html)
 
     def test_saved_owner_session_is_restored(self):
-        self.assertIn("await client.auth.getSession()", self.html)
-        self.assertIn("await activatePasswordSession()", self.html)
+        self.assertIn("client.auth.getSession()", self.html)
+        self.assertIn("await activatePasswordSession(session)", self.html)
 
     def test_login_gate_does_not_flash_during_session_restore(self):
         self.assertIn('id="pwaBoot"', self.html)
         self.assertIn('class="pwa-gate hidden" id="pwaGate" style="display:none"', self.html)
-        self.assertIn("restored=await activatePasswordSession();", self.html)
+        self.assertIn("restored=await activatePasswordSession(session);", self.html)
         self.assertIn("$('pwaBoot').classList.add('hidden');", self.html)
         self.assertIn("if(!restored)showPwaGate(true);", self.html)
 
@@ -90,7 +90,7 @@ class MySpaceReleaseTests(unittest.TestCase):
         self.assertIn('id="galleryPrev"', self.html)
         self.assertIn('id="galleryNext"', self.html)
         self.assertIn('id="galleryDots"', self.html)
-        self.assertIn("setupGalleryControls(galleryImages.length)", self.html)
+        self.assertIn("setupGalleryControls(galleryImages.length,slide)", self.html)
 
     def test_shared_gesture_controller_is_deployed(self):
         self.assertIn('src="gestures.js?', self.html)
