@@ -1,7 +1,175 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-27T06:50:07Z",
+  "updated_at": "2026-11-28T06:51:42Z",
   "items": [
+    {
+      "id": "wb-1378106712",
+      "wb_article": "1378106712",
+      "date": "2026-11-28",
+      "category": "Одежда",
+      "title": "Белая блузка Gadinus с V-образным вырезом",
+      "price": 1067,
+      "description": "Белая женская блузка Plus Size со свободным силуэтом и рукавами до локтя. В карточке указаны полиэстер и спандекс.",
+      "stylist": "Заправь передний край в тёмные прямые джинсы и добавь тонкий коричневый ремень. V-образный вырез можно оставить открытым или подчеркнуть короткой цепочкой.",
+      "url": "https://www.wildberries.ru/catalog/1378106712/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-14.geobasket.ru/vol13781/part1378106/1378106712/images/big/4.webp?picsUpdate=0",
+          "alt": "Белая блузка Gadinus на модели, вид спереди"
+        },
+        {
+          "url": "https://mow-basket-cdn-14.geobasket.ru/vol13781/part1378106/1378106712/images/big/3.webp?picsUpdate=0",
+          "alt": "Белая блузка Gadinus, вид со спины"
+        }
+      ]
+    },
+    {
+      "id": "wb-1008097068",
+      "wb_article": "1008097068",
+      "date": "2026-11-28",
+      "category": "Одежда",
+      "title": "Розовая блузка TWOTWINSTYLE с объёмной отделкой",
+      "price": 2334,
+      "description": "Светло-розовая блузка с длинными рукавами и многослойной фактурной отделкой.",
+      "stylist": "Сочетай с прямыми молочными брюками и гладкой сумкой. Простые линии брюк подчеркнут объём блузки.",
+      "url": "https://www.wildberries.ru/catalog/1008097068/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-50.geobasket.ru/vol10080/part1008097/1008097068/images/big/1.webp?picsUpdate=0",
+          "alt": "Светло-розовая блузка TWOTWINSTYLE на манекене"
+        },
+        {
+          "url": "https://mow-basket-cdn-50.geobasket.ru/vol10080/part1008097/1008097068/images/big/2.webp?picsUpdate=0",
+          "alt": "Светло-розовая блузка TWOTWINSTYLE на модели"
+        }
+      ]
+    },
+    {
+      "id": "wb-999277187",
+      "wb_article": "999277187",
+      "date": "2026-11-28",
+      "category": "Сумки",
+      "title": "Чёрная сумка-кроссбоди NIGEDU",
+      "price": 1102,
+      "description": "Прямоугольная сумка из искусственной кожи с клапаном и ремнём. Выбран вариант Big Black.",
+      "stylist": "Носи через плечо поверх серого жакета с прямыми синими джинсами. Чёрная фурнитура или ремень в тон свяжут сумку с обувью.",
+      "url": "https://www.wildberries.ru/catalog/999277187/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-49.geobasket.ru/vol9992/part999277/999277187/images/big/3.webp?picsUpdate=0",
+          "alt": "Чёрная сумка NIGEDU с клапаном и ремнём спереди"
+        },
+        {
+          "url": "https://mow-basket-cdn-49.geobasket.ru/vol9992/part999277/999277187/images/big/4.webp?picsUpdate=0",
+          "alt": "Обратная сторона чёрной сумки NIGEDU"
+        }
+      ]
+    },
+    {
+      "id": "wb-1369888533",
+      "wb_article": "1369888533",
+      "date": "2026-11-28",
+      "category": "Сумки",
+      "title": "Складная тёмно-синяя сумка с красными ручками",
+      "price": 510,
+      "description": "Текстильная складная сумка размером 50 × 35 см по карточке. Вариант Navy Blue с контрастными ручками.",
+      "stylist": "Добавь к светлой ветровке и тёмным джинсам. Красные ручки зададут акцент, который можно повторить в шарфе или головном уборе.",
+      "url": "https://www.wildberries.ru/catalog/1369888533/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-35.geobasket.ru/vol13698/part1369888/1369888533/images/big/2.webp?picsUpdate=1",
+          "alt": "Тёмно-синяя складная сумка с красными ручками на плече"
+        },
+        {
+          "url": "https://mow-basket-cdn-35.geobasket.ru/vol13698/part1369888/1369888533/images/big/3.webp?picsUpdate=1",
+          "alt": "Тёмно-синяя складная сумка, вид сбоку"
+        }
+      ]
+    },
+    {
+      "id": "wb-1001277824",
+      "wb_article": "1001277824",
+      "date": "2026-11-28",
+      "category": "Обувь",
+      "title": "Серебристые балетки BEYARNE с острым носком",
+      "price": 2023,
+      "description": "Женские балетки с острым носком и серебристой фактурной поверхностью. В карточке указан верх из полиуретана.",
+      "stylist": "Носи с графитовыми брюками до щиколотки и белой рубашкой. Серебристая пара освежит нейтральный комплект.",
+      "url": "https://www.wildberries.ru/catalog/1001277824/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-46.geobasket.ru/vol10012/part1001277/1001277824/images/big/1.webp?picsUpdate=0",
+          "alt": "Серебристые балетки BEYARNE на ноге и в руке"
+        },
+        {
+          "url": "https://mow-basket-cdn-46.geobasket.ru/vol10012/part1001277/1001277824/images/big/2.webp?picsUpdate=0",
+          "alt": "Пара серебристых балеток BEYARNE на светлом фоне"
+        }
+      ]
+    },
+    {
+      "id": "wb-1114393470",
+      "wb_article": "1114393470",
+      "date": "2026-11-28",
+      "category": "Обувь",
+      "title": "Бежевые туфли на плоской подошве со шнуровкой",
+      "price": 1705,
+      "description": "Женские туфли с острым носком и перекрёстными завязками. Верх из флока по данным карточки.",
+      "stylist": "Сочетай с прямой юбкой миди с разрезом. Оставь щиколотки открытыми, чтобы в образе читалась шнуровка.",
+      "url": "https://www.wildberries.ru/catalog/1114393470/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-32.geobasket.ru/vol11143/part1114393/1114393470/images/big/1.webp?picsUpdate=0",
+          "alt": "Бежевые туфли с острым носком и перекрёстными завязками"
+        },
+        {
+          "url": "https://mow-basket-cdn-32.geobasket.ru/vol11143/part1114393/1114393470/images/big/6.webp?picsUpdate=0",
+          "alt": "Завязки и носки бежевых туфель крупным планом"
+        }
+      ]
+    },
+    {
+      "id": "wb-1089264493",
+      "wb_article": "1089264493",
+      "date": "2026-11-28",
+      "category": "Бижутерия",
+      "title": "Золотистый браслет на щиколотку LINGYY",
+      "price": 464,
+      "description": "Тонкая цепочка из нержавеющей стали с небольшими цветочными элементами. Выбран золотистый вариант.",
+      "stylist": "Носи с открытыми сандалиями и льняными брюками до щиколотки. Чем проще ремешки на обуви, тем заметнее детали цепочки.",
+      "url": "https://www.wildberries.ru/catalog/1089264493/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-15.geobasket.ru/vol10892/part1089264/1089264493/images/big/1.webp?picsUpdate=1",
+          "alt": "Золотистый браслет LINGYY на светлом фоне"
+        },
+        {
+          "url": "https://mow-basket-cdn-15.geobasket.ru/vol10892/part1089264/1089264493/images/big/2.webp?picsUpdate=1",
+          "alt": "Цветочная деталь золотистого браслета LINGYY крупно"
+        }
+      ]
+    },
+    {
+      "id": "wb-1358543079",
+      "wb_article": "1358543079",
+      "date": "2026-11-28",
+      "category": "Бижутерия",
+      "title": "Синее градиентное кольцо VQYSKO",
+      "price": 443,
+      "description": "Кольцо шириной 8 мм из нержавеющей стали со вставками в синих оттенках. Вариант CA1192-Blue.",
+      "stylist": "Сочетай с рубашкой из светлого денима и тонкими серебристыми украшениями. Для акцента оставь кольцо единственным широким украшением на руке.",
+      "url": "https://www.wildberries.ru/catalog/1358543079/detail.aspx",
+      "photos": [
+        {
+          "url": "https://mow-basket-cdn-41.geobasket.ru/vol13585/part1358543/1358543079/images/big/1.webp?picsUpdate=0",
+          "alt": "Синее градиентное кольцо VQYSKO крупным планом"
+        },
+        {
+          "url": "https://mow-basket-cdn-41.geobasket.ru/vol13585/part1358543/1358543079/images/big/5.webp?picsUpdate=0",
+          "alt": "Синее кольцо VQYSKO на руке"
+        }
+      ]
+    },
     {
       "id": "wb-1228328601",
       "wb_article": "1228328601",
