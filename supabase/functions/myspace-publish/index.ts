@@ -1,5 +1,6 @@
 import {TelegramRejected,validateCaption,publicationMedia,downloadPublicationPhotos,convertPublicationWebp,telegramRejection} from './core.ts';
 import {editorialFiles,handleEditorial} from './editorial.ts';
+import {approvedPrivateModa,PRIVATE_MODA_ID,privateModaMessage} from './private-moda.ts';
 const enc=new TextEncoder();
 const b64=(v:string)=>Uint8Array.from(atob(v.replace(/-/g,"+").replace(/_/g,"/").padEnd(Math.ceil(v.length/4)*4,"=")),x=>x.charCodeAt(0));
 async function githubAuth(jwt:string){
@@ -30,6 +31,14 @@ async function editorialCredentials(){
  return {token,channel:'@stamboi'};
 }
 const editorialContext={db,rpc,hash,credentials:editorialCredentials};
+async function readPrivateModa(id:string,revision:string){
+ if(!PRIVATE_MODA_ID.test(id)||!/^[a-f0-9]{64}$/.test(revision))throw Error('revision_required');
+ const key=secretKey();
+ const raw=await fetch(base+'/storage/v1/object/authenticated/myspace-moda-drafts/drafts/'+id+'/manifest.json',
+  {headers:{apikey:key,Authorization:'Bearer '+key},cache:'no-store',redirect:'error',signal:AbortSignal.timeout(12000)});
+ if(!raw.ok||Number(raw.headers.get('content-length'))>100000)throw Error('draft_unavailable');
+ return approvedPrivateModa(id,revision,await raw.text(),hash);
+}
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return new Response(null,{status:204,headers:H});
  if(req.method!=='POST')return respond({error:'method_not_allowed'},405);
@@ -72,11 +81,15 @@ Deno.serve(async req=>{
  return respond({items:rows});
  }
  if(action==='status'){const rows=await db('myspace_publications?draft_id=eq.'+id+'&select=status,telegram_message_ids,updated_at,error_code');return respond(rows[0]||{status:'draft'})}
+ const privateDraft=b.private_moda===true&&['edit','reject','publish'].includes(action)
+  ? await readPrivateModa(id,String(b.revision||'')) : null;
  if(action==='edit'||action==='reject'){
  const result=await rpc('ms_publication_decide',{p_id:id,p_action:action,p_notes:String(b.notes||''),p_owner:Number(moderatorId)});return respond(result,result.error?409:200);
  }
  if(action!=='publish')return respond({error:'invalid_action'},400);
  if(!/^[a-f0-9]{64}$/.test(b.revision||''))return respond({error:'revision_required'},409);
+ let caption='',images:string[]=[];
+ if(!privateDraft){
  const raw=await fetch('https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/'+encodeURIComponent(id)+'.json',{cache:'no-store',signal:AbortSignal.timeout(12000)});
  if(!raw.ok)return respond({error:'draft_unavailable'},404);const rawText=await raw.text();
  if(await hash(rawText)!==b.revision)return respond({error:'draft_changed'},409);
@@ -85,25 +98,28 @@ Deno.serve(async req=>{
  const catalog=await catalogResponse.json();const deployed=catalog.items?.find((x:any)=>x.id===id);
  if(!deployed?.ready||deployed.revision!==b.revision)return respond({error:'draft_not_ready'},409);
  const draft=JSON.parse(rawText);if(draft.id!==id||draft.hold===true||draft.type==='test'||/(?:^|[-_])test(?:$|[-_])/i.test(id))return respond({error:'draft_held_or_invalid'},409);
- const caption=String(draft.text||'');validateCaption(caption);let images=publicationMedia(draft,id);
+ caption=String(draft.text||'');validateCaption(caption);images=publicationMedia(draft,id);
  if(!images.length){const root='https://raw.githubusercontent.com/Grach31/irina-mods/main/drafts/img/'+encodeURIComponent(id);for(let i=1;i<=10;i++){const url=root+(i===1?'':'-'+i)+'.jpg';const r=await fetch(url,{method:'HEAD',signal:AbortSignal.timeout(8000)});if(!r.ok||!r.headers.get('content-type')?.startsWith('image/'))break;images.push(url)}}
  if(!images.length)return respond({error:'draft_has_no_media'},409);
+ }
  let token=Deno.env.get('MYSPACE_TELEGRAM_BOT_TOKEN')||'',channel=Deno.env.get('MYSPACE_TELEGRAM_CHANNEL_ID')||'';
  if(!token||!channel){const stored=await db('myspace_telegram_credentials?select=bot_token,channel_id&id=eq.1');token=stored[0]?.bot_token||token;channel=String(stored[0]?.channel_id||channel)}
  if(!token)return respond({error:'telegram_configuration_required'},503);channel='@stamboi';
  // Download every photo BEFORE claiming. Telegram receives bytes, never store/CDN URLs.
- const photos=await downloadPublicationPhotos(images,fetch,convertPublicationWebp);
+ const photos=privateDraft?[]:await downloadPublicationPhotos(images,fetch,convertPublicationWebp);
+ const textForm=privateDraft?privateModaMessage(privateDraft,channel):null;
  const claimed=await rpc('ms_publication_decide',{p_id:id,p_action:'claim',p_revision:b.revision});if(claimed.error)return respond(claimed,409);
  const attempt=claimed.attempt_id;let sent:any;
  try{
- const form=new FormData();form.set('chat_id',channel);let method:string;
- if(photos.length===1){method='sendPhoto';form.set('caption',caption);form.set('parse_mode','HTML');const p=photos[0];form.set('photo',new Blob([new Uint8Array(p.bytes).buffer],{type:p.mime}),p.name)}
+ const form=textForm||new FormData();form.set('chat_id',channel);let method:string;
+ if(textForm){method='sendMessage'}
+ else if(photos.length===1){method='sendPhoto';form.set('caption',caption);form.set('parse_mode','HTML');const p=photos[0];form.set('photo',new Blob([new Uint8Array(p.bytes).buffer],{type:p.mime}),p.name)}
  else{method='sendMediaGroup';form.set('media',JSON.stringify(photos.map((_,i)=>({type:'photo',media:'attach://photo'+i,...(i===0?{caption,parse_mode:'HTML'}:{})}))));photos.forEach((p,i)=>form.set('photo'+i,new Blob([new Uint8Array(p.bytes).buffer],{type:p.mime}),p.name))}
  const r=await fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'POST',body:form,signal:AbortSignal.timeout(20000)});
  const answer=await r.json();
  if(answer.ok===false){const e=new TelegramRejected(telegramRejection(Number(answer.error_code||r.status),String(answer.description||'')));Object.assign(e,{description:String(answer.description||'').replaceAll(token,'[redacted]').replace(/https?:\/\/\S+/gi,'[url]').slice(0,300)});throw e}
  if(!r.ok||answer.ok!==true)throw Error('delivery_unconfirmed');
- sent=Array.isArray(answer.result)?answer.result:[answer.result];if(sent.length!==photos.length||sent.some((x:any)=>!Number.isSafeInteger(x?.message_id)))throw Error('delivery_unconfirmed');
+ sent=Array.isArray(answer.result)?answer.result:[answer.result];if(sent.length!==(textForm?1:photos.length)||sent.some((x:any)=>!Number.isSafeInteger(x?.message_id)))throw Error('delivery_unconfirmed');
  }catch(e){const definite=e instanceof TelegramRejected;try{await rpc('ms_publication_finish',{p_id:id,p_attempt:attempt,p_status:definite?'failed':'uncertain',p_error:definite?safeError(e):'delivery_unconfirmed'})}catch{}
  return respond({error:definite?safeError(e):'delivery_unconfirmed',...(definite?{description:(e as any).description}:{})},502);
  }
@@ -112,5 +128,5 @@ Deno.serve(async req=>{
  // Keep the durable claim on every ambiguous outcome; never reopen it for retry.
  try{await rpc('ms_publication_finish',{p_id:id,p_attempt:attempt,p_status:'uncertain',p_ids:messageIds,p_error:'confirmation_store_failed'})}catch{}
  return respond({error:'delivery_unconfirmed'},503);
- }catch(e){const message=safeError(e);const allowed=['caption_too_long','caption_invalid','media_download_failed','media_size_invalid','media_format_invalid','media_url_invalid','too_many_images'];return respond({error:allowed.includes(message)?message:'request_failed'},allowed.includes(message)?409:500)}
+ }catch(e){const message=safeError(e);const allowed=['caption_too_long','caption_invalid','media_download_failed','media_size_invalid','media_format_invalid','media_url_invalid','too_many_images','draft_unavailable','draft_changed','draft_held_or_invalid','revision_required'];return respond({error:allowed.includes(message)?message:'request_failed'},allowed.includes(message)?409:500)}
 });

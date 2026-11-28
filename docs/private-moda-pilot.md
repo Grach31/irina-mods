@@ -7,3 +7,11 @@ Owner reported two new cards shown twice. Live read-only Storage metadata confir
 
 ### Private list recovery
 All four private folders (20 objects) remained in Storage after duplicate fix deployment. Version the dynamic module import to avoid mixing cached module and HTML; merge by ID without relying on the new module helper. Preserve prior authenticated private rows if a refresh fails and show a visible retry message. Incomplete upload folders without manifest are excluded; failures loading a committed card do not silently replace the last confirmed list. Browser cache mismatch is a plausible cause, not confirmed from the phone. Added regressions for old module, duplicate rows, incomplete and failed refresh. No Storage mutation.
+
+### Private category drafts and moderation
+
+The Publisher writes the cover and three JPEGs to private Storage, followed by the immutable manifest. The app discovers committed folders from the existing owner session. Category manifests extend v1 with `category` and `title`; old v1 previews stay visible under the unfiltered list. The gallery uses checked private JPEG bytes and product references keep the merchant HTTPS links.
+
+Category drafts appear in the usual moderation workspace with «Опубликовать», «На доработку» and «Отклонить». Reloading restores the decisions from the existing publication API. For these private revisions, clicking publish explicitly approves text and links with previews disabled. The edge function reads the authorized private manifest, checks its byte revision and rebuilds the message without attachments. It uses the same durable claim and delivery receipt as the existing moderation flow. Private photo inspection does not establish redistribution rights. Existing public drafts still use their established media path.
+
+The test branch uses local fixtures for moderation and delivery tests. Release requires acceptance of both the My Space client and the corresponding Edge Function. The technical Publisher writes the backward-compatible manifest shape, so the existing reader continues to show drafts during the rollout.

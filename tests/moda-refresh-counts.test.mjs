@@ -40,3 +40,23 @@ test('Safari does not expose raw catalog counters before session restoration',as
 
 test('owner loads and deduplicates private cards even with older module lacking merge helper',async()=>{const row={id:'private-1',meta:{status:'queued'},privatePreview:true,privateUrls:[]};const {c,resolve}=fixture({owner:true,privateRows:[row,row]});const pending=c.load();resolve({items:[]});assert.equal(await pending,true);assert.equal(c.items.filter(x=>x.id==='private-1').length,1);assert.equal(c.privateModaError,false)});
 test('failed private refresh preserves the previous private snapshot and reports failure',async()=>{const row={id:'private-1',meta:{status:'queued'},privatePreview:true,privateUrls:[]};const {c,resolve}=fixture({owner:true,privateFailure:true});c.privateModaUrls=[row];c.items=[...c.items,row];const pending=c.load();resolve({items:[]});assert.equal(await pending,true);assert.equal(c.items.filter(x=>x.id==='private-1').length,1);assert.equal(c.privateModaError,true)});
+
+test('private moderation decisions apply after authenticated Storage rows are loaded',async()=>{
+ const row={id:'private-1',meta:{status:'queued'},privatePreview:true,privateUrls:[]};
+ const {c,resolve,elements}=fixture({owner:true,privateRows:[row]});
+ const pending=c.load();
+ resolve({items:[{draft_id:row.id,status:'published'}]});
+ assert.equal(await pending,true);assert.equal(row.meta.status,'published');assert.equal(elements.published.textContent,'1');
+});
+
+test('filter keeps old cards under All, and isolates each named category',()=>{
+ const current=html.slice(end,html.indexOf('function render(){',end));
+ const rows=['clothing','bags','shoes','jewelry','accessories',undefined].map((modaCategory,i)=>
+  ({id:'card-'+i,type:'picks',modaCategory,meta:{status:'queued'}}));
+ const c={modaFilter:'all',mode:'pending',filter:'picks',items:rows};
+ vm.createContext(c);vm.runInContext(current,c);
+ assert.equal(c.current().length,6);
+ for(const row of rows.slice(0,5)){
+  c.modaFilter=row.modaCategory;assert.equal(c.current().length,1);assert.equal(c.current()[0],row);
+ }
+});

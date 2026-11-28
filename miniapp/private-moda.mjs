@@ -1,5 +1,6 @@
-// Private Moda: existing Supabase Auth and owner-only bucket. No Telegram or public Pages writes.
+// Read the private Moda bucket using the existing My Space Auth session.
 const BUCKET='myspace-moda-drafts',MAX=5000000,ID=/^\d{4}-\d{2}-\d{2}-gcc-[a-f0-9]{16,64}$/,HASH=/^[a-f0-9]{64}$/;
+export const MODA_CATEGORIES=Object.freeze({clothing:'Одежда',bags:'Сумки',shoes:'Обувь',jewelry:'Украшения',accessories:'Аксессуары'});
 const need=(ok,msg)=>{if(!ok)throw Error(msg)};
 const digest=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
 const path=(id,name)=>'drafts/'+id+'/'+name;
@@ -7,6 +8,7 @@ const validUrl=u=>{try{const p=new URL(u);return p.protocol==='https:'&&!p.usern
 export function validateManifest(m,id){
  need(m&&m.schema_version===1&&m.id===id&&ID.test(id)&&m.mode==='private_preview'&&m.publication_allowed===false&&m.rights_verified===false,'Invalid private manifest');
  need(HASH.test(m.cover_sha256)&&HASH.test(m.source_archive_sha256)&&typeof m.text==='string'&&m.text.length<=12000,'Invalid manifest metadata');
+ if('category' in m||'title' in m)need(Object.hasOwn(MODA_CATEGORIES,m.category)&&typeof m.title==='string'&&m.title.trim()===m.title&&m.title.length>=1&&m.title.length<=75&&!/[\x00-\x1f]/.test(m.title),'Invalid collection metadata');
  need(Array.isArray(m.items)&&m.items.length===3,'Expected three items');
  const ids=new Set([m.cover_sha256]),urls=new Set();
  for(const i of m.items){need(i&&typeof i.name==='string'&&i.name.length>0&&i.name.length<=300&&typeof i.shop==='string'&&i.shop.length<=100&&validUrl(i.url)&&Number.isFinite(i.price)&&i.price>0&&i.price<=10000000&&HASH.test(i.photo_sha256)&&!ids.has(i.photo_sha256)&&!urls.has(i.url),'Invalid or duplicate product');ids.add(i.photo_sha256);urls.add(i.url)}
@@ -16,12 +18,14 @@ async function bytesOf(blob,limit){need(blob&&blob.size>0&&blob.size<=limit,'Inv
 async function checkedJpeg(blob,hash){const b=await bytesOf(blob,MAX);need(b[0]===255&&b[1]===216&&b[2]===255&&await digest(b)===hash,'JPEG checksum mismatch');return new Blob([b],{type:'image/jpeg'})}
 async function download(store,name){const {data,error}=await store.download(name);if(error)throw Error('Private object unavailable');return data}
 async function readCard(store,id){
- const manifest=JSON.parse(new TextDecoder().decode(await bytesOf(await download(store,path(id,'manifest.json')),100000)));
+ const bytes=await bytesOf(await download(store,path(id,'manifest.json')),100000);
+ const manifest=JSON.parse(new TextDecoder().decode(bytes));
  const keys=validateManifest(manifest,id),blobs={};
  for(const key of keys)blobs[key]=await checkedJpeg(await download(store,path(id,key+'.jpg')),key);
  const urls=Object.fromEntries(keys.map(key=>[key,URL.createObjectURL(blobs[key])]));
  return {id,type:'picks',text:manifest.text,items:manifest.items.map(({name,shop,price,url,photo_sha256})=>({name,shop,price,url,img:urls[photo_sha256]})),
-  meta:{status:'queued',sent_at:id.slice(0,10)},ready:true,media_sha256:manifest.cover_sha256,privatePreview:true,privateCover:urls[manifest.cover_sha256],privateUrls:Object.values(urls)};
+  meta:{status:'queued',sent_at:id.slice(0,10)},ready:true,media_sha256:manifest.cover_sha256,privatePreview:true,privateCover:urls[manifest.cover_sha256],privateUrls:Object.values(urls),
+  ...(manifest.category?{modaCategory:manifest.category,title:manifest.title,revision:await digest(bytes),privateModeration:true}: {})};
 }
 export function release(rows){for(const row of rows||[])for(const url of row.privateUrls||[])URL.revokeObjectURL(url)}
 export async function loadPrivate(client){

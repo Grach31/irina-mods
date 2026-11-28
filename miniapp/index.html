@@ -18,7 +18,7 @@ button{font-family:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:def
 .hero{padding:26px 2px 20px}.hero h1{font-family:Georgia,serif;font-weight:400;font-size:32px;line-height:1.02;letter-spacing:-1.4px;margin:10px 0}.hero p{color:var(--muted);font-size:13px;line-height:1.5;margin:0}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:22px}.stat{background:var(--card);border:1px solid var(--border);padding:15px 8px 12px;border-radius:4px;text-align:center}.stat strong{font-family:Georgia,serif;font-weight:400;font-size:28px;display:block}.stat span{font-size:10px;color:var(--muted)}
 .section{display:flex;align-items:center;justify-content:space-between;margin:26px 0 11px}.section h2{font-family:Georgia,serif;font-weight:400;font-size:25px;margin:0}.section small{font-size:11px;color:var(--muted)}.tabs{display:flex;gap:7px;overflow-x:auto;padding:0 0 12px;scrollbar-width:none}.tab{white-space:nowrap;border:1px solid var(--border);background:transparent;padding:9px 13px;border-radius:20px;font-size:11px}.tab.active{background:var(--ink);color:white;border-color:var(--ink)}
-.list{display:grid;gap:13px}.draft{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--card);text-align:left;padding:0;width:100%}.cover{aspect-ratio:1.25;background:#e4dfd6;display:grid;place-items:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.placeholder{font:italic 27px Georgia,serif;color:#958b7d}.draft-body{padding:17px 16px}.labelrow{display:flex;justify-content:space-between;align-items:center;gap:8px}.pill{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#8c7664}.date{font-size:10px;color:var(--muted)}.draft h3{font:normal 23px/1.12 Georgia,serif;margin:11px 0}.preview{font-size:12px;line-height:1.55;color:#66605a;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.openline{display:flex;align-items:center;justify-content:space-between;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:19px;padding-top:12px;border-top:1px solid var(--border)}
+#modaCategories[hidden]{display:none}.list{display:grid;gap:13px}.draft{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--card);text-align:left;padding:0;width:100%}.cover{aspect-ratio:1.25;background:#e4dfd6;display:grid;place-items:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.placeholder{font:italic 27px Georgia,serif;color:#958b7d}.draft-body{padding:17px 16px}.labelrow{display:flex;justify-content:space-between;align-items:center;gap:8px}.pill{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#8c7664}.date{font-size:10px;color:var(--muted)}.draft h3{font:normal 23px/1.12 Georgia,serif;margin:11px 0}.preview{font-size:12px;line-height:1.55;color:#66605a;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.openline{display:flex;align-items:center;justify-content:space-between;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:19px;padding-top:12px;border-top:1px solid var(--border)}
 .nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:rgba(250,248,244,.97);border-top:1px solid var(--border);padding:11px max(18px,env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 8px);display:flex;justify-content:space-around}.nav button{border:0;background:none;display:grid;justify-items:center;gap:5px;color:var(--muted);font-size:10px;padding:2px 10px}.nav button.active{color:var(--ink);font-weight:700}.nav svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.7;fill:none}
 .detail{display:none;position:fixed;inset:0;z-index:9;overflow:auto;background:var(--bg);padding-bottom:calc(env(safe-area-inset-bottom) + 95px)}.detail.visible{display:block}.detail:before{content:'';display:block;height:112px;pointer-events:none}.detail-top{position:sticky;top:112px;z-index:20;background:rgba(247,245,241,.98);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border);min-height:58px}.detail-top .back{min-height:44px;min-width:160px;text-align:left;position:relative;z-index:21;touch-action:manipulation;background:#fff;border:1px solid var(--border);border-radius:8px;padding:0 13px}.back{border:0;background:transparent;font-size:12px;letter-spacing:.5px}.detail-scroller{max-width:680px;margin:auto}.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:4px}.slide{flex:0 0 100%;aspect-ratio:4/5;scroll-snap-align:center;background:#e9e5dd;display:grid;place-items:center}.slide img{width:100%;height:100%;object-fit:contain}.detail-contents{padding:22px 20px}.detail-title{font:normal 31px/1.13 Georgia,serif;margin:10px 0 18px}.post-text{font-size:14px;line-height:1.8;white-space:pre-line;overflow-wrap:anywhere}.post-text a{color:#80664f;text-decoration:underline}.detail-actions{position:fixed;bottom:0;left:0;right:0;z-index:12;padding:12px 16px calc(env(safe-area-inset-bottom) + 14px);background:rgba(247,245,241,.98);border-top:1px solid var(--border);display:flex;gap:9px;justify-content:center}.detail-actions button{min-height:46px;border:1px solid var(--ink);padding:12px 14px;background:var(--ink);color:white;border-radius:4px;font-size:12px}.detail-actions .secondary{background:transparent;color:var(--ink)}.detail-actions button:not(.secondary){background:#2e3448;color:#fff;border-color:#2e3448}.message{margin:24px 0;padding:22px;background:var(--card);border:1px solid var(--border);font-size:13px;line-height:1.6;color:#696158}.loader{padding:40px;text-align:center;color:var(--muted);font-size:13px}.hidden{display:none!important}.empty{padding:30px 12px;text-align:center;color:var(--muted);font:italic 18px Georgia,serif}
 
@@ -643,6 +643,7 @@ body>nav.nav{display:none!important}
 <section class="stats"><div class="stat"><strong id="pending">—</strong><span>На проверке</span></div><div class="stat"><strong id="published">—</strong><span>Опубликовано</span></div><div class="stat"><strong id="rejected">—</strong><span>Отклонено</span></div></section>
 <section class="section"><h2 id="sectionTitle">Черновики</h2><small id="count"></small></section>
 <div class="tabs" id="filters"><button class="tab active" data-filter="all">Все</button><button class="tab" data-filter="picks">Подборки</button><button class="tab" data-filter="looks">Образы</button><button class="tab" data-filter="news">Новости</button><button class="tab" data-filter="history">История</button></div>
+<div class="tabs" id="modaCategories" aria-label="Категории подборок Moda" hidden><button class="tab active" type="button" data-moda-category="all" aria-pressed="true">Все категории</button><button class="tab" type="button" data-moda-category="clothing" aria-pressed="false">Одежда</button><button class="tab" type="button" data-moda-category="bags" aria-pressed="false">Сумки</button><button class="tab" type="button" data-moda-category="shoes" aria-pressed="false">Обувь</button><button class="tab" type="button" data-moda-category="jewelry" aria-pressed="false">Украшения</button><button class="tab" type="button" data-moda-category="accessories" aria-pressed="false">Аксессуары</button></div>
 <main class="list" id="list"><div class="loader">Загружаю черновики…</div></main></div>
 <nav class="nav"><button class="active" id="navPending"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Черновики</button><button id="navPublished"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>История</button><button id="navRefresh"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2-5M20 4v5h-5"/></svg>Обновить</button></nav>
 <div class="detail" id="detail"><div class="detail-top"><button class="back" id="back">← Все материалы</button><span class="eyebrow" id="detailAccessLabel">Stambo.i / Просмотр</span></div><div class="detail-scroller"><div class="gallery-wrap" id="galleryWrap">
@@ -660,7 +661,7 @@ const tg=window.Telegram?.WebApp;const BASE='https://raw.githubusercontent.com/G
 const PWA_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-pwa';
 const PUBLISH_API='https://rjnfokknhjmtuzturvub.supabase.co/functions/v1/myspace-publish';
 async function publishApi(payload){const r=await fetch(PUBLISH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store',...(payload.action==='list'?{signal:AbortSignal.timeout(12000)}:{})});const data=await r.json().catch(()=>({}));if(!r.ok){const e=Error(data.error||'HTTP '+r.status);e.telegramDescription=typeof data.description==='string'?data.description.slice(0,300):'';throw e}return data;}
-const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending';
+const $=id=>document.getElementById(id);let state={},items=[],active=null,filter='all',mode='pending',modaFilter='all';
 const isTelegramClient=Boolean(tg?.initData)||Boolean(tg?.platform&&!['unknown','web'].includes(tg.platform));
 const viewerId=Number(tg?.initDataUnsafe?.user?.id||0);
 let pwaSession='';
@@ -1378,10 +1379,11 @@ const strip=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const category=t=>({picks:'Подборка',looks:'Готовые образы',news:'Новости моды',history:'История моды',album:'Фотоальбом',item:'Образ'})[t]||'Материал';
 const localMedia=d=>d.privatePreview?d.privateCover:'media/'+encodeURIComponent(d.id)+'.jpg'+(d.media_sha256?'?v='+encodeURIComponent(d.media_sha256.slice(0,16)):'');
  const imageFor=d=>{if(d.ready&&d.media_sha256)return localMedia(d);if(d.type==='picks'&&d.items?.length){const first=d.items.find(i=>typeof i.img==='string'&&/^https:\/\//i.test(i.img));if(first)return first.img}return localMedia(d)};
- const draftHeading=d=>{const doc=new DOMParser().parseFromString(String(d.text||''),'text/html');const first=doc.body.firstElementChild;const heading=first&&['B','STRONG'].includes(first.tagName)?first.textContent.trim():'';const text=strip(d.text);return {title:heading||text.slice(0,77)||d.id,preview:(heading?text.slice(heading.length).trim():text.slice(77).trim()).slice(0,145)}};
+ const draftHeading=d=>{const doc=new DOMParser().parseFromString(String(d.text||''),'text/html');const first=doc.body.firstElementChild;const heading=first&&['B','STRONG'].includes(first.tagName)?first.textContent.trim():'';const text=doc.body.textContent.replace(/\s+/g,' ').trim();return {title:d.title||heading||text.slice(0,77)||d.id,preview:(heading?text.slice(heading.length).trim():text.slice(77).trim()).slice(0,145)}};
 async function readJson(url){let r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 let privateModaView=null,privateModaUrls=[],privateModaError=false;
-async function privateModaModule(){return import('./private-moda.mjs?v=20261127-3')}
+const modaCategoryLabel=d=>privateModaView?.MODA_CATEGORIES?.[d.modaCategory]||category(d.type);
+async function privateModaModule(){return import('./private-moda.mjs?v=20261128-categories')}
 let loading=null,lastLoaded=0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function fetchCatalog(attempts=3){
@@ -1411,6 +1413,7 @@ function load({refresh=false}={}){
    const uniqueItems=catalog.items.filter(d=>{if(catalogIds.has(d.id))return false;catalogIds.add(d.id);return true});
    const nextItems=uniqueItems.length===catalog.items.length?catalog.items:uniqueItems;
    // Supabase is authoritative for decisions made in Safari; no bot queue.
+   let applyDecisions=()=>{};
    if(pwaSession){
     const session=pwaSession;
     try{
@@ -1418,7 +1421,8 @@ function load({refresh=false}={}){
      if(!Array.isArray(decisions.items))throw Error('Invalid My Space decisions');
      if(pwaSession!==session)return false;
      const byId=new Map(decisions.items.map(x=>[x.draft_id,x.status]));
-     nextItems.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status});
+     applyDecisions=rows=>rows.forEach(d=>{const status=byId.get(d.id);if(['published','rejected','edit_requested','failed','publishing','uncertain'].includes(status))d.meta.status=status});
+     applyDecisions(nextItems);
     }catch(e){
      // Preserve the last complete snapshot, including its counters and list.
      console.warn('Could not refresh My Space decisions',e);
@@ -1429,7 +1433,7 @@ function load({refresh=false}={}){
     // Safari must restore its session before showing publication counts.
     return false;
    }
-   // Private Moda uses the same owner Auth session and never enters the publish API.
+   // Private photos require the owner Auth session. Decisions use My Space moderation.
    let nextPrivate=[],privateError=false;
    if(pwaSession&&!readonly){
     const session=pwaSession;
@@ -1451,6 +1455,7 @@ function load({refresh=false}={}){
     if(pwaSession!==session)return false;
    }
    if(privateModaView){const kept=new Set(nextPrivate.flatMap(row=>row.privateUrls||[]));for(const row of privateModaUrls)for(const url of row.privateUrls||[])if(!kept.has(url))URL.revokeObjectURL(url)}
+   applyDecisions(nextPrivate);
    if(active?.privatePreview&&!nextPrivate.includes(active)){$('detail').classList.remove('visible');active=null}
    privateModaError=privateError;
    privateModaUrls=nextPrivate;
@@ -1464,20 +1469,20 @@ function load({refresh=false}={}){
  })();
  return loading;
 }
-function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested','failed','publishing','uncertain'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
+function current(){return items.filter(d=>(mode==='pending'?['queued','sent','awaiting_edit','edit_requested','failed','publishing','uncertain'].includes(d.meta.status):['published','rejected'].includes(d.meta.status))&&(filter==='all'||d.type===filter)&&(modaFilter==='all'||d.modaCategory===modaFilter)).sort((a,b)=>String(b.meta?.published_at||b.meta?.sent_at||b.id||'').localeCompare(String(a.meta?.published_at||a.meta?.sent_at||a.id||'')))}
 function render(){
  $('pending').textContent=items.filter(x=>['queued','sent','awaiting_edit','edit_requested','failed','publishing','uncertain'].includes(x.meta.status)).length;
  $('published').textContent=items.filter(x=>x.meta.status==='published').length;
  $('rejected').textContent=items.filter(x=>x.meta.status==='rejected').length;
  let list=current();$('count').textContent=list.length+' материалов';$('sectionTitle').textContent=mode==='pending'?'Черновики':'История';
 $('navPending').classList.toggle('active',mode==='pending');$('navPublished').classList.toggle('active',mode==='history');
+ const categoryTabs=$('modaCategories');categoryTabs.hidden=filter!=='all'&&filter!=='picks';
+ for(const button of categoryTabs.querySelectorAll('[data-moda-category]')){const selected=button.dataset.modaCategory===modaFilter;button.classList.toggle('active',selected);button.setAttribute('aria-pressed',String(selected))}
 $('list').innerHTML=list.length?'':'<div class="empty">Материалов в этой категории пока нет</div>';
 if(mode==='pending'&&pwaSession&&!readonly&&(filter==='all'||filter==='picks')){
  if(privateModaError){const warning=document.createElement('div');warning.className='message';warning.textContent='Приватные подборки не обновились. Потяни вниз для повторной загрузки.';$('list').append(warning)}
- const importButton=document.createElement('button');importButton.type='button';importButton.className='secondary';importButton.textContent='Импорт приватных подборок';
- importButton.onclick=()=>{const file=document.createElement('input');file.type='file';file.accept='.json,application/json';file.onchange=async()=>{if(!file.files?.[0])return;try{if(file.files[0].size>20000000)throw Error('Слишком большой пакет');if(!confirm('Сохранить пакет только в закрытом хранилище? В Telegram ничего не отправляется.'))return;const mod=await import('./private-moda.mjs?v=20261127-3');await mod.importPrivate(await authClient(),JSON.parse(await file.files[0].text()));await load({refresh:true});alert('Приватные черновики импортированы.')}catch(e){alert('Импорт не завершён: '+e.message)}};file.click()};$('list').append(importButton);
 }
-list.forEach(d=>{const card=document.createElement('button');card.className='draft';const heading=draftHeading(d);card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(d.privatePreview?'Приватная подборка':category(d.type))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(heading.title)+'</h3><p class="preview">'+escapeHtml(heading.preview||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{const img=e.target;const fallback=localMedia(d);if(img.getAttribute('src')!==fallback){img.src=fallback;return}img.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Фото недоступно'}))};card.onclick=()=>open(d);$('list').append(card)})}
+list.forEach(d=>{const card=document.createElement('button');card.className='draft';const heading=draftHeading(d);card.innerHTML='<div class="cover"><img loading="lazy" alt="Фото публикации" src="'+escapeHtml(imageFor(d))+'"></div><div class="draft-body"><div class="labelrow"><span class="pill">'+escapeHtml(modaCategoryLabel(d))+'</span><span class="date">'+escapeHtml((d.meta.sent_at||'').slice(0,10))+'</span></div><h3>'+escapeHtml(heading.title)+'</h3><p class="preview">'+escapeHtml(heading.preview||'Посмотреть фотографии, описание и ссылки на вещи')+'</p><div class="openline"><span>Смотреть публикацию</span><span>→</span></div></div>';card.querySelector('img').onerror=e=>{const img=e.target;const fallback=localMedia(d);if(img.getAttribute('src')!==fallback){img.src=fallback;return}img.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Фото недоступно'}))};card.onclick=()=>open(d);$('list').append(card)})}
 function gallerySources(d){let a=[];const root=BASE+'drafts/img/';if(d.type==='looks'){const count=Math.min(10,1+(d.looks?.length||0));for(let i=1;i<=count;i++)a.push(root+encodeURIComponent(d.id)+(i===1?'':'-'+i)+'.jpg')}else if(d.type==='album'&&d.photos?.length){a=d.photos.filter(p=>typeof p==='string').slice(0,10).map(p=>p.startsWith('http')?p:BASE+p)}else if(d.type==='item'&&d.image){a=[d.image.startsWith('http')?d.image:BASE+d.image]}else if(d.type==='picks'&&d.items?.length){a=d.items.slice(0,10).map(i=>i.img).filter(Boolean);if(d.ready&&d.media_sha256)a.unshift(localMedia(d))}else if(d.card?.images?.length){a=[imageFor(d)];}else{a=[imageFor(d)]}return a.length?a:[imageFor(d)]}
 function setupGalleryControls(count){
  const gallery=$('gallery'),prev=$('galleryPrev'),next=$('galleryNext'),dots=$('galleryDots');
@@ -1509,7 +1514,7 @@ function setupGalleryControls(count){
  };
  render();
 }
-function open(d){active=d;$('detail').classList.add('visible');$('detail').scrollTop=0;$('detailType').textContent=category(d.type);$('detailTitle').textContent=draftHeading(d).title;
+function open(d){active=d;$('detail').classList.add('visible');$('detail').scrollTop=0;$('detailType').textContent=modaCategoryLabel(d);$('detailTitle').textContent=draftHeading(d).title;
 $('gallery').replaceChildren();
 const galleryImages=gallerySources(d);
 galleryImages.forEach((url,index)=>{
@@ -1520,6 +1525,11 @@ galleryImages.forEach((url,index)=>{
 setupGalleryControls(galleryImages.length);
 const target=$('postText');target.replaceChildren();
 const source=new DOMParser().parseFromString('<div>'+String(d.text||'')+'</div>','text/html');
+const leadingTitle=source.body.firstElementChild?.firstElementChild;
+if(d.privatePreview&&leadingTitle&&['B','STRONG'].includes(leadingTitle.tagName)&&leadingTitle.textContent.trim()===$('detailTitle').textContent){
+ const blankAfter=leadingTitle.nextSibling;leadingTitle.remove();
+ if(blankAfter?.nodeType===3)blankAfter.textContent=blankAfter.textContent.trimStart();
+}
 function appendSafe(node,parent){if(node.nodeType===3){parent.append(document.createTextNode(node.textContent));return}if(node.nodeType!==1)return;
 const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(name)){dest=document.createElement(name);if(name==='a'){const href=node.getAttribute('href')||'';if(/^https:\/\//i.test(href)){dest.href=href;dest.target='_blank';dest.rel='noopener noreferrer'}}parent.append(dest)}
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
@@ -1529,9 +1539,9 @@ const accessLabel=$('detailAccessLabel');if(accessLabel)accessLabel.textContent=
 const actions=$('actions');actions.replaceChildren();
 const isTestDraft=/(?:^|[-_])(test|panel-test)(?:$|[-_])/i.test(d.id)||/ТЕСТ СВЯЗИ/i.test(String(d.text||''));
 const reviewable=['queued','sent','awaiting_edit','edit_requested','failed'].includes(d.meta.status);
-if(d.privatePreview){const p=document.createElement('span');p.className='eyebrow';p.textContent='Приватный предпросмотр · публикация отключена';actions.append(p);
+if(d.privatePreview&&!d.privateModeration){const p=document.createElement('span');p.className='eyebrow';p.textContent='Приватный предпросмотр · публикация отключена';actions.append(p);
 }else if(reviewable&&!readonly&&pwaSession&&!isTestDraft){
- const buttons=[['Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];
+ const buttons=[[d.privateModeration?'На доработку':'Запросить правки','edit','secondary'],['Отклонить','no','secondary'],['Опубликовать','ok','']];
  buttons.forEach(([name,action,css])=>{const btn=document.createElement('button');btn.className=css;btn.textContent=name;btn.onclick=()=>act(action,d);if(action==='ok'&&d.ready===false){btn.disabled=true;btn.textContent='Фото готовятся'}actions.append(btn)});
 }else{
  const p=document.createElement('span');p.className='eyebrow';
@@ -1539,23 +1549,24 @@ if(d.privatePreview){const p=document.createElement('span');p.className='eyebrow
  actions.append(p);
 }}
 async function act(action,d){
- if(d.privatePreview)return;
+ if(d.privatePreview&&!d.privateModeration)return;
  if(pwaSession){
+  const privateFields=d.privateModeration?{private_moda:true,revision:d.revision}:{};
   if(action==='edit'){
    const notes=prompt('Что изменить в черновике? Опиши правки для редакции:');
    if(notes===null)return;
    if(notes.trim().length<3){alert('Напиши, что нужно исправить.');return}
    try{
-    await publishApi({action:'edit',session:pwaSession,id:d.id,notes:notes.trim()});
+    await publishApi({action:'edit',session:pwaSession,id:d.id,notes:notes.trim(),...privateFields});
     d.meta.status='edit_requested';$('detail').classList.remove('visible');active=null;render();
     alert('Правки сохранены в My Space. В Telegram ничего не отправлено.');
    }catch(e){alert('Не удалось сохранить правки: '+e.message)}
    return;
   }
-  const msg=action==='ok'?'Подтвердить публикацию этого поста?':'Отклонить этот черновик?';
+  const msg=action==='ok'?(d.privateModeration?'Опубликовать текст и ссылки без фотографий и предпросмотра?':'Подтвердить публикацию этого поста?'):'Отклонить этот черновик?';
   if(!confirm(msg))return;
   try{
-   const result=await publishApi({action:action==='ok'?'publish':'reject',session:pwaSession,id:d.id,revision:d.revision});
+   const result=await publishApi({action:action==='ok'?'publish':'reject',session:pwaSession,id:d.id,revision:d.revision,...privateFields});
    if(!result.ok)throw Error('not completed');
    d.meta.status=action==='ok'?'published':'rejected';$('detail').classList.remove('visible');active=null;
    alert(action==='ok'?'Опубликовано в Telegram-канале.':'Черновик отклонён в My Space. Telegram не задействован.');
@@ -1842,7 +1853,8 @@ async function fetchOura(){
   setValue('ouraStatus',ouraStatusMessage(data));return true;
  }catch(e){setValue('ouraStatus','Не удалось получить данные. Проверь соединение и открой раздел снова.');return false}
 }
-$('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
+$('filters').onclick=e=>{const btn=e.target.closest('[data-filter]');if(!btn)return;filter=btn.dataset.filter;if(filter!=='all'&&filter!=='picks')modaFilter='all';$('filters').querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));render()};
+$('modaCategories').onclick=e=>{const btn=e.target.closest('[data-moda-category]');if(!btn)return;modaFilter=btn.dataset.modaCategory;render()};
 // Telegram may populate initDataUnsafe after its webview has already rendered.
 // Start loading content unconditionally; backend still enforces editing permissions.
 // Deep-link Oura from the bot's authenticated inline web_app button.
