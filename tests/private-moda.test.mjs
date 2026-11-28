@@ -50,6 +50,7 @@ test('five category manifests and a legacy card coexist and retain the source li
   card.id='2026-11-28-gcc-'+String(index+1).repeat(40);
   card.category=category;
   card.title='Заголовок подборки';
+  card.items.forEach((item,i)=>{item.original_photo_url='https://cdn.example.com/item-'+i+'.jpg'});
   ids.push(card.id);
   // The existing Publisher writes the receipt last. No UI import is involved here.
   for(const [digest,data] of Object.entries(pack.cards[0].images)){
@@ -69,6 +70,7 @@ test('five category manifests and a legacy card coexist and retain the source li
    assert.equal(row.revision,await hex(raw));
    assert.equal(row.privateUrls.length,4);
    assert(row.items.every(item=>item.url.startsWith('https://example.com/')&&item.img.startsWith('blob:')));
+   assert(row.items.every(item=>item.original_photo_url.startsWith('https://cdn.example.com/')));
   }
   assert.equal(rows.find(row=>row.id===legacy.cards[0].manifest.id).privateModeration,undefined);
  }finally{release(rows)}

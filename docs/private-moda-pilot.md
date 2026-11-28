@@ -10,7 +10,7 @@ All four private folders (20 objects) remained in Storage after duplicate fix de
 
 ### Private category drafts and moderation
 
-The Publisher writes the cover and three JPEGs to private Storage, followed by the immutable manifest. The app discovers committed folders from the existing owner session. Category manifests extend v1 with `category` and `title`; old v1 previews stay visible under the unfiltered list. The gallery uses checked private JPEG bytes and product references keep the merchant HTTPS links.
+The Publisher writes the cover and three JPEGs to private Storage, followed by the immutable manifest. The app discovers committed folders from the existing owner session. Category manifests extend v1 with `category` and `title`; old v1 previews stay visible under the unfiltered list. The gallery uses checked private JPEG bytes. Product links and any verified links to original photos open separately. My Space loads external originals only when the viewer follows a link.
 
 Category drafts appear in the usual moderation workspace with «Опубликовать», «На доработку» and «Отклонить». Reloading restores the decisions from the existing publication API. For these private revisions, clicking publish explicitly approves text and links with previews disabled. The edge function reads the authorized private manifest, checks its byte revision and rebuilds the message without attachments. It uses the same durable claim and delivery receipt as the existing moderation flow. Private photo inspection does not establish redistribution rights. Existing public drafts still use their established media path.
 

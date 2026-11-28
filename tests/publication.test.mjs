@@ -65,3 +65,10 @@ test('private revision, moderator, edit requests and rejection share the existin
  assert.equal(f.get().requests.length,1);
  assert.equal(f.get().sends,0);
 });
+test('held and test private drafts cannot become approved revisions',async()=>{
+ for(const overrides of [{hold:true},{type:'test'},{text:'ТЕСТ СВЯЗИ'}]){
+  const draft={...privateCard,...overrides}, raw=JSON.stringify(draft);
+  const digest=async value=>createHash('sha256').update(value).digest('hex');
+  await assert.rejects(approvedPrivateModa(draft.id,await digest(raw),raw,digest),/draft_held_or_invalid/);
+ }
+});

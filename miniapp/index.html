@@ -1535,6 +1535,16 @@ const name=node.tagName.toLowerCase();let dest=parent;if(['b','i','a'].includes(
 for(const child of Array.from(node.childNodes))appendSafe(child,dest);
 if(['p','div','li','br'].includes(name))parent.append(document.createElement('br'))}
 for(const child of Array.from(source.body.firstElementChild?.childNodes||[]))appendSafe(child,target);
+if(d.privatePreview&&d.items?.some(item=>item.original_photo_url)){
+ const links=document.createElement('p');links.className='fine';links.append(document.createTextNode('Оригиналы фото '));
+ d.items.forEach((item,i)=>{
+  if(!item.original_photo_url)return;
+  const link=document.createElement('a');link.href=item.original_photo_url;link.target='_blank';link.rel='noopener noreferrer';
+  link.textContent=String(i+1);link.setAttribute('aria-label','Оригинал фото: '+item.name);
+  links.append(link,document.createTextNode(' '));
+ });
+ target.append(links);
+}
 const accessLabel=$('detailAccessLabel');if(accessLabel)accessLabel.textContent=readonly?'Stambo.i / Просмотр':'Stambo.i / Модерация';
 const actions=$('actions');actions.replaceChildren();
 const isTestDraft=/(?:^|[-_])(test|panel-test)(?:$|[-_])/i.test(d.id)||/ТЕСТ СВЯЗИ/i.test(String(d.text||''));

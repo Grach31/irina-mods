@@ -19,7 +19,8 @@ export async function approvedPrivateModa(id: string, revision: string, raw: str
       m.rights_verified !== false || m.publication_allowed !== false || !CATEGORIES.has(m.category) ||
       typeof m.title !== 'string' || !m.title.trim() || m.title.length > 75 ||
       !SHA.test(m.cover_sha256) || !SHA.test(m.source_archive_sha256) ||
-      typeof m.text !== 'string' || m.text.length > 12_000 || !Array.isArray(m.items) || m.items.length !== 3) {
+      typeof m.text !== 'string' || m.text.length > 12_000 || m.hold === true || m.type === 'test' ||
+      /ТЕСТ СВЯЗИ/i.test(m.text) || !Array.isArray(m.items) || m.items.length !== 3) {
     throw Error('draft_held_or_invalid');
   }
   const urls = new Set(), photos = new Set([m.cover_sha256]);
